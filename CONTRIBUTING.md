@@ -1,6 +1,6 @@
-# Contributing to Angular 2 Material
+# Contributing to SVOGV
 
-We would love for you to contribute to Angular 2 Material and help make it ever better!
+We would love for you to contribute to SVOGV and help make it ever better!
 As a contributor, here are the guidelines we would like you to follow:
 
  - [Code of Conduct](#coc)
@@ -12,14 +12,16 @@ As a contributor, here are the guidelines we would like you to follow:
  - [Commit Message Guidelines](#commit)
  - [Signing the CLA](#cla)
 
+In case of any questions please contact me at <joergisageek_at_gmail.com>!
+
 ## <a name="coc"></a> Code of Conduct
 Help us keep Angular open and inclusive. Please read and follow our [Code of Conduct][coc].
 
 ## <a name="question"></a> Got a Question or Problem?
 
-If you have questions about how to *use* Angular Material, please direct them to the 
-[Google Group][material-group] discussion list or [StackOverflow][stackoverflow]. 
-Please note that Angular 2 Material is still in very early development, and the team's capacity 
+If you have questions about how to *use* SVOGV, please direct them to the 
+[Google Group][svogv] discussion list or [StackOverflow][stackoverflow]. 
+Please note that SVOGV is still in very early development, and the team's capacity 
 to answer usage questions is limited. Community chat is also available on [Gitter][gitter].
 
 ## <a name="issue"></a> Found an Issue?
@@ -33,7 +35,7 @@ You can help the team even more and [submit a Pull Request](#submit-pr) with a f
 ## <a name="feature"></a> Want a Feature?
 You can *request* a new feature by [submitting an issue](#submit-issue) to our [GitHub
 Repository][github]. If you would like to *implement* a new feature, please submit an issue with
-a proposal for your work first, to be sure that we can use it. Angular 2 Material is in very early 
+a proposal for your work first, to be sure that we can use it. SVOGV is in very early 
 stages and we are not ready to accept major contributions ahead of the full release.
 Please consider what kind of change it is:
 
@@ -51,26 +53,26 @@ features by not reporting duplicate issues.  Providing the following information
 chances of your issue being dealt with quickly:
 
 * **Overview of the Issue** - if an error is being thrown a non-minified stack trace helps
-* **Angular and Material Versions** - which versions of Angular and Material are affected
-    (e.g. 2.0.0-alpha.53)
+* **Angular and Bootstrap Versions** - which versions of Angular and Bootstrap are affected
+    (e.g. 2.2.0)
 * **Motivation for or Use Case** - explain what are you trying to do and why the current behavior
     is a bug for you
 * **Browsers and Operating System** - is this a problem with all browsers?
 * **Reproduce the Error** - provide a live example (using [CodePen][codepen], [JsBin][jsbin],
     [Plunker][plunker], etc.) or a unambiguous set of steps
-* **Screenshots** - Due to the visual nature of Angular Material, screenshots can help the team
+* **Screenshots** - Due to the visual nature of the SVOGV widgets, screenshots can help the team
     triage issues far more quickly than a text descrption.
 * **Related Issues** - has a similar issue been reported before?
 * **Suggest a Fix** - if you can't fix the bug yourself, perhaps you can point to what might be
     causing the problem (line of code or commit)
 
-You can file new issues by providing the above information [here](https://github.com/angular/material2/issues/new).
-
+You can file new issues by providing the above information [here](https://github.com/joergkrause/svogv/issues/new).
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
+
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-* Search [GitHub](https://github.com/angular/material2/pulls) for an open or closed PR
+* Search [GitHub](https://github.com/joergkrause/svogv/pulls) for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 * Please sign our [Contributor License Agreement (CLA)](#cla) before sending PRs.
   We cannot accept code without this.
@@ -83,7 +85,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 * Create your patch, **including appropriate test cases**.
 * Follow our [Coding Rules](#rules).
 * Test your changes with our supported browsers and screen readers.
-* Run the full Angular Material test suite, as described in the [developer documentation][dev-doc],
+* Run the full SVOGV test suite, as described in the [developer documentation][dev-doc],
   and ensure that all tests pass.
 * Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit). Adherence to these conventions
@@ -100,10 +102,10 @@ Before you submit your Pull Request (PR) consider the following guidelines:
     git push my-fork my-fix-branch
     ```
 
-* In GitHub, send a pull request to `material2:master`.
+* In GitHub, send a pull request to `svogv:master`.
 * If we suggest changes then:
   * Make the required updates.
-  * Re-run the Angular Material test suites to ensure tests are still passing.
+  * Re-run the SVOGV test suites to ensure tests are still passing.
   * Rebase your branch and force push to your GitHub repository (this will update your Pull
     Request):
 
@@ -156,7 +158,7 @@ To ensure consistency throughout the source code, keep these rules in mind as yo
 
 We have very precise rules over how our git commit messages can be formatted.  This leads to **more
 readable messages** that are easy to follow when looking through the **project history**.  But also,
-we use the git commit messages to **generate the Angular Material change log**.
+we use the git commit messages to **generate the SVOGV change log**.
 
 ### Commit Message Format
 Each commit message consists of a **header**, a **body** and a **footer**.  The header has a special
@@ -229,13 +231,13 @@ changes to be accepted, the CLA must be signed. It's a quick process, we promise
   [print, sign and one of scan+email, fax or mail the form][corporate-cla].
 
 
-[material-group]: https://groups.google.com/forum/#!forum/angular-material2
+[svogv]: https://groups.google.com/forum/#!forum/svogv
 [coc]: https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md
 [commit-message-format]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/preview
 [corporate-cla]: http://code.google.com/legal/corporate-cla-v1.0.html
-[dev-doc]: https://github.com/angular/material2/blob/master/DEV_ENVIRONMENT.md
-[github]: https://github.com/angular/material2
-[gitter]: https://gitter.im/angular/material2
+[dev-doc]: https://github.com/joergkrause/svogv/DEV_ENVIRONMENT.md
+[github]: https://github.com/joergkrause/svogv
+[gitter]: https://gitter.im/joergkrause/svogv
 [individual-cla]: http://code.google.com/legal/individual-cla-v1.0.html
 [js-style-guide]: https://google.github.io/styleguide/jsguide.html
 [codepen]: http://codepen.io/

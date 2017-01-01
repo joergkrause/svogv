@@ -1,5 +1,6 @@
-# Angular Material Coding Standards
+# SVOGV Coding Standards
 
+This document was pulled from Angular Material and was only slightly changed to keep it close to Googles code rules. This is intentionally.
 
 ## Code style
 
