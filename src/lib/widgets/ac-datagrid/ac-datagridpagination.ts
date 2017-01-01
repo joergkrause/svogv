@@ -114,7 +114,7 @@ export class DataGridPagination implements OnInit, OnChanges {
   }
 
   range(min: number, max: number): number[] {
-    let result = [];
+    let result = new Array<any>();
     for (let i = min; i <= max; i++) {
       result.push(i);
     }

@@ -99,7 +99,7 @@ export class AcTreeViewNode implements OnInit {
         if (this.node.options && this.node.options.backColor) {
             this.backColor = this.node.options.backColor;
         }
-        this.node.stateChange.subscribe(se => {
+        this.node.stateChange.subscribe((se : any) => {
             this.collapseChanged.emit(this.node);
             if (!this.node.stateIsExpandend) {
                 this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.clsIcon);

@@ -34,7 +34,7 @@ export class WebPart {
             'box-solid': this.solidHeader
         };
         if (this.colorclass) {
-            classes[this.colorclass] = true;
+            (<any>classes)[this.colorclass] = true;
         }
         return classes;
     }

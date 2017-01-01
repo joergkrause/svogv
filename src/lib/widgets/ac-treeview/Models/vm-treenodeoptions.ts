@@ -32,7 +32,7 @@ export class TreeNodeOptions {
 
     constructor(options?: TreeNodeOptions) {
         if (options) {
-            for (let k in options) this[k] = options[k];
+            //for (let k in options) this[k] = options[k];
         }
     }
 }

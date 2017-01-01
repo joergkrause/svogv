@@ -2,7 +2,7 @@
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
 import "rxjs/add/operator/filter";
 
-interface IBreadcrumb {
+export interface IBreadcrumb {
     label: string;
     params: Params;
     url: string;

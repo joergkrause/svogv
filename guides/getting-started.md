@@ -5,6 +5,15 @@ This document describes the usage of the SVOGV library for Angular 2.
  ```bash
  npm install --save svogv
  ```
+
+### Build the Lib
+
+ ```bash
+ cd src/lib 
+ npm run build
+ ```
+
+After this, the folder /dist has been rebuild and contains all, compiled sources, map files, ts files, and the bundle for direct import in browser (svogv.umd.js).
  
 ## Using the Lib
 

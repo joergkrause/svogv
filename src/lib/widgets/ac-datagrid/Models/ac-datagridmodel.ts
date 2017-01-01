@@ -1,4 +1,4 @@
-import '../../../../Utils/object.extensions';
+import '../../../../utils/object.extensions';
 import { DataGridHeader } from './ac-datagridheader';
 
 export class DataGridModel<T> {
@@ -69,10 +69,10 @@ export class DataGridModel<T> {
     let columns: Array<any> = new Array<any>();
     if (!this.headers) {
       for (var prop in item) {
-        columns.push(item[prop]);
+        columns.push((<any>item)[prop]);
       }
     } else {
-      this.headers.forEach((e, idx) => columns.push(item[e.prop]));
+      this.headers.forEach((e, idx) => columns.push((<any>item)[e.prop]));
     }
     return columns;
   }

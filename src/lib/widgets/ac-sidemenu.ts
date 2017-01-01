@@ -83,7 +83,7 @@ export class SideMenu {
     console.log("SideMenu onInit");
   }
 
-  private itemType(item) : string {
+  private itemType(item: any) : string {
     if (item === undefined || item === null) {
       throw new Error("The reflection metadata could not be found.");
     }

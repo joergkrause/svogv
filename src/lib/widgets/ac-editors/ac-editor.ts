@@ -52,7 +52,7 @@ export class AcEditor implements OnInit {
   ngOnInit() {
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // this is set by FormValidatorService
-    var editorModel = this.userForm["__editorModel__"];
+    var editorModel = (<any>this.userForm)["__editorModel__"];
       // get type from form
     if (editorModel) {
       // make an instance to read the properties
@@ -61,7 +61,7 @@ export class AcEditor implements OnInit {
     }
   }
 
-  private onValueChanged(data) {
+  private onValueChanged(data : any) {
     this.errors = new Array<string>();
     for (let error in this.userForm.controls[this.name].errors) {
       this.errors.push(error);
