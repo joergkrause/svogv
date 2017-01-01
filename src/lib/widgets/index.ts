@@ -6,4 +6,6 @@ export * from './ac-webpart';
 export * from './ac-datagrid/ac-datagridpagination';
 export * from './ac-tabs';
 export * from './ac-sidemenu';
+export * from './ac-loadericon';
+export * from './ac-analogclock';
 export * from './ac-editors/ac-editor';
