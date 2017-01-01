@@ -12,9 +12,11 @@ It’s a widget library that bring the power of Bootstrap 4 to Angular and adds 
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular 2 (4). 
+The approach was simply the usage of forms as simple as ever in Angular 2 (4). It's an extension to Angular 2 that comes as a set of classes and components. 
 
-We did this n´by using a straight domain model. Let's assume you have a viewmodel like this:
+## How does it work?
+
+We did this by using a straight domain model. Let's assume you have a viewmodel like this:
 
 ~~~
 export class UserViewModel {
@@ -83,4 +85,19 @@ Now the form knows all about the model. Now let's build a form.
 The tricky part is the component `<ac-editor>`. This component checks the property type, the decorators, and the form's settings and creates a complete form element in Bootstrap 4 style (the template is, of course, customizable).
 
 And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
+
+## Where to get?
+
+It's available from *npm* by using this command:
+
+~~~
+npm install svogv --save
+~~~
+
+You get three parts (at least, this list will grow quickly):
+
+* FormValidatorService -- a static class to build reactive forms
+* Editor -- the universal editor component
+* Decorators -- a set of decorators to manage the behavior of properties
+
 
