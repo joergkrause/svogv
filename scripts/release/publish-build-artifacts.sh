@@ -8,7 +8,7 @@ set -e -o pipefail
 # Go to the project root directory
 cd $(dirname $0)/../..
 
-buildDir="dist/@angular/material"
+buildDir="dist/svogv"
 buildVersion=$(sed -nE 's/^\s*"version": "(.*?)",$/\1/p' package.json)
 
 commitSha=$(git rev-parse --short HEAD)
@@ -16,8 +16,8 @@ commitAuthorName=$(git --no-pager show -s --format='%an' HEAD)
 commitAuthorEmail=$(git --no-pager show -s --format='%ae' HEAD)
 commitMessage=$(git log --oneline -n 1)
 
-repoName="material2-builds"
-repoUrl="https://github.com/angular/material2-builds.git"
+repoName="svogv-builds"
+repoUrl="https://github.com/joergkrause/svogv-builds.git"
 repoDir="tmp/$repoName"
 
 # Create a release of the current repository.
@@ -42,7 +42,7 @@ git config user.name "$commitAuthorName"
 git config user.email "$commitAuthorEmail"
 git config credential.helper "store --file=.git/credentials"
 
-echo "https://${MATERIAL2_BUILDS_TOKEN}:@github.com" > .git/credentials
+echo "https://${SVOGV_BUILDS_TOKEN}:@github.com" > .git/credentials
 
 git add -A
 git commit -m "$commitMessage"

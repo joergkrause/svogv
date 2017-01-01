@@ -24,9 +24,7 @@
             // other libraries
             'rxjs': 'npm:rxjs',
             'reflect-metadata': 'npm:reflect.js',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
-            '@ngrx/store': 'npm:@ngrx/store/bundles/store.umd.js',
-            '@ngrx/core': 'npm:@ngrx/core/bundles/core.umd.js'
+            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
 },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {

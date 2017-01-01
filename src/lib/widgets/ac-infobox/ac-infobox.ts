@@ -1,7 +1,7 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { InputConverter, BooleanConverter, ColorConverter } from '../../Decorators/convert-inputconverter';
-import { InfoBoxOptions } from '../../ViewModels/Options/options-infobox';
-import { Colors } from '../../ViewModels/Options/enum-colors';
+import { InputConverter, BooleanConverter } from '../../decorators/convert-inputconverter';
+import { InfoBoxOptions } from './Models/options-infobox';
+import { Colors } from './Models/enum-colors';
 
 @Component({
     selector: 'ac-infobox',

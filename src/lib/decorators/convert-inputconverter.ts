@@ -1,10 +1,10 @@
-﻿import { Colors } from '../ViewModels/Options/enum-colors';
+﻿// import { Colors } from '../ViewModels/Options/enum-colors';
 
-export var ColorConverter = (value: number) => {
-    var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
-    var color: Colors = <Colors>Colors[sanitizedValue];
-    return color;
-}
+// export var ColorConverter = (value: number) => {
+//     var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
+//     var color: Colors = <Colors>Colors[sanitizedValue];
+//     return color;
+// }
 
 export var StringConverter = (value: any) => {
     if (value === null || value === undefined || typeof value === "string")

@@ -46,7 +46,7 @@ export class SvOGvRootModule { }
   imports: SVOGV_MODULES,
   exports: SVOGV_MODULES,
 })
-export class MaterialModule {
+export class SvOGvModule {
   static forRoot(): ModuleWithProviders {
     return {ngModule: SvOGvRootModule};
   }

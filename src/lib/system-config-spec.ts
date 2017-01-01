@@ -29,9 +29,9 @@ System.config({
   packages: {
     // Thirdparty barrels.
     'rxjs': { main: 'index' },
-    '@angular/material': {
+    'svogv': {
       format: 'cjs',
-      main: 'material.umd.js'
+      main: 'svogv.umd.js'
     },
     // Set the default extension for the root package, because otherwise the demo-app can't
     // be built within the production mode. Due to missing file extensions.

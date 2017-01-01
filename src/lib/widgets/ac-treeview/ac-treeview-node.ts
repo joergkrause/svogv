@@ -141,7 +141,7 @@ export class AcTreeViewNode implements OnInit {
         }
     }
 
-    handleClick($event): void {
+    handleClick($event : any): void {
         $event.stopPropagation();
         // always emit click
         this.nodeClick.emit(this.node);
@@ -192,7 +192,7 @@ export class AcTreeViewNode implements OnInit {
 
     }
 
-    handleSelection($event): void {
+    handleSelection($event : any): void {
         // handle the states according to options
         if (this.node.options.selectable && !this.node.stateIsDisabled && this.preSelectState === true) {
             if (this.node.state & TreeNodeState.selected) {

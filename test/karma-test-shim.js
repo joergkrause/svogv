@@ -15,20 +15,20 @@ function isSpecFile(path) {
   return path.slice(-8) == '.spec.js';
 }
 
-function isMaterialFile(path) {
+function isSvOGvFile(path) {
   return isJsFile(path) && path.indexOf('vendor') == -1;
 }
 
 var allSpecFiles = Object.keys(window.__karma__.files)
   .filter(isSpecFile)
-  .filter(isMaterialFile);
+  .filter(isSvOGvFile);
 
 // Load our SystemJS configuration.
 System.config({
   baseURL: distPath
 });
 
-System.import(distPath + '@angular/material/system-config-spec.js').then(function() {
+System.import(distPath + 'svogv/system-config-spec.js').then(function() {
   // Load and configure the TestComponentBuilder.
   return Promise.all([
     System.import('@angular/core/testing'),

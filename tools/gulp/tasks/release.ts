@@ -45,7 +45,7 @@ function _execNpmPublish(label: string): Promise<{}> {
   }
 
   process.chdir(packageDir);
-  console.log(`Publishing material...`);
+  console.log(`Publishing SVOGV...`);
 
   const command = 'npm';
   const args = ['publish', '--access', 'public', label ? `--tag` : undefined, label || undefined];
@@ -68,7 +68,7 @@ function _execNpmPublish(label: string): Promise<{}> {
       if (code == 0) {
         resolve();
       } else {
-        reject(new Error(`Material did not publish, status: ${code}.`));
+        reject(new Error(`SVOGV did not publish, status: ${code}.`));
       }
     });
   });
@@ -86,7 +86,7 @@ task(':publish', function(done: (err?: any) => void) {
   }
   console.log('\n\n');
 
-  // Publish only the material package.
+  // Publish only the SVOGV package.
   return _execNpmPublish(label)
     .then(() => done())
     .catch((err: Error) => done(err))

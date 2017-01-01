@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Copy docs to material docs site
+# Copy docs to SVOGV docs site
 
 # Run this script after `gulp docs`
 # Need to specify destination folder

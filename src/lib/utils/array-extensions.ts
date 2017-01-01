@@ -1,4 +1,4 @@
-interface Array<T> {
+export interface Array<T> {
    remove(o: any): Array<any>;
 }
 

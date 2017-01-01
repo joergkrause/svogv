@@ -63,7 +63,7 @@ export function config(config) {
     autoWatch: false,
 
     sauceLabs: {
-      testName: 'material2',
+      testName: 'svogv',
       startConnect: false,
       recordVideo: false,
       recordScreenshots: false,
@@ -76,7 +76,7 @@ export function config(config) {
     },
 
     browserStack: {
-      project: 'material2',
+      project: 'sgogv',
       startTunnel: false,
       retryLimit: 1,
       timeout: 600,

@@ -59,7 +59,7 @@ task(':build:components:assets:minify', () => {
 /** Builds scss into css. */
 task(':build:components:scss', sassBuildTask(DIST_COMPONENTS_ROOT, COMPONENTS_DIR));
 
-/** Builds the UMD bundle for all of Angular Material. */
+/** Builds the UMD bundle for all of SvOgV. */
 task(':build:components:rollup', () => {
   const globals: {[name: string]: string} = {
     // Angular dependencies
@@ -95,11 +95,11 @@ task(':build:components:rollup', () => {
   const rollupGenerateOptions = {
     // Keep the moduleId empty because we don't want to force developers to a specific moduleId.
     moduleId: '',
-    moduleName: 'ng.material',
+    moduleName: 'ac.svogv',
     format: 'umd',
     globals,
     banner: LICENSE_BANNER,
-    dest: 'material.umd.js'
+    dest: 'svogv.umd.js'
   };
 
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
