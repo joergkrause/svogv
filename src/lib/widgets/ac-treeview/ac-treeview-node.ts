@@ -41,7 +41,7 @@ import { TextTreeNode, ComponentTreeNode, TreeNode, TreeNodeOptions, TreeNodeSta
         'li.treeview i.ac-icon { width: 15px; cursor: pointer; display: inline-block }',
         'li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }']
 })
-export class TreeViewNode implements OnInit {
+export class AcTreeViewNode implements OnInit {
     @Input() node: TextTreeNode;
     @Output() nodeClick: EventEmitter<TreeNode>; 
     @Output() checkChanged: EventEmitter<TreeNode>;
@@ -72,7 +72,7 @@ export class TreeViewNode implements OnInit {
         if (this.node) {
             // expect a font-awesome class with or without fa class
             if (this.node.options && this.node.options.icon) {
-                if (this.node.options.icon.indexOf(`${TreeViewNode.pfxIcon} `) !== 0) {
+                if (this.node.options.icon.indexOf(`${AcTreeViewNode.pfxIcon} `) !== 0) {
                     this.iconClasses.push('fa');
                 }
                 this.iconClasses.push(this.node.options.icon);
@@ -88,8 +88,8 @@ export class TreeViewNode implements OnInit {
         // open/close area for elements with children
         if (this.node && this.node.hasChildren) {
             this.collapseClasses.push('ac-icon'); // base class
-            this.collapseClasses.push(TreeViewNode.pfxIcon);
-            this.collapseClasses.push(TreeViewNode.opnIcon);
+            this.collapseClasses.push(AcTreeViewNode.pfxIcon);
+            this.collapseClasses.push(AcTreeViewNode.opnIcon);
             // collapsed by default
             this.node.state &= ~TreeNodeState.checked;
         }
@@ -102,11 +102,11 @@ export class TreeViewNode implements OnInit {
         this.node.stateChange.subscribe(se => {
             this.collapseChanged.emit(this.node);
             if (!this.node.stateIsExpandend) {
-                this.collapseClasses = this.collapseClasses.filter(s => s != TreeViewNode.clsIcon);
-                this.collapseClasses.push(TreeViewNode.opnIcon);
+                this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.clsIcon);
+                this.collapseClasses.push(AcTreeViewNode.opnIcon);
             } else {
-                this.collapseClasses = this.collapseClasses.filter(s => s != TreeViewNode.opnIcon);
-                this.collapseClasses.push(TreeViewNode.clsIcon);
+                this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.opnIcon);
+                this.collapseClasses.push(AcTreeViewNode.clsIcon);
             }
             this.isExpanded = this.node.stateIsExpandend;
         });

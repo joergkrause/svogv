@@ -13,7 +13,7 @@ import { TreeNode, TextTreeNode, ComponentTreeNode, TreeNodeOptions } from './Mo
                </ul>`,
     styles: ['.treeview { list-style: none; margin-left: -25px; }']
 }) //
-export class TreeView {
+export class AcTreeView {
     @Input() nodes: any;
     @Output() nodeClick: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
     @Output() checkChanged: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();

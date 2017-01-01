@@ -29,7 +29,7 @@ import { FormGroup } from '@angular/forms';
               </div>
              </div>`
 }) //
-export class Editor implements OnInit {
+export class AcEditor implements OnInit {
 
   @Input() name: string;
   @Input() type: string = "text";
