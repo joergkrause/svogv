@@ -1,0 +1,21 @@
+<div class="container-fluid">
+  <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+    <fieldset>
+      <legend>Edit current user</legend>
+      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
+      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
+      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
+      <div class="row">
+        <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+          <i class="fa fa-save"></i> Save
+        </button>
+        <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid">
+          <i class="fa fa-close"></i> Save &amp; Close
+        </button>
+        <button class="btn btn-sm btn-warning" (click)="closeForm()">
+          <i class="fa fa-remove"></i> Cancel &amp; Return to List
+        </button>
+      </div>
+    </fieldset>
+  </form>
+</div>
