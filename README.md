@@ -137,6 +137,8 @@ You get three parts (at least, this list will grow quickly):
 * Editor -- the universal editor component
 * Decorators -- a set of decorators to manage the behavior of properties
 
+For more information read the [Getting started guide](/guides/getting-started.md).
+
 ## Does it cost something?
 
 It's ISC licensed and it's free. We deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
