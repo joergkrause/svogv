@@ -20,17 +20,16 @@ var ts = require('gulp-typescript');                        // transpile TS
 var remHtmlCom = require('gulp-remove-html-comments');      // Remove comments
 var sass = require('gulp-sass');                            // transpile SASS
 var del = require('del');                                   // helper to delete paths
-var flatten = require('gulp-flatten');                           // flat paths to re-arrange in the wwwroot target
+var flatten = require('gulp-flatten');                      // flat paths to re-arrange in the wwwroot target
 
 // The project's structure
 var paths = {
-  root: "./wwwroot/",
-  assets: "./wwwroot/assets/",
-  views: "./wwwroot/views/",
+  root: "./dist/",
+  assets: "./dist/assets/",
+  views: "./dist/views/",
   bower: "./bower_components/",
   npm: "./node_modules/",
-  app: "./Client/App/",
-  theme: './Client/Theme/assets'
+  app: "./Client/App/"
 };
 
 gulp.task('clean:assets', function (cb) {

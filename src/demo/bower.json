@@ -1,5 +1,5 @@
 {
-  "name": "asp.net",
+  "name": "svog-demo",
   "private": true,
   "dependencies": {
     "bootstrap": "v4.0.0-alpha.5",
