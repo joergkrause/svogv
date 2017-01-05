@@ -1,7 +1,7 @@
 ﻿/**
  * Describe a header field with name and tooltip.
  */
-export class DataGridHeader {
+export class AcDataGridHeader {
   /**
    * The ctor
    * @param text: Text to display

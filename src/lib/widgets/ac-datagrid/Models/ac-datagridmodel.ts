@@ -1,7 +1,7 @@
 import '../../../../utils/object.extensions';
-import { DataGridHeader } from './ac-datagridheader';
+import { AcDataGridHeader } from './ac-datagridheader';
 
-export class DataGridModel<T> {
+export class AcDataGridModel<T> {
   searchValue: T = <T>{};
   currentPageIndex: number = 1;
   pageSize: number;

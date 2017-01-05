@@ -16,7 +16,7 @@
                 <div class="box-footer">{{ footer }}</div>
               </div>`
 }) //
-export class WebPart {
+export class AcWebPart {
     @Input() title: string;
     @Input() colorclass: string;
     @Input() footer: string;

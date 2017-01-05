@@ -74,7 +74,7 @@ import { Observable } from 'rxjs/Rx';
     </div>    
     `
 })
-export class DataGridPagination implements OnInit, OnChanges {
+export class AcDataGridPagination implements OnInit, OnChanges {
   @Input() maxPageIndex: number;
   @Input() rowChanged: Observable<number>;
   @Output() pageNumberChanged = new EventEmitter();

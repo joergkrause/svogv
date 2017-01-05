@@ -69,7 +69,7 @@ export class Menu {
                  </div>
                </div>`
 })
-export class SideMenu {
+export class AcSideMenu {
 
   @Input() menu: Menu;
   useRouterLinks: boolean = true;

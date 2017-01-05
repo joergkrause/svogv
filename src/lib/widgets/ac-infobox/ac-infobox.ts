@@ -21,7 +21,7 @@ import { Colors } from './Models/enum-colors';
                     </div>
                  </div>`
 }) //
-export class InfoBox {
+export class AcInfoBox {
     @Input() icon: string;
     @Input() text: string;
     @Input() number: string;

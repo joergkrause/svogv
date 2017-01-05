@@ -55,7 +55,7 @@ export class TabData {
             </div>
 `
 }) //
-export class Tabs {
+export class AcTabs {
   @Input() tabs: TabData;
   @Output() currentTab: Tab;
 
