@@ -1,6 +1,17 @@
 {
   "version": "1.0.0",
-  "name": "asp.net",
+  "name": "svogv-demo",
+  "description": "This is the demo app that shows most of the components in action",
+  "author": {
+    "name": "Joerg <isageek> Krause",
+    "url": "http://www.joergkrause.de",
+    "email": "joerg@krause.net"
+  },
+  "scripts": {
+    "build": "gulp default",
+    "start": "http-server ../../dist/demo -p 3000 -o",
+    "exec": "gulp default && npm start"
+  },
   "private": true,
   "dependencies": {
     "@angular/common": "^2.2.0",

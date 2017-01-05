@@ -137,7 +137,13 @@ You get three parts (at least, this list will grow quickly):
 * Editor -- the universal editor component
 * Decorators -- a set of decorators to manage the behavior of properties
 
+### More to read
+
 For more information read the [Getting started guide](/guides/getting-started.md).
+
+### Demo App
+
+There is a [demo app](/src/demo/README.md) where you can see the components in action.
 
 ## Does it cost something?
 

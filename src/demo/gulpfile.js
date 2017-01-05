@@ -22,11 +22,14 @@ var sass = require('gulp-sass');                            // transpile SASS
 var del = require('del');                                   // helper to delete paths
 var flatten = require('gulp-flatten');                      // flat paths to re-arrange in the wwwroot target
 
+// from Github structure copy static files to root/dist/demo and execute there
+var upPath = "../../dist/";
+
 // The project's structure
 var paths = {
-  root: "./dist/",
-  assets: "./dist/assets/",
-  views: "./dist/views/",
+  root: upPath + "demo",
+  assets: upPath + "demo/assets/",
+  views: upPath + "demo/views/",
   bower: "./bower_components/",
   npm: "./node_modules/",
   app: "./Client/App/"
