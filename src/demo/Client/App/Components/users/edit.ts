@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { FormValidatorService } from '../../../../../lib/Services/FormValidatorService';
+import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService } from '../../Services/SiteApiService';
 import { EmitterService } from '../../Services/EmitterService';

@@ -21,6 +21,8 @@
             '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+            // SVOGV
+            'svogv': 'npm:svogv/bundles/svogv.umd.js',
             // other libraries
             'rxjs': 'npm:rxjs',
             'reflect-metadata': 'npm:reflect.js',

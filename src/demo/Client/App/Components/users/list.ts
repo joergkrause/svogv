@@ -3,9 +3,7 @@ import { Router } from '@angular/router';
 import { EmitterService } from '../../Services/EmitterService';
 import { SiteApiService } from '../../Services/SiteApiService';
 import { UserViewModel } from '../../ViewModels/UserViewModel';
-import { AcDataGridModel } from '../../../../../lib/widgets';
-import '../../Utils/array.extensions';
-
+import { AcDataGridModel } from 'svogv';
 
 @Component({
   moduleId: module.id,

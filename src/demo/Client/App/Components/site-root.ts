@@ -4,7 +4,7 @@ import * as Rx from 'rxjs/rx';
 import { ActivatedRoute } from '@angular/router';
 import { SiteApiService } from '../Services/SiteApiService';
 import { EmitterService } from '../Services/EmitterService';
-import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from '../../../../lib/widgets';
+import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from 'svogv';
 
 interface AppState {
   counter: number;

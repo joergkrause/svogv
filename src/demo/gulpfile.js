@@ -20,13 +20,14 @@ var remHtmlCom = require('gulp-remove-html-comments');      // Remove comments
 var sass = require('gulp-sass');                            // transpile SASS
 var del = require('del');                                   // helper to delete paths
 var flatten = require('gulp-flatten');                      // flat paths to re-arrange in the wwwroot target
+var print = require('gulp-print');
 
 // from Github structure copy static files to root/dist/demo and execute there
 var upPath = "../../dist/";
 
 // The project's structure
 var paths = {
-  root: upPath + "demo",
+  root: upPath + "demo/",
   assets: upPath + "demo/assets/",
   views: upPath + "demo/views/",
   bower: "./bower_components/",
@@ -35,12 +36,15 @@ var paths = {
 };
 
 gulp.task('clean:assets', function (cb) {
-  return del(paths.assets);
+  return del(paths.assets, { force: true});
 });
 gulp.task('clean:views', function (cb) {
-  return del(paths.views);
+  return del(paths.views, { force: true});
 });
-gulp.task('clean', ['clean:assets', 'clean:views']);
+gulp.task('clean:views:index', function (cb) {
+  return del(paths.root + "index.html", { force: true});
+});
+gulp.task('clean', ['clean:assets', 'clean:views', 'clean:views:index']);
 
 gulp.task('copy:js', function () {
   return gulp.src([
@@ -67,11 +71,8 @@ gulp.task('copy:angular', function () {
   ]).pipe(gulp.dest(paths.assets + 'js/lib/@angular'));
 });
 
-gulp.task('copy:ngrx', function () {
-  return gulp.src([
-        paths.npm + '@ngrx/**/Bundles/*.umd.js',
-  '!' + paths.npm + '@angular/**/Bundles/*.min.umd.js'
-  ]).pipe(gulp.dest(paths.assets + 'js/lib/@ngrx'));
+gulp.task('copy:svogv', function () {
+  return gulp.src(['./dist/bundles/svogv.umd.js']).pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
 });
 
 // Copy RxJs brute force (everything until we know what we really need)
@@ -105,13 +106,15 @@ gulp.task('copy:fonts', function () {
 });
 // View HTML (component templates)
 gulp.task('copy:views:templates', function () {
+  console.log(paths.app + '**/*.html');
   return gulp.src([paths.app + '**/*.html'], { base: paths.app + 'Components/' })
+             .pipe(print())
              .pipe(remHtmlCom())
              //.pipe(htmlmin({ collapseWhitespace: true }))
              .pipe(gulp.dest(paths.assets + 'js/app/Components/'));
 });
 gulp.task('copy:views:index', function () {
-  return gulp.src(['./Views/index.html'])
+  return gulp.src(['./Client/Views/index.html'])
              .pipe(remHtmlCom())
              //.pipe(htmlmin({ collapseWhitespace: true }))
              .pipe(gulp.dest(paths.root));
@@ -123,7 +126,7 @@ gulp.task('copy:images', function () {
              .pipe(gulp.dest(paths.assets + 'img'));
 });
 
-gulp.task('copy', ['copy:js', 'copy:rxjs', 'copy:angular', 'copy:systemjs', 'copy:css', 'copy:fonts', 'copy:views', 'copy:images']);
+gulp.task('copy', ['copy:svogv', 'copy:js', 'copy:rxjs', 'copy:angular', 'copy:systemjs', 'copy:css', 'copy:fonts', 'copy:views', 'copy:images']);
 
 // configure TS separately
 var tsProject = ts.createProject('tsconfig.json');

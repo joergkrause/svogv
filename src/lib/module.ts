@@ -1,25 +1,25 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {
-  BreadCrumb,
-  InfoBox,
-  SideMenu,
-  Tab,
-  WebPart
+  AcBreadCrumb,
+  AcInfoBox,
+  AcSideMenu,
+  AcTab,
+  AcWebPart
 } from './widgets/index';
 
-import { DataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
+import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
 import { AcTreeView } from './widgets/ac-treeview/ac-treeview';
 import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
 import { AcEditor } from './widgets/ac-editors/ac-editor';
 
 const SVOGV_MODULES = [
-  BreadCrumb,
-  InfoBox,
-  SideMenu,
-  Tab,
-  WebPart,
-  DataGridPagination,
+  AcBreadCrumb,
+  AcInfoBox,
+  AcSideMenu,
+  AcTab,
+  AcWebPart,
+  AcDataGridPagination,
   AcTreeView,
   AcTreeViewNode,
   AcEditor
@@ -27,12 +27,12 @@ const SVOGV_MODULES = [
 
 @NgModule({
   imports: [
-    BreadCrumb,
-    InfoBox,
-    SideMenu,
-    Tab,
-    WebPart,
-    DataGridPagination,
+    AcBreadCrumb,
+    AcInfoBox,
+    AcSideMenu,
+    AcTab,
+    AcWebPart,
+    AcDataGridPagination,
     AcTreeView,
     AcTreeViewNode,
     AcEditor

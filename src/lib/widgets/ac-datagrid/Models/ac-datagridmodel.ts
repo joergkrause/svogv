@@ -1,4 +1,4 @@
-import '../../../../utils/object.extensions';
+import '../../../utils/object-extensions';
 import { AcDataGridHeader } from './ac-datagridheader';
 
 export class AcDataGridModel<T> {

@@ -2,7 +2,7 @@ import {task, watch, src, dest} from 'gulp';
 import * as path from 'path';
 
 import {
-  DIST_COMPONENTS_ROOT, PROJECT_ROOT, COMPONENTS_DIR, HTML_MINIFIER_OPTIONS, LICENSE_BANNER
+  DIST_COMPONENTS_ROOT, PROJECT_ROOT, COMPONENTS_DIR, HTML_MINIFIER_OPTIONS, LICENSE_BANNER, SOURCE_ROOT
 } from '../constants';
 import {
   sassBuildTask, tsBuildTask, execNodeTask, copyTask, sequenceTask,
@@ -104,7 +104,8 @@ task(':build:components:rollup', () => {
 
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
-    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')));
+    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))
+    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles')));
 });
 
 /** Builds components with resources (html, css) inlined into the built JS (ESM output). */

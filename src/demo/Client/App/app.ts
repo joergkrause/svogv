@@ -9,8 +9,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SiteApiService } from './Services/SiteApiService';
 // custom components
 import * as cmp from './Components/index';
-// The SVOGV library (direct link for testing, use node_modules for real life projects instead)
-import * as wd from '../../../lib/widgets';
+// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, resolves against node_modules without changes)
+import * as wd from 'svogv';
 // routes' configuration
 import routes from './Configurations/routes';
 

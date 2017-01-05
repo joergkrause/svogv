@@ -73,7 +73,7 @@ export class AcAnalogClock implements AfterViewInit {
         let cx : number = 100;
         let cy: number = 100;
         // create animation string
-        let shifter = (val) => [val, cx, cy].join(' ');
+        let shifter = (val:number) => [val, cx, cy].join(' ');
 
         // from real time
         let date = new Date();

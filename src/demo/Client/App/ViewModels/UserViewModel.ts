@@ -1,4 +1,4 @@
-﻿import { Required, MaxLength, Range, Email, Display, Hidden } from "../../../../lib/Decorators/index";
+﻿import { Required, MaxLength, Range, Email, Display, Hidden } from "svogv";
 
 /**
  * View Model for table view
