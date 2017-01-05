@@ -4,6 +4,7 @@ export * from './ac-infobox/ac-infobox';
 export * from './ac-breadcrumb';
 export * from './ac-webpart';
 export * from './ac-datagrid/ac-datagridpagination';
+export * from './ac-datagrid/models/ac-datagridmodel';
 export * from './ac-tabs';
 export * from './ac-sidemenu';
 export * from './ac-loadericon';

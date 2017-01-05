@@ -3,7 +3,7 @@
 /**
  * Create a single tab for tab views. The link shall be a regular route array.
  */
-export class Tab {
+export class AcTab {
 
   /**
    * Ctor to create Tabs definitions
@@ -20,13 +20,13 @@ export class Tab {
 /**
  * A collection of tabs used to create a tabbed view. The tabs' content is pulled from routes / child routes.
  */
-export class TabData {
+export class AcTabData {
 
-  constructor(items: Array<Tab>) {
+  constructor(items: Array<AcTab>) {
     this.tabs = items;
   }
 
-  tabs: Array<Tab>;
+  tabs: Array<AcTab>;
 
 }
 
@@ -56,13 +56,13 @@ export class TabData {
 `
 }) //
 export class AcTabs {
-  @Input() tabs: TabData;
-  @Output() currentTab: Tab;
+  @Input() tabs: AcTabData;
+  @Output() currentTab: AcTab;
 
   constructor() {
   }
 
-  activateTab(tab: Tab) {
+  activateTab(tab: AcTab) {
     this.currentTab = tab;
     this.tabs.tabs.forEach(t => t.active = false);
     tab.active = true; 

@@ -51,67 +51,11 @@ const routes: Routes = [
     ]
 
   },
-  {
-    path: 'studies',
-    component: cmp.StudiesComponent,
-    data: { 'title': 'Studies', 'subtitle': 'Study Manager' },
-    children: [
-      {
-        path: '',
-        redirectTo: 'list',
-        pathMatch: 'full'
-      },
-      {
-        path: 'list',
-        component: cmp.ListStudyComponent,
-        data: { 'title': 'List Studies', 'subtitle': 'Study Manager', 'active': true, 'disabled': false }
-      },
-      {
-        path: 'new',
-        component: cmp.NewStudyComponent,
-        data: { 'title': 'Create Study', 'subtitle': 'Study Manager', 'active': false, 'disabled': false }
-      },
-      {
-        path: 'edit/:id',
-        component: cmp.EditStudyComponent,
-        data: { 'title': 'Edit Study', 'subtitle': 'Study Manager', 'active': false, 'disabled': true }
-      },
-      {
-        path: 'close/:id',
-        component: cmp.CloseStudyComponent,
-        data: { 'title': 'Close Study', 'subtitle': 'Study Manager', 'active': false, 'disabled': true }
-      },
-      {
-        path: 'abort/:id',
-        component: cmp.AbortStudyComponent,
-        data: { 'title': 'Abort Study', 'subtitle': 'Study Manager', 'active': false, 'disabled': true }
-      },
-      {
-        path: 'delete/:id',
-        component: cmp.DeleteStudyComponent,
-        data: { 'title': 'Delete Study', 'subtitle': 'Study Manager', 'active': false, 'disabled': true }
-      },
-      {
-        path: '**',
-        redirectTo: 'list'
-      }
-    ]
-  },  
-  {
-    path: 'others',
-    component: cmp.OthersComponent,
-    data: { 'title': 'Studies', 'subtitle': 'Study Manager' }
-  },
   // standard component paths
   {
     path: 'about',
     component: cmp.SiteAboutComponent,
     data: { 'title': 'About', 'subtitle': 'About this app' }
-  },
-  {
-    path: 'contact',
-    component: cmp.SiteContactComponent,
-    data: { 'title': 'Contact', 'subtitle': 'Contact the team' }
   }
 ];
 

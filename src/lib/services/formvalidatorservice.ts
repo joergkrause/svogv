@@ -1,6 +1,6 @@
-﻿import { Injectable } from '@angular/core';
+﻿import { Injectable, Inject } from '@angular/core';
 import { FormControlEx } from './FormControlEx';
-import { Validator, Validators, ValidatorFn, FormBuilder, FormGroup, AbstractControl } from '@angular/forms';
+import { Validator, Validators, FormBuilder, FormGroup } from '@angular/forms';
 
 //export class RangeValidator implements Validator {
 
@@ -19,7 +19,13 @@ import { Validator, Validators, ValidatorFn, FormBuilder, FormGroup, AbstractCon
 @Injectable()
 export class FormValidatorService {
 
-  public static build(fb: FormBuilder, target: any): FormGroup {
+  private static fb: FormBuilder;
+
+  constructor(@Inject(FormBuilder) fb: FormBuilder){
+    FormValidatorService.fb = fb;
+  }
+
+  public static build(target: any): FormGroup {
     let valGroup = {};
     let errGroup = {};
     for (let propName in target.prototype) {
@@ -69,7 +75,7 @@ export class FormValidatorService {
       (<any>errGroup)[propName] = errmsgs;
     }
     // create form group
-    let form = fb.group(valGroup);
+    let form = FormValidatorService.fb.group(valGroup);
     // forward the model to the editors for easy access to other decorators
     if (target) {
       // the cast is just to suppress TS errors and show it's intentionally

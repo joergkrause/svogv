@@ -1,19 +1,19 @@
 ﻿import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
-export class MenuItem {
+export class AcMenuItem {
   text: string;
   constructor(text: string) {
     this.text = text;
   }
 }
 
-export class MenuHeaderItem extends MenuItem {
+export class AcMenuHeaderItem extends AcMenuItem {
   constructor(text: string) {
     super(text);
   }
 }
 
-export class MenuLabelItem extends MenuHeaderItem {
+export class AcMenuLabelItem extends AcMenuHeaderItem {
   icon: string;
   constructor(text: string, icon?: string) {
     super(text);
@@ -21,7 +21,7 @@ export class MenuLabelItem extends MenuHeaderItem {
   }
 }
 
-export class MenuLinkItem extends MenuLabelItem {
+export class AcMenuLinkItem extends AcMenuLabelItem {
   link: Array<string>;
 
   constructor(text: string, link: string[], icon?: string) {
@@ -30,15 +30,15 @@ export class MenuLinkItem extends MenuLabelItem {
   }
 }
 
-export class Menu {
-  public children: Array<MenuItem>
+export class AcMenu {
+  public children: Array<AcMenuItem>
 
-  constructor(...items: Array<MenuItem>) {
+  constructor(...items: Array<AcMenuItem>) {
     this.children = items;
   }
 
   // Get the item and return null if not of expected subtype, or text not unique, or not found.
-  getMenuItem<T extends MenuItem>(name: string): T {
+  getMenuItem<T extends AcMenuItem>(name: string): T {
     let foundItems = this.children.filter(item => item.text === name);
     if (foundItems.length === 1) return foundItems[0] as T;
     return null;
@@ -71,7 +71,7 @@ export class Menu {
 })
 export class AcSideMenu {
 
-  @Input() menu: Menu;
+  @Input() menu: AcMenu;
   useRouterLinks: boolean = true;
 
   constructor() {

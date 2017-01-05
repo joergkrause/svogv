@@ -3,7 +3,7 @@ import { Component, OnInit, OnDestroy, } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { FormValidatorService } from '../../Services/FormValidatorService';
+import { FormValidatorService } from '../../../../../lib/Services/FormValidatorService';
 // private
 import { SiteApiService } from '../../Services/SiteApiService';
 import { EmitterService } from '../../Services/EmitterService';
@@ -25,12 +25,12 @@ export class EditUserComponent implements OnInit {
   user: UserViewModel;
   paramsSubscriber: Subscription;
 
-  constructor(private apiService: SiteApiService, private fb: FormBuilder, private route: ActivatedRoute, private router: Router) {
+  constructor(private apiService: SiteApiService, private route: ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = FormValidatorService.build(this.fb, UserViewModel);
+    this.userForm = FormValidatorService.build(UserViewModel);
     // register changes
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // receive the param on init

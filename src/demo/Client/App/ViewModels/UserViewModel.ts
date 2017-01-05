@@ -1,7 +1,4 @@
-﻿import { Required, MaxLength, Range, Email, Display, Hidden } from "../Decorators/index";
-import { StudyStatus } from "./enum-StudyStatus";
-import { StudyType } from "./enum-StudyType";
-import { View } from "./ViewModel";
+﻿import { Required, MaxLength, Range, Email, Display, Hidden } from "../../../../lib/Decorators/index";
 
 /**
  * View Model for table view

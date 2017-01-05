@@ -2,80 +2,49 @@
 import { HttpModule, Http, Response, Headers, RequestOptions } from '@angular/http';
 import * as Rx from 'rxjs/rx';
 import 'rxjs/add/operator/map';
-import { StudyViewModel } from '../ViewModels/StudyViewModel';
 import { UserViewModel } from '../ViewModels/UserViewModel';
 
+/**
+ * This service just simulates a user store to keep the demo running without further dependencies.
+ * 
+ */
 @Injectable()
 export class SiteApiService {
 
-  private baseUrl: string = '/api/';
-  private seviceUrls = {
-    studyService: this.baseUrl + 'study/',
-    userService: this.baseUrl + 'user/',
-  };
+  private users : Array<UserViewModel>;  
 
-  constructor(public http: Http) {
-  }
-
-  /// Studies
-
-  public getStudy(id: number): Rx.Observable<StudyViewModel> {
-    return this.http
-      .get(this.seviceUrls.studyService + id)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
-  }
-
-  public getStudies(): Rx.Observable<Array<StudyViewModel>> {
-    return this.http
-      .get(this.seviceUrls.studyService)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
-  }
-
-  public newStudy(study: StudyViewModel): Rx.Observable<boolean> {
-    return this.http
-      .post(this.seviceUrls.studyService, study)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
-  }
-
-  public editStudy(id: number, study: StudyViewModel): Rx.Observable<boolean> {
-    return this.http
-      .put(this.seviceUrls.studyService + id, study)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+  constructor() {
+    this.users = new Array<UserViewModel>(
+      new UserViewModel(),
+      new UserViewModel(),
+      new UserViewModel(),
+      new UserViewModel()
+    )
   }
 
   /// User
 
   public getUser(id: number): Rx.Observable<UserViewModel> {
-    return this.http
-      .get(this.seviceUrls.userService + id)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    var user = this.users.filter(u => u.id == id)[0];
+    return Rx.Observable.create(o => o.next(user));
   }
 
 
   public getUsers(): Rx.Observable<Array<UserViewModel>> {
-    return this.http
-      .get(this.seviceUrls.userService)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    return Rx.Observable.create(o => o.next(this.users));
   }
 
   public newUser(user: UserViewModel): Rx.Observable<boolean> {
-    return this.http
-      .post(this.seviceUrls.userService, user)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    this.users.push(user);
+    // always true 
+    return Rx.Observable.create(o => true);
   }
 
   public editUser(id: number, user: UserViewModel): Rx.Observable<boolean> {
-    return this.http
-      .put(this.seviceUrls.userService + id, user)
-      .map((res: Response) => res.json())
-      .catch(this.handleError);
+    var user = this.users.filter(u => u.id == id)[0];
+    this.users.splice(this.users.indexOf(user), 1, user);
+    // always true 
+    return Rx.Observable.create(o => true);
   }
 
   /// Common Functions

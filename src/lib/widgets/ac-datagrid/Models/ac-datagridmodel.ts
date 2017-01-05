@@ -77,14 +77,14 @@ export class AcDataGridModel<T> {
     return columns;
   }
 
-  headers : Array<DataGridHeader>;
+  headers : Array<AcDataGridHeader>;
 
   private createHeadersForType(type: any): void {
-    let headers: Array<DataGridHeader>;
+    let headers: Array<AcDataGridHeader>;
     // assume simple object structure, iterating an array of viewmodels
     // has at least one row, so we can read the headers
     // first we read the properties
-    this.headers = new Array<DataGridHeader>();
+    this.headers = new Array<AcDataGridHeader>();
     for (let p in type) {
       // either propname or decorator name
       let propName = type[`__displayName__${p}`] || p;
@@ -92,7 +92,7 @@ export class AcDataGridModel<T> {
       // check if hidden, show if no hidden decorator
       let isHidden = type[`__isHidden__${p}`] || false;
       if (!isHidden) {
-        this.headers.push(new DataGridHeader(propName, propDesc, p));
+        this.headers.push(new AcDataGridHeader(propName, propDesc, p));
       }
     }
   }

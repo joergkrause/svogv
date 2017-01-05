@@ -3,8 +3,7 @@ import { Router } from '@angular/router';
 import { EmitterService } from '../../Services/EmitterService';
 import { SiteApiService } from '../../Services/SiteApiService';
 import { UserViewModel } from '../../ViewModels/UserViewModel';
-import { View } from '../../ViewModels/ViewModel';
-import { DataGridModel } from '../Widgets/DataGrid/Models/ac-datagridmodel';
+import { AcDataGridModel } from '../../../../../lib/widgets';
 import '../../Utils/array.extensions';
 
 
@@ -14,7 +13,7 @@ import '../../Utils/array.extensions';
 })
 export class ListUserComponent {
 
-  public users: DataGridModel<UserViewModel>;
+  public users: AcDataGridModel<UserViewModel>;
 
   constructor(public apiService: SiteApiService, public router : Router) {
     console.log("Users&List ctor");
@@ -30,9 +29,9 @@ export class ListUserComponent {
 
   private renderData(data: Array<UserViewModel>) {
     // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone
-    var t = new View<UserViewModel>(UserViewModel).typeInfo;
+    var t = new UserViewModel();
     // we get a regular array here, but grid expects GridData for proper rendering
-    this.users = new DataGridModel<UserViewModel>(data, t);
+    this.users = new AcDataGridModel<UserViewModel>(data, t);
   }
 
   editUser(user) {

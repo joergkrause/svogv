@@ -12,7 +12,6 @@
 */
 
 var gulp = require('gulp');                                 // Build tool
-var concat = require('gulp-concat');                        // combine files
 var uglify = require('gulp-uglify');                        // minify JS
 var uglifycss = require('gulp-uglifycss');                  // minify CSS
 var htmlmin = require('gulp-htmlmin');                      // minify HTML
