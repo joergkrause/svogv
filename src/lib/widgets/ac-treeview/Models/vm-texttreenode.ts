@@ -1,11 +1,11 @@
 ﻿import { Type, Component } from '@angular/core';
-import { TreeNodeOptions, TreeNodeState } from './vm-treenodeoptions';
-import { TreeNode } from './vm-treenode';
+import { AcTreeNodeOptions, AcTreeNodeState } from './vm-treenodeoptions';
+import { AcTreeNode } from './vm-treenode';
 
-export class TextTreeNode extends TreeNode {
+export class AcTextTreeNode extends AcTreeNode {
     text: string;
 
-    constructor(text: string, options?: TreeNodeOptions, nodes?: TreeNode | TreeNode[]) {
+    constructor(text: string, options?: AcTreeNodeOptions, nodes?: AcTreeNode | AcTreeNode[]) {
         super(options, nodes);
         this.text = text;
         this.name = text; // default, must be set explicitly

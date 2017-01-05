@@ -1,11 +1,11 @@
 ﻿import { Type, Component } from '@angular/core';
-import { TreeNodeOptions } from './vm-treenodeoptions';
+import { AcTreeNodeOptions } from './vm-treenodeoptions';
 
-export interface TreeNodeBase {
-    parent: TreeNodeBase;
-    children: TreeNodeBase[];
-    options: TreeNodeOptions;
-    add(node: TreeNodeBase | TreeNodeBase[]): void;
-    remove(node: TreeNodeBase): boolean;
-    hasDirectAncestor(node: TreeNodeBase): boolean;
+export interface AcTreeNodeBase {
+    parent: AcTreeNodeBase;
+    children: AcTreeNodeBase[];
+    options: AcTreeNodeOptions;
+    add(node: AcTreeNodeBase | AcTreeNodeBase[]): void;
+    remove(node: AcTreeNodeBase): boolean;
+    hasDirectAncestor(node: AcTreeNodeBase): boolean;
 }

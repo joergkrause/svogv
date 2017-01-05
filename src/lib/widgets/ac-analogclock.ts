@@ -65,7 +65,18 @@ export class AcAnalogClock implements AfterViewInit {
     }
 
     ngAfterViewInit() {
-        //this.animateMe();
+        // make hour marks
+        for (var i = 1; i <= 12; i++) {
+            var el = this.document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            el.setAttribute('x1', '100');
+            el.setAttribute('y1', '30');
+            el.setAttribute('x2', '100');
+            el.setAttribute('y2', '40');
+            el.setAttribute('transform', 'rotate(' + (i * 360 / 12) + ' 100 100)');
+            el.setAttribute('style', 'stroke: #ffffff;');
+            this.svg.nativeElement.appendChild(el);
+        }
+        setInterval(() => this.animateMe(), 1000);
     }
 
     animateMe() {
@@ -87,17 +98,6 @@ export class AcAnalogClock implements AfterViewInit {
         this.minutehand.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
         this.hourhand.nativeElement.setAttribute('from', shifter(hoursAngle));
         this.hourhand.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
-        // make hour marks
-        for (var i = 1; i <= 12; i++) {
-            var el = this.document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            el.setAttribute('x1', '100');
-            el.setAttribute('y1', '30');
-            el.setAttribute('x2', '100');
-            el.setAttribute('y2', '40');
-            el.setAttribute('transform', 'rotate(' + (i * 360 / 12) + ' 100 100)');
-            el.setAttribute('style', 'stroke: #ffffff;');
-            this.svg.nativeElement.appendChild(el);
-        }
     }
 
 }

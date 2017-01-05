@@ -121,6 +121,18 @@ And that's it. The form is pretty, has a fully working validation, and is easy t
 * Editor -- the universal editor component
 * Decorators -- a set of decorators to manage the behavior of properties
 
+## Build the Project
+
+You can run several scripts:
+
+* "build": "gulp build:components" --> the global build command, run this and everything else will work
+* "demo": "gulp demo" --> execute the demo (you MUST run build at least once before)
+* "test": "gulp test" --> unit tests (currently under development)
+* "tslint": "gulp lint" --> TS linter
+* "stylelint": "gulp lint" --> CSS linter
+* "deploy": "firebase deploy" --> Test Env., currently under development
+* "docs": "gulp docs" --> create HTML out of the MD files
+
 ## Learn more
 
 Check the demo app, that shows the editor in action.

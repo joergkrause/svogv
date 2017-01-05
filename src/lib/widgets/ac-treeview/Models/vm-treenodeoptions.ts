@@ -1,7 +1,7 @@
 ﻿import { Type, Component } from '@angular/core';
 
 /** The state of node */
-export enum TreeNodeState {
+export enum AcTreeNodeState {
     undefined = 0,
     checked = 1 << 0,
     disabled = 1 << 1,
@@ -10,7 +10,7 @@ export enum TreeNodeState {
 }
 
 /** The view options of node */
-export class TreeNodeOptions {
+export class AcTreeNodeOptions {
     /** Show the expand icons */
     collapsable: boolean;
     /** An additional icon, must be a fontawesome class */
@@ -30,8 +30,9 @@ export class TreeNodeOptions {
     /** Node can be checked */
     checkable: boolean;
 
-    constructor(options?: TreeNodeOptions) {
+    constructor(options?: AcTreeNodeOptions) {
         if (options) {
+            //TODO: make type safe
             //for (let k in options) this[k] = options[k];
         }
     }

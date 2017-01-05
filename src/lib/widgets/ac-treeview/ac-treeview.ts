@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { TreeNode, TextTreeNode, ComponentTreeNode, TreeNodeOptions } from './Models/index';
+import { AcTreeNode, AcTextTreeNode, AcComponentTreeNode, AcTreeNodeOptions } from './Models/index';
 
 @Component({
     selector: 'ac-tree',
@@ -14,67 +14,29 @@ import { TreeNode, TextTreeNode, ComponentTreeNode, TreeNodeOptions } from './Mo
     styles: ['.treeview { list-style: none; margin-left: -25px; }']
 }) //
 export class AcTreeView {
-    @Input() nodes: any;
-    @Output() nodeClick: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-    @Output() checkChanged: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-    @Output() selectedChanged: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-    @Output() collapseChanged: EventEmitter<TreeNode> = new EventEmitter<TreeNode>();
-    treeElements: TextTreeNode;
+    @Input() nodes: AcTreeNode;
+    @Output() nodeClick: EventEmitter<AcTreeNode> = new EventEmitter<AcTreeNode>();
+    @Output() checkChanged: EventEmitter<AcTreeNode> = new EventEmitter<AcTreeNode>();
+    @Output() selectedChanged: EventEmitter<AcTreeNode> = new EventEmitter<AcTreeNode>();
+    @Output() collapseChanged: EventEmitter<AcTreeNode> = new EventEmitter<AcTreeNode>();
 
     constructor() {
-        let options: TreeNodeOptions = new TreeNodeOptions();
-        options.backColor = '#fff';
-        options.checkable = false;
-        options.color = 'blue';
-        options.collapsable = true;
-        options.selectable = true;
 
-        let optionsc: TreeNodeOptions = new TreeNodeOptions();
-        optionsc.backColor = 'yellow';
-        optionsc.checkable = true;
-        optionsc.color = 'red';
-        optionsc.collapsable = true;
-        optionsc.selectable = true;
-
-        let optionsi: TreeNodeOptions = new TreeNodeOptions();
-        optionsi.backColor = '#fff';
-        optionsi.checkable = false;
-        optionsi.color = 'green';
-        optionsi.collapsable = true;
-        optionsi.icon = "fa-glass";
-        optionsi.iconColor = "silver";
-        optionsi.selectable = false;
-
-        this.treeElements = new TextTreeNode('Root node', options, [
-            new TextTreeNode('Child node #1', options),
-            new TextTreeNode('Child node #2', optionsi),
-            new TextTreeNode('Child node #3', options),
-            new TextTreeNode('Child node #4', options, [
-                new TextTreeNode('Hello', options),
-                new TextTreeNode('Ahoy', optionsc, [
-                    new TextTreeNode('Child deep A', options),
-                    new TextTreeNode('Child deep B', optionsi),
-                    new TextTreeNode('Child deep C', options)
-                ]),
-                new TextTreeNode('Hola', optionsc),
-            ]),
-            new TextTreeNode('Child node #5', options),
-        ]);
     }
 
-    onNodeClick(node: TreeNode) {
+    onNodeClick(node: AcTreeNode) {
         this.nodeClick.emit(node);
     }
 
-    onCheckChanged(node: TreeNode) {
+    onCheckChanged(node: AcTreeNode) {
         this.checkChanged.emit(node);
     }
 
-    onSelectedChanged(node: TreeNode) {
+    onSelectedChanged(node: AcTreeNode) {
         this.selectedChanged.emit(node);
     }
 
-    onCollapseChanged(node: TreeNode) {
+    onCollapseChanged(node: AcTreeNode) {
         this.collapseChanged.emit(node);
     }
 

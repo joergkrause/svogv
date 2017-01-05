@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, EventEmitter, OnInit, ElementRef, Renderer } from '@angular/core';
-import { TextTreeNode, ComponentTreeNode, TreeNode, TreeNodeOptions, TreeNodeState } from './Models/index';
+import { AcTextTreeNode, AcComponentTreeNode, AcTreeNode, AcTreeNodeOptions, AcTreeNodeState } from './Models/index';
 
 @Component({
     selector: 'ac-treenode',
@@ -42,11 +42,11 @@ import { TextTreeNode, ComponentTreeNode, TreeNode, TreeNodeOptions, TreeNodeSta
         'li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }']
 })
 export class AcTreeViewNode implements OnInit {
-    @Input() node: TextTreeNode;
-    @Output() nodeClick: EventEmitter<TreeNode>; 
-    @Output() checkChanged: EventEmitter<TreeNode>;
-    @Output() selectedChanged: EventEmitter<TreeNode>;
-    @Output() collapseChanged: EventEmitter<TreeNode>;
+    @Input() node: AcTextTreeNode;
+    @Output() nodeClick: EventEmitter<AcTreeNode>;
+    @Output() checkChanged: EventEmitter<AcTreeNode>;
+    @Output() selectedChanged: EventEmitter<AcTreeNode>;
+    @Output() collapseChanged: EventEmitter<AcTreeNode>;
     private href: string;
     private collapseClasses: Array<string>;
     private iconClasses: Array<string>;
@@ -58,10 +58,10 @@ export class AcTreeViewNode implements OnInit {
     private static clsIcon: string = "fa-minus";
 
     constructor(private el: ElementRef, private renderer: Renderer) {
-        this.nodeClick = new EventEmitter<TreeNode>();
-        this.checkChanged = new EventEmitter<TreeNode>();
-        this.selectedChanged = new EventEmitter<TreeNode>();
-        this.collapseChanged = new EventEmitter<TreeNode>();
+        this.nodeClick = new EventEmitter<AcTreeNode>();
+        this.checkChanged = new EventEmitter<AcTreeNode>();
+        this.selectedChanged = new EventEmitter<AcTreeNode>();
+        this.collapseChanged = new EventEmitter<AcTreeNode>();
     }
 
     ngOnInit() {
@@ -84,64 +84,64 @@ export class AcTreeViewNode implements OnInit {
                 // robust way to prevent link due to router bug in earlier NG2 releases
                 // see https://github.com/angular/angular/issues/7294
             }
-        }
-        // open/close area for elements with children
-        if (this.node && this.node.hasChildren) {
-            this.collapseClasses.push('ac-icon'); // base class
-            this.collapseClasses.push(AcTreeViewNode.pfxIcon);
-            this.collapseClasses.push(AcTreeViewNode.opnIcon);
-            // collapsed by default
-            this.node.state &= ~TreeNodeState.checked;
-        }
-        if (this.node.options && this.node.options.color) {
-            this.foreColor = this.node.options.color;
-        }
-        if (this.node.options && this.node.options.backColor) {
-            this.backColor = this.node.options.backColor;
-        }
-        this.node.stateChange.subscribe((se : any) => {
-            this.collapseChanged.emit(this.node);
-            if (!this.node.stateIsExpandend) {
-                this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.clsIcon);
+            // open/close area for elements with children
+            if (this.node.hasChildren) {
+                this.collapseClasses.push('ac-icon'); // base class
+                this.collapseClasses.push(AcTreeViewNode.pfxIcon);
                 this.collapseClasses.push(AcTreeViewNode.opnIcon);
-            } else {
-                this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.opnIcon);
-                this.collapseClasses.push(AcTreeViewNode.clsIcon);
+                // collapsed by default
+                this.node.state &= ~AcTreeNodeState.checked;
             }
-            this.isExpanded = this.node.stateIsExpandend;
-        });
+            if (this.node.options && this.node.options.color) {
+                this.foreColor = this.node.options.color;
+            }
+            if (this.node.options && this.node.options.backColor) {
+                this.backColor = this.node.options.backColor;
+            }
+            this.node.stateChange.subscribe((se: any) => {
+                this.collapseChanged.emit(this.node);
+                if (!this.node.stateIsExpandend) {
+                    this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.clsIcon);
+                    this.collapseClasses.push(AcTreeViewNode.opnIcon);
+                } else {
+                    this.collapseClasses = this.collapseClasses.filter(s => s != AcTreeViewNode.opnIcon);
+                    this.collapseClasses.push(AcTreeViewNode.clsIcon);
+                }
+                this.isExpanded = this.node.stateIsExpandend;
+            });
+        }
     }
 
     // forward events in the node tree
 
-    private onNodeClick(node: TreeNode) {
+    private onNodeClick(node: AcTreeNode) {
         this.nodeClick.emit(node);
     }
 
-    private onCheckChanged(node: TreeNode) {
+    private onCheckChanged(node: AcTreeNode) {
         this.checkChanged.emit(node);
     }
 
-    private onSelectedChanged(node: TreeNode) {
+    private onSelectedChanged(node: AcTreeNode) {
         this.selectedChanged.emit(node);
     }
 
-    private onCollapseChanged(node: TreeNode) {
+    private onCollapseChanged(node: AcTreeNode) {
         this.collapseChanged.emit(node);
     }
 
     handleCheckChange(): void {
         if (this.node.options.checkable && !this.node.stateIsDisabled) {
-            if (this.node.state & TreeNodeState.checked) {
-                this.node.state &= ~TreeNodeState.checked;
+            if (this.node.state & AcTreeNodeState.checked) {
+                this.node.state &= ~AcTreeNodeState.checked;
             } else {
-                this.node.state |= TreeNodeState.checked;
+                this.node.state |= AcTreeNodeState.checked;
             }
             this.checkChanged.emit(this.node);
         }
     }
 
-    handleClick($event : any): void {
+    handleClick($event: any): void {
         $event.stopPropagation();
         // always emit click
         this.nodeClick.emit(this.node);
@@ -151,10 +151,10 @@ export class AcTreeViewNode implements OnInit {
         // if collapsable handle icons and view state
         if (this.node.options.collapsable) {
             // toggle state
-            if (this.node.state && (this.node.state & TreeNodeState.expanded)) {
-                this.node.state &= ~TreeNodeState.expanded;
+            if (this.node.state && (this.node.state & AcTreeNodeState.expanded)) {
+                this.node.state &= ~AcTreeNodeState.expanded;
             } else {
-                this.node.state |= TreeNodeState.expanded;
+                this.node.state |= AcTreeNodeState.expanded;
             }
         }
     }
@@ -192,13 +192,13 @@ export class AcTreeViewNode implements OnInit {
 
     }
 
-    handleSelection($event : any): void {
+    handleSelection($event: any): void {
         // handle the states according to options
         if (this.node.options.selectable && !this.node.stateIsDisabled && this.preSelectState === true) {
-            if (this.node.state & TreeNodeState.selected) {
-                this.node.state &= ~TreeNodeState.selected;
+            if (this.node.state & AcTreeNodeState.selected) {
+                this.node.state &= ~AcTreeNodeState.selected;
             } else {
-                this.node.state |= TreeNodeState.selected;
+                this.node.state |= AcTreeNodeState.selected;
             }
             if (this.node.stateIsSelected) {
                 if (this.node.options && this.node.options.color) {

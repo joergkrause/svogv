@@ -1,39 +1,39 @@
 ﻿import { Type, Component, EventEmitter } from '@angular/core';
-import * as ubertree from './vm-treenodeoptions';
-import { TreeNodeBase } from './vm-treenodebase';
+import * as tree from './vm-treenodeoptions';
+import { AcTreeNodeBase } from './vm-treenodebase';
 import * as Rx from 'rxjs/rx';
 
-export class TreeNode implements TreeNodeBase {
+export class AcTreeNode implements AcTreeNodeBase {
     // control appearance
-    options: ubertree.TreeNodeOptions;
+    options: tree.AcTreeNodeOptions;
     // strcuture
-    parent: TreeNode;
-    children: TreeNode[];
+    parent: AcTreeNode;
+    children: AcTreeNode[];
     // identifier
     name: string;
     id: number;
     // behavior
-    stateChange: EventEmitter<ubertree.TreeNodeState>; 
-    private _state: ubertree.TreeNodeState;
+    stateChange: EventEmitter<tree.AcTreeNodeState>; 
+    private _state: tree.AcTreeNodeState;
 
-    constructor(options?: ubertree.TreeNodeOptions, nodes?: TreeNode | TreeNode[]) {
-        this.options = options || new ubertree.TreeNodeOptions();
+    constructor(options?: tree.AcTreeNodeOptions, nodes?: AcTreeNode | AcTreeNode[]) {
+        this.options = options || new tree.AcTreeNodeOptions();
         if (nodes && nodes instanceof Array) {
-            this.children = <TreeNode[]>nodes;
+            this.children = <AcTreeNode[]>nodes;
         } else {
             if (nodes) {
-                this.children = [<TreeNode>nodes];
+                this.children = [<AcTreeNode>nodes];
             }
         }
-        this.stateChange = new EventEmitter<ubertree.TreeNodeState>();
-        this.state = ubertree.TreeNodeState.undefined;
+        this.stateChange = new EventEmitter<tree.AcTreeNodeState>();
+        this.state = tree.AcTreeNodeState.undefined;
     }
 
-    get path(): Array<TreeNode> {
+    get path(): Array<AcTreeNode> {
         // walk up tree and return path with names
-        let p: Array<TreeNode> = new Array<TreeNode>();
+        let p: Array<AcTreeNode> = new Array<AcTreeNode>();
         p.push(this);
-        let n: TreeNode = this; 
+        let n: AcTreeNode = this; 
         while (this.parent) {
             n = n.parent;
             p.push(n);
@@ -41,7 +41,7 @@ export class TreeNode implements TreeNodeBase {
         return p;
     }
 
-    hasDirectAncestor(node: TreeNodeBase): boolean {
+    hasDirectAncestor(node: AcTreeNodeBase): boolean {
         return this.parent !== undefined;
     }
 
@@ -49,15 +49,15 @@ export class TreeNode implements TreeNodeBase {
         return this.children !== undefined && this.children.length > 0;
     }
 
-    add(nodes: TreeNode | TreeNode[]): void {
+    add(nodes: AcTreeNode | AcTreeNode[]): void {
         if (nodes && nodes instanceof Array) {
-            this.children.push(...<TreeNode[]>nodes);
+            this.children.push(...<AcTreeNode[]>nodes);
         } else {
-            this.children.push(<TreeNode>nodes);
+            this.children.push(<AcTreeNode>nodes);
         }
     }
 
-    remove(node: TreeNode): boolean {
+    remove(node: AcTreeNode): boolean {
         let idx : number = this.children.indexOf(node);
         if (idx > -1) {
             this.children.splice(idx, 1);
@@ -67,28 +67,28 @@ export class TreeNode implements TreeNodeBase {
         }
     }
 
-    get state(): ubertree.TreeNodeState {
+    get state(): tree.AcTreeNodeState {
         return this._state;
     }
-    set state(value: ubertree.TreeNodeState) {
+    set state(value: tree.AcTreeNodeState) {
         this._state = value;
         this.stateChange.emit(this._state);
     }
 
     get stateIsExpandend(): boolean {
-        return (this.state & ubertree.TreeNodeState.expanded) === ubertree.TreeNodeState.expanded;
+        return (this.state & tree.AcTreeNodeState.expanded) === tree.AcTreeNodeState.expanded;
     }
 
     get stateIsDisabled(): boolean {
-        return (this.state & ubertree.TreeNodeState.disabled) === ubertree.TreeNodeState.disabled;
+        return (this.state & tree.AcTreeNodeState.disabled) === tree.AcTreeNodeState.disabled;
     }
 
     get stateIsSelected(): boolean {
-        return (this.state & ubertree.TreeNodeState.selected) === ubertree.TreeNodeState.selected;
+        return (this.state & tree.AcTreeNodeState.selected) === tree.AcTreeNodeState.selected;
     }
 
     get stateIsChecked(): boolean {
-        return (this.state & ubertree.TreeNodeState.checked) === ubertree.TreeNodeState.checked;
+        return (this.state & tree.AcTreeNodeState.checked) === tree.AcTreeNodeState.checked;
     }
 
 

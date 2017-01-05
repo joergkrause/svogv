@@ -1,19 +1,16 @@
 {
   "name": "svogv",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
   "main": "index.js",
   "scripts": {
     "build": "gulp build:components",
     "demo": "gulp demo",
-    "demo-app": "gulp serve:devapp",
     "test": "gulp test",
     "tslint": "gulp lint",
     "stylelint": "gulp lint",
     "deploy": "firebase deploy",
-    "webdriver-manager": "webdriver-manager",
-    "docs": "gulp docs",
-    "api": "gulp api"
+    "docs": "gulp docs"
   },
   "repository": {
     "type": "git",
