@@ -24,16 +24,16 @@ function hiddenInternalSetup(target: any, key: string, hide: boolean) {
     // Delete property.
     if (delete (<any>target)[key]) {
         // Create new property with getter and setter and meta data provider
-        Object.defineProperty(this.target, this.key, {
-            get: this.getter,
-            set: this.setter,
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
             enumerable: true,
             configurable: true
         });
 
         // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__isHidden__${this.key}`, {
-            value: this.hide,
+        Object.defineProperty(target, `__isHidden__${key}`, {
+            value: hide,
             enumerable: false,
             configurable: false
         });

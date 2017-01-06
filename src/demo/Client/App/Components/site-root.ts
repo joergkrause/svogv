@@ -45,7 +45,7 @@ export class SiteRootComponent implements OnInit {
       new AcMenuLinkItem("Forms Demo", ['/editor'], "fa-user"),
       new AcMenuLinkItem("About", ['/about'], "fa-database")
       new AcMenuHeaderItem("Widgets"),
-      new AcMenuLinkItem("Overview", ['/widgets'], "fa-clock"),
+      new AcMenuLinkItem("Overview", ['/widgets'], "fa-clock")
     );
     // get dashboard data on load and distribute to all listening components
     this.apiService.getUsers().subscribe(data => {

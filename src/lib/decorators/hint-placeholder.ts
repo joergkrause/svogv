@@ -25,16 +25,16 @@ function placeholderInternalSetup(target: any, key: string, name: string) {
     if (delete (<any>target)[key]) {
 
         // Create new property with getter and setter and meta data provider
-        Object.defineProperty(this.target, this.key, {
-            get: this.getter,
-            set: this.setter,
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
             enumerable: true,
             configurable: true
         });
 
         // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__displayName__${this.key}`, {
-            value: this.name,
+        Object.defineProperty(target, `__displayName__${key}`, {
+            value: name,
             enumerable: false,
             configurable: false
         });
