@@ -4,7 +4,7 @@ import { AcTreeNode, AcTextTreeNode, AcComponentTreeNode, AcTreeNodeOptions } fr
 @Component({
     selector: 'ac-tree',
     template: `<ul class="treeview">
-                 <ac-treenode [node]="treeElements" 
+                 <ac-treenode [node]="nodes" 
                                (nodeClick)="onNodeClick($event)" 
                                (checkChanged)="onCheckChanged($event)"
                                (selectedChanged)="onSelectedChanged($event)"
@@ -42,28 +42,6 @@ export class AcTreeView {
 
     ngOnChanges(): void {
         return;
-        // read json from server and convert into tree
-        //let root = new TextTreeNode('Search Objects', null, []);
-        //let text: string = "";
-        //let subt: string = "";
-        //if (this.nodes) {
-        //    if (this.nodes.properties) {
-        //        for (var node in this.nodes.properties) {
-        //            text = node;
-        //            let children: Array<TextTreeNode> = new Array<TextTreeNode>();
-        //            if (this.nodes.properties[node].properties) {
-        //                for (var subnode in this.nodes.properties[node].properties) {
-        //                    subt = `${subnode} (${this.nodes.properties[node].properties[subnode].type})`;
-        //                    let sn = new TextTreeNode(subt);
-        //                    children.push(sn);
-        //                }
-        //            }
-        //            let tn = new TextTreeNode(text, null, children);
-        //            root.add(tn);
-        //        }
-        //        this.treeElements = root;
-        //    }
-        //}
 
     }
 

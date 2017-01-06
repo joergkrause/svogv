@@ -1,18 +1,27 @@
 ﻿import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
-export class AcMenuItem {
+/**
+ * Base class for menu items.
+ */
+export abstract class AcMenuItem {
   text: string;
   constructor(text: string) {
     this.text = text;
   }
 }
 
+/**
+ * A header, not clickable element in the menu
+ */
 export class AcMenuHeaderItem extends AcMenuItem {
   constructor(text: string) {
     super(text);
   }
 }
 
+/**
+ * A non clickable item in the menu, can provide an icon.
+ */
 export class AcMenuLabelItem extends AcMenuHeaderItem {
   icon: string;
   constructor(text: string, icon?: string) {
@@ -21,6 +30,9 @@ export class AcMenuLabelItem extends AcMenuHeaderItem {
   }
 }
 
+/**
+ * A regular, clickable element with text and icon.
+ */
 export class AcMenuLinkItem extends AcMenuLabelItem {
   link: Array<string>;
 
@@ -30,6 +42,9 @@ export class AcMenuLinkItem extends AcMenuLabelItem {
   }
 }
 
+/**
+ * The menu container, can provide a recursive list of menu items.
+ */
 export class AcMenu {
   public children: Array<AcMenuItem>
 
@@ -49,38 +64,40 @@ export class AcMenu {
 @Component({
   selector: 'ac-sidemenu',
   styles: ['.headerItem { margin-left: 32px }', '.linkItem { margin-right: 5px }', '.sideMenuCanvas { padding: 15px; }'],
-  template: `<div class="row row-offcanvas row-offcanvas-left sideMenuCanvas">
-                 <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
-                   <nav class="nav nav-pills nav-stacked" *ngIf="menu && menu.children && menu.children.length > 0">
-                     <ng-container *ngFor="let item of menu.children" class="nav-item" [ngSwitch]="itemType(item)">
-                       <ng-container *ngSwitchCase="'MenuHeaderItem'">
-                         <i class="headerItem">&nbsp;</i><a><strong>{{ item.text }}</strong></a>
-                       </ng-container>
-                       <a *ngSwitchCase="'MenuLabelItem'" class="nav-link" href="#">
-                         <i class="float-xs-left linkItem hidden-xs-down fa " [ngClass]="item.icon"></i> 
-                         <span>{{ item.text }}</span>
-                       </a>
-                       <a *ngSwitchCase="'MenuLinkItem'" class="nav-link" href="#" [routerLink]="item.link">
-                         <i class="float-xs-left linkItem hidden-xs-down fa " [ngClass]="item.icon"></i> 
-                         <span>{{ item.text }}</span>
-                      </a>
-                     </ng-container>
-                   </nav>
-                 </div>
-               </div>`
+  template: `<nav class="nav nav-pills nav-stacked sideMenuCanvas" *ngIf="menu && menu.children && menu.children.length > 0">
+              <ng-container *ngFor="let item of menu.children" class="nav-item" [ngSwitch]="itemType(item)">
+                <ng-container *ngSwitchCase="'AcMenuHeaderItem'">
+                  <i class="headerItem">&nbsp;</i><a><strong>{{ item.text }}</strong></a>
+                </ng-container>
+                <a *ngSwitchCase="'AcMenuLabelItem'" class="nav-link" href="#">
+                  <i class="float-xs-left linkItem hidden-xs-down fa " [ngClass]="item.icon"></i> 
+                  <span>{{ item.text }}</span>
+                </a>
+                <a *ngSwitchCase="'AcMenuLinkItem'" class="nav-link" href="#" [routerLink]="item.link">
+                  <i class="float-xs-left linkItem hidden-xs-down fa " [ngClass]="item.icon"></i> 
+                  <span>{{ item.text }}</span>
+              </a>
+              </ng-container>
+            </nav>`
 })
 export class AcSideMenu {
 
+  /**
+   * The menu's data.
+   */
   @Input() menu: AcMenu;
-  useRouterLinks: boolean = true;
+  /**
+   * Format links so they use [routerlink] syntax. Default is true.
+   */
+  @Input() useRouterLinks: boolean = true;
 
   constructor() {
-    console.log("SideMenu ctor");
+    console.log("AcSideMenu ctor");
     // create Menu dynamically
   }
 
   ngOnInit() {
-    console.log("SideMenu onInit");
+    console.log("AcSideMenu onInit");
   }
 
   private itemType(item: any) : string {

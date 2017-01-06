@@ -8,24 +8,24 @@ import { AcTab, AcTabData } from 'svogv';
  */
 @Component({
   moduleId: module.id,
-  selector: 'app-users',
-  templateUrl: './app-users.html'
+  selector: 'app-widgets',
+  templateUrl: './app-widgets.html'
 })
-export class UsersComponent {
+export class WidgetDemoComponent {
 
-  userTabs: AcTabData;
+  widgetTabs: AcTabData;
 
   constructor(private router: Router) {
     // we use the router as a global configuration point here
     let userRoutes: Array<AcTab> = new Array<AcTab>();
     router.config
-      .filter((route, idx) => route.path === "users")
+      .filter((route, idx) => route.path === "widgets")
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(["/users", subroute.path], subroute.data["title"], !!subroute.data["active"], !!subroute.data["disabled"])));
+      .forEach(subroute => userRoutes.push(new AcTab(["/widgets", subroute.path], subroute.data["title"], !!subroute.data["active"], !!subroute.data["disabled"])));
     
-    this.userTabs = new AcTabData(userRoutes);
+    this.widgetTabs = new AcTabData(userRoutes);
   }
 
 

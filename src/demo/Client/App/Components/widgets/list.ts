@@ -9,7 +9,7 @@ import { AcDataGridModel } from 'svogv';
   moduleId: module.id,
   templateUrl: './list.html'
 })
-export class ListUserComponent {
+export class ListWidgetsComponent {
 
   public users: AcDataGridModel<UserViewModel>;
 

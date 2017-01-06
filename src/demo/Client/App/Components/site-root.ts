@@ -42,12 +42,13 @@ export class SiteRootComponent implements OnInit {
     this.dynamicMenu = new AcMenu(
       new AcMenuHeaderItem("Tasks"),
       new AcMenuLinkItem("Dashboard", ['/dashboard'], "fa-dashboard"),
-      new AcMenuLinkItem("Users", ['/users'], "fa-user"),
-      new AcMenuLinkItem("Studies", ['/studies'], "fa-database")
+      new AcMenuLinkItem("Forms Demo", ['/editor'], "fa-user"),
+      new AcMenuLinkItem("About", ['/about'], "fa-database")
+      new AcMenuHeaderItem("Widgets"),
+      new AcMenuLinkItem("Overview", ['/widgets'], "fa-clock"),
     );
     // get dashboard data on load and distribute to all listening components
     this.apiService.getUsers().subscribe(data => {
-      // TODO: Add to store
       EmitterService.get("BROADCAST_Users").emit(data);
     });
   }

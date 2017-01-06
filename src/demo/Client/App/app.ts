@@ -23,12 +23,17 @@ import routes from './Configurations/routes';
       RouterModule.forRoot(routes)
     ],
     declarations: [
-      // composition tree of components
+      // Demo app
       cmp.SiteNavComponent
       ,cmp.SiteRootComponent
       ,cmp.SiteAboutComponent
       ,cmp.DashboardComponent
-      ,cmp.UsersComponent, cmp.ListUserComponent, cmp.NewUserComponent, cmp.EditUserComponent, cmp.DeleteUserComponent
+      // Editor, Validation & Grid
+      ,cmp.EditorDemoComponent 
+      ,cmp.ListEditorComponent, cmp.NewEditorComponent, cmp.EditEditorComponent, cmp.DeleteEditorComponent
+      // Widgets 
+      ,cmp.ListWidgetsComponent 
+      ,cmp.AnalogClockComponent, cmp.TreeviewComponent
       // simple Bootstrap widgets
       ,wd.AcTreeView, wd.AcTreeViewNode
       ,wd.AcSideMenu, wd.AcBreadCrumb, wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor

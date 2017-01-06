@@ -17,7 +17,7 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
     'legend { padding: 0px 16px 0px 16px; width: auto; }'
   ]
 })
-export class EditUserComponent implements OnInit {
+export class EditEditorComponent implements OnInit {
 
   userForm: FormGroup;
   saveResult: boolean;

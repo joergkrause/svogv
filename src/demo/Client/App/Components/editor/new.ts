@@ -4,7 +4,7 @@
   moduleId: module.id,
   templateUrl: './new.html'
 })
-export class NewUserComponent {
+export class NewEditorComponent {
 
 
   constructor() {

@@ -4,7 +4,7 @@
   moduleId: module.id,
   templateUrl: './delete.html'
 })
-export class DeleteUserComponent {
+export class DeleteEditorComponent {
 
 
   constructor() {

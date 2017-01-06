@@ -15,11 +15,11 @@ export class SiteApiService {
 
   constructor() {
     this.users = new Array<UserViewModel>(
-      new UserViewModel(),
-      new UserViewModel(),
-      new UserViewModel(),
-      new UserViewModel()
-    )
+      new UserViewModel(1, "Paul@parker.com", "030-123456", "Paul Parker"),
+      new UserViewModel(1, "wilma@workshop.com", "055-123456", "Wilma Workshop"),
+      new UserViewModel(1, "theodor@trainer.com", "088-123456", "Theodor Trainer"),
+      new UserViewModel(1, "bill@boss.com", "001-55998877", "Bill Boss")
+    );
   }
 
   /// User

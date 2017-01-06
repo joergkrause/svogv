@@ -1,0 +1,28 @@
+﻿<div class="col-lg-6 col-md-6">
+	<ac-tree [nodes]="treeData"></ac-tree>
+</div>
+<div class="col-lg-6 col-md-6">
+	<h3>Tree View</h3>
+	<h4>Markup</h4>
+	<pre>
+		&lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
+	</pre>
+	<h4>Source</h4>
+	<pre>
+this.treeData = new AcTextTreeNode('Root node', options, [
+  new AcTextTreeNode('Child node #1', options),
+  new AcTextTreeNode('Child node #2', optionsi),
+  new AcTextTreeNode('Child node #3', options),
+  new AcTextTreeNode('Child node #4', options, [
+    new AcTextTreeNode('Hello', options),
+    new AcTextTreeNode('Ahoy', optionsc, [
+      new AcTextTreeNode('Child deep A', options),
+      new AcTextTreeNode('Child deep B', optionsi),
+      new AcTextTreeNode('Child deep C', options)
+    ]),
+    new AcTextTreeNode('Hola', optionsc),
+  ]),
+  new AcTextTreeNode('Child node #5', options),
+]);
+</pre>
+</div>

@@ -14,9 +14,9 @@ const routes: Routes = [
     data: { 'title': 'Dashboard', 'subtitle': 'Caevman Dashboard' }
   },
   {
-    path: 'users',
-    component: cmp.UsersComponent,
-    data: { 'title': 'Users', 'subtitle': 'User Management' },
+    path: 'widgets',
+    component: cmp.ListWidgetsComponent,
+    data: { 'title': 'Widget Demo', 'subtitle': 'Diverse Components' },
     children: [
       {
         path: '',
@@ -26,23 +26,52 @@ const routes: Routes = [
       // actual child routes for studies, components will land in the inner <router-outlet> of studies' view
       {
         path: 'list',
-        component: cmp.ListUserComponent,
-        data: { 'title': 'List Users', 'subtitle': 'User Manager', 'active': true, 'disabled': false }
+        component: cmp.ListWidgetsComponent,
+        data: { 'title': 'Overview', 'subtitle': 'Show all widgets', 'active': true, 'disabled': false }
+      },
+      {
+        path: 'clock',
+        component: cmp.AnalogClockComponent,
+        data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': true }
+      },
+      {
+        path: 'tree',
+        component: cmp.TreeviewComponent,
+        data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': true }
+      }
+    ]
+
+  },
+  {
+    path: 'editor',
+    component: cmp.EditorDemoComponent,
+    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid' },
+    children: [
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
+      },
+      // actual child routes for studies, components will land in the inner <router-outlet> of studies' view
+      {
+        path: 'list',
+        component: cmp.ListEditorComponent,
+        data: { 'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false }
       },
       {
         path: 'new',
-        component: cmp.NewUserComponent,
-        data: { 'title': 'Create User', 'subtitle': 'User Manager', 'active': false, 'disabled': false }
+        component: cmp.NewEditorComponent,
+        data: { 'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false }
       },
       {
         path: 'edit/:id',
-        component: cmp.EditUserComponent,
-        data: { 'title': 'Edit User', 'subtitle': 'User Manager', 'active': false, 'disabled': true }
+        component: cmp.EditEditorComponent,
+        data: { 'title': 'Edit Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }
       },
       {
         path: 'delete/:id',
-        component: cmp.DeleteUserComponent,
-        data: { 'title': 'Delete User', 'subtitle': 'User Manager', 'active': false, 'disabled': true }
+        component: cmp.DeleteEditorComponent,
+        data: { 'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }
       },
       {
         path: '**',

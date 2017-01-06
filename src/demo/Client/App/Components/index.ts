@@ -5,9 +5,14 @@ export * from './site-nav';
 export * from './site-about';
 // app pages
 export * from './app-dashboard';
-export * from './app-users';
-// app : user
-export * from './users/list';
-export * from './users/delete';
-export * from './users/edit';
-export * from './users/new';
+export * from './app-editor';
+export * from './app-widgets';
+// app : editor
+export * from './editor/list';
+export * from './editor/delete';
+export * from './editor/edit';
+export * from './editor/new';
+// app : widgets
+export * from './widgets/list';
+export * from './widgets/analogclock';
+export * from './widgets/treeview';

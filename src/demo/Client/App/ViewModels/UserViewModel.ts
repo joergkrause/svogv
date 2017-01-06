@@ -5,8 +5,23 @@
  */
 export class UserViewModel {
 
+  constructor(id?: number, email?: string, phoneNumber?: string, userName?: string) {
+    if (id) {
+      this.id = id;
+    }
+    if (email) {
+      this.email = email;
+    }
+    if (phoneNumber) {
+      this.phoneNumber = phoneNumber;
+    }
+    if (userName) {
+      this.userName = userName;
+    }
+  }
+
   @Hidden()
-  id: Number;
+  id: number;
 
   @Display("E-Mail", "E-Mail address")
   @Required()
