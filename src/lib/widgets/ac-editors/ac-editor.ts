@@ -19,7 +19,7 @@ import { FormGroup } from '@angular/forms';
                 <input *ngIf="type == 'range'" type="range" minvalue="fromValue" maxValue="toValue" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'date'" type="date" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'number'" type="number" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'text'" type="text" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'text' || type == ''" type="text" class="form-control" [id]="name" [formControlName]="name" />
                 <span class="fa fa-warning text-danger form-control-feedback" 
                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
                 <small class="text-danger" 
@@ -56,8 +56,8 @@ export class AcEditor implements OnInit {
       // get type from form
     if (editorModel) {
       // make an instance to read the properties
-      this.label = editorModel[`__displayName__${this.name}`] || this.label;
-      this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip;
+      this.label = editorModel[`__displayName__${this.name}`] || this.label || this.name;
+      this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip || this.name;
     }
   }
 

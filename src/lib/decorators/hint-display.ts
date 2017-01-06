@@ -1,53 +1,48 @@
 ﻿export function Display(name: string, description?: string) {
     // the original decorator
     function displayInternal(target: Object, property: string | symbol): void {
-      new displayInternalSetup(target, property.toString(), name, description);
+        displayInternalSetup(target, property.toString(), name, description);
     }
 
     // return the decorator
     return displayInternal;
 }
 
-class displayInternalSetup {
-
-    private _val: any;
-
-    constructor(public target: any, public key: string, public name: string, public description: string) {
-        this._val = target[key];
-        // Delete property.
-        if (delete this.target[this.key]) {
-
-            // Create new property with getter and setter and meta data provider
-            Object.defineProperty(this.target, this.key, {
-                get: this.getter,
-                set: this.setter,
-                enumerable: true,
-                configurable: true
-            });
-
-            // create a helper property to transport a meta data value
-            Object.defineProperty(this.target, `__displayName__${this.key}`, {
-                value: this.name,
-                enumerable: false,
-                configurable: false
-            });
-
-            Object.defineProperty(this.target, `__displayDesc__${this.key}`, {
-                value: this.description,
-                enumerable: false,
-                configurable: false
-            });
-        }
-    }
-
+function displayInternalSetup(target: any, key: string, name: string, description: string) {
     // property getter
-    getter(): any {
-        return this._val;
+    var getter = function (): any {
+        return _val;
     };
 
     // property setter
-    setter(newVal: any) {
-        this._val = newVal;
+    var setter = function (newVal: any) {
+        _val = newVal;
     };
 
+    // remember current value, if any
+    var _val = (<any>target)[key];
+    // Delete property.
+    if (delete (<any>target)[key]) {
+
+        // Create new property with getter and setter and meta data provider
+        Object.defineProperty(target, key, {
+            get: getter,
+            set: setter,
+            enumerable: true,
+            configurable: true
+        });
+
+        // create a helper property to transport a meta data value
+        Object.defineProperty(target, `__displayName__${key}`, {
+            value: name,
+            enumerable: false,
+            configurable: false
+        });
+
+        Object.defineProperty(target, `__displayDesc__${key}`, {
+            value: description,
+            enumerable: false,
+            configurable: false
+        });
+    }
 }

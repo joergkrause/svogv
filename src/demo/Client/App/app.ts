@@ -9,10 +9,11 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SiteApiService } from './Services/SiteApiService';
 // custom components
 import * as cmp from './Components/index';
-// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, resolves against node_modules without changes)
-import * as wd from 'svogv';
 // routes' configuration
 import routes from './Configurations/routes';
+// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, resolves against node_modules without changes)
+import * as wd from 'svogv';
+import { FormValidatorService } from 'svogv';
 
 @NgModule({
     imports: [
@@ -41,7 +42,7 @@ import routes from './Configurations/routes';
       ,wd.AcAnalogClock, wd.AcLoaderIcon
     ],
     bootstrap: [cmp.SiteRootComponent],
-    providers: [SiteApiService, { provide: LocationStrategy, useClass: HashLocationStrategy }]
+    providers: [SiteApiService, FormValidatorService, { provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class RootModule {
 }

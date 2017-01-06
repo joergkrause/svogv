@@ -1,66 +1,13 @@
 <div class="row">
-  <div class="col-xs-12">
-    <div class="form-inline">
-      <div class="form-group" *ngIf="users">
-        <label class="" for="searchUsers">Search Users</label>
-        <input type="text" id="searchUsers" class="form-control" title="Search"
-               [(ngModel)]="users.searchValue.userName" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-success"
-                (click)="addUser()">
-          Create New User
-        </button>
-      </div>
-      <div class="form-group pull-right" *ngIf="users">
-        <label for="pageSize">Users per Page</label>
-        <select class="form-control" name="pageSize"
-                [(ngModel)]="users.pageSize">
-          <option [ngValue]="5">5</option>
-          <option [ngValue]="10">10</option>
-          <option [ngValue]="20">20</option>
-        </select>
-      </div>
-    </div>
-  </div>
+	<div class="col-xs-12">
+		<div class="alert alert-info">
+			This is the components (widgets) demo page.
+		</div>
+    <ul>
+      <li><b>Analog Clock</b>: SVG based clock with some customizing options</li>
+      <li><b>Treeview</b>: A tree view with highly customizable nodes and several events, well programmable with dedicated TypeScript classes.</li>
+      <li><b>Tabs</b>: See the tabs in action on the editor page</li>
+      <li><b>SideMenu</b>: See the side menu in action at the left side of the demo app</li>
+    </ul>
+	</div>
 </div>
-<div class="row" *ngIf="users">
-  <div class="col-xs-12">
-    <table class="table table-condensed">
-      <thead>
-        <tr>
-          <th *ngFor="let header of users.headers" [title]="header.desc">{{ header.text }}</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="!users.totalFilteredRows">
-          <td colspan="4" class="text-center">
-            <div class="alert alert-warning">
-              There are no users available.
-            </div>
-          </td>
-        </tr>
-        <tr *ngFor="let user of users.itemsOnCurrentPage">
-          <td *ngFor="let data of users.columnsOfItem(user)">{{ data }}</td>
-          <td>
-            <button class="btn btn-primary btn-sm"
-                    (click)="editUser(user)">
-              Edit
-            </button>
-            <button class="btn btn-danger btn-sm"
-                    (click)="removeUser(user)">
-              Delete
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<ac-pagination *ngIf="users"
-               [maxPageIndex]="users.maxPageIndex"
-               (pageNumberChanged)="users.currentPageIndex = $event">
-</ac-pagination>
-

@@ -25,12 +25,15 @@ export class EditEditorComponent implements OnInit {
   user: UserViewModel;
   paramsSubscriber: Subscription;
 
-  constructor(private apiService: SiteApiService, private route: ActivatedRoute, private router: Router) {
+  constructor(private apiService: SiteApiService, 
+              private route: ActivatedRoute, 
+              private router: Router, 
+              private formService: FormValidatorService) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = FormValidatorService.build(UserViewModel);
+    this.userForm = this.formService.build(UserViewModel);
     // register changes
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // receive the param on init

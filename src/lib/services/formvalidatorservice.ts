@@ -19,13 +19,13 @@ import { Validator, Validators, FormBuilder, FormGroup } from '@angular/forms';
 @Injectable()
 export class FormValidatorService {
 
-  private static fb: FormBuilder;
+  private fb: FormBuilder;
 
   constructor(@Inject(FormBuilder) fb: FormBuilder){
-    FormValidatorService.fb = fb;
+    this.fb = fb;
   }
 
-  public static build(target: any): FormGroup {
+  public build(target: any): FormGroup {
     let valGroup = {};
     let errGroup = {};
     for (let propName in target.prototype) {
@@ -54,14 +54,14 @@ export class FormValidatorService {
         let pattern = new RegExp(target.prototype[`__hasPattern__${propName}`]);
         validators.push(Validators.pattern(pattern));
       }
-      // TODO: Implement Range
-      //let hasRange = `__hasRange__${propName}` in target.prototype;
-      //if (hasRange) {
-      //  errmsgs["range"] = target.prototype[`__errRange__${propName}`];
-      //  let from = new RegExp(target.prototype[`__hasRangeFrom__${propName}`]);
-      //  let to = new RegExp(target.prototype[`__hasRangeTo__${propName}`]);
-      //  validators.push(RangeValidator(from, to));
-      //}
+      let hasRange = `__hasRange__${propName}` in target.prototype;
+      if (hasRange) {
+       (<any>errmsgs)["range"] = target.prototype[`__errRange__${propName}`];
+       let from = new RegExp(target.prototype[`__hasRangeFrom__${propName}`]);
+       let to = new RegExp(target.prototype[`__hasRangeTo__${propName}`]);
+       //TODO: Add custom validator
+       //validators.push(RangeValidator(from, to));
+      }
       if (validators.length === 0) {
         // even if there is no validator we need to add the property to the group
         (<any>valGroup)[propName] = [target[propName]];
@@ -75,7 +75,7 @@ export class FormValidatorService {
       (<any>errGroup)[propName] = errmsgs;
     }
     // create form group
-    let form = FormValidatorService.fb.group(valGroup);
+    let form = this.fb.group(valGroup);
     // forward the model to the editors for easy access to other decorators
     if (target) {
       // the cast is just to suppress TS errors and show it's intentionally
