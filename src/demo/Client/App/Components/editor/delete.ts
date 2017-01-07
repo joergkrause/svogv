@@ -17,7 +17,7 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
     'legend { padding: 0px 16px 0px 16px; width: auto; }'
   ]
 })
-export class EditEditorComponent implements OnInit {
+export class DeleteEditorComponent implements OnInit {
 
   saveResult: boolean;
   userId: number = 0;

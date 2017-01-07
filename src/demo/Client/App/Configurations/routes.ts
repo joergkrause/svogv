@@ -52,7 +52,6 @@ const routes: Routes = [
         redirectTo: 'list',
         pathMatch: 'full'
       },
-      // actual child routes for studies, components will land in the inner <router-outlet> of studies' view
       {
         path: 'list',
         component: cmp.ListEditorComponent,
