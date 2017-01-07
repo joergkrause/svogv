@@ -10,7 +10,11 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './new.html'
+  templateUrl: './new.html',
+  styles: [
+    'fieldset { margin: 16px; padding: 0px 16px 16px 16px; border: 1px solid silver; border-radius: 2px; }',
+    'legend { padding: 0px 16px 0px 16px; width: auto; }'
+  ]
 })
 export class NewEditorComponent {
 
@@ -52,7 +56,7 @@ export class NewEditorComponent {
   }
 
   closeForm() {
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/editor/list']);
   }
 
 }

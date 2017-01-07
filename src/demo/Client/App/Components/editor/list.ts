@@ -41,8 +41,7 @@ export class ListEditorComponent {
   }
 
   removeUser(user) {
-    let removedUser: UserViewModel = this.users.items.remove(user)[0];
-    this.router.navigate(['/editor/delete', removedUser.id]);
+    this.router.navigate(['/editor/delete', user.id]);
   }
 
 }

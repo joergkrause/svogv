@@ -23,26 +23,28 @@ Start with a view model like this:
 export class UserViewModel {
 
   @Hidden()
-  id: Number;
+  id: Number = 0;
 
   @Display("E-Mail", "E-Mail address")
   @Required()
   @MaxLength(100)
   @Email()
-  email: string;
+  email: string = "";
 
   @Display("Phone Number", "The user's phone")
   @Required()
   @MaxLength(20)
-  phoneNumber: string;
+  phoneNumber: string = "";
 
   @Display("User Name", "The full name")
   @Required()
   @MaxLength(100)
-  userName: string;
+  userName: string = "";
 
 }
 ~~~
+
+> The initializers (= "" and = 0) are **required** because they add the properties to the prototype and from there we retrieve the list of automatically created fields.
 
 As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. 
 
@@ -135,4 +137,4 @@ You can run several scripts:
 
 ## Learn more
 
-Check the demo app, that shows the editor in action.
+Check the demo app, that shows the editor in action. See the [Demo install guide](/src/demo/README.md).

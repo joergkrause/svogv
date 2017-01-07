@@ -24,23 +24,23 @@ We did this by using a straight domain model. Let's assume you have a viewmodel 
 export class UserViewModel {
 
   @Hidden()
-  id: Number;
+  id: Number = ;
 
   @Display("E-Mail", "E-Mail address")
   @Required()
   @MaxLength(100)
   @Email()
-  email: string;
+  email: string = "";
 
   @Display("Phone Number", "The user's phone")
   @Required()
   @MaxLength(20)
-  phoneNumber: string;
+  phoneNumber: string = "";
 
   @Display("User Name", "The full name")
   @Required()
   @MaxLength(100)
-  userName: string;
+  userName: string = "";
 
 }
 ~~~
@@ -105,7 +105,6 @@ So I created a set of such components:
 * **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models
 * **Tabs**: Programmable Tabs that react to the Router
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
-* **WebPart**: A panel with header, footer and some configurable stuff
 * **TreeView**: An advanced treeview with icon support and many options
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
 

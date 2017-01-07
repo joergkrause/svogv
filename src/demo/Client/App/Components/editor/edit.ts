@@ -78,7 +78,7 @@ export class EditEditorComponent implements OnInit {
   }
 
   closeForm() {
-    this.router.navigate(['/editor']);
+    this.router.navigate(['/editor/list']);
   }
 
 

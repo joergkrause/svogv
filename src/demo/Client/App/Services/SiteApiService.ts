@@ -56,6 +56,11 @@ export class SiteApiService {
   }
 
   public newUser(user: UserViewModel): Rx.Observable<boolean> {
+    // assure new id in simulated data stack
+    var nextId = this.users.sort(function (u1, u2) { return u1.id - u2.id; }).slice(-1).pop().id + 1;
+    // assign
+    user.id = nextId;
+    // save
     this.users.push(user);
     // always true 
     return Rx.Observable.create(o => true);
@@ -64,6 +69,13 @@ export class SiteApiService {
   public editUser(id: number, user: UserViewModel): Rx.Observable<boolean> {
     var user = this.users.filter(u => u.id == id)[0];
     this.users.splice(this.users.indexOf(user), 1, user);
+    // always true 
+    return Rx.Observable.create(o => true);
+  }
+
+    public deleteUser(id: number): Rx.Observable<boolean> {
+    var user = this.users.filter(u => u.id == id)[0];
+    this.users.splice(this.users.indexOf(user), 1);
     // always true 
     return Rx.Observable.create(o => true);
   }
