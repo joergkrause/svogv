@@ -1,5 +1,5 @@
 ﻿// public
-import { Component, OnInit, OnDestroy, } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
@@ -13,7 +13,7 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
   moduleId: module.id,
   templateUrl: './edit.html',
   styles: [
-    'fieldset { margin: 0px -16px; padding-left: 16px; padding-right:16px; border: 1px solid silver; border-radius: 2px; }',
+    'fieldset { margin: 16px; padding: 0px 16px 16px 16px; border: 1px solid silver; border-radius: 2px; }',
     'legend { padding: 0px 16px 0px 16px; width: auto; }'
   ]
 })
@@ -61,7 +61,7 @@ export class EditEditorComponent implements OnInit {
       });
   }
 
-  // save a query
+  // save an item
   saveUser(): void {
     if (this.userForm.valid) {
       this.apiService
@@ -78,7 +78,7 @@ export class EditEditorComponent implements OnInit {
   }
 
   closeForm() {
-    this.router.navigate(['/users']);
+    this.router.navigate(['/editor']);
   }
 
 

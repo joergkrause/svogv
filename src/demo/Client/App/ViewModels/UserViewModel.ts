@@ -1,42 +1,30 @@
 ﻿import { Required, MaxLength, Range, Email, Display, Hidden } from "svogv";
 
 /**
- * View Model for table view
+ * View Model for table view.
+ * 
+ * The intializer (= 0 and = "") are required to force the TS compiler to create properties. This is required to loop the element 
+ * 
  */
 export class UserViewModel {
 
-  constructor(id?: number, email?: string, phoneNumber?: string, userName?: string) {
-    if (id) {
-      this.id = id;
-    }
-    if (email) {
-      this.email = email;
-    }
-    if (phoneNumber) {
-      this.phoneNumber = phoneNumber;
-    }
-    if (userName) {
-      this.userName = userName;
-    }
-  }
-
   @Hidden()
-  id: number;
+  id: number = 0;
 
   @Display("E-Mail", "E-Mail address")
   @Required()
   @MaxLength(100)
   @Email()
-  email: string;
+  email: string = "";
 
   @Display("Phone Number", "The user's phone")
   @Required()
   @MaxLength(20)
-  phoneNumber: string;
+  phoneNumber: string = "";
 
   @Display("User Name", "The full name")
   @Required()
   @MaxLength(100)
-  userName: string;
+  userName: string = "";
 
 }

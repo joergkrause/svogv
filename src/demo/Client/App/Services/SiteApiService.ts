@@ -11,15 +11,36 @@ import { UserViewModel } from '../ViewModels/UserViewModel';
 @Injectable()
 export class SiteApiService {
 
-  private users : Array<UserViewModel>;  
+  private users: Array<UserViewModel>;
 
   constructor() {
-    this.users = new Array<UserViewModel>(
-      {id: 1, email: "Paul@parker.com", phoneNumber: "030-123456", userName: "Paul Parker"},
-      {id: 2, email: "wilma@workshop.com", phoneNumber: "055-123456", userName: "Wilma Workshop"},
-      {id: 3, email: "theodor@trainer.com", phoneNumber: "088-123456", userName: "Theodor Trainer"},
-      {id: 4, email: "bill@boss.com", phoneNumber: "001-55998877", userName: "Bill Boss"}
-    );
+    // some static demo data
+    let u1 = new UserViewModel();
+    u1.id = 1;
+    u1.email = "Paul@parker.com";
+    u1.phoneNumber = "030-123456";
+    u1.userName = "Paul Parker";
+    let u2 = new UserViewModel();
+    u2.id = 2;
+    u2.email = "wilma@workshop.com";
+    u2.phoneNumber = "055-123456";
+    u2.userName = "Wilma Workshop";
+    let u3 = new UserViewModel();
+    u3.id = 3; 
+    u3.email = "theodor@trainer.com"; 
+    u3.phoneNumber = "088-123456"; 
+    u3.userName = "Theodor Trainer";
+    let u4 = new UserViewModel();
+    u4.id = 4; 
+    u4.email = "bill@boss.com"; 
+    u4.phoneNumber = "001-55998877"; 
+    u4.userName = "Bill Boss";
+
+    this.users = new Array<UserViewModel>();
+    this.users.push(u1);
+    this.users.push(u2);
+    this.users.push(u3);
+    this.users.push(u4);
   }
 
   /// User
