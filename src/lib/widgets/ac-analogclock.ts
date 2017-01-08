@@ -17,28 +17,28 @@ import { DOCUMENT } from '@angular/platform-browser';
         <circle id="circle" style="stroke: #FFF; stroke-width: 12px;" cx="100" [style.fill]="bgColor" cy="100" r="80"></circle>
     </g>
     <g>
-        <line x1="100" y1="100" x2="100" y2="55" transform="rotate(80 100 100)" style="stroke-width: 3px; stroke: #fffbf9;" id="hourhand">
+        <line x1="100" y1="100" x2="100" y2="55" transform="rotate(90 100 100)" style="stroke-width: 4px; stroke: #fffbf9;" id="hourhand">
             <animatetransform attributeName="transform"
-                              #hourhand
+                              #hourhandTransform
                               attributeType="XML"
                               type="rotate"
-                              dur="43200s" from="10 100 100" to="360 100 100"
+                              dur="43200s" from="0 100 100" to="360 100 100"
                               repeatCount="indefinite"/>
         </line>
-        <line x1="100" y1="100" x2="100" y2="40" style="stroke-width: 4px; stroke: #fdfdfd;" id="minutehand" >
+        <line x1="100" y1="100" x2="100" y2="40" transform="rotate(180 100 100)" style="stroke-width: 3px; stroke: #fdfdfd;" id="minutehand">
             <animatetransform attributeName="transform"
-                              #minutehand
+                              #minutehandTransform
                               attributeType="XML"
                               type="rotate"
                               dur="3600s" from="0 100 100" to="360 100 100"
                               repeatCount="indefinite"/>
         </line>
-        <line x1="100" y1="100" x2="100" y2="30" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
+        <line x1="100" y1="100" x2="100" y2="30" transform="rotate(270 100 100)" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
             <animatetransform attributeName="transform"
-                              #secondhand
+                              #secondhandTransform
                               attributeType="XML"
                               type="rotate"
-                              dur="60s" from="90 100 100" to="180 100 100"
+                              dur="60s" from="0 100 100" to="360 100 100"
                               repeatCount="indefinite"/>
         </line>
     </g>
@@ -53,9 +53,9 @@ export class AcAnalogClock implements AfterViewInit {
     @Input() showSeconds: boolean;
     @Output() minuteClock: EventEmitter<Date>;
     @Output() hourClock: EventEmitter<Date>;
-    @ViewChild('hourhand') hourhand: ElementRef;
-    @ViewChild('minutehand') minutehand: ElementRef;
-    @ViewChild('secondhand') secondhand: ElementRef;
+    @ViewChild('hourhandTransform') hourhandTransform: ElementRef;
+    @ViewChild('minutehandTransform') minutehandTransform: ElementRef;
+    @ViewChild('secondhandTransform') secondhandTransform: ElementRef;
     @ViewChild('svg') svg: ElementRef;
 
     constructor(private rd: Renderer, @Inject(DOCUMENT) private document: HTMLDocument) {
@@ -76,28 +76,23 @@ export class AcAnalogClock implements AfterViewInit {
             el.setAttribute('style', 'stroke: #ffffff;');
             this.svg.nativeElement.appendChild(el);
         }
-        setInterval(() => this.animateMe(), 1000);
-    }
-
-    animateMe() {
         // base area
         let cx : number = 100;
         let cy: number = 100;
         // create animation string
-        let shifter = (val:number) => [val, cx, cy].join(' ');
-
-        // from real time
-        let date = new Date();
-        let hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
-        let minuteAngle: number = 360 * date.getMinutes() / 60;
-        let secAngle: number = 360 * date.getSeconds() / 60;
-        // assign animation flow
-        this.secondhand.nativeElement.setAttribute('from', shifter(secAngle));
-        this.secondhand.nativeElement.setAttribute('to', shifter(secAngle + 360));
-        this.minutehand.nativeElement.setAttribute('from', shifter(minuteAngle));
-        this.minutehand.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
-        this.hourhand.nativeElement.setAttribute('from', shifter(hoursAngle));
-        this.hourhand.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
+        // let shifter = (val:number) => [val, cx, cy].join(' ');
+        // // from real time
+        // let date = new Date();
+        // let hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
+        // let minuteAngle: number = 360 * date.getMinutes() / 60;
+        // let secAngle: number = 360 * date.getSeconds() / 60;
+        // // assign animation flow
+        // this.secondhandTransform.nativeElement.setAttribute('from', shifter(secAngle));
+        // this.secondhandTransform.nativeElement.setAttribute('to', shifter(secAngle + 360));
+        // this.minutehandTransform.nativeElement.setAttribute('from', shifter(minuteAngle));
+        // this.minutehandTransform.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
+        // this.hourhandTransform.nativeElement.setAttribute('from', shifter(hoursAngle));
+        // this.hourhandTransform.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
     }
 
 }

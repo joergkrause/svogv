@@ -32,12 +32,12 @@ const routes: Routes = [
       {
         path: 'clock',
         component: cmp.AnalogClockComponent,
-        data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': true, 'breadcrumb': true }
+        data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': false, 'breadcrumb': true }
       },
       {
         path: 'tree',
         component: cmp.TreeviewComponent,
-        data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': true, 'breadcrumb': true }
+        data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': false, 'breadcrumb': true }
       }
     ]
 

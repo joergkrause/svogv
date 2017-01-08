@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+﻿import { NgModule, enableProdMode } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { platformBrowserDynamic }  from '@angular/platform-browser-dynamic';
@@ -47,5 +47,5 @@ import { FormValidatorService } from 'svogv';
 })
 export class RootModule {
 }
-
+enableProdMode();
 platformBrowserDynamic().bootstrapModule(RootModule);
