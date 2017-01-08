@@ -6,6 +6,7 @@
   "scripts": {
     "build": "gulp build:components",
     "demo": "gulp demo",
+    "execdemo": "cd src/demo && npm run exec",
     "test": "gulp test",
     "tslint": "gulp lint",
     "stylelint": "gulp lint",

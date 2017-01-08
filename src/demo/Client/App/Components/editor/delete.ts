@@ -11,7 +11,7 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './edit.html',
+  templateUrl: './delete.html',
   styles: [
     'fieldset { margin: 16px; padding: 0px 16px 16px 16px; border: 1px solid silver; border-radius: 2px; }',
     'legend { padding: 0px 16px 0px 16px; width: auto; }'
