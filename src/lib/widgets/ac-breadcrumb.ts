@@ -12,9 +12,9 @@ export interface IBreadcrumb {
     selector: 'ac-breadcrumb',
     template: `<ol class="list-inline breadcrumb" >
                  <li><a routerLink=""><i class="fa " [ngClass]="icon"></i>{{ home }}</a></li>
-                 <li class="list-inline-item" *ngFor="let breadcrumb of breadcrumbs; #last=last">
+                 <li class="list-inline-item" *ngFor="let breadcrumb of breadcrumbs; let lastItem=last">
                     <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
-                    <span *ngIf="!last">&nbsp;/&nbsp;</span>
+                    <span *ngIf="!lastItem">&nbsp;/&nbsp;</span>
                  </li>
                </ol>`,
     styles: [
