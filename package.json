@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp build:components",
-    "demo": "gulp demo",
+    "demoall": "gulp build:components && cd src/demo && npm run exec",
     "execdemo": "cd src/demo && npm run exec",
     "test": "gulp test",
     "tslint": "gulp lint",
