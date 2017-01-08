@@ -10,10 +10,11 @@ export interface IBreadcrumb {
 
 @Component({
     selector: 'ac-breadcrumb',
-    template: `<ol class="breadcrumb" >
-                 <li><a routerLink="" class="breadcrumb"><i class="fa " [ngClass]="icon"></i>{{ home }}</a></li>
-                 <li *ngFor="let breadcrumb of breadcrumbs">
-                    <a [routerLink]="[breadcrumb.url, breadcrumb.params]"></a>
+    template: `<ol class="list-inline breadcrumb" >
+                 <li><a routerLink=""><i class="fa " [ngClass]="icon"></i>{{ home }}</a></li>
+                 <li class="list-inline-item" *ngFor="let breadcrumb of breadcrumbs; #last=last">
+                    <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
+                    <span *ngIf="!last">&nbsp;/&nbsp;</span>
                  </li>
                </ol>`,
     styles: [
@@ -34,21 +35,23 @@ export class AcBreadCrumb implements OnInit {
     @Input() icon: string;
     @Input() home: string;
 
-    public breadcrumbs: IBreadcrumb[];
+    public breadcrumbs: Array<IBreadcrumb>;
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {
         this.home = "Home";
         this.icon = "fa-dashboard";
-        this.breadcrumbs = [];
+        this.breadcrumbs = new Array<IBreadcrumb>();
     }
 
     ngOnInit() {
+        // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" } in the router config for those items that shall appear in the breadcrumb 
         const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
+        const ROUTE_DATA_SUBTITLE: string = "subtitle";
 
         //subscribe to the NavigationEnd event
         this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
             //reset breadcrumbs
-            this.breadcrumbs = [];
+            this.breadcrumbs = new Array<IBreadcrumb>();
 
             //get the root route
             let currentRoute: ActivatedRoute = this.activatedRoute.root;
@@ -83,7 +86,7 @@ export class AcBreadCrumb implements OnInit {
 
                     //add breadcrumb
                     let breadcrumb: IBreadcrumb = {
-                        label: route.snapshot.data[ROUTE_DATA_BREADCRUMB],
+                        label: route.snapshot.data[ROUTE_DATA_SUBTITLE],
                         params: route.snapshot.params,
                         url: url
                     };

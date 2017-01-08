@@ -15,8 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'widgets',
-    component: cmp.ListWidgetsComponent,
-    data: { 'title': 'Widget Demo', 'subtitle': 'Diverse Components' },
+    component: cmp.WidgetDemoComponent,
+    data: { 'title': 'Widget Demo', 'subtitle': 'Diverse Components', 'breadcrumb': true },
     children: [
       {
         path: '',
@@ -27,17 +27,17 @@ const routes: Routes = [
       {
         path: 'list',
         component: cmp.ListWidgetsComponent,
-        data: { 'title': 'Overview', 'subtitle': 'Show all widgets', 'active': true, 'disabled': false }
+        data: { 'title': 'Overview', 'subtitle': 'Show all widgets', 'active': true, 'disabled': false, 'breadcrumb': true }
       },
       {
         path: 'clock',
         component: cmp.AnalogClockComponent,
-        data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': true }
+        data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': true, 'breadcrumb': true }
       },
       {
         path: 'tree',
         component: cmp.TreeviewComponent,
-        data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': true }
+        data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': true, 'breadcrumb': true }
       }
     ]
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   {
     path: 'editor',
     component: cmp.EditorDemoComponent,
-    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid' },
+    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid', 'breadcrumb': true },
     children: [
       {
         path: '',
@@ -55,12 +55,12 @@ const routes: Routes = [
       {
         path: 'list',
         component: cmp.ListEditorComponent,
-        data: { 'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false }
+        data: { 'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true }
       },
       {
         path: 'new',
         component: cmp.NewEditorComponent,
-        data: { 'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false }
+        data: { 'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true }
       },
       {
         path: 'edit/:id',
@@ -83,7 +83,7 @@ const routes: Routes = [
   {
     path: 'about',
     component: cmp.SiteAboutComponent,
-    data: { 'title': 'About', 'subtitle': 'About this app' }
+    data: { 'title': 'About', 'subtitle': 'About this app', 'breadcrumb': true }
   }
 ];
 

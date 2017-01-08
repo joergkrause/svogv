@@ -33,6 +33,7 @@ import { FormValidatorService } from 'svogv';
       ,cmp.EditorDemoComponent 
       ,cmp.ListEditorComponent, cmp.NewEditorComponent, cmp.EditEditorComponent, cmp.DeleteEditorComponent
       // Widgets 
+      ,cmp.WidgetDemoComponent
       ,cmp.ListWidgetsComponent 
       ,cmp.AnalogClockComponent, cmp.TreeviewComponent
       // simple Bootstrap widgets
