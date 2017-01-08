@@ -1,6 +1,6 @@
 ﻿import { Injectable, EventEmitter } from '@angular/core';
 import { HttpModule, Http, Response, Headers, RequestOptions } from '@angular/http';
-import * as Rx from 'rxjs/rx';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { UserViewModel } from '../ViewModels/UserViewModel';
 
@@ -45,17 +45,17 @@ export class SiteApiService {
 
   /// User
 
-  public getUser(id: number): Rx.Observable<UserViewModel> {
+  public getUser(id: number): Observable<UserViewModel> {
     var user = this.users.filter(u => u.id == id)[0];
-    return Rx.Observable.create(o => o.next(user));
+    return Observable.create(o => o.next(user));
   }
 
 
-  public getUsers(): Rx.Observable<Array<UserViewModel>> {
-    return Rx.Observable.create(o => o.next(this.users));
+  public getUsers(): Observable<Array<UserViewModel>> {
+    return Observable.create(o => o.next(this.users));
   }
 
-  public newUser(user: UserViewModel): Rx.Observable<boolean> {
+  public newUser(user: UserViewModel): Observable<boolean> {
     // assure new id in simulated data stack
     var nextId = this.users.sort(function (u1, u2) { return u1.id - u2.id; }).slice(-1).pop().id + 1;
     // assign
@@ -63,28 +63,28 @@ export class SiteApiService {
     // save
     this.users.push(user);
     // always true 
-    return Rx.Observable.create(o => true);
+    return Observable.create(o => true);
   }
 
-  public editUser(id: number, user: UserViewModel): Rx.Observable<boolean> {
+  public editUser(id: number, user: UserViewModel): Observable<boolean> {
     var user = this.users.filter(u => u.id == id)[0];
     this.users.splice(this.users.indexOf(user), 1, user);
     // always true 
-    return Rx.Observable.create(o => true);
+    return Observable.create(o => true);
   }
 
-    public deleteUser(id: number): Rx.Observable<boolean> {
+    public deleteUser(id: number): Observable<boolean> {
     var user = this.users.filter(u => u.id == id)[0];
     this.users.splice(this.users.indexOf(user), 1);
     // always true 
-    return Rx.Observable.create(o => true);
+    return Observable.create(o => true);
   }
 
   /// Common Functions
 
   private handleError(error: Response) {
     console.error(error);
-    return Rx.Observable.throw(error.json().error || 'Server error');
+    return Observable.throw(error.json().error || 'Server error');
   }
 
 

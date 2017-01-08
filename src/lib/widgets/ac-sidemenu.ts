@@ -5,6 +5,7 @@
  */
 export abstract class AcMenuItem {
   text: string;
+  __name__:string; // a minifier robust type identifier 
   constructor(text: string) {
     this.text = text;
   }
@@ -14,6 +15,7 @@ export abstract class AcMenuItem {
  * A header, not clickable element in the menu
  */
 export class AcMenuHeaderItem extends AcMenuItem {
+  __name__ = "AcMenuHeaderItem";
   constructor(text: string) {
     super(text);
   }
@@ -23,6 +25,7 @@ export class AcMenuHeaderItem extends AcMenuItem {
  * A non clickable item in the menu, can provide an icon.
  */
 export class AcMenuLabelItem extends AcMenuHeaderItem {
+  __name__ = "AcMenuLabelItem";
   icon: string;
   constructor(text: string, icon?: string) {
     super(text);
@@ -34,8 +37,8 @@ export class AcMenuLabelItem extends AcMenuHeaderItem {
  * A regular, clickable element with text and icon.
  */
 export class AcMenuLinkItem extends AcMenuLabelItem {
+  __name__ = "AcMenuLinkItem";
   link: Array<string>;
-
   constructor(text: string, link: string[], icon?: string) {
     super(text, icon);
     this.link = link;
@@ -104,7 +107,7 @@ export class AcSideMenu {
     if (item === undefined || item === null) {
       throw new Error("The reflection metadata could not be found.");
     }
-    let itemType :string = item.constructor["name"].toString();
+    let itemType :string = item["__name__"];
     return itemType;
   }
 

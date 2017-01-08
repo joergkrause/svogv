@@ -43,7 +43,7 @@ export class SiteRootComponent implements OnInit {
       new AcMenuHeaderItem("Tasks"),
       new AcMenuLinkItem("Dashboard", ['/dashboard'], "fa-dashboard"),
       new AcMenuLinkItem("Forms Demo", ['/editor'], "fa-user"),
-      new AcMenuLinkItem("About", ['/about'], "fa-database")
+      new AcMenuLinkItem("About", ['/about'], "fa-database"),
       new AcMenuHeaderItem("Widgets"),
       new AcMenuLinkItem("Overview", ['/widgets'], "fa-clock")
     );

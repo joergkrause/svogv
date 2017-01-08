@@ -20,7 +20,8 @@ var remHtmlCom = require('gulp-remove-html-comments');      // Remove comments
 var sass = require('gulp-sass');                            // transpile SASS
 var del = require('del');                                   // helper to delete paths
 var flatten = require('gulp-flatten');                      // flat paths to re-arrange in the wwwroot target
-var print = require('gulp-print');
+var print = require('gulp-print');                          // output helper
+var systemBuilder = require('systemjs-builder');            // create a rx bundle because the provided did not work
 
 // from Github structure copy static files to root/dist/demo and execute there
 var upPath = "../../dist/";
@@ -54,31 +55,51 @@ gulp.task('copy:js', function () {
               paths.npm + 'core-js/client/*.js',
               paths.npm + 'zone.js/dist/*.js',
               paths.npm + 'reflect-metadata/reflect.js',
-              paths.npm + 'systemjs/dist/*.js'
-  ])
-             .pipe(gulp.dest(paths.assets + 'js/lib'));
+              paths.npm + 'systemjs/dist/*.js',
+              '!/**/*.min.js' // we minify everything by ourselves
+            ])
+            .pipe(uglify())
+            .pipe(gulp.dest(paths.assets + 'js/lib'));
 });
 
 // This is a simple loader while debugging without going through the WebPack hassle
 gulp.task('copy:systemjs', function () {
-  return gulp.src('./Client/systemjs.config.js').pipe(gulp.dest(paths.assets + 'js'));
+  return gulp.src('./Client/systemjs.config.js')
+            .pipe(gulp.dest(paths.assets + 'js'));
 });
 
 gulp.task('copy:angular', function () {
   return gulp.src([
-        paths.npm + '@angular/**/Bundles/*.umd.js',
-  '!' + paths.npm + '@angular/**/Bundles/*-testing.umd.js'
-  ]).pipe(gulp.dest(paths.assets + 'js/lib/@angular'));
+                    paths.npm + '@angular/**/Bundles/*.umd.js',
+              '!' + paths.npm + '@angular/**/Bundles/*-testing.umd.js'
+              ])
+              .pipe(uglify())
+              .pipe(gulp.dest(paths.assets + 'js/lib/@angular'));
 });
 
 gulp.task('copy:svogv', function () {
-  return gulp.src(['./dist/bundles/svogv.umd.js']).pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
+  return gulp.src(['./dist/bundles/svogv.umd.js'])
+             .pipe(uglify())
+             .pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
 });
 
-// Copy RxJs brute force (everything until we know what we really need)
+// Create RxJs bundle 
 gulp.task('copy:rxjs', function () {
-  return gulp.src(paths.npm + 'rxjs/**/*.js').pipe(gulp.dest(paths.assets + 'js/lib/rxjs'));
+    var builder = new systemBuilder('./', {
+        paths: {"rxjs/*": "node_modules/rxjs/*.js"},
+        map: {"rxjs": "node_modules/rxjs"},
+        packages: {"rxjs": {main: 'Rx.js', defaultExtension: "js"}}
+    });
+    // create the bundle we use from systemjs.config.js
+    builder.bundle('rxjs', paths.assets + 'js/lib/rxjs/Bundles/Rx.min.js', {
+        sourceMaps: true,
+        minify: true,
+        mangle: true
+    });
 });
+// gulp.task('copy:rxjs', function () {
+//   return gulp.src(paths.npm + 'rxjs/**/*.js').pipe(gulp.dest(paths.assets + 'js/lib/rxjs'));
+// });
 
 // we write all css in sass 
 gulp.task('sass', function () {

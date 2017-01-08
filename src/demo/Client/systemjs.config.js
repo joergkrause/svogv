@@ -23,25 +23,31 @@
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             // SVOGV
             'svogv': 'npm:svogv/bundles/svogv.umd.js',
-            // other libraries
-            'rxjs': 'npm:rxjs',
             'reflect-metadata': 'npm:reflect.js',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
-},
+        },        
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
             'app': {
                 main: './app.js',
                 defaultExtension: 'js'
             },
-            'rxjs': {
-                defaultExtension: 'js',
-                main: './Rx.js'
-            },
             'angular-in-memory-web-api': {
                 main: './index.js',
                 defaultExtension: 'js'
             }
+        },
+        bundles: {
+            '/assets/js/lib/rxjs/Bundles/Rx.min.js': [
+            "rxjs/*",
+            "rxjs/rx/*",
+            "rxjs/operator/*",
+            "rxjs/observable/*",
+            "rxjs/add/operator/*",
+            "rxjs/add/observable/*",
+            "rxjs/util/*"
+        ],
+        '/assets/js/lib/rxjs/Bundles/app.bundle': ['main']
         }
     });
 })(this);

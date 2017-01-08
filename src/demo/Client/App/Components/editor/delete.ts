@@ -47,8 +47,7 @@ export class DeleteEditorComponent implements OnInit {
     this.apiService
       .getUser(this.userId)
       .subscribe(data => {
-        // patchValue here instead if setValue because the form's viewmodel is more complete than the form
-        this.userForm.patchValue(data, { onlySelf: true, emitEvent: false });
+        this.user = data;
       });
   }
 

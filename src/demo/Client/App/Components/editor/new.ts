@@ -20,7 +20,6 @@ export class NewEditorComponent {
 
   userForm: FormGroup;
   saveResult: boolean = false;
-  paramsSubscriber: Subscription;
 
   constructor(private apiService: SiteApiService, 
               private route: ActivatedRoute, 
