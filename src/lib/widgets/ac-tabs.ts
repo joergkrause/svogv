@@ -1,7 +1,6 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
 
-
 /**
  * Create a single tab for tab views. The link shall be a regular route array.
  */
