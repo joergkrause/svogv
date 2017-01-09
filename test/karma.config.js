@@ -28,14 +28,10 @@ export function config(config) {
       {pattern: 'dist/vendor/zone.js/dist/jasmine-patch.js', included: true, watched: false},
       {pattern: 'dist/vendor/zone.js/dist/async-test.js', included: true, watched: false},
       {pattern: 'dist/vendor/zone.js/dist/fake-async-test.js', included: true, watched: false},
-      {pattern: 'dist/vendor/hammerjs/hammer.min.js', included: true, watched: false},
       {pattern: 'test/karma-test-shim.js', included: true, watched: false},
 
       // paths loaded via module imports
       {pattern: 'dist/**/*.js', included: false, watched: true},
-
-      // include one of the themes
-      {pattern: 'dist/**/prebuilt/indigo-pink.css', included: true, watched: true},
 
       // paths loaded via Angular's component compiler
       // (these paths need to be rewritten, see proxies section)
@@ -68,7 +64,7 @@ export function config(config) {
       recordVideo: false,
       recordScreenshots: false,
       options: {
-        'selenium-version': '2.48.2',
+        'selenium-version': '3.0.0',
         'command-timeout': 600,
         'idle-timeout': 600,
         'max-duration': 5400

@@ -29,4 +29,4 @@ require.extensions['.ts'] = function(m, filename) {
 };
 
 // Import the TS once we know it's safe to require.
-module.exports = require('./karma.config.ts').config;
+module.exports = require('./karma.config.js').config;
