@@ -89,14 +89,27 @@ In a component this looks like this:
 ~~~
 export class EditUserComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  constructor(private formServie: FormValidatorService) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = FormValidatorService.build(this.fb, UserViewModel);
+    this.userForm = this.formService.build(UserViewModel);
   }
 }
+~~~
+
+To get access to the injectable service, you must register it in the *app.ts* file (or whereever you bootstrap your app):
+
+~~~
+import { FormValidatorService } from 'svogv';
+
+@NgModule({
+    imports: [...],
+    declarations: [...],
+    bootstrap: [...],
+    providers: [FormValidatorService, ...]
+})
 ~~~
 
 Now the form knows all about the model. Now let's build a form.
