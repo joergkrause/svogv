@@ -1,4 +1,4 @@
-# SVOGV ![](https://github.com/joergkrause/svogv/tree/master/guides/logo.png?raw=true) Widget Library
+# SVOGV ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) Widget Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
@@ -167,4 +167,4 @@ The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented
 
 Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
-![](https://github.com/joergkrause/svogv/tree/master/guides/logo_big.png?raw=true)
+![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)
