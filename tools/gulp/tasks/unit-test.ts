@@ -11,7 +11,7 @@ const runSequence = require('run-sequence');
 /** Copies deps for unit tests to the build output. */
 gulp.task(':build:test:vendor', function() {
   const npmVendorFiles = [
-    '@angular', 'core-js/client', 'hammerjs', 'rxjs', 'systemjs/dist', 'zone.js/dist'
+    '@angular', 'core-js/client', 'rxjs', 'systemjs/dist', 'zone.js/dist'
   ];
 
   return gulpMerge(
