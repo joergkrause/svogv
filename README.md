@@ -1,13 +1,15 @@
-# SVOGV ![](https://github.com/joergkrause/svogv/tree/master/guides/logo.png) Widget Library
+# SVOGV ![](https://github.com/joergkrause/svogv/tree/master/guides/logo.png?raw=true) Widget Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
-[![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
-[![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
 [![Downloads](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![License](https://img.shields.io/npm/l/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/joergisageek)
+
+[![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
+[![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
+
 
 ## Introduction
 
@@ -163,6 +165,6 @@ The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented
 
 ## Can I contribute?
 
-Yes, drop me an email with some "about me" stuff.
+Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
-![](https://github.com/joergkrause/svogv/tree/master/guides/logo_big.png)
+![](https://github.com/joergkrause/svogv/tree/master/guides/logo_big.png?raw=true)
