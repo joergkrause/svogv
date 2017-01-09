@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { InputConverter } from '../../utils/convert-inputconverter';
+import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
 import { AcInfoBoxOptions } from './Models/options-infobox';
 import { Meaning } from '../../utils/enum-colors';
 
@@ -30,7 +30,7 @@ export class AcInfoBox {
     @Input() progressValue: number;
     @Input() progressText: string;
     @Input() 
-    @InputConverter()
+    @InputConverter(EnumConverter, Meaning) // need EnumConverter, as otherwise metadata returns Number
     color?: Meaning;
 
     @Input() options: AcInfoBoxOptions;

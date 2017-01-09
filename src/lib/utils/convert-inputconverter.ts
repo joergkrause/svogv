@@ -1,8 +1,8 @@
 ﻿import { Meaning, Actions } from './enum-colors';
 
-export function EnumConverter<T>(value: number, enumeration: T) {
+export var EnumConverter = <T>(value: number, enumerationType: T) => {
     var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
-    var color: T = <T>((<any>enumeration)[sanitizedValue]);
+    var color: T = <T>((<any>enumerationType)[sanitizedValue]);
     return color;
 }
 
@@ -27,7 +27,7 @@ export var NumberConverter = (value: any) => {
     return parseFloat(value.toString());
 };
 
-export function InputConverter(converter?: (value: any) => any) {
+export function InputConverter(converter?: (value: any, enumerationType?: any) => any, enumerationType?: any) {
     return (target: Object, key: string) => {
         if (converter === undefined) {
             var metadata = (<any>Reflect).getMetadata("design:type", target, key);
@@ -53,7 +53,11 @@ export function InputConverter(converter?: (value: any) => any) {
             Object.defineProperty(target, key, {
                 get: definition.get,
                 set: newValue => {
-                    definition.set(converter(newValue));
+                    if (enumerationType) {
+                        definition.set(converter(newValue, enumerationType));
+                    } else {
+                        definition.set(converter(newValue));
+                    }
                 },
                 enumerable: true,
                 configurable: true
