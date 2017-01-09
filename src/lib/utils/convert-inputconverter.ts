@@ -2,7 +2,7 @@
 
 export function EnumConverter<T>(value: number, enumeration: T) {
     var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
-    var color: T = <T>enumeration[sanitizedValue];
+    var color: T = <T>((<any>enumeration)[sanitizedValue]);
     return color;
 }
 

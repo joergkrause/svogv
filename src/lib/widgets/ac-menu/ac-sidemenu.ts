@@ -1,5 +1,5 @@
 ﻿import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { AcMenu, AcMenuItem, AcMenuHeaderItem, AcMenuLabelItem, AcMenuLinkItem } from './Models';
+import { AcMenu } from './models/ac-menu';
 
 @Component({
   selector: 'ac-sidemenu',

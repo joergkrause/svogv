@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { AcMenu, AcMenuItem, AcMenuHeaderItem, AcMenuLabelItem, AcMenuLinkItem } from './Models/ac-menu';
+import { AcMenu } from './models/ac-menu';
 
 @Component({
     selector: 'ac-dropmenu',
