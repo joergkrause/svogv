@@ -29,7 +29,7 @@ const blocked_statements = [
   '\\r'
 ];
 
-const sourceFolders = ['./src', './e2e'];
+const sourceFolders = ['./src/lib', './src/demo'];
 const blockedRegex = new RegExp(blocked_statements.join('|'), 'g');
 
 /*

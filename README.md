@@ -7,7 +7,6 @@
 [![Downloads](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/joergisageek)
-[![linqts](https://raw.githubusercontent.com/joergkrause/svogv/master/assets/linqts.png)](http://www.typescriptlang.org)
 
 ## Introduction
 
