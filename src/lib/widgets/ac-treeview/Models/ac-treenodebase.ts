@@ -1,5 +1,5 @@
 ﻿import { Type, Component } from '@angular/core';
-import { AcTreeNodeOptions } from './vm-treenodeoptions';
+import { AcTreeNodeOptions } from './ac-treenodeoptions';
 
 export interface AcTreeNodeBase {
     parent: AcTreeNodeBase;

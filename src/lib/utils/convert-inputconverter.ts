@@ -1,10 +1,10 @@
-﻿// import { Colors } from '../ViewModels/Options/enum-colors';
+﻿import { Meaning, Actions } from './enum-colors';
 
-// export var ColorConverter = (value: number) => {
-//     var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
-//     var color: Colors = <Colors>Colors[sanitizedValue];
-//     return color;
-// }
+export function EnumConverter<T>(value: number, enumeration: T) {
+    var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
+    var color: T = <T>enumeration[sanitizedValue];
+    return color;
+}
 
 export var StringConverter = (value: any) => {
     if (value === null || value === undefined || typeof value === "string")
@@ -25,7 +25,7 @@ export var NumberConverter = (value: any) => {
         return value;
 
     return parseFloat(value.toString());
-}
+};
 
 export function InputConverter(converter?: (value: any) => any) {
     return (target: Object, key: string) => {
@@ -33,15 +33,19 @@ export function InputConverter(converter?: (value: any) => any) {
             var metadata = (<any>Reflect).getMetadata("design:type", target, key);
             if (metadata === undefined || metadata === null)
                 throw new Error("The reflection metadata could not be found.");
-
-            if (metadata.name === "String")
-                converter = StringConverter;
-            else if (metadata.name === "Boolean")
-                converter = BooleanConverter;
-            else if (metadata.name === "Number")
-                converter = NumberConverter;
-            else
-                throw new Error("There is no converter for the given property type '" + metadata.name + "'.");
+            switch (metadata.name) {
+                case "String":
+                    converter = StringConverter;
+                    break;
+                case "Boolean":
+                    converter = BooleanConverter;
+                    break;
+                case "Number":
+                    converter = NumberConverter;
+                    break;
+                default:
+                    throw new Error("There is no converter for the given property type '" + metadata.name + "'.");
+            }
         }
 
         var definition = Object.getOwnPropertyDescriptor(target, key);

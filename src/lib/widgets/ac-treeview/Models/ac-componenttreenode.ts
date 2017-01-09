@@ -1,6 +1,6 @@
 ﻿import { Type, Component } from '@angular/core';
-import { AcTreeNodeOptions } from './vm-treenodeoptions';
-import { AcTreeNode } from './vm-treenode';
+import { AcTreeNodeOptions } from './ac-treenodeoptions';
+import { AcTreeNode } from './ac-treenode';
 
 export class AcComponentTreeNode extends AcTreeNode {
     component: Type<Component>;

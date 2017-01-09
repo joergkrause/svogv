@@ -1,25 +1,25 @@
 ﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { InputConverter, BooleanConverter } from '../../decorators/convert-inputconverter';
-import { InfoBoxOptions } from './Models/options-infobox';
-import { Colors } from './Models/enum-colors';
+import { InputConverter } from '../../utils/convert-inputconverter';
+import { AcInfoBoxOptions } from './Models/options-infobox';
+import { Meaning } from '../../utils/enum-colors';
 
 @Component({
     selector: 'ac-infobox',
-    template: `<div class="card card-inverse card-success">
-                    <div class="card-block bg-success" [ngClass]="color">
-                        <div class="rotate">
-                            <i class="fa fa-5x" [ngClass]="icon"></i>
-                        </div>
-                        <h6 class="text-uppercase">{{ text }}</h6>
-                        <h1 class="display-1">{{ number }}</h1>
-                        <div class="progress" *ngIf="options.hasProgress">
-                           <div class="progress-bar" [style.width]="progressValue"></div>
-                        </div>
-                        <span class="progress-description" *ngIf="options.hasProgress">
-                            {{progressText}}
-                        </span>
+    template: `<div class="card card-inverse" [ngClass]="getColor('card')">
+                  <div class="card-block" [ngClass]="getColor('bg')">
+                    <div class="rotate">
+                        <i class="fa fa-5x" [ngClass]="icon"></i>
                     </div>
-                 </div>`
+                    <h6 class="text-uppercase">{{ text }}</h6>
+                    <h1 class="display-1">{{ number }}</h1>
+                    <div class="progress" *ngIf="options.hasProgress">
+                        <div class="progress-bar" [style.width]="progressValue"></div>
+                    </div>
+                    <span class="progress-description" *ngIf="options.hasProgress">
+                        {{progressText}}
+                    </span>
+                  </div>
+                </div>`
 }) //
 export class AcInfoBox {
     @Input() icon: string;
@@ -29,19 +29,27 @@ export class AcInfoBox {
     @Input() footerLink: string;
     @Input() progressValue: number;
     @Input() progressText: string;
-    @Input() color: string;
+    @Input() 
+    @InputConverter()
+    color?: Meaning;
 
-    @Input() options: InfoBoxOptions;
+    @Input() options: AcInfoBoxOptions;
 
     constructor() {
-        this.color = "bg-yellow";
+        this.color = Meaning.Info;
         this.text = "Demo";
-        this.progressValue = 70;
-        this.progressText = "Some Progress";
+        this.progressValue = 0;
+        this.progressText = "";
         this.icon = "fa-user";
-        this.options = new InfoBoxOptions();
+        this.options = new AcInfoBoxOptions();
     }
 
+
+    private getColor(type: string) : string {
+        if (this.color){
+            return      
+        }
+    }
 
 }
 

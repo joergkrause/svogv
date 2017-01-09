@@ -1,13 +1,13 @@
-﻿import { Colors } from './enum-colors';
+﻿import { Meaning } from '../../../utils/enum-colors';
 
-export class InfoBoxOptions {
+export class AcInfoBoxOptions {
 
     hasProgress: boolean;
-    color: Colors;
+    color: Meaning;
 
     constructor() {
         this.hasProgress = false;
-        this.color = Colors.Blue;
+        this.color = Meaning.Danger;
     }
 
 }

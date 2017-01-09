@@ -1,6 +1,6 @@
 ﻿import { Type, Component } from '@angular/core';
-import { AcTreeNodeOptions, AcTreeNodeState } from './vm-treenodeoptions';
-import { AcTreeNode } from './vm-treenode';
+import { AcTreeNodeOptions, AcTreeNodeState } from './ac-treenodeoptions';
+import { AcTreeNode } from './ac-treenode';
 
 export class AcTextTreeNode extends AcTreeNode {
     text: string;
