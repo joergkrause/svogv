@@ -1,6 +1,6 @@
 {
   "name": "svogv",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",
@@ -12,8 +12,8 @@
   "keywords": [
     "angular",
     "angular2",
+    "angular4",
     "Reactive",
-    "Forms",
     "Forms",
     "Validation",
     "Viewmodel",
@@ -26,9 +26,13 @@
   },
   "homepage": "https://github.com/joergkrause/svogv#readme",
   "peerDependencies": {
-    "@angular/core": "^2.2.0",
     "@angular/common": "^2.2.0",
+    "@angular/compiler": "^2.2.0",
+    "@angular/core": "^2.2.0",
+    "@angular/forms": "^2.2.0",
     "@angular/http": "^2.2.0",
-    "@angular/forms": "^2.2.0"
+    "@angular/platform-browser": "^2.2.0",
+    "@angular/platform-browser-dynamic": "^2.2.0",
+    "@angular/router": "^3.1.0"
   }
 }

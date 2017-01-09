@@ -97,9 +97,6 @@ gulp.task('copy:rxjs', function () {
         mangle: true
     });
 });
-// gulp.task('copy:rxjs', function () {
-//   return gulp.src(paths.npm + 'rxjs/**/*.js').pipe(gulp.dest(paths.assets + 'js/lib/rxjs'));
-// });
 
 // we write all css in sass 
 gulp.task('sass', function () {
