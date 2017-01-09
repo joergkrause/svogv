@@ -5,6 +5,7 @@ import { AcMenu } from './models/ac-menu';
 import { AcMenuItem } from './models/ac-menuitem';
 import { Actions, Sizes } from '../../utils/enum-colors';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
+import { DropDownService } from './services/ac-dropdownservice';
 
 export interface DropdownMenuInterface {
     el: ElementRef;
@@ -111,7 +112,7 @@ export class Dropdown implements OnInit, OnDestroy {
     public toggleEl:ElementRef;
 
     constructor(public el:ElementRef,
-                @Query('dropdownMenu', {descendants: false}) dropdownMenuList:QueryList<ElementRef>) {
+                public @Query('dropdownMenu', {descendants: false}) dropdownMenuList:QueryList<ElementRef>) {
      }
 
     public set isOpen(value) {
@@ -123,9 +124,9 @@ export class Dropdown implements OnInit, OnDestroy {
 
          if (this.isOpen) {
             this.focusToggleElement();
-            dropdownService.open(this);
+            DropDownService.open(this);
         } else {
-            dropdownService.close(this);
+            DropDownService.close(this);
             this.selectedOption = null;
         }
         this.onToggle.emit(this.isOpen);
@@ -234,7 +235,7 @@ export class DropdownToggle implements OnInit {
     @HostBinding('attr.aria-haspopup')
     private addClass = true;
 
-    constructor(@Host() public dropdown:AcDropMenu, public el:ElementRef) {
+    constructor(@Host() public dropdown:Dropdown, public el:ElementRef) {
     }
 
     public ngOnInit() {
@@ -243,7 +244,7 @@ export class DropdownToggle implements OnInit {
 
     @HostBinding('attr.aria-expanded')
     public get isOpen() {
-        return this.dropdown.status.isOpen;
+        return this.dropdown.isOpen;
     }
 
     @HostListener('click', ['$event'])

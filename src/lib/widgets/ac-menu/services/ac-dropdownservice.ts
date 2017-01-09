@@ -1,13 +1,15 @@
-import { AcDropMenu } from '../ac-dropmenu';
+import { Injectable } from '@angular/core';
+import { DropDown, ALWAYS, DISABLED, OUTSIDECLICK, NONINPUT } from '../ac-dropmenu';
 
+@Injectable()
 export class DropdownService {
-    private openScope: AcDropMenu;
-    private dropdownScope: AcDropMenu;
+    private openScope: DropDown;
+    private dropdownScope: DropDown;
 
     private closeDropdownBind: EventListener = this.closeDropdown.bind(this);
     private keybindFilterBind: EventListener = this.keybindFilter.bind(this);
 
-    public open(dropdownScope: AcDropMenu) {
+    public open(dropdownScope: DropDown) {
         if (!this.openScope) {
             window.document.addEventListener('click', this.closeDropdownBind);
             window.document.addEventListener('keydown', this.keybindFilterBind);
@@ -20,7 +22,7 @@ export class DropdownService {
         this.openScope = dropdownScope;
     }
 
-    public close(dropdownScope: AcDropMenu) {
+    public close(dropdownScope: DropDown) {
         if (this.openScope !== dropdownScope) {
             return;
         }
