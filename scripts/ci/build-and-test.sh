@@ -18,6 +18,6 @@ if is_lint; then
 elif is_demo; then
   $(npm bin)/gulp ci:demo
 else
-  $(npm bin)/gulp ci:test
+  $(npm bin)/gulp ci:build
 fi
 teardown_tunnel
