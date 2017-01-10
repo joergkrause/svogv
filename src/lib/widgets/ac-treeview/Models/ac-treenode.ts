@@ -5,7 +5,7 @@ import { AcTreeNodeBase } from './ac-treenodebase';
 export class AcTreeNode implements AcTreeNodeBase {
     // control appearance
     options: tree.AcTreeNodeOptions;
-    // strcuture
+    // structure
     parent: AcTreeNode;
     children: AcTreeNode[];
     // identifier

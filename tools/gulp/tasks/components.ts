@@ -125,7 +125,7 @@ task(':build:components:inline:release', sequenceTask(
 task(':inline-resources', () => inlineResources(DIST_COMPONENTS_ROOT));
 
 /** Builds components to ESM output and UMD bundle. */
-task('build:components', sequenceTask(':build:components:inline', ':build:components:rollup'));
+task('build', sequenceTask(':build:components:inline', ':build:components:rollup'));
 task('build:components:release', sequenceTask(
   ':build:components:inline:release', ':build:components:rollup'
 ));
