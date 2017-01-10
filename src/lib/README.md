@@ -159,6 +159,6 @@ The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented
 
 ## Can I contribute?
 
-Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
+Yes, drop [me](http://www.joergkrause.de/contact) an email with some "about me" stuff. Even simple feedback is appreciated.
 
 ![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)
