@@ -1,28 +1,29 @@
 import { Injectable } from '@angular/core';
-import { DropDown, ALWAYS, DISABLED, OUTSIDECLICK, NONINPUT } from '../ac-dropmenu';
+import { DropdownInterface, CloseBehavior } from './ac-dropdowninterface';
+
 
 @Injectable()
 export class DropdownService {
-    private openScope: DropDown;
-    private dropdownScope: DropDown;
+    private openScope: DropdownInterface;
+    private dropdownScope: DropdownInterface;
 
     private closeDropdownBind: EventListener = this.closeDropdown.bind(this);
     private keybindFilterBind: EventListener = this.keybindFilter.bind(this);
 
-    public open(dropdownScope: DropDown) {
+    public open(dropdownScope: DropdownInterface) {
         if (!this.openScope) {
             window.document.addEventListener('click', this.closeDropdownBind);
             window.document.addEventListener('keydown', this.keybindFilterBind);
         }
 
         if (this.openScope && this.openScope !== this.dropdownScope) {
-            this.openScope.status.isOpen = false;
+            this.openScope.isOpen = false;
         }
 
         this.openScope = dropdownScope;
     }
 
-    public close(dropdownScope: DropDown) {
+    public close(dropdownScope: DropdownInterface) {
         if (this.openScope !== dropdownScope) {
             return;
         }
@@ -37,7 +38,7 @@ export class DropdownService {
             return;
         }
 
-        if (event && this.openScope.status.autoClose === DISABLED) {
+        if (event && this.openScope.autoClose === CloseBehavior.Disabled) {
             return;
         }
 
@@ -46,20 +47,20 @@ export class DropdownService {
             return;
         }
 
-        if (event && this.openScope.status.autoClose === NONINPUT &&
+        if (event && this.openScope.autoClose === CloseBehavior.NonInput &&
             this.openScope.menuEl &&
             /input|textarea/i.test((<any>event.target).tagName) &&
             this.openScope.menuEl.nativeElement.contains(event.target)) {
             return;
         }
 
-        if (event && this.openScope.status.autoClose === OUTSIDECLICK &&
+        if (event && this.openScope.autoClose === CloseBehavior.OutsideClick &&
             this.openScope.menuEl &&
             this.openScope.menuEl.nativeElement.contains(event.target)) {
             return;
         }
 
-        this.openScope.status.isOpen = false;
+        this.openScope.isOpen = false;
     }
 
     private keybindFilter(event: KeyboardEvent) {
