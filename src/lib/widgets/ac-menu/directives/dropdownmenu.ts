@@ -3,7 +3,7 @@ import { DropdownInterface, DropdownMenuInterface } from '../services/ac-dropdow
 
 @Directive({ selector: '[dropdownMenu]' })
 export class DropdownMenu implements OnInit, DropdownMenuInterface {
-    constructor( @Host() public dropdown: DropdownInterface, public el: ElementRef) {
+    constructor( @Host() public dropdown: DropdownInterface) {
     }
 
     public ngOnInit() {

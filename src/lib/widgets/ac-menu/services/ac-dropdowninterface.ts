@@ -9,11 +9,9 @@ export enum CloseBehavior {
 
 
 export interface DropdownMenuInterface {
-    el: ElementRef;
 }
 
 export interface DropdownToggleInterface {
-    el: ElementRef;
 }
 
 export interface DropdownInterface {

@@ -38,9 +38,11 @@ import { FormValidatorService } from 'svogv';
       ,cmp.AnalogClockComponent, cmp.TreeviewComponent
       // simple Bootstrap widgets
       ,wd.AcTreeView, wd.AcTreeViewNode
-      ,wd.AcSideMenu, wd.AcBreadCrumb, wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor
+      ,wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb, wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor
       // SVG widget
       ,wd.AcAnalogClock, wd.AcLoaderIcon
+      // Supporting Directives
+      , wd.Dropdown, wd.DropdownMenu, wd.DropdownToggle, wd.KeyboardNav
     ],
     bootstrap: [cmp.SiteRootComponent],
     providers: [SiteApiService, FormValidatorService, { provide: LocationStrategy, useClass: HashLocationStrategy }]

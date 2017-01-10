@@ -14,7 +14,7 @@ import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterfac
  */
 @Component({
     selector: 'ac-dropmenu',
-    template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" keyboardNav="keyboardNav">
+    template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" [keyboardNav]="keyboardNav" [id]="id">
                 <button type="button" dropdownToggle class="btn" [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn" 
                         (click)="dropdownMenu($event)">{{ text }}</button>
                 <button class="btn dropdown-toggle" dropdownToggle [ngClass]="btnType" [ngClass]="btnSize" *ngIf="!hasSplitBtn"
@@ -30,7 +30,7 @@ import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterfac
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item in menu">{{item.text}}</a>
+                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item in menu">{{item.text}}</button>
                 </div>
                 </div>`})
 export class AcDropMenu {
@@ -56,6 +56,8 @@ export class AcDropMenu {
 
     @Input()
     disabled: boolean = false;
+
+    @Input() id: string;    
 
     public status: { isOpen: boolean, autoClose: boolean } = { isOpen: false, autoClose: false };
 

@@ -3,11 +3,20 @@
 		<div class="alert alert-info">
 			This is the components (widgets) demo page.
 		</div>
-    <ul>
-      <li><b>Analog Clock</b>: SVG based clock with some customizing options</li>
-      <li><b>Treeview</b>: A tree view with highly customizable nodes and several events, well programmable with dedicated TypeScript classes.</li>
-      <li><b>Tabs</b>: See the tabs in action on the editor page</li>
-      <li><b>SideMenu</b>: See the side menu in action at the left side of the demo app</li>
-    </ul>
+    <fieldset>
+      <legend>Available Widgets</legend>
+      <div class="col-xs-10 col-md-3 col-lg-2">
+        <label for="formWidgets">Form Widgets:</label>
+      </div>
+      <div class="col-xs-12 col-md-8 col-lg-4">
+        <ac-dropmenu [menu]="formWidgets" id="formWidgets"></ac-dropmenu>
+      </div>
+      <div class="col-xs-10 col-md-3 col-lg-2">
+        <label for="svgComponents">SVG Components:</label>
+      </div>
+      <div class="col-xs-12 col-md-8 col-lg-5">
+        <ac-dropmenu [menu]="svgComponents" id="svgComponents"></ac-dropmenu>
+      </div>
+    </fieldset>
 	</div>
 </div>
