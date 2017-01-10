@@ -44,9 +44,9 @@ install:
 
 before_script:
   - chmod +x ./scripts/ci/build-and-test.sh
-  - chmod +x ./scripts/saucelab/start-tunnel.sh
-  - chmod +x ./scripts/saucelab/stop-tunnel.sh
-  - chmod +x ./scripts/saucelab/wait-tunnel.sh
+  - chmod +x ./scripts/saucelabs/start-tunnel.sh
+  - chmod +x ./scripts/saucelabs/stop-tunnel.sh
+  - chmod +x ./scripts/saucelabs/wait-tunnel.sh
   - mkdir -p $LOGS_DIR
 
 script:
