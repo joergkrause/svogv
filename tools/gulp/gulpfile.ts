@@ -1,6 +1,6 @@
 import './tasks/ci';
 import './tasks/clean';
-import './tasks/components';
+import './tasks/build';
 import './tasks/demo';
 import './tasks/default';
 import './tasks/development';

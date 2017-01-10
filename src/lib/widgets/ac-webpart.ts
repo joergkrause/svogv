@@ -6,8 +6,12 @@
                 <div class="box-header">
                   <h3 class="box-title">{{ title }}</h3>
                   <div class="box-tools pull-right" *ngIf="showTools">
-                    <button type="button" class="btn btn-box-tool" (click)="collapse()"><i class="fa fa-minus"></i></button>
-                    <button type="button" class="btn btn-box-tool" (click)="remove()"><i class="fa fa-remove"></i></button>
+                    <button type="button" class="btn btn-box-tool" 
+                            (click)="collapse()"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" 
+                            (click)="remove()"><i class="fa fa-remove"></i>
+                    </button>
                   </div>
                 </div>
                 <div class="box-body">

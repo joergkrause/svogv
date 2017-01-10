@@ -3,14 +3,14 @@ const path = require('path');
 
 // Load ts-node to be able to execute TypeScript files with protractor.
 require('ts-node').register({
-  project: path.join(__dirname, '../e2e/')
+  project: path.join(__dirname, '../demo/')
 });
 
 
-const E2E_BASE_URL = process.env['E2E_BASE_URL'] || 'http://localhost:4200';
+const DEMO_BASE_URL = process.env['DEMO_BASE_URL'] || 'http://localhost:4200';
 const config = {
   useAllAngular2AppRoots: true,
-  specs: [ path.join(__dirname, '../e2e/**/*.e2e.ts') ],
+  specs: [ path.join(__dirname, '../demo/**/*.demo.ts') ],
   baseUrl: E2E_BASE_URL,
   allScriptsTimeout: 120000,
   getPageTimeout: 120000,
@@ -35,21 +35,22 @@ const config = {
   ]
 };
 
-if (process.env['TRAVIS']) {
-  const key = require('../scripts/saucelabs/sauce_config');
-  config.sauceUser = process.env['SAUCE_USERNAME'];
-  config.sauceKey = key;
-  config.capabilities = {
-    'browserName': 'chrome',
-    'tunnel-identifier': process.env['TRAVIS_JOB_NUMBER'],
-    'build': process.env['TRAVIS_JOB_NUMBER'],
-    'name': 'SVOGV DEMO Tests',
+// We are currently not on saucelabs
+// if (process.env['TRAVIS']) {
+//   const key = require('../scripts/saucelabs/sauce_config');
+//   config.sauceUser = process.env['SAUCE_USERNAME'];
+//   config.sauceKey = key;
+//   config.capabilities = {
+//     'browserName': 'chrome',
+//     'tunnel-identifier': process.env['TRAVIS_JOB_NUMBER'],
+//     'build': process.env['TRAVIS_JOB_NUMBER'],
+//     'name': 'SVOGV DEMO Tests',
 
-    // By default Saucelabs tries to record the whole e2e run. This can slow down the builds.
-    'recordVideo': false,
-    'recordScreenshots': false
-  };
-}
+//     // By default Saucelabs tries to record the whole e2e run. This can slow down the builds.
+//     'recordVideo': false,
+//     'recordScreenshots': false
+//   };
+// }
 
 
 exports.config = config;
