@@ -1,7 +1,6 @@
 ﻿import { Type, Component, EventEmitter } from '@angular/core';
 import * as tree from './ac-treenodeoptions';
 import { AcTreeNodeBase } from './ac-treenodebase';
-import * as Rx from 'rxjs/rx';
 
 export class AcTreeNode implements AcTreeNodeBase {
     // control appearance
