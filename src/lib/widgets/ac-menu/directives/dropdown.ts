@@ -1,7 +1,8 @@
-import { Directive, ElementRef, Host, HostBinding, HostListener, ContentChildren, QueryList, OnInit, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { Directive, ElementRef, Host, HostBinding, HostListener, ContentChildren, QueryList, OnInit, OnDestroy, Input, Output, EventEmitter, Injectable } from '@angular/core';
 import { DropdownInterface, DropdownMenuInterface, CloseBehavior } from '../services/ac-dropdowninterface';
 import { DropdownService } from '../services/ac-dropdownservice';
 
+@Injectable()
 @Directive({selector: '[dropdown]'})
 export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
     @HostBinding('class.open')

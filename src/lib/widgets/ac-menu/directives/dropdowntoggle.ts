@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Host, HostBinding, HostListener, OnInit, Input } from '@angular/core';
 import { DropdownInterface, DropdownToggleInterface } from '../services/ac-dropdowninterface';
+import { Dropdown } from './dropdown';
 
 @Directive({ selector: '[dropdownToggle]' })
 export class DropdownToggle implements OnInit, DropdownToggleInterface {
@@ -10,7 +11,7 @@ export class DropdownToggle implements OnInit, DropdownToggleInterface {
     @HostBinding('attr.aria-haspopup')
     private addClass = true;
 
-    constructor(@Host() public dropdown:DropdownInterface, public el:ElementRef) {
+    constructor(@Host() public dropdown:Dropdown, public el:ElementRef) {
     }
 
     public ngOnInit() {

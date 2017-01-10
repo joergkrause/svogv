@@ -30,7 +30,7 @@ import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterfac
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item in menu">{{item.text}}</button>
+                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item of menu">{{item.text}}</button>
                 </div>
                 </div>`})
 export class AcDropMenu {
@@ -47,11 +47,11 @@ export class AcDropMenu {
     @Input() hasSplitBtn: boolean = true;
 
     @Input() 
-    @InputConverter(EnumConverter)
+    @InputConverter(EnumConverter, Actions)
     btnType: Actions;
 
     @Input() 
-    @InputConverter(EnumConverter)
+    @InputConverter(EnumConverter, Sizes)
     btnSize: Sizes;
 
     @Input()

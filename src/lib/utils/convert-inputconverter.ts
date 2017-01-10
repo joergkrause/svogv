@@ -68,7 +68,7 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
                     return this["__" + key];
                 },
                 set: function (newValue) {
-                    this["__" + key] = converter(newValue);
+                    this["__" + key] = enumerationType === undefined ? converter(newValue) : converter(newValue, enumerationType);
                 },
                 enumerable: true,
                 configurable: true

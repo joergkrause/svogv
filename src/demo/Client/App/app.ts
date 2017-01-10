@@ -42,7 +42,7 @@ import { FormValidatorService } from 'svogv';
       // SVG widget
       ,wd.AcAnalogClock, wd.AcLoaderIcon
       // Supporting Directives
-      , wd.Dropdown, wd.DropdownMenu, wd.DropdownToggle, wd.KeyboardNav
+      , wd.Dropdown, wd.DropdownToggle
     ],
     bootstrap: [cmp.SiteRootComponent],
     providers: [SiteApiService, FormValidatorService, { provide: LocationStrategy, useClass: HashLocationStrategy }]
