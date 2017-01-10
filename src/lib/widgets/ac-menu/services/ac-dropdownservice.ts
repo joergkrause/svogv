@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DropdownInterface, CloseBehavior } from './ac-dropdowninterface';
 
-
 @Injectable()
 export class DropdownService {
     private openScope: DropdownInterface;

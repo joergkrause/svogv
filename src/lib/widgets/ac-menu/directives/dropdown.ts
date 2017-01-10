@@ -25,10 +25,11 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
     public menuEl:ElementRef;
     // drop down toggle element
     public toggleEl:ElementRef;
+    @ContentChildren('dropdownMenu', {descendants: false}) 
+    dropdownMenuList:QueryList<ElementRef>;
 
     constructor(public el:ElementRef,
-                public dropDownService: DropdownService,
-                @ContentChildren('dropdownMenu', {descendants: false}) dropdownMenuList:QueryList<ElementRef>) {
+                public dropDownService: DropdownService) {
      }
 
     public set isOpen(value) {

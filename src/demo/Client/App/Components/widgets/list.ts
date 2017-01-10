@@ -24,7 +24,7 @@ export class ListWidgetsComponent implements OnInit {
     this.svgComponents = new AcMenu(
         new AcMenuLinkItem('Analog Clock', ['/widgets/clock'])
       , new AcMenuLinkItem('Loader Icon', ['/widgets/loader']));
-
+    // Link items will use the router by default 
   }
 
 

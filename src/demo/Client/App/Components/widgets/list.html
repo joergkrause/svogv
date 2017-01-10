@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-xs-12">
 		<div class="alert alert-info">
-			This is the components (widgets) demo page.
+			This is the components (widgets) demo page. The dropdowns below is the dropdown menu component, <code>&lt;ac-dropdown&gt;</code>
 		</div>
     <fieldset>
       <legend>Available Widgets</legend>
@@ -9,14 +9,54 @@
         <label for="formWidgets">Form Widgets:</label>
       </div>
       <div class="col-xs-12 col-md-8 col-lg-4">
-        <ac-dropmenu [menu]="formWidgets" id="formWidgets"></ac-dropmenu>
+        <ac-dropmenu [menu]="formWidgets" [hasSplitBtn]="false" [text]="Select Form Widgets" id="formWidgets"></ac-dropmenu>
       </div>
       <div class="col-xs-10 col-md-3 col-lg-2">
         <label for="svgComponents">SVG Components:</label>
       </div>
       <div class="col-xs-12 col-md-8 col-lg-5">
-        <ac-dropmenu [menu]="svgComponents" id="svgComponents"></ac-dropmenu>
+        <ac-dropmenu [menu]="svgComponents" [hasSplitBtn]="false" [text]="Select SVG Components" id="svgComponents"></ac-dropmenu>
       </div>
     </fieldset>
 	</div>
+  <div class="row">
+    <h4>Usage of Dropdown</h4>
+    <div class="alert alert-success">
+      This is a typical markup: 
+      <pre>
+&lt;ac-dropmenu [menu]="formWidgets" [hasSplitBtn]="false" [text]="Select Form Widgets" id="formWidgets">&lt;/ac-dropmenu>
+      </pre>
+      You have these options:
+      <ul>
+        <li>menu: The menu's data</li>
+        <li>text: The button text</li>
+        <li>hasSplitButton: A divider for the drop function, a caret appears</li>
+        <li>btnType: The type of button according to Bootstrap, such as <code>Actions.Info</code> (it's an enum)</li>
+        <li>btnSize: The size, again an enum of type Sizes. <code>Use Sizes.XSmall</code> for instance.</li>
+      </ul>
+    </div>
+    <div class="alert alert-success">
+      This is the code in the component:
+      <pre>
+export class ListWidgetsComponent implements OnInit {
+
+  public formWidgets : AcMenu
+
+  constructor() {
+  }
+
+  ngOnInit(){
+    this.formWidgets = new AcMenu(
+        new AcMenuLinkItem('TreeView', ['/widgets/tree'])
+      , new AcMenuLinkItem('DropDown', ['/widgets/drop'])
+      , new AcMenuLinkItem('InfoBox', ['/widgets/info'])
+      , new AcMenuLinkItem('BreadCrumb', ['/widgets/bread']));
+  }
+
+
+}
+      </pre> 
+      So you need two things here: the markup and the classes `AcMenu` along with the item classes `AcMenuLinkItem` or `AcMenuTextItem`. 
+    </div>
+  </div>
 </div>

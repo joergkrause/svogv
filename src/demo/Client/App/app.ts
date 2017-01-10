@@ -13,7 +13,7 @@ import * as cmp from './Components/index';
 import routes from './Configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig, resolves against node_modules without changes)
 import * as wd from 'svogv';
-import { FormValidatorService } from 'svogv';
+import { FormValidatorService, DropdownService } from 'svogv';
 
 @NgModule({
     imports: [
@@ -45,7 +45,10 @@ import { FormValidatorService } from 'svogv';
       , wd.Dropdown, wd.DropdownToggle
     ],
     bootstrap: [cmp.SiteRootComponent],
-    providers: [SiteApiService, FormValidatorService, { provide: LocationStrategy, useClass: HashLocationStrategy }]
+    providers: [SiteApiService         // just for demo to get some static data
+               , FormValidatorService  // the forms support, manages the decorators
+               , DropdownService       // supports the dropdown menu events 
+               , { provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class RootModule {
 }

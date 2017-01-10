@@ -1,8 +1,10 @@
 ﻿import { Component, Input, Output, OnChanges, OnInit,OnDestroy, 
          EventEmitter, Directive, ContentChildren, QueryList,
          Host, HostListener, HostBinding, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { AcMenu } from './models/ac-menu';
 import { AcMenuItem } from './models/ac-menuitem';
+import { AcMenuLinkItem } from './models/ac-menulinkitem';
 import { Actions, Sizes } from '../../utils/enum-colors';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
 import { DropdownService } from './services/ac-dropdownservice';
@@ -30,7 +32,7 @@ import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterfac
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item of menu">{{item.text}}</button>
+                    <button class="dropdown-item" type="button" (click)="selectItem(menu)" *ngFor="let item of menu.children">{{item.text}}</button>
                 </div>
                 </div>`})
 export class AcDropMenu {
@@ -43,8 +45,7 @@ export class AcDropMenu {
      * */
     @Input() text: string;
 
-    @Input() keyboardNav: boolean = false;
-    @Input() hasSplitBtn: boolean = true;
+    @Input() hasSplitBtn: boolean = false;
 
     @Input() 
     @InputConverter(EnumConverter, Actions)
@@ -61,7 +62,7 @@ export class AcDropMenu {
 
     public status: { isOpen: boolean, autoClose: boolean } = { isOpen: false, autoClose: false };
 
-    constructor() {
+    constructor(private router: Router) {
         this.btnSize = Sizes.Medium;
         this.btnType = Actions.Secondary;
     }
@@ -73,7 +74,10 @@ export class AcDropMenu {
     }
 
     selectItem(item: AcMenuItem): void {
-        // TODO: Add EventEmitter
+        if (item instanceof AcMenuLinkItem){
+            // invoke a navigation
+            this.router.navigate((<AcMenuLinkItem>item).link);
+        }
     }
 
 }
