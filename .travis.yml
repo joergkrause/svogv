@@ -26,27 +26,19 @@ env:
   matrix:
     # Order: a slower build first, so that we don't occupy an idle travis worker waiting for others to complete.
     - MODE=lint
-    - MODE=build
     - MODE=demo
-    # - MODE=saucelabs_required
-    # - MODE=browserstack_required
-    # - MODE=saucelabs_optional
-    # - MODE=browserstack_optional
+    - MODE=build
 
 matrix:
   fast_finish: true
   allow_failures:
-  - env: "MODE=saucelabs_optional"
-  - env: "MODE=browserstack_optional"
+  - env: "MODE=lint"
 
 install:
   - npm install
 
 before_script:
   - chmod +x ./scripts/ci/build-and-test.sh
-  - chmod +x ./scripts/saucelabs/start-tunnel.sh
-  - chmod +x ./scripts/saucelabs/stop-tunnel.sh
-  - chmod +x ./scripts/saucelabs/wait-tunnel.sh
   - mkdir -p $LOGS_DIR
 
 script:
