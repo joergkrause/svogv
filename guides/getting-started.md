@@ -79,7 +79,7 @@ Also several validation decorators are supported:
 The usage is simple; just import like this:
 
 ~~~
-import { Required, MaxLength, Range, Email, Display, Hidden } from "../decorators/index";
+import { Required, MaxLength, Range, Email, Display, Hidden } from 'svogv';
 ~~~
 
 Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 
@@ -150,4 +150,4 @@ You can run several scripts:
 
 ## Learn more
 
-Check the demo app, that shows the editor in action. See the [Demo install guide](/src/demo/README.md).
+Check the demo app, that shows the editor in action. See the [Demo install guide](/src/demo/README).

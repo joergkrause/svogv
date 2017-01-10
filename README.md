@@ -70,7 +70,7 @@ import {
   Email, 
   Display, 
   Hidden 
-} from "./decorators/index";
+} from 'svogv';
 ~~~
 
 Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 

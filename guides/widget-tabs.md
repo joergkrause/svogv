@@ -15,6 +15,8 @@ Hence, you can easily use the component to create the tabs using the Router. Tha
 This is the components primary definition:
 
 ~~~
+import { AcTabs, AcTabData } from 'svogv';
+
 export class AcTabs {
   @Input() tabs: AcTabData;
   @Output() currentTab: AcTab;
@@ -34,6 +36,9 @@ The main page for the widgets in the demo app makes use of this:
 The property `widgetTabs` will be filled like this:
 
 ~~~
+import { AcTabs, AcTabData } from 'svogv';
+
+// component stuff omitted for sake of clarity 
 export class WidgetDemoComponent {
 
   widgetTabs: AcTabData;
@@ -45,7 +50,10 @@ export class WidgetDemoComponent {
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(["/widgets", subroute.path], subroute.data["title"], !!subroute.data["active"], !!subroute.data["disabled"])));
+      .forEach(subroute => userRoutes.push(new AcTab(["/widgets", subroute.path], 
+                                        subroute.data["title"], 
+                                      !!subroute.data["active"], 
+                                      !!subroute.data["disabled"])));
     
     this.widgetTabs = new AcTabData(userRoutes);
   }

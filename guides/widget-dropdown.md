@@ -17,6 +17,8 @@ You have these options:
 This is the code in the component:
 
 ~~~
+import { AcMenu, AcMenuLinkItem, AcMenuTextItem } from 'svogv';
+
 export class ListWidgetsComponent implements OnInit {
 
   public formWidgets : AcMenu

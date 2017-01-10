@@ -114,3 +114,25 @@ Once you're here it's boring empty. So we need some tools to get stuff in here. 
 * Node - The engine that does the hard work
 
 And [here is how to setup node](setup-node).
+
+Next, Git is required. Check first if it is already present on your system:
+
+~~~
+$ git --version
+~~~
+
+If not, install according your operating system. And [here is how to setup Git](setup-git).
+
+Then, an account on Github is required. Finally, the package will be hostet on Github and partially distributed to NPM. While there are alternative ways,
+such as Bitbucket, I recommend Github for beginners because the sheer amount of literature, support, websites, and answern on [Stack Overflow](https://stackoverflow.com/)
+is overwhelming. And it is, last but not least, easy enough to get the point in short time.
+
+So, go to [GitHub](https://github.com/), and set up an account. 
+
+Now, we're set and the journey into the package creation can begin. The package is about Angular 2 components and I assume that you have at least a basic
+interest in Angular 2 stuff. So apart from talking about the package structure  I'm going to explain all the component stuff as well.
+
+You can continue reading here:
+
+* [Create an NPM package](create-npm) 
+* [Develop Advanced Angular Components](angular) 
