@@ -52,7 +52,7 @@ connection is usually sufficient.
 
 To setup a project like this you start right now that way:
 
-1. Load an Editor 
+### 1. Load an Editor 
 
 I use [Visual Studio Code](https://code.visualstudio.com/), but you may try some others to achieve your code tasks. Some alternatives are:
 
@@ -62,7 +62,7 @@ I use [Visual Studio Code](https://code.visualstudio.com/), but you may try some
 
 > A good description of all of these can be [found here](http://blog.liveedu.tv/10-best-text-editors-programming-2016/).
 
-2. Setup your project
+### 2. Setup your project
 
 Modern web development is file based. No hidden stuff, no secret folders, nothing but plain text files. Any drawback? Yes, there are many
 different files needed. A lot of them, really. While writing this I made a quick count of SVOGV project, locally:
@@ -96,13 +96,17 @@ So, start creating a folder where all the files go. Let's call it like the proje
 
 Somewhere on my disc I type:
 
+~~~
 $ mkdir svogv
+~~~
 
 > The prompt I use here is $ like most *nix systems have. I remove the concrete path and you can do same on Windows as well. I recommend to choose a short start point, such as C:\App>, too.
 
 Then go into this:
 
+~~~
 $ cd svogv
+~~~
 
 Once you're here it's boring empty. So we need some tools to get stuff in here. The first set of tools is part of the JavaScript ecosystem:
 
@@ -112,10 +116,10 @@ Once you're here it's boring empty. So we need some tools to get stuff in here. 
 Node is JavaScript on the server or dev machine. Get [Node](https://nodejs.org/en/) first. For Windows and MacOS download and run the installer. 
 For Linux use the usual `apt-get` command or a [package manager](https://nodejs.org/en/download/package-manager/). This would look like this:
 
-`
+~~~
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
-`
+~~~
 
 > A word about versions. I go with Node 6 here. Node 7 is not completely supported and hence we don't create a node application but just using it as part of a tool chain, a newer version doesn't help.  
 
