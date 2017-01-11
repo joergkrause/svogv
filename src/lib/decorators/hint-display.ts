@@ -1,4 +1,9 @@
-﻿export function Display(name: string, description?: string) {
+﻿/**
+ * The Display decorator. 
+ * @param name          The Name or Label that appears in forms or as header in grids.
+ * @param description   A tooltip that can be used optionally.
+ */
+export function Display(name: string, description?: string) {
     // the original decorator
     function displayInternal(target: Object, property: string | symbol): void {
         new displayInternalSetup(target, property.toString(), name, description);

@@ -42,6 +42,9 @@ const SVOGV_MODULES = [
 export class SvOGvRootModule { }
 
 
+/**
+ * The SVOGV Module definition
+ */
 @NgModule({
   imports: SVOGV_MODULES,
   exports: SVOGV_MODULES,

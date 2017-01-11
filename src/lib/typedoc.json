@@ -1,7 +1,7 @@
 {
   "mode": "modules",
-  "out": "./dist/api",
-  "json": "./dist/api/api.json",
+  "out": "./dist/docs/api",
+  "json": "./dist/docs/api/api.json",
   "theme": "default",
   "experimentalDecorators": "true",
   "emitDecoratorMetadata": "true",
