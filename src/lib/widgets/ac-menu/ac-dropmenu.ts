@@ -16,7 +16,7 @@ import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterfac
  */
 @Component({
     selector: 'ac-dropmenu',
-    template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" [keyboardNav]="keyboardNav" [id]="id">
+    template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" [id]="id">
                 <button type="button" dropdownToggle class="btn" [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn" 
                         (click)="dropdownMenu($event)">{{ text }}</button>
                 <button class="btn dropdown-toggle" dropdownToggle [ngClass]="btnType" [ngClass]="btnSize" *ngIf="!hasSplitBtn"
@@ -60,6 +60,8 @@ export class AcDropMenu {
 
     @Input() id: string;    
 
+    @Output() public onSelect:EventEmitter<AcMenuItem> = new EventEmitter<AcMenuItem>();
+
     public status: { isOpen: boolean, autoClose: boolean } = { isOpen: false, autoClose: false };
 
     constructor(private router: Router) {
@@ -77,6 +79,9 @@ export class AcDropMenu {
         if (item instanceof AcMenuLinkItem){
             // invoke a navigation
             this.router.navigate((<AcMenuLinkItem>item).link);
+        } else {
+            // if no link invoke the onSelect event and return the selected item
+            this.onSelect.emit(item);
         }
     }
 
