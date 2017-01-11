@@ -88,4 +88,17 @@ The first doc comment within a file is used as the doc comment of a dynamic modu
     */
     var someVar:string = "value";
 
-Watch here for the empty line between the comment blocks. 
+Watch here for the empty line between the comment blocks. An excerpt from the generated documentation could look like this:
+
+![Figure: Generated API documentation](./../images/doc-api-example.png)
+
+The command is part of the build tool chain. Creating the documentation will, eventually, an automated task on every build. If you need to get it done
+separately, invoke this command in the project's root:
+
+~~~
+gulp api
+~~~
+
+However, if you follow the steps as shown in the book the root may be still empty and hence nothing happens (despite weird error messages).
+
+  

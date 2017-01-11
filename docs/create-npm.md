@@ -133,7 +133,7 @@ The project we create is an Angular 2 library, created with TypeScript. So we ne
 
 * tsconfig.json:
 
-    The configuration for the TypeScript transpiler. 
+    The configuration for the TypeScript transpiler. That's covered in the chapter about [TypeScript](./typescript/intro).
 
 * typedoc.json:
 
@@ -142,4 +142,194 @@ The project we create is an Angular 2 library, created with TypeScript. So we ne
 * Two files are just for testing. That's covered in the chapter about unit testing:
     * system-config-spec.ts
     * tsconfig-srcs.json
+
+Before you can proceed we need to setup a basic build tool chain. The build process is not part of the library nor the demo we write. It's our personal
+effort to assure things go well for our users. That happens in the main (root) folder of the project.
+
+You remember the folder structure we started with? 
+
+  \root
+    \src
+      \lib
+      \demo
+    \node_modules
+    \scripts
+    \test
+    \tools
+
+The part in *\src\lib* is almost done. Now we go to the root folder and setup the build tool chain. We use these tools here:
+
+* Gulp: An script runner to automate tasks
+* TypeScript: The transpiler from TS in JS
+* Sass: Transpiler for SCSS files into CSS
+* Travis: A continuees integration tool to monitor the builds
+* Karma: Unit Tests for JavaScript
+
+### Setup the Core
+
+There are two ways to setup a project. You can use *npm* and the command line to execute all parts one by one. Or you can create a file named *package.json* and
+let the *npm* tool request all dependencies. Because of the sheer amount of tools we usually need the second way is now way better. So, start by putting this file
+in your root folder:
+
+~~~
+{
+  "name": "your-project",
+  "version": "0.0.1",
+  "description": "Some good description.",
+  "main": "index.js",
+  "scripts": {
+    "build": "gulp build",
+    "demoall": "gulp build && cd src/demo && npm run exec",
+    "execdemo": "cd src/demo && npm run exec",
+    "test": "gulp test",
+    "tslint": "gulp lint",
+    "stylelint": "gulp lint",
+    "deploy": "firebase deploy",
+    "docs": "gulp docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-git-name/your-project.git"
+  },
+  "keywords": [
+    "Angular",
+    "Reactive",
+    "Forms",
+    "Forms",
+    "Validation",
+    "Viewmodel",
+    "decorators"
+  ],
+  "author": "Your Public Name",
+  "license": "ISC",
+  "engines": {
+    "node": ">= 5.4.1 < 7"
+  },
+  "bugs": {
+    "url": "https://github.com/your-git-name/your-project/issues"
+  },
+  "homepage": "https://github.com/your-git-name/your-project#readme",
+  "dependencies": {
+    "@angular/common": "^2.2.0",
+    "@angular/compiler": "^2.2.0",
+    "@angular/core": "^2.2.0",
+    "@angular/forms": "^2.2.0",
+    "@angular/http": "^2.2.0",
+    "@angular/platform-browser": "^2.2.0",
+    "core-js": "^2.4.1",
+    "rxjs": "^5.0.1",
+    "systemjs": "0.19.38",
+    "zone.js": "^0.7.2"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^2.2.0",
+    "@angular/platform-browser-dynamic": "^2.2.0",
+    "@angular/platform-server": "^2.2.0",
+    "@angular/router": "^3.2.0",
+    "@types/glob": "^5.0.29",
+    "@types/gulp": "^3.8.29",
+    "@types/hammerjs": "^2.0.30",
+    "@types/jasmine": "^2.2.31",
+    "@types/merge2": "0.0.28",
+    "@types/minimist": "^1.1.28",
+    "@types/node": "^6.0.34",
+    "@types/protractor": "^4.0.0",
+    "@types/run-sequence": "0.0.27",
+    "@types/rx": "^4.1.1",
+    "@types/selenium-webdriver": "2.53.36",
+    "axe-core": "^2.0.7",
+    "axe-webdriverjs": "^0.5.0",
+    "conventional-changelog": "^1.1.0",
+    "dgeni": "^0.4.2",
+    "dgeni-packages": "^0.16.2",
+    "express": "^4.14.0",
+    "firebase-tools": "^3.2.1",
+    "fs-extra": "^1.0.0",
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-better-rollup": "^1.0.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.3.0",
+    "gulp-cli": "^1.2.2",
+    "gulp-connect": "^5.0.0",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-markdown": "^1.2.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemaps": "^2.2.3",
+    "gulp-transform": "^1.1.0",
+    "gulp-typedoc": "^2.0.2",
+    "gulp-typescript": "^3.1.4",
+    "highlight.js": "^9.9.0",
+    "jasmine-core": "^2.4.1",
+    "karma": "^1.1.1",
+    "karma-browserstack-launcher": "^1.0.1",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-firefox-launcher": "^1.0.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-sauce-launcher": "^1.0.0",
+    "madge": "^0.6.0",
+    "merge2": "^1.0.2",
+    "minimist": "^1.2.0",
+    "node-sass": "^4.2.0",
+    "protractor": "^4.0.8",
+    "resolve-bin": "^0.4.0",
+    "run-sequence": "^1.2.2",
+    "sass": "^0.5.0",
+    "selenium-webdriver": "^3.0.0",
+    "strip-ansi": "^3.0.0",
+    "stylelint": "^7.7.0",
+    "symlink-or-copy": "^1.0.1",
+    "travis-after-modes": "0.0.6-2",
+    "ts-node": "^2.0.0",
+    "tslint": "^4.3.1",
+    "typedoc": "^0.5.1",
+    "typescript": "~2.1.4",
+    "which": "^1.2.4"
+  }
+}
+~~~
+
+Remember changing the descriptive parts:
+
+![Figure: Your Information in the Package](./images/setup-npm-root.png)
+
+Save this as *package.json* into the root. Open a command prompt and excute this command:
+
+  npm update
+
+You will have a new folder right now: *node_modules*. There is no need to touch this folder, ever. *npm* will do this for you. First check if Gulp is now
+present by typing 
+
+  gulp -v
+
+It should respond like this:
+
+![Figure: Gulp Version](./images/gulp-version.png)
+
+The first part is Gulp. If you have never worked with Gulp before I give a [short introduction here](./setup/setup-gulp). Gulp requires a file called *gulpfile.js* 
+to run so called tasks. Because I want use TypeScript my gulpfile is somewhat special:
+
+~~~
+'use strict';
+/**
+ * Load the TypeScript compiler, then load the TypeScript gulpfile which simply loads all
+ * the tasks. The tasks are really inside tools/gulp/tasks.
+ */
+
+const path = require('path');
+
+// Register TS compilation.
+require('ts-node').register({
+  project: path.join(__dirname, 'tools/gulp')
+});
+
+require('./tools/gulp/gulpfile');
+~~~
+
+The `ts-node` is a [TypeScript execution environment](https://www.npmjs.com/package/ts-node) and REPL (Read Execute Print Loop) for node. It's hence sort of an on-the-fly transpiler for TypeScript.
+Using this we can write the Gulp stuff in TypeScript and Gulp will still execute plain JavaScript.
+
 
