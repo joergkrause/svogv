@@ -1,5 +1,14 @@
-This documenation describes the background and internal functionality of the SVOGV project. It's primarily for learning purposes. 
-It's not a replacement of the common documenation for developers using the library.
+This documentation describes the background and internal functionality of the SVOGV project. It's primarily for learning purposes. 
+It's not a replacement of the common documentation for developers using the library.
+
+**Table of Contents**  *generated with [DocToc](http://doctoc.herokuapp.com/)*
+
+- [Making Of -- How I wrote a NPM package](#)
+- [Angular 2 Components](#)
+	- [What's this about](#)
+	- [The foundation](#)
+		- [1. Load an Editor](#)
+		- [2. Setup your project](#)
 
 # Making Of -- How I wrote a NPM package
 
