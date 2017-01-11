@@ -16,7 +16,7 @@
 Now that Angular 2 is widely used we have – the very first time in years – such a strong feeling in our guts that’s now the first step from ancient crap into something really professional. It brings the level we all know from Java and C# and the mature backend frameworks to the frontend.
 And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
 
-TypeScript brings a whole new level to pros like us. And it makes out world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
+TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
 The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4 a lot easier.
 
 It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
