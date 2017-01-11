@@ -12,7 +12,7 @@ It's not a replacement of the common documentation for developers using the libr
 
 # Making Of -- How I wrote a NPM package
 
-> This is work in progress. Come back often to get recent updates. Currently it's version 0.0.18, published Jan 12, 2017.
+> This is work in progress. Come back often to get recent updates. Currently it's version 0.0.19, published Jan 12, 2017.
 
 # Angular 2 Components
 
