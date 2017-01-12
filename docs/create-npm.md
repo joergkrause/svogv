@@ -298,12 +298,15 @@ Remember changing the descriptive parts:
 
 Save this as *package.json* into the root. Open a command prompt and excute this command:
 
-  npm update
+~~~
+npm update
+~~~
 
 You will have a new folder right now: *node_modules*. There is no need to touch this folder, ever. *npm* will do this for you. First check if Gulp is now
 present by typing 
 
-  gulp -v
+    gulp -v
+
 
 It should respond like this:
 
