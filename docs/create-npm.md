@@ -309,7 +309,9 @@ It should respond like this:
 
 ![Figure: Gulp Version](./images/gulp-version.png)
 
-The first part is Gulp. If you have never worked with Gulp before I give a [short introduction here](./setup/setup-gulp). Gulp requires a file called *gulpfile.js* 
+> If you see nothing or just an error that gulp is not yet present [setup Gulp](./setup/setup-gulp) first.
+
+The first part of the setup refers to Gulp. Gulp requires a file called *gulpfile.js* 
 to run so called tasks. Because I want use TypeScript my gulpfile is somewhat special:
 
 ~~~
