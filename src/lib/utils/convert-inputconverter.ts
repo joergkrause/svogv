@@ -63,6 +63,7 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
                 configurable: true
             });
         } else {
+            // create a helper to access the converter
             Object.defineProperty(target, key, {
                 get: function () {
                     return this["__" + key];
@@ -70,7 +71,7 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
                 set: function (newValue) {
                     this["__" + key] = enumerationType === undefined ? converter(newValue) : converter(newValue, enumerationType);
                 },
-                enumerable: true,
+                enumerable: false,
                 configurable: true
             });
         }

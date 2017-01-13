@@ -18,6 +18,9 @@ import { Meaning } from '../../utils/enum-colors';
                     <span class="progress-description" *ngIf="options.hasProgress">
                         {{progressText}}
                     </span>
+                    <div class="progress" *ngIf="options.hasFooter">
+                        <a href="#" [routerLink]="footerLink">{{foooterText}}</a>
+                    </span>
                   </div>
                 </div>`
 }) //
@@ -40,6 +43,8 @@ export class AcInfoBox {
         this.text = "Demo";
         this.progressValue = 0;
         this.progressText = "";
+        this.footerLink = "/";
+        this.footerText = "";
         this.icon = "fa-user";
         this.options = new AcInfoBoxOptions();
     }
