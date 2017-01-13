@@ -1,9 +1,9 @@
 ﻿import { Meaning, Actions } from './enum-colors';
 
-export var EnumConverter = <T>(value: number, enumerationType: T) => {
-    var sanitizedValue = value.toString(); // value && value[0].toUpperCase() + value.slice(1);
-    var color: T = <T>((<any>enumerationType)[sanitizedValue]);
-    return color;
+export var EnumConverter = <T>(value: number, enumerationType: T) : string => {
+    let sanitizedValue = value.toString(); 
+    let color: T = <T>((<any>enumerationType)[sanitizedValue]);
+    return color.toString();
 }
 
 export var StringConverter = (value: any) => {

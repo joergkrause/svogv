@@ -5,16 +5,14 @@
 					number="6"
 					footerText="Show all widgets"
 					footerLink="['/widgets/list']"
-					color="Info"></ac-infobox>
+					color="Warning"></ac-infobox>
 	</div>
 	<div class="col-lg-6 col-md-6">
-		<div class="card card-inverse card-danger">
-			<div class="card-block bg-danger">
-				<div class="rotate">
-					<i class="fa fa-list fa-4x"></i>
-				</div>
-				<h6 class="text-uppercase">Users</h6>
-				<h1 class="display-1">{{ users.length }}</h1>
-			</div>
+		<ac-infobox icon="fa-list" 
+		            text="Users" 
+					[number]="users.length"
+					footerText="Show some demo data"
+					footerLink="['/users/list']"
+					color="Info"></ac-infobox>
 		</div>
 	</div>

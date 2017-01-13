@@ -18,7 +18,7 @@ I assume here that you have **node** and hence **npm** up and running. Assure th
 
     npm -v
 
-![Figure: Proof of right Version](images/node-version.png)
+![Figure: Proof of right Version](../images/node-version.png)
 
 Install **node** first if it's not present. Use at least version 6.x.x. I would currently recommend the LTS (long term support) version for best support and stability. if you struggle with version, take a look at **nvm** -- the Node Version Manager. You can install different versions of **node** on the same machine and use the command `nvm use x.x.x` to select one or another version as the current one. 
 
@@ -26,11 +26,11 @@ Once **node** is up proceed with installing Gulp.
 
     npm i gulp -g
 
-`i` is short for `install`. 'gulp' is the name of the package. It's being pulled from node package repositirys **npm**. It can be found right [here](https://www.npmjs.com).
+`i` is short for `install`. 'gulp' is the name of the package. It's being pulled from node package repository **npm**. It can be found right [here](https://www.npmjs.com).
 
 ![Figure: The source of almost everything](../images/npm-screenshot.png)  
 
-> The browser interface is crucial, at is leads to the various packages description, documentation, links to the sources on Github and many other useful links. 
+> The browser interface is crucial, as it leads to the various packages description, documentation, links to the sources on Github and many other useful links. 
 
 Once Gulp is being installed, you should be able to check this by asking for Gulp's version:
 

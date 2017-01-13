@@ -47,7 +47,8 @@ export class AcInfoBox {
 
     private getColor(type: string) : string {
         if (this.color){
-            return      
+            let color : string = (<string>EnumConverter(this.color, Meaning)).toLowerCase();
+            return `${type}-${color}`; 
         }
     }
 
