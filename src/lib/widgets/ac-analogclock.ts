@@ -20,30 +20,27 @@ import { DOCUMENT } from '@angular/platform-browser';
         <line x1="100" y1="100" x2="100" y2="55" transform="rotate(90 100 100)" style="stroke-width: 4px; stroke: #fffbf9;" id="hourhand">
             <animatetransform attributeName="transform"
                               #hourhandTransform
-                              attributeType="XML"
                               type="rotate"
-                              dur="43200s" from="0 100 100" to="360 100 100"
+                              dur="43200s" from="0 100 100" to="360 100 100" begin="0s"
                               repeatCount="indefinite"/>
         </line>
         <line x1="100" y1="100" x2="100" y2="40" transform="rotate(180 100 100)" style="stroke-width: 3px; stroke: #fdfdfd;" id="minutehand">
             <animatetransform attributeName="transform"
                               #minutehandTransform
-                              attributeType="XML"
                               type="rotate"
-                              dur="3600s" from="0 100 100" to="360 100 100"
+                              dur="3600s" from="0 100 100" to="360 100 100" begin="0s"
                               repeatCount="indefinite"/>
         </line>
         <line x1="100" y1="100" x2="100" y2="30" transform="rotate(270 100 100)" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
             <animatetransform attributeName="transform"
                               #secondhandTransform
-                              attributeType="XML"
                               type="rotate"
-                              dur="60s" from="0 100 100" to="360 100 100"
+                              dur="60s" from="0 100 100" to="360 100 100" begin="0s"
                               repeatCount="indefinite"/>
         </line>
     </g>
     <circle id="center" style="fill:#128A86; stroke: #C1EFED; stroke-width: 2px;" cx="100" cy="100" r="3"></circle>
-</svg>
+</svg>     
 `
 })
 export class AcAnalogClock implements AfterViewInit {

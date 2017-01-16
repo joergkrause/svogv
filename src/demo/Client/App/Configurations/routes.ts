@@ -35,6 +35,11 @@ const routes: Routes = [
         data: { 'title': 'Analog Clock', 'subtitle': 'Clock Demo', 'active': false, 'disabled': false, 'breadcrumb': true }
       },
       {
+        path: 'clock',
+        component: cmp.LoaderIconComponent,
+        data: { 'title': 'Loader Icon', 'subtitle': 'Living Icons', 'active': false, 'disabled': false, 'breadcrumb': true }
+      },
+      {
         path: 'tree',
         component: cmp.TreeviewComponent,
         data: { 'title': 'Tree View', 'subtitle': 'Tree Demo', 'active': false, 'disabled': false, 'breadcrumb': true }

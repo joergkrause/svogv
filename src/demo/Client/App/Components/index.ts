@@ -15,4 +15,5 @@ export * from './editor/new';
 // app : widgets
 export * from './widgets/list';
 export * from './widgets/analogclock';
+export * from './widgets/loadericon';
 export * from './widgets/treeview';

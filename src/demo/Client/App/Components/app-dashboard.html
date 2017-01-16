@@ -1,18 +1,14 @@
 ﻿<div class="row">
 	<div class="col-lg-6 col-md-6">
-		<ac-infobox icon="fa-user" 
-		            text="Widgets" 
-					number="6"
-					footerText="Show all widgets"
-					footerLink="['/widgets/list']"
-					color="Warning"></ac-infobox>
+		<ac-infobox icon="fa-user" text="Widgets" number="6" footerText="Show all widgets" footerLink="['/widgets/list']" color="Warning"></ac-infobox>
 	</div>
 	<div class="col-lg-6 col-md-6">
-		<ac-infobox icon="fa-list" 
-		            text="Users" 
-					[number]="users.length"
-					footerText="Show some demo data"
-					footerLink="['/users/list']"
-					color="Info"></ac-infobox>
-		</div>
+		<ac-infobox icon="fa-list" text="Users" [number]="users.length" footerText="Show some demo data" footerLink="['/users/list']"
+			color="Info"></ac-infobox>
 	</div>
+</div>
+<div class="row">
+	<div class="col-offset-md-4 col-md-6">
+		<ac-loadericon rotatespeed="1"></ac-loadericon>
+	</div>
+</div>

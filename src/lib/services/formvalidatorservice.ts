@@ -4,7 +4,7 @@ import { Validator, Validators, FormBuilder, FormGroup, FormControl } from '@ang
 
 function validateRange(f: number | Date, t: number | Date) {
 
-  return function validateRangeInternal(c: FormControl) {
+  return function (c: FormControl) {
     if ((Number(f) || Number(t)) && Number(c.value)) {
       var fr = Number(f);
       var to = Number(t);
