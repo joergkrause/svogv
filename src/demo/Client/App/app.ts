@@ -35,7 +35,7 @@ import { FormValidatorService, DropdownService } from 'svogv';
       // Widgets 
       ,cmp.WidgetDemoComponent
       ,cmp.ListWidgetsComponent 
-      ,cmp.AnalogClockComponent, cmp.TreeviewComponent
+      ,cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
       // simple Bootstrap widgets
       ,wd.AcTreeView, wd.AcTreeViewNode
       ,wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb, wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor

@@ -23,7 +23,7 @@ export class ListWidgetsComponent implements OnInit {
       , new AcMenuLinkItem('BreadCrumb', ['/widgets/bread']));
     this.svgComponents = new AcMenu(
         new AcMenuLinkItem('Analog Clock', ['/widgets/clock'])
-      , new AcMenuLinkItem('Loader Icon', ['/widgets/loader']));
+      , new AcMenuLinkItem('Loader Icon', ['/widgets/icon']));
     // Link items will use the router by default 
   }
 
