@@ -1,6 +1,6 @@
 {
   "name": "svogv",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
   "main": "index.js",
   "scripts": {
