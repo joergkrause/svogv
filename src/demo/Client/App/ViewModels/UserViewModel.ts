@@ -27,4 +27,8 @@ export class UserViewModel {
   @MaxLength(100)
   userName: string = "";
 
+  @Display("Age", "From 12 to 88")
+  @Range(12, 88)
+  age = 10;
+
 }

@@ -1,4 +1,4 @@
-﻿export function Range(from: number, to: number, msg?: string) {
+﻿export function Range(from: number | Date, to: number | Date, msg?: string) {
     // the original decorator
     function rangeInternal(target: Object, property: string | symbol): void {
         new rangeInternalSetup(target, property.toString(), from, to, msg);
@@ -10,7 +10,7 @@
 
 class rangeInternalSetup {
 
-    constructor(public target: any, public key: string, public from: number, public to: number, public msg?: string) {
+    constructor(public target: any, public key: string, public from: number | Date, public to: number | Date, public msg?: string) {
         // property value
 
         // create a helper property to transport a meta data value

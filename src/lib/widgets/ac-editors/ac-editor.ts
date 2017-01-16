@@ -53,15 +53,21 @@ export class AcEditor implements OnInit {
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // this is set by FormValidatorService
     var editorModel = (<any>this.userForm)["__editorModel__"];
-      // get type from form
+    // get type from form
     if (editorModel) {
       // make an instance to read the properties
       this.label = editorModel[`__displayName__${this.name}`] || this.label || this.name;
       this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip || this.name;
+      if (editorModel[`__hasRangeFrom__${this.name}`] && Number(editorModel[`__hasRangeFrom__${this.name}`])) {
+        this.fromValue = <number>editorModel[`__hasRangeFrom__${this.name}`];
+      }
+      if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
+        this.toValue = <number>editorModel[`__hasRangeTo__${this.name}`];
+      }
     }
   }
 
-  private onValueChanged(data : any) {
+  private onValueChanged(data: any) {
     this.errors = new Array<string>();
     for (let error in this.userForm.controls[this.name].errors) {
       this.errors.push(error);

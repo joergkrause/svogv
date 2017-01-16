@@ -1,20 +1,33 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { FormControlEx } from './FormControlEx';
-import { Validator, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validator, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
-//export class RangeValidator implements Validator {
+function validateRange(f: number | Date, t: number | Date) {
 
-//  constructor(public from: number, public to: number) {
-//  }
+  return function validateRangeInternal(c: FormControl) {
+    if ((Number(f) || Number(t)) && Number(c.value)) {
+      var fr = Number(f);
+      var to = Number(t);
+      var v = Number(c.value);
+      return (!fr || v >= fr) && (!to || v <= to) ? null : {
+        "range": {
+          valid: false
+        }
+      };
+    }
+    if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.values)) {
+      var fr = Date.parse(f.toString());
+      var to = Date.parse(t.toString());
+      var v = Date.parse(c.value);
+      return (!fr || v >= fr) && (!to || v <= to) ? null : {
+        "range": {
+          valid: false
+        }
+      };
+    }
+  }
 
-//  validate(control: AbstractControl): { [err: string]: any } {    
-//    let n = Number(control.value);
-//    if (n) {
-//      return (n >= this.from && n <= this.to) ? {[]} : { ["err": "Range is not valid"]};
-//    }
-//    return false;
-//  }
-//}
+}
 
 @Injectable()
 export class FormValidatorService {
@@ -26,9 +39,9 @@ export class FormValidatorService {
   }
 
   public build(target: any): FormGroup {
-    let valGroup : any = {};
-    let errGroup : any = {};
-    let form : FormGroup;
+    let valGroup: any = {};
+    let errGroup: any = {};
+    let form: FormGroup;
     let targetInstance: any;
     if (target) {
       // the cast is just to suppress TS errors and show it's intentionally
@@ -66,13 +79,18 @@ export class FormValidatorService {
           let pattern = new RegExp(target.prototype[`__hasPattern__${propName}`]);
           validators.push(Validators.pattern(pattern));
         }
-        let hasRange = `__hasRange__${propName}` in target.prototype;
-        if (hasRange) {
+        let hasRangeFrom = `__hasRangeFrom__${propName}` in target.prototype;
+        let hasRangeTo = `__hasRangeTo__${propName}` in target.prototype;
+        if (hasRangeFrom || hasRangeTo) {
           (<any>errmsgs)["range"] = target.prototype[`__errRange__${propName}`];
-          let from = new RegExp(target.prototype[`__hasRangeFrom__${propName}`]);
-          let to = new RegExp(target.prototype[`__hasRangeTo__${propName}`]);
-          //TODO: Add custom validator
-          //validators.push(RangeValidator(from, to));
+          let f : number | Date = Number(target.prototype[`__hasRangeFrom__${propName}`]);
+          let t : number | Date = Number(target.prototype[`__hasRangeTo__${propName}`]);
+          if (!f && !t){
+            // If NaN assume Date
+            f = Date.parse(f.toString());
+            t = Date.parse(t.toString());            
+          }
+          validators.push(validateRange(f, t));
         }
         if (validators.length === 0) {
           // even if there is no validator we need to add the property to the group

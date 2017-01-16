@@ -3,6 +3,18 @@ import { InputConverter, EnumConverter } from '../../utils/convert-inputconverte
 import { AcInfoBoxOptions } from './Models/options-infobox';
 import { Meaning } from '../../utils/enum-colors';
 
+/**
+ * The InfoBox is a rectangle area to show dynamic data. It has icon, text, and additional information.
+ * 
+ * @param icon The name of an FontAwesome icon, such as "fa-circle"
+ * @param text The text that appears prominently
+ * @param number A number that covers the element as the value
+ * @param footerText A smaller explanation text at the end
+ * @param footerLink A link, suitable for [routerLink] that is being invoked from the footerText
+ * @param progressValue A progress Value that creates a progress bar position
+ * @param progressText A progress Text that replaces the footerText
+ * @param color The background color
+ */
 @Component({
     selector: 'ac-infobox',
     template: `<div class="card card-inverse" [ngClass]="getColor('card')">
@@ -18,7 +30,7 @@ import { Meaning } from '../../utils/enum-colors';
                     <span class="progress-description" *ngIf="options.hasProgress">
                         {{progressText}}
                     </span>
-                    <div class="progress" *ngIf="options.hasFooter">
+                    <span class="progress" *ngIf="options.hasFooter">
                         <a href="#" [routerLink]="footerLink">{{foooterText}}</a>
                     </span>
                   </div>
