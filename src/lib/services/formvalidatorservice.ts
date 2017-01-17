@@ -36,7 +36,7 @@ function validateCompare(p: string) {
     if (form && form.controls) {
       form.controls[p].valueChanges.subscribe(() => {
         // trigger validation for particular element
-        form.controls[(<any>c)["name"]].updateValueAndValidity();
+        c.updateValueAndValidity();
       });
     }
     if (c.value) {
