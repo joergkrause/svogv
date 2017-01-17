@@ -7,6 +7,7 @@ export * from './ac-tabs';
 export * from './ac-loadericon';
 export * from './ac-analogclock';
 export * from './ac-editors/ac-editor';
+export * from './ac-editors/directives/autoform';
 export * from './ac-treeview/ac-treeview';
 export * from './ac-treeview/ac-treeview-node';
 export * from './ac-treeview/models/ac-treenodebase';

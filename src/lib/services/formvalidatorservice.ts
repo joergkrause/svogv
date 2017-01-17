@@ -1,6 +1,7 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { FormControlEx } from './FormControlEx';
 import { Validator, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 function validateRange(f: number | Date, t: number | Date) {
 
@@ -15,7 +16,7 @@ function validateRange(f: number | Date, t: number | Date) {
         }
       };
     }
-    if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.values)) {
+    if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.value)) {
       var fr = Date.parse(f.toString());
       var to = Date.parse(t.toString());
       var v = Date.parse(c.value);
@@ -29,6 +30,31 @@ function validateRange(f: number | Date, t: number | Date) {
 
 }
 
+function validateCompare(p: string) {
+  return function (c: FormControl) {
+    let form : FormGroup = c.root as FormGroup;
+    if (form && form.controls) {
+      form.controls[p].valueChanges.subscribe(() => {
+        // trigger validation for particular element
+        form.controls[(<any>c)["name"]].updateValueAndValidity();
+      });
+    }
+    if (c.value) {
+      // compare the current value with the referenced control's value
+      return (!c.value || c.value == (<any>c.root)["controls"][p].value) ? null : {
+        "compare": {
+          valid: false
+        }
+      };
+    }
+  }
+
+}
+
+/**
+ * The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
+ * has been decorated with validation decorators the validators are created accordingly.  
+ */
 @Injectable()
 export class FormValidatorService {
 
@@ -83,14 +109,20 @@ export class FormValidatorService {
         let hasRangeTo = `__hasRangeTo__${propName}` in target.prototype;
         if (hasRangeFrom || hasRangeTo) {
           (<any>errmsgs)["range"] = target.prototype[`__errRange__${propName}`];
-          let f : number | Date = Number(target.prototype[`__hasRangeFrom__${propName}`]);
-          let t : number | Date = Number(target.prototype[`__hasRangeTo__${propName}`]);
-          if (!f && !t){
+          let f: number | Date = Number(target.prototype[`__hasRangeFrom__${propName}`]);
+          let t: number | Date = Number(target.prototype[`__hasRangeTo__${propName}`]);
+          if (!f && !t) {
             // If NaN assume Date
             f = Date.parse(f.toString());
-            t = Date.parse(t.toString());            
+            t = Date.parse(t.toString());
           }
           validators.push(validateRange(f, t));
+        }
+        let hasCompare = `__hasCompareProperty__${propName}` in target.prototype;
+        if (hasCompare) {
+          (<any>errmsgs)["compare"] = target.prototype[`__errCompareProperty__${propName}`];
+          let compare = target.prototype[`__withCompare__${propName}`];
+          validators.push(validateCompare(compare));
         }
         if (validators.length === 0) {
           // even if there is no validator we need to add the property to the group

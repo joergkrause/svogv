@@ -42,7 +42,7 @@ import { FormValidatorService, DropdownService } from 'svogv';
       // SVG widget
       ,wd.AcAnalogClock, wd.AcLoaderIcon
       // Supporting Directives
-      , wd.Dropdown, wd.DropdownToggle
+      , wd.Dropdown, wd.DropdownToggle, wd.AutoForm
     ],
     bootstrap: [cmp.SiteRootComponent],
     providers: [SiteApiService         // just for demo to get some static data

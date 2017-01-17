@@ -78,7 +78,7 @@ gulp.task('copy:angular', function () {
 });
 
 gulp.task('copy:svogv', function () {
-  return gulp.src(['./dist/bundles/svogv.umd.js'])
+  return gulp.src([upPath + 'svogv/bundles/svogv.umd.js'])
              //.pipe(uglify())
              .pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
 });

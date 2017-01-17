@@ -1,6 +1,22 @@
 import '../../../utils/object-extensions';
 import { AcDataGridHeader } from './ac-datagridheader';
 
+export enum Direction{
+  Ascending,
+  Descending
+}
+
+/**
+ * The controlling class for Grid applications.
+ * 
+ * This class takes an array of elements and handles:
+ * - visible headers, managed by @Hidden() decorator
+ * - create header titles, managed by @Display() decorator
+ * - sorting
+ * - filtering
+ * - count total rows
+ * - paging
+ */
 export class AcDataGridModel<T> {
   searchValue: T = <T>{};
   currentPageIndex: number = 1;
@@ -52,6 +68,14 @@ export class AcDataGridModel<T> {
   }
   get items(): T[] {
     return this._items;
+  }
+
+  getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
+    if (sortDirection === Direction.Ascending){
+      return this.items.sort((a : any,b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
+    } else {
+      return this.items.sort((a : any,b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
+    }
   }
 
   get itemsFiltered(): T[] {
