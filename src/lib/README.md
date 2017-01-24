@@ -31,7 +31,7 @@ We did this by using a straight domain model. Let's assume you have a viewmodel 
 export class UserViewModel {
 
   @Hidden()
-  id: Number = ;
+  id: Number = 0;
 
   @Display("E-Mail", "E-Mail address")
   @Required()

@@ -37,7 +37,7 @@ We did this by using a straight domain model. Let's assume you have a viewmodel 
 export class UserViewModel {
 
   @Hidden()
-  id: Number = ;
+  id: Number = 0;
 
   @Display("E-Mail", "E-Mail address")
   @Required()
@@ -133,7 +133,7 @@ Additionally we plan to provide some "fun stuff", that may help to understand ho
 
 * **AnalogClock**: It is what it says -- based on SVG
 * **HoverHeader**: An inteactive header, changes appearance effects
-* **LoaderIcon**: A circling icon that is higly customizable
+* **LoaderIcon**: A circling icon that is higly customizable (as of 0.0.24 it's working)
 
 ## Where to get?
 
