@@ -42,6 +42,7 @@ export class AcEditor implements OnInit {
   // range only
   @Input() fromValue: number = 0;
   @Input() toValue: number = 100;
+  @Input() waterMark = "";
 
   errors: Array<string>;
 
@@ -63,6 +64,9 @@ export class AcEditor implements OnInit {
       }
       if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
         this.toValue = <number>editorModel[`__hasRangeTo__${this.name}`];
+      }
+      if (editorModel[`__hasWatermark__${this.name}`]){
+        this.waterMark = editorModel[`__watermark__${this.name}`];
       }
     }
   }

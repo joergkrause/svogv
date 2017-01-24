@@ -26,6 +26,12 @@ class placeholderInternalSetup {
             configurable: false
         });
 
+        Object.defineProperty(this.target, `__hasWatermark__${this.key}`, {
+            value: true,
+            enumerable: false,
+            configurable: false
+        });
+
     }
 
 }
