@@ -3,18 +3,16 @@ let isProd = false;
 const config = {
     entry: {
         app: './Client/App/app.ts',
-        // vendor: './vendor/vendor.ts',
-        // polyfills: './vendor/polyfills.ts'
+        vendor: './vendor/vendor.ts',
+        polyfills: './vendor/polyfills.ts'
     },
     output: {
-        filename: './assets/js/bundle.js'
+        filename: '[name].js',
+        path: './assets/js/'
     },
     resolve: {
         /*
         * An array of extensions that should be used to resolve modules.
-        * Wenn die Endung beim Import in den TypeScript Dateien nicht angegeben wird,
-        * dann wird versucht die fehlende Endung mit den Endungen hier "wiederherzustellen"
-        *
         * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
         */
         extensions: ['.ts', '.js', '.json', '.css', '.scss', '.less']
@@ -30,12 +28,8 @@ const config = {
             */
             {
                 test: /\.ts$/,
-                //kümmert sich um das Erstellen von js code aus TypeScript und wandelt die passenden
-                //relativen templateUrl aufrufe in ein Konstrukt um das der html Loader versteht.
-                use: [
-                    'awesome-typescript-loader',
-                    'angular2-template-loader'
-                ]
+                loader: 'ts-loader',
+                exclude: /node_modules/
             }
 
         ]

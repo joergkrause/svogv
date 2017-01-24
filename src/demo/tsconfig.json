@@ -10,10 +10,6 @@
     "noImplicitAny": false
   },
   "compileOnSave": false,
-  "files": [
-    "./Client/App/app.ts",
-    "./Client/App/**/*.ts"
-  ],
   "exclude": [
     "node_modules",
     "wwwroot",
