@@ -1,6 +1,6 @@
 # Developer guide: getting your environment set up
 
-1. Make sure you have `node` installed with a version at _least_ 5.5.0.
+1. Make sure you have `node` installed with a version at _least_ 5.5.0. Internally we use 6.x.x. currently.
 2. Run `npm install -g gulp` to install gulp.
 3. Fork the `joergkrause/svogv` repo. 
 4. Clone your fork. 
