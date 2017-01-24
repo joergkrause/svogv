@@ -16,10 +16,10 @@ import { FormGroup } from '@angular/forms';
                 <select *ngIf="type == 'select-enum'" class="form-control" [id]="name" [formControlName]="name">
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
-                <input *ngIf="type == 'range'" type="range" minvalue="fromValue" maxValue="toValue" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'date'" type="date" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'number'" type="number" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'text' || type == ''" type="text" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [minvalue]="fromValue" [maxValue]="toValue" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'date'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" type="text" class="form-control" [id]="name" [formControlName]="name" />
                 <span class="fa fa-warning text-danger form-control-feedback" 
                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
                 <small class="text-danger" 
