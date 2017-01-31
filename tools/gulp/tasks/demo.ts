@@ -13,6 +13,7 @@ var htmlmin = require('gulp-htmlmin');                      // minify HTML
 var ts = require('gulp-typescript');                        // transpile TS
 var sass = require('gulp-sass');                            // transpile SASS
 var del = require('del');                                   // helper to delete paths
+var systemBuilder = require('systemjs-builder');            // create a rx bundle because the provided did not work
 
 // from Github structure copy static files to root/dist/demo and execute there
 
@@ -21,9 +22,9 @@ var paths = {
   root: DIST_ROOT + "demo/",
   assets: DIST_ROOT + "demo/assets/",
   views: DIST_ROOT + "demo/views/",
-  bower: DEMO_ROOT + "./bower_components/",
-  npm: DEMO_ROOT + "./node_modules/",
-  app: DEMO_ROOT + "./Client/App/"
+  bower: DEMO_ROOT + "bower_components/",
+  npm: DEMO_ROOT + "node_modules/",
+  app: DEMO_ROOT + "Client/App/"
 };
 
 task('clean:assets', function (cb) {
@@ -52,7 +53,7 @@ task('copy:js', function () {
 
 // This is a simple loader while debugging without going through the WebPack hassle
 task('copy:systemjs', function () {
-  return src('./Client/systemjs.config.js').pipe(dest(paths.assets + 'js'));
+  return src(DEMO_ROOT + 'Client/systemjs.config.js').pipe(dest(paths.assets + 'js'));
 });
 
 task('copy:angular', function () {
@@ -63,18 +64,28 @@ task('copy:angular', function () {
 });
 
 task('copy:svogv', function () {
-  return src(['./dist/bundles/svogv.umd.js']).pipe(dest(paths.assets + 'js/lib/svogv/bundles/'));
+  return src(['./dist/svogv/bundles/svogv.umd.js']).pipe(dest(paths.assets + 'js/lib/svogv/bundles/'));
 });
 
-// Copy RxJs brute force (everything until we know what we really need)
+// Create RxJs bundle 
 task('copy:rxjs', function () {
-  return src(paths.npm + 'rxjs/**/*.js').pipe(dest(paths.assets + 'js/lib/rxjs'));
+    var builder = new systemBuilder('./', {
+        paths: {"rxjs/*": "node_modules/rxjs/*.js"},
+        map: {"rxjs": "node_modules/rxjs"},
+        packages: {"rxjs": {main: 'Rx.js', defaultExtension: "js"}}
+    });
+    // create the bundle we use from systemjs.config.js
+    builder.bundle('rxjs', paths.assets + 'js/lib/rxjs/Bundles/Rx.min.js', {
+        sourceMaps: true,
+        minify: true,
+        mangle: true
+    });
 });
 
 // we write all css in sass 
 task('sass', function () {
   return src([
-    './Client/Styles/*.scss'
+    'Client/Styles/*.scss'
   ])
     .pipe(sass())
     .pipe(dest(paths.assets + 'css'));
@@ -101,7 +112,7 @@ task('copy:views:templates', function () {
              .pipe(dest(paths.assets + 'js/app/Components/'));
 });
 task('copy:views:index', function () {
-  return src(['./Client/Views/index.html'])
+  return src([DEMO_ROOT + './Client/Views/index.html'])
              .pipe(dest(paths.root));
 });
 task('copy:views', ['copy:views:index', 'copy:views:templates']);
@@ -114,7 +125,7 @@ task('copy:images', function () {
 task('copy', ['copy:svogv', 'copy:js', 'copy:rxjs', 'copy:angular', 'copy:systemjs', 'copy:css', 'copy:fonts', 'copy:views', 'copy:images']);
 
 // configure TS separately
-var tsProject = ts.createProject(DEMO_ROOT + '/tsconfig.json');
+var tsProject = ts.createProject(DEMO_ROOT + 'tsconfig.json');
 
 task('ts', function () {
   return tsProject.src()

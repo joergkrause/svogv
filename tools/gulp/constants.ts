@@ -3,11 +3,11 @@ import {join} from 'path';
 export const SVOGV_VERSION = require('../../package.json').version;
 
 export const PROJECT_ROOT = join(__dirname, '../..');
-export const SOURCE_ROOT = join(PROJECT_ROOT, 'src');
-export const DEMO_ROOT = join(PROJECT_ROOT, 'src/demo');
+export const SOURCE_ROOT = join(PROJECT_ROOT, 'src/');
+export const DEMO_ROOT = join(PROJECT_ROOT, 'src/demo/');
 
-export const DIST_ROOT = join(PROJECT_ROOT, 'dist');
-export const DIST_COMPONENTS_ROOT = join(DIST_ROOT, 'svogv');
+export const DIST_ROOT = join(PROJECT_ROOT, 'dist/');
+export const DIST_COMPONENTS_ROOT = join(DIST_ROOT, 'svogv/');
 
 export const SASS_AUTOPREFIXER_OPTIONS = {
   browsers: [

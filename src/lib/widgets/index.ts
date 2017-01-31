@@ -2,7 +2,6 @@
 export * from './ac-breadcrumb';
 export * from './ac-webpart';
 export * from './ac-datagrid/ac-datagridpagination';
-//export * from './ac-datagrid/models/ac-datagridmodel'; //
 export * from './ac-tabs';
 export * from './ac-loadericon';
 export * from './ac-analogclock';
@@ -10,11 +9,6 @@ export * from './ac-editors/ac-editor';
 export * from './ac-editors/directives/autoform';
 export * from './ac-treeview/ac-treeview';
 export * from './ac-treeview/ac-treeview-node';
-//export * from './ac-treeview/models/ac-treenodebase';//
-//export * from './ac-treeview/models/ac-treenode';//
-//export * from './ac-treeview/models/ac-texttreenode';//
-//export * from './ac-treeview/models/ac-componenttreenode';//
-//export * from './ac-treeview/models/ac-treenodeoptions';//
 export * from './ac-menu/ac-sidemenu';
 export * from './ac-menu/ac-dropmenu';
 export * from './ac-menu/directives/dropdown';
