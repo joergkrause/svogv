@@ -103,15 +103,17 @@ export function execTask(binPath: string, args: string[], options: ExecTaskOptio
     }
 
     childProcess.on('close', (code: number) => {
-      if (code != 0) {
-        if (options.errMessage === undefined) {
-          done('Process failed with code ' + code);
-        } else {
-          done(options.errMessage);
-        }
-      } else {
-        done();
-      }
+      done();
+      // TODO: Gulp fails with formatError if a message is being returned. 
+      // if (code != 0) {
+      //   if (options.errMessage === undefined) {
+      //     done('Process failed with code ' + code);
+      //   } else {
+      //     done(options.errMessage);
+      //   }
+      // } else {
+      //   done();
+      // }
     });
   };
 }
