@@ -103,7 +103,7 @@ task(':build:components:rollup', () => {
     dest: 'svogv.umd.js'
   };
 
-  return src(path.join(DIST_COMPONENTS_ROOT, 'module.js'))
+  return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
     .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))   // copy to dist for reference
     .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles'))); // copy to demo for immediate usage

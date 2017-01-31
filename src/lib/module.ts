@@ -4,40 +4,40 @@ import {
   AcBreadCrumb,
   AcInfoBox,
   AcSideMenu,
+  AcDropMenu,
   AcTab,
-  AcWebPart
+  AcWebPart,
+  AcLoaderIcon,
+  AcAnalogClock
 } from './widgets/index';
 
 import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
 import { AcTreeView } from './widgets/ac-treeview/ac-treeview';
 import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
 import { AcEditor } from './widgets/ac-editors/ac-editor';
+import { Hidden, Display, Placeholder, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
+import { FormValidatorService } from './services';
+
+export * from './decorators';
 
 const SVOGV_MODULES = [
   AcBreadCrumb,
   AcInfoBox,
   AcSideMenu,
+  AcDropMenu,
   AcTab,
   AcWebPart,
   AcDataGridPagination,
   AcTreeView,
   AcTreeViewNode,
-  AcEditor
+  AcEditor,
+  AcLoaderIcon,
+  AcAnalogClock
 ];
 
 @NgModule({
-  imports: [
-    AcBreadCrumb,
-    AcInfoBox,
-    AcSideMenu,
-    AcTab,
-    AcWebPart,
-    AcDataGridPagination,
-    AcTreeView,
-    AcTreeViewNode,
-    AcEditor
-  ],
-  exports: SVOGV_MODULES,
+  imports: SVOGV_MODULES,
+  exports: SVOGV_MODULES
 })
 export class SvOGvRootModule { }
 
@@ -47,7 +47,7 @@ export class SvOGvRootModule { }
  */
 @NgModule({
   imports: SVOGV_MODULES,
-  exports: SVOGV_MODULES,
+  exports: SVOGV_MODULES
 })
 export class SvOGvModule {
   static forRoot(): ModuleWithProviders {

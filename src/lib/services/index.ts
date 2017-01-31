@@ -1,2 +1,2 @@
-export * from './formvalidatorservice';
+export * from './FormValidatorService';
 export * from './FormControlEx';
