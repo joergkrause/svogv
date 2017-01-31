@@ -27,6 +27,7 @@ const gulpIf = require('gulp-if');
 /** Path to the tsconfig used for ESM output. */
 const tsconfigPath = path.relative(PROJECT_ROOT, path.join(COMPONENTS_DIR, 'tsconfig.json'));
 
+console.log('Using this config file: ' + tsconfigPath);
 
 /** [Watch task] Rebuilds (ESM output) whenever ts, scss, or html sources change. */
 task(':watch:components', () => {
@@ -37,7 +38,7 @@ task(':watch:components', () => {
 
 
 /** Builds component typescript only (ESM output). */
-task(':build:components:ts', tsBuildTask(COMPONENTS_DIR, 'tsconfig.json'));
+task(':build:components:ts', tsBuildTask(path.join(COMPONENTS_DIR, 'tsconfig-srcs.json')));
 
 /** Builds components typescript for tests (CJS output). */
 task(':build:components:spec', tsBuildTask(COMPONENTS_DIR));
@@ -102,10 +103,10 @@ task(':build:components:rollup', () => {
     dest: 'svogv.umd.js'
   };
 
-  return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
+  return src(path.join(DIST_COMPONENTS_ROOT, 'module.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
-    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))
-    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles')));
+    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))   // copy to dist for reference
+    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles'))); // copy to demo for immediate usage
 });
 
 /** Builds components with resources (html, css) inlined into the built JS (ESM output). */

@@ -16,16 +16,16 @@
     "target": "es5",
     "inlineSources": true,
     "stripInternal": false,
-    "baseUrl": "",
-    "paths": {
-    },
     "typeRoots": [
       "../../node_modules/@types"
     ],
     "types": [
-      "jasmine"
+      "jasmine", "node"
     ]
   },
+    "files": [
+      "module.ts"
+    ],
   "angularCompilerOptions": {
     "genDir": "../../dist",
     "skipTemplateCodegen": true,

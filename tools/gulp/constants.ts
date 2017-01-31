@@ -35,4 +35,4 @@ export const NPM_VENDOR_FILES = [
   '@angular', 'core-js/client', 'rxjs', 'systemjs/dist', 'zone.js/dist'
 ];
 
-export const COMPONENTS_DIR = join(SOURCE_ROOT, 'lib');
+export const COMPONENTS_DIR = join(SOURCE_ROOT, 'lib/');

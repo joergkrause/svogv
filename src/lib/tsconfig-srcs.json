@@ -17,9 +17,15 @@
     "stripInternal": false,
     "typeRoots": [
       "../../node_modules/@types"
+    ],
+    "types": [
+      "jasmine", "node"
     ]
   },
   "exclude": [
+    "node_modules",
+    "typings/**",
+    "typings/*.d.ts",
     "**/*.spec.*",
     "system-config-spec.ts"
   ],
