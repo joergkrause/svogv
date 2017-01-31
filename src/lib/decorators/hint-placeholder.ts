@@ -1,7 +1,8 @@
 ﻿/**
  * The Placeholder decorator. 
  * 
- * The placeholder adds the given text as a watermark to any input fields. There is no function in DataGrid.
+ * The placeholder adds the given text as a watermark to any input fields. 
+ * There is no function in DataGrid.
  * 
  * @param name          The Name that appears in form fields as a watermark.
  */

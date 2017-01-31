@@ -19,11 +19,11 @@ export class EditorDemoComponent {
     // we use the router as a global configuration point here
     let userRoutes: Array<AcTab> = new Array<AcTab>();
     router.config
-      .filter((route, idx) => route.path === "editor")
+      .filter((route, idx) => route.path === 'editor')
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(["/editor", subroute.path], subroute.data["title"], !!subroute.data["active"], !!subroute.data["disabled"])));
+      .forEach(subroute => userRoutes.push(new AcTab(['/editor', subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled'])));
     
     this.editorTabs = new AcTabData(userRoutes);
   }

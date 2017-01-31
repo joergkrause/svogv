@@ -19,11 +19,11 @@ export class WidgetDemoComponent {
     // we use the router as a global configuration point here
     let userRoutes: Array<AcTab> = new Array<AcTab>();
     router.config
-      .filter((route, idx) => route.path === "widgets")
+      .filter((route, idx) => route.path === 'widgets')
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(["/widgets", subroute.path], subroute.data["title"], !!subroute.data["active"], !!subroute.data["disabled"])));
+      .forEach(subroute => userRoutes.push(new AcTab(['/widgets', subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled'])));
     
     this.widgetTabs = new AcTabData(userRoutes);
   }

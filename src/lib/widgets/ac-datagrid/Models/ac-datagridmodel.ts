@@ -1,7 +1,7 @@
 import '../../../utils/object-extensions';
 import { AcDataGridHeader } from './ac-datagridheader';
 
-export enum Direction{
+export enum Direction {
   Ascending,
   Descending
 }
@@ -71,10 +71,10 @@ export class AcDataGridModel<T> {
   }
 
   getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
-    if (sortDirection === Direction.Ascending){
-      return this.items.sort((a : any,b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
+    if (sortDirection === Direction.Ascending) {
+      return this.items.sort((a: any, b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
     } else {
-      return this.items.sort((a : any,b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
+      return this.items.sort((a: any, b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
     }
   }
 
@@ -88,7 +88,7 @@ export class AcDataGridModel<T> {
   }
 
   // The view can get col by col filtered for valid headers
-  public columnsOfItem(item: T) : Array<any> {
+  public columnsOfItem(item: T): Array<any> {
     // we return all if no headers
     let columns: Array<any> = new Array<any>();
     if (!this.headers) {
@@ -101,10 +101,9 @@ export class AcDataGridModel<T> {
     return columns;
   }
 
-  headers : Array<AcDataGridHeader>;
+  headers: Array<AcDataGridHeader>;
 
   private createHeadersForType(type: any): void {
-    let headers: Array<AcDataGridHeader>;
     // assume simple object structure, iterating an array of viewmodels
     // has at least one row, so we can read the headers
     // first we read the properties

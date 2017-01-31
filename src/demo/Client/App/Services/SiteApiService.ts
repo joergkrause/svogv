@@ -17,24 +17,24 @@ export class SiteApiService {
     // some static demo data
     let u1 = new UserViewModel();
     u1.id = 1;
-    u1.email = "Paul@parker.com";
-    u1.phoneNumber = "030-123456";
-    u1.userName = "Paul Parker";
+    u1.email = 'Paul@parker.com';
+    u1.phoneNumber = '030-123456';
+    u1.userName = 'Paul Parker';
     let u2 = new UserViewModel();
     u2.id = 2;
-    u2.email = "wilma@workshop.com";
-    u2.phoneNumber = "055-123456";
-    u2.userName = "Wilma Workshop";
+    u2.email = 'wilma@workshop.com';
+    u2.phoneNumber = '055-123456';
+    u2.userName = 'Wilma Workshop';
     let u3 = new UserViewModel();
-    u3.id = 3; 
-    u3.email = "theodor@trainer.com"; 
-    u3.phoneNumber = "088-123456"; 
-    u3.userName = "Theodor Trainer";
+    u3.id = 3;
+    u3.email = 'theodor@trainer.com';
+    u3.phoneNumber = '088-123456';
+    u3.userName = 'Theodor Trainer';
     let u4 = new UserViewModel();
-    u4.id = 4; 
-    u4.email = "bill@boss.com"; 
-    u4.phoneNumber = "001-55998877"; 
-    u4.userName = "Bill Boss";
+    u4.id = 4;
+    u4.email = 'bill@boss.com';
+    u4.phoneNumber = '001-55998877';
+    u4.userName = 'Bill Boss';
 
     this.users = new Array<UserViewModel>();
     this.users.push(u1);

@@ -10,10 +10,10 @@
 
 class rangeInternalSetup {
 
-    constructor(public target: any, 
-                public key: string, 
-                public from: number | Date, 
-                public to: number | Date, 
+    constructor(public target: any,
+                public key: string,
+                public from: number | Date,
+                public to: number | Date,
                 public msg?: string) {
         // property value
 

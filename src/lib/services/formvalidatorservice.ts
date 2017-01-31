@@ -1,7 +1,6 @@
 ﻿import { Injectable, Inject } from '@angular/core';
 import { FormControlEx } from './FormControlEx';
-import { Validator, Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 function validateRange(f: number | Date, t: number | Date) {
 
@@ -72,11 +71,10 @@ export class FormValidatorService {
     let form: FormGroup;
     let targetInstance: any;
     if (target) {
-      // the cast is just to suppress TS errors and show it's intentionally
+      // the cast is just to suppress TS errors and shows it's intentionally
       try {
         targetInstance = new target();
-      }
-      catch (ex) {
+      } catch (ex) {
         console.error('Invalid viewmodel for FormValidatorService');
       }
     }

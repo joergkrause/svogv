@@ -1,8 +1,8 @@
 ﻿// public
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, Validators } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService } from '../../Services/SiteApiService';
@@ -38,7 +38,7 @@ export class EditEditorComponent implements OnInit {
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // receive the param on init
     this.paramsSubscriber = this.route.params.subscribe(params => {
-      this.userId = +params["id"];
+      this.userId = +params['id'];
       this.loadUser();
     });
   }
@@ -56,7 +56,8 @@ export class EditEditorComponent implements OnInit {
     this.apiService
       .getUser(this.userId)
       .subscribe(data => {
-        // patchValue here instead if setValue because the form's viewmodel is more complete than the form
+        // patchValue here instead if setValue because the form's 
+        // viewmodel is more complete than the form
         this.userForm.patchValue(data, { onlySelf: true, emitEvent: false });
       });
   }
@@ -67,11 +68,11 @@ export class EditEditorComponent implements OnInit {
       this.apiService
         .editUser(this.userId, this.userForm.value)
         .subscribe(result => {
-          console.log("Update User successful");
+          console.log('Update User successful');
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend
-          EmitterService.get("BROADCAST").emit();
+          EmitterService.get('BROADCAST').emit();
           this.closeForm();
         });
     }

@@ -65,7 +65,7 @@ export class AcEditor implements OnInit {
       if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
         this.toValue = <number>editorModel[`__hasRangeTo__${this.name}`];
       }
-      if (editorModel[`__hasWatermark__${this.name}`]){
+      if (editorModel[`__hasWatermark__${this.name}`]) {
         this.waterMark = editorModel[`__watermark__${this.name}`];
       }
     }

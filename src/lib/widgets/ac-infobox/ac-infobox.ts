@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
 import { AcInfoBoxOptions } from './Models/options-infobox';
 import { Meaning } from '../../utils/enum-colors';
@@ -44,7 +44,7 @@ export class AcInfoBox {
     @Input() footerLink: string;
     @Input() progressValue: number;
     @Input() progressText: string;
-    @Input() 
+    @Input()
     @InputConverter(EnumConverter, Meaning) // need EnumConverter, as otherwise metadata returns Number
     color?: Meaning;
 
@@ -52,20 +52,20 @@ export class AcInfoBox {
 
     constructor() {
         this.color = Meaning.Info;
-        this.text = "Demo";
+        this.text = 'Demo';
         this.progressValue = 0;
-        this.progressText = "";
-        this.footerLink = "/";
-        this.footerText = "";
-        this.icon = "fa-user";
+        this.progressText = '';
+        this.footerLink = '/';
+        this.footerText = '';
+        this.icon = 'fa-user';
         this.options = new AcInfoBoxOptions();
     }
 
 
-    private getColor(type: string) : string {
-        if (this.color){
-            let color : string = (<string>EnumConverter(this.color, Meaning)).toLowerCase();
-            return `${type}-${color}`; 
+    getColor(type: string): string {
+        if (this.color) {
+            let color: string = (<string>EnumConverter(this.color, Meaning)).toLowerCase();
+            return `${type}-${color}`;
         }
     }
 

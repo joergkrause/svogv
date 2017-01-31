@@ -5,8 +5,8 @@ import { AcMenuItem } from './ac-menuitem';
  */
 export class AcMenuDividerItem extends AcMenuItem {
   text: string;
-  __name__:string = 'AcMenuDividerItem';
+  __name__: string = 'AcMenuDividerItem';
   constructor() {
-    super("");
+    super('');
   }
 }

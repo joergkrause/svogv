@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmitterService } from '../../Services/EmitterService';
 import { SiteApiService } from '../../Services/SiteApiService';
@@ -14,7 +14,7 @@ export class ListEditorComponent {
   public users: AcDataGridModel<UserViewModel>;
 
   constructor(public apiService: SiteApiService, public router : Router) {
-    console.log("Users&List ctor");
+    console.log('Users&List ctor');
   }
 
   ngOnInit() {

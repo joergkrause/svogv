@@ -11,7 +11,8 @@ import { SiteApiService } from './Services/SiteApiService';
 import * as cmp from './Components/index';
 // routes' configuration
 import routes from './Configurations/routes';
-// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, resolves against node_modules without changes)
+// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, 
+// resolves against node_modules without changes)
 import * as wd from 'svogv';
 import { FormValidatorService, DropdownService } from 'svogv';
 
@@ -25,22 +26,24 @@ import { FormValidatorService, DropdownService } from 'svogv';
     ],
     declarations: [
       // Demo app
-      cmp.SiteNavComponent
-      ,cmp.SiteRootComponent
-      ,cmp.SiteAboutComponent
-      ,cmp.DashboardComponent
+        cmp.SiteNavComponent
+      , cmp.SiteRootComponent
+      , cmp.SiteAboutComponent
+      , cmp.DashboardComponent
       // Editor, Validation & Grid
-      ,cmp.EditorDemoComponent 
-      ,cmp.ListEditorComponent, cmp.NewEditorComponent, cmp.EditEditorComponent, cmp.DeleteEditorComponent
+      , cmp.EditorDemoComponent
+      , cmp.ListEditorComponent, cmp.NewEditorComponent
+      , cmp.EditEditorComponent, cmp.DeleteEditorComponent
       // Widgets 
-      ,cmp.WidgetDemoComponent
-      ,cmp.ListWidgetsComponent 
-      ,cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
+      , cmp.WidgetDemoComponent
+      , cmp.ListWidgetsComponent
+      , cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
       // simple Bootstrap widgets
-      ,wd.AcTreeView, wd.AcTreeViewNode
-      ,wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb, wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor
+      , wd.AcTreeView, wd.AcTreeViewNode
+      , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
+      , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor
       // SVG widget
-      ,wd.AcAnalogClock, wd.AcLoaderIcon
+      , wd.AcAnalogClock, wd.AcLoaderIcon
       // Supporting Directives
       , wd.Dropdown, wd.DropdownToggle, wd.AutoForm
     ],

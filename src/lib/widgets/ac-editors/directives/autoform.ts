@@ -18,13 +18,13 @@ export class AutoForm {
     userForm: FormGroup;
 
     constructor(public el: ElementRef) {
-        if (el.nativeElement.tagName.toLowerString() !== "form"){
-            throw { error: "This directive must appear on a form tag." }
+        if (el.nativeElement.tagName.toLowerString() !== 'form') {
+            throw { error: 'This directive must appear on a form tag.' }
         }
-        this.userForm = (<any>el)["formGroup"];
+        this.userForm = (<any>el)['formGroup'];
     }
 
-   ngAfterContentChecked() {
+    ngAfterContentChecked() {
         this.editorList.forEach(editor => editor.userForm = this.userForm);
     }
 

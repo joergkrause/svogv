@@ -7,24 +7,21 @@ export var EnumConverter = <T>(value: number, enumerationType: T) : string => {
 };
 
 export var StringConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === 'string')
-    {
+    if (value === null || value === undefined || typeof value === 'string') {
         return value;
     }
     return value.toString();
 };
 
 export var BooleanConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === 'boolean')
-    {
+    if (value === null || value === undefined || typeof value === 'boolean') {
         return value;
     }
     return value.toString() === 'true';
 };
 
 export var NumberConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === 'number')
-    {
+    if (value === null || value === undefined || typeof value === 'number') {
         return value;
     }
     return parseFloat(value.toString());

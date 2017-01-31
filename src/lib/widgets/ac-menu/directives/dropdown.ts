@@ -1,13 +1,13 @@
-import { Directive, 
-         ElementRef, 
-         HostBinding, 
-         ContentChildren, 
-         QueryList, 
-         OnInit, 
-         OnDestroy, 
-         Input, 
-         Output, 
-         EventEmitter, 
+import { Directive,
+         ElementRef,
+         HostBinding,
+         ContentChildren,
+         QueryList,
+         OnInit,
+         OnDestroy,
+         Input,
+         Output,
+         EventEmitter,
          Injectable } from '@angular/core';
 import { DropdownInterface, CloseBehavior } from '../services/ac-dropdowninterface';
 import { DropdownService } from '../services/ac-dropdownservice';

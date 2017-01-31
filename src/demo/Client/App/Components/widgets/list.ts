@@ -7,10 +7,8 @@ import { AcMenu, AcMenuLinkItem } from 'svogv';
 })
 export class ListWidgetsComponent implements OnInit {
 
-  public formWidgets : AcMenu
-
-  public svgComponents : AcMenu
-
+  public formWidgets: AcMenu;
+  public svgComponents: AcMenu;
 
   constructor() {
   }
@@ -26,6 +24,5 @@ export class ListWidgetsComponent implements OnInit {
       , new AcMenuLinkItem('Loader Icon', ['/widgets/icon']));
     // Link items will use the router by default 
   }
-
 
 }

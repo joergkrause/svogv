@@ -1,5 +1,6 @@
-﻿import { Component, Input, Output, EventEmitter, OnInit, ElementRef, Renderer } from '@angular/core';
-import { AcTextTreeNode, AcComponentTreeNode, AcTreeNode, AcTreeNodeOptions, AcTreeNodeState } from './Models/index';
+﻿import { Component, Input, Output, 
+         EventEmitter, OnInit, ElementRef, Renderer } from '@angular/core';
+import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './Models/index';
 
 @Component({
     selector: 'ac-treenode',
@@ -53,9 +54,9 @@ export class AcTreeViewNode implements OnInit {
     private foreColor: string;
     private backColor: string;
     private isExpanded: boolean = false;
-    private static pfxIcon: string = "fa";
-    private static opnIcon: string = "fa-plus";
-    private static clsIcon: string = "fa-minus";
+    private static pfxIcon: string = 'fa';
+    private static opnIcon: string = 'fa-plus';
+    private static clsIcon: string = 'fa-minus';
 
     constructor(private el: ElementRef, private renderer: Renderer) {
         this.nodeClick = new EventEmitter<AcTreeNode>();
@@ -80,7 +81,7 @@ export class AcTreeViewNode implements OnInit {
             if (this.node.options && this.node.options.href) {
                 this.href = this.node.options.href;
             } else {
-                this.href = "javascript:void(0)";
+                this.href = 'javascript:void(0)';
                 // robust way to prevent link due to router bug in earlier NG2 releases
                 // see https://github.com/angular/angular/issues/7294
             }
@@ -114,19 +115,19 @@ export class AcTreeViewNode implements OnInit {
 
     // forward events in the node tree
 
-    private onNodeClick(node: AcTreeNode) {
+    onNodeClick(node: AcTreeNode) {
         this.nodeClick.emit(node);
     }
 
-    private onCheckChanged(node: AcTreeNode) {
+    onCheckChanged(node: AcTreeNode) {
         this.checkChanged.emit(node);
     }
 
-    private onSelectedChanged(node: AcTreeNode) {
+    onSelectedChanged(node: AcTreeNode) {
         this.selectedChanged.emit(node);
     }
 
-    private onCollapseChanged(node: AcTreeNode) {
+    onCollapseChanged(node: AcTreeNode) {
         this.collapseChanged.emit(node);
     }
 

@@ -1,7 +1,7 @@
 ﻿// public
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService } from '../../Services/SiteApiService';
@@ -16,14 +16,14 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
     'legend { padding: 0px 16px 0px 16px; width: auto; }'
   ]
 })
-export class NewEditorComponent {
+export class NewEditorComponent implements OnInit {
 
   userForm: FormGroup;
   saveResult: boolean = false;
 
-  constructor(private apiService: SiteApiService, 
-              private route: ActivatedRoute, 
-              private router: Router, 
+  constructor(private apiService: SiteApiService,
+              private route: ActivatedRoute,
+              private router: Router,
               private formService: FormValidatorService) {
   }
 
@@ -44,11 +44,11 @@ export class NewEditorComponent {
       this.apiService
         .newUser(this.userForm.value)
         .subscribe(result => {
-          console.log("Update User successful");
+          console.log('Update User successful');
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend
-          EmitterService.get("BROADCAST").emit();
+          EmitterService.get('BROADCAST').emit();
           this.closeForm();
         });
     }

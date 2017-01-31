@@ -1,13 +1,14 @@
 ﻿/**
  * The Hidden decorator. 
  * 
- * The @see `DataGrid` does not show columns for properties tagged with @Hidden(). Fields in forms that render automatically
+ * The @see `DataGrid` does not show columns for properties tagged with @Hidden(). 
+ * Fields in forms that render automatically
  * using the <ac-editor> component will render as <input type="hidden">.
  * 
  * @param name          The Name or Label that appears in forms or as header in grids.
  * @param description   A tooltip that can be used optionally.
  */
-export function Hidden(hide: boolean = true) {
+export function Hidden(hide = true) {
     // the original decorator
     function hiddenInternal(target: Object, property: string | symbol): void {
         new hiddenInternalSetup(target, property.toString(), hide);

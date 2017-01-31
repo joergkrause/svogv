@@ -1,8 +1,7 @@
 ﻿// public
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService } from '../../Services/SiteApiService';
@@ -33,7 +32,7 @@ export class DeleteEditorComponent implements OnInit {
   ngOnInit() {
     // receive the param on init
     this.paramsSubscriber = this.route.params.subscribe(params => {
-      this.userId = +params["id"];
+      this.userId = +params['id'];
       this.loadUser();
     });
   }
@@ -57,11 +56,11 @@ export class DeleteEditorComponent implements OnInit {
       this.apiService
         .deleteUser(this.userId)
         .subscribe(result => {
-          console.log("Delete User successful");
+          console.log('Delete User successful');
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend
-          EmitterService.get("BROADCAST").emit();
+          EmitterService.get('BROADCAST').emit();
           this.closeForm();
         });
     }
