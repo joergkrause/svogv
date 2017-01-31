@@ -1,54 +1,56 @@
-import { Directive,
-         ElementRef,
-         HostBinding,
-         ContentChildren,
-         QueryList,
-         OnInit,
-         OnDestroy,
-         Input,
-         Output,
-         EventEmitter,
-         Injectable } from '@angular/core';
+import {
+    Directive,
+    ElementRef,
+    HostBinding,
+    ContentChildren,
+    QueryList,
+    OnInit,
+    OnDestroy,
+    Input,
+    Output,
+    EventEmitter,
+    Injectable
+} from '@angular/core';
 import { DropdownInterface, CloseBehavior } from '../services/ac-dropdowninterface';
 import { DropdownService } from '../services/ac-dropdownservice';
 
 @Injectable()
-@Directive({selector: '[dropdown]'})
+@Directive({ selector: '[dropdown]' })
 export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
     @HostBinding('class.open')
-    @Input() public get isOpen():boolean {
+    @Input() public get isOpen(): boolean {
         return this._isOpen;
     }
 
-    @Input() public autoClose:CloseBehavior;
-    @Input() public keyboardNav:boolean;
-    @Input() public appendToBody:boolean;
+    @Input() public autoClose: CloseBehavior;
+    @Input() public keyboardNav: boolean;
+    @Input() public appendToBody: boolean;
 
-    @Output() public onToggle:EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output() public isOpenChange:EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() public onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+    @Output() public isOpenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-    private _isOpen:boolean;
+    private _isOpen: boolean;
     // index of selected element
-    public selectedOption:number;
+    public selectedOption: number;
     // drop menu html
-    public menuEl:ElementRef;
+    public menuEl: ElementRef;
     // drop down toggle element
-    public toggleEl:ElementRef;
-    @ContentChildren('dropdownMenu', {descendants: false}) 
-    dropdownMenuList:QueryList<ElementRef>;
+    public toggleEl: ElementRef;
+    @ContentChildren('dropdownMenu', { descendants: false })
+    dropdownMenuList: QueryList<ElementRef>;
 
-    constructor(public el:ElementRef,
-                public dropDownService: DropdownService) {
-     }
+    constructor(public el: ElementRef,
+        public dropDownService: DropdownService) {
+    }
 
     public set isOpen(value) {
         this._isOpen = !!value;
 
-         if (this.appendToBody && this.menuEl) {
+        if (this.appendToBody && this.menuEl) {
 
         }
 
-         if (this.isOpen) {
+        if (this.isOpen) {
             this.focusToggleElement();
             this.dropDownService.open(this);
         } else {
@@ -57,12 +59,12 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
         }
         this.onToggle.emit(this.isOpen);
         this.isOpenChange.emit(this.isOpen);
-     }
+    }
 
     ngOnInit() {
         this.autoClose = CloseBehavior.NonInput;
         if (this.isOpen) {
-         }
+        }
     }
 
     ngOnDestroy() {
@@ -71,7 +73,7 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
         }
     }
 
-    public set dropDownMenu(dropdownMenu:{el:ElementRef}) {
+    public set dropDownMenu(dropdownMenu: { el: ElementRef }) {
         // init drop down menu
         this.menuEl = dropdownMenu.el;
 
@@ -80,31 +82,31 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
         }
     }
 
-    public set dropDownToggle(dropdownToggle:{el:ElementRef}) {
+    public set dropDownToggle(dropdownToggle: { el: ElementRef }) {
         // init toggle element
         this.toggleEl = dropdownToggle.el;
     }
 
-    public toggle(open?:boolean):boolean {
+    public toggle(open?: boolean): boolean {
         return this.isOpen = arguments.length ? !!open : !this.isOpen;
     }
 
-    public focusDropdownEntry(keyCode:number) {
+    public focusDropdownEntry(keyCode: number) {
         // If append to body is used.
         let hostEl = this.menuEl ?
             this.menuEl.nativeElement :
             this.el.nativeElement.getElementsByTagName('ul')[0];
 
         if (!hostEl) {
-             return;
+            return;
         }
 
         let elems = hostEl.getElementsByTagName('a');
         if (!elems || !elems.length) {
-             return;
+            return;
         }
 
-         switch (keyCode) {
+        switch (keyCode) {
             case (40):
                 if (typeof this.selectedOption !== 'number') {
                     this.selectedOption = 0;

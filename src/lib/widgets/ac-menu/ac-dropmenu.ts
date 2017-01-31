@@ -12,22 +12,26 @@ import { InputConverter, EnumConverter } from '../../utils/convert-inputconverte
 @Component({
     selector: 'ac-dropmenu',
     template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" [id]="id">
-                <button type="button" dropdownToggle class="btn" [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn" 
+                <button type="button" dropdownToggle class="btn" 
+                       [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn" 
                         (click)="dropdownMenu($event)">{{ text }}</button>
-                <button class="btn dropdown-toggle" dropdownToggle [ngClass]="btnType" [ngClass]="btnSize" *ngIf="!hasSplitBtn"
+                <button class="btn dropdown-toggle" dropdownToggle 
+                       [ngClass]="btnType" [ngClass]="btnSize" *ngIf="!hasSplitBtn"
                         type="button" 
                         (click)="dropdownMenu($event)"
                         aria-haspopup="true" aria-expanded="false">
                     {{ text }}
                 </button>
-                <button class="btn dropdown-toggle" dropdownToggle [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn"
+                <button class="btn dropdown-toggle" dropdownToggle 
+                       [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn"
                         type="button" 
                         (click)="dropdownMenu($event)"
                         aria-haspopup="true" aria-expanded="false">
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <button class="dropdown-item" type="button" (click)="selectItem(item)" *ngFor="let item of menu.children">{{item.text}}</button>
+                    <button class="dropdown-item" type="button" (click)="selectItem(item)" 
+                            *ngFor="let item of menu.children">{{item.text}}</button>
                 </div>
                 </div>`})
 export class AcDropMenu {
@@ -42,20 +46,20 @@ export class AcDropMenu {
 
     @Input() hasSplitBtn: boolean = false;
 
-    @Input() 
+    @Input()
     @InputConverter(EnumConverter, Actions)
     btnType: Actions;
 
-    @Input() 
+    @Input()
     @InputConverter(EnumConverter, Sizes)
     btnSize: Sizes;
 
     @Input()
     disabled: boolean = false;
 
-    @Input() id: string;    
+    @Input() id: string;
 
-    @Output() public onSelect:EventEmitter<AcMenuItem> = new EventEmitter<AcMenuItem>();
+    @Output() public onSelect: EventEmitter<AcMenuItem> = new EventEmitter<AcMenuItem>();
 
     public status: { isOpen: boolean, autoClose: boolean } = { isOpen: false, autoClose: false };
 
@@ -64,14 +68,14 @@ export class AcDropMenu {
         this.btnType = Actions.Secondary;
     }
 
-    dropdownMenu($event:MouseEvent):void {
+    dropdownMenu($event: MouseEvent): void {
         $event.preventDefault();
         $event.stopPropagation();
         this.status.isOpen = !this.status.isOpen;
     }
 
     selectItem(item: AcMenuItem): void {
-        if (item instanceof AcMenuLinkItem){
+        if (item instanceof AcMenuLinkItem) {
             // invoke a navigation
             this.router.navigate((<AcMenuLinkItem>item).link);
         } else {

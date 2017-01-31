@@ -23,8 +23,11 @@ export class EditorDemoComponent {
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(['/editor', subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled'])));
-    
+      .forEach(subroute => userRoutes.push(new AcTab(['/editor', subroute.path],
+        subroute.data['title'],
+        !!subroute.data['active'],
+        !!subroute.data['disabled'])));
+
     this.editorTabs = new AcTabData(userRoutes);
   }
 

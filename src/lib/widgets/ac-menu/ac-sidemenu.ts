@@ -1,10 +1,13 @@
-﻿import { Component, Input, OnChanges, OnInit } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { AcMenu } from './models/ac-menu';
 
 @Component({
   selector: 'ac-sidemenu',
-  styles: ['.headerItem { margin-left: 32px }', '.linkItem { margin-right: 5px }', '.sideMenuCanvas { padding: 15px; }'],
-  template: `<nav class="nav nav-pills nav-stacked sideMenuCanvas" *ngIf="menu && menu.children && menu.children.length > 0">
+  styles: ['.headerItem { margin-left: 32px }',
+    '.linkItem { margin-right: 5px }',
+    '.sideMenuCanvas { padding: 15px; }'],
+  template: `<nav class="nav nav-pills nav-stacked sideMenuCanvas" 
+                 *ngIf="menu && menu.children && menu.children.length > 0">
               <ng-container *ngFor="let item of menu.children" class="nav-item" [ngSwitch]="itemType(item)">
                 <ng-container *ngSwitchCase="'AcMenuHeaderItem'">
                   <i class="headerItem">&nbsp;</i><a><strong>{{ item.text }}</strong></a>
@@ -32,19 +35,19 @@ export class AcSideMenu {
   @Input() useRouterLinks: boolean = true;
 
   constructor() {
-    console.log("AcSideMenu ctor");
+    console.log('AcSideMenu ctor');
     // create Menu dynamically
   }
 
   ngOnInit() {
-    console.log("AcSideMenu onInit");
+    console.log('AcSideMenu onInit');
   }
 
-  private itemType(item: any) : string {
+  private itemType(item: any): string {
     if (item === undefined || item === null) {
-      throw new Error("The reflection metadata could not be found.");
+      throw new Error('The reflection metadata could not be found.');
     }
-    let itemType :string = item["__name__"];
+    let itemType: string = item['__name__'];
     return itemType;
   }
 

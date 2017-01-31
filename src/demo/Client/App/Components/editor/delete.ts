@@ -23,10 +23,10 @@ export class DeleteEditorComponent implements OnInit {
   user: UserViewModel;
   paramsSubscriber: Subscription;
 
-  constructor(private apiService: SiteApiService, 
-              private route: ActivatedRoute, 
-              private router: Router, 
-              private formService: FormValidatorService) {
+  constructor(private apiService: SiteApiService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private formService: FormValidatorService) {
   }
 
   ngOnInit() {

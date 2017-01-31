@@ -1,8 +1,8 @@
-﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
+﻿import { Component, Input, Output } from '@angular/core';
+import { Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
 
 /**
- * Create a single tab for tab views. 
+ * Create a single tab for tab views.
  * The link shall be a regular route array.
  */
 export class AcTab {
@@ -14,16 +14,16 @@ export class AcTab {
    * @param active: Set class for active tab
    * @param disabled: Optionally set the tab inactive
    */
-  constructor(public link: Array<string | {}>, 
-              public text: string, 
-              public active: boolean, 
-              public disabled?: boolean) {
+  constructor(public link: Array<string | {}>,
+    public text: string,
+    public active: boolean,
+    public disabled?: boolean) {
   }
 
 }
 
 /**
- * A collection of tabs used to create a tabbed view. 
+ * A collection of tabs used to create a tabbed view.
  * The tabs' content is pulled from routes / child routes.
  */
 export class AcTabData {
@@ -37,7 +37,7 @@ export class AcTabData {
 }
 
 /**
- * The Tab Component. This looks like a Bootstrap component, but the active part 
+ * The Tab Component. This looks like a Bootstrap component, but the active part
  * is the Angular router, so no data-toggle is required.
  */
 @Component({
@@ -76,10 +76,10 @@ export class AcTabs {
   }
 
   ngOnInit() {
-    // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" } 
-    // in the router config for those items that shall appear in the breadcrumb 
-    const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
-    const ROUTE_DATA_SUBTITLE: string = "subtitle";
+    // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
+    // in the router config for those items that shall appear in the breadcrumb
+    const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
+    const ROUTE_DATA_SUBTITLE = 'subtitle';
 
     // subscribe to the NavigationEnd event
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
@@ -89,7 +89,7 @@ export class AcTabs {
       let currentRoute: ActivatedRoute = this.activatedRoute.root;
 
       // set the url to an empty string
-      let url: string = "";
+      let url = '';
 
       // iterate from activated route to children
       if (currentRoute.children.length > 0) {
@@ -111,14 +111,14 @@ export class AcTabs {
           }
 
           // get the route's URL segment
-          let routeURL: string = route.snapshot.url.map(segment => segment.path).join("/");
+          let routeURL: string = route.snapshot.url.map(segment => segment.path).join('/');
 
           // append route URL to URL
           url += `/${routeURL}`;
 
           //add router data as current tab
-          var matchTab = this.tabs.tabs.filter(t => t.link.toString() == url 
-                                                 || ((<any>t).length > 0 && t.link[0] == url));
+          var matchTab = this.tabs.tabs.filter(t => t.link.toString() == url
+            || ((<any>t).length > 0 && t.link[0] == url));
           if (matchTab && matchTab.length == 1) {
             this.currentTab = matchTab[0];
           }

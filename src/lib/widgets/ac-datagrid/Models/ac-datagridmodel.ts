@@ -19,11 +19,11 @@ export enum Direction {
  */
 export class AcDataGridModel<T> {
   searchValue: T = <T>{};
-  currentPageIndex: number = 1;
+  currentPageIndex = 1;
   pageSize: number;
   private _items: T[];
 
-  constructor(items: T[], typeInstance: any, pageSize: number = 10) {
+  constructor(items: T[], typeInstance: any, pageSize = 10) {
     this._items = items;
     this.pageSize = pageSize;
     if (typeInstance) {
@@ -52,9 +52,9 @@ export class AcDataGridModel<T> {
   }
 
   get startRow(): number {
-    if (this.currentPageIndex === 0)
+    if (this.currentPageIndex === 0){
       return 0;
-
+    }
     return (this.currentPageIndex - 1) * this.pageSize;
   }
 

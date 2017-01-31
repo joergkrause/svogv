@@ -32,8 +32,8 @@ export class AcTreeNodeOptions {
 
     constructor(options?: AcTreeNodeOptions) {
         if (options) {
-            //TODO: make type safe
-            //for (let k in options) this[k] = options[k];
+            // TODO: make type safe
+            // for (let k in options) this[k] = options[k];
         }
     }
 }

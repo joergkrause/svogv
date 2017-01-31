@@ -30,9 +30,9 @@ function validateRange(f: number | Date, t: number | Date) {
 }
 
 function validateCompare(p: string) {
-  let changeEventWasAdded : boolean = false;
+  let changeEventWasAdded: boolean = false;
   return function (c: FormControl) {
-    let form : FormGroup = c.root as FormGroup;
+    let form: FormGroup = c.root as FormGroup;
     if (form && form.controls && !changeEventWasAdded) {
       form.controls[p].valueChanges.subscribe(() => {
         // trigger validation for particular element
@@ -120,7 +120,7 @@ export class FormValidatorService {
         }
         let hasCompare = `__hasCompareProperty__${propName}` in target.prototype;
         if (hasCompare) {
-          (<any>errmsgs)["compare"] = target.prototype[`__errCompareProperty__${propName}`];
+          (<any>errmsgs)['compare'] = target.prototype[`__errCompareProperty__${propName}`];
           let compare = target.prototype[`__withCompare__${propName}`];
           validators.push(validateCompare(compare));
         }
@@ -140,7 +140,7 @@ export class FormValidatorService {
       form = this.fb.group(valGroup);
       // forward the model to the editors for easy access to other decorators
       // the cast is just to suppress TS errors and shows it's intentionally
-      (<any>form)["__editorModel__"] = targetInstance;
+      (<any>form)['__editorModel__'] = targetInstance;
       // register controls and add messages
       for (let propName in errGroup) {
         let ctrl = <FormControlEx>form.controls[propName];

@@ -1,5 +1,5 @@
-﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
-import { AcTreeNode, AcTextTreeNode, AcComponentTreeNode, AcTreeNodeOptions } from './Models/index';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { AcTreeNode } from './Models/index';
 
 @Component({
     selector: 'ac-tree',

@@ -1,7 +1,7 @@
 ﻿/**
  * The Hidden decorator. 
  * 
- * The @see `DataGrid` does not show columns for properties tagged with @Hidden(). 
+ * The @see `DataGrid` does not show columns for properties tagged with @Hidden().
  * Fields in forms that render automatically
  * using the <ac-editor> component will render as <input type="hidden">.
  * 

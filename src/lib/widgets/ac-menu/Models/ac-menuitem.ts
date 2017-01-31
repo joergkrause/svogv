@@ -10,7 +10,7 @@ export abstract class AcMenuItem {
    * Optional associated item
    */
   item?: any;
-  __name__:string; // a minifier robust type identifier 
+  __name__: string; // a minifier robust type identifier 
   constructor(text: string) {
     this.text = text;
   }

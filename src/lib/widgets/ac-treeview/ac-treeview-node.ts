@@ -53,10 +53,10 @@ export class AcTreeViewNode implements OnInit {
     private iconClasses: Array<string>;
     private foreColor: string;
     private backColor: string;
-    private isExpanded: boolean = false;
-    private static pfxIcon: string = 'fa';
-    private static opnIcon: string = 'fa-plus';
-    private static clsIcon: string = 'fa-minus';
+    private isExpanded = false;
+    private static pfxIcon = 'fa';
+    private static opnIcon = 'fa-plus';
+    private static clsIcon = 'fa-minus';
 
     constructor(private el: ElementRef, private renderer: Renderer) {
         this.nodeClick = new EventEmitter<AcTreeNode>();

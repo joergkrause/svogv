@@ -1,4 +1,4 @@
-﻿import { Type, Component, EventEmitter } from '@angular/core';
+﻿import { EventEmitter } from '@angular/core';
 import * as tree from './ac-treenodeoptions';
 import { AcTreeNodeBase } from './ac-treenodebase';
 
@@ -12,7 +12,7 @@ export class AcTreeNode implements AcTreeNodeBase {
     name: string;
     id: number;
     // behavior
-    stateChange: EventEmitter<tree.AcTreeNodeState>; 
+    stateChange: EventEmitter<tree.AcTreeNodeState>;
     private _state: tree.AcTreeNodeState;
 
     constructor(options?: tree.AcTreeNodeOptions, nodes?: AcTreeNode | AcTreeNode[]) {
@@ -32,7 +32,7 @@ export class AcTreeNode implements AcTreeNodeBase {
         // walk up tree and return path with names
         let p: Array<AcTreeNode> = new Array<AcTreeNode>();
         p.push(this);
-        let n: AcTreeNode = this; 
+        let n: AcTreeNode = this;
         while (this.parent) {
             n = n.parent;
             p.push(n);
@@ -57,7 +57,7 @@ export class AcTreeNode implements AcTreeNodeBase {
     }
 
     remove(node: AcTreeNode): boolean {
-        let idx : number = this.children.indexOf(node);
+        let idx: number = this.children.indexOf(node);
         if (idx > -1) {
             this.children.splice(idx, 1);
             return true;
@@ -89,6 +89,5 @@ export class AcTreeNode implements AcTreeNodeBase {
     get stateIsChecked(): boolean {
         return (this.state & tree.AcTreeNodeState.checked) === tree.AcTreeNodeState.checked;
     }
-
 
 }

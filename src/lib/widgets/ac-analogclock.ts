@@ -16,25 +16,30 @@ import { DOCUMENT } from '@angular/platform-browser';
         <feOffset in="blur" dx="2.5" dy="2.5"/>
     </filter>
     <g>
-        <circle id="shadow" style="fill:rgba(0,0,0,0.1)" cx="97" cy="100" r="87" filter="url(#innerShadow)"></circle>
-        <circle id="circle" style="stroke: #FFF; stroke-width: 12px;" cx="100" [style.fill]="bgColor" cy="100" r="80"></circle>
+        <circle id="shadow" style="fill:rgba(0,0,0,0.1)" cx="97" cy="100" r="87" 
+                filter="url(#innerShadow)"></circle>
+        <circle id="circle" style="stroke: #FFF; stroke-width: 12px;" cx="100" 
+                [style.fill]="bgColor" cy="100" r="80"></circle>
     </g>
     <g>
-        <line x1="100" y1="100" x2="100" y2="55" transform="rotate(90 100 100)" style="stroke-width: 4px; stroke: #fffbf9;" id="hourhand">
+        <line x1="100" y1="100" x2="100" y2="55" transform="rotate(90 100 100)" 
+              style="stroke-width: 4px; stroke: #fffbf9;" id="hourhand">
             <animatetransform attributeName="transform"
                               #hourhandTransform
                               type="rotate"
                               dur="43200s" from="0 100 100" to="360 100 100" begin="0s"
                               repeatCount="indefinite"/>
         </line>
-        <line x1="100" y1="100" x2="100" y2="40" transform="rotate(180 100 100)" style="stroke-width: 3px; stroke: #fdfdfd;" id="minutehand">
+        <line x1="100" y1="100" x2="100" y2="40" transform="rotate(180 100 100)" 
+              style="stroke-width: 3px; stroke: #fdfdfd;" id="minutehand">
             <animatetransform attributeName="transform"
                               #minutehandTransform
                               type="rotate"
                               dur="3600s" from="0 100 100" to="360 100 100" begin="0s"
                               repeatCount="indefinite"/>
         </line>
-        <line x1="100" y1="100" x2="100" y2="30" transform="rotate(270 100 100)" style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
+        <line x1="100" y1="100" x2="100" y2="30" transform="rotate(270 100 100)" 
+              style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
             <animatetransform attributeName="transform"
                               #secondhandTransform
                               type="rotate"
@@ -77,8 +82,8 @@ export class AcAnalogClock implements AfterViewInit {
             this.svg.nativeElement.appendChild(el);
         }
         // base area
-        let cx : number = 100;
-        let cy: number = 100;
+        // let cx : number = 100;
+        // let cy: number = 100;
         // create animation string
         // let shifter = (val:number) => [val, cx, cy].join(' ');
         // // from real time

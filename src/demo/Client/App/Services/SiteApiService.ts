@@ -73,7 +73,7 @@ export class SiteApiService {
     return Observable.create(o => true);
   }
 
-    public deleteUser(id: number): Observable<boolean> {
+  public deleteUser(id: number): Observable<boolean> {
     var user = this.users.filter(u => u.id == id)[0];
     this.users.splice(this.users.indexOf(user), 1);
     // always true 

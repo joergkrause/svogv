@@ -1,7 +1,7 @@
 ﻿/**
- * The compare decorator, compares two field's values and 
+ * The compare decorator, compares two field's values and
  * shows an error message on the decorated field.
- * @param withProperty: A string that represents the compared field's name. 
+ * @param withProperty: A string that represents the compared field's name.
  */
 export function Compare(withProperty: string, msg?: string) {
     // the original decorator

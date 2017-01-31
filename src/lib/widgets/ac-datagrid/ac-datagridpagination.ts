@@ -78,7 +78,7 @@ export class AcDataGridPagination implements OnInit, OnChanges {
   @Input() maxPageIndex: number;
   @Input() rowChanged: Observable<number>;
   @Output() pageNumberChanged = new EventEmitter();
-  currentPageNumber: number = 1;
+  currentPageNumber = 1;
 
   ngOnInit() {
     this.setCurrentPage(1);

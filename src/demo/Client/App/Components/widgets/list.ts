@@ -13,14 +13,14 @@ export class ListWidgetsComponent implements OnInit {
   constructor() {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.formWidgets = new AcMenu(
-        new AcMenuLinkItem('TreeView', ['/widgets/tree'])
+      new AcMenuLinkItem('TreeView', ['/widgets/tree'])
       , new AcMenuLinkItem('DropDown', ['/widgets/drop'])
       , new AcMenuLinkItem('InfoBox', ['/widgets/info'])
       , new AcMenuLinkItem('BreadCrumb', ['/widgets/bread']));
     this.svgComponents = new AcMenu(
-        new AcMenuLinkItem('Analog Clock', ['/widgets/clock'])
+      new AcMenuLinkItem('Analog Clock', ['/widgets/clock'])
       , new AcMenuLinkItem('Loader Icon', ['/widgets/icon']));
     // Link items will use the router by default 
   }
