@@ -27,7 +27,7 @@ const SVOGV_MODULES = [
   AcDropMenu,
   AcTab,
   AcWebPart,
-  AcDataGridPagination,
+  AcDataGridPagination, 
   AcTreeView,
   AcTreeViewNode,
   AcEditor,
