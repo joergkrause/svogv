@@ -1,15 +1,10 @@
-﻿import { Component, Input, Output, OnChanges, OnInit,OnDestroy, 
-         EventEmitter, Directive, ContentChildren, QueryList,
-         Host, HostListener, HostBinding, ElementRef } from '@angular/core';
+﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AcMenu } from './models/ac-menu';
 import { AcMenuItem } from './models/ac-menuitem';
 import { AcMenuLinkItem } from './models/ac-menulinkitem';
 import { Actions, Sizes } from '../../utils/enum-colors';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
-import { DropdownService } from './services/ac-dropdownservice';
-import { DropdownInterface, CloseBehavior } from './services/ac-dropdowninterface';
-
 
 /**
  * The dropdown menu, button + drop  down/up and optional splitbutton
@@ -69,7 +64,7 @@ export class AcDropMenu {
         this.btnType = Actions.Secondary;
     }
 
-     private dropdownMenu($event:MouseEvent):void {
+    dropdownMenu($event:MouseEvent):void {
         $event.preventDefault();
         $event.stopPropagation();
         this.status.isOpen = !this.status.isOpen;

@@ -7,4 +7,4 @@ gulp.task('madge', ['build:release'], execNodeTask('madge', ['--circular', './di
 gulp.task('stylelint', execNodeTask(
   'stylelint', ['src/**/*.scss', '--config', 'stylelint-config.json', '--syntax', 'scss']
 ));
-gulp.task('tslint', execNodeTask('tslint', ['-c', 'tslint.json', 'src/**/*.ts']));
+gulp.task('tslint', execNodeTask('tslint', ['-c', 'tslint.json', '-e', 'src/demo/node_modules', 'src/**/*.ts']));

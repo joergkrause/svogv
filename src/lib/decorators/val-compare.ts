@@ -1,4 +1,9 @@
-﻿export function Compare(withProperty: string, msg?: string) {
+﻿/**
+ * The compare decorator, compares two field's values and 
+ * shows an error message on the decorated field.
+ * @param withProperty: A string that represents the compared field's name. 
+ */
+export function Compare(withProperty: string, msg?: string) {
     // the original decorator
     function compareInternal(target: Object, property: string | symbol): void {
         new compareInternalSetup(target, property.toString(), withProperty, msg);
@@ -26,7 +31,8 @@ class compareInternalSetup {
         });
 
         Object.defineProperty(this.target, `__errCompareProperty__${key}`, {
-            value: this.msg || `The field ${this.key} must have the same value as the field ${this.withProperty}`,
+            value: this.msg 
+               || `The field ${this.key} must have the same value as field ${this.withProperty}`,
             enumerable: false,
             configurable: false
         });

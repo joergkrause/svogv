@@ -1,5 +1,15 @@
-import { Directive, ElementRef, Host, HostBinding, HostListener, ContentChildren, QueryList, OnInit, OnDestroy, Input, Output, EventEmitter, Injectable } from '@angular/core';
-import { DropdownInterface, DropdownMenuInterface, CloseBehavior } from '../services/ac-dropdowninterface';
+import { Directive, 
+         ElementRef, 
+         HostBinding, 
+         ContentChildren, 
+         QueryList, 
+         OnInit, 
+         OnDestroy, 
+         Input, 
+         Output, 
+         EventEmitter, 
+         Injectable } from '@angular/core';
+import { DropdownInterface, CloseBehavior } from '../services/ac-dropdowninterface';
 import { DropdownService } from '../services/ac-dropdownservice';
 
 @Injectable()
@@ -16,7 +26,6 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
 
     @Output() public onToggle:EventEmitter<boolean> = new EventEmitter<boolean>();
     @Output() public isOpenChange:EventEmitter<boolean> = new EventEmitter<boolean>();
-    @HostBinding('class.dropdown') private addClass = true;
 
     private _isOpen:boolean;
     // index of selected element

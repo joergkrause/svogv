@@ -42,7 +42,9 @@
           </td>
         </tr>
         <tr *ngFor="let user of users.itemsOnCurrentPage">
-          <td *ngFor="let data of users.columnsOfItem(user)">{{ data }}</td>
+          <td *ngFor="let data of users.columnsOfItem(user)">
+            {{ data }}
+          </td>
           <td>
             <button class="btn btn-primary btn-sm" type="button"
                     (click)="editUser(user)">

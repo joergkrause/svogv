@@ -24,8 +24,8 @@ export interface DropdownInterface {
     toggleEl: ElementRef;
     dropDownToggle: DropdownToggleInterface;
     dropDownMenu: DropdownMenuInterface;
-    toggle() : void;
+    toggle(): void;
     focusToggleElement(): void;
-    focusDropdownEntry(which: number): void;    
+    focusDropdownEntry(which: number): void;
     selectedOption: any;
 }

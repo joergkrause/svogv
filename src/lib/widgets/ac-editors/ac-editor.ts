@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 /**
@@ -16,7 +16,7 @@ import { FormGroup } from '@angular/forms';
                 <select *ngIf="type == 'select-enum'" class="form-control" [id]="name" [formControlName]="name">
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
-                <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [minvalue]="fromValue" [maxValue]="toValue" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" [attr.maxvalue]="toValue" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'date'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" type="text" class="form-control" [id]="name" [formControlName]="name" />
@@ -32,7 +32,7 @@ import { FormGroup } from '@angular/forms';
 export class AcEditor implements OnInit {
 
   @Input() name: string;
-  @Input() type: string = "text";
+  @Input() type: string = 'text';
   @Input() label: string;
   @Input() tooltip: string;
   @Input() userForm: FormGroup;
@@ -53,7 +53,7 @@ export class AcEditor implements OnInit {
   ngOnInit() {
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // this is set by FormValidatorService
-    var editorModel = (<any>this.userForm)["__editorModel__"];
+    var editorModel = (<any>this.userForm)['__editorModel__'];
     // get type from form
     if (editorModel) {
       // make an instance to read the properties

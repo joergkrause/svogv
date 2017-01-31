@@ -1,5 +1,11 @@
-import { Directive, ElementRef, Host, HostBinding, HostListener, OnInit, Input } from '@angular/core';
-import { DropdownInterface, DropdownToggleInterface } from '../services/ac-dropdowninterface';
+import { Directive, 
+         ElementRef, 
+         Host, 
+         HostBinding, 
+         HostListener, 
+         OnInit, 
+         Input } from '@angular/core';
+import { DropdownToggleInterface } from '../services/ac-dropdowninterface';
 import { Dropdown } from './dropdown';
 
 @Directive({ selector: '[dropdownToggle]' })

@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, OnChanges, EventEmitter } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ac-webpart',
@@ -28,8 +28,8 @@ export class AcWebPart {
     @Input() solidHeader: boolean;
 
     constructor() {
-        this.colorclass = "box-danger";
-        this.title = "Demo";
+        this.colorclass = 'box-danger';
+        this.title = 'Demo';
         this.showTools = true;
     }
 

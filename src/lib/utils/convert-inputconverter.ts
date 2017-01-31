@@ -4,47 +4,50 @@ export var EnumConverter = <T>(value: number, enumerationType: T) : string => {
     let sanitizedValue = value.toString(); 
     let color: T = <T>((<any>enumerationType)[sanitizedValue]);
     return color.toString();
-}
+};
 
 export var StringConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === "string")
+    if (value === null || value === undefined || typeof value === 'string')
+    {
         return value;
-
+    }
     return value.toString();
-}
+};
 
 export var BooleanConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === "boolean")
+    if (value === null || value === undefined || typeof value === 'boolean')
+    {
         return value;
-
-    return value.toString() === "true";
-}
+    }
+    return value.toString() === 'true';
+};
 
 export var NumberConverter = (value: any) => {
-    if (value === null || value === undefined || typeof value === "number")
+    if (value === null || value === undefined || typeof value === 'number')
+    {
         return value;
-
+    }
     return parseFloat(value.toString());
 };
 
 export function InputConverter(converter?: (value: any, enumerationType?: any) => any, enumerationType?: any) {
     return (target: Object, key: string) => {
         if (converter === undefined) {
-            var metadata = (<any>Reflect).getMetadata("design:type", target, key);
+            var metadata = (<any>Reflect).getMetadata('design:type', target, key);
             if (metadata === undefined || metadata === null)
-                throw new Error("The reflection metadata could not be found.");
+                throw new Error('The reflection metadata could not be found.');
             switch (metadata.name) {
-                case "String":
+                case 'String':
                     converter = StringConverter;
                     break;
-                case "Boolean":
+                case 'Boolean':
                     converter = BooleanConverter;
                     break;
-                case "Number":
+                case 'Number':
                     converter = NumberConverter;
                     break;
                 default:
-                    throw new Error("There is no converter for the given property type '" + metadata.name + "'.");
+                    throw new Error('There is no converter for the given property type \'' + metadata.name + '\'.');
             }
         }
 
@@ -66,10 +69,10 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
             // create a helper to access the converter
             Object.defineProperty(target, key, {
                 get: function () {
-                    return this["__" + key];
+                    return this['__' + key];
                 },
                 set: function (newValue) {
-                    this["__" + key] = enumerationType === undefined ? converter(newValue) : converter(newValue, enumerationType);
+                    this['__' + key] = enumerationType === undefined ? converter(newValue) : converter(newValue, enumerationType);
                 },
                 enumerable: false,
                 configurable: true

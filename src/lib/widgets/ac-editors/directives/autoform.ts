@@ -1,4 +1,4 @@
-import { Directive, ElementRef, Host, HostBinding, HostListener, ContentChildren, QueryList } from '@angular/core';
+import { Directive, ElementRef, ContentChildren, QueryList } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AcEditor } from '../ac-editor';
 

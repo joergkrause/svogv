@@ -1,4 +1,7 @@
-﻿import { Component, Inject, Input, Output, EventEmitter, AfterViewInit, ViewChild, ElementRef, Renderer } from '@angular/core';
+﻿import { Component, Inject, 
+         Input, Output,
+         EventEmitter, 
+         AfterViewInit, ViewChild, ElementRef, Renderer } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
 @Component({
@@ -58,7 +61,7 @@ export class AcAnalogClock implements AfterViewInit {
     constructor(private rd: Renderer, @Inject(DOCUMENT) private document: HTMLDocument) {
         this.minuteClock = new EventEmitter<Date>();
         this.hourClock = new EventEmitter<Date>();
-        this.bgColor = "#92345";
+        this.bgColor = '#92345';
     }
 
     ngAfterViewInit() {

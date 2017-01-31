@@ -7,21 +7,21 @@ function validateRange(f: number | Date, t: number | Date) {
 
   return function (c: FormControl) {
     if ((Number(f) || Number(t)) && Number(c.value)) {
-      var fr = Number(f);
-      var to = Number(t);
-      var v = Number(c.value);
+      let fr = Number(f);
+      let to = Number(t);
+      let v = Number(c.value);
       return (!fr || v >= fr) && (!to || v <= to) ? null : {
-        "range": {
+        'range': {
           valid: false
         }
       };
     }
     if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.value)) {
-      var fr = Date.parse(f.toString());
-      var to = Date.parse(t.toString());
-      var v = Date.parse(c.value);
+      let fr = Date.parse(f.toString());
+      let to = Date.parse(t.toString());
+      let v = Date.parse(c.value);
       return (!fr || v >= fr) && (!to || v <= to) ? null : {
-        "range": {
+        'range': {
           valid: false
         }
       };
@@ -43,8 +43,8 @@ function validateCompare(p: string) {
     }
     if (c.value) {
       // compare the current value with the referenced control's value
-      return (!c.value || c.value == (<any>c.root)["controls"][p].value) ? null : {
-        "compare": {
+      return (!c.value || c.value == (<any>c.root)['controls'][p].value) ? null : {
+        'compare': {
           valid: false
         }
       };
@@ -77,7 +77,7 @@ export class FormValidatorService {
         targetInstance = new target();
       }
       catch (ex) {
-        console.error("Invalid viewmodel for FormValidatorService");
+        console.error('Invalid viewmodel for FormValidatorService');
       }
     }
     if (targetInstance) {
@@ -86,31 +86,31 @@ export class FormValidatorService {
         let errmsgs = new Object();
         let isRequired = `__isRequired__${propName}` in target.prototype;
         if (isRequired) {
-          (<any>errmsgs)["required"] = target.prototype[`__errRequired__${propName}`];
+          (<any>errmsgs)['required'] = target.prototype[`__errRequired__${propName}`];
           validators.push(Validators.required);
         }
         let hasMaxLength = `__hasMaxLength__${propName}` in target.prototype;
         if (hasMaxLength) {
-          (<any>errmsgs)["maxlength"] = target.prototype[`__errMaxLength__${propName}`];
+          (<any>errmsgs)['maxlength'] = target.prototype[`__errMaxLength__${propName}`];
           let maxLength = parseInt(target.prototype[`__hasMaxLength__${propName}`], 10);
           validators.push(Validators.maxLength(maxLength));
         }
         let hasMinLength = `__hasMinLength__${propName}` in target.prototype;
         if (hasMinLength) {
-          (<any>errmsgs)["minlength"] = target.prototype[`__errMinLength__${propName}`];
+          (<any>errmsgs)['minlength'] = target.prototype[`__errMinLength__${propName}`];
           let minLength = parseInt(target.prototype[`__hasMinLength__${propName}`], 10);
           validators.push(Validators.minLength(minLength));
         }
         let hasPattern = `__hasPattern__${propName}` in target.prototype;
         if (hasPattern) {
-          (<any>errmsgs)["pattern"] = target.prototype[`__errPattern__${propName}`];
+          (<any>errmsgs)['pattern'] = target.prototype[`__errPattern__${propName}`];
           let pattern = new RegExp(target.prototype[`__hasPattern__${propName}`]);
           validators.push(Validators.pattern(pattern));
         }
         let hasRangeFrom = `__hasRangeFrom__${propName}` in target.prototype;
         let hasRangeTo = `__hasRangeTo__${propName}` in target.prototype;
         if (hasRangeFrom || hasRangeTo) {
-          (<any>errmsgs)["range"] = target.prototype[`__errRange__${propName}`];
+          (<any>errmsgs)['range'] = target.prototype[`__errRange__${propName}`];
           let f: number | Date = Number(target.prototype[`__hasRangeFrom__${propName}`]);
           let t: number | Date = Number(target.prototype[`__hasRangeTo__${propName}`]);
           if (!f && !t) {
@@ -147,7 +147,7 @@ export class FormValidatorService {
       for (let propName in errGroup) {
         let ctrl = <FormControlEx>form.controls[propName];
         if (!ctrl) continue; // control might not be in the form
-        (<FormControlEx>form.controls[propName])["messages"] = (<any>errGroup)[propName];
+        (<FormControlEx>form.controls[propName])['messages'] = (<any>errGroup)[propName];
       }
     }
     // return FormGroup for immediate usage

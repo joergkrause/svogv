@@ -10,7 +10,11 @@
 
 class rangeInternalSetup {
 
-    constructor(public target: any, public key: string, public from: number | Date, public to: number | Date, public msg?: string) {
+    constructor(public target: any, 
+                public key: string, 
+                public from: number | Date, 
+                public to: number | Date, 
+                public msg?: string) {
         // property value
 
         // create a helper property to transport a meta data value
@@ -27,7 +31,8 @@ class rangeInternalSetup {
         });
 
         Object.defineProperty(target, `__errRange__${key}`, {
-            value: this.msg || `The field ${this.key} does not fall into the range from ${this.from} to ${this.to}`,
+            value: this.msg 
+               || `The field ${this.key} does not fall into the range from ${this.from} to ${this.to}`,
             enumerable: false,
             configurable: false
         });
