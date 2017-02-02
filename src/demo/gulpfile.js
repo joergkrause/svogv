@@ -58,7 +58,7 @@ gulp.task('copy:js', function () {
               paths.npm + 'systemjs/dist/*.js',
               '!/**/*.min.js' // we minify everything by ourselves
             ])
-            .pipe(uglify())
+            //.pipe(uglify())
             .pipe(gulp.dest(paths.assets + 'js/lib'));
 });
 
@@ -73,7 +73,7 @@ gulp.task('copy:angular', function () {
                     paths.npm + '@angular/**/Bundles/*.umd.js',
               '!' + paths.npm + '@angular/**/Bundles/*-testing.umd.js'
               ])
-              .pipe(uglify())
+              //.pipe(uglify())
               .pipe(gulp.dest(paths.assets + 'js/lib/@angular'));
 });
 
@@ -164,3 +164,4 @@ gulp.task('watchts', ['ts'], function () {
 
 // complete setup
 gulp.task('default', ['sass', 'ts', 'copy']);
+gulp.task('build', ['sass', 'ts', 'copy']);

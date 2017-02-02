@@ -21,13 +21,13 @@
       </div>
     </fieldset>
   </form>
-  <div class="card card-block card-success card-inverse">
-    <div class="card-header">
+  <div class="card card-block">
+    <div class="card-header card-success">
       Techniques used
     </div>    
     <div class="card-body">
       <p>This form makes use of the &lt;ac-editor&gt; component.</p>
-<pre>
+<code><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     &lt;fieldset>
       &lt;legend>Edit current user&lt;/legend>
@@ -37,13 +37,14 @@
       &lt;ac-editor [userForm]="userForm" [name]="'age'" >&lt;/ac-editor>
       &lt;ac-editor [userForm]="userForm" [name]="'passWord'" >&lt;/ac-editor>
       &lt;ac-editor [userForm]="userForm" [name]="'passWordTwo'" >&lt;/ac-editor>
-</pre>
+</pre></code>
     <p>
       The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The [name] property is bound to the properties of the view model.
       The view model needs the decorators to figure out what editor must be shown. It also pulls the validation information from the model. The model used on this form looks like this:  
     </p>
+<code>
 <pre>
-export class UserViewModel {
+export class UserViewModel {{ '{' }}
 
   @Hidden()
   id: number = 0;
@@ -77,9 +78,9 @@ export class UserViewModel {
   @Required()
   passWordTwo: string = '';
 
-}
- 
+{{ '}' }}
 </pre>
+</code>
     </div>
   </div>
 </div>

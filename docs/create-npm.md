@@ -337,4 +337,14 @@ require('./tools/gulp/gulpfile');
 The `ts-node` is a [TypeScript execution environment](https://www.npmjs.com/package/ts-node) and REPL (Read Execute Print Loop) for node. It's hence sort of an on-the-fly transpiler for TypeScript.
 Using this we can write the Gulp stuff in TypeScript and Gulp will still execute plain JavaScript.
 
+### Build tasks
 
+You can build and start everything like this:
+
+* Go to root of the project
+  * run `npm run build`: build the library 
+  * run `npm run demoall`: build libary, demo, and run the demo using local HTTP server on port 3000
+  * run `npm run execdemo`: build and run demo using local HTTP server, but keep library as is
+  * run `npm run tslint`: run the linter for the library
+* You can run more tasks specific to the demo from there
+  * `cd src/demo` and then the particular task 

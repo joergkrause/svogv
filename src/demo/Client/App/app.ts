@@ -41,11 +41,12 @@ import { FormValidatorService, DropdownService } from 'svogv';
     // simple Bootstrap widgets
     , wd.AcTreeView, wd.AcTreeViewNode
     , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
-    , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs, wd.AcEditor
+    , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs
+    , wd.AcEditor, wd.AcAutoForm,
     // SVG widget
     , wd.AcAnalogClock, wd.AcLoaderIcon
     // Supporting Directives
-    , wd.Dropdown, wd.DropdownToggle, wd.AutoForm
+    , wd.Dropdown, wd.DropdownToggle
   ],
   bootstrap: [cmp.SiteRootComponent],
   providers: [SiteApiService         // just for demo to get some static data
@@ -55,5 +56,6 @@ import { FormValidatorService, DropdownService } from 'svogv';
 })
 export class RootModule {
 }
+// uncomment to use in production
 enableProdMode();
 platformBrowserDynamic().bootstrapModule(RootModule);

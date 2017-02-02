@@ -15,6 +15,7 @@ const gulpRollup = require('gulp-better-rollup');
 const gulpMinifyCss = require('gulp-clean-css');
 const gulpMinifyHtml = require('gulp-htmlmin');
 const gulpIf = require('gulp-if');
+const del = require('del');
 
 
 // NOTE: there are two build "modes" in this file, based on which tsconfig is used.
@@ -105,13 +106,20 @@ task(':build:components:rollup', () => {
 
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
-    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))   // copy to dist for reference
-    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles'))); // copy to demo for immediate usage
+    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))         // copy to dist for reference
+    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles')));       // copy to demo for immediate usage
+});
+
+// refresh the package immediately to simplify local testing with current version
+task(':build:components:copy-for-demo', () => {
+  let target = SOURCE_ROOT + 'demo/node_modules/svogv';
+  console.log(`** immediate copy from ${DIST_COMPONENTS_ROOT}  to ${target}`);
+  return src(DIST_COMPONENTS_ROOT + '**/*.*').pipe(dest(target));
 });
 
 /** Builds components with resources (html, css) inlined into the built JS (ESM output). */
 task(':build:components:inline', sequenceTask(
-  [':build:components:ts', ':build:components:scss', ':build:components:assets'],
+  [':build:components:ts', ':build:components:scss', ':build:components:assets', ':build:components:copy-for-demo'],
   ':inline-resources',
 ));
 

@@ -15,6 +15,7 @@ import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpaginatio
 import { AcTreeView } from './widgets/ac-treeview/ac-treeview';
 import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
 import { AcEditor } from './widgets/ac-editors/ac-editor';
+import { AcAutoForm } from './widgets/ac-editors/ac-autoform';
 import { Hidden, Display, Placeholder, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
 import { FormValidatorService } from './services';
 
@@ -30,7 +31,8 @@ const SVOGV_MODULES = [
   AcDataGridPagination, 
   AcTreeView,
   AcTreeViewNode,
-  AcEditor,
+  AcEditor, 
+  AcAutoForm,
   AcLoaderIcon,
   AcAnalogClock
 ];

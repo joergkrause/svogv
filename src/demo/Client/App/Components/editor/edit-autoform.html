@@ -2,12 +2,6 @@
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
     <fieldset>
       <legend>Edit current user</legend>
-      <ac-editor [name]="'userName'" ></ac-editor>
-      <ac-editor [name]="'email'" ></ac-editor>
-      <ac-editor [name]="'phoneNumber'" ></ac-editor>
-      <ac-editor [name]="'age'" ></ac-editor>
-      <ac-editor [name]="'passWord'" ></ac-editor>
-      <ac-editor [name]="'passWordTwo'" ></ac-editor>
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save
