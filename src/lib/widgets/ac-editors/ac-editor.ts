@@ -81,10 +81,10 @@ export class AcEditor implements OnInit {
       if (typeof editorModel[this.name] === "string") {
         this.type = "text";
       }
-      if (editorModel[this.name] instanceof Boolean) {
+      if (typeof editorModel[this.name] === "boolean") {
         this.type = "boolean";
       }
-      if (editorModel[this.name] instanceof Number) {
+      if (typeof editorModel[this.name] === "number") {
         this.type = "number";
       }
       if (editorModel[this.name] instanceof Date){

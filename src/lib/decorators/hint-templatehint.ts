@@ -11,7 +11,7 @@
  */
 export function TemplateHint(template: string, params: { key: string, value: any }[]) {
     // the original decorator
-    function templateHintInternal(target: Object, name: string, template: string, params: { key: string, value: any }[]): void {
+    function templateHintInternal(target: Object, name: string): void {
         new templateHintInternalSetup(target, name, template, params);
     }
 

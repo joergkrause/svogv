@@ -11,38 +11,38 @@ export class UserViewModel {
   @Hidden()
   id: number = 0;
 
-  @Display('E-Mail', 'E-Mail address')
+  @Display('E-Mail', 20, 'E-Mail address')
   @Required()
   @MaxLength(100)
   @Email()
   email: string = '';
 
-  @Display('Phone Number', 'The user\'s phone')
+  @Display('Phone Number', 30, 'The user\'s phone')
   @Required()
   @MaxLength(20)
   phoneNumber: string = '';
 
-  @Display('User Name', 'The full name')
+  @Display('User Name', 10, 'The full name')
   @Required()
   @MaxLength(100)
   userName: string = '';
 
-  @Display('Age', 'From 12 to 88')
+  @Display('Age', 40, 'From 12 to 88')
   @Range(12, 88)
   age: number = 24;
 
-  @Display('Birthday')
+  @Display('Birthday', 50)
   birthday: Date = new Date();
 
-  @Display('Is Admin')
+  @Display('Is Admin', 60)
   isAdmin: boolean = true;
 
-  @Display('Password')
+  @Display('Password', 70)
   @Required()
   @Compare('passWordTwo')
   passWord: string = '';
 
-  @Display('Password')
+  @Display('Password', 80)
   @Required()
   passWordTwo: string = '';
 

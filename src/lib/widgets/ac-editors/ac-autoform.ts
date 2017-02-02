@@ -3,13 +3,11 @@ import { FormGroup } from '@angular/forms';
 import { AcEditor } from './ac-editor';
 
 /**
- * Use this directive to propagate the form's FormGroup to all auto editors.
+ * This component creates a complete editor out of a viewmodel.
+ * It creates one field for each property not decorated with @Hidden.
  * 
- * Instead of writing <ac-editor [userForm]="formGroupName"> you can now just say
- * <form autoform> and all editors get the form reference. The FormGroup just be
- * forwarded to hook the validators to the appropriate elements.  
  */
-@Component({ 
+@Component({
     selector: 'ac-autoform',
     template: `<ng-content></ng-content>
                <ac-editor *ngFor="let editorName of editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
@@ -20,17 +18,27 @@ export class AcAutoForm implements OnInit {
     @Input()
     formGroup: FormGroup;
 
-    editors: Array<string>
+    editors: Array<{ key: number, editor: string }>;
 
     constructor() {
-        this.editors = new Array<string>();
+        this.editors = Array<{ key: number, editor: string }>();
     }
 
     ngOnInit() {
-        for(var controlName in this.formGroup.controls){
-            this.editors.push(controlName);
+        // take all controls as is
+        var hasDecorators: boolean = ((<any>this.formGroup)['__editorModel__']);
+        for (var controlName in this.formGroup.controls) {
+            let displayOrder: number = 0;
+            if (hasDecorators) {
+                displayOrder = (<any>this.formGroup)['__editorModel__'][`__displayOrder__${controlName}`];
+            }
+            this.editors.push({
+                key: displayOrder,
+                editor: controlName
+            });
         }
+        // check the display decorator and sort
+        this.editors.sort((e, n) => e.key - n.key);
     }
-
-
 }
+

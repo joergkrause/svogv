@@ -3,10 +3,10 @@
  * @param name          The Name or Label that appears in forms or as header in grids.
  * @param description   A tooltip that can be used optionally.
  */
-export function Display(name: string, description?: string) {
+export function Display(name: string, order: number = 0, description?: string) {
     // the original decorator
     function displayInternal(target: Object, property: string | symbol): void {
-        new displayInternalSetup(target, property.toString(), name, description);
+        new displayInternalSetup(target, property.toString(), name, order, description);
     }
 
     // return the decorator
@@ -16,10 +16,18 @@ export function Display(name: string, description?: string) {
 class displayInternalSetup {
 
 
-    constructor(public target: any, public key: string, public name: string, public description: string) {
+    constructor(public target: any, public key: string, public name: string, public order: number, public description: string) {
+
+        this.order = parseInt(this.order.toString());
         // create a helper property to transport a meta data value
         Object.defineProperty(this.target, `__displayName__${this.key}`, {
             value: this.name,
+            enumerable: false,
+            configurable: false
+        });
+
+        Object.defineProperty(this.target, `__displayOrder__${this.key}`, {
+            value: this.order,
             enumerable: false,
             configurable: false
         });
