@@ -17,9 +17,10 @@ import { FormGroup } from '@angular/forms';
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
                 <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" [attr.maxvalue]="toValue" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'date'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'calendar'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" type="text" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'hidden' [id]="name" [formControlName]="name" type="hidden" />
                 <span class="fa fa-warning text-danger form-control-feedback" 
                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
                 <small class="text-danger" 
@@ -59,14 +60,23 @@ export class AcEditor implements OnInit {
       // make an instance to read the properties
       this.label = editorModel[`__displayName__${this.name}`] || this.label || this.name;
       this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip || this.name;
+      // render as range id there is a range definition
       if (editorModel[`__hasRangeFrom__${this.name}`] && Number(editorModel[`__hasRangeFrom__${this.name}`])) {
         this.fromValue = <number>editorModel[`__hasRangeFrom__${this.name}`];
+        this.type = "range";
       }
       if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
         this.toValue = <number>editorModel[`__hasRangeTo__${this.name}`];
+        this.type = "range";
       }
+      // placeholder
       if (editorModel[`__hasWatermark__${this.name}`]) {
         this.waterMark = editorModel[`__watermark__${this.name}`];
+      }
+      
+      // render hidden fields as hidden even in forms
+      if (editorModel[`__isHidden__${this.name}`]) {
+        this.type = "hidden";
       }
     }
   }

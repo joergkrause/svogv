@@ -42,7 +42,7 @@ import { FormValidatorService, DropdownService } from 'svogv';
     , wd.AcTreeView, wd.AcTreeViewNode
     , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
     , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs
-    , wd.AcEditor, wd.AcAutoForm,
+    , wd.AcEditor, wd.AcAutoForm
     // SVG widget
     , wd.AcAnalogClock, wd.AcLoaderIcon
     // Supporting Directives

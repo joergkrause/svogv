@@ -29,7 +29,13 @@ export class UserViewModel {
 
   @Display('Age', 'From 12 to 88')
   @Range(12, 88)
-  age = 14;
+  age: number = 24;
+
+  @Display('Birthday')
+  birthday: Date = new Date();
+
+  @Display('Is Admin')
+  isAdmin: boolean = true;
 
   @Display('Password')
   @Required()

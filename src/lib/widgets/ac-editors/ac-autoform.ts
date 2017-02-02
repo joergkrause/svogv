@@ -12,7 +12,7 @@ import { AcEditor } from './ac-editor';
 @Component({ 
     selector: 'ac-autoform',
     template: `<ng-content></ng-content>
-               <ac-editor *ngFor="let editorName in editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
+               <ac-editor *ngFor="let editorName of editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
               `
 })
 export class AcAutoForm implements OnInit {
@@ -27,7 +27,9 @@ export class AcAutoForm implements OnInit {
     }
 
     ngOnInit() {
-        // TODO: Extract type for form
+        for(var controlName in this.formGroup.controls){
+            this.editors.push(controlName);
+        }
     }
 
 

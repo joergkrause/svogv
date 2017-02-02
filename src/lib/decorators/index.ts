@@ -6,4 +6,5 @@ export * from './val-range';
 export * from './val-compare';
 export * from './hint-display';
 export * from './hint-placeholder';
+export * from './hint-templatehint';
 export * from './hint-hidden';
