@@ -11,6 +11,7 @@ export * from './app-widgets';
 export * from './editor/list';
 export * from './editor/delete';
 export * from './editor/edit';
+export * from './editor/edit-autoform';
 export * from './editor/new';
 // app : widgets
 export * from './widgets/list';

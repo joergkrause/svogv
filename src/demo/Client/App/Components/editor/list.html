@@ -46,6 +46,9 @@
             {{ data }}
           </td>
           <td>
+            <button class="btn btn-sm btn-primary" (click)="showModal(user)">&hellip;</button>
+          </td>
+          <td>
             <button class="btn btn-primary btn-sm" type="button"
                     (click)="editUser(user)">
               Edit
@@ -66,3 +69,6 @@
                (pageNumberChanged)="users.currentPageIndex = $event">
 </ac-pagination>
 
+<div *ngIf="currentUser">
+  <h1>Modaler Dialog für {{currentUser.userName}}</h1>
+</div>

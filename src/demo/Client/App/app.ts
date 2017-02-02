@@ -31,7 +31,7 @@ import { FormValidatorService, DropdownService } from 'svogv';
     , cmp.SiteAboutComponent
     , cmp.DashboardComponent
     // Editor, Validation & Grid
-    , cmp.EditorDemoComponent
+    , cmp.EditorDemoComponent, cmp.EditAutoformEditorComponent
     , cmp.ListEditorComponent, cmp.NewEditorComponent
     , cmp.EditEditorComponent, cmp.DeleteEditorComponent
     // Widgets 

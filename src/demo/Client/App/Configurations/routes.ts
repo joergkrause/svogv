@@ -85,6 +85,11 @@ const routes: Routes = [
         data: { 'title': 'Edit Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }
       },
       {
+        path: 'edit-autoform/:id',
+        component: cmp.EditAutoformEditorComponent,
+        data: { 'title': 'Edit Element', 'subtitle': 'Editor Autoform Demo', 'active': false, 'disabled': true }
+      },
+      {
         path: 'delete/:id',
         component: cmp.DeleteEditorComponent,
         data: { 'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }

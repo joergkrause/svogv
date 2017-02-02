@@ -44,4 +44,10 @@ export class ListEditorComponent {
     this.router.navigate(['/editor/delete', user.id]);
   }
 
+  currentUser: UserViewModel;
+
+  showModal(user){
+    this.currentUser = user;
+  }
+
 }
