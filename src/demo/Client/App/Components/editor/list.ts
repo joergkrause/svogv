@@ -29,7 +29,7 @@ export class ListEditorComponent {
     });
   }
 
-  private renderData(data: Array<UserViewModel>) {
+  private renderData(data: Array<UserViewModelList>) {
     // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone
     var t = new UserViewModelList();
     // we get a regular array here, but grid expects GridData for proper rendering
@@ -48,7 +48,7 @@ export class ListEditorComponent {
     this.router.navigate(['/editor/delete', user.id]);
   }
 
-  currentUser: UserViewModel;
+  currentUser: UserViewModelList;
 
   showModal(user){
     this.currentUser = user;
