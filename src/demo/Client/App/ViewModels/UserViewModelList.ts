@@ -1,12 +1,12 @@
 ﻿import { Required, MaxLength, Range, Email, Compare, Display, Hidden } from 'svogv';
 
 /**
- * View Model for form view.
+ * View Model for table view.
  * 
  * The intializer (= 0 and = '') are required to force the TS compiler to create properties. This is required to loop the element 
  * 
  */
-export class UserViewModel {
+export class UserViewModelList {
 
   @Hidden()
   id: number = 0;
@@ -31,19 +31,5 @@ export class UserViewModel {
   @Range(12, 88)
   age: number = 24;
 
-  @Display('Birthday', 50)
-  birthday: Date = new Date();
-
-  @Display('Is Admin', 60)
-  isAdmin: boolean = true;
-
-  @Display('Password', 70)
-  @Required()
-  @Compare('passWordTwo')
-  passWord: string = '';
-
-  @Display('Password', 80)
-  @Required()
-  passWordTwo: string = '';
 
 }

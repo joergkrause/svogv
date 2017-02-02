@@ -2,16 +2,20 @@
 import { Router } from '@angular/router';
 import { EmitterService } from '../../Services/EmitterService';
 import { SiteApiService } from '../../Services/SiteApiService';
-import { UserViewModel } from '../../ViewModels/UserViewModel';
+import { UserViewModelList } from '../../ViewModels/UserViewModelList';
 import { AcDataGridModel } from 'svogv';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './list.html'
+  templateUrl: './list.html',
+  styles: [
+    'button.ac-supersmall { width: 16px; height: 16px; border-radius: 0; padding: 1px; border: 0px; }',
+    'button.ac-supersmall i { font-size: 0.8em; }',
+    'div.ac-sortsmall { width: 18px; height: 34px; }']
 })
 export class ListEditorComponent {
 
-  public users: AcDataGridModel<UserViewModel>;
+  public users: AcDataGridModel<UserViewModelList>;
 
   constructor(public apiService: SiteApiService, public router : Router) {
     console.log('Users&List ctor');
@@ -27,9 +31,9 @@ export class ListEditorComponent {
 
   private renderData(data: Array<UserViewModel>) {
     // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone
-    var t = new UserViewModel();
+    var t = new UserViewModelList();
     // we get a regular array here, but grid expects GridData for proper rendering
-    this.users = new AcDataGridModel<UserViewModel>(data, t);
+    this.users = new AcDataGridModel<UserViewModelList>(data, t);
   }
 
   editUser(user) {

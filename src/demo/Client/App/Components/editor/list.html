@@ -27,8 +27,10 @@
       <thead>
         <tr>
           <th *ngFor="let header of users.headers" [title]="header.desc">{{ header.text }}
-              <button class="btn btn-sm btn-secondary" (click)="users.sortColumn(header.prop, 'asc')"><i class="fa fa-sort-asc"></i></button>
-              <button class="btn btn-sm btn-secondary" (click)="users.sortColumn(header.prop, 'desc')"><i class="fa fa-sort-asc"></i></button>
+            <div class="ac-sortsmall">
+              <button class="btn btn-sm btn-secondary ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')"><i class="fa fa-sort-asc"></i></button>
+              <button class="btn btn-sm btn-secondary ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')"><i class="fa fa-sort-desc"></i></button>
+            </div>
           </th>
           <th>Action</th>
         </tr>
@@ -73,19 +75,20 @@
   <div class="card-body">
     <p>The table is plain HTML. The tricky part is the datamodel, that holds an array of view models. This model class is able to 
       sort, filter, page, and so on.</p>
-      <code><pre>
+      <code>
+        <pre>
 ngOnInit() {{ '{' }}
   // Here we load some data from a service
-  this.apiService.getUsers().subscribe(data => {
+  this.apiService.getUsers().subscribe(data => {{ '{' }}
     this.renderData(data);
   });
 }
 
-private renderData(data: Array<UserViewModel>) {{ '{' }}
+private renderData(data: Array&lt;UserViewModel>) {{ '{' }}
   // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone
   var t = new UserViewModel();
   // we get a regular array here, but grid expects GridData for proper rendering
-  this.users = new AcDataGridModel<UserViewModel>(data, t);
+  this.users = new AcDataGridModel&lt;UserViewModel>(data, t);
 }
 
         </pre></code> 
