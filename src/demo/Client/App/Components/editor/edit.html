@@ -2,12 +2,14 @@
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     <fieldset>
       <legend>Edit current user</legend>
-      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'age'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'passWord'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'passWordTwo'" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="userName" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="email" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="phoneNumber" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="age" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="birthday" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="isAdmin" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="passWord" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="passWordTwo" ></ac-editor>
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save

@@ -9,9 +9,9 @@
  * @param template        The Name that appears in form fields as a watermark.
  * @param params          Depending of template some additional values as a dictionary.
  */
-export function TemplateHint(template: string, params: [{ key: string, value: any }]) {
+export function TemplateHint(template: string, params: { key: string, value: any }[]) {
     // the original decorator
-    function templateHintInternal(target: Object, name: string, template: string, params: [{ key: string, value: any }]): void {
+    function templateHintInternal(target: Object, name: string, template: string, params: { key: string, value: any }[]): void {
         new templateHintInternalSetup(target, name, template, params);
     }
 
@@ -21,7 +21,7 @@ export function TemplateHint(template: string, params: [{ key: string, value: an
 
 class templateHintInternalSetup {
 
-    constructor(public target: any, public key: string, public template: string, public params: [{ key: string, value: any }]) {
+    constructor(public target: any, public key: string, public template: string, public params: { key: string, value: any }[]) {
 
         // create a helper property to transport a meta data value
         Object.defineProperty(this.target, `__templateHint__${this.key}`, {
