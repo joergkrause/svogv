@@ -5,7 +5,12 @@
  * Currently supported:
  *  - TextArea
  *  - Calendar
+ *  - Range
+ *  - Number
+ *  - Text
  *
+ * The Calendar creates Date-fielsd. However, in casde of a datatype Date the date field will be created anyway.
+ * 
  * @param template        The Name that appears in form fields as a watermark.
  * @param params          Depending of template some additional values as a dictionary.
  */

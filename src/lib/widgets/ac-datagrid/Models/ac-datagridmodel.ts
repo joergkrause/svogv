@@ -101,6 +101,10 @@ export class AcDataGridModel<T> {
     return columns;
   }
 
+  public sortColumn(colName: string, dir: string){
+    this.items.sort((a:any, b:any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
+  }
+
   headers: Array<AcDataGridHeader>;
 
   private createHeadersForType(type: any): void {

@@ -16,4 +16,61 @@
       </div>
     </fieldset>
   </form>
+  <div class="card card-block">
+    <div class="card-header card-success">
+      Techniques used
+    </div>    
+    <div class="card-body">
+      <p>This form makes use of the &lt;ac-editor&gt; component.</p>
+<code><pre>
+ &lt;form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row">
+    &lt;fieldset>
+      &lt;legend>Edit current user&lt;/legend>
+      &lt;ac-autoform [userForm]="myForm">&lt;/ac-editor>
+</pre></code>
+    <p>
+      The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the fields 
+      including validation, label, and data type specific information. 
+    </p>
+<code>
+<pre>
+export class UserViewModel {{ '{' }}
+
+  @Hidden()
+  id: number = 0;
+
+  @Display('E-Mail', 30, 'E-Mail address')
+  @Required()
+  @MaxLength(100)
+  @Email()
+  email: string = '';
+
+  @Display('Phone Number', 20, 'The user\'s phone')
+  @Required()
+  @MaxLength(20)
+  phoneNumber: string = '';
+
+  @Display('User Name', 10, 'The full name')
+  @Required()
+  @MaxLength(100)
+  userName: string = '';
+
+  @Display('Age', 40, 'From 12 to 88')
+  @Range(12, 88)
+  age = 14;
+
+  @Display('Password', 50)
+  @Required()
+  @Compare('passWordTwo')
+  passWord: string = '';
+
+  @Display('Password', 60)
+  @Required()
+  passWordTwo: string = '';
+
+{{ '}' }}
+</pre>
+</code>
+    </div>
+  </div>
 </div>
