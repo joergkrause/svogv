@@ -8,7 +8,8 @@ import {
   AcTab,
   AcWebPart,
   AcLoaderIcon,
-  AcAnalogClock
+  AcAnalogClock,
+  HudClock
 } from './widgets/index';
 
 import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
@@ -16,7 +17,7 @@ import { AcTreeView } from './widgets/ac-treeview/ac-treeview';
 import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
 import { AcEditor } from './widgets/ac-editors/ac-editor';
 import { AcAutoForm } from './widgets/ac-editors/ac-autoform';
-import { Hidden, Display, Placeholder, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
+import { Hidden, Display, Placeholder, TemplateHint, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
 import { FormValidatorService } from './services';
 
 export * from './decorators';
@@ -34,7 +35,8 @@ const SVOGV_MODULES = [
   AcEditor, 
   AcAutoForm,
   AcLoaderIcon,
-  AcAnalogClock
+  AcAnalogClock,
+  HudClock
 ];
 
 @NgModule({

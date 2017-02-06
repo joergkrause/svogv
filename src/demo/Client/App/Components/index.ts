@@ -18,3 +18,5 @@ export * from './widgets/list';
 export * from './widgets/analogclock';
 export * from './widgets/loadericon';
 export * from './widgets/treeview';
+// app: hud
+export * from './hud/hud-dashboard';

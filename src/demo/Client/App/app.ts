@@ -15,6 +15,7 @@ import routes from './Configurations/routes';
 // resolves against node_modules without changes)
 import * as wd from 'svogv';
 import { FormValidatorService, DropdownService } from 'svogv';
+import { WindowRef } from 'svogv';
 
 @NgModule({
   imports: [
@@ -38,13 +39,15 @@ import { FormValidatorService, DropdownService } from 'svogv';
     , cmp.WidgetDemoComponent
     , cmp.ListWidgetsComponent
     , cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
+    // Hud Demo
+    , cmp.HudDashboardComponent    
     // simple Bootstrap widgets
     , wd.AcTreeView, wd.AcTreeViewNode
     , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
     , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs
-    , wd.AcEditor, wd.AcAutoForm
-    // SVG widget
-    , wd.AcAnalogClock, wd.AcLoaderIcon
+    , wd.AcEditor, wd.AcAutoForm    
+    // SVG widgets, HUD widgets
+    , wd.AcAnalogClock, wd.AcLoaderIcon, wd.HudClock
     // Supporting Directives
     , wd.Dropdown, wd.DropdownToggle
   ],
@@ -52,7 +55,8 @@ import { FormValidatorService, DropdownService } from 'svogv';
   providers: [SiteApiService         // just for demo to get some static data
     , FormValidatorService  // the forms support, manages the decorators
     , DropdownService       // supports the dropdown menu events 
-    , { provide: LocationStrategy, useClass: HashLocationStrategy }]
+    , { provide: LocationStrategy, useClass: HashLocationStrategy }
+    , WindowRef]
 })
 export class RootModule {
 }

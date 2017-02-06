@@ -177,7 +177,10 @@ The goal of the menus is the complete TypeScript support along with the Bootstra
 Additionally we plan to provide some "fun stuff", that may help to understand how components can be made properly:
 
 * **AnalogClock**: It is what it says -- based on SVG
-* **LoaderIcon**: A circling icon that is higly customizable (as of 0.1.0 it's working)
+* **LoaderIcon**: A circling icon that is higly customizable
+* **HudAnalogClock**: A clock that is for Head Up Display / Gaming -- based on Canvas
+
+> The HUD widgets get more parts in the future. 
 
 ## Where to get?
 
