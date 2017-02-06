@@ -2,13 +2,32 @@
          EventEmitter, OnInit, ElementRef, Renderer } from '@angular/core';
 import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './Models/index';
 
+/**
+ * The treenode class represents a single treenode for the treeview. Actually, this renders the real UI.
+ * 
+ * The component needs this input value:
+ *  
+ * * @Input() node: AcTextTreeNode;
+ *  
+ * The several options are set through the AcTreeNodeOptions object that is being held by the   
+ * AcTextTreeNode class. This includes colors, icons, and other styles. 
+ * 
+ * The component can fire these events:
+ * 
+ * * @Output() nodeClick: EventEmitter<AcTreeNode>;
+ * * @Output() checkChanged: EventEmitter<AcTreeNode>;
+ * * @Output() selectedChanged: EventEmitter<AcTreeNode>;
+ * * @Output() collapseChanged: EventEmitter<AcTreeNode>; 
+ * 
+ */
 @Component({
     selector: 'ac-treenode',
     template: `<li class="treeview" (click)="handleClick($event)">
                    <i class="ac-collapse" [ngClass]="collapseClasses" *ngIf="node.hasChildren" (click)="handleCollapse()"></i>
                    <i class="ac-collapse" *ngIf="!node.hasChildren"></i>
                    <i class="ac-icon" [ngClass]="iconClasses" [style.color]="node.options.iconColor" *ngIf="!node.options.checkable"></i>
-                   <input type="checkbox" [id]="node.name" *ngIf="node.options.checkable" [checked]="node.stateIsChecked" (click)="handleCheckChange()">
+                   <input type="checkbox" [id]="node.name" *ngIf="node.options.checkable" 
+                          [checked]="node.stateIsChecked" (click)="handleCheckChange()">
                    <label [attr.for]="node.name"></label>
                    <a class="ac-container"
                          [href]="href"

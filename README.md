@@ -39,21 +39,21 @@ export class UserViewModel {
   @Hidden()
   id: Number = 0;
 
-  @Display("E-Mail", "E-Mail address")
+  @Display('E-Mail', 'E-Mail address')
   @Required()
   @MaxLength(100)
   @Email()
-  email: string = "";
+  email: string = '';
 
-  @Display("Phone Number", "The user's phone")
+  @Display('Phone Number', 'The user\'s phone')
   @Required()
   @MaxLength(20)
-  phoneNumber: string = "";
+  phoneNumber: string = '';
 
-  @Display("User Name", "The full name")
+  @Display('User Name', 'The full name')
   @Required()
   @MaxLength(100)
-  userName: string = "";
+  userName: string = '';
 
 }
 ~~~
@@ -71,6 +71,19 @@ import {
   Display, 
   Hidden 
 } from 'svogv';
+~~~
+
+Or alternatively prefix your import:
+
+~~~
+import * as Validator from 'svogv';
+
+export class UserViewModel {
+
+  @Validator.Display('E-Mail')
+  eMail: string = '';
+
+}
 ~~~
 
 Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 
@@ -108,17 +121,49 @@ The tricky part is the component `<ac-editor>`. This component checks the proper
 
 And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
 
+Even simpler, you can create a complete form with just one tag. Just go like this:
+
+~~~
+<form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
+  <fieldset>
+    <legend>Edit current user</legend>
+    <ac-autoform [formGroup]="userForm"></ac-autoform> 
+    <div class="row">
+      <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+        <i class="fa fa-save"></i> Save
+      </button>
+    </div>
+  </fieldset>
+</form>
+~~~
+
+The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is buils upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
+Especially those decorators are helpful:
+
+* **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
+* **@Hidden** Exclude as field from a autoform
+* **@Placeholder** A watermark that appears in empty form fields
+* **@TemplateHint** Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.
+
+| Data Type   | Field Type        | Options for @TemplateHint | Remark                                                |
+|-------------|-------------------|---------------------------|-------------------------------------------------------|
+| string      | type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
+| boolean     | type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
+| number      | type="number"     | Range                     | Default is numeric field, Range is a slider
+| Date        | type="date"       | Calendar                  | Calender is provided by browser feature
+| enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+
 ## The Widgets
 
 The widget complement the editor by adding more parts. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. 
 So I created a set of such components:
 
+* **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
 * **Breadcrumb**: An automatically navigable bread crumb using the Router's information
-* **SideMenu**: A simple programmable menu
-* **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models
+* **SideMenu**: A simple programmable menu for the left side with breaks, icons, and non-active labels
+* **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models, multi level
 * **Tabs**: Programmable Tabs that react to the Router
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
-* **TreeView**: An advanced treeview with icon support and many options
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
 
 Under development, but not yet checked in:
@@ -132,8 +177,7 @@ The goal of the menus is the complete TypeScript support along with the Bootstra
 Additionally we plan to provide some "fun stuff", that may help to understand how components can be made properly:
 
 * **AnalogClock**: It is what it says -- based on SVG
-* **HoverHeader**: An inteactive header, changes appearance effects
-* **LoaderIcon**: A circling icon that is higly customizable (as of 0.1.1 it's working)
+* **LoaderIcon**: A circling icon that is higly customizable (as of 0.1.0 it's working)
 
 ## Where to get?
 

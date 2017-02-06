@@ -27,7 +27,13 @@ bower install
 npm run exec
 ~~~
 
-That's it. The build script copies the data to /dist/demo folder and executes the 'http-server' on port 3000, then. The default browser opens automatically. Enjoy!  
+That's it. 
+
+> The build script copies the data to _/../../dist/demo_ folder and executes the 'http-server' on port 3000, then. The default browser opens automatically. Enjoy!  
+
+The demo ist part of the complete project as shown on Github. 
+
+![](/docs/images/DemoInstruction.png)
 
 #### Explanation
 

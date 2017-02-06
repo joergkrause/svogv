@@ -15,6 +15,8 @@ import { AcDataGridModel } from 'svogv';
 })
 export class ListEditorComponent {
 
+
+
   public users: AcDataGridModel<UserViewModelList>;
 
   constructor(public apiService: SiteApiService, public router : Router) {

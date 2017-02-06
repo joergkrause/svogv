@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
                 <textarea *ngIf="type == 'textarea'" class="form-control" [id]="name" 
                           [formControlName]="name" [attr.rows]="getParams('rows')" [attr.cols]="getParams('cols')">
                 </textarea>
-                <select *ngIf="type == 'select-enum'" class="form-control" [id]="name" [formControlName]="name">
+                <select *ngIf="type == 'enum'" class="form-control" [id]="name" [formControlName]="name">
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
                 <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" 
