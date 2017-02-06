@@ -9,7 +9,7 @@ import {
   AcWebPart,
   AcLoaderIcon,
   AcAnalogClock,
-  HudClock
+  HudClock, HudClockOptions
 } from './widgets/index';
 
 import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
@@ -36,7 +36,7 @@ const SVOGV_MODULES = [
   AcAutoForm,
   AcLoaderIcon,
   AcAnalogClock,
-  HudClock
+  HudClock, HudClockOptions
 ];
 
 @NgModule({

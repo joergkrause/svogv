@@ -1,6 +1,6 @@
-import { HudClockStrokeOption } from './hud-clock-strokeoption';
+import { IHudClockStrokeOption } from './hud-clock-strokeoption';
 
-export interface HudClockOptions {
+export class HudClockOptions {
     width: number;
     height: number;
     starCount: number;
@@ -11,9 +11,9 @@ export interface HudClockOptions {
         fade: boolean,
         fadeSpeed: number,
         color: string
-    },
-    hour: HudClockStrokeOption,
-    minute: HudClockStrokeOption,
-    second: HudClockStrokeOption,
-    milli: HudClockStrokeOption
+    };
+    hour: IHudClockStrokeOption;
+    minute: IHudClockStrokeOption;
+    second: IHudClockStrokeOption;
+    milli: IHudClockStrokeOption
 }

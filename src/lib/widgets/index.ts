@@ -20,3 +20,6 @@ export * from './ac-menu/models/ac-menulabelitem';
 export * from './ac-menu/models/ac-menulinkitem';
 export * from './ac-analogclock';
 export * from './hud/hud-clock';
+export * from './hud/models/hud-clock-engine';
+export * from './hud/models/hud-clock-options';
+export * from './hud/models/hud-clock-strokeoption';

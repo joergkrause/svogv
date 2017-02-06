@@ -1,6 +1,6 @@
 import { ElementRef } from '@angular/core';
 
-import { HudClockStrokeOption } from './hud-clock-strokeoption';
+import { IHudClockStrokeOption } from './hud-clock-strokeoption';
 import { HudClockOptions } from './hud-clock-options';
 import { WindowRef } from '../../../utils/windowref';
 
@@ -254,7 +254,7 @@ export class HudClockEngine {
      * @param {number} maxTime
      * @param {{}} config
      */
-    drawBackgroundTimePart(radius: number, time: number, maxTime: number, configPart: HudClockStrokeOption) {
+    drawBackgroundTimePart(radius: number, time: number, maxTime: number, configPart: IHudClockStrokeOption) {
         this.engine.globalAlpha = 0.5;
 
         var angleWidth = Math.PI * 2 / maxTime;
@@ -298,7 +298,7 @@ export class HudClockEngine {
      * @param {number} time
      * @param {number} maxTime
      */
-    drawTimePart = function (radius: number, time: number, maxTime: number, configPart: HudClockStrokeOption) {
+    drawTimePart = function (radius: number, time: number, maxTime: number, configPart: IHudClockStrokeOption) {
         var angleWidth: number = Math.PI * 2 / maxTime;
         var angleMid: number = time * angleWidth - 0.5 * Math.PI;
         var length: number = 8;

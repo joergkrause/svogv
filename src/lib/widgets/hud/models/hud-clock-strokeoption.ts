@@ -1,1 +1,1 @@
-export interface HudClockStrokeOption { foreground: string, background: string, width: number };
+export interface IHudClockStrokeOption { foreground: string, background: string, width: number };

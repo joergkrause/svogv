@@ -21,6 +21,7 @@ export class HudClock implements AfterViewInit {
 
     @Input() width: number;
     @Input() height: number;
+    @Input() config: EventEmitter<HudClockOptions>;
     @Output() minuteClock: EventEmitter<Date>;
     @Output() hourClock: EventEmitter<Date>;
     @ViewChild('clockCanvas') canvas: ElementRef;
@@ -36,8 +37,7 @@ export class HudClock implements AfterViewInit {
     private clock: HudClockEngine;
 
     ngAfterViewInit() {
-        // TODO: Make this configurable
-        let config: HudClockOptions = {
+        let initialConfig = {
             width: this.width,
             height: this.height,
             starCount: 500,
@@ -69,8 +69,16 @@ export class HudClock implements AfterViewInit {
                 background: '#000',
                 width: 3,
             }
+        };
+        if (!this.config) {
+            this.config = new EventEmitter<HudClockOptions>();
+            this.config.emit(initialConfig);
+            this.config.subscribe((newConfig: HudClockOptions) => {
+                this.clock.config = newConfig;
+                this.clock.run();
+            });
         }
-        this.clock = new HudClockEngine(this.canvas, this.window, config);
+        this.clock = new HudClockEngine(this.canvas, this.window, initialConfig);
         this.clock.run();
     }
 

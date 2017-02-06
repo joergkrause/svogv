@@ -1,4 +1,4 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input, Output, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 /**
@@ -18,7 +18,8 @@ import { FormGroup } from '@angular/forms';
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
                 <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" 
-                       [attr.maxvalue]="toValue" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
+                       [attr.maxvalue]="toValue" class="form-control" [id]="name" 
+                      [formControlName]="name" [title]="tooltip" />
                 <input *ngIf="type == 'calendar'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
                 <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
                 <input *ngIf="type == 'boolean'" type="checkbox" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
@@ -47,8 +48,12 @@ export class AcEditor implements OnInit {
   @Input() fromValue: number = 0;
   @Input() toValue: number = 100;
   @Input() waterMark = "";
+  // value
+  @Output() 
+  @Input() 
+  value: any;
   // additional values provided by TemplateHint decorator 
-  params: { key: string, value: any }[];
+  params: { key: string, value: any }[];  
 
   errors: Array<string>;
 
@@ -122,6 +127,7 @@ export class AcEditor implements OnInit {
   }
 
   private onValueChanged(data: any) {
+    // check validation on change
     this.errors = new Array<string>();
     for (let error in this.userForm.controls[this.name].errors) {
       this.errors.push(error);
