@@ -6,6 +6,13 @@ import { FormGroup } from '@angular/forms';
  */
 @Component({
   selector: 'ac-editor',
+  styles: [
+    'input[type="checkbox"] { display: none; }',
+    'input[type="checkbox"] + label:before { font-family: FontAwesome; }',
+    'input[type="checkbox"] + label:before { content: "\\f096"; }',
+    'input[type="checkbox"]:checked + label:before { content: "\\f046"; }',
+    'input[type="checkbox"] + label { display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; }',
+  ],
   template: `<div class="form-group row" 
                   [formGroup]="userForm" 
                   [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">

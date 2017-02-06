@@ -63,8 +63,15 @@ export class AcTabData {
 `
 }) //
 export class AcTabs {
+
   @Input() tabs: AcTabData;
+  @Input() limitBreadcrumb: boolean = false;
   @Output() currentTab: AcTab;
+
+  // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
+  // in the router config for those items that shall appear in the breadcrumb
+  private static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
+  private static readonly ROUTE_DATA_SUBTITLE = 'subtitle';
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   }
@@ -76,54 +83,59 @@ export class AcTabs {
   }
 
   ngOnInit() {
-    // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
-    // in the router config for those items that shall appear in the breadcrumb
-    const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
-    const ROUTE_DATA_SUBTITLE = 'subtitle';
 
     // subscribe to the NavigationEnd event
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
-      // reset breadcrumbs
 
       // get the root route
       let currentRoute: ActivatedRoute = this.activatedRoute.root;
 
-      // set the url to an empty string
-      let url = '';
-
       // iterate from activated route to children
       if (currentRoute.children.length > 0) {
-        let childrenRoutes: ActivatedRoute[] = currentRoute.children;
+        this.recurseRouteChildren(currentRoute);
+      }
+    });
+  }
 
-        // iterate over each children
-        childrenRoutes.forEach(route => {
-          // set currentRoute to this route
-          currentRoute = route;
+  private recurseRouteChildren(currentRoute: ActivatedRoute): void {
+    let url: string = '';
+    let childrenRoutes: ActivatedRoute[] = currentRoute.children;
+    // iterate over each children
+    childrenRoutes.forEach(route => {
 
-          // verify this is the primary route
-          if (route.outlet !== PRIMARY_OUTLET) {
-            return;
-          }
+      // verify this is the primary route
+      if (route.outlet !== PRIMARY_OUTLET) {
+        return;
+      }
 
-          // verify the custom data property "breadcrumb" is specified on the route
-          if (!route.snapshot.data.hasOwnProperty(ROUTE_DATA_BREADCRUMB)) {
-            return;
-          }
+      // verify the custom data property "breadcrumb" is specified on the route, limitBreadcrumb must be set to true to activate this
+      if (!route.snapshot.data.hasOwnProperty(AcTabs.ROUTE_DATA_BREADCRUMB) && this.limitBreadcrumb) {
+        return;
+      }
 
-          // get the route's URL segment
-          let routeURL: string = route.snapshot.url.map(segment => segment.path).join('/');
+      // get the route's URL segment
+      let routeURL: string = route.snapshot.url.map(segment => segment.path).join('/');
 
-          // append route URL to URL
-          url += `/${routeURL}`;
+      // append route URL to URL
+      url += `/${routeURL}`;
 
-          //add router data as current tab
-          var matchTab = this.tabs.tabs.filter(t => t.link.toString() == url
-            || ((<any>t).length > 0 && t.link[0] == url));
-          if (matchTab && matchTab.length == 1) {
-            this.currentTab = matchTab[0];
-          }
-
-        });
+      // add router data as current tab
+      // in case of subroutes it looks like this: link[0] = /editor, link[1] = /edit/:id
+      // regex checks /xxx/:nn/ 
+      let rx = new RegExp('^((\/.*?)\/\:[^\/]*?\/?)$');
+      let lastmatch = (l) => l.match(rx).filter(m => m === l).length > 0;
+      var matchTab = this.tabs.tabs.filter(t => 
+          t.link.toString() == url
+          ||
+          lastmatch(t.link.toString())
+          || 
+          ((<any>t).length > 0 && t.link.filter(sublink => sublink == url || lastmatch(sublink)).length > 0)); 
+      if (matchTab && matchTab.length == 1) {
+        this.currentTab = matchTab[0];
+        return;
+      }
+      if (route.children.length > 0){
+        this.recurseRouteChildren(route);
       }
     });
   }
