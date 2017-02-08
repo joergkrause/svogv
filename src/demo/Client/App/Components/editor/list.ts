@@ -11,11 +11,9 @@ import { AcDataGridModel } from 'svogv';
   styles: [
     'button.ac-supersmall { width: 16px; height: 16px; border-radius: 0; padding: 1px; border: 0px; }',
     'button.ac-supersmall i { font-size: 0.8em; }',
-    'div.ac-sortsmall { width: 18px; height: 34px; }']
+    'div.ac-sortsmall { width: 18px; height: 34px; float: right; line-height: 0px; margin: -5px; }']
 })
 export class ListEditorComponent {
-
-
 
   public users: AcDataGridModel<UserViewModelList>;
 

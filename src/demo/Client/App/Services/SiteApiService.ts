@@ -14,27 +14,36 @@ export class SiteApiService {
   private users: Array<UserViewModel>;
 
   constructor() {
+    var now = new Date().getFullYear();
     // some static demo data
     let u1 = new UserViewModel();
     u1.id = 1;
     u1.email = 'Paul@parker.com';
     u1.phoneNumber = '030-123456';
     u1.userName = 'Paul Parker';
+    u1.birthday = new Date(now-22, 5, 13);
+    u1.age = 22;
     let u2 = new UserViewModel();
     u2.id = 2;
     u2.email = 'wilma@workshop.com';
     u2.phoneNumber = '055-123456';
     u2.userName = 'Wilma Workshop';
+    u2.age = 35;
+    u1.birthday = new Date(now-35, 11, 22);
     let u3 = new UserViewModel();
     u3.id = 3;
     u3.email = 'theodor@trainer.com';
     u3.phoneNumber = '088-123456';
     u3.userName = 'Theodor Trainer';
+    u3.age = 41;
+    u1.birthday = new Date(now-41, 7, 3);
     let u4 = new UserViewModel();
     u4.id = 4;
     u4.email = 'bill@boss.com';
     u4.phoneNumber = '001-55998877';
     u4.userName = 'Bill Boss';
+    u4.age = 58;
+    u1.birthday = new Date(now-58, 2, 15);
 
     this.users = new Array<UserViewModel>();
     this.users.push(u1);

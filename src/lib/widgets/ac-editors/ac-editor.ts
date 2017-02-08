@@ -14,7 +14,7 @@ import { FormGroup } from '@angular/forms';
     'input[type="checkbox"] + label { display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; }',
   ],
   template: `<div class="form-group row" 
-                  [formGroup]="userForm" 
+                  [formGroup]="userForm" *ngIf="type != 'hidden'"
                   [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">
               <label [attr.for]="name" [attr.title]="tooltip" class="col-form-label col-xs-2">{{ label }}: </label>
               <div [ngClass]="{ 'col-xs-10': inline }">
@@ -36,11 +36,10 @@ import { FormGroup } from '@angular/forms';
                 <label *ngIf="type == 'boolean'"></label>
                 <input *ngIf="type == 'boolean'" type="checkbox" class="form-control" 
                        [readOnly]='readonly'
-                       [id]="name" [formControlName]="name" [title]="tooltip"></input>
+                       [id]="name" [formControlName]="name" [title]="tooltip" />
                 <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" 
                        [readOnly]='readonly'
                        type="text" class="form-control" [id]="name" [formControlName]="name" />
-                <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
                 <span class="fa fa-warning text-danger form-control-feedback" 
                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
                 <small class="text-danger" 
@@ -48,7 +47,9 @@ import { FormGroup } from '@angular/forms';
                   <span *ngFor="let error of errors">{{ userForm.controls[name].messages[error] }}</span>
                 </small>
               </div>
-             </div>`
+             </div>
+             <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
+`
 }) //
 export class AcEditor implements OnInit {
 
