@@ -33,9 +33,10 @@ import { FormGroup } from '@angular/forms';
                 <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" 
                        [readOnly]='readonly'
                        class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
+                <label *ngIf="type == 'boolean'"></label>
                 <input *ngIf="type == 'boolean'" type="checkbox" class="form-control" 
                        [readOnly]='readonly'
-                       [id]="name" [formControlName]="name" [title]="tooltip" />
+                       [id]="name" [formControlName]="name" [title]="tooltip"></input>
                 <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" 
                        [readOnly]='readonly'
                        type="text" class="form-control" [id]="name" [formControlName]="name" />

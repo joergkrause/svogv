@@ -9,29 +9,45 @@ import { AcEditor } from './ac-editor';
  */
 @Component({
     selector: 'ac-autoform',
+    styles: [
+        'fieldset: { border-top: 1px silver solid; padding: 10px; }',
+        'legend: { width: auto; padding-left: 10px; padding-right: 10px; font-size: 1em;}'
+    ],
     template: `<ng-content></ng-content>
-               <ng-container *ngIf="!grouped()">
-                   <ac-editor *ngFor="let editorName of editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
+               <ng-container *ngIf="!ungroupedAfter">
+                   <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
                </ng-container>
                <ng-container *ngIf="grouped()">
                 <fieldset *ngFor="let group of groups">
                     <legend [attr.title]="group.desc" *ngIf="group.name">{{ group.name }}</legend>
-                    <ac-editor *ngFor="let editorName of group.editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
+                    <ac-editor *ngFor="let editor of group.editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
                 </fieldset>                 
+               </ng-container>
+               <ng-container *ngIf="ungroupedAfter">
+                   <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
                </ng-container>
               `
 })
 export class AcAutoForm implements OnInit {
 
+    /**
+     * A reference to the form. Required.
+     */
     @Input()
     formGroup: FormGroup;
+    /**
+     * Ungrouped element will appear at the end, after all groupes.
+     * If there are no groups this will be ignored. Optional.
+     */
+    @Input()
+    ungroupedAfter: boolean = true;
 
     editors: Array<{ key: number, editor: string }>;
-    groups: Array<{ key:number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>;
+    groups: Array<{ key: number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>;
 
     constructor() {
         this.editors = new Array<{ key: number, editor: string }>();
-        this.groups = new Array<{ key:number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>();
+        this.groups = new Array<{ key: number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>();
     }
 
     ngOnInit() {
@@ -65,10 +81,10 @@ export class AcAutoForm implements OnInit {
                 var groupExists = existingGroupArray.length === 1;
                 if (!groupExists) {
                     this.groups.push({
-                       key: groupOrder, 
-                       name: groupName, 
-                       desc: groupDesc, 
-                       editors: new Array<{ key: number, editor: string }>()
+                        key: groupOrder,
+                        name: groupName,
+                        desc: groupDesc,
+                        editors: new Array<{ key: number, editor: string }>()
                     });
                 }
                 // add field to existing group (assume that here the group always exists)
@@ -87,7 +103,7 @@ export class AcAutoForm implements OnInit {
     }
 
     public grouped(): boolean {
-        return this.groups && this.groups.length > 0;        
+        return this.groups && this.groups.length > 0;
     }
 
 }

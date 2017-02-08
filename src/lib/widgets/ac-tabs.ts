@@ -123,7 +123,7 @@ export class AcTabs {
       // in case of subroutes it looks like this: link[0] = /editor, link[1] = /edit/:id
       // regex checks /xxx/:nn/ 
       let rx = new RegExp('^((\/.*?)\/\:[^\/]*?\/?)$');
-      let lastmatch = (l: any) => <any>l.match(rx).filter((m: any) => <any>m === <any>l).length > 0;
+      let lastmatch = (l: any) => l.match(rx) && <any>l.match(rx).filter((m: any) => <any>m === <any>l).length > 0;
       var matchTab = this.tabs.tabs.filter(t =>
         t.link.toString() == url
         ||

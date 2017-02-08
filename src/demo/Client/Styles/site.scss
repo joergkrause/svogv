@@ -19,6 +19,13 @@ body.modal-open {
    padding-left:0;
 }
 
+fieldset {
+  border-top: 2px silver solid;   
+  legend {
+    font-size: 55%;
+  }
+}
+
 /*
  * Off Canvas at medium breakpoint
  * --------------------------------------------------
