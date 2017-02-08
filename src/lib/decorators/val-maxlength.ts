@@ -1,4 +1,11 @@
-﻿export function MaxLength(len: number, msg?: string) {
+﻿/**
+ * The maxlength decorator assures that a string field contains not more than a number of characters.
+ * 
+ * @param len: the maximum length.
+ * @param msg: A custom message. 
+ * 
+ */
+export function MaxLength(len: number, msg?: string) {
     // the original decorator
     function maxLengthInternal(target: Object, property: string | symbol): void {
         new maxLengthInternalSetup(target, property.toString(), len, msg);

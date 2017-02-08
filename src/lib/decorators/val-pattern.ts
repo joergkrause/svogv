@@ -1,4 +1,11 @@
-﻿export function Pattern(pattern: RegExp, msg?: string) {
+﻿/**
+ * The decorator assures that a string field fullfilles a regular expression pattern.
+ * 
+ * @param pattern: The expression as RegExp.
+ * @param msg: A custom message. 
+ * 
+ */
+export function Pattern(pattern: RegExp, msg?: string) {
     // the original decorator
     function patternInternal(target: Object, property: string | symbol): void {
         new patternInternalSetup(target, property.toString(), pattern, msg);

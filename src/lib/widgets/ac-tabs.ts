@@ -123,18 +123,18 @@ export class AcTabs {
       // in case of subroutes it looks like this: link[0] = /editor, link[1] = /edit/:id
       // regex checks /xxx/:nn/ 
       let rx = new RegExp('^((\/.*?)\/\:[^\/]*?\/?)$');
-      let lastmatch = (l) => l.match(rx).filter(m => m === l).length > 0;
-      var matchTab = this.tabs.tabs.filter(t => 
-          t.link.toString() == url
-          ||
-          lastmatch(t.link.toString())
-          || 
-          ((<any>t).length > 0 && t.link.filter(sublink => sublink == url || lastmatch(sublink)).length > 0)); 
+      let lastmatch = (l: any) => <any>l.match(rx).filter((m: any) => <any>m === <any>l).length > 0;
+      var matchTab = this.tabs.tabs.filter(t =>
+        t.link.toString() == url
+        ||
+        lastmatch(t.link.toString())
+        ||
+        ((<any>t).length > 0 && t.link.filter(sublink => sublink == url || lastmatch(sublink)).length > 0));
       if (matchTab && matchTab.length == 1) {
         this.currentTab = matchTab[0];
         return;
       }
-      if (route.children.length > 0){
+      if (route.children.length > 0) {
         this.recurseRouteChildren(route);
       }
     });

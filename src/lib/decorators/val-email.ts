@@ -1,8 +1,10 @@
 ﻿/**
  * Validates a field against an email pattern.
  * Based on "pattern", so in form one must use hasError('pattern') to get validation results.
+ *
  * @param msg: A custom message. If not provided "The field ffff must contain a valid e-mail address." 
  *             will be generated, while ffff is the property name.
+ *
  */
 export function Email(msg?: string) {
   // the original decorator
