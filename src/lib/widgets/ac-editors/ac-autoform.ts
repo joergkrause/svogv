@@ -10,8 +10,8 @@ import { AcEditor } from './ac-editor';
 @Component({
     selector: 'ac-autoform',
     styles: [
-        'fieldset: { border-top: 1px silver solid; padding: 10px; }',
-        'legend: { width: auto; padding-left: 10px; padding-right: 10px; font-size: 1em;}'
+        'fieldset { border-top: 1px silver solid; padding: 10px; }',
+        'legend { width: auto; padding-left: 10px; padding-right: 10px; font-size: 1em;}'
     ],
     template: `<ng-content></ng-content>
                <ng-container *ngIf="!ungroupedAfter">

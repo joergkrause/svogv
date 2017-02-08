@@ -48,7 +48,9 @@ import { FormGroup } from '@angular/forms';
                 </small>
               </div>
              </div>
-             <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
+             <div [formGroup]="userForm">
+              <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
+             </div>
 `
 }) //
 export class AcEditor implements OnInit {

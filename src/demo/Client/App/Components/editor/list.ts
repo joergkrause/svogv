@@ -17,7 +17,7 @@ export class ListEditorComponent {
 
   public users: AcDataGridModel<UserViewModelList>;
 
-  constructor(public apiService: SiteApiService, public router : Router) {
+  constructor(public apiService: SiteApiService, public router: Router) {
     console.log('Users&List ctor');
   }
 
@@ -40,6 +40,10 @@ export class ListEditorComponent {
     this.router.navigate(['/editor/edit', user.id]);
   }
 
+  editUserAutoform(user) {
+    this.router.navigate(['/editor/edit-autoform', user.id]);
+  }
+
   addUser() {
     this.router.navigate(['/editor/new']);
   }
@@ -50,7 +54,7 @@ export class ListEditorComponent {
 
   currentUser: UserViewModelList;
 
-  showModal(user){
+  showModal(user) {
     this.currentUser = user;
   }
 
