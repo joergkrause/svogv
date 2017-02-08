@@ -1,11 +1,16 @@
 ﻿<div class="col-lg-6 col-md-6">
-	<ac-tree [nodes]="treeData"></ac-tree>
+	<ac-tree [nodes]="treeData"
+           (nodeClick)="nodeEvent('click', $event)"
+           (checkChanged)="nodeEvent('checked', $event)"
+           (selectedChanged)="nodeEvent('selected', $event)"
+           (collapseChanged)="nodeEvent('collapsed', $event)" >
+  </ac-tree>  
 </div>
 <div class="col-lg-6 col-md-6">
 	<h3>Tree View</h3>
 	<h4>Markup</h4>
 	<pre>
-		&lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
+&lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
 	</pre>
 	<h4>Source</h4>
 	<pre>
@@ -25,4 +30,11 @@ this.treeData = new AcTextTreeNode('Root node', options, [
   new AcTextTreeNode('Child node #5', options),
 ]);
 </pre>
+</div>
+<div class="col-lg-6 col-md-6">
+  <code>
+  <ul class="list-unstyled">
+    <li *ngFor="let log of eventLog">{{log}}</li>
+  </ul>
+  </code>
 </div>

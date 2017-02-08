@@ -1,5 +1,7 @@
-﻿import { Component, Input, Output, 
-         EventEmitter, OnInit, ElementRef, Renderer } from '@angular/core';
+﻿import {
+    Component, Input, Output,
+    EventEmitter, OnInit, ElementRef, Renderer
+} from '@angular/core';
 import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './Models/index';
 
 /**
@@ -147,7 +149,9 @@ export class AcTreeViewNode implements OnInit {
     }
 
     onCollapseChanged(node: AcTreeNode) {
-        this.collapseChanged.emit(node);
+        if (this.node.options.collapsable && this.node.hasChildren) {
+            this.collapseChanged.emit(node);
+        }
     }
 
     handleCheckChange(): void {

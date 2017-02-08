@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, EventEmitter } from '@angular/core';
 import { AcTreeNodeOptions, AcTextTreeNode, AcTreeNode } from 'svogv';
 
 @Component({
@@ -9,6 +9,7 @@ import { AcTreeNodeOptions, AcTextTreeNode, AcTreeNode } from 'svogv';
 export class TreeviewComponent {
 
   public treeData: AcTreeNode;
+  private eventLog: Array<string> = new Array<string>();
 
   constructor(){
     // raw data for treeview
@@ -50,6 +51,11 @@ export class TreeviewComponent {
         ]),
         new AcTextTreeNode('Child node #5', options),
       ]);
+
+  }
+
+  public nodeEvent(name: string, eventSource: EventEmitter<AcTreeNode>){
+    this.eventLog.push(`${eventSource.name} said ${name}`);
   }
 
 }
