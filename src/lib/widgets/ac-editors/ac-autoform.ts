@@ -10,11 +10,15 @@ import { AcEditor } from './ac-editor';
 @Component({
     selector: 'ac-autoform',
     template: `<ng-content></ng-content>
-               <ac-editor *ngIf="!grouped" *ngFor="let editorName of editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
-               <fieldset *ngIf="grouped" *ngFor="let group in groups">
-                 <legend>{{ group.desc }}</legend>
-                   <ac-editor *ngFor="let editorName of group.editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
-               </fieldset>                 
+               <ng-container *ngIf="!grouped()">
+                   <ac-editor *ngFor="let editorName of editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
+               </ng-container>
+               <ng-container *ngIf="grouped()">
+                <fieldset *ngFor="let group of groups">
+                    <legend [attr.title]="group.desc" *ngIf="group.name">{{ group.name }}</legend>
+                    <ac-editor *ngFor="let editorName of group.editors" [name]="editorName" [userForm]="formGroup"></ac-editor>
+                </fieldset>                 
+               </ng-container>
               `
 })
 export class AcAutoForm implements OnInit {
@@ -23,11 +27,11 @@ export class AcAutoForm implements OnInit {
     formGroup: FormGroup;
 
     editors: Array<{ key: number, editor: string }>;
-    groups: Array<{ desc: string, editors: Array<{ key: number, editor: string }>};
-    grouped: boolean;
+    groups: Array<{ key:number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>;
 
     constructor() {
-        this.editors = Array<{ key: number, editor: string }>();
+        this.editors = new Array<{ key: number, editor: string }>();
+        this.groups = new Array<{ key:number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>();
     }
 
     ngOnInit() {
@@ -39,24 +43,52 @@ export class AcAutoForm implements OnInit {
             let groupOrder: number = 0;
             let groupName: string;
             let groupDesc: string;
-            let notInGroup: boolean = true;
+            let isInGroup: boolean = false;
             if (hasDecorators) {
                 displayOrder = (<any>this.formGroup)['__editorModel__'][`__displayOrder__${controlName}`];
-                groupName = (<any>this.formGroup)['__editorModel__'][`__groupName__${controlName}`];
-                groupOrder = (<any>this.formGroup)['__editorModel__'][`__groupOrder__${controlName}`];
-                groupDesc = (<any>this.formGroup)['__editorModel__'][`__groupDesc__${controlName}`];
-                notInGroup = (<any>this.formGroup)['__editorModel__'][`__grouped__${controlName}`];
+                isInGroup = !!(<any>this.formGroup)['__editorModel__'][`__isGrouped__${controlName}`];
+                if (isInGroup) {
+                    groupName = (<any>this.formGroup)['__editorModel__'][`__groupName__${controlName}`];
+                    groupOrder = (<any>this.formGroup)['__editorModel__'][`__groupOrder__${controlName}`];
+                    groupDesc = (<any>this.formGroup)['__editorModel__'][`__groupDesc__${controlName}`];
+                }
             }
-            if (notInGroup){
-            // if not part of any group just push to main group
-            this.editors.push({
-                key: displayOrder,
-                editor: controlName
-            });
+            if (!isInGroup) {
+                // if not part of any group just push to main group
+                this.editors.push({
+                    key: displayOrder,
+                    editor: controlName
+                });
+            } else {
+                // check if group already exists
+                let existingGroupArray = this.groups.filter(g => g.name === groupName);
+                var groupExists = existingGroupArray.length === 1;
+                if (!groupExists) {
+                    this.groups.push({
+                       key: groupOrder, 
+                       name: groupName, 
+                       desc: groupDesc, 
+                       editors: new Array<{ key: number, editor: string }>()
+                    });
+                }
+                // add field to existing group (assume that here the group always exists)
+                let existingGroup = this.groups.filter(g => g.name === groupName)[0];
+                // and store
+                existingGroup.editors.push({
+                    key: displayOrder,
+                    editor: controlName
+                });
             }
         }
         // check the display decorator and sort
         this.editors.sort((e, n) => e.key - n.key);
+        // sort groups
+        this.groups.sort((e, n) => e.key - n.key);
     }
+
+    public grouped(): boolean {
+        return this.groups && this.groups.length > 0;        
+    }
+
 }
 

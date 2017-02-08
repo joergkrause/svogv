@@ -18,19 +18,27 @@ import { FormGroup } from '@angular/forms';
                   [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">
               <label [attr.for]="name" [attr.title]="tooltip" class="col-form-label col-xs-2">{{ label }}: </label>
               <div [ngClass]="{ 'col-xs-10': inline }">
-                <textarea *ngIf="type == 'textarea'" class="form-control" [id]="name" 
+                <textarea *ngIf="type == 'textarea'" class="form-control" [id]="name" [readOnly]='readonly'
                           [formControlName]="name" [attr.rows]="getParams('rows')" [attr.cols]="getParams('cols')">
                 </textarea>
-                <select *ngIf="type == 'enum'" class="form-control" [id]="name" [formControlName]="name">
+                <select *ngIf="type == 'enum'" class="form-control" [id]="name" [formControlName]="name" [disabled]='readonly'>
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
                 <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" 
                        [attr.maxvalue]="toValue" class="form-control" [id]="name" 
                       [formControlName]="name" [title]="tooltip" />
-                <input *ngIf="type == 'calendar'" [placeholder]="waterMark" type="date" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
-                <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
-                <input *ngIf="type == 'boolean'" type="checkbox" class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
-                <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" type="text" class="form-control" [id]="name" [formControlName]="name" />
+                <input *ngIf="type == 'calendar'" [placeholder]="waterMark" type="date" 
+                       [readOnly]='readonly'
+                       class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
+                <input *ngIf="type == 'number'" [placeholder]="waterMark" type="number" 
+                       [readOnly]='readonly'
+                       class="form-control" [id]="name" [formControlName]="name" [title]="tooltip" />
+                <input *ngIf="type == 'boolean'" type="checkbox" class="form-control" 
+                       [readOnly]='readonly'
+                       [id]="name" [formControlName]="name" [title]="tooltip" />
+                <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" 
+                       [readOnly]='readonly'
+                       type="text" class="form-control" [id]="name" [formControlName]="name" />
                 <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
                 <span class="fa fa-warning text-danger form-control-feedback" 
                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
@@ -55,6 +63,7 @@ export class AcEditor implements OnInit {
   @Input() fromValue: number = 0;
   @Input() toValue: number = 100;
   @Input() waterMark = "";
+  @Input() readonly: boolean = false;
   // value
   @Output() 
   @Input() 
@@ -129,6 +138,10 @@ export class AcEditor implements OnInit {
       // render hidden fields as hidden even in forms
       if (editorModel[`__isHidden__${this.name}`]) {
         this.type = "hidden";
+      }
+      // check readonly
+      if (editorModel[`__isReadonly__${this.name}`]) {
+        this.readonly = !!editorModel[`__isReadonly__${this.name}`];
       }
     }
   }

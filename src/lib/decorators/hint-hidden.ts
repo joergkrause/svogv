@@ -5,7 +5,7 @@
  * Fields in forms that render automatically
  * using the <ac-editor> component will render as <input type="hidden">.
  * 
- * @param name          The Name or Label that appears in forms or as header in grids.
+ * @param hide          Optional, default is true.
  * @param description   A tooltip that can be used optionally.
  */
 export function Hidden(hide = true) {
@@ -19,7 +19,6 @@ export function Hidden(hide = true) {
 }
 
 class hiddenInternalSetup {
-
 
     constructor(public target: any, public key: string, public hide: boolean) {
 

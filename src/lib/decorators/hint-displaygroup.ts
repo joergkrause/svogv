@@ -22,6 +22,13 @@ class displayGroupInternalSetup {
 
         this.order = parseInt(this.order.toString());
         // create a helper property to transport a meta data value
+
+        Object.defineProperty(this.target, `__isGrouped__${this.key}`, {
+            value: true,
+            enumerable: false,
+            configurable: false
+        });
+
         Object.defineProperty(this.target, `__groupName__${this.key}`, {
             value: this.name,
             enumerable: false,
