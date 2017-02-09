@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "v4.0.0-alpha.5",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "smil": "https://raw.githubusercontent.com/ericwilligers/svg-animation/master/smil-in-javascript.js"
   }
 }

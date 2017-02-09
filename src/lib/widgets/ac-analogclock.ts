@@ -82,22 +82,22 @@ export class AcAnalogClock implements AfterViewInit {
             this.svg.nativeElement.appendChild(el);
         }
         // base area
-        // let cx : number = 100;
-        // let cy: number = 100;
+        let cx : number = 100;
+        let cy: number = 100;
         // create animation string
-        // let shifter = (val:number) => [val, cx, cy].join(' ');
+        let shifter = (val:number) => [val, cx, cy].join(' ');
         // // from real time
-        // let date = new Date();
-        // let hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
-        // let minuteAngle: number = 360 * date.getMinutes() / 60;
-        // let secAngle: number = 360 * date.getSeconds() / 60;
+        let date = new Date();
+        let hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
+        let minuteAngle: number = 360 * date.getMinutes() / 60;
+        let secAngle: number = 360 * date.getSeconds() / 60;
         // // assign animation flow
-        // this.secondhandTransform.nativeElement.setAttribute('from', shifter(secAngle));
-        // this.secondhandTransform.nativeElement.setAttribute('to', shifter(secAngle + 360));
-        // this.minutehandTransform.nativeElement.setAttribute('from', shifter(minuteAngle));
-        // this.minutehandTransform.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
-        // this.hourhandTransform.nativeElement.setAttribute('from', shifter(hoursAngle));
-        // this.hourhandTransform.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
+        this.secondhandTransform.nativeElement.setAttribute('from', shifter(secAngle));
+        this.secondhandTransform.nativeElement.setAttribute('to', shifter(secAngle + 360));
+        this.minutehandTransform.nativeElement.setAttribute('from', shifter(minuteAngle));
+        this.minutehandTransform.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
+        this.hourhandTransform.nativeElement.setAttribute('from', shifter(hoursAngle));
+        this.hourhandTransform.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
     }
 
 }

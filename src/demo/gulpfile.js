@@ -62,6 +62,14 @@ gulp.task('copy:js', function () {
             .pipe(gulp.dest(paths.assets + 'js/lib'));
 });
 
+gulp.task('copy:js', function () {
+  return gulp.src([
+              paths.bower + 'smil/index.js',
+            ])
+            //.pipe(uglify())
+            .pipe(gulp.dest(paths.assets + 'js/lib/smil'));
+});
+
 // This is a simple loader while debugging without going through the WebPack hassle
 gulp.task('copy:systemjs', function () {
   return gulp.src('./Client/systemjs.config.js')

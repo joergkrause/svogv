@@ -7,6 +7,13 @@
   </ac-tree>  
 </div>
 <div class="col-lg-6 col-md-6">
+  <code>
+  <ul class="list-unstyled">
+    <li *ngFor="let log of eventLog">{{log}}</li>
+  </ul>
+  </code>
+</div>
+<div class="col-lg-10 col-md-10">
 	<h3>Tree View</h3>
 	<h4>Markup</h4>
 	<pre>
@@ -31,10 +38,4 @@ this.treeData = new AcTextTreeNode('Root node', options, [
 ]);
 </pre>
 </div>
-<div class="col-lg-6 col-md-6">
-  <code>
-  <ul class="list-unstyled">
-    <li *ngFor="let log of eventLog">{{log}}</li>
-  </ul>
-  </code>
-</div>
+
