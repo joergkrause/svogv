@@ -45,8 +45,7 @@
             "rxjs/add/operator/*",
             "rxjs/add/observable/*",
             "rxjs/util/*"
-        ],
-        '/assets/js/lib/rxjs/Bundles/app.bundle': ['main']
+        ]
         }
     });
 })(this);
