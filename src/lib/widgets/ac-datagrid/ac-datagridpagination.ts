@@ -15,16 +15,16 @@ import { Observable } from 'rxjs/Rx';
     `.pagination > li {
       display: inline;
     }`,
-    `.pagination > li:first - child > span {
+    `.pagination > li:first-child > span {
       margin-left: 0;
-      border-bottom - left - radius: 4px;
-      border-top - left - radius: 4px;
+      border-bottom-left -radius: 4px;
+      border-top-left-radius: 4px;
     }`,
     `.pagination >.disabled > a, .pagination >.disabled > a:focus, .pagination >.disabled > a:hover, .pagination >.disabled > span, .pagination >.disabled > span:focus, .pagination >.disabled > span:hover {
       color: #777;
       background-color: #fff;
       border-color: #ddd;
-      cursor: not - allowed;
+      cursor: not-allowed;
     }`,
     `.pagination > li > a, .pagination > li > span {
       position: relative;
@@ -82,6 +82,9 @@ export class AcDataGridPagination implements OnInit, OnChanges {
 
   ngOnInit() {
     this.setCurrentPage(1);
+    this.rowChanged.subscribe((n) => {
+      this.currentPageNumber = n;
+    });
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
@@ -107,10 +110,7 @@ export class AcDataGridPagination implements OnInit, OnChanges {
     }
 
     this.pageNumberChanged.emit(pageNumber);
-
-    if (!this.rowChanged) {
-      this.currentPageNumber = pageNumber;
-    }
+    this.currentPageNumber = pageNumber;
   }
 
   range(min: number, max: number): number[] {
