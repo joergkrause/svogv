@@ -76,15 +76,11 @@ import { Observable } from 'rxjs/Rx';
 })
 export class AcDataGridPagination implements OnInit, OnChanges {
   @Input() maxPageIndex: number;
-  @Input() rowChanged: Observable<number>;
   @Output() pageNumberChanged = new EventEmitter();
   currentPageNumber = 1;
 
   ngOnInit() {
     this.setCurrentPage(1);
-    this.rowChanged.subscribe((n) => {
-      this.currentPageNumber = n;
-    });
   }
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
