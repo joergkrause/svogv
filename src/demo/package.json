@@ -1,5 +1,5 @@
 {
-  "version": "0.1.4",
+  "version": "0.2.0",
   "name": "svogv-demo",
   "description": "This is the demo app that shows most of the components in action",
   "author": {
@@ -26,7 +26,7 @@
     "core-js": "^2.4.1",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.1",
-    "svogv": "^0.1.4",
+    "svogv": "^0.2.0",
     "systemjs": "^0.19.40",
     "zone.js": "^0.8.4"
   },

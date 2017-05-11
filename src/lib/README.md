@@ -72,14 +72,18 @@ Now the forms part. The form needs to be aware of the decorators. So we have a s
 In a component this looks like this:
 
 ~~~
+import { FormValidatorService } from 'svogv';
+
 export class EditUserComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  userForm: FormGroup;
+
+  constructor(private fv: FormValidatorService) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = FormValidatorService.build(this.fb, UserViewModel);
+    this.userForm = this.fv.build(UserViewModel);
   }
 }
 ~~~
@@ -90,9 +94,9 @@ Now the form knows all about the model. Now let's build a form.
 <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
   <fieldset>
     <legend>Edit current user</legend>
-      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="userName" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="email" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="phoneNumber" ></ac-editor>
       <button type="submit">Save</button>
   </fieldset>
 </form> 
@@ -102,20 +106,30 @@ The tricky part is the component `<ac-editor>`. This component checks the proper
 
 And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
 
+There is also an widget called `<ac-autoform>` that can create the whole form in one single step. It's going to look that way:
+
+~~~
+<form spellcheck="false" (submit)="submitForm()" [formGroup]="customerForm">
+  <ac-autoform [formGroup]="customerForm"></ac-autoform>  
+  <button type="submit" class="btn btn-default" 
+         [disabled]="!customerForm.valid">Submit</button>
+</form>
+~~~
+
 ## The Widgets
 
 The widget complement the editor by adding more parts. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. 
 So I created a set of such components:
 
-* **Breadcrumb**: An automatically navigable bread crumb using the Router's information
-* **SideMenu**: A simple programmable menu
-* **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models
-* **Tabs**: Programmable Tabs that react to the Router
-* **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
-* **TreeView**: An advanced treeview with icon support and many options
-* **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **ac-breadcrumb**: An automatically navigable bread crumb using the Router's information
+* **ac-sideMenu**: A simple programmable menu
+* **ac-dropMenu**: Another programmable menu that creates a dropdown using TypeScript models
+* **ac-tabs**: Programmable Tabs that react to the Router
+* **ac-infoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
+* **ac-treeView**: An advanced treeview with icon support and many options
+* **ac-dataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
 
-Under development, but not yet checked in:
+Under development, but not yet checked in -- watch for great new components in 2017:
 
 * **Calendar**: Shows a calendar view   
 * **ModalDialog**: Bootstraps modals based on TypeScript
