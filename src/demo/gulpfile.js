@@ -93,7 +93,7 @@ gulp.task('copy:rxjs', function () {
     });
     // create the bundle we use from systemjs.config.js
     builder.bundle('rxjs', paths.assets + 'js/lib/rxjs/Bundles/Rx.min.js', {
-        sourceMaps: true,
+        sourceMaps: false,
         minify: true,
         mangle: true
     });

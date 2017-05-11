@@ -40,6 +40,7 @@
             '/assets/js/lib/rxjs/Bundles/Rx.min.js': [
             "rxjs/*",
             "rxjs/rx/*",
+            "rxjs/symbol/*",
             "rxjs/operator/*",
             "rxjs/observable/*",
             "rxjs/add/operator/*",
