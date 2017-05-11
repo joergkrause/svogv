@@ -25,7 +25,7 @@ import { FormGroup } from '@angular/forms';
                   <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
                 </select>
                 <input *ngIf="type == 'range'" [placeholder]="waterMark" type="range" [attr.minvalue]="fromValue" 
-                       [attr.maxvalue]="toValue" class="form-control" [id]="name" 
+                       [attr.maxvalue]="toValue" [attr.min]="fromValue" [attr.max]="toValue" class="form-control" [id]="name" 
                       [formControlName]="name" [title]="tooltip" />
                 <input *ngIf="type == 'calendar'" [placeholder]="waterMark" type="date" 
                        [readOnly]='readonly'
