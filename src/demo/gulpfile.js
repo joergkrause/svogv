@@ -48,6 +48,7 @@ gulp.task('clean:views:index', function (cb) {
 gulp.task('clean', ['clean:assets', 'clean:views', 'clean:views:index']);
 
 gulp.task('copy:js', function () {
+  console.log("Assets target: " + paths.assets + 'js/lib');
   return gulp.src([
               paths.bower + 'jquery/dist/jquery.js',
               paths.bower + 'bootstrap/dist/js/bootstrap.js',
@@ -60,14 +61,6 @@ gulp.task('copy:js', function () {
             ])
             //.pipe(uglify())
             .pipe(gulp.dest(paths.assets + 'js/lib'));
-});
-
-gulp.task('copy:js', function () {
-  return gulp.src([
-              paths.bower + 'smil/index.js',
-            ])
-            //.pipe(uglify())
-            .pipe(gulp.dest(paths.assets + 'js/lib/smil'));
 });
 
 // This is a simple loader while debugging without going through the WebPack hassle

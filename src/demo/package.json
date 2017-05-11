@@ -52,6 +52,7 @@
     "gulp-typescript": "^3.0.2",
     "gulp-uglify": "^2.0.0",
     "gulp-uglifycss": "^1.0.6",
+    "http-server": "^0.10.0",
     "node-sass": "^4.3.0",
     "resolve-url-loader": "^1.6.1",
     "sass-loader": "^4.1.1",

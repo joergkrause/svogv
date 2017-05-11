@@ -1,5 +1,4 @@
 export * from './decorators/index';
-export * from './services/index';
 export * from './widgets/index';
 export * from './widgets/ac-infobox/models/options-infobox';
 export * from './widgets/ac-datagrid/models/ac-datagridmodel';

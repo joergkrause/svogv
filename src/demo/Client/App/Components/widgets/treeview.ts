@@ -55,7 +55,7 @@ export class TreeviewComponent {
   }
 
   public nodeEvent(name: string, eventSource: EventEmitter<AcTreeNode>){
-    this.eventLog.push(`${eventSource.name} said ${name}`);
+    eventSource.subscribe(e => this.eventLog.push(`${e.name} said ${name}`));
   }
 
 }

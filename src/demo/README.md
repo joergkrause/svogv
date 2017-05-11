@@ -17,6 +17,8 @@ The demo app shows the components in action. It's a simple http server that serv
 
 ### Build
 
+> You need to have both, *gulp* and *bower* in the path so you can execute the command line interfaces.
+
 Use this command to install the demo:
 
 ~~~

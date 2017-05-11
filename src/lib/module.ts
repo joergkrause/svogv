@@ -18,7 +18,7 @@ import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
 import { AcEditor } from './widgets/ac-editors/ac-editor';
 import { AcAutoForm } from './widgets/ac-editors/ac-autoform';
 import { Hidden, Display, Placeholder, TemplateHint, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
-import { FormValidatorService } from './services';
+import { FormValidatorService } from './services/formvalidatorservice';
 
 export * from './decorators';
 
