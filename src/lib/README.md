@@ -116,6 +116,8 @@ There is also an widget called `<ac-autoform>` that can create the whole form in
 </form>
 ~~~
 
+In the code itself access the form just like any ReactiveForm in Angular.
+
 ## The Widgets
 
 The widget complement the editor by adding more parts. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. 

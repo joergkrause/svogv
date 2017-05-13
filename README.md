@@ -91,14 +91,18 @@ Now the forms part. The form needs to be aware of the decorators. So we have a s
 In a component this looks like this:
 
 ~~~
+import { FormValidatorService } from 'svogv';
+
 export class EditUserComponent implements OnInit {
 
-  constructor(private fb: FormBuilder) {
+  userForm: FormGroup;
+
+  constructor(private fv: FormValidatorService) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = FormValidatorService.build(this.fb, UserViewModel);
+    this.userForm = this.fv.build(UserViewModel);
   }
 }
 ~~~
