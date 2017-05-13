@@ -2,14 +2,14 @@
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     <fieldset>
       <legend>Edit current user</legend>
-      <ac-editor [userForm]="userForm" name="userName" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="email" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="phoneNumber" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="age" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="birthday" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="isAdmin" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="passWord" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="passWordTwo" ></ac-editor>
+      <ac-editor [userForm]="userForm" name="userName"></ac-editor>
+      <ac-editor [userForm]="userForm" name="email"></ac-editor>
+      <ac-editor [userForm]="userForm" name="phoneNumber"></ac-editor>
+      <ac-editor [userForm]="userForm" name="age"></ac-editor>
+      <ac-editor [userForm]="userForm" name="birthday"></ac-editor>
+      <ac-editor [userForm]="userForm" name="isAdmin"></ac-editor>
+      <ac-editor [userForm]="userForm" name="passWord"></ac-editor>
+      <ac-editor [userForm]="userForm" name="passWordTwo"></ac-editor>
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save
@@ -26,10 +26,10 @@
   <div class="card card-block">
     <div class="card-header card-success">
       Techniques used
-    </div>    
+    </div>
     <div class="card-body">
       <p>This form makes use of the &lt;ac-editor&gt; component.</p>
-<code><pre>
+      <code><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     &lt;fieldset>
       &lt;legend>Edit current user&lt;/legend>
@@ -40,11 +40,16 @@
       &lt;ac-editor [userForm]="userForm" [name]="'passWord'" >&lt;/ac-editor>
       &lt;ac-editor [userForm]="userForm" [name]="'passWordTwo'" >&lt;/ac-editor>
 </pre></code>
-    <p>
-      The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The [name] property is bound to the properties of the view model.
-      The view model needs the decorators to figure out what editor must be shown. It also pulls the validation information from the model. The model used on this form looks like this:  
-    </p>
-<code>
+      <p>
+        The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The
+        [name] property is bound to the properties of the view model. The view model needs the decorators to figure out what
+        editor must be shown. It also pulls the validation information from the model. The model used on this form looks
+        like this:
+      </p>
+      <p>
+        The @Display decorator can order and group elements, too. You can create more than just simple forms with it.
+      </p>
+      <code>
 <pre>
 export class UserViewModel {{ '{' }}
 
