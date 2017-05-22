@@ -53,10 +53,10 @@ gulp.task('copy:js', function () {
               paths.bower + 'jquery/dist/jquery.js',
               paths.bower + 'bootstrap/dist/js/bootstrap.js',
               paths.bower + 'tether/dist/js/tether.js',
-              paths.npm + 'core-js/client/*.js',
-              paths.npm + 'zone.js/dist/*.js',
+              paths.npm + 'core-js/shim.js',
+              paths.npm + 'zone.js/dist/zone.js',
               paths.npm + 'reflect-metadata/reflect.js',
-              paths.npm + 'systemjs/dist/*.js',
+              paths.npm + 'systemjs/dist/system.js',
               '!/**/*.min.js' // we minify everything by ourselves
             ])
             //.pipe(uglify())
@@ -87,8 +87,8 @@ gulp.task('copy:svogv', function () {
 // Create RxJs bundle 
 gulp.task('copy:rxjs', function () {
     var builder = new systemBuilder('./', {
-        paths: {"rxjs/*": "node_modules/rxjs/*.js"},
-        map: {"rxjs": "node_modules/rxjs"},
+        paths: {"npm:": paths.npm},
+        map: {"rxjs": "npm:rxjs"},
         packages: {"rxjs": {main: 'Rx.js', defaultExtension: "js"}}
     });
     // create the bundle we use from systemjs.config.js

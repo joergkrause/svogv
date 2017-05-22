@@ -29,13 +29,9 @@
             'app': {
                 main: './app.js',
                 defaultExtension: 'js'
-            },
-            'angular-in-memory-web-api': {
-                main: './index.js',
-                defaultExtension: 'js'
             }
         },
-        bundles: {''
+        bundles: {
             '/assets/js/lib/rxjs/Bundles/Rx.min.js': [
             "rxjs/*",
             "rxjs/rx/*",
