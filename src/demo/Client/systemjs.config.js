@@ -22,8 +22,7 @@
             '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
             '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
             'svogv': 'npm:svogv/bundles/svogv.umd.js',
-            'reflect-metadata': 'npm:reflect.js',
-            'angular-in-memory-web-api': 'npm:angular-in-memory-web-api'
+            'reflect-metadata': 'npm:reflect.js'
         },        
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -36,7 +35,7 @@
                 defaultExtension: 'js'
             }
         },
-        bundles: {
+        bundles: {''
             '/assets/js/lib/rxjs/Bundles/Rx.min.js': [
             "rxjs/*",
             "rxjs/rx/*",

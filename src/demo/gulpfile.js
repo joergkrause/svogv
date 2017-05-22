@@ -164,5 +164,7 @@ gulp.task('watchts', ['ts'], function () {
 });
 
 // complete setup
-gulp.task('default', ['sass', 'ts', 'copy']);
 gulp.task('build', ['sass', 'ts', 'copy']);
+
+// for convenience
+gulp.task('default', ['build']);
