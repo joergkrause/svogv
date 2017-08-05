@@ -79,7 +79,7 @@ gulp.task('copy:angular', function () {
 
 gulp.task('copy:svogv', function () {
   return gulp.src([upPath + 'svogv/bundles/svogv.umd.js'])
-             .pipe(uglify())
+             //.pipe(uglify())
              .pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
 });
 
@@ -126,11 +126,11 @@ gulp.task('copy:fonts', function () {
 // View HTML (component templates)
 gulp.task('copy:views:templates', function () {
   console.log(paths.app + '**/*.html');
-  return gulp.src([paths.app + '**/*.html'], { base: paths.app + 'Components/' })
+  return gulp.src([paths.app + '**/*.html'], { base: paths.app + 'components/' })
              .pipe(print())
              .pipe(remHtmlCom())
              //.pipe(htmlmin({ collapseWhitespace: true }))
-             .pipe(gulp.dest(paths.assets + 'js/app/Components/'));
+             .pipe(gulp.dest(paths.root + 'app/components/'));
 });
 gulp.task('copy:views:index', function () {
   return gulp.src(['./client/Views/index.html'])
@@ -148,19 +148,25 @@ gulp.task('copy:images', function () {
 gulp.task('copy', ['copy:svogv', 'copy:js', 'copy:rxjs', 'copy:angular', 'copy:systemjs', 'copy:css', 'copy:fonts', 'copy:views', 'copy:images']);
 
 // configure TS separately
-var tsProject = ts.createProject('tsconfig.json');
+var tsProject = ts.createProject('./tsconfig.json');
 
 gulp.task('ts', function () {
   return tsProject.src()
                   .pipe(tsProject())
                   .js
-                  .pipe(gulp.dest(paths.assets + 'js/app/'));
+                  .pipe(gulp.dest(paths.root + 'app/'));
 
 });
 
 // watch the ts folders and start transpiler automatically on save
 gulp.task('watchts', ['ts'], function () {
   gulp.watch(paths.app + '**/*.ts', ['ts']);
+});
+
+// to debug using source maps run this task. It copies the sources so one can use the browser debugger.
+gulp.task('debug', function () {
+  return gulp.src(['./client/app/**/*.*'])
+             .pipe(gulp.dest(paths.root + 'src/demo/client/app'));
 });
 
 // complete setup

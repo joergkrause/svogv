@@ -5,7 +5,7 @@
       "dom", "es2015"
     ],
     "module": "commonjs",
-    "rootDir": "./Client/App/",
+    "outDir": "../../dist/demo/app",
     "moduleResolution": "node",
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -16,6 +16,9 @@
       "./node_modules/@types"
     ]
   },
+  "files": [
+    "./client/app/app.ts"
+  ],
   "compileOnSave": false,
   "exclude": [
     "node_modules"

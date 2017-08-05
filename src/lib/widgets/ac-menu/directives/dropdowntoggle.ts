@@ -7,23 +7,22 @@ import {
     OnInit,
     Input
 } from '@angular/core';
-import { DropdownToggleInterface } from '../services/ac-dropdowninterface';
 import { Dropdown } from './dropdown';
 
 @Directive({ selector: '[dropdownToggle]' })
-export class DropdownToggle implements OnInit, DropdownToggleInterface {
+export class DropdownToggle implements OnInit {
     @HostBinding('class.disabled')
-    @Input() private disabled: boolean = false;
+    @Input() private disabled = false;
 
     @HostBinding('class.dropdown-toggle')
     @HostBinding('attr.aria-haspopup')
     private addClass = true;
 
-    constructor( @Host() public dropdown: Dropdown, public el: ElementRef) {
+    constructor(@Host() public dropdown: Dropdown, public el: ElementRef) {
     }
 
     public ngOnInit() {
-        this.dropdown.dropDownToggle = this;
+        this.dropdown.dropDownToggle = this.el;
     }
 
     @HostBinding('attr.aria-expanded')
@@ -34,7 +33,6 @@ export class DropdownToggle implements OnInit, DropdownToggleInterface {
     @HostListener('click', ['$event'])
     public toggleDropdown(event: MouseEvent) {
         event.stopPropagation();
-
         if (!this.disabled) {
             this.dropdown.toggle();
         }

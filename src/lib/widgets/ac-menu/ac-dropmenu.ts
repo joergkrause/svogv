@@ -14,22 +14,20 @@ import { InputConverter, EnumConverter } from '../../utils/convert-inputconverte
     template: `<div class="dropdown" dropdown [(isOpen)]="status.isOpen" [id]="id">
                 <button type="button" dropdownToggle class="btn" 
                        [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn" 
-                        (click)="dropdownMenu($event)">{{ text }}</button>
+                        >{{ text }}</button>
                 <button class="btn dropdown-toggle" dropdownToggle 
                        [ngClass]="btnType" [ngClass]="btnSize" *ngIf="!hasSplitBtn"
                         type="button" 
-                        (click)="dropdownMenu($event)"
                         aria-haspopup="true" aria-expanded="false">
                     {{ text }}
                 </button>
                 <button class="btn dropdown-toggle" dropdownToggle 
                        [ngClass]="btnType" [ngClass]="btnSize" *ngIf="hasSplitBtn"
                         type="button" 
-                        (click)="dropdownMenu($event)"
                         aria-haspopup="true" aria-expanded="false">
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" #dropDownMenu>
                     <button class="dropdown-item" type="button" (click)="selectItem(item)" 
                             *ngFor="let item of menu.children">{{item.text}}</button>
                 </div>
@@ -39,12 +37,12 @@ export class AcDropMenu {
      * Drop down data
      */
     @Input() menu: AcMenu;
-    /** 
-     * Button Text 
+    /**
+     * Button Text
      * */
     @Input() text: string;
 
-    @Input() hasSplitBtn: boolean = false;
+    @Input() hasSplitBtn = false;
 
     @Input()
     @InputConverter(EnumConverter, Actions)
@@ -55,7 +53,7 @@ export class AcDropMenu {
     btnSize: Sizes;
 
     @Input()
-    disabled: boolean = false;
+    disabled = false;
 
     @Input() id: string;
 
@@ -66,12 +64,6 @@ export class AcDropMenu {
     constructor(private router: Router) {
         this.btnSize = Sizes.Medium;
         this.btnType = Actions.Secondary;
-    }
-
-    dropdownMenu($event: MouseEvent): void {
-        $event.preventDefault();
-        $event.stopPropagation();
-        this.status.isOpen = !this.status.isOpen;
     }
 
     selectItem(item: AcMenuItem): void {

@@ -6,14 +6,14 @@
         <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="users.searchValue.userName"
         />
       </div>
-    </form>
-    <div role="navigation" class="pull-md-right col-md-6">
-      <div class="form-group">
-        <button class="btn btn-success" (click)="addUser()">
-        Create New User
-      </button>
+      <div role="navigation" class="pull-right col-md-offset-2 col-md-3">
+        <div class="form-group">
+          <button class="btn btn-success" (click)="addUser()">
+          Create New User
+        </button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 </div>
 <div class="row" *ngIf="users">
@@ -68,8 +68,10 @@
         <option [ngValue]="10">10</option>
       </select>
     </div>
-    <ac-pagination *ngIf="users" [maxPageIndex]="users.maxPageIndex" (pageNumberChanged)="users.currentPageIndex = $event">
-    </ac-pagination>
+    <div class="pull-right">
+      <ac-pagination *ngIf="users" [maxPageIndex]="users.maxPageIndex" (pageNumberChanged)="users.currentPageIndex = $event">
+      </ac-pagination>
+    </div>
   </form>
 </div>
 <div class="card card-block clearfix">

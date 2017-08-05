@@ -2,10 +2,10 @@ import {
     Directive,
     ElementRef,
     HostBinding,
-    ContentChildren,
-    QueryList,
+    ContentChild,
     OnInit,
     OnDestroy,
+    AfterViewInit,
     Input,
     Output,
     EventEmitter,
@@ -16,7 +16,7 @@ import { DropdownService } from '../services/ac-dropdownservice';
 
 @Injectable()
 @Directive({ selector: '[dropdown]' })
-export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
+export class Dropdown implements OnInit, OnDestroy, AfterViewInit, DropdownInterface {
     @HostBinding('class.open')
     @Input() public get isOpen(): boolean {
         return this._isOpen;
@@ -36,8 +36,8 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
     public menuEl: ElementRef;
     // drop down toggle element
     public toggleEl: ElementRef;
-    @ContentChildren('dropdownMenu', { descendants: false })
-    dropdownMenuList: QueryList<ElementRef>;
+    @ContentChild('#dropdownMenu')
+    dropDownMenuItem: ElementRef;
 
     constructor(public el: ElementRef,
         public dropDownService: DropdownService) {
@@ -73,22 +73,27 @@ export class Dropdown implements OnInit, OnDestroy, DropdownInterface {
         }
     }
 
-    public set dropDownMenu(dropdownMenu: { el: ElementRef }) {
+    ngAfterViewInit() {
+        this.dropDownMenu = this.dropDownMenuItem;
+    }
+
+    public set dropDownMenu(dropdownMenu: ElementRef) {
         // init drop down menu
-        this.menuEl = dropdownMenu.el;
+        this.menuEl = dropdownMenu;
 
         if (this.appendToBody) {
             window.document.body.appendChild(this.menuEl.nativeElement);
         }
     }
 
-    public set dropDownToggle(dropdownToggle: { el: ElementRef }) {
+    public set dropDownToggle(dropdownToggle: ElementRef) {
         // init toggle element
-        this.toggleEl = dropdownToggle.el;
+        this.toggleEl = dropdownToggle;
     }
 
     public toggle(open?: boolean): boolean {
-        return this.isOpen = arguments.length ? !!open : !this.isOpen;
+        this.isOpen = arguments.length ? !!open : !this.isOpen;
+        return this.isOpen;
     }
 
     public focusDropdownEntry(keyCode: number) {
