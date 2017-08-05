@@ -32,7 +32,7 @@ var paths = {
   assets: upPath + "demo/assets/",
   views: upPath + "demo/views/",
   npm: "./node_modules/",
-  app: "./client/App/"
+  app: "./client/app/"
 };
 
 gulp.task('clean:assets', function (cb) {

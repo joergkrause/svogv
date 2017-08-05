@@ -72,27 +72,36 @@ const routes: Routes = [
       {
         path: 'list',
         component: cmp.ListEditorComponent,
-        data: { 'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true }
+        data: {
+          'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true 
+        }
       },
       {
         path: 'new',
         component: cmp.NewEditorComponent,
-        data: { 'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true }
+        data: {
+          'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true 
+        }
       },
       {
         path: 'edit/:id',
         component: cmp.EditEditorComponent,
-        data: { 'title': 'Edit Regular Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }
+        data: {
+          'title': 'Edit Regular Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true 
+        }
       },
       {
         path: 'edit-autoform/:id',
         component: cmp.EditAutoformEditorComponent,
-        data: { 'title': 'Edit Autoform', 'subtitle': 'Editor Autoform Demo', 'active': false, 'disabled': true }
+        data: {
+          'title': 'Edit Autoform',
+          'subtitle': 'Editor Autoform Demo', 'active': false, 'disabled': true, 'private': true
+        }
       },
       {
         path: 'delete/:id',
         component: cmp.DeleteEditorComponent,
-        data: { 'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true }
+        data: { 'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true }
       },
       {
         path: '**',

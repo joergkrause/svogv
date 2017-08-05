@@ -23,6 +23,7 @@ export class EditorDemoComponent {
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
+      .filter((route, idx) => !route.data['private'])
       .forEach(subroute => userRoutes.push(new AcTab(['/editor', subroute.path],
         subroute.data['title'],
         !!subroute.data['active'],

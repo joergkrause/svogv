@@ -20,7 +20,8 @@ import { AcEditor } from './ac-editor';
                <ng-container *ngIf="grouped()">
                 <fieldset *ngFor="let group of groups">
                     <legend [attr.title]="group.desc" *ngIf="group.name">{{ group.name }}</legend>
-                    <ac-editor *ngFor="let editor of group.editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
+                    <ac-editor *ngFor="let editor of group.editors" 
+                               [name]="editor.editor" [userForm]="formGroup"></ac-editor>
                 </fieldset>                 
                </ng-container>
                <ng-container *ngIf="ungroupedAfter">
@@ -40,7 +41,7 @@ export class AcAutoForm implements OnInit {
      * If there are no groups this will be ignored. Optional.
      */
     @Input()
-    ungroupedAfter: boolean = true;
+    ungroupedAfter = true;
 
     editors: Array<{ key: number, editor: string }>;
     groups: Array<{ key: number, name: string, desc: string, editors: Array<{ key: number, editor: string }> }>;
@@ -55,11 +56,11 @@ export class AcAutoForm implements OnInit {
         var hasDecorators: boolean = ((<any>this.formGroup)['__editorModel__']);
         // loop through all fields
         for (var controlName in this.formGroup.controls) {
-            let displayOrder: number = 0;
-            let groupOrder: number = 0;
+            let displayOrder = 0;
+            let groupOrder = 0;
             let groupName: string;
             let groupDesc: string;
-            let isInGroup: boolean = false;
+            let isInGroup = false;
             if (hasDecorators) {
                 displayOrder = (<any>this.formGroup)['__editorModel__'][`__displayOrder__${controlName}`];
                 isInGroup = !!(<any>this.formGroup)['__editorModel__'][`__isGrouped__${controlName}`];
