@@ -7,7 +7,6 @@
 
 # dependencies
 /node_modules
-/bower_components
 # we use a hard link to the lib folder during development and hence want to exclude this here
 /lib
 

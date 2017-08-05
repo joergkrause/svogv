@@ -23,12 +23,14 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "@angular/upgrade": "^4.0.0",
+    "bootstrap": "^4.0.0-alpha.6",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.7.0",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.1",
+    "svogv": "^0.2.0",
     "systemjs": "^0.19.40",
-    "zone.js": "^0.8.4",
-    "svogv": "^0.2.0"
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "@angularclass/hmr-loader": "^3.0.2",

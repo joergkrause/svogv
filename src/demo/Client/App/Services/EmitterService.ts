@@ -8,7 +8,7 @@ export class EmitterService {
 
     private static _emitters: { [ID: string]: EventEmitter<any> } = {};
 
-    public static get(ID: string): EventEmitter<any> {
+    public static get<T>(ID: string): EventEmitter<any> {
         console.log(`Emitter for ${ID} called`);
         if (!this._emitters[ID]) {
           console.log(`Emitter for ${ID} added`);
@@ -16,7 +16,7 @@ export class EmitterService {
         } else {
           console.log(`Emitter for ${ID} exists`);
         }
-        return this._emitters[ID];
+        return this._emitters[ID] as EventEmitter<T>;
     }
 
 }

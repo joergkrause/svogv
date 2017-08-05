@@ -22,7 +22,6 @@ var paths = {
   root: DIST_ROOT + "demo/",
   assets: DIST_ROOT + "demo/assets/",
   views: DIST_ROOT + "demo/views/",
-  bower: DEMO_ROOT + "bower_components/",
   npm: DEMO_ROOT + "node_modules/",
   app: DEMO_ROOT + "Client/App/"
 };
@@ -34,19 +33,19 @@ task('clean:views', function (cb) {
   return del(paths.views, { force: true});
 });
 task('clean:views:index', function (cb) {
-  return del(paths.root + "index.html", { force: true});
+  return del(paths.root + 'index.html', { force: true});
 });
 task('clean', ['clean:assets', 'clean:views', 'clean:views:index']);
 
 task('copy:js', function () {
   return src([
-              paths.bower + 'jquery/dist/jquery.js',
-              paths.bower + 'bootstrap/dist/js/bootstrap.js',
-              paths.bower + 'tether/dist/js/tether.js',
-              paths.npm + 'core-js/client/*.js',
-              paths.npm + 'zone.js/dist/*.js',
+              paths.npm + 'jquery/dist/jquery.js',
+              paths.npm + 'bootstrap/dist/js/bootstrap.js',
+              paths.npm + 'tether/dist/js/tether.js',
+              paths.npm + 'core-js/client/core.js',
+              paths.npm + 'zone.js/dist/zone.js',
               paths.npm + 'reflect-metadata/reflect.js',
-              paths.npm + 'systemjs/dist/*.js'
+              paths.npm + 'systemjs/dist/system.js'
   ])
              .pipe(dest(paths.assets + 'js/lib'));
 });
@@ -93,15 +92,14 @@ task('sass', function () {
 // except those css that's delivered "as is"
 task('copy:css', function () {
   return src([
-              paths.bower + 'font-awesome/css/font-awesome.css'
+              paths.npm + 'font-awesome/css/font-awesome.css'
   ])
              .pipe(dest(paths.assets + 'css'));
 });
 // icons and symbols shall be fonts, never want to see a single GIF here
 task('copy:fonts', function () {
   return src([
-              paths.bower + 'bootstrap-sass/assets/fonts/*.*',
-              paths.bower + 'font-awesome/fonts/*.*'
+              paths.npm + 'font-awesome/fonts/*.*'
   ])
              .pipe(dest(paths.assets + 'fonts'));
 });

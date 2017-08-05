@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: cmp.DashboardComponent,
-    data: { 'title': 'Dashboard', 'subtitle': 'Caevman Dashboard' }
+    data: { 'title': 'Dashboard', 'subtitle': 'Dashboard' }
   },
   {
     path: 'widgets',

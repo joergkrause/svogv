@@ -18,9 +18,7 @@
   },
   "compileOnSave": false,
   "exclude": [
-    "node_modules",
-    "typings/**",
-    "typings/*.d.ts"
+    "node_modules"
   ],
   "types": [
     "node"

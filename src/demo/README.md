@@ -17,14 +17,12 @@ The demo app shows the components in action. It's a simple http server that serv
 
 ### Build
 
-> You need to have both, *gulp* and *bower* in the path so you can execute the command line interfaces.
+> You need to have *gulp* in the path so you can execute the command line interfaces.
 
 Use this command to install the demo:
 
 ~~~
 npm install
-
-bower install
 
 npm run exec
 ~~~
@@ -40,7 +38,6 @@ The demo ist part of the complete project as shown on Github.
 #### Explanation
 
 * **npm install**: Install all dependencies (but not SVOGV, see above)
-* **bower install**: Install Bootstrap 4 and FontAwesome
 * **npm run exec**: Execute the gulp file to build and copy files and start the http server. The two sub tasks are: 
     * **npm run build**: Execute the *gulp* script to make the files available in the right folder
     * **npm run start**: Start the HTTP server and browser

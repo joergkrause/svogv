@@ -7,9 +7,7 @@
 
 # dependencies
 /node_modules
-/bower_components
 /src/lib/node_modules
-/src/demo/bower_components
 /src/demo/node_modules
 
 # IDEs

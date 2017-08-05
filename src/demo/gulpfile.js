@@ -31,9 +31,8 @@ var paths = {
   root: upPath + "demo/",
   assets: upPath + "demo/assets/",
   views: upPath + "demo/views/",
-  bower: "./bower_components/",
   npm: "./node_modules/",
-  app: "./Client/App/"
+  app: "./client/App/"
 };
 
 gulp.task('clean:assets', function (cb) {
@@ -50,16 +49,16 @@ gulp.task('clean', ['clean:assets', 'clean:views', 'clean:views:index']);
 gulp.task('copy:js', function () {
   console.log("Assets target: " + paths.assets + 'js/lib');
   return gulp.src([
-              paths.bower + 'jquery/dist/jquery.js',
-              paths.bower + 'bootstrap/dist/js/bootstrap.js',
-              paths.bower + 'tether/dist/js/tether.js',
-              paths.npm + 'core-js/shim.js',
+              paths.npm + 'jquery/dist/jquery.js',
+              paths.npm + 'bootstrap/dist/js/bootstrap.js',
+              paths.npm + 'tether/dist/js/tether.js',
+              paths.npm + 'core-js/client/core.js',
               paths.npm + 'zone.js/dist/zone.js',
               paths.npm + 'reflect-metadata/reflect.js',
               paths.npm + 'systemjs/dist/system.js',
               '!/**/*.min.js' // we minify everything by ourselves
             ])
-            //.pipe(uglify())
+            .pipe(uglify())
             .pipe(gulp.dest(paths.assets + 'js/lib'));
 });
 
@@ -87,8 +86,8 @@ gulp.task('copy:svogv', function () {
 // Create RxJs bundle 
 gulp.task('copy:rxjs', function () {
     var builder = new systemBuilder('./', {
-        paths: {"npm:": paths.npm},
-        map: {"rxjs": "npm:rxjs"},
+        paths: {'rxjs/*': `${paths.npm}rxjs/*.js`},
+        map: {"rxjs": `${paths.npm}rxjs`},
         packages: {"rxjs": {main: 'Rx.js', defaultExtension: "js"}}
     });
     // create the bundle we use from systemjs.config.js
@@ -102,7 +101,7 @@ gulp.task('copy:rxjs', function () {
 // we write all css in sass 
 gulp.task('sass', function () {
   return gulp.src([
-    './Client/Styles/*.scss'
+    './client/styles/*.scss'
   ])
     .pipe(sass())
     .pipe(uglifycss())
@@ -111,15 +110,18 @@ gulp.task('sass', function () {
 // except those css that's delivered "as is"
 gulp.task('copy:css', function () {
   return gulp.src([
-              paths.bower + 'font-awesome/css/font-awesome.css'
+              paths.npm + 'bootstrap/dist/css/bootstrap.css',
+              paths.npm + 'tether/dist/css/tether.css',
+              paths.npm + 'font-awesome/css/font-awesome.css'
   ])
-             .pipe(gulp.dest(paths.assets + 'css'));
+            .pipe(uglifycss())
+            .pipe(gulp.dest(paths.assets + 'css'));
 });
+
 // icons and symbols shall be fonts, never want to see a single GIF here
 gulp.task('copy:fonts', function () {
   return gulp.src([
-              paths.bower + 'bootstrap-sass/assets/fonts/*.*',
-              paths.bower + 'font-awesome/fonts/*.*'
+              paths.npm + 'font-awesome/fonts/*.*'
   ])
              .pipe(gulp.dest(paths.assets + 'fonts'));
 });
@@ -133,7 +135,7 @@ gulp.task('copy:views:templates', function () {
              .pipe(gulp.dest(paths.assets + 'js/app/Components/'));
 });
 gulp.task('copy:views:index', function () {
-  return gulp.src(['./Client/Views/index.html'])
+  return gulp.src(['./client/Views/index.html'])
              .pipe(remHtmlCom())
              //.pipe(htmlmin({ collapseWhitespace: true }))
              .pipe(gulp.dest(paths.root));
@@ -141,7 +143,7 @@ gulp.task('copy:views:index', function () {
 gulp.task('copy:views', ['copy:views:index', 'copy:views:templates']);
 
 gulp.task('copy:images', function () {
-  return gulp.src(['./Client/Images/**/*.*'])
+  return gulp.src(['./client/Images/**/*.*'])
              .pipe(gulp.dest(paths.assets + 'img'));
 });
 

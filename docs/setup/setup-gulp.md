@@ -110,9 +110,9 @@ To read files you use the `src` function. Add a string or for more complex paths
 ~~~
 gulp.task('copy', function () {
   return gulp.src([
-              './bower_components/jquery/dist/*.js',
-              './bower_components/bootstrap/dist/js/*.js',
-              './bower_components/tether/dist/js/*.js',
+              './node_modules/jquery/dist/*.js',
+              './node_modules/bootstrap/dist/js/*.js',
+              './node_modules/tether/dist/js/*.js',
               '!/**/*.min.js' 
             ])
             .pipe(gulp.dest('./assets/js/lib'));
@@ -140,7 +140,7 @@ As you may assume, it can delete something.
 
 The previous examples is a bit challenging. It assumes a special folder structure. 
 
-First, the sources for front-end libraries are pulled from a folder called *bower_components*. [Bower](https://bower.io) is another repository dedicated to front-end libs. It relays directly on Github is more "sourcish", hence you can adapt packages to your need. For front-end it's often more important to minify and tailor libraries.   
+> As Bower is almost dead the used libs are pulled through **npm** now.  
 
 Second, the target assumes you have a folder *assets* where your app's supporting files reside. It looks like this:
 
