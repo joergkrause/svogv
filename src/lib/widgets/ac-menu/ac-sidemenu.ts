@@ -6,7 +6,7 @@ import { AcMenu } from './models/ac-menu';
   styles: ['.headerItem { margin-left: 32px }',
     '.linkItem { margin-right: 5px }',
     '.sideMenuCanvas { padding: 15px; }'],
-  template: `<nav class="nav nav-pills nav-stacked sideMenuCanvas" 
+  template: `<nav class="nav flex-column sideMenuCanvas" 
                  *ngIf="menu && menu.children && menu.children.length > 0">
               <ng-container *ngFor="let item of menu.children" class="nav-item" [ngSwitch]="itemType(item)">
                 <ng-container *ngSwitchCase="'AcMenuHeaderItem'">
@@ -32,7 +32,7 @@ export class AcSideMenu {
   /**
    * Format links so they use [routerlink] syntax. Default is true.
    */
-  @Input() useRouterLinks: boolean = true;
+  @Input() useRouterLinks = true;
 
   constructor() {
     console.log('AcSideMenu ctor');
@@ -43,6 +43,7 @@ export class AcSideMenu {
     console.log('AcSideMenu onInit');
   }
 
+  // tslint:disable-next-line:no-unused-variable
   private itemType(item: any): string {
     if (item === undefined || item === null) {
       throw new Error('The reflection metadata could not be found.');

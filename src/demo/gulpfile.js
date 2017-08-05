@@ -73,13 +73,13 @@ gulp.task('copy:angular', function () {
                     paths.npm + '@angular/**/Bundles/*.umd.js',
               '!' + paths.npm + '@angular/**/Bundles/*-testing.umd.js'
               ])
-              //.pipe(uglify())
+              .pipe(uglify())
               .pipe(gulp.dest(paths.assets + 'js/lib/@angular'));
 });
 
 gulp.task('copy:svogv', function () {
   return gulp.src([upPath + 'svogv/bundles/svogv.umd.js'])
-             //.pipe(uglify())
+             .pipe(uglify())
              .pipe(gulp.dest(paths.assets + 'js/lib/svogv/bundles/'));
 });
 
@@ -110,8 +110,6 @@ gulp.task('sass', function () {
 // except those css that's delivered "as is"
 gulp.task('copy:css', function () {
   return gulp.src([
-              paths.npm + 'bootstrap/dist/css/bootstrap.css',
-              paths.npm + 'tether/dist/css/tether.css',
               paths.npm + 'font-awesome/css/font-awesome.css'
   ])
             .pipe(uglifycss())
