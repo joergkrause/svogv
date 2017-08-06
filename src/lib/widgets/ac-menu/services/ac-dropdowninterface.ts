@@ -8,13 +8,11 @@ export enum CloseBehavior {
 }
 
 export interface DropdownInterface {
-    menuEl: ElementRef;
     isOpen: boolean;
     keyboardNav: boolean;
     autoClose: CloseBehavior;
-    toggleEl: ElementRef;
-    dropDownToggle: ElementRef;
-    dropDownMenu: ElementRef;
+    toggleButtonElement: ElementRef;
+    dropDownMenuItem: ElementRef;
     toggle(): void;
     focusToggleElement(): void;
     focusDropdownEntry(which: number): void;

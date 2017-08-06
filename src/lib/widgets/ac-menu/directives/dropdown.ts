@@ -8,47 +8,59 @@ import {
     AfterViewInit,
     Input,
     Output,
-    EventEmitter,
-    Injectable
+    EventEmitter
 } from '@angular/core';
 import { DropdownInterface, CloseBehavior } from '../services/ac-dropdowninterface';
 import { DropdownService } from '../services/ac-dropdownservice';
 
-@Injectable()
 @Directive({ selector: '[dropdown]' })
 export class Dropdown implements OnInit, OnDestroy, AfterViewInit, DropdownInterface {
-    @HostBinding('class.open')
-    @Input() public get isOpen(): boolean {
-        return this._isOpen;
-    }
 
+    /**
+     * Click outside or Escape (if keyboardNav is being set) will close.
+     */
     @Input() public autoClose: CloseBehavior;
+    /**
+     * Support keys (up/down arrow and escape)
+     */
     @Input() public keyboardNav: boolean;
+    /**
+     * Put the drop HTML to body instead of element, might be required for some custom css.
+     */
     @Input() public appendToBody: boolean;
-
+    /**
+     * Fired on toggle with current state
+     */
     @Output() public onToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
-    @Output() public isOpenChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
     private _isOpen: boolean;
-    // index of selected element
+    /**
+     * Index of selected element
+     */
     public selectedOption: number;
-    // drop menu html
-    public menuEl: ElementRef;
-    // drop down toggle element
-    public toggleEl: ElementRef;
-    @ContentChild('#dropdownMenu')
+
+    /**
+     * The button that actually toggles
+     */
+    public toggleButtonElement: ElementRef;
+    /**
+     * The dropdown part's HTML
+     */
+    @ContentChild('dropdownMenu')
     dropDownMenuItem: ElementRef;
 
     constructor(public el: ElementRef,
         public dropDownService: DropdownService) {
     }
 
+    @HostBinding('class.show')
+    @Input() public get isOpen(): boolean {
+        console.log('Return current open state: ' + this._isOpen);
+        return this._isOpen;
+    }
     public set isOpen(value) {
+        console.log('Set current open state: ' + value);
         this._isOpen = !!value;
-
-        if (this.appendToBody && this.menuEl) {
-
-        }
 
         if (this.isOpen) {
             this.focusToggleElement();
@@ -58,48 +70,50 @@ export class Dropdown implements OnInit, OnDestroy, AfterViewInit, DropdownInter
             this.selectedOption = null;
         }
         this.onToggle.emit(this.isOpen);
-        this.isOpenChange.emit(this.isOpen);
     }
 
     ngOnInit() {
         this.autoClose = CloseBehavior.NonInput;
-        if (this.isOpen) {
-        }
     }
 
     ngOnDestroy() {
-        if (this.appendToBody && this.menuEl) {
-            this.menuEl.nativeElement.remove();
+        if (this.appendToBody && this.dropDownMenuItem) {
+            this.dropDownMenuItem.nativeElement.remove();
         }
     }
 
     ngAfterViewInit() {
-        this.dropDownMenu = this.dropDownMenuItem;
-    }
-
-    public set dropDownMenu(dropdownMenu: ElementRef) {
-        // init drop down menu
-        this.menuEl = dropdownMenu;
-
         if (this.appendToBody) {
-            window.document.body.appendChild(this.menuEl.nativeElement);
+            window.document.body.appendChild(this.dropDownMenuItem.nativeElement);
         }
     }
 
+    /**
+     * Set the drop down externally.
+     */
+    public set dropDownMenu(dropdownMenu: ElementRef) {
+        // init drop down menu
+        this.dropDownMenuItem = dropdownMenu;
+    }
+
+    /**
+     * The the actual toggle button externally.
+     */
     public set dropDownToggle(dropdownToggle: ElementRef) {
         // init toggle element
-        this.toggleEl = dropdownToggle;
+        this.toggleButtonElement = dropdownToggle;
     }
 
     public toggle(open?: boolean): boolean {
         this.isOpen = arguments.length ? !!open : !this.isOpen;
+        console.log('Toggle on Host: ' + this.isOpen);
         return this.isOpen;
     }
 
     public focusDropdownEntry(keyCode: number) {
         // If append to body is used.
-        let hostEl = this.menuEl ?
-            this.menuEl.nativeElement :
+        let hostEl = this.dropDownMenuItem ?
+            this.dropDownMenuItem.nativeElement :
             this.el.nativeElement.getElementsByTagName('ul')[0];
 
         if (!hostEl) {
@@ -142,8 +156,8 @@ export class Dropdown implements OnInit, OnDestroy, AfterViewInit, DropdownInter
     }
 
     public focusToggleElement() {
-        if (this.toggleEl) {
-            this.toggleEl.nativeElement.focus();
+        if (this.toggleButtonElement) {
+            this.toggleButtonElement.nativeElement.focus();
         }
     }
 }
