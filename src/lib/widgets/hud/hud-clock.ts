@@ -4,7 +4,6 @@
     EventEmitter,
     AfterViewInit, ViewChild, ElementRef, Renderer
 } from '@angular/core';
-import { DOCUMENT } from '@angular/platform-browser';
 import { HudClockEngine } from './models/hud-clock-engine';
 import { HudClockOptions } from './models/hud-clock-options';
 import { WindowRef } from '../../utils/windowref';

@@ -23,28 +23,13 @@ import { DOCUMENT } from '@angular/platform-browser';
     </g>
     <g>
         <line x1="100" y1="100" x2="100" y2="55" transform="rotate(90 100 100)" 
-              style="stroke-width: 4px; stroke: #fffbf9;" id="hourhand">
-            <animatetransform attributeName="transform"
-                              #hourhandTransform
-                              type="rotate"
-                              dur="43200s" from="0 100 100" to="360 100 100" begin="0s"
-                              repeatCount="indefinite"/>
+              style="stroke-width: 4px; stroke: #fffbf9;" #hourhandTransform>
         </line>
         <line x1="100" y1="100" x2="100" y2="40" transform="rotate(180 100 100)" 
-              style="stroke-width: 3px; stroke: #fdfdfd;" id="minutehand">
-            <animatetransform attributeName="transform"
-                              #minutehandTransform
-                              type="rotate"
-                              dur="3600s" from="0 100 100" to="360 100 100" begin="0s"
-                              repeatCount="indefinite"/>
+              style="stroke-width: 3px; stroke: #fdfdfd;" #minutehandTransform>
         </line>
         <line x1="100" y1="100" x2="100" y2="30" transform="rotate(270 100 100)" 
-              style="stroke-width: 2px; stroke: #C1EFED;" id="secondhand" >
-            <animatetransform attributeName="transform"
-                              #secondhandTransform
-                              type="rotate"
-                              dur="60s" from="0 100 100" to="360 100 100" begin="0s"
-                              repeatCount="indefinite"/>
+              style="stroke-width: 2px; stroke: #C1EFED;" #secondhandTransform >
         </line>
     </g>
     <circle id="center" style="fill:#128A86; stroke: #C1EFED; stroke-width: 2px;" cx="100" cy="100" r="3"></circle>
@@ -82,22 +67,32 @@ export class AcAnalogClock implements AfterViewInit {
             this.svg.nativeElement.appendChild(el);
         }
         // base area
-        let cx : number = 100;
-        let cy: number = 100;
+        let cx = 100;
+        let cy = 100;
         // create animation string
         let shifter = (val:number) => [val, cx, cy].join(' ');
         // // from real time
         let date = new Date();
-        let hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
-        let minuteAngle: number = 360 * date.getMinutes() / 60;
-        let secAngle: number = 360 * date.getSeconds() / 60;
+        var secAngle: number = 360 * date.getSeconds() / 60;
+        var minuteAngle: number = 360 * date.getMinutes() / 60;
+        var hoursAngle: number = 360 * date.getHours() / 12 + date.getMinutes() / 2;
         // // assign animation flow
-        this.secondhandTransform.nativeElement.setAttribute('from', shifter(secAngle));
-        this.secondhandTransform.nativeElement.setAttribute('to', shifter(secAngle + 360));
-        this.minutehandTransform.nativeElement.setAttribute('from', shifter(minuteAngle));
-        this.minutehandTransform.nativeElement.setAttribute('to', shifter(minuteAngle + 360));
-        this.hourhandTransform.nativeElement.setAttribute('from', shifter(hoursAngle));
-        this.hourhandTransform.nativeElement.setAttribute('to', shifter(hoursAngle + 360));
+        this.setRotate(this.secondhandTransform, shifter(secAngle));
+        this.setRotate(this.minutehandTransform, shifter(minuteAngle));
+        this.setRotate(this.hourhandTransform, shifter(hoursAngle));
+        setInterval(() => {
+            date = new Date();
+            secAngle = 360 * date.getSeconds() / 60;
+            minuteAngle = 360 * date.getMinutes() / 60;
+            hoursAngle = 360 * date.getHours() / 12 + date.getMinutes() / 2;
+            this.setRotate(this.secondhandTransform, shifter(secAngle));
+            this.setRotate(this.minutehandTransform, shifter(minuteAngle));
+            this.setRotate(this.hourhandTransform, shifter(hoursAngle));
+        }, 1000);
+    }
+
+    setRotate(element: ElementRef, value: string): void{
+        element.nativeElement.setAttribute('transform', `rotate(${value})`);
     }
 
 }
