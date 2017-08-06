@@ -1,10 +1,28 @@
 ﻿<div class="col-lg-6 col-md-6">
-	<ac-analogclock></ac-analogclock>
+	<ac-analogclock [bgColor]="bgColor.value" [diameter]="diameter.value" [showSeconds]="showSeconds.checked"></ac-analogclock>
 </div>
 <div class="col-lg-6 col-md-6">
+	<h4 class="text-uppercase">Analog Clock Options</h4>
+	<form>
+		<fieldset>
+			<legend>Options</legend>
+			<div class="form-group">
+				<label for="bgColor">Background Color:</label>
+				<input type="color" #bgColor value="orange" id="bgColor" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="diameter">Diameter:</label>
+				<input type="number" value="100" #diameter id="diameter" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="showSeconds">ShowSeconds:</label>
+				<input type="checkbox" #showSeconds id="showSeconds" class="form-control" />
+			</div>
+		</fieldset>
+	</form>
+</div>
+<div class="col-lg-12 col-md-12">
 	<h4 class="text-uppercase">Analog Clock</h4>
 	<h6>Use like this</h6>
-	<pre>
-		&lt;ac-analogclock>&lt;/ac-analogclock>
-	</pre>
+	<pre>&lt;ac-analogclock  [bgColor]="bgColor" [diameter]="diameter" [showSeconds]="showSeconds">&lt;/ac-analogclock></pre>
 </div>
