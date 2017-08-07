@@ -37,7 +37,7 @@ export class AcTabData {
 }
 
 /**
- * The Tab Component. This looks like a Bootstrap component, but the active part
+ * The Tab Component. It looks like a Bootstrap component, but the active part
  * is the Angular router, so no data-toggle is required.
  */
 @Component({
@@ -65,7 +65,7 @@ export class AcTabData {
 export class AcTabs {
 
   @Input() tabs: AcTabData;
-  @Input() limitBreadcrumb: boolean = false;
+  @Input() limitBreadcrumb = false;
   @Output() currentTab: AcTab;
 
   // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
@@ -98,7 +98,7 @@ export class AcTabs {
   }
 
   private recurseRouteChildren(currentRoute: ActivatedRoute): void {
-    let url: string = '';
+    let url = '';
     let childrenRoutes: ActivatedRoute[] = currentRoute.children;
     // iterate over each children
     childrenRoutes.forEach(route => {
@@ -108,7 +108,8 @@ export class AcTabs {
         return;
       }
 
-      // verify the custom data property "breadcrumb" is specified on the route, limitBreadcrumb must be set to true to activate this
+      // verify the custom data property "breadcrumb" is specified on the route,
+      // limitBreadcrumb must be set to true to activate this
       if (!route.snapshot.data.hasOwnProperty(AcTabs.ROUTE_DATA_BREADCRUMB) && this.limitBreadcrumb) {
         return;
       }
@@ -116,22 +117,22 @@ export class AcTabs {
       // get the route's URL segment
       let routeURL: string = route.snapshot.url.map(segment => segment.path).join('/');
 
-      // append route URL to URL
-      url += `/${routeURL}`;
-
       // add router data as current tab
       // in case of subroutes it looks like this: link[0] = /editor, link[1] = /edit/:id
-      // regex checks /xxx/:nn/ 
+      // regex checks /xxx/:nn/
       let rx = new RegExp('^((\/.*?)\/\:[^\/]*?\/?)$');
       let lastmatch = (l: any) => l.match(rx) && <any>l.match(rx).filter((m: any) => <any>m === <any>l).length > 0;
-      var matchTab = this.tabs.tabs.filter(t =>
-        t.link.toString() == url
-        ||
-        lastmatch(t.link.toString())
-        ||
-        ((<any>t).length > 0 && t.link.filter(sublink => sublink == url || lastmatch(sublink)).length > 0));
+      var matchTab = this.tabs.tabs.filter(t => {
+          if (typeof(t.link) === 'string') {
+            return t.link == routeURL || lastmatch(t.link);
+          } else {
+            return ((<any>t.link).length > 0
+                     && t.link.filter(sublink => sublink === routeURL || lastmatch(sublink)).length > 0);
+          }
+        }
+    );
       if (matchTab && matchTab.length == 1) {
-        this.currentTab = matchTab[0];
+        this.activateTab(matchTab[0]);
         return;
       }
       if (route.children.length > 0) {

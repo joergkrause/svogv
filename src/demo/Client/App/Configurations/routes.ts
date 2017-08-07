@@ -101,7 +101,9 @@ const routes: Routes = [
       {
         path: 'delete/:id',
         component: cmp.DeleteEditorComponent,
-        data: { 'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true }
+        data: {
+          'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true 
+        }
       },
       {
         path: '**',
