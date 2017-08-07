@@ -65,7 +65,7 @@ The final file in my project looks like this:
 ~~~
 {
   "name": "svogv",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",
@@ -100,9 +100,9 @@ The final file in my project looks like this:
     "@angular/platform-browser-dynamic": "^2.2.0",
     "@angular/router": "^3.1.0",
     "core-js": "^2.4.1",
-    "rxjs": "^5.0.1",
+    "rxjs": "^5.4.2",
     "systemjs": "^0.19.38",
-    "zone.js": "^0.7.2"
+    "zone.js": "^0.8.16"
   }
 }
 ~~~
