@@ -169,6 +169,8 @@ So I created a set of such components:
 * **Tabs**: Programmable Tabs that react to the Router
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **AnalogClock**: It is what it says -- based on SVG
+* **LoaderIcon**: A circling icon that is higly customizable
 
 Under development, but not yet checked in:
 
@@ -177,14 +179,6 @@ Under development, but not yet checked in:
 * **NoGrid**: Tabular data without a table - another approach to present data
 
 The goal of the menus is the complete TypeScript support along with the Bootstrap styles.
-
-Additionally we plan to provide some "fun stuff", that may help to understand how components can be made properly:
-
-* **AnalogClock**: It is what it says -- based on SVG
-* **LoaderIcon**: A circling icon that is higly customizable
-* **HudAnalogClock**: A clock that is for Head Up Display / Gaming -- based on Canvas
-
-> The HUD widgets get more parts in the future. 
 
 ## Where to get?
 
@@ -207,6 +201,21 @@ For more information read the [Getting started guide](/guides/getting-started.md
 ### Demo App
 
 There is a [demo app](/src/demo/README.md) where you can see the components in action.
+
+## Quick Start
+
+To have a running sample in seconds to the following:
+
+1. Clone the repository from Github
+2. Execute this command: `npm run setup`
+3. Execute this command: `npm run demoall` 
+
+A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
+
+Select the options in the left hand menu:
+
+* Forms Demo : All about the decorators
+* Widgets > Overview: The UI widgets demo
 
 ## Does it cost something?
 

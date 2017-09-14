@@ -10,8 +10,8 @@
     "test": "gulp test",
     "tslint": "gulp lint",
     "stylelint": "gulp lint",
-    "deploy": "firebase deploy",
-    "docs": "gulp docs"
+    "docs": "gulp docs",
+    "setup": "npm install && cd src/demo && npm install && cd ../../"
   },
   "repository": {
     "type": "git",

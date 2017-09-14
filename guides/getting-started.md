@@ -1,4 +1,4 @@
-This document describes the usage of the SVOGV library for Angular 2. 
+This document describes the usage of the SVOGV library for Angular 2+ (currently tested up to Angular 4.4). 
 
 ## Install the Lib
  
@@ -14,6 +14,8 @@ This document describes the usage of the SVOGV library for Angular 2.
  ```
 
 After this, the folder /dist has been rebuild and contains all, compiled sources, map files, ts files, and the bundle for direct import in browser (svogv.umd.js).
+
+> See 'Build the Project' later in this document for instructions of how to deal with the source code.
  
 ## Using the Lib
 
@@ -138,14 +140,23 @@ And that's it. The form is pretty, has a fully working validation, and is easy t
 
 ## Build the Project
 
+This requires to check out the whole project from Github:
+
+https://github.com/joergkrause/svogv.git
+
+First, you must install *node_modules* in both (!) the main folder and the demo.
+
+~~~
+npm run setup
+~~~
+
 You can run several scripts:
 
-* "build": "gulp build:components" --> the global build command, run this and everything else will work
-* "demo": "gulp demo" --> execute the demo (you MUST run build at least once before)
+* "build": "gulp build" --> the global build command, run this and everything else will work
+* "demoall": "gulp build && cd src/demo && npm run exec" --> execute the demo (you MUST run build at least once before)
 * "test": "gulp test" --> unit tests (currently under development)
 * "tslint": "gulp lint" --> TS linter
 * "stylelint": "gulp lint" --> CSS linter
-* "deploy": "firebase deploy" --> Test Env., currently under development
 * "docs": "gulp docs" --> create HTML out of the MD files
 
 ## Learn more
