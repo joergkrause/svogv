@@ -209,7 +209,7 @@ There is a [demo app](/src/demo/README.md) where you can see the components in a
 
 ## Quick Start
 
-To have a running sample in seconds to the following:
+To have a running sample in seconds do the following:
 
 1. Clone the repository from Github
 2. Assure you have **node** running and **npm** and Typescript (**tsc**) is in the path
@@ -218,18 +218,18 @@ To have a running sample in seconds to the following:
 
 A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
 
-Select the options in the left hand menu:
+Select these options in the left hand menu:
 
-* Forms Demo : All about the decorators
+* Forms Demo: All about the decorators
 * Widgets > Overview: The UI widgets demo
 
 > The demo app is independent and has it's own package.json and node_modules folder and hence needs it's own setup. The first command (setup) takes care of this all.
 
 ## Does it cost something?
 
-It's ISC licensed and it's free. We deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented Content GmbH, Berlin / Germany. We at Augmented Content have many years of experience with Web-Frameworks. We were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So we moved almost all projects to eithr AngularJS or Angular 2. I think that knowing one Framework really well is more for our customers than knowing a lot just good. So I decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
 ## Can I contribute?
 
