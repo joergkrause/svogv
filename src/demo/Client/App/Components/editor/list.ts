@@ -58,4 +58,5 @@ export class ListEditorComponent {
     this.currentUser = user;
   }
 
+
 }

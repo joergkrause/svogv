@@ -2,11 +2,13 @@
     Component, Inject,
     Input, Output,
     EventEmitter,
-    AfterViewInit, ViewChild, ElementRef, Renderer
+    AfterViewInit, ViewChild, Renderer
 } from '@angular/core';
 import { HudClockEngine } from './models/hud-clock-engine';
 import { HudClockOptions } from './models/hud-clock-options';
 import { WindowRef } from '../../utils/windowref';
+
+import { CanvasElementRef } from './types/hud-types';
 
 /**
  * Fancy HUD analog clock, animated.
@@ -23,7 +25,7 @@ export class HudClock implements AfterViewInit {
     @Input() config: EventEmitter<HudClockOptions>;
     @Output() minuteClock: EventEmitter<Date>;
     @Output() hourClock: EventEmitter<Date>;
-    @ViewChild('clockCanvas') canvas: ElementRef;
+    @ViewChild('clockCanvas') canvas: CanvasElementRef;
 
     constructor(private rd: Renderer, @Inject(WindowRef) private window: WindowRef) {
         this.minuteClock = new EventEmitter<Date>();

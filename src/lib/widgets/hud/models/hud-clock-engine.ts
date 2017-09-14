@@ -4,6 +4,8 @@ import { IHudClockStrokeOption } from './hud-clock-strokeoption';
 import { HudClockOptions } from './hud-clock-options';
 import { WindowRef } from '../../../utils/windowref';
 
+import { CanvasElementRef } from '../types/hud-types';
+
 export class HudClockEngine {
 
     private canvas: HTMLCanvasElement;
@@ -32,11 +34,13 @@ export class HudClockEngine {
         start: Date
     };
 
-    constructor(canvasElement: ElementRef, window: WindowRef, public config: HudClockOptions) {
+    constructor(canvasElement: CanvasElementRef, window: WindowRef, public config: HudClockOptions) {
         this.canvas = <HTMLCanvasElement>canvasElement.nativeElement;
         this.engine = this.canvas.getContext('2d');
         // get the window the canvas lives in
-        this.frame = window.nativeWindow.requestAnimationFrame || window.nativeWindow.webkitRequestAnimationFrame || function (cb: any) { return setTimeout(cb, 30) };
+        this.frame = window.nativeWindow.requestAnimationFrame
+            || window.nativeWindow.webkitRequestAnimationFrame
+            || function (cb: any) { return setTimeout(cb, 30); };
         this.star = new Array<{
             width: number,
             deg: number,
@@ -87,7 +91,7 @@ export class HudClockEngine {
         this.engine.clearRect(0, 0, this.meta.width, this.meta.height);
         this.engine.fillRect(0, 0, this.meta.width, this.meta.height);
 
-        //draw part
+        // draw part
         this.drawFps();
         this.drawStar();
         this.drawBackgroundTime();
@@ -115,13 +119,13 @@ export class HudClockEngine {
             this.engine.font = size + 'px Arial';
             var m = this.engine.measureText(time);
 
-            //engine.fillStyle = 'rgba(0,0,0,0.5)';
-            //engine.fillRect(
+            // engine.fillStyle = 'rgba(0,0,0,0.5)';
+            // engine.fillRect(
             //    meta.middle.x - m.width / 2 - padding,
             //    meta.middle.y - size / 2 - padding,
             //    m.width + padding * 2,
             //    size + padding * 2
-            //);
+            // );
 
             this.engine.fillStyle = '#fff';
             this.engine.fillText(
@@ -173,17 +177,17 @@ export class HudClockEngine {
         this.engine.closePath();
 
 
-        var angleWidth = Math.PI * 2 / 60;
-        var seconds: number = this.current.getSeconds() + this.current.getMilliseconds() / 1000;
+        let angleWidth = Math.PI * 2 / 60;
+        let seconds: number = this.current.getSeconds() + this.current.getMilliseconds() / 1000;
 
-        for (var i = 0; i < 60; i++) {
-            var angleMid = i * angleWidth - 0.5 * Math.PI;
-            var startAngle = angleMid - Math.PI / 500;
-            var endAngle = angleMid + Math.PI / 500;
+        for (let i = 0; i < 60; i++) {
+            let angleMid = i * angleWidth - 0.5 * Math.PI;
+            let startAngle = angleMid - Math.PI / 500;
+            let endAngle = angleMid + Math.PI / 500;
 
-            //var opa = (60 - seconds + i - 1) % 60;
+            // var opa = (60 - seconds + i - 1) % 60;
             //
-            //engine.strokeStyle = 'rgba(' + [255, 255, 255, opa / 60].join(',') + ')';
+            // engine.strokeStyle = 'rgba(' + [255, 255, 255, opa / 60].join(',') + ')';
 
             if (i === seconds) {
                 this.engine.strokeStyle = '#0a0';
@@ -208,10 +212,10 @@ export class HudClockEngine {
 
         angleWidth = Math.PI * 2 / 12;
 
-        for (var i = 0; i < 12; i++) {
-            var angleMid = i * angleWidth - 0.5 * Math.PI;
-            var startAngle = angleMid - Math.PI / 200;
-            var endAngle = angleMid + Math.PI / 200;
+        for (let i = 0; i < 12; i++) {
+            let angleMid = i * angleWidth - 0.5 * Math.PI;
+            let startAngle = angleMid - Math.PI / 200;
+            let endAngle = angleMid + Math.PI / 200;
 
             this.engine.strokeStyle = 'rgba(255,255,255,0.6)';
             this.engine.lineWidth = this.meta.radius / 7;
@@ -264,7 +268,7 @@ export class HudClockEngine {
 
         this.engine.fillStyle = configPart.background;
 
-        //### 1
+        // ### 1
         var grd = this.engine.createRadialGradient(this.meta.middle.x, this.meta.middle.y, radius / 2, this.meta.middle.x, this.meta.middle.y, radius);
         grd.addColorStop(0, 'rgba(0,0,0,0)');
         grd.addColorStop(1, configPart.background);
@@ -276,7 +280,7 @@ export class HudClockEngine {
         this.engine.fill();
         this.engine.closePath();
 
-        //### 2
+        // ### 2
         grd = this.engine.createRadialGradient(this.meta.middle.x, this.meta.middle.y, radius / 2, this.meta.middle.x, this.meta.middle.y, radius);
         grd.addColorStop(0, 'rgba(0,0,0,0)');
         grd.addColorStop(1, 'rgba(0,200,0,0.5)');
@@ -301,7 +305,7 @@ export class HudClockEngine {
     drawTimePart = function (radius: number, time: number, maxTime: number, configPart: IHudClockStrokeOption) {
         var angleWidth: number = Math.PI * 2 / maxTime;
         var angleMid: number = time * angleWidth - 0.5 * Math.PI;
-        var length: number = 8;
+        var length = 8;
 
         if (this.anti) {
             angleMid = 0 - angleMid;

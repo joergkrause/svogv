@@ -15,5 +15,5 @@ export class HudClockOptions {
     hour: IHudClockStrokeOption;
     minute: IHudClockStrokeOption;
     second: IHudClockStrokeOption;
-    milli: IHudClockStrokeOption
+    milli: IHudClockStrokeOption;
 }

@@ -26,6 +26,7 @@
               <button class="btn btn-sm btn-secondary ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')"><i class="fa fa-sort-asc"></i></button>
               <button class="btn btn-sm btn-secondary ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')"><i class="fa fa-sort-desc"></i></button>
             </div>
+            <button (click)="removeColumn(header.prop)">Remove</button>
           </th>
           <th>Action</th>
         </tr>
