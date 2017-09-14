@@ -169,8 +169,8 @@ gulp.task('debug', function () {
              .pipe(gulp.dest(paths.root + 'src/demo/client/app'));
 });
 
-// complete setup
-gulp.task('build', ['sass', 'ts', 'copy']);
+// complete setup (without tsc, it's in the package.json now)
+gulp.task('build', ['sass', 'copy']);
 
 // for convenience
 gulp.task('default', ['build']);

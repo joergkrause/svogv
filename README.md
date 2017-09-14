@@ -10,22 +10,27 @@
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
 
-
 ## Introduction
 
 Now that Angular 2 is widely used we have – the very first time in years – such a strong feeling in our guts that’s now the first step from ancient crap into something really professional. It brings the level we all know from Java and C# and the mature backend frameworks to the frontend.
 And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
 
 TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
-The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4 a lot easier.
+The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4+ a lot easier.
 
 It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular 2 (4). It's an extension to Angular 2 that comes as a set of classes and components. 
+The approach was simply the usage of forms as simple as ever in Angular 2+. It's an extension to Angular 2+ that comes as a set of classes and components. 
 
 It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
+
+## Issues?
+
+We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.
+
+The SVG stuff (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either.
 
 ## Angular Data Annotations
 
@@ -207,8 +212,9 @@ There is a [demo app](/src/demo/README.md) where you can see the components in a
 To have a running sample in seconds to the following:
 
 1. Clone the repository from Github
-2. Execute this command: `npm run setup`
-3. Execute this command: `npm run demoall` 
+2. Assure you have **node** running and **npm** and Typescript (**tsc**) is in the path
+3. Execute this command: `npm run setup`
+4. Execute this command: `npm run demoall` 
 
 A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
 
@@ -216,6 +222,8 @@ Select the options in the left hand menu:
 
 * Forms Demo : All about the decorators
 * Widgets > Overview: The UI widgets demo
+
+> The demo app is independent and has it's own package.json and node_modules folder and hence needs it's own setup. The first command (setup) takes care of this all.
 
 ## Does it cost something?
 

@@ -6,11 +6,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // access to WebAPI
-import { SiteApiService } from './Services/SiteApiService';
+import { SiteApiService } from './services/siteapiservice';
 // custom components
-import * as cmp from './Components/index';
+import * as cmp from './components/index';
 // routes' configuration
-import routes from './Configurations/routes';
+import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig, 
 // resolves against node_modules without changes)
 import * as wd from 'svogv';
