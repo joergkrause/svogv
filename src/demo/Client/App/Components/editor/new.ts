@@ -4,9 +4,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
-import { SiteApiService } from '../../Services/SiteApiService';
-import { EmitterService } from '../../Services/EmitterService';
-import { UserViewModel } from '../../ViewModels/UserViewModel';
+import { SiteApiService } from '../../services/siteapiservice';
+import { EmitterService } from '../../services/emitterservice';
+import { UserViewModel } from '../../viewmodels/userviewmodel';
 
 @Component({
   moduleId: module.id,

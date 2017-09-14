@@ -2,7 +2,7 @@
 import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { UserViewModel } from '../ViewModels/UserViewModel';
+import { UserViewModel } from '../viewModels/userviewmodel';
 
 /**
  * This service just simulates a user store to keep the demo running without further dependencies.

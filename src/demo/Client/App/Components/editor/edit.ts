@@ -2,12 +2,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
-import { SiteApiService } from '../../Services/SiteApiService';
-import { EmitterService } from '../../Services/EmitterService';
-import { UserViewModel } from '../../ViewModels/UserViewModel';
+import { SiteApiService } from '../../services/siteapiservice';
+import { EmitterService } from '../../services/emitterservice';
+import { UserViewModel } from '../../viewmodels/userviewmodel';
 
 @Component({
   moduleId: module.id,
@@ -21,7 +21,7 @@ export class EditEditorComponent implements OnInit {
 
   userForm: FormGroup;
   saveResult: boolean;
-  userId: number = 0;
+  userId = 0;
   user: UserViewModel;
   paramsSubscriber: Subscription;
 
