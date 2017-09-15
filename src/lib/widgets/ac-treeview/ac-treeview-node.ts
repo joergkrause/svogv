@@ -248,6 +248,7 @@ export class AcTreeViewNode implements OnInit {
             this.selectedChanged.emit(this.node);
         }
         if (!this.href) {
+            $event.preventDefault();
             $event.stopPropagation();
         }
     }
