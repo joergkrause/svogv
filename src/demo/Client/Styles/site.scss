@@ -9,7 +9,6 @@ body.modal-open {
     padding-right:0 !important;
 }
 
-
 #sidebar {
    padding-left:0;
 }
@@ -83,13 +82,13 @@ body.modal-open {
     overflow:hidden;
 }
 
-.card-block .rotate {
+.card-body .rotate {
     z-index: 8;
     float: right;
     height: 100%;
 }
 
-.card-block .rotate i {
+.card-body .rotate i {
     color: rgba(20, 20, 20, 0.15);
     position: absolute;
     left: 0;

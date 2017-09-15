@@ -170,20 +170,12 @@ So I created a set of such components:
 * **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
 * **Breadcrumb**: An automatically navigable bread crumb using the Router's information
 * **SideMenu**: A simple programmable menu for the left side with breaks, icons, and non-active labels
-* **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models, multi level
 * **Tabs**: Programmable Tabs that react to the Router
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
 * **AnalogClock**: It is what it says -- based on SVG
-* **LoaderIcon**: A circling icon that is higly customizable
+* **LoaderIcon**: A circling icon that is highly customizable
 
-Under development, but not yet checked in:
-
-* **Calendar**: Shows a calendar view   
-* **ModalDialog**: Bootstraps modals based on TypeScript
-* **NoGrid**: Tabular data without a table - another approach to present data
-
-The goal of the menus is the complete TypeScript support along with the Bootstrap styles.
 
 ## Where to get?
 
