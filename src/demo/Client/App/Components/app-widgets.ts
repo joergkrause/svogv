@@ -1,7 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AcTab, AcTabData } from 'svogv';
+import { AcTab, AcTabData } from '../widgets/index';
 
 /**
  * User Manager, defines the tabs that hold the child-outlets.
@@ -23,8 +23,10 @@ export class WidgetDemoComponent {
       .shift()
       .children
       .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(['/widgets', subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled'])));
-    
+      .forEach(subroute => userRoutes.push(new AcTab(['/widgets', subroute.path],
+                                                     subroute.data['title'],
+                                                    !!subroute.data['active'],
+                                                    !!subroute.data['disabled'])));
     this.widgetTabs = new AcTabData(userRoutes);
   }
 
