@@ -1,8 +1,7 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { EmitterService } from '../../Services/EmitterService';
-import { SiteApiService } from '../../Services/SiteApiService';
-import { UserViewModelList } from '../../ViewModels/UserViewModelList';
+import { SiteApiService } from '../../services/siteapiservice';
+import { UserViewModelList } from '../../viewmodels/userviewmodellist';
 import { AcDataGridModel } from 'svogv';
 
 @Component({

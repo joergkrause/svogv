@@ -4,7 +4,7 @@ import { EmitterService } from '../services/emitterservice';
 import { UserViewModel } from '../viewmodels/userviewmodel';
 
 /**
- * Dashboard shows global data. The data are retrieved in the root and broadcastet, 
+ * Dashboard shows global data. The data are retrieved in the root and broadcastet,
  * the broadcaster can use redux to store as state.
  */
 @Component({

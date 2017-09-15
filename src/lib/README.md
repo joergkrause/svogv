@@ -1,7 +1,12 @@
-# SVOGV Widget Library
+# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widget and Forms Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
+[![Downloads](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
+[![Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
+[![License](https://img.shields.io/npm/l/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
+[![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/joergisageek)
+
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
 
@@ -11,15 +16,21 @@ Now that Angular 2 is widely used we have – the very first time in years – s
 And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
 
 TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
-The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4 a lot easier.
+The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4+ a lot easier.
 
 It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular 2 (4). It's an extension to Angular 2 that comes as a set of classes and components. 
+The approach was simply the usage of forms as simple as ever in Angular 2+. It's an extension to Angular 2+ that comes as a set of classes and components. 
 
 It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
+
+## Issues?
+
+We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.
+
+The SVG stuff (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either.
 
 ## Angular Data Annotations
 
@@ -33,21 +44,21 @@ export class UserViewModel {
   @Hidden()
   id: Number = 0;
 
-  @Display("E-Mail", "E-Mail address")
+  @Display('E-Mail', 'E-Mail address')
   @Required()
   @MaxLength(100)
   @Email()
-  email: string = "";
+  email: string = '';
 
-  @Display("Phone Number", "The user's phone")
+  @Display('Phone Number', 'The user\'s phone')
   @Required()
   @MaxLength(20)
-  phoneNumber: string = "";
+  phoneNumber: string = '';
 
-  @Display("User Name", "The full name")
+  @Display('User Name', 'The full name')
   @Required()
   @MaxLength(100)
-  userName: string = "";
+  userName: string = '';
 
 }
 ~~~
@@ -65,6 +76,19 @@ import {
   Display, 
   Hidden 
 } from 'svogv';
+~~~
+
+Or alternatively prefix your import:
+
+~~~
+import * as Validator from 'svogv';
+
+export class UserViewModel {
+
+  @Validator.Display('E-Mail')
+  eMail: string = '';
+
+}
 ~~~
 
 Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 
@@ -94,9 +118,9 @@ Now the form knows all about the model. Now let's build a form.
 <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
   <fieldset>
     <legend>Edit current user</legend>
-      <ac-editor [userForm]="userForm" name="userName" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="email" ></ac-editor>
-      <ac-editor [userForm]="userForm" name="phoneNumber" ></ac-editor>
+      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
+      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
+      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
       <button type="submit">Save</button>
   </fieldset>
 </form> 
@@ -106,44 +130,60 @@ The tricky part is the component `<ac-editor>`. This component checks the proper
 
 And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
 
-There is also an widget called `<ac-autoform>` that can create the whole form in one single step. It's going to look that way:
+Even simpler, you can create a complete form with just one tag. Just go like this:
 
 ~~~
-<form spellcheck="false" (submit)="submitForm()" [formGroup]="customerForm">
-  <ac-autoform [formGroup]="customerForm"></ac-autoform>  
-  <button type="submit" class="btn btn-default" 
-         [disabled]="!customerForm.valid">Submit</button>
+<form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
+  <fieldset>
+    <legend>Edit current user</legend>
+    <ac-autoform [formGroup]="userForm"></ac-autoform> 
+    <div class="row">
+      <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+        <i class="fa fa-save"></i> Save
+      </button>
+    </div>
+  </fieldset>
 </form>
 ~~~
 
-In the code itself access the form just like any ReactiveForm in Angular.
+The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is buils upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
+Especially those decorators are helpful:
+
+* **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
+* **@Hidden** Exclude as field from a autoform
+* **@Placeholder** A watermark that appears in empty form fields
+* **@TemplateHint** Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.
+
+| Data Type   | Field Type        | Options for @TemplateHint | Remark                                                |
+|-------------|-------------------|---------------------------|-------------------------------------------------------|
+| string      | type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
+| boolean     | type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
+| number      | type="number"     | Range                     | Default is numeric field, Range is a slider
+| Date        | type="date"       | Calendar                  | Calender is provided by browser feature
+| enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
 
 ## The Widgets
 
 The widget complement the editor by adding more parts. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. 
 So I created a set of such components:
 
-* **ac-breadcrumb**: An automatically navigable bread crumb using the Router's information
-* **ac-sideMenu**: A simple programmable menu
-* **ac-dropMenu**: Another programmable menu that creates a dropdown using TypeScript models
-* **ac-tabs**: Programmable Tabs that react to the Router
-* **ac-infoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
-* **ac-treeView**: An advanced treeview with icon support and many options
-* **ac-dataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
+* **Breadcrumb**: An automatically navigable bread crumb using the Router's information
+* **SideMenu**: A simple programmable menu for the left side with breaks, icons, and non-active labels
+* **DropMenu**: Another programmable menu that creates a dropdown using TypeScript models, multi level
+* **Tabs**: Programmable Tabs that react to the Router
+* **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
+* **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **AnalogClock**: It is what it says -- based on SVG
+* **LoaderIcon**: A circling icon that is higly customizable
 
-Under development, but not yet checked in -- watch for great new components in 2017:
+Under development, but not yet checked in:
 
 * **Calendar**: Shows a calendar view   
 * **ModalDialog**: Bootstraps modals based on TypeScript
 * **NoGrid**: Tabular data without a table - another approach to present data
 
 The goal of the menus is the complete TypeScript support along with the Bootstrap styles.
-
-Additionally we plan to provide some "fun stuff", that may help to understand how components can be made properly:
-
-* **AnalogClock**: It is what it says -- based on SVG
-* **HoverHeader**: An inteactive header, changes appearance effects
-* **LoaderIcon**: A circling icon that is higly customizable
 
 ## Where to get?
 
@@ -167,14 +207,32 @@ For more information read the [Getting started guide](/guides/getting-started.md
 
 There is a [demo app](/src/demo/README.md) where you can see the components in action.
 
+## Quick Start
+
+To have a running sample in seconds do the following:
+
+1. Clone the repository from Github
+2. Assure you have **node** running and **npm** and Typescript (**tsc**) is in the path
+3. Execute this command: `npm run setup`
+4. Execute this command: `npm run demoall` 
+
+A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
+
+Select these options in the left hand menu:
+
+* Forms Demo: All about the decorators
+* Widgets > Overview: The UI widgets demo
+
+> The demo app is independent and has it's own package.json and node_modules folder and hence needs it's own setup. The first command (setup) takes care of this all.
+
 ## Does it cost something?
 
-It's ISC licensed and it's free. We deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented Content GmbH, Berlin / Germany. We at Augmented Content have many years of experience with Web-Frameworks. We were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So we moved almost all projects to eithr AngularJS or Angular 2. I think that knowing one Framework really well is more for our customers than knowing a lot just good. So I decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
 ## Can I contribute?
 
-Yes, drop [me](http://www.joergkrause.de/contact) an email with some "about me" stuff. Even simple feedback is appreciated.
+Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
 ![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)

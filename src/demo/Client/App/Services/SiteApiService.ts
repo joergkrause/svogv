@@ -6,7 +6,7 @@ import { UserViewModel } from '../viewModels/userviewmodel';
 
 /**
  * This service just simulates a user store to keep the demo running without further dependencies.
- * 
+ *
  */
 @Injectable()
 export class SiteApiService {

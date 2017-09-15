@@ -1,5 +1,5 @@
 ﻿import { Routes } from '@angular/router';
-import * as cmp from '../Components/index';
+import * as cmp from '../components/index';
 
 const routes: Routes = [
   {

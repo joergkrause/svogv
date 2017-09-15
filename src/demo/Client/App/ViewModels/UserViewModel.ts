@@ -3,8 +3,8 @@
 /**
  * View Model for form view.
  *
- * The intializer (= 0 and = '') are required to force the TS compiler to create properties. 
- * This is required to loop the element 
+ * The intializer (= 0 and = '') are required to force the TS compiler to create properties.
+ * This is required to loop the element.
  *
  */
 export class UserViewModel {

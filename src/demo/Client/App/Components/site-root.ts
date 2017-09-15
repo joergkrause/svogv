@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 // private
 import { ActivatedRoute } from '@angular/router';
-import { SiteApiService } from '../Services/SiteApiService';
-import { EmitterService } from '../Services/EmitterService';
+import { SiteApiService } from '../services/siteapiservice';
+import { EmitterService } from '../services/emitterservice';
 import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from 'svogv';
 
 interface AppState {

@@ -21,7 +21,7 @@ export class EditAutoformEditorComponent implements OnInit {
 
   userForm: FormGroup;
   saveResult: boolean;
-  userId: number = 0;
+  userId = 0;
   user: UserViewModel;
   paramsSubscriber: Subscription;
 

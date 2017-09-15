@@ -11,7 +11,7 @@ import { SiteApiService } from './services/siteapiservice';
 import * as cmp from './components/index';
 // routes' configuration
 import routes from './configurations/routes';
-// The SVOGV library (in the demo it's a hard link with paths info in tsconfig, 
+// The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
 // resolves against node_modules without changes)
 import * as wd from 'svogv';
 import { FormValidatorService, DropdownService } from 'svogv';
@@ -40,19 +40,20 @@ import { WindowRef } from 'svogv';
     , cmp.ListWidgetsComponent
     , cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
     // Hud Demo
-    , cmp.HudDashboardComponent    
+    , cmp.HudDashboardComponent
     // simple Bootstrap widgets
     , wd.AcTreeView, wd.AcTreeViewNode
     , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
     , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs
-    , wd.AcEditor, wd.AcAutoForm    
+    , wd.AcEditor, wd.AcAutoForm
     // SVG widgets, HUD widgets
     , wd.AcAnalogClock, wd.AcLoaderIcon, wd.HudClock
     // Supporting Directives
     , wd.Dropdown, wd.DropdownToggle
   ],
   bootstrap: [cmp.SiteRootComponent],
-  providers: [SiteApiService         // just for demo to get some static data
+  providers: [
+      SiteApiService        // just for demo to get some static data
     , FormValidatorService  // the forms support, manages the decorators
     , DropdownService       // supports the dropdown menu events 
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
