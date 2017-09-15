@@ -12,14 +12,13 @@ It's not a replacement of the common documentation for developers using the libr
 
 # Making Of -- How I wrote a NPM package
 
-> This is work in progress. Come back often to get recent updates. Currently it's version 0.2.1, published Feb 08, 2017.
+> This is work in progress. Come back often to get recent updates. Currently it's version 0.2.2, published Sep 15, 2017. The current version embraces Angular 4.4. It's working with Angular 2.2 onwards.
 
 The primary part is a almost complete introduction into the world of modern web frontend development. It encapsulates the 
 tool chain, languages, repositories, cloud service and everything else you need to create awesome apps.
 
 The second part is the actual delopment work -- the app's code and frameworks. I decided to use Angular 2 and Bootstrap 4 
-as a foundation. Angular 2 introduced as familiar concept in a new way for the web: components. By building a component tree a web app gets
-better maintainability and clear design, that's closer to the "treeish" nature of HTML. It fits better in the Browser's ecosystem
+as a foundation. Angular 2 introduced as familiar concept in a new way for the web: components. By building a component tree a web app gets better maintainability and clear design, that's closer to the "treeish" nature of HTML. It fits better in the Browser's ecosystem
 than the traditional MVC (model view controller) model.
 
 A big step for web developers was the usage of TypeScript. While other pre-compilers or transpilers are around for years (CoffeeScript for instance),
