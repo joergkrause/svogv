@@ -1,6 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
-import { AcInfoBoxOptions } from './Models/options-infobox';
+import { AcInfoBoxOptions } from './models/options-infobox';
 import { Meaning } from '../../utils/enum-colors';
 
 /**
@@ -18,7 +18,7 @@ import { Meaning } from '../../utils/enum-colors';
 @Component({
     selector: 'ac-infobox',
     template: `<div class="card card-inverse" [ngClass]="getColor('card')">
-                  <div class="card-block" [ngClass]="getColor('bg')">
+                  <div class="card-body" [ngClass]="getColor('bg')">
                     <div class="rotate">
                         <i class="fa fa-5x" [ngClass]="icon"></i>
                     </div>
@@ -30,9 +30,9 @@ import { Meaning } from '../../utils/enum-colors';
                     <span class="progress-description" *ngIf="options.hasProgress">
                         {{progressText}}
                     </span>
-                    <span class="progress" *ngIf="options.hasFooter">
-                        <a href="#" [routerLink]="footerLink">{{footerText}}</a>
-                    </span>
+                  </div>
+                  <div class="card-footer text-muted" *ngIf="options.hasFooter">
+                      <a href="#" class="card-link" [routerLink]="footerLink">{{footerText}}</a>
                   </div>
                 </div>`
 }) //
