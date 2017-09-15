@@ -58,5 +58,8 @@ export class ListEditorComponent {
     this.currentUser = user;
   }
 
+  removeColumn(column: string): void {
+    this.users.headers = this.users.headers.filter(header => header.prop !== column);
+  }
 
 }

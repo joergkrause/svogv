@@ -14,10 +14,6 @@
     </div>
     <!--/col-->
     <div class="col-md-9 col-lg-10 main">
-      <!--toggle sidebar button-->
-      <p class="hidden-md-up">
-        <button type="button" class="btn btn-primary-outline btn-sm" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i> Menu</button>
-      </p>
       <h2 class="display-2 hidden-xs-down">
         {{ currentRoute.title }} <small>{{ currentRoute.subTitle }}</small>
       </h2>
@@ -25,12 +21,14 @@
       <!-- Global navigation path -->
       <ac-breadcrumb></ac-breadcrumb>
       <!-- the global outlet, within the parts the named tab outlet shows sub parts -->
-      <router-outlet></router-outlet>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
     </div>
     <!--/main col-->
   </div>
 </div>
 <!--/.container-->
 <footer class="container-fluid">
-  <p class="text-right small">&copy; 2011 - {{ currentYear }} Augmented Content / Joerg &lt;isageek&gt; Krause</p>
+  <p class="text-right small">&copy; 2011 - {{ currentYear }} Joerg &lt;isageek&gt; Krause <i>www.joergkrause.de</i></p>
 </footer>
