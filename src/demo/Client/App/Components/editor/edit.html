@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
-    <fieldset>
+    <fieldset style="width: 100%">
       <legend>Edit current user</legend>
       <ac-editor [userForm]="userForm" name="userName"></ac-editor>
       <ac-editor [userForm]="userForm" name="email"></ac-editor>

@@ -1,6 +1,4 @@
-﻿import { Type, Component } from '@angular/core';
-
-/** The state of node */
+﻿/** The state of node */
 export enum AcTreeNodeState {
     undefined = 0,
     checked = 1 << 0,

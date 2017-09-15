@@ -30,7 +30,8 @@ export class ListEditorComponent {
   }
 
   private renderData(data: Array<UserViewModelList>) {
-    // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone
+    // typeInfo is an artifical instance to get access to the
+    // meta data JavaScript cannot provide through type info alone
     var t = new UserViewModelList();
     // we get a regular array here, but grid expects GridData for proper rendering
     this.users = new AcDataGridModel<UserViewModelList>(data, t);

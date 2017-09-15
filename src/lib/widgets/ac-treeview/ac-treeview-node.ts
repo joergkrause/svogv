@@ -6,16 +6,16 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './Models/index';
 
 /**
  * The treenode class represents a single treenode for the treeview. Actually, this renders the real UI.
- * 
+ *
  * The component needs this input value:
- *  
+ *
  * * @Input() node: AcTextTreeNode;
- *  
+ *
  * The several options are set through the AcTreeNodeOptions object that is being held by the   
  * AcTextTreeNode class. This includes colors, icons, and other styles. 
- * 
+ *
  * The component can fire these events:
- * 
+ *
  * * @Output() nodeClick: EventEmitter<AcTreeNode>;
  * * @Output() checkChanged: EventEmitter<AcTreeNode>;
  * * @Output() selectedChanged: EventEmitter<AcTreeNode>;
@@ -90,7 +90,7 @@ export class AcTreeViewNode implements OnInit {
         // set HTML according to options
         this.collapseClasses = new Array<string>();
         this.iconClasses = new Array<string>();
-        // expander area with icon 
+        // expander area with icon
         if (this.node) {
             // expect a font-awesome class with or without fa class
             if (this.node.options && this.node.options.icon) {
@@ -102,9 +102,7 @@ export class AcTreeViewNode implements OnInit {
             if (this.node.options && this.node.options.href) {
                 this.href = this.node.options.href;
             } else {
-                this.href = 'javascript:void(0)';
-                // robust way to prevent link due to router bug in earlier NG2 releases
-                // see https://github.com/angular/angular/issues/7294
+                this.href = '';
             }
             // open/close area for elements with children
             if (this.node.hasChildren) {
@@ -249,7 +247,9 @@ export class AcTreeViewNode implements OnInit {
             }
             this.selectedChanged.emit(this.node);
         }
-
+        if (!this.href) {
+            $event.stopPropagation();
+        }
     }
 
 }

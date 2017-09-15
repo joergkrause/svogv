@@ -53,3 +53,17 @@ Still under construction, because of SMIL we use for SVG and that we still need 
 * LoaderIcon
 
 The demo does now use WebPack 2 to create the bundles. SystemJS loader is still working for debugging. 
+
+<a name="0.2.1"></a>
+# [0.2.1](https://github.com/joergkrause/svogv/releases/tag/0.2.1) (2017-09-14)
+
+### SVOGV in usable state
+
+The base library with the decorators and controls is usable. The HUD part is still very experimental. I'm going to remove this part shortly and create another project out of it. It will make the lib smaller and more reliable.
+
+These to elements are now working and good for production:
+
+* AnalogClock
+* LoaderIcon
+
+There are many fixes in both, demo and lib.
