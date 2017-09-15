@@ -1,4 +1,4 @@
-# SVOGV ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) Widget Library
+# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widget and Forms Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
@@ -10,22 +10,27 @@
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
 
-
 ## Introduction
 
 Now that Angular 2 is widely used we have – the very first time in years – such a strong feeling in our guts that’s now the first step from ancient crap into something really professional. It brings the level we all know from Java and C# and the mature backend frameworks to the frontend.
 And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
 
 TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
-The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4 a lot easier.
+The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4+ a lot easier.
 
 It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular 2 (4). It's an extension to Angular 2 that comes as a set of classes and components. 
+The approach was simply the usage of forms as simple as ever in Angular 2+. It's an extension to Angular 2+ that comes as a set of classes and components. 
 
 It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
+
+## Issues?
+
+We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.
+
+The SVG stuff (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either.
 
 ## Angular Data Annotations
 
@@ -169,6 +174,8 @@ So I created a set of such components:
 * **Tabs**: Programmable Tabs that react to the Router
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **AnalogClock**: It is what it says -- based on SVG
+* **LoaderIcon**: A circling icon that is higly customizable
 
 Under development, but not yet checked in:
 
@@ -177,14 +184,6 @@ Under development, but not yet checked in:
 * **NoGrid**: Tabular data without a table - another approach to present data
 
 The goal of the menus is the complete TypeScript support along with the Bootstrap styles.
-
-Additionally we plan to provide some "fun stuff", that may help to understand how components can be made properly:
-
-* **AnalogClock**: It is what it says -- based on SVG
-* **LoaderIcon**: A circling icon that is higly customizable
-* **HudAnalogClock**: A clock that is for Head Up Display / Gaming -- based on Canvas
-
-> The HUD widgets get more parts in the future. 
 
 ## Where to get?
 
@@ -208,11 +207,29 @@ For more information read the [Getting started guide](/guides/getting-started.md
 
 There is a [demo app](/src/demo/README.md) where you can see the components in action.
 
+## Quick Start
+
+To have a running sample in seconds do the following:
+
+1. Clone the repository from Github
+2. Assure you have **node** running and **npm** and Typescript (**tsc**) is in the path
+3. Execute this command: `npm run setup`
+4. Execute this command: `npm run demoall` 
+
+A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
+
+Select these options in the left hand menu:
+
+* Forms Demo: All about the decorators
+* Widgets > Overview: The UI widgets demo
+
+> The demo app is independent and has it's own package.json and node_modules folder and hence needs it's own setup. The first command (setup) takes care of this all.
+
 ## Does it cost something?
 
-It's ISC licensed and it's free. We deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, CEO of Augmented Content GmbH, Berlin / Germany. We at Augmented Content have many years of experience with Web-Frameworks. We were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So we moved almost all projects to eithr AngularJS or Angular 2. I think that knowing one Framework really well is more for our customers than knowing a lot just good. So I decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
 ## Can I contribute?
 

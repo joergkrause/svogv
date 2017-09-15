@@ -8,9 +8,9 @@
     "email": "joerg@krause.net"
   },
   "scripts": {
-    "build": "gulp default",
+    "build": "tsc && gulp default",
     "start": "http-server ../../dist/demo -p 3000 -o",
-    "exec": "gulp default && npm run start"
+    "exec": "tsc && gulp default && npm run start"
   },
   "private": true,
   "dependencies": {

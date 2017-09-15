@@ -4,9 +4,9 @@ import { Subscription } from 'rxjs/rx';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidatorService } from 'svogv';
 // private
-import { SiteApiService } from '../../Services/SiteApiService';
-import { EmitterService } from '../../Services/EmitterService';
-import { UserViewModel } from '../../ViewModels/UserViewModel';
+import { SiteApiService } from '../../services/siteapiservice';
+import { EmitterService } from '../../services/emitterservice';
+import { UserViewModel } from '../../viewmodels/userviewmodel';
 
 @Component({
   moduleId: module.id,
@@ -19,7 +19,7 @@ import { UserViewModel } from '../../ViewModels/UserViewModel';
 export class DeleteEditorComponent implements OnInit {
 
   saveResult: boolean;
-  userId: number = 0;
+  userId = 0;
   user: UserViewModel;
   paramsSubscriber: Subscription;
 
