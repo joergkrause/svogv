@@ -3,7 +3,7 @@
 import { ActivatedRoute } from '@angular/router';
 import { SiteApiService } from '../services/siteapiservice';
 import { EmitterService } from '../services/emitterservice';
-import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from 'svogv';
+import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from '../widgets/ac-menu/models/index';
 
 interface AppState {
   counter: number;

@@ -1,9 +1,7 @@
 import {NgModule, ModuleWithProviders} from '@angular/core';
 
 import {
-  AcBreadCrumb,
   AcInfoBox,
-  AcTab,
   AcLoaderIcon,
   AcAnalogClock,
   HudClock, HudClockOptions
@@ -20,9 +18,7 @@ import { FormValidatorService } from './services/formvalidatorservice';
 export * from './decorators';
 
 const SVOGV_MODULES = [
-  AcBreadCrumb,
   AcInfoBox,
-  AcTab,
   AcDataGridPagination,
   AcTreeView,
   AcTreeViewNode,

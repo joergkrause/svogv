@@ -1,7 +1,5 @@
 ﻿export * from './ac-infobox/ac-infobox';
-export * from './ac-breadcrumb';
 export * from './ac-datagrid/ac-datagridpagination';
-export * from './ac-tabs';
 export * from './ac-loadericon';
 export * from './ac-editors/ac-editor';
 export * from './ac-editors/ac-autoform';

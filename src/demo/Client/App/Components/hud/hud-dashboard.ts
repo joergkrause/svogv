@@ -6,19 +6,19 @@ import { HudClock, HudClockOptions } from 'svogv';
  * Dashboard to demonstrate HUD components.
  */
 @Component({
-  moduleId: module.id,
-  selector: 'hud-dashboard',
-  templateUrl: './hud-dashboard.html',
-  styles: ['#hudDemo { background-color: #000; }']
+    moduleId: module.id,
+    selector: 'hud-dashboard',
+    templateUrl: './hud-dashboard.html',
+    styles: ['#hudDemo { background-color: #000; }']
 })
 export class HudDashboardComponent {
 
-  @ViewChild('hudClock') hudClock: HudClock;
-  public configForm: FormGroup;
-  private initalConfig: HudClockOptions; 
+    @ViewChild('hudClock') hudClock: HudClock;
+    public configForm: FormGroup;
+    private initalConfig: HudClockOptions;
 
-  constructor() {
-    this.initalConfig = {
+    constructor() {
+        this.initalConfig = {
             width: 200,
             height: 200,
             starCount: 500,
@@ -51,15 +51,15 @@ export class HudDashboardComponent {
                 width: 3,
             }
         };
-    this.configForm = new FormGroup({
-      starCount: new FormControl()
-    });
-    this.configForm.valueChanges.subscribe(()=> {
-        let newConfig = this.initalConfig;
-        newConfig.starCount = this.configForm.controls['starCount'].value;
-        this.hudClock.config.emit(newConfig);
-    });
-  }
+        this.configForm = new FormGroup({
+            starCount: new FormControl()
+        });
+        this.configForm.valueChanges.subscribe(() => {
+            let newConfig = this.initalConfig;
+            newConfig.starCount = this.configForm.controls['starCount'].value;
+            this.hudClock.config.emit(newConfig);
+        });
+    }
 
 
 

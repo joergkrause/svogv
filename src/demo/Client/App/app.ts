@@ -10,13 +10,13 @@ import { SiteApiService } from './services/siteapiservice';
 // custom components
 import * as cmp from './components/index';
 // custom widgets
-import * as widgets from './widgets/ac-menu/ac-sidemenu';
+import * as widgets from './widgets/index';
 // routes' configuration
 import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
 // resolves against node_modules without changes)
 import * as wd from 'svogv';
-import { FormValidatorService, DropdownService } from 'svogv';
+import { FormValidatorService } from 'svogv';
 import { WindowRef } from 'svogv';
 
 @NgModule({
@@ -45,16 +45,15 @@ import { WindowRef } from 'svogv';
     , cmp.LoaderIconComponent
     // Custom Widgets just for Demo
     , widgets.AcSideMenu
+    , widgets.AcBreadCrumb
+    , widgets.AcTabs
     // Hud Demo
     , cmp.HudDashboardComponent
     // simple Bootstrap widgets
     , wd.AcTreeView
     , wd.AcTreeViewNode
-    , wd.AcSideMenu
-    , wd.AcBreadCrumb
     , wd.AcDataGridPagination
     , wd.AcInfoBox
-    , wd.AcTabs
     , wd.AcEditor
     , wd.AcAutoForm
     // SVG widgets, HUD widgets
@@ -66,7 +65,6 @@ import { WindowRef } from 'svogv';
   providers: [
       SiteApiService        // just for demo to get some static data
     , FormValidatorService  // the forms support, manages the decorators
-    , DropdownService       // supports the dropdown menu events 
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
     , WindowRef]
 })

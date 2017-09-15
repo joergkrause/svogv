@@ -1,28 +1,12 @@
-﻿import { Component, OnInit } from '@angular/core';
-import { AcMenu, AcMenuLinkItem } from 'svogv';
+﻿import { Component } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   templateUrl: './list.html'
 })
-export class ListWidgetsComponent implements OnInit {
-
-  public formWidgets: AcMenu;
-  public svgComponents: AcMenu;
+export class ListWidgetsComponent {
 
   constructor() {
-  }
-
-  ngOnInit() {
-    this.formWidgets = new AcMenu(
-      new AcMenuLinkItem('TreeView', ['/widgets/tree'])
-      , new AcMenuLinkItem('DropDown', ['/widgets/drop'])
-      , new AcMenuLinkItem('InfoBox', ['/widgets/info'])
-      , new AcMenuLinkItem('BreadCrumb', ['/widgets/bread']));
-    this.svgComponents = new AcMenu(
-      new AcMenuLinkItem('Analog Clock', ['/widgets/clock'])
-      , new AcMenuLinkItem('Loader Icon', ['/widgets/icon']));
-    // Link items will use the router by default 
   }
 
 }

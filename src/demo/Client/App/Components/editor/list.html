@@ -23,8 +23,8 @@
         <tr>
           <th *ngFor="let header of users.headers" [title]="header.desc">{{ header.text }}
             <div class="ac-sortsmall">
-              <button class="btn btn-sm ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')"><i class="fa fa-sort-asc"></i></button>
-              <button class="btn btn-sm ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')"><i class="fa fa-sort-desc"></i></button>
+              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')"><i class="fa fa-sort-asc"></i></button>
+              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')"><i class="fa fa-sort-desc"></i></button>
             </div>
             <button (click)="removeColumn(header.prop)" class="btn btn-sm btn-warning">Remove Column</button>
           </th>
@@ -45,10 +45,10 @@
           </td>
           <td>
             <button class="btn btn-primary btn-sm" type="button" (click)="editUser(user)">
-              Regular Form Edit
+              Edit (Fields)
             </button>
             <button class="btn btn-primary btn-sm" type="button" (click)="editUserAutoform(user)">
-              Auto Form Edit
+              Edit (Auto)
             </button>
             <button class="btn btn-danger btn-sm" type="button" (click)="removeUser(user)">
               Delete
