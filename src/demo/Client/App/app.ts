@@ -9,6 +9,8 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { SiteApiService } from './services/siteapiservice';
 // custom components
 import * as cmp from './components/index';
+// custom widgets
+import * as widgets from './widgets/ac-menu/ac-sidemenu';
 // routes' configuration
 import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
@@ -35,21 +37,30 @@ import { WindowRef } from 'svogv';
     , cmp.EditorDemoComponent, cmp.EditAutoformEditorComponent
     , cmp.ListEditorComponent, cmp.NewEditorComponent
     , cmp.EditEditorComponent, cmp.DeleteEditorComponent
-    // Widgets 
+    // Widget Demos
     , cmp.WidgetDemoComponent
     , cmp.ListWidgetsComponent
-    , cmp.AnalogClockComponent, cmp.TreeviewComponent, cmp.LoaderIconComponent
+    , cmp.AnalogClockComponent
+    , cmp.TreeviewComponent
+    , cmp.LoaderIconComponent
+    // Custom Widgets just for Demo
+    , widgets.AcSideMenu
     // Hud Demo
     , cmp.HudDashboardComponent
     // simple Bootstrap widgets
-    , wd.AcTreeView, wd.AcTreeViewNode
-    , wd.AcSideMenu, wd.AcDropMenu, wd.AcBreadCrumb
-    , wd.AcDataGridPagination, wd.AcInfoBox, wd.AcTabs
-    , wd.AcEditor, wd.AcAutoForm
+    , wd.AcTreeView
+    , wd.AcTreeViewNode
+    , wd.AcSideMenu
+    , wd.AcBreadCrumb
+    , wd.AcDataGridPagination
+    , wd.AcInfoBox
+    , wd.AcTabs
+    , wd.AcEditor
+    , wd.AcAutoForm
     // SVG widgets, HUD widgets
-    , wd.AcAnalogClock, wd.AcLoaderIcon, wd.HudClock
-    // Supporting Directives
-    , wd.Dropdown, wd.DropdownToggle
+    , wd.AcAnalogClock
+    , wd.AcLoaderIcon
+    , wd.HudClock
   ],
   bootstrap: [cmp.SiteRootComponent],
   providers: [

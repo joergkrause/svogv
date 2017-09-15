@@ -3,10 +3,7 @@ import {NgModule, ModuleWithProviders} from '@angular/core';
 import {
   AcBreadCrumb,
   AcInfoBox,
-  AcSideMenu,
-  AcDropMenu,
   AcTab,
-  AcWebPart,
   AcLoaderIcon,
   AcAnalogClock,
   HudClock, HudClockOptions
@@ -25,14 +22,11 @@ export * from './decorators';
 const SVOGV_MODULES = [
   AcBreadCrumb,
   AcInfoBox,
-  AcSideMenu,
-  AcDropMenu,
   AcTab,
-  AcWebPart,
-  AcDataGridPagination, 
+  AcDataGridPagination,
   AcTreeView,
   AcTreeViewNode,
-  AcEditor, 
+  AcEditor,
   AcAutoForm,
   AcLoaderIcon,
   AcAnalogClock,
