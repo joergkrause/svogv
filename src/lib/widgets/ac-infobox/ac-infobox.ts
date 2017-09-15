@@ -1,4 +1,4 @@
-﻿import { Component, Input } from '@angular/core';
+﻿import { Component, Input, OnInit } from '@angular/core';
 import { InputConverter, EnumConverter } from '../../utils/convert-inputconverter';
 import { AcInfoBoxOptions } from './Models/options-infobox';
 import { Meaning } from '../../utils/enum-colors';
@@ -31,12 +31,12 @@ import { Meaning } from '../../utils/enum-colors';
                         {{progressText}}
                     </span>
                     <span class="progress" *ngIf="options.hasFooter">
-                        <a href="#" [routerLink]="footerLink">{{foooterText}}</a>
+                        <a href="#" [routerLink]="footerLink">{{footerText}}</a>
                     </span>
                   </div>
                 </div>`
 }) //
-export class AcInfoBox {
+export class AcInfoBox implements OnInit {
     @Input() icon: string;
     @Input() text: string;
     @Input() number: string;
@@ -58,9 +58,15 @@ export class AcInfoBox {
         this.footerLink = '/';
         this.footerText = '';
         this.icon = 'fa-user';
-        this.options = new AcInfoBoxOptions();
     }
 
+    ngOnInit(): void {
+        if (!this.options) {
+            this.options = new AcInfoBoxOptions();
+            this.options.hasFooter = !!this.footerLink || !!this.footerText;
+            this.options.hasProgress = !!this.progressValue || !!this.progressText;
+        }
+    }
 
     getColor(type: string): string {
         if (this.color) {

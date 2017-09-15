@@ -1,15 +1,15 @@
-﻿import { Meaning } from '../../../utils/enum-colors';
-
+﻿/**
+ * Additional options for the control.
+ * If not provided the control assumes the values from other settings.
+ */
 export class AcInfoBoxOptions {
 
     hasProgress: boolean;
     hasFooter: boolean;
-    color: Meaning;
 
     constructor() {
         this.hasProgress = false;
         this.hasFooter = false;
-        this.color = Meaning.Danger;
     }
 
 }

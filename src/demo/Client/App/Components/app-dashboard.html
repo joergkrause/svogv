@@ -1,15 +1,15 @@
 ﻿<div class="row">
 	<div class="col-lg-6 col-md-6">
-		<ac-infobox icon="fa-user" text="Widgets" number="6" footerText="Show all widgets" footerLink="['/widgets/list']" color="Warning"></ac-infobox>
+		<ac-infobox icon="fa-user" text="Widgets" number="6" footerText="Show all widgets" [footerLink]="['/widgets/list']" color="Warning"></ac-infobox>
 	</div>
 	<div class="col-lg-6 col-md-6">
-		<ac-infobox icon="fa-list" text="Users" [number]="users.length" footerText="Show some demo data" footerLink="['/users/list']"
+		<ac-infobox icon="fa-list" text="Users" [number]="users.length" footerText="Show some demo data" [footerLink]="['/users/list']"
 			color="Info"></ac-infobox>
 	</div>
 </div>
 <div class="row">
 	<div class="col-lg-6 col-md-6">
-		<ac-infobox icon="fa-space-shuttle" text="HUD" number="6" footerText="HUD Dashboard" footerLink="['/huddashboard']" color="Success"></ac-infobox>
+		<ac-infobox icon="fa-space-shuttle" text="HUD" number="6" footerText="HUD Dashboard" [footerLink]="['/huddashboard']" color="Success"></ac-infobox>
 	</div>
 	<div class="col-lg-6 col-md-6">
 	</div>
