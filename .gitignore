@@ -23,3 +23,4 @@
 npm-debug.log
 testem.log
 /.chrome
+package-lock.json
