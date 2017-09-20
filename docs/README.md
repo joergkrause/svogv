@@ -12,7 +12,7 @@ It's not a replacement of the common documentation for developers using the libr
 
 # Making Of -- How I wrote a NPM package
 
-> This is work in progress. Come back often to get recent updates. Currently it's version 0.2.2, published Sep 15, 2017. The current version embraces Angular 4.4. It's working with Angular 2.2 onwards.
+> This is work in progress. Come back often to get recent updates. Currently it's version 0.2.3, published Sep 15, 2017. The current version embraces Angular 4.4. It's working with Angular 2.2 onwards.
 
 The primary part is a almost complete introduction into the world of modern web frontend development. It encapsulates the 
 tool chain, languages, repositories, cloud service and everything else you need to create awesome apps.

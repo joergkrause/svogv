@@ -1,5 +1,5 @@
 ﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { AcTreeNode } from './Models/index';
+import { AcTreeNode } from './models/index';
 
 @Component({
     selector: 'ac-tree',

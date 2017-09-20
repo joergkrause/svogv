@@ -2,7 +2,7 @@
     Component, Input, Output,
     EventEmitter, OnInit, ElementRef, Renderer
 } from '@angular/core';
-import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './Models/index';
+import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models/index';
 
 /**
  * The treenode class represents a single treenode for the treeview. Actually, this renders the real UI.
