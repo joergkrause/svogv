@@ -6,16 +6,31 @@ import { AcTreeNodeBase } from './ac-treenodebase';
  * The base class.
  */
 export class AcTreeNode implements AcTreeNodeBase {
-    // control appearance
+    /**
+     * Control appearance
+     */
     options: tree.AcTreeNodeOptions;
-    // structure
+    /**
+     * structure
+     */
     parent: AcTreeNode;
+    /**
+     * Subsequent nodes.
+     */
     children: AcTreeNode[];
-    // identifier
+    /**
+     * An identifier.
+     */
     name: string;
+    /**
+     * Field id
+     */
     id: number;
-    // behavior
+    /**
+     * behavior
+     */
     stateChange: EventEmitter<tree.AcTreeNodeState>;
+    
     private _state: tree.AcTreeNodeState;
 
     constructor(options?: tree.AcTreeNodeOptions, nodes?: AcTreeNode | AcTreeNode[]) {

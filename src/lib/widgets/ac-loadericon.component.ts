@@ -1,5 +1,8 @@
 ﻿import { Component, Input } from '@angular/core';
 
+/**
+ * A circling symbol with various settings to control speed and color.
+ */
 @Component({
     selector: 'ac-loadericon',
     template: `
@@ -53,7 +56,13 @@
 `
 })
 export class AcLoaderIcon {
+    /**
+     * The speed in second per rotation. Fractions are allowed. 10 = very slow, 0.5 = really fast.
+     */
     @Input() rotateSpeed: number;
+    /**
+     * The color. The colors range from white to this value.
+     */
     @Input() color: string;
 
     constructor() {
