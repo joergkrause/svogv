@@ -1,12 +1,12 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { SiteApiService } from '../../services/siteapiservice';
-import { UserViewModelList } from '../../viewmodels/userviewmodellist';
+import { SiteApiService } from '../../services/index';
+import { UserViewModelList } from '../../viewmodels/index';
 import { AcDataGridModel } from 'svogv';
 
 @Component({
   moduleId: module.id,
-  templateUrl: './list.html',
+  templateUrl: './list.component.html',
   styles: [
     `button.ac-supersmall { 
       width: 16px; 

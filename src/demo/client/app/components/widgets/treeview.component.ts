@@ -1,10 +1,10 @@
-﻿import { Component, EventEmitter } from '@angular/core';
+﻿import { Component } from '@angular/core';
 import { AcTreeNodeOptions, AcTextTreeNode, AcTreeNode } from 'svogv';
 
 @Component({
   moduleId: module.id,
   selector: 'app-treeview',
-  templateUrl: './treeview.html'
+  templateUrl: './treeview.component.html'
 })
 export class TreeviewComponent {
 
@@ -32,8 +32,8 @@ export class TreeviewComponent {
       optionsi.checkable = false;
       optionsi.color = 'green';
       optionsi.collapsable = true;
-      optionsi.icon = "fa-glass";
-      optionsi.iconColor = "silver";
+      optionsi.icon = 'fa-glass';
+      optionsi.iconColor = 'silver';
       optionsi.selectable = false;
 
       this.treeData = new AcTextTreeNode('Root node', options, [

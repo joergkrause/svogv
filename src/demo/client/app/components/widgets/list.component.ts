@@ -2,7 +2,7 @@
 
 @Component({
   moduleId: module.id,
-  templateUrl: './list.html'
+  templateUrl: './list.component.html'
 })
 export class ListWidgetsComponent {
 

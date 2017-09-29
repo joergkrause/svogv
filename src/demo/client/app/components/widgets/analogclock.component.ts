@@ -3,7 +3,7 @@
 @Component({
   moduleId: module.id,
   selector: 'app-analogclock',
-  templateUrl: './analogclock.html'
+  templateUrl: './analogclock.component.html'
 })
 export class AnalogClockComponent {
 }

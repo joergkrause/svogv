@@ -23,7 +23,7 @@ import { AcMenu } from './models/ac-menu';
               </ng-container>
             </nav>`
 })
-export class AcSideMenu {
+export class AcSideMenuComponent {
 
   /**
    * The menu's data.

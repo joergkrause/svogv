@@ -62,7 +62,7 @@ export class AcTabData {
             </div>
 `
 }) //
-export class AcTabs {
+export class AcTabsComponent {
 
   @Input() tabs: AcTabData;
   @Input() limitBreadcrumb = false;
@@ -110,7 +110,7 @@ export class AcTabs {
 
       // verify the custom data property "breadcrumb" is specified on the route,
       // limitBreadcrumb must be set to true to activate this
-      if (!route.snapshot.data.hasOwnProperty(AcTabs.ROUTE_DATA_BREADCRUMB) && this.limitBreadcrumb) {
+      if (!route.snapshot.data.hasOwnProperty(AcTabsComponent.ROUTE_DATA_BREADCRUMB) && this.limitBreadcrumb) {
         return;
       }
 

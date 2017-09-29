@@ -6,11 +6,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // access to WebAPI
-import { SiteApiService } from './services/siteapiservice';
+import { SiteApiService } from './services/index';
 // custom components
 import * as cmp from './components/index';
-// custom widgets
-import * as widgets from './widgets/index';
 // routes' configuration
 import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
@@ -44,9 +42,9 @@ import { WindowRef } from 'svogv';
     , cmp.TreeviewComponent
     , cmp.LoaderIconComponent
     // Custom Widgets just for Demo
-    , widgets.AcSideMenu
-    , widgets.AcBreadCrumb
-    , widgets.AcTabs
+    , cmp.AcSideMenuComponent
+    , cmp.AcBreadCrumbComponent
+    , cmp.AcTabsComponent
     // Hud Demo
     , cmp.HudDashboardComponent
     // simple Bootstrap widgets

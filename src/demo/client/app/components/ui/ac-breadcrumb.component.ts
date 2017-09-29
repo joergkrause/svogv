@@ -31,7 +31,7 @@ export interface IBreadcrumb {
             border-radius: 2px;
          }`]
 }) //
-export class AcBreadCrumb implements OnInit {
+export class AcBreadCrumbComponent implements OnInit {
     @Input() icon: string;
     @Input() home: string;
 

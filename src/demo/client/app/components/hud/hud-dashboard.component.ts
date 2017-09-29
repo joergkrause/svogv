@@ -8,7 +8,7 @@ import { HudClock, HudClockOptions } from 'svogv';
 @Component({
     moduleId: module.id,
     selector: 'hud-dashboard',
-    templateUrl: './hud-dashboard.html',
+    templateUrl: './hud-dashboard.component.html',
     styles: ['#hudDemo { background-color: #000; }']
 })
 export class HudDashboardComponent {

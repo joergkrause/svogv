@@ -1,7 +1,6 @@
 ﻿import { Component } from '@angular/core';
-import { SiteApiService } from '../services/siteapiservice';
-import { EmitterService } from '../services/emitterservice';
-import { UserViewModel } from '../viewmodels/userviewmodel';
+import { SiteApiService, EmitterService } from '../services/index';
+import { UserViewModel } from '../viewmodels/index';
 
 /**
  * Dashboard shows global data. The data are retrieved in the root and broadcastet,

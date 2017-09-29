@@ -3,7 +3,7 @@
 @Component({
   moduleId: module.id,
   selector: 'app-loadericon',
-  templateUrl: './loadericon.html'
+  templateUrl: './loadericon.component.html'
 })
 export class LoaderIconComponent {
 }
