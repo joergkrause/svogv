@@ -1,6 +1,10 @@
 ﻿import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AcTreeNode } from './models/index';
 
+/**
+ * A treeview that can handle @see AcTreeNode objects that create text, checkboxes, or highlights.
+ * A node can have an icon. The icons are based on FontAwesome's css classes.
+ */
 @Component({
     selector: 'ac-tree',
     template: `<ul class="treeview">

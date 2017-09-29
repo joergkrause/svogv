@@ -2,6 +2,9 @@
 import * as tree from './ac-treenodeoptions';
 import { AcTreeNodeBase } from './ac-treenodebase';
 
+/**
+ * The base class.
+ */
 export class AcTreeNode implements AcTreeNodeBase {
     // control appearance
     options: tree.AcTreeNodeOptions;

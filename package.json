@@ -11,7 +11,7 @@
     "tslint": "gulp lint",
     "stylelint": "gulp lint",
     "docs": "gulp docs",
-		"codedoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json",
+    "codedoc": "./node_modules/.bin/compodoc -p src/lib/tsconfig-srcs.json",
     "setup": "npm install && cd src/demo && npm install && cd ../../"
   },
   "repository": {
@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "@angular/compiler-cli": "^2.2.0",
+    "@compodoc/compodoc": "^1.0.1",
     "@types/core-js": "^0.9.43",
     "@types/glob": "^5.0.32",
     "@types/gulp": "^3.8.33",

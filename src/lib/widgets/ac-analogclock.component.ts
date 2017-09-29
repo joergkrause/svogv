@@ -6,6 +6,9 @@
 } from '@angular/core';
 import { DOCUMENT } from '@angular/platform-browser';
 
+/**
+ * A simple round analog clock based on SVG and JavaScript for animation.
+ */
 @Component({
     selector: 'ac-analogclock',
     styles: [`svg {
@@ -59,14 +62,39 @@ import { DOCUMENT } from '@angular/platform-browser';
 })
 export class AcAnalogClock implements AfterViewInit, OnChanges {
 
+    /**
+     * The background color of the clock's body.
+     */
     @Input() bgColor: string;
+    /**
+     * The color of the second arrow.
+     */
     @Input() secondColor = '#C1EFED';
+    /**
+     * The color of the minute arrow.
+     */
     @Input() minuteColor = '#fdfdfd';
+    /**
+     * The color of the hour arrow.
+     */
     @Input() hourColor = '#fffbf9';
+    /**
+     * The diameter of tje clock in pixels.
+     */
     @Input() diameter: number;
+    /**
+     * Whether to show seconds or not. This does not affect the timer.
+     */
     @Input() showSeconds: boolean;
+    /**
+     * An event fired every minute.
+     */
     @Output() minuteClock: EventEmitter<Date>;
+    /**
+     * An event fired every hour.
+     */
     @Output() hourClock: EventEmitter<Date>;
+
     @ViewChild('hourhandTransform') hourhandTransform: ElementRef;
     @ViewChild('minutehandTransform') minutehandTransform: ElementRef;
     @ViewChild('secondhandTransform') secondhandTransform: ElementRef;

@@ -64,11 +64,27 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models/index';
         'li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }']
 })
 export class AcTreeViewNode implements OnInit {
+    /**
+     * The object that controls the node's appearance.
+     */
     @Input() node: AcTextTreeNode;
+    /**
+     * Fired on click and hence fired even if any of the other parts are being fired.
+     */
     @Output() nodeClick: EventEmitter<AcTreeNode>;
+    /**
+     * Fired if a checkable field is being clicked.
+     */
     @Output() checkChanged: EventEmitter<AcTreeNode>;
+    /**
+     * Fired if a selectable field is being clicked.
+     */
     @Output() selectedChanged: EventEmitter<AcTreeNode>;
+    /**
+     * Fired if a node collapses or expands.
+     */
     @Output() collapseChanged: EventEmitter<AcTreeNode>;
+    
     private href: string;
     private collapseClasses: Array<string>;
     private iconClasses: Array<string>;

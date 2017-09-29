@@ -4,6 +4,7 @@
 /dist
 /tmp
 /deploy
+/documentation
 
 # dependencies
 /node_modules

@@ -1,17 +1,21 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import {
   AcInfoBox,
   AcLoaderIcon,
   AcAnalogClock,
-  HudClock, HudClockOptions
+  AcDataGridPagination,
+  AcTreeView,
+  AcTreeViewNode,
+  AcEditor,
+  AcAutoForm,
+  HudClock,
+  HudClockOptions
 } from './widgets/index';
 
-import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination.component';
-import { AcTreeView } from './widgets/ac-treeview/ac-treeview.component';
-import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node.component';
-import { AcEditor } from './widgets/ac-editors/ac-editor.component';
-import { AcAutoForm } from './widgets/ac-editors/ac-autoform.component';
+import {
+  FormValidatorService
+} from './services/formvalidator.service';
 
 export * from './decorators/index';
 
@@ -24,25 +28,26 @@ const SVOGV_MODULES = [
   AcAutoForm,
   AcLoaderIcon,
   AcAnalogClock,
-  HudClock, HudClockOptions
+  HudClock,
+  HudClockOptions,
+  FormValidatorService
 ];
 
+/**
+ * The root module with the global exports.
+ */
 @NgModule({
-  imports: SVOGV_MODULES,
   exports: SVOGV_MODULES
 })
 export class SvOGvRootModule { }
 
 
 /**
- * The SVOGV Module definition
+ * The actual SVOGV Module definition using the root module.
  */
-@NgModule({
-  imports: SVOGV_MODULES,
-  exports: SVOGV_MODULES
-})
+@NgModule()
 export class SvOGvModule {
   static forRoot(): ModuleWithProviders {
-    return {ngModule: SvOGvRootModule};
+    return { ngModule: SvOGvRootModule };
   }
 }

@@ -8,7 +8,7 @@ export enum Direction {
 
 /**
  * The controlling class for Grid applications.
- * 
+ *
  * This class takes an array of elements and handles:
  * - visible headers, managed by @Hidden() decorator
  * - create header titles, managed by @Display() decorator

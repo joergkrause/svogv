@@ -5,6 +5,7 @@ import { FormGroup } from '@angular/forms';
  * The Editor Widget. Creates a field with all required validators using decorators and forms service.
  */
 @Component({
+  moduleId: module.id,
   selector: 'ac-editor',
   styles: [
     'input[type="checkbox"] { display: none; }',
@@ -15,96 +16,75 @@ import { FormGroup } from '@angular/forms';
       display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; 
     }`,
   ],
-  template: `<div class="form-group row" 
-                  [formGroup]="userForm" *ngIf="type != 'hidden'"
-                  [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">
-              <label class="col-form-label col-md-3 col-sm-10"
-                     [attr.for]="name" 
-                     [attr.title]="tooltip" >{{ label }}: </label>
-              <div [ngClass]="{ 'col-md-7 col-sm-10': inline }">
-                <textarea *ngIf="type == 'textarea'" 
-                          class="form-control" 
-                          [id]="name" 
-                          [readOnly]='readonly'
-                          [formControlName]="name" 
-                          [attr.rows]="getParams('rows')" 
-                          [attr.cols]="getParams('cols')">
-                </textarea>
-                <select *ngIf="type == 'enum'" class="form-control" [id]="name" 
-                        [formControlName]="name" [disabled]='readonly'>
-                  <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
-                </select>
-                <input *ngIf="type == 'range'" type="range" 
-                       class="form-control" 
-                       [placeholder]="waterMark" 
-                       [attr.minvalue]="fromValue" 
-                       [attr.maxvalue]="toValue" 
-                       [attr.min]="fromValue" 
-                       [attr.max]="toValue" 
-                       [id]="name" 
-                       [formControlName]="name" 
-                       [title]="tooltip" />
-                <input *ngIf="type == 'calendar'" type="date"
-                       class="form-control" 
-                       [placeholder]="waterMark" 
-                       [readOnly]='readonly'
-                       [id]="name" 
-                       [formControlName]="name" 
-                       [title]="tooltip" />
-                <input *ngIf="type == 'number'" type="number" 
-                       class="form-control" 
-                       [placeholder]="waterMark" 
-                       [readOnly]='readonly'
-                       [id]="name" 
-                       [formControlName]="name" 
-                       [title]="tooltip" />
-                <input *ngIf="type == 'boolean'" type="checkbox" 
-                       class="form-control" 
-                       [readOnly]='readonly'
-                       [id]="name" 
-                       [formControlName]="name" 
-                       [title]="tooltip" />
-                <label *ngIf="type == 'boolean'" [attr.for]="name"></label>
-                <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" 
-                       [readOnly]='readonly'
-                       type="text" class="form-control" [id]="name" [formControlName]="name" />
-                <span class="fa fa-warning text-danger form-control-feedback" 
-                      [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
-                <small class="text-danger" 
-                       [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine">
-                  <span *ngFor="let error of errors">{{ userForm.controls[name].messages[error] }}</span>
-                </small>
-              </div>
-             </div>
-             <div [formGroup]="userForm">
-              <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
-             </div>
-`
+  templateUrl: './ac-editor.component.html'
 }) //
 export class AcEditor implements OnInit {
 
+  /**
+   * Field name
+   */
   @Input() name: string;
+  /**
+   * Editor type. Default is 'text';
+   */
   @Input() type = 'text';
+  /**
+   * A character after the fields label. Default is ': ' (colon plus space);
+   */
+  @Input() labelDivider = ': ';
+  /**
+   * The label's name.
+   */
   @Input() label: string;
+  /**
+   * A tooltip
+   */
   @Input() tooltip: string;
+  /**
+   * Name of the form's group object.
+   */
   @Input() userForm: FormGroup;
+  /**
+   * If set to true the label and the field appears in one row.
+   * Otherwise the label is above the field. Default is `true`.
+   */
   @Input() inline = true;
-  // select only
+  /**
+   * The values of the select field provided by an enum. For other fieldtypes it's being ignored.
+   */
   @Input() enumValues: any;
-  // range only
+  /**
+   * The values of the select field provided by a list. For other fieldtypes it's being ignored.
+   * The value shall be an Array that a `*ngFor` directive can execute.
+   */
+  @Input() listValues: Array<any>;
+  /**
+   * The start value for a range field. Other field types ignore this value.
+   */
   @Input() fromValue = 0;
+  /**
+   * The end value for a range field. Other field types ignore this value.
+   */
   @Input() toValue = 100;
+  /**
+   * An optional placeholder for empty field. The default is empty (no watermark).
+   */
   @Input() waterMark = '';
+  /**
+   * Renders the field as read only.
+   */
   @Input() readonly = false;
-  // value
+  /**
+   * The value set to and read from the field.
+   */
   @Output()
   @Input()
   value: any;
+
   // additional values provided by TemplateHint decorator
   params: { key: string, value: any }[];
 
   errors: Array<string>;
-
 
   constructor() {
     this.params = new Array<{ key: string, value: any }>();

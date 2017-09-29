@@ -2,6 +2,13 @@
 import { FormControlEx } from '../ex/formcontrolex';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
+/**
+ * A custom validator to valdiate a range of numbers or dates. This is internally to support the infarstructure
+ * and not intendet to being used by custom code.
+ *
+ * @param p The field's name
+ *
+ */
 function validateRange(f: number | Date, t: number | Date) {
 
   return function (c: FormControl) {
@@ -29,6 +36,13 @@ function validateRange(f: number | Date, t: number | Date) {
 
 }
 
+/**
+ * A custom validator to compare two fields. This is internally to support the infarstructure
+ * and not intendet to being used by custom code.
+ *
+ * @param p The field's name
+ *
+ */
 function validateCompare(p: string) {
   let changeEventWasAdded: boolean = false;
   return function (c: FormControl) {
@@ -54,7 +68,7 @@ function validateCompare(p: string) {
 
 /**
  * The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
- * has been decorated with validation decorators the validators are created accordingly.  
+ * has been decorated with validation decorators the validators are created accordingly.
  */
 @Injectable()
 export class FormValidatorService {

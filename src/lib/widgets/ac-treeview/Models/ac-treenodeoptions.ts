@@ -1,4 +1,6 @@
-﻿/** The state of node */
+﻿/**
+ * The state of node
+ */
 export enum AcTreeNodeState {
     undefined = 0,
     checked = 1 << 0,
@@ -7,7 +9,9 @@ export enum AcTreeNodeState {
     selected = 1 << 3
 }
 
-/** The view options of node */
+/**
+ * The view options of node
+*/
 export class AcTreeNodeOptions {
     /** Show the expand icons */
     collapsable: boolean;

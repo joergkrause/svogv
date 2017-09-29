@@ -1,5 +1,8 @@
 ﻿import { AcTreeNodeOptions } from './ac-treenodeoptions';
 
+/**
+ * The base class.
+ */
 export interface AcTreeNodeBase {
     parent: AcTreeNodeBase;
     children: AcTreeNodeBase[];

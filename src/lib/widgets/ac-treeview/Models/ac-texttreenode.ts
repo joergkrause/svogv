@@ -1,6 +1,9 @@
 ﻿import { AcTreeNodeOptions } from './ac-treenodeoptions';
 import { AcTreeNode } from './ac-treenode';
 
+/**
+ * A text node
+ */
 export class AcTextTreeNode extends AcTreeNode {
     text: string;
 

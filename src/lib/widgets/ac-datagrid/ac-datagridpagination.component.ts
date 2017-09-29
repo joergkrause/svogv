@@ -1,8 +1,12 @@
 import {
   Component, OnInit, OnChanges, SimpleChange, Input, Output, EventEmitter
 } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
 
+/**
+ * The pagination component creates a few buttons to navigate a grid. The underlaying model
+ * is going to handle the date on the client. The pagination does not support a server backend,
+ * all relevant data must be loaded first.
+ */
 @Component({
   selector: 'ac-pagination',
   styles: [
@@ -75,8 +79,16 @@ import { Observable } from 'rxjs/Rx';
     `
 })
 export class AcDataGridPagination implements OnInit, OnChanges {
+  /**
+   * The parent component calculated the pages the component can handle.
+   */
   @Input() maxPageIndex: number;
+
+  /**
+   * An event fired once the user has changed the page by clicking a button.
+   */
   @Output() pageNumberChanged = new EventEmitter();
+
   currentPageNumber = 1;
 
   ngOnInit() {

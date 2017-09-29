@@ -1,22 +1,23 @@
 ﻿/**
  * The decorator that assures that a string field contains at least a number of characters and a minimum number, too.
- * 
- * @param min: the required length.
- * @param max: the maximum length.
- * @param msg: A custom message. 
- * 
+ * The default message is 'The field {fieldname} needs at least {minlength} characters'.
+ *
+ * @param min: The required length.
+ * @param max: The maximum length.
+ * @param msg: Optionally a custom message.
+ *
  */
 export function StringLength(min: number, max: number, msg?: string) {
     // the original decorator
     function stringLengthInternal(target: Object, property: string | symbol): void {
-        new stringLengthInternalSetup(target, property.toString(), min, max, msg);
+        new StringLengthInternalSetup(target, property.toString(), min, max, msg);
     }
 
     // return the decorator
     return stringLengthInternal;
 }
 
-class stringLengthInternalSetup {
+class StringLengthInternalSetup {
 
     private _val: any;
 
