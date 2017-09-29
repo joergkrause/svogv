@@ -37,7 +37,7 @@ export class AcDataGridModel<T> {
   }
 
   get totalFilteredRows(): number {
-    return this.itemsFiltered.length;
+    return (this.itemsFiltered) ? this.itemsFiltered.length : 0;
   }
 
   private get currentRowStart(): number {

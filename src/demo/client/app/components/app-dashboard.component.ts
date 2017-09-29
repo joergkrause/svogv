@@ -10,7 +10,7 @@ import { UserViewModel } from '../viewmodels/userviewmodel';
 @Component({
   moduleId: module.id,
   selector: 'app-dashboard',
-  templateUrl: './app-dashboard.html'
+  templateUrl: './app-dashboard.component.html'
 })
 export class DashboardComponent {
 

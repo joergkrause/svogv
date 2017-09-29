@@ -27,7 +27,7 @@ export class UserViewModel {
   @Required('User Name is required')
   @MaxLength(100)
   userName: string = '';
-  
+
   @Display('Age', 40, 'From 12 to 88')
   @DisplayGroup('Personal')
   @Range(12, 88)

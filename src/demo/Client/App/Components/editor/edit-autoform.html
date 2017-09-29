@@ -2,11 +2,11 @@
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
     <fieldset style="width:100%">
       <legend>Edit current user</legend>
-      <ac-autoform [formGroup]="userForm"></ac-autoform> 
+      
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save
-        </button>
+<ac-autoform [formGroup]="userForm"></ac-autoform>         </button>
         <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-close"></i> Save &amp; Close
         </button>
