@@ -11,6 +11,7 @@
     "tslint": "gulp lint",
     "stylelint": "gulp lint",
     "docs": "gulp docs",
+		"codedoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json",
     "setup": "npm install && cd src/demo && npm install && cd ../../"
   },
   "repository": {
@@ -20,7 +21,6 @@
   "keywords": [
     "Angular",
     "Reactive",
-    "Forms",
     "Forms",
     "Validation",
     "Viewmodel",

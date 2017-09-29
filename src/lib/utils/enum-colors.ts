@@ -1,5 +1,5 @@
 ﻿/**
- * Colors
+ * Colors specific to Boostrap.
  */
 export enum Meaning {
     Success,
@@ -9,7 +9,7 @@ export enum Meaning {
 }
 
 /**
- * Semantic Meaning of buttons
+ * Semantic Meaning of buttons, specific to Bootstrap
  */
 export enum Actions {
     Default,

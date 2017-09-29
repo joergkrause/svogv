@@ -1,26 +1,24 @@
-﻿import { Meaning, Actions } from './enum-colors';
-
-export var EnumConverter = <T>(value: number, enumerationType: T) : string => {
-    let sanitizedValue = value.toString(); 
+﻿export const EnumConverter = <T>(value: number, enumerationType: T) : string => {
+    let sanitizedValue = value.toString();
     let color: T = <T>((<any>enumerationType)[sanitizedValue]);
     return color.toString();
 };
 
-export var StringConverter = (value: any) => {
+export const StringConverter = (value: any) => {
     if (value === null || value === undefined || typeof value === 'string') {
         return value;
     }
     return value.toString();
 };
 
-export var BooleanConverter = (value: any) => {
+export const BooleanConverter = (value: any) => {
     if (value === null || value === undefined || typeof value === 'boolean') {
         return value;
     }
     return value.toString() === 'true';
 };
 
-export var NumberConverter = (value: any) => {
+export const NumberConverter = (value: any) => {
     if (value === null || value === undefined || typeof value === 'number') {
         return value;
     }
@@ -31,8 +29,9 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
     return (target: Object, key: string) => {
         if (converter === undefined) {
             var metadata = (<any>Reflect).getMetadata('design:type', target, key);
-            if (metadata === undefined || metadata === null)
+            if (metadata === undefined || metadata === null) {
                 throw new Error('The reflection metadata could not be found.');
+            }
             switch (metadata.name) {
                 case 'String':
                     converter = StringConverter;
@@ -48,7 +47,7 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
             }
         }
 
-        var definition = Object.getOwnPropertyDescriptor(target, key);
+        let definition = Object.getOwnPropertyDescriptor(target, key);
         if (definition) {
             Object.defineProperty(target, key, {
                 get: definition.get,

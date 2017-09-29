@@ -1,7 +1,5 @@
-import {Component} from '@angular/core';
 import {TestBed, async} from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
-import {FormControlEx} from './FormControlEx';
+import {FormControlEx} from './formcontrolex';
 
 
 describe('FormControlEx', () => {

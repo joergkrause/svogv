@@ -7,15 +7,13 @@ import {
   HudClock, HudClockOptions
 } from './widgets/index';
 
-import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination';
-import { AcTreeView } from './widgets/ac-treeview/ac-treeview';
-import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node';
-import { AcEditor } from './widgets/ac-editors/ac-editor';
-import { AcAutoForm } from './widgets/ac-editors/ac-autoform';
-import { Hidden, Display, Placeholder, TemplateHint, Compare, Email, MaxLength, Pattern, Range, Required } from './decorators';
-import { FormValidatorService } from './services/formvalidatorservice';
+import { AcDataGridPagination } from './widgets/ac-datagrid/ac-datagridpagination.component';
+import { AcTreeView } from './widgets/ac-treeview/ac-treeview.component';
+import { AcTreeViewNode } from './widgets/ac-treeview/ac-treeview-node.component';
+import { AcEditor } from './widgets/ac-editors/ac-editor.component';
+import { AcAutoForm } from './widgets/ac-editors/ac-autoform.component';
 
-export * from './decorators';
+export * from './decorators/index';
 
 const SVOGV_MODULES = [
   AcInfoBox,

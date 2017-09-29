@@ -4,7 +4,9 @@ declare interface ObjectConstructor {
 }
 
 Object.same = function (source, target): boolean {
-  if (source === target) return true;
+  if (source === target) {
+    return true;
+  }
   if (!(source instanceof Object) || !(target instanceof Object)) { return false; }
   // if they are not strictly equal, they both need to be Objects
   for (let prop in source) {
@@ -42,7 +44,7 @@ Object.equals = function (x: any, y: any): boolean {
     if (x[p] === y[p]) { continue; }
     // if they have the same strict value or identity then they are equal
 
-    if (typeof (x[p]) !== "object") { return false; }
+    if (typeof (x[p]) !== 'object') { return false; }
     // Numbers, Strings, Functions, Booleans must be strictly equal
 
     if (!Object.equals(x[p], y[p])) { return false; }

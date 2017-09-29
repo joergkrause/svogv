@@ -11,4 +11,4 @@ export * from './widgets/ac-treeview/models/ac-componenttreenode';
 export * from './utils/convert-inputconverter';
 export * from './utils/enum-colors';
 export * from './utils/windowref';
-export * from './services/formvalidatorservice';
+export * from './services/formvalidator.service';

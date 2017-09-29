@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { AcEditor } from './ac-editor';
 
 /**
  * This component creates a complete editor out of a viewmodel.
  * It creates one field for each property not decorated with @Hidden.
- * 
+ *
  */
 @Component({
     selector: 'ac-autoform',

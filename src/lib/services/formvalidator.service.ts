@@ -1,5 +1,5 @@
 ﻿import { Injectable, Inject } from '@angular/core';
-import { FormControlEx } from './FormControlEx';
+import { FormControlEx } from '../ex/formcontrolex';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 function validateRange(f: number | Date, t: number | Date) {
@@ -144,7 +144,9 @@ export class FormValidatorService {
       // register controls and add messages
       for (let propName in errGroup) {
         let ctrl = <FormControlEx>form.controls[propName];
-        if (!ctrl) continue; // control might not be in the form
+        if (!ctrl) {
+          continue; // control might not be in the form
+        }
         (<FormControlEx>form.controls[propName])['messages'] = (<any>errGroup)[propName];
       }
     }
