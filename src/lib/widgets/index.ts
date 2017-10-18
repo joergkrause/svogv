@@ -6,7 +6,3 @@ export * from './ac-editors/ac-autoform.component';
 export * from './ac-treeview/ac-treeview.component';
 export * from './ac-treeview/ac-treeview-node.component';
 export * from './ac-analogclock.component';
-export * from './hud/hud-clock.component';
-export * from './hud/models/hud-clock-engine';
-export * from './hud/models/hud-clock-options';
-export * from './hud/models/hud-clock-strokeoption';

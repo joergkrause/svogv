@@ -13,9 +13,7 @@ import * as cmp from './components/index';
 import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
 // resolves against node_modules without changes)
-import * as wd from 'svogv';
-import { FormValidatorService } from 'svogv';
-import { WindowRef } from 'svogv';
+import { SvogvModule, FormValidatorService, WindowRef } from 'svogv';
 
 @NgModule({
   imports: [
@@ -23,7 +21,8 @@ import { WindowRef } from 'svogv';
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    SvogvModule
   ],
   declarations: [
     // Demo app
@@ -45,19 +44,6 @@ import { WindowRef } from 'svogv';
     , cmp.AcSideMenuComponent
     , cmp.AcBreadCrumbComponent
     , cmp.AcTabsComponent
-    // Hud Demo
-    , cmp.HudDashboardComponent
-    // simple Bootstrap widgets
-    , wd.AcTreeView
-    , wd.AcTreeViewNode
-    , wd.AcDataGridPagination
-    , wd.AcInfoBox
-    , wd.AcEditor
-    , wd.AcAutoForm
-    // SVG widgets, HUD widgets
-    , wd.AcAnalogClock
-    , wd.AcLoaderIcon
-    , wd.HudClock
   ],
   bootstrap: [cmp.SiteRootComponent],
   providers: [

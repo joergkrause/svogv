@@ -112,12 +112,6 @@ const routes: Routes = [
     ]
 
   },
-  // HuD
-  {
-    path: 'huddashboard',
-    component: cmp.HudDashboardComponent,
-    data: { 'title': 'HUD Widgets', 'subtitle': 'Head Up Display', 'breadcrumb': true }
-  },
   // standard component paths
   {
     path: 'about',

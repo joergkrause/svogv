@@ -11,7 +11,7 @@ const glob = require('glob');
  * faster. It also simplify the code.
  */
 function promiseify(fn) {
-  return function() {
+  return function (file, enc) {
     const args = [].slice.call(arguments, 0);
     return new Promise((resolve, reject) => {
       fn.apply(this, args.concat([function (err, value) {
@@ -25,15 +25,13 @@ function promiseify(fn) {
   };
 }
 
-const readFile = promiseify(fs.readFile);
-const writeFile = promiseify(fs.writeFile);
-
+const readFilePromise = promiseify(fs.readFile);
+const writeFilePromise = promiseify(fs.writeFile);
 
 function inlineResources(globs) {
   if (typeof globs == 'string') {
     globs = [globs];
   }
-
   /**
    * For every argument, inline the templates and styles under it and write the new file.
    */
@@ -48,13 +46,16 @@ function inlineResources(globs) {
 
     // Generate all files content with inlined templates.
     return Promise.all(files.map(filePath => {
-      return readFile(filePath, 'utf-8')
+      return readFilePromise(filePath, 'utf-8')
         .then(content => inlineResourcesFromString(content, url => {
+          if (path.extname(url) === '.scss') {
+            url = url.substr(0, url.lastIndexOf('.')) + '.css';
+          }
           return path.join(path.dirname(filePath), url);
         }))
-        .then(content => writeFile(filePath, content))
+        .then(content => writeFilePromise(filePath, content))
         .catch(err => {
-          console.error('An error occurred: ', err);
+          console.error('An error occurred: ', filePath + ' ==> ' + err);
         });
     }));
   }));
@@ -79,7 +80,6 @@ if (require.main === module) {
   inlineResources(process.argv.slice(2));
 }
 
-
 /**
  * Inline the templates for a source file. Simply search for instances of `templateUrl: ...` and
  * replace with `template: ...` (with the content of the file included).
@@ -88,7 +88,7 @@ if (require.main === module) {
  * @return {string} The content with all templates inlined.
  */
 function inlineTemplate(content, urlResolver) {
-  return content.replace(/templateUrl:\s*'([^']+?\.html)'/g, function(m, templateUrl) {
+  return content.replace(/templateUrl:\s*'([^']+?\.html)'/g, (m, templateUrl) => {
     const templateFile = urlResolver(templateUrl);
     const templateContent = fs.readFileSync(templateFile, 'utf-8');
     const shortenedTemplate = templateContent
@@ -98,7 +98,6 @@ function inlineTemplate(content, urlResolver) {
   });
 }
 
-
 /**
  * Inline the styles for a source file. Simply search for instances of `styleUrls: [...]` and
  * replace with `styles: [...]` (with the content of the file included).
@@ -107,17 +106,17 @@ function inlineTemplate(content, urlResolver) {
  * @return {string} The content with all styles inlined.
  */
 function inlineStyle(content, urlResolver) {
-  return content.replace(/styleUrls:\s*(\[[\s\S]*?\])/gm, function(m, styleUrls) {
+  return content.replace(/styleUrls:\s*(\[[\s\S]*?\])/gm, (m, styleUrls) => {
     const urls = eval(styleUrls);
     return 'styles: ['
       + urls.map(styleUrl => {
-          const styleFile = urlResolver(styleUrl);
-          const styleContent = fs.readFileSync(styleFile, 'utf-8');
-          const shortenedStyle = styleContent
-            .replace(/([\n\r]\s*)+/gm, ' ')
-            .replace(/"/g, '\\"');
-          return `"${shortenedStyle}"`;
-        })
+        const styleFile = urlResolver(styleUrl);
+        const styleContent = fs.readFileSync(styleFile, 'utf-8');
+        const shortenedStyle = styleContent
+          .replace(/([\n\r]\s*)+/gm, ' ')
+          .replace(/"/g, '\\"');
+        return `"${shortenedStyle}"`;
+      })
         .join(',\n')
       + ']';
   });
@@ -132,7 +131,6 @@ function inlineStyle(content, urlResolver) {
 function removeModuleId(content) {
   return content.replace(/\s*moduleId:\s*module\.id\s*,?\s*/gm, '');
 }
-
 
 module.exports = inlineResources;
 module.exports.inlineResourcesFromString = inlineResourcesFromString;

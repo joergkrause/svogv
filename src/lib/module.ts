@@ -1,4 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {
   AcInfoBox,
@@ -8,9 +11,7 @@ import {
   AcTreeView,
   AcTreeViewNode,
   AcEditor,
-  AcAutoForm,
-  HudClock,
-  HudClockOptions
+  AcAutoForm
 } from './widgets/index';
 
 import {
@@ -19,7 +20,7 @@ import {
 
 export * from './decorators/index';
 
-const SVOGV_MODULES = [
+const SVOGV_COMPONENTS = [
   AcInfoBox,
   AcDataGridPagination,
   AcTreeView,
@@ -28,26 +29,17 @@ const SVOGV_MODULES = [
   AcAutoForm,
   AcLoaderIcon,
   AcAnalogClock,
-  HudClock,
-  HudClockOptions,
   FormValidatorService
 ];
 
 /**
- * The root module with the global exports.
- */
-@NgModule({
-  exports: SVOGV_MODULES
-})
-export class SvOGvRootModule { }
-
-
-/**
  * The actual SVOGV Module definition using the root module.
  */
-@NgModule()
-export class SvOGvModule {
-  static forRoot(): ModuleWithProviders {
-    return { ngModule: SvOGvRootModule };
-  }
-}
+@NgModule({
+  imports: [BrowserModule, RouterModule, ReactiveFormsModule, FormsModule],
+  declarations: SVOGV_COMPONENTS,
+  providers: [FormValidatorService],
+  exports: SVOGV_COMPONENTS
+})
+export class SvogvModule {}
+

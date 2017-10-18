@@ -17,7 +17,7 @@
     ]
   },
   "files": [
-    "./client/app/app.ts"
+    "./app/app.ts"
   ],
   "compileOnSave": false,
   "exclude": [

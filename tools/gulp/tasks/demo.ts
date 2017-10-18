@@ -1,138 +1,97 @@
-import {task, watch, src, dest} from 'gulp';
+import { task, src, dest } from 'gulp';
 import * as path from 'path';
 
 import {
-  SOURCE_ROOT, DEMO_ROOT, DIST_ROOT
+  PROJECT_ROOT, DEMO_ROOT, DIST_DEMO_ROOT
 } from '../constants';
 
 import {
-  execNodeTask, copyTask, sequenceTask, triggerLivereload
+  tsBuildTask, sequenceTask
 } from '../task_helpers';
 
-var htmlmin = require('gulp-htmlmin');                      // minify HTML
-var ts = require('gulp-typescript');                        // transpile TS
-var sass = require('gulp-sass');                            // transpile SASS
-var del = require('del');                                   // helper to delete paths
-var systemBuilder = require('systemjs-builder');            // create a rx bundle because the provided did not work
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const print = require('gulp-print');
+const htmlmin = require('gulp-htmlmin');                      // minify HTML
+const cssmin = require('gulp-clean-css');
+const ts = require('gulp-typescript');                        // transpile TS
+const sass = require('gulp-sass');                            // transpile SASS
+const del = require('del');                                   // helper to delete paths
+const systemBuilder = require('systemjs-builder');            // create a rx bundle because the provided did not work
 
 // from Github structure copy static files to root/dist/demo and execute there
 
-// The project's structure
-var paths = {
-  root: DIST_ROOT + "demo/",
-  assets: DIST_ROOT + "demo/assets/",
-  views: DIST_ROOT + "demo/views/",
-  npm: DEMO_ROOT + "node_modules/",
-  app: DEMO_ROOT + "Client/App/"
-};
+task(':demo:clean:assets', function (cb) {
+  return del(path.join(DIST_DEMO_ROOT, 'assets/'), { force: true });
+});
+task(':demo:clean:views', function (cb) {
+  return del(path.join(DIST_DEMO_ROOT, 'views/'), { force: true });
+});
+task(':demo:clean:views:index', function (cb) {
+  return del(path.join(DIST_DEMO_ROOT, 'inex.html'), { force: true });
+});
+task(':demo:clean', [':demo:clean:assets', ':demo:clean:views', ':demo:clean:views:index']);
 
-task('clean:assets', function (cb) {
-  return del(paths.assets, { force: true});
-});
-task('clean:views', function (cb) {
-  return del(paths.views, { force: true});
-});
-task('clean:views:index', function (cb) {
-  return del(paths.root + 'index.html', { force: true});
-});
-task('clean', ['clean:assets', 'clean:views', 'clean:views:index']);
-
-task('copy:js', function () {
+task(':demo:copy:js', function () {
   return src([
-              paths.npm + 'jquery/dist/jquery.js',
-              paths.npm + 'bootstrap/dist/js/bootstrap.js',
-              paths.npm + 'tether/dist/js/tether.js',
-              paths.npm + 'core-js/client/core.js',
-              paths.npm + 'zone.js/dist/zone.js',
-              paths.npm + 'reflect-metadata/reflect.js',
-              paths.npm + 'systemjs/dist/system.js'
+    './node_modules/core-js/client/core.js',
+    './node_modules/zone.js/dist/zone.js',
+    './node_modules/reflect-metadata/Reflect.js',
+    './node_modules/systemjs/dist/system.js'
   ])
-             .pipe(dest(paths.assets + 'js/lib'));
-});
-
-// This is a simple loader while debugging without going through the WebPack hassle
-task('copy:systemjs', function () {
-  return src(DEMO_ROOT + 'Client/systemjs.config.js').pipe(dest(paths.assets + 'js'));
-});
-
-task('copy:angular', function () {
-  return src([
-        paths.npm + '@angular/**/Bundles/*.umd.js',
-  '!' + paths.npm + '@angular/**/Bundles/*-testing.umd.js'
-  ]).pipe(dest(paths.assets + 'js/lib/@angular'));
-});
-
-task('copy:svogv', function () {
-  return src(['./dist/svogv/bundles/svogv.umd.js']).pipe(dest(paths.assets + 'js/lib/svogv/bundles/'));
-});
-
-// Create RxJs bundle 
-task('copy:rxjs', function () {
-    var builder = new systemBuilder('./', {
-        paths: {"rxjs/*": "node_modules/rxjs/*.js"},
-        map: {"rxjs": "node_modules/rxjs"},
-        packages: {"rxjs": {main: 'Rx.js', defaultExtension: "js"}}
-    });
-    // create the bundle we use from systemjs.config.js
-    builder.bundle('rxjs', paths.assets + 'js/lib/rxjs/Bundles/Rx.min.js', {
-        sourceMaps: true,
-        minify: true,
-        mangle: true
-    });
+    .pipe(concat('vendor.js'))
+    .pipe(uglify())
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/js/lib')));
 });
 
 // we write all css in sass 
-task('sass', function () {
+task(':demo:sass', function () {
   return src([
-    'Client/Styles/*.scss'
+    path.join(DEMO_ROOT, '/styles/*.scss')
   ])
     .pipe(sass())
-    .pipe(dest(paths.assets + 'css'));
+    .pipe(cssmin())
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/styles')));
 })
 // except those css that's delivered "as is"
-task('copy:css', function () {
+task(':demo:copy:css', function () {
   return src([
-              paths.npm + 'font-awesome/css/font-awesome.css'
+    './node_modules/font-awesome/css/font-awesome.css'
   ])
-             .pipe(dest(paths.assets + 'css'));
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/styles')));
 });
 // icons and symbols shall be fonts, never want to see a single GIF here
-task('copy:fonts', function () {
+task(':demo:copy:fonts', function () {
   return src([
-              paths.npm + 'font-awesome/fonts/*.*'
+    './node_modules/font-awesome/fonts/*.*'
   ])
-             .pipe(dest(paths.assets + 'fonts'));
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/fonts')));
 });
 // View HTML (component templates)
-task('copy:views:templates', function () {
-  console.log(paths.app + '**/*.html');
-  return src([paths.app + '**/*.html'], { base: paths.app + 'Components/' })
-             .pipe(dest(paths.assets + 'js/app/Components/'));
+task(':demo:copy:views:templates', function () {
+  return src([DEMO_ROOT + '**/*.html'], { base: path.join(DEMO_ROOT, 'components/') })
+    .pipe(print())
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'components/')));
 });
-task('copy:views:index', function () {
-  return src([DEMO_ROOT + './Client/Views/index.html'])
-             .pipe(dest(paths.root));
+task(':demo:copy:views:index', function () {
+  return src([path.join(DEMO_ROOT, 'index.html')])
+    .pipe(htmlmin())
+    .pipe(dest(DIST_DEMO_ROOT));
 });
-task('copy:views', ['copy:views:index', 'copy:views:templates']);
+task(':demo:copy:views', [':demo:copy:views:index', ':demo:copy:views:templates']);
 
-task('copy:images', function () {
-  return src(['./Client/Images/**/*.*'])
-             .pipe(dest(paths.assets + 'img'));
-});
-
-task('copy', ['copy:svogv', 'copy:js', 'copy:rxjs', 'copy:angular', 'copy:systemjs', 'copy:css', 'copy:fonts', 'copy:views', 'copy:images']);
-
-// configure TS separately
-var tsProject = ts.createProject(DEMO_ROOT + 'tsconfig.json');
-
-task('ts', function () {
-  return tsProject.src()
-                  .pipe(tsProject())
-                  .js
-                  .pipe(dest(paths.assets + 'js/app/'));
-
+task(':demo:copy:images', function () {
+  return src([path.join(DEMO_ROOT, 'images/*.*')])
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/images')));
 });
 
-// complete setup
+task(':demo:copy', [':demo:copy:css', ':demo:copy:fonts', ':demo:copy:views', ':demo:copy:images']);
 
-task('demo', sequenceTask('clean', 'sass', 'ts', 'copy'));
+// complete setup and rollup
+/** Path to the tsconfig used for ESM output. */
+const tsconfigPath = path.relative(PROJECT_ROOT, path.join(DEMO_ROOT, 'tsconfig.json'));
+/** Builds components typescript for tests (CJS output). */
+task(':demo:build:components', tsBuildTask(tsconfigPath));
+
+
+task('demo:build', sequenceTask(':demo:clean', ':demo:sass', ':demo:copy', ':demo:build'));

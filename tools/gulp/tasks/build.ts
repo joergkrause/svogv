@@ -5,7 +5,7 @@ import {
   DIST_COMPONENTS_ROOT, PROJECT_ROOT, COMPONENTS_DIR, HTML_MINIFIER_OPTIONS, LICENSE_BANNER, SOURCE_ROOT
 } from '../constants';
 import {
-  sassBuildTask, tsBuildTask, execNodeTask, copyTask, sequenceTask,
+  sassBuildTask, tsBuildTask, copyTask, sequenceTask,
   triggerLivereload
 } from '../task_helpers';
 
@@ -18,18 +18,6 @@ const gulpIf = require('gulp-if');
 const del = require('del');
 
 
-// NOTE: there are two build "modes" in this file, based on which tsconfig is used.
-// When `tsconfig.json` is used, we are outputting ES6 modules and a UMD bundle. This is used
-// for serving and for release.
-//
-// When `tsconfig-spec.json` is used, we are outputting CommonJS modules. This is used
-// for unit tests (karma).
-
-/** Path to the tsconfig used for ESM output. */
-const tsconfigPath = path.relative(PROJECT_ROOT, path.join(COMPONENTS_DIR, 'tsconfig.json'));
-
-console.log('Using this config file: ' + tsconfigPath);
-
 /** [Watch task] Rebuilds (ESM output) whenever ts, scss, or html sources change. */
 task(':watch:components', () => {
   watch(path.join(COMPONENTS_DIR, '**/*.ts'), ['build:components', triggerLivereload]);
@@ -37,12 +25,13 @@ task(':watch:components', () => {
   watch(path.join(COMPONENTS_DIR, '**/*.html'), ['build:components', triggerLivereload]);
 });
 
-
 /** Builds component typescript only (ESM output). */
 task(':build:components:ts', tsBuildTask(path.join(COMPONENTS_DIR, 'tsconfig-srcs.json')));
 
+/** Path to the tsconfig used for ESM output. */
+const tsconfigPath = path.relative(PROJECT_ROOT, path.join(COMPONENTS_DIR, 'tsconfig.json'));
 /** Builds components typescript for tests (CJS output). */
-task(':build:components:spec', tsBuildTask(COMPONENTS_DIR));
+task(':build:components:spec', tsBuildTask(tsconfigPath));
 
 /** Copies assets (html, markdown) to build output. */
 task(':build:components:assets', copyTask([
@@ -69,6 +58,7 @@ task(':build:components:rollup', () => {
     '@angular/common': 'ng.common',
     '@angular/forms': 'ng.forms',
     '@angular/http': 'ng.http',
+    '@angular/router': 'ng.router',
     '@angular/platform-browser': 'ng.platformBrowser',
     '@angular/platform-browser-dynamic': 'ng.platformBrowserDynamic',
 
@@ -107,19 +97,21 @@ task(':build:components:rollup', () => {
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
     .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))         // copy to dist for reference
-    .pipe(dest(path.join(SOURCE_ROOT, 'demo/dist/bundles')));       // copy to demo for immediate usage
+    .pipe(dest(path.join('./node_modules/svogv/bundles')));       // copy to demo for immediate usage
 });
 
 // refresh the package immediately to simplify local testing with current version
 task(':build:components:copy-for-demo', () => {
-  let target = SOURCE_ROOT + 'demo/node_modules/svogv';
+  let target ='./node_modules/svogv';
   console.log(`** immediate copy from ${DIST_COMPONENTS_ROOT}  to ${target}`);
   return src(DIST_COMPONENTS_ROOT + '**/*.*').pipe(dest(target));
 });
 
 /** Builds components with resources (html, css) inlined into the built JS (ESM output). */
 task(':build:components:inline', sequenceTask(
-  [':build:components:ts', ':build:components:scss', ':build:components:assets', ':build:components:copy-for-demo'],
+  [':build:components:ts', ':build:components:scss', ':build:components:assets'],
+  ':build:components:copy-for-demo',
+  ':build:components:assets:minify',
   ':inline-resources',
 ));
 
@@ -135,11 +127,8 @@ task(':inline-resources', () => inlineResources(DIST_COMPONENTS_ROOT));
 
 /** Builds components to ESM output and UMD bundle. */
 task('build', sequenceTask(':build:components:inline', ':build:components:rollup'));
+
 task('build:components:release', sequenceTask(
   ':build:components:inline:release', ':build:components:rollup'
 ));
 
-/** Generates metadata.json files for all of the components. */
-task(':build:components:ngc', ['build:components:release'], execNodeTask(
-  '@angular/compiler-cli', 'ngc', ['-p', tsconfigPath]
-));
