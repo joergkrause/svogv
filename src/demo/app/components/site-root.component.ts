@@ -11,7 +11,7 @@ interface AppState {
 @Component({
   moduleId: module.id,
   selector: 'site-root',
-  templateUrl: './site-root.html'
+  templateUrl: './site-root.component.html'
 })
 export class SiteRootComponent implements OnInit {
   user: string;

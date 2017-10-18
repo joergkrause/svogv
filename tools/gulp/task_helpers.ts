@@ -4,7 +4,7 @@ import * as gulp from 'gulp';
 import * as gulpTs from 'gulp-typescript';
 import * as path from 'path';
 
-import {NPM_VENDOR_FILES, PROJECT_ROOT, DIST_ROOT, SASS_AUTOPREFIXER_OPTIONS} from './constants';
+import { NPM_VENDOR_FILES, PROJECT_ROOT, DIST_ROOT, SASS_AUTOPREFIXER_OPTIONS } from './constants';
 
 
 /** Those imports lack typings. */
@@ -28,7 +28,7 @@ function _globify(maybeGlob: string, suffix = '**/*') {
     if (stat.isFile()) {
       return maybeGlob;
     }
-  } catch (e) {}
+  } catch (e) { }
   return path.join(maybeGlob, suffix);
 }
 
@@ -46,11 +46,10 @@ export function tsBuildTask(tsConfigPath: string, tsConfigName = 'tsconfig.json'
   return () => {
     const tsConfig: any = JSON.parse(fs.readFileSync(tsConfigPath, 'utf-8'));
     const dest: string = path.join(tsConfigDir, tsConfig['compilerOptions']['outDir']);
-
     const tsProject = gulpTs.createProject(tsConfigPath, {
-      typescript: require('typescript')
+      typescript: require('typescript'),
     });
-
+    console.log('** Using Config for Build: ' + tsProject.configFileName);
     let pipe = tsProject.src()
       .pipe(gulpSourcemaps.init())
       .pipe(tsProject());
@@ -124,7 +123,7 @@ export function execTask(binPath: string, args: string[], options: ExecTaskOptio
  * from the package. Examples are typescript, ngc and gulp itself.
  */
 export function execNodeTask(packageName: string, executable: string | string[], args?: string[],
-                             options: ExecTaskOptions = {}) {
+  options: ExecTaskOptions = {}) {
   if (!args) {
     args = <string[]>executable;
     executable = undefined;

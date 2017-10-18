@@ -1,8 +1,8 @@
-import {task, watch, src, dest} from 'gulp';
+import { task, watch, src, dest } from 'gulp';
 import * as path from 'path';
 
 import {
-  DIST_COMPONENTS_ROOT, PROJECT_ROOT, COMPONENTS_DIR, HTML_MINIFIER_OPTIONS, LICENSE_BANNER, SOURCE_ROOT
+  DIST_COMPONENTS_ROOT, PROJECT_ROOT, COMPONENTS_DIR, HTML_MINIFIER_OPTIONS, LICENSE_BANNER
 } from '../constants';
 import {
   sassBuildTask, tsBuildTask, copyTask, sequenceTask,
@@ -17,6 +17,10 @@ const gulpMinifyHtml = require('gulp-htmlmin');
 const gulpIf = require('gulp-if');
 const del = require('del');
 
+task(':build:cleanup', () => {
+  del(DIST_COMPONENTS_ROOT);
+  del('./node_modules/svogv/');
+});
 
 /** [Watch task] Rebuilds (ESM output) whenever ts, scss, or html sources change. */
 task(':watch:components', () => {
@@ -42,7 +46,7 @@ task(':build:components:assets', copyTask([
 
 /** Minifies the HTML and CSS assets in the distribution folder. */
 task(':build:components:assets:minify', () => {
-  return src('**/*.+(html|css)', { cwd: DIST_COMPONENTS_ROOT})
+  return src('**/*.+(html|css)', { cwd: DIST_COMPONENTS_ROOT })
     .pipe(gulpIf(/.css$/, gulpMinifyCss(), gulpMinifyHtml(HTML_MINIFIER_OPTIONS)))
     .pipe(dest(DIST_COMPONENTS_ROOT));
 });
@@ -52,7 +56,7 @@ task(':build:components:scss', sassBuildTask(DIST_COMPONENTS_ROOT, COMPONENTS_DI
 
 /** Builds the UMD bundle for all of SvOgV. */
 task(':build:components:rollup', () => {
-  const globals: {[name: string]: string} = {
+  const globals: { [name: string]: string } = {
     // Angular dependencies
     '@angular/core': 'ng.core',
     '@angular/common': 'ng.common',
@@ -96,37 +100,44 @@ task(':build:components:rollup', () => {
 
   return src(path.join(DIST_COMPONENTS_ROOT, 'index.js'))
     .pipe(gulpRollup(rollupOptions, rollupGenerateOptions))
-    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')))         // copy to dist for reference
-    .pipe(dest(path.join('./node_modules/svogv/bundles')));       // copy to demo for immediate usage
+    .pipe(dest(path.join(DIST_COMPONENTS_ROOT, 'bundles')));      // copy to dist for reference
 });
 
 // refresh the package immediately to simplify local testing with current version
 task(':build:components:copy-for-demo', () => {
-  let target ='./node_modules/svogv';
+  let target = './node_modules/svogv/';
   console.log(`** immediate copy from ${DIST_COMPONENTS_ROOT}  to ${target}`);
   return src(DIST_COMPONENTS_ROOT + '**/*.*').pipe(dest(target));
 });
 
 /** Builds components with resources (html, css) inlined into the built JS (ESM output). */
 task(':build:components:inline', sequenceTask(
-  [':build:components:ts', ':build:components:scss', ':build:components:assets'],
-  ':build:components:copy-for-demo',
+  ':build:cleanup',
+  ':build:components:ts',
+  ':build:components:scss',
+  ':build:components:assets',
   ':build:components:assets:minify',
-  ':inline-resources',
+  ':inline-resources'
 ));
 
 /** Builds components with minified HTML and CSS inlined into the built JS. */
 task(':build:components:inline:release', sequenceTask(
+  ':build:cleanup',
   [':build:components:ts', ':build:components:scss', ':build:components:assets'],
   ':build:components:assets:minify',
   ':inline-resources'
 ));
 
 /** Inlines resources (html, css) into the JS output (for either ESM or CJS output). */
-task(':inline-resources', () => inlineResources(DIST_COMPONENTS_ROOT));
+task(':inline-resources', function () {
+  return inlineResources(DIST_COMPONENTS_ROOT);
+});
 
 /** Builds components to ESM output and UMD bundle. */
-task('build', sequenceTask(':build:components:inline', ':build:components:rollup'));
+task('build', sequenceTask(
+  ':build:components:inline',
+  ':build:components:rollup',
+  ':build:components:copy-for-demo'));
 
 task('build:components:release', sequenceTask(
   ':build:components:inline:release', ':build:components:rollup'

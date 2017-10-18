@@ -217,9 +217,20 @@ Select these options in the left hand menu:
 
 ## Does it cost something?
 
-It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's MIT licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
 
 The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+
+## What's up in the future?
+
+I'm going to treat this project as a starter for learning and experimenting. It's production ready anyway. A new project is udner way, that has few improvements:
+
+* Validation, Form Widgets, and Components are going to be split
+* A base path called @svogv is being created
+* All design goes to Angular Material 2 and there is no Bootstrap anymore
+* Additional quirks such as HUD and MAPS coming later but independently
+
+When? Beginnig of 2018 I'm going to release the first packages.
 
 ## Can I contribute?
 

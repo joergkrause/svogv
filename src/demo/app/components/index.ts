@@ -19,5 +19,3 @@ export * from './widgets/list.component';
 export * from './widgets/analogclock.component';
 export * from './widgets/loadericon.component';
 export * from './widgets/treeview.component';
-// app: hud
-export * from './hud/hud-dashboard.component';

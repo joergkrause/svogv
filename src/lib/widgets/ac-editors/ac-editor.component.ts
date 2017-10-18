@@ -5,7 +5,6 @@ import { FormGroup } from '@angular/forms';
  * The Editor Widget. Creates a field with all required validators using decorators and forms service.
  */
 @Component({
-  moduleId: module.id,
   selector: 'ac-editor',
   styles: [
     'input[type="checkbox"] { display: none; }',

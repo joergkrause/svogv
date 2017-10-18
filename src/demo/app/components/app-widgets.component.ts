@@ -9,7 +9,7 @@ import { AcTab, AcTabData } from './index';
 @Component({
   moduleId: module.id,
   selector: 'app-widgets',
-  templateUrl: './app-widgets.html'
+  templateUrl: './app-widgets.component.html'
 })
 export class WidgetDemoComponent {
 

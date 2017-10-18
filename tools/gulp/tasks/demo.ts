@@ -2,22 +2,23 @@ import { task, src, dest } from 'gulp';
 import * as path from 'path';
 
 import {
-  PROJECT_ROOT, DEMO_ROOT, DIST_DEMO_ROOT
+  DEMO_ROOT, DIST_DEMO_ROOT
 } from '../constants';
 
 import {
-  tsBuildTask, sequenceTask
+  sequenceTask, execTask
 } from '../task_helpers';
 
+const inlineResources = require('../../../scripts/release/inline-resources');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
 const print = require('gulp-print');
 const htmlmin = require('gulp-htmlmin');                      // minify HTML
 const cssmin = require('gulp-clean-css');
-const ts = require('gulp-typescript');                        // transpile TS
 const sass = require('gulp-sass');                            // transpile SASS
+const gzip = require('gulp-zip');
 const del = require('del');                                   // helper to delete paths
-const systemBuilder = require('systemjs-builder');            // create a rx bundle because the provided did not work
+const systemBuilder = require('systemjs-builder');
 
 // from Github structure copy static files to root/dist/demo and execute there
 
@@ -41,7 +42,9 @@ task(':demo:copy:js', function () {
   ])
     .pipe(concat('vendor.js'))
     .pipe(uglify())
-    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/js/lib')));
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/')))
+    .pipe(gzip('vendor.js.gz'))
+    .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/')));
 });
 
 // we write all css in sass 
@@ -85,13 +88,64 @@ task(':demo:copy:images', function () {
     .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/images')));
 });
 
-task(':demo:copy', [':demo:copy:css', ':demo:copy:fonts', ':demo:copy:views', ':demo:copy:images']);
+task(':demo:copy', [':demo:copy:css', ':demo:copy:fonts', ':demo:copy:views', ':demo:copy:images', ':demo:copy:js']);
 
 // complete setup and rollup
-/** Path to the tsconfig used for ESM output. */
-const tsconfigPath = path.relative(PROJECT_ROOT, path.join(DEMO_ROOT, 'tsconfig.json'));
 /** Builds components typescript for tests (CJS output). */
-task(':demo:build:components', tsBuildTask(tsconfigPath));
+task(':demo:build:components', execTask('tsc', ['-p', DEMO_ROOT]));
 
+/** Inlines resources (html, css) into the JS output (for either ESM or CJS output). */
+task(':demo:inline-resources', function () {
+  return inlineResources(DIST_DEMO_ROOT);
+});
 
-task('demo:build', sequenceTask(':demo:clean', ':demo:sass', ':demo:copy', ':demo:build'));
+task(':demo:bundle:create', function () {
+  var builder = new systemBuilder('.', {
+    paths: { 'npm:': './node_modules/' },
+    map: {
+      '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
+      '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
+      '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
+      '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
+      '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+      'rxjs': 'npm:rxjs',
+      'svogv': 'npm:svogv/bundles/svogv.umd.js'
+    },
+    packages: {
+      'app': { main: 'main.js', defaultExtension: 'js' },
+      'rxjs': { main: 'Rx.js', defaultExtension: 'js' }
+    }
+  });
+  //builder.reset();
+  builder.loader.defaultJSExtensions = true;
+  return builder
+    .buildStatic(path.join(DIST_DEMO_ROOT, 'app/app.js'), path.join(DIST_DEMO_ROOT, './app.bundle.js'), {
+      sourceMaps: false,
+      minify: true,
+      mangle: false
+    })
+    .then(function () {
+      console.log('Bundle completed');
+    });
+});
+
+task(':demo:bundle:zip', function () {
+  return src(path.join(DIST_DEMO_ROOT, './app.bundle.js')).pipe(gzip('app.bundle.js.gz')).pipe(dest(DIST_DEMO_ROOT));
+});
+
+task(':demo:del:build-folder', function () {
+  return del(path.join(DIST_DEMO_ROOT, 'app/'));
+});
+
+task('demo:build', sequenceTask(
+  ':demo:clean',
+  ':demo:sass',
+  ':demo:copy',
+  ':demo:build:components',
+  ':demo:inline-resources',
+  ':demo:bundle:create',
+  ':demo:bundle:zip',
+  ':demo:del:build-folder'));

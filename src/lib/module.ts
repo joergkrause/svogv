@@ -3,16 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import {
-  AcInfoBox,
-  AcLoaderIcon,
-  AcAnalogClock,
-  AcDataGridPagination,
-  AcTreeView,
-  AcTreeViewNode,
-  AcEditor,
-  AcAutoForm
-} from './widgets/index';
+import * as wd from './widgets/index';
 
 import {
   FormValidatorService
@@ -21,15 +12,14 @@ import {
 export * from './decorators/index';
 
 const SVOGV_COMPONENTS = [
-  AcInfoBox,
-  AcDataGridPagination,
-  AcTreeView,
-  AcTreeViewNode,
-  AcEditor,
-  AcAutoForm,
-  AcLoaderIcon,
-  AcAnalogClock,
-  FormValidatorService
+  wd.AcInfoBox,
+  wd.AcDataGridPagination,
+  wd.AcTreeView,
+  wd.AcTreeViewNode,
+  wd.AcEditor,
+  wd.AcAutoForm,
+  wd.AcLoaderIcon,
+  wd.AcAnalogClock
 ];
 
 /**

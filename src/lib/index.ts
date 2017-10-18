@@ -1,4 +1,3 @@
-export * from './decorators/index';
 export * from './widgets/index';
 export * from './widgets/ac-infobox/models/options-infobox';
 export * from './widgets/ac-datagrid/models/ac-datagridmodel';
@@ -12,3 +11,4 @@ export * from './utils/convert-inputconverter';
 export * from './utils/enum-colors';
 export * from './utils/windowref';
 export * from './services/formvalidator.service';
+export * from './module';

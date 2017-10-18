@@ -9,7 +9,7 @@ import { AcTab, AcTabData } from './index';
 @Component({
   moduleId: module.id,
   selector: 'app-editor',
-  templateUrl: './app-editor.html'
+  templateUrl: './app-editor.component.html'
 })
 export class EditorDemoComponent {
 

@@ -6,22 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Joerg <isageek> Krause (c) 2017" />
   <title>SVOGV Showcase</title>
-  <!-- This is private style, bootstrap and tether build from scss -->
-  <link rel="stylesheet" href="/assets/css/site.css" />
-  <link rel="stylesheet" href="/assets/css/font-awesome.css">
+  <!-- This is private style, bootstrap build from scss -->
+  <link rel="stylesheet" href="/assets/styles/site.css" />
+  <link rel="stylesheet" href="/assets/styles/font-awesome.css">
 </head>
 <body>
   <!-- Root Component of SVOGV App -->
   <site-root></site-root>
   <!-- PolyFills (including all browsers) -->
-  <script src="/assets/js/lib/core.js"></script>
-  <script src="/assets/js/lib/zone.js"></script>
-  <script src="/assets/js/lib/reflect.js"></script>
-  <script src="/assets/js/lib/system.js"></script>
-  <!-- Dynamic Loader -->
-  <script src="/assets/js/systemjs.config.js"></script>
-  <script>
-    System.import('app').catch(function (err) { console.error(err); });
-  </script>
+  <script src="/assets/vendor.js"></script>
+  <!-- The self executing app bundle -->
+  <script src="app.bundle.js"></script>
 </body>
 </html>

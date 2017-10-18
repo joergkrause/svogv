@@ -3,7 +3,7 @@
 @Component({
   moduleId: module.id,
   selector: 'site-about',
-  templateUrl: './site-about.html'
+  templateUrl: './site-about.component.html'
 })
 export class SiteAboutComponent {
 }

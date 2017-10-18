@@ -7,7 +7,6 @@ import { FormGroup } from '@angular/forms';
  *
  */
 @Component({
-    moduleId: module.id,
     selector: 'ac-autoform',
     styles: [
         'fieldset { border-top: 1px silver solid; padding: 10px; }',

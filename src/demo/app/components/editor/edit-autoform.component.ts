@@ -1,6 +1,6 @@
 ﻿// public
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/rx';
+import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
