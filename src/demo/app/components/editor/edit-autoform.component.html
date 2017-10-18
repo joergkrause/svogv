@@ -2,11 +2,11 @@
   <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
     <fieldset style="width:100%">
       <legend>Edit current user</legend>
-      
+      <ac-autoform [formGroup]="userForm"></ac-autoform>      
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save
-<ac-autoform [formGroup]="userForm"></ac-autoform>         </button>
+        </button>
         <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-close"></i> Save &amp; Close
         </button>
@@ -19,20 +19,20 @@
   <div class="card card-block">
     <div class="card-header card-success">
       Techniques used
-    </div>    
+    </div>
     <div class="card-body">
       <p>This form makes use of the &lt;ac-editor&gt; component.</p>
-<code><pre>
+      <code><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row">
     &lt;fieldset>
       &lt;legend>Edit current user&lt;/legend>
       &lt;ac-autoform [userForm]="myForm">&lt;/ac-editor>
 </pre></code>
-    <p>
-      The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the fields 
-      including validation, label, and data type specific information. 
-    </p>
-<code>
+      <p>
+        The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the
+        fields including validation, label, and data type specific information.
+      </p>
+      <code>
 <pre>
 export class UserViewModel {{ '{' }}
 
