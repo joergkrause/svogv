@@ -1,7 +1,7 @@
 {
   "name": "svogv",
-  "version": "0.2.3",
-  "description": "An advanced set of Angular 4 (> Angular2) widgets and model driven forms support.",
+  "version": "0.3.0",
+  "description": "A decorator based appreach for model driven forms and some time saving form widgets.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
@@ -13,6 +13,7 @@
     "angular",
     "angular2",
     "angular4",
+    "angular5",
     "Reactive",
     "Forms",
     "Validation",
@@ -20,7 +21,7 @@
     "decorators",
     "components"
   ],
-  "license": "ICS",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joergkrause/svogv/issues"
   },

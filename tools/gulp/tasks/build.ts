@@ -123,7 +123,9 @@ task(':build:components:inline', sequenceTask(
 /** Builds components with minified HTML and CSS inlined into the built JS. */
 task(':build:components:inline:release', sequenceTask(
   ':build:cleanup',
-  [':build:components:ts', ':build:components:scss', ':build:components:assets'],
+  ':build:components:ts',
+  ':build:components:scss',
+  ':build:components:assets',
   ':build:components:assets:minify',
   ':inline-resources'
 ));
@@ -140,6 +142,7 @@ task('build', sequenceTask(
   ':build:components:copy-for-demo'));
 
 task('build:components:release', sequenceTask(
-  ':build:components:inline:release', ':build:components:rollup'
+  ':build:components:inline:release',
+  ':build:components:rollup'
 ));
 
