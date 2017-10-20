@@ -97,7 +97,7 @@ task(':demo:build:components', execTask('tsc', ['-p', DEMO_ROOT]));
 
 /** Inlines resources (html, css) into the JS output (for either ESM or CJS output). */
 task(':demo:inline-resources', function () {
-  return inlineResources(DIST_DEMO_ROOT);
+  return inlineResources(path.join(DIST_DEMO_ROOT, 'app'));
 });
 
 task(':demo:bundle:create', function () {
@@ -125,7 +125,7 @@ task(':demo:bundle:create', function () {
   return builder
     .buildStatic(path.join(DIST_DEMO_ROOT, 'app/app.js'), path.join(DIST_DEMO_ROOT, './app.bundle.js'), {
       sourceMaps: false,
-      minify: false,
+      minify: true,
       mangle: false
     })
     .then(function () {

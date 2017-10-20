@@ -95,7 +95,6 @@ function inlineTemplate(content, urlResolver) {
     const shortenedTemplate = templateContent
       .replace(/([\n\r]\s*)+/gm, ' ')
       .replace(/"/g, '\\"');
-    //let shortenedTemplate = minifyHtml(shortenedTemplate);
     return `template: "${shortenedTemplate}"`;
   });
 }
