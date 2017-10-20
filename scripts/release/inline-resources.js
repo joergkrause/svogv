@@ -4,6 +4,7 @@
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
+const minifyHtml = require('html-minifier').minify;
 
 /**
  * Simple Promiseify function that takes a Node API and return a version that supports promises.
@@ -94,6 +95,7 @@ function inlineTemplate(content, urlResolver) {
     const shortenedTemplate = templateContent
       .replace(/([\n\r]\s*)+/gm, ' ')
       .replace(/"/g, '\\"');
+    //let shortenedTemplate = minifyHtml(shortenedTemplate);
     return `template: "${shortenedTemplate}"`;
   });
 }

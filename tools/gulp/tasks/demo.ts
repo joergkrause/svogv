@@ -38,7 +38,8 @@ task(':demo:copy:js', function () {
     './node_modules/core-js/client/core.js',
     './node_modules/zone.js/dist/zone.js',
     './node_modules/reflect-metadata/Reflect.js',
-    './node_modules/systemjs/dist/system.js'
+    './node_modules/systemjs/dist/system.js',
+    './node_modules/classlist.js/classList.js'
   ])
     .pipe(concat('vendor.js'))
     .pipe(uglify())
@@ -124,7 +125,7 @@ task(':demo:bundle:create', function () {
   return builder
     .buildStatic(path.join(DIST_DEMO_ROOT, 'app/app.js'), path.join(DIST_DEMO_ROOT, './app.bundle.js'), {
       sourceMaps: false,
-      minify: true,
+      minify: false,
       mangle: false
     })
     .then(function () {

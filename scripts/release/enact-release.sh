@@ -9,8 +9,8 @@
 # so we redirect the stderr output to /dev/null since we don't care.
 NPM_USER=$(npm whoami 2> /dev/null)
 
-if [ "${NPM_USER}" != "joergkrause" ]; then
-  echo "You must be logged in as 'joergkrause' to publish. Use 'npm login'."
+if [ "${NPM_USER}" != "joergisageek" ]; then
+  echo "You must be logged in as 'joergisageek' to publish. Use 'npm login'."
   exit
 fi
 

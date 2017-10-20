@@ -23,10 +23,10 @@
     <div class="card-body">
       <p>This form makes use of the &lt;ac-editor&gt; component.</p>
       <code><pre>
- &lt;form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row">
-    &lt;fieldset>
-      &lt;legend>Edit current user&lt;/legend>
-      &lt;ac-autoform [userForm]="myForm">&lt;/ac-editor>
+ &lt;form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row"><br/>
+    &lt;fieldset><br/>
+      &lt;legend>Edit current user&lt;/legend><br/>
+      &lt;ac-autoform [userForm]="myForm">&lt;/ac-editor><br/>
 </pre></code>
       <p>
         The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the
@@ -34,40 +34,40 @@
       </p>
       <code>
 <pre>
-export class UserViewModel {{ '{' }}
-
-  @Hidden()
-  id: number = 0;
-
-  @Display('E-Mail', 30, 'E-Mail address')
-  @Required()
-  @MaxLength(100)
-  @Email()
-  email: string = '';
-
-  @Display('Phone Number', 20, 'The user\'s phone')
-  @Required()
-  @MaxLength(20)
-  phoneNumber: string = '';
-
-  @Display('User Name', 10, 'The full name')
-  @Required()
-  @MaxLength(100)
-  userName: string = '';
-
-  @Display('Age', 40, 'From 12 to 88')
-  @Range(12, 88)
-  age = 14;
-
-  @Display('Password', 50)
-  @Required()
-  @Compare('passWordTwo')
-  passWord: string = '';
-
-  @Display('Password', 60)
-  @Required()
-  passWordTwo: string = '';
-
+export class UserViewModel {{ '{' }}<br/>
+<br/>
+  @Hidden()<br/>
+  id: number = 0;<br/>
+  <br/>
+  @Display('E-Mail', 30, 'E-Mail address')<br/>
+  @Required()<br/>
+  @MaxLength(100)<br/>
+  @Email()<br/>
+  email: string = '';<br/>
+  <br/>
+  @Display('Phone Number', 20, 'The user\'s phone')<br/>
+  @Required()<br/>
+  @MaxLength(20)<br/>
+  phoneNumber: string = '';<br/>
+  <br/>
+  @Display('User Name', 10, 'The full name')<br/>
+  @Required()<br/>
+  @MaxLength(100)<br/>
+  userName: string = '';<br/>
+  <br/>
+  @Display('Age', 40, 'From 12 to 88')<br/>
+  @Range(12, 88)<br/>
+  age = 14;<br/>
+  <br/>
+  @Display('Password', 50)<br/>
+  @Required()<br/>
+  @Compare('passWordTwo')<br/>
+  passWord: string = '';<br/>
+  <br/>
+  @Display('Password', 60)<br/>
+  @Required()<br/>
+  passWordTwo: string = '';<br/>
+  <br/>
 {{ '}' }}
 </pre>
 </code>
