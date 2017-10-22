@@ -125,7 +125,7 @@ task(':demo:bundle:create', function () {
   builder.loader.defaultJSExtensions = true;
   return builder
     .buildStatic(path.join(DIST_DEMO_ROOT, 'app/app.js'), path.join(DIST_DEMO_ROOT, './app.bundle.js'), {
-      sourceMaps: false,
+      sourceMaps: true,
       minify: true,
       mangle: true,
       rollup: true

@@ -24,7 +24,9 @@ Use this command to install the demo:
 ~~~
 npm install
 
-npm run exec
+npm run build
+
+npm start
 ~~~
 
 That's it. 
@@ -38,7 +40,17 @@ The demo ist part of the complete project as shown on Github.
 #### Explanation
 
 * **npm install**: Install all dependencies (but not SVOGV, see above)
-* **npm run exec**: Execute the gulp file to build and copy files and start the http server. The two sub tasks are: 
-    * **npm run build**: Execute the *gulp* script to make the files available in the right folder
-    * **npm run start**: Start the HTTP server and browser
+* **npm run build**: Execute the *gulp* script to make the files available in the right folder
+* **npm start**: Start the HTTP server and browser
+
+## Objections
+
+The project is also a good starter for learning about Angular compression and production optimization. The underlying builder is based on Gulp, Rollup, SystemJS-Builder and several common tools for minification and code reduction.
+
+### Gulp & Rollup
+
+The final self executing (IIEF) file is 830 KB in size and when compressed with gzip we get 207 KB. That's quite good as it has almost everything we need. It's accompanied by:
+
+* vendor.js (193 KB, 62 KB zipped)
+* site.css (106 KB, 18 KB zipped) -> including all of Bootstrap
 

@@ -25,7 +25,7 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models/index';
 @Component({
     selector: 'ac-treenode',
     templateUrl: 'ac-treeview-node.component.html',
-    styleUrls: [ './ac-treeview-node.component.scss' ]
+    styleUrls: [ './ac-treeview-node.component.css' ]
 })
 export class AcTreeViewNode implements OnInit {
     /**
