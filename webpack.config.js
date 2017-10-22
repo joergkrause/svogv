@@ -1,3 +1,7 @@
+
+// see: https://www.ag-grid.com/ag-grid-webpack-ngtools/
+// see: https://angular-2-training-book.rangle.io/handout/aot/aot_config.html
+
 const path = require('path');
 const webpack = require('webpack');
 
@@ -35,6 +39,10 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
+      },
+      {
+        test: /\.css$/,
+        loader: 'style!css!'
       }
     ]
   },

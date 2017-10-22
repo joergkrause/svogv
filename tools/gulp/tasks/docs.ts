@@ -31,12 +31,6 @@ gulp.task('docs', () => {
     .pipe(gulp.dest('dist/docs'));
 });
 
-const fs = require("fs");
-
-var typedoc = require("gulp-typedoc");
-gulp.task("api", function () {  
-  let typeDocCfg : any = JSON.parse(fs.readFileSync("./src/lib/typedoc.json", "utf-8"));
-  return gulp
-    .src(["./src/lib/**/*.ts", "!./src/lib/**/*.spec.ts", "!./src/lib/**/typings.d.ts", "!./src/lib/**/system-config-spec.ts"])
-    .pipe(typedoc(typeDocCfg));
+gulp.task('api', function () {
+  console.log('Moved to compodoc and called directly using npm run codedoc');
 });

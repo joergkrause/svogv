@@ -8,4 +8,4 @@ li.treeview input[type="checkbox"]:checked + label:before { content: "\\f046"; }
 li.treeview input[type="checkbox"] + label { display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; }
 li.treeview i.ac-collapse { width: 15px; cursor: pointer; display: inline-block; margin-left: -1.7em; }
 li.treeview i.ac-icon { width: 15px; cursor: pointer; display: inline-block }
-li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; 
+li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }
