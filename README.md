@@ -26,6 +26,8 @@ The approach was simply the usage of forms as simple as ever in Angular 2+. It's
 
 It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
+> It's pretty small, too. It's 107 KB as a bundle and roughly 20KB compressed. In demo I'm down to 207 KB __including__ Angular and Rx!
+
 ## Issues?
 
 We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.

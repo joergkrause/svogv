@@ -62,6 +62,7 @@ task(':demo:copy:css', function () {
   return src([
     './node_modules/font-awesome/css/font-awesome.css'
   ])
+    .pipe(cssmin())
     .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/styles')));
 });
 // icons and symbols shall be fonts, never want to see a single GIF here
@@ -126,7 +127,8 @@ task(':demo:bundle:create', function () {
     .buildStatic(path.join(DIST_DEMO_ROOT, 'app/app.js'), path.join(DIST_DEMO_ROOT, './app.bundle.js'), {
       sourceMaps: false,
       minify: true,
-      mangle: false
+      mangle: true,
+      rollup: true
     })
     .then(function () {
       console.log('Bundle completed');

@@ -7,14 +7,7 @@ import { AcTreeNode } from './models/index';
  */
 @Component({
     selector: 'ac-tree',
-    template: `<ul class="treeview">
-                 <ac-treenode [node]="nodes" 
-                               (nodeClick)="onNodeClick($event)" 
-                               (checkChanged)="onCheckChanged($event)"
-                               (selectedChanged)="onSelectedChanged($event)"
-                               (collapseChanged)="onCollapseChanged($event)"
-                  ></ac-treenode>
-               </ul>`,
+    templateUrl: './ac-treeview.component.html',
     styles: ['.treeview { list-style: none; margin-left: -25px; }']
 }) //
 export class AcTreeView {

@@ -5,47 +5,7 @@
  */
 @Component({
     selector: 'ac-loadericon',
-    template: `
-<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" 
-     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-3" [attr.fill]="color" #group>
-            <rect id="Rectangle-1"  x="16.5873418" y="0" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-2" fill-opacity="0.58"  x="16.678481" y="26.8629442" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-4" fill-opacity="0.79"  
-            transform="translate(31.530380, 17.954315) rotate(-270.000000) translate(-31.530380, -17.954315) " 
-            x="30.0303797" y="13.3857868" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-5" fill-opacity="0.37"  
-            transform="translate(4.735443, 18.045685) rotate(-270.000000) translate(-4.735443, -18.045685) " 
-            x="3.23544304" y="13.4771574" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-6" fill-opacity="0.72"  
-            transform="translate(29.758244, 24.676171) rotate(-240.000000) translate(-29.758244, -24.676171) " 
-            x="28.2582441" y="20.1076435" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-7" fill-opacity="0.3"  
-            transform="translate(6.507579, 11.323829) rotate(-240.000000) translate(-6.507579, -11.323829) " 
-            x="5.00757864" y="6.75530065" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-8" fill-opacity="0.65"  
-            transform="translate(24.871110, 29.609153) rotate(-210.000000) translate(-24.871110, -29.609153) " 
-            x="23.37111" y="25.0406255" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-9" fill-opacity="0.23"  
-            transform="translate(11.394713, 6.390847) rotate(-210.000000) translate(-11.394713, -6.390847) " 
-            x="9.89471277" y="1.82231869" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-10" fill-opacity="0.51"  
-            transform="translate(11.473642, 29.654839) rotate(-150.000000) translate(-11.473642, -29.654839) " 
-            x="9.97364166" y="25.0863108" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-11" fill-opacity="0.93"  
-            transform="translate(24.792181, 6.345161) rotate(-150.000000) translate(-24.792181, -6.345161) " 
-            x="23.2921811" y="1.77663341" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-12" fill-opacity="0.44"  
-            transform="translate(6.553148, 24.755301) rotate(-120.000000) translate(-6.553148, -24.755301) " 
-            x="5.05314826" y="20.1867727" width="3" height="9.13705584"></rect>
-            <rect id="Rectangle-13" fill-opacity="0.86"  
-            transform="translate(29.712675, 11.244699) rotate(-120.000000) translate(-29.712675, -11.244699) " 
-            x="28.2126745" y="6.67617143" width="3" height="9.13705584"></rect>
-        </g>
-    </g>
-</svg>
-`
+    templateUrl: 'ac-loadericon.component.html'
 })
 export class AcLoaderIcon implements AfterViewInit {
 

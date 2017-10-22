@@ -1,0 +1,26 @@
+﻿<li class="treeview" (click)="handleClick($event)">
+    <i class="ac-collapse" [ngClass]="collapseClasses" *ngIf="node.hasChildren" (click)="handleCollapse()"></i>
+    <i class="ac-collapse" *ngIf="!node.hasChildren"></i>
+    <i class="ac-icon" [ngClass]="iconClasses" [style.color]="node.options.iconColor" *ngIf="!node.options.checkable"></i>
+    <input type="checkbox" [id]="node.name" *ngIf="node.options.checkable" 
+           [checked]="node.stateIsChecked" (click)="handleCheckChange()">
+    <label [attr.for]="node.name"></label>
+    <a class="ac-container"
+          [href]="href"
+          [style.color]="foreColor" 
+          [style.background-color]="backColor" 
+          (mouseover)="handlePreSelection(true)"
+          (mouseout)="handlePreSelection(false)"
+          (click)="handleSelection($event)">
+        {{ node.text }}
+    </a>
+    <ul class="treeview" *ngIf="node.hasChildren" [hidden]="!isExpanded">
+        <ac-treenode *ngFor="let child of node.children" 
+                     [node]="child"
+                     (nodeClick)="onNodeClick($event)" 
+                     (checkChanged)="onCheckChanged($event)"
+                     (selectedChanged)="onSelectedChanged($event)"
+                     (collapseChanged)="onCollapseChanged($event)">
+        </ac-treenode>
+    </ul>                   
+</li>

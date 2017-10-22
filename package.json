@@ -42,7 +42,6 @@
     "@angular/http": "^4.4.5",
     "@angular/platform-browser": "^4.4.5",
     "@angular/platform-browser-dynamic": "^4.4.5",
-    "@angular/platform-server": "^4.4.5",
     "@angular/router": "^4.4.5",
     "bootstrap": "^4.0.0-beta",
     "classlist.js": "^1.1.20150312",
@@ -53,7 +52,9 @@
     "zone.js": "^0.8.17"
   },
   "devDependencies": {
+    "@angular/cli": "^1.4.9",
     "@angular/compiler-cli": "^2.2.0",
+    "@angular/platform-server": "^4.4.6",
     "@compodoc/compodoc": "^1.0.1",
     "@types/core-js": "^0.9.43",
     "@types/glob": "^5.0.32",

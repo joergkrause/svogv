@@ -24,44 +24,8 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models/index';
  */
 @Component({
     selector: 'ac-treenode',
-    template: `<li class="treeview" (click)="handleClick($event)">
-                   <i class="ac-collapse" [ngClass]="collapseClasses" *ngIf="node.hasChildren" (click)="handleCollapse()"></i>
-                   <i class="ac-collapse" *ngIf="!node.hasChildren"></i>
-                   <i class="ac-icon" [ngClass]="iconClasses" [style.color]="node.options.iconColor" *ngIf="!node.options.checkable"></i>
-                   <input type="checkbox" [id]="node.name" *ngIf="node.options.checkable" 
-                          [checked]="node.stateIsChecked" (click)="handleCheckChange()">
-                   <label [attr.for]="node.name"></label>
-                   <a class="ac-container"
-                         [href]="href"
-                         [style.color]="foreColor" 
-                         [style.background-color]="backColor" 
-                         (mouseover)="handlePreSelection(true)"
-                         (mouseout)="handlePreSelection(false)"
-                         (click)="handleSelection($event)">
-                       {{ node.text }}
-                   </a>
-                   <ul class="treeview" *ngIf="node.hasChildren" [hidden]="!isExpanded">
-                       <ac-treenode *ngFor="let child of node.children" 
-                                    [node]="child"
-                                    (nodeClick)="onNodeClick($event)" 
-                                    (checkChanged)="onCheckChanged($event)"
-                                    (selectedChanged)="onSelectedChanged($event)"
-                                    (collapseChanged)="onCollapseChanged($event)">
-                       </ac-treenode>
-                   </ul>                   
-               </li>`,
-    styles: [
-        'ul.treeview { list-style: none; margin-left: -2em; }',
-        'li.treeview  { margin-left: 10px; margin-bottom: 3px; box-sizing: border-box; }',
-        'li.treeview a.ac-container { border-radius: 2px; display: inline-block; padding: 3px; text-decoration: none; }',
-        'li.treeview input[type="checkbox"] { display: none; }',
-        'li.treeview input[type="checkbox"] + label:before { font-family: FontAwesome; }',
-        'li.treeview input[type="checkbox"] + label:before { content: "\\f096"; }',
-        'li.treeview input[type="checkbox"]:checked + label:before { content: "\\f046"; }',
-        'li.treeview input[type="checkbox"] + label { display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; }',
-        'li.treeview i.ac-collapse { width: 15px; cursor: pointer; display: inline-block; margin-left: -1.7em; }',
-        'li.treeview i.ac-icon { width: 15px; cursor: pointer; display: inline-block }',
-        'li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }']
+    templateUrl: 'ac-treeview-node.component.html',
+    styleUrls: [ './ac-treeview-node.component.scss' ]
 })
 export class AcTreeViewNode implements OnInit {
     /**
