@@ -105,7 +105,11 @@ export class AcDataGridModel<T> {
     this.items.sort((a:any, b:any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
   }
 
-  headers: Array<AcDataGridHeader>;
+  private headers: Array<AcDataGridHeader>;
+
+  public removeColumn(colname: string){
+    ///
+  }
 
   private createHeadersForType(type: any): void {
     // assume simple object structure, iterating an array of viewmodels

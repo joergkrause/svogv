@@ -8,6 +8,9 @@ import { AcDataGridModel } from 'svogv';
   moduleId: module.id,
   templateUrl: './list.component.html',
   styles: [
+    `.colborders col { border-right: 1px solid azure; } `,
+    `col.last { border-right: none !important; } `,
+    `col.first { background-color: #EEE; } `,
     `button.ac-supersmall { 
       width: 16px; 
       height: 16px; 
@@ -15,6 +18,7 @@ import { AcDataGridModel } from 'svogv';
       padding: 1px; 
       border: 0px; 
       background-color: transparent !important; 
+      cursor: hand;
     }`,
     'button.ac-supersmall i { font-size: 0.8em; }',
     'div.ac-sortsmall { width: 18px; height: 34px; float: right; line-height: 0px; margin: -5px; }']
@@ -63,10 +67,6 @@ export class ListEditorComponent {
 
   showModal(user) {
     this.currentUser = user;
-  }
-
-  removeColumn(column: string): void {
-    this.users.headers = this.users.headers.filter(header => header.prop !== column);
   }
 
 }
