@@ -1,5 +1,6 @@
 import '../../../utils/object-extensions';
 import { AcDataGridHeader } from './ac-datagridheader';
+import { AcDataGridItem } from './ac-datagriditem';
 
 export enum Direction {
   Ascending,
@@ -52,7 +53,7 @@ export class AcDataGridModel<T> {
   }
 
   get startRow(): number {
-    if (this.currentPageIndex === 0){
+    if (this.currentPageIndex === 0) {
       return 0;
     }
     return (this.currentPageIndex - 1) * this.pageSize;
@@ -88,43 +89,78 @@ export class AcDataGridModel<T> {
   }
 
   // The view can get col by col filtered for valid headers
-  public columnsOfItem(item: T): Array<any> {
+  public columnsOfItemValues(item: T): Array<any> {
     // we return all if no headers
     let columns: Array<any> = new Array<any>();
-    if (!this.headers) {
+    if (!this._headers) {
       for (var prop in item) {
         columns.push((<any>item)[prop]);
       }
     } else {
-      this.headers.forEach((e, idx) => columns.push((<any>item)[e.prop]));
+      this.headers
+        .forEach((e, idx) => columns.push((<any>item)[e.prop]));
     }
     return columns;
   }
 
-  public sortColumn(colName: string, dir: string){
-    this.items.sort((a:any, b:any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
+  public columnsOfItem(item: T): Array<AcDataGridItem> {
+    // we return all if no headers
+    let columns: Array<AcDataGridItem> = new Array<AcDataGridItem>();
+    let currentHeaders: AcDataGridHeader[] = this.headers || Object.keys(item).map(h => new AcDataGridHeader(h, null, h, false));
+    currentHeaders
+      .forEach((h, idx) => {
+        let e = new AcDataGridItem();
+        e.value = (<any>item)[h.prop];
+        e.prop = h.prop;
+        let hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
+        if (hasPipe) {
+          e.pipeToken = hasPipe;
+        }
+        columns.push(e);
+      });
+    return columns;
   }
 
-  private headers: Array<AcDataGridHeader>;
+  public sortColumn(colName: string, dir: string) {
+    this.items.sort((a: any, b: any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
+  }
 
-  public removeColumn(colname: string){
-    ///
+  private _headers: Array<AcDataGridHeader>;
+
+  public get headers(): Array<AcDataGridHeader> {
+    return this._headers.filter(h => !h.hidden);
+  }
+
+  public get headersNotVisible(): Array<AcDataGridHeader> {
+    return this._headers.filter(h => h.hidden);
+  }
+
+  public removeColumn(colname: string) {
+    let col = this._headers.find(h => h.prop === colname);
+    if (col) {
+      col.hidden = true;
+    }
+  }
+
+  public addColumn(colname: string) {
+    let col = this._headers.find(h => h.prop === colname);
+    if (col) {
+      col.hidden = false;
+    }
   }
 
   private createHeadersForType(type: any): void {
     // assume simple object structure, iterating an array of viewmodels
     // has at least one row, so we can read the headers
     // first we read the properties
-    this.headers = new Array<AcDataGridHeader>();
+    this._headers = new Array<AcDataGridHeader>();
     for (let p in type) {
       // either propname or decorator name
       let propName = type[`__displayName__${p}`] || p;
       let propDesc = type[`__displayDesc__${p}`] || p;
       // check if hidden, show if no hidden decorator
       let isHidden = type[`__isHidden__${p}`] || false;
-      if (!isHidden) {
-        this.headers.push(new AcDataGridHeader(propName, propDesc, p));
-      }
+      this._headers.push(new AcDataGridHeader(propName, propDesc, p, isHidden));
     }
   }
 

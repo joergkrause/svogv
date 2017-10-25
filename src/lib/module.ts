@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, Injector } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -32,5 +32,14 @@ const SVOGV_COMPONENTS = [
   providers: [FormValidatorService],
   exports: SVOGV_COMPONENTS
 })
-export class SvogvModule {}
+export class SvogvModule {
+
+  // store this for access to custom pipes in the model's helper classes, which are not injectable
+  static injector: Injector;
+
+  constructor(injector: Injector){
+    SvogvModule.injector = injector;
+  }
+
+}
 

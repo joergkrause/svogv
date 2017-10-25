@@ -19,7 +19,7 @@ export class PipeTransformType implements PipeTransform{
  * @param readonly      Optional, default is true.
  * @param description   A tooltip that can be used optionally.
  */
-export function Format(pipeName: typeof PipeTransformType, pipeParams: any[] = null) {
+export function Format(pipeName: any, pipeParams: any[] = null) {
     // the original decorator
     function readonlyInternal(target: Object, property: string | symbol): void {
         new readonlyInternalSetup(target, property.toString(), pipeName);
@@ -31,7 +31,7 @@ export function Format(pipeName: typeof PipeTransformType, pipeParams: any[] = n
 
 class readonlyInternalSetup {
 
-    constructor(public target: any, public key: string, public pipeName: typeof PipeTransformType, public pipeParams: any[] = null) {
+    constructor(public target: any, public key: string, public pipeName: any, public pipeParams: any[] = null) {
 
         // create a helper property to transport a meta data value
         Object.defineProperty(this.target, `__hasPipe__${this.key}`, {

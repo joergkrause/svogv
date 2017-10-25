@@ -1,7 +1,7 @@
 import {
-  Injector,
-  Pipe,
-  PipeTransform
+    Injector,
+    Pipe,
+    PipeTransform
 } from '@angular/core';
 
 /**
@@ -24,20 +24,27 @@ import {
  * 
  */
 @Pipe({
-name: 'formatData'
+    name: 'formatData'
 })
 export class AcFormatDataPipe implements PipeTransform {
 
-  public constructor(private injector: Injector) {
-  }
+    public constructor(private injector: Injector) {
+    }
 
-  transform(value: any, pipeToken: any, pipeArgs: any[]): any {
-      if (!pipeToken) {
-          return value;
-      }
-      else {
-          let pipe = this.injector.get(pipeToken);
-          return pipe.transform(value, ...pipeArgs);
-      }
-  }
+    transform(value: any, pipeToken: any, pipeArgs: any[]): any {
+        if (!pipeToken) {
+            return value;
+        }
+        else {
+            if (pipeArgs && pipeArgs.length >= 2) {
+                // First arg is the model
+                let model = pipeArgs[0];
+                let pipe = this.injector.get(pipeToken);
+                return pipe.transform(value, ...pipeArgs);
+            } else {
+                console.log('Illegal usage of "formatData" Pipe. Use two parameters like this: {{ data | formatData:model:propNames }}')
+                return value;
+            }
+        }
+    }
 }
