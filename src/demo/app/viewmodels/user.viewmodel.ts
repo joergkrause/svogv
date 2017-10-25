@@ -1,4 +1,6 @@
-﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden } from 'svogv';
+﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, Format } from 'svogv';
+
+import { PercentPipe } from '@angular/common';
 
 /**
  * View Model for form view.
@@ -50,5 +52,9 @@ export class UserViewModel {
   @DisplayGroup('Password')
   @Required()
   passWordTwo: string = '';
+
+  @Display('Done', 100, 'Work progress')
+  @Format(PercentPipe)
+  done = 0;
 
 }

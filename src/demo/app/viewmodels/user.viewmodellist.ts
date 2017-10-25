@@ -1,5 +1,7 @@
 ﻿import * as Validator from 'svogv';
 
+import { PercentPipe } from '@angular/common';
+
 /**
  * View Model for table view.
  *
@@ -30,6 +32,10 @@ export class UserViewModelList {
 
   @Validator.Display('Age', 40, 'From 12 to 88')
   @Validator.Range(12, 88)
-  age = 24;
+  age = 0;
+
+  @Validator.Display('Done', 100, 'Work progress')
+  @Validator.Format(PercentPipe)
+  done = 0;
 
 }

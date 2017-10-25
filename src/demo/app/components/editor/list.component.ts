@@ -11,6 +11,7 @@ import { AcDataGridModel } from 'svogv';
     `.colborders col { border-right: 1px solid azure; } `,
     `col.last { border-right: none !important; } `,
     `col.first { background-color: #EEE; } `,
+    `th { background: none; } `,
     `button.ac-supersmall { 
       width: 16px; 
       height: 16px; 

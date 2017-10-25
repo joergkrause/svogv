@@ -19,7 +19,8 @@ const SVOGV_COMPONENTS = [
   wd.AcEditor,
   wd.AcAutoForm,
   wd.AcLoaderIcon,
-  wd.AcAnalogClock
+  wd.AcAnalogClock,
+  wd.AcFormatDataPipe
 ];
 
 /**

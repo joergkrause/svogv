@@ -72,6 +72,12 @@ task(':demo:copy:fonts', function () {
   ])
     .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/fonts')));
 });
+task(':demo:copy:favicon', function () {
+  return src([
+    path.join(DEMO_ROOT, 'favicon.ico')
+  ])
+    .pipe(dest(DIST_DEMO_ROOT));
+});
 // View HTML (component templates)
 task(':demo:copy:views:templates', function () {
   return src([DEMO_ROOT + '**/*.html'], { base: path.join(DEMO_ROOT, 'components/') })
@@ -90,7 +96,7 @@ task(':demo:copy:images', function () {
     .pipe(dest(path.join(DIST_DEMO_ROOT, 'assets/images')));
 });
 
-task(':demo:copy', [':demo:copy:css', ':demo:copy:fonts', ':demo:copy:views', ':demo:copy:images', ':demo:copy:js']);
+task(':demo:copy', [':demo:copy:css', ':demo:copy:fonts', ':demo:copy:favicon', ':demo:copy:views', ':demo:copy:images', ':demo:copy:js']);
 
 // complete setup and rollup
 /** Builds components typescript for tests (CJS output). */
