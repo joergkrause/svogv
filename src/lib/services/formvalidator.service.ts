@@ -2,69 +2,8 @@
 import { FormControlEx } from '../ex/formcontrolex';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
-/**
- * A custom validator to valdiate a range of numbers or dates. This is internally to support the infarstructure
- * and not intendet to being used by custom code.
- *
- * @param p The field's name
- *
- */
-function validateRange(f: number | Date, t: number | Date) {
-
-  return function (c: FormControl) {
-    if ((Number(f) || Number(t)) && Number(c.value)) {
-      let fr = Number(f);
-      let to = Number(t);
-      let v = Number(c.value);
-      return (!fr || v >= fr) && (!to || v <= to) ? null : {
-        'range': {
-          valid: false
-        }
-      };
-    }
-    if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.value)) {
-      let fr = Date.parse(f.toString());
-      let to = Date.parse(t.toString());
-      let v = Date.parse(c.value);
-      return (!fr || v >= fr) && (!to || v <= to) ? null : {
-        'range': {
-          valid: false
-        }
-      };
-    }
-  }
-
-}
-
-/**
- * A custom validator to compare two fields. This is internally to support the infarstructure
- * and not intendet to being used by custom code.
- *
- * @param p The field's name
- *
- */
-function validateCompare(p: string) {
-  let changeEventWasAdded: boolean = false;
-  return function (c: FormControl) {
-    let form: FormGroup = c.root as FormGroup;
-    if (form && form.controls && !changeEventWasAdded) {
-      form.controls[p].valueChanges.subscribe(() => {
-        // trigger validation for particular element
-        c.updateValueAndValidity();
-      });
-      changeEventWasAdded = true;
-    }
-    if (c.value) {
-      // compare the current value with the referenced control's value
-      return (!c.value || c.value == (<any>c.root)['controls'][p].value) ? null : {
-        'compare': {
-          valid: false
-        }
-      };
-    }
-  }
-
-}
+import { validateRange } from './validators/range.validator';
+import { validateCompare } from './validators/compare.validator';
 
 /**
  * The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
