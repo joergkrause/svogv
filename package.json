@@ -1,6 +1,6 @@
 {
   "name": "svogv",
-  "version": "0.3.0",
+  "version": "0.3.5",
   "description": "A decorator based appreach for model driven forms and some time saving form widgets.",
   "main": "index.js",
   "scripts": {
