@@ -10,36 +10,32 @@
 export function Compare(withProperty: string, msg?: string) {
     // the original decorator
     function compareInternal(target: Object, property: string | symbol): void {
-        new compareInternalSetup(target, property.toString(), withProperty, msg);
+        compareInternalSetup(target, property.toString(), withProperty, msg);
     }
 
     // return the decorator
     return compareInternal;
 }
 
-class compareInternalSetup {
+export function compareInternalSetup(target: any, key: string, withProperty: string, msg?: string) {
 
-    constructor(public target: any, public key: string, public withProperty: string, public msg?: string) {
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__hasCompareProperty__${key}`, {
+        value: true,
+        enumerable: false,
+        configurable: false
+    });
 
-        // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__hasCompareProperty__${key}`, {
-            value: true,
-            enumerable: false,
-            configurable: false
-        });
+    Object.defineProperty(target, `__withCompare__${key}`, {
+        value: withProperty,
+        enumerable: false,
+        configurable: false
+    });
 
-        Object.defineProperty(this.target, `__withCompare__${key}`, {
-            value: this.withProperty,
-            enumerable: false,
-            configurable: false
-        });
-
-        Object.defineProperty(this.target, `__errCompareProperty__${key}`, {
-            value: this.msg 
-               || `The field ${this.key} must have the same value as field ${this.withProperty}`,
-            enumerable: false,
-            configurable: false
-        });
-    }
-
+    Object.defineProperty(target, `__errCompareProperty__${key}`, {
+        value: msg
+        || `The field ${key} must have the same value as field ${withProperty}`,
+        enumerable: false,
+        configurable: false
+    });
 }

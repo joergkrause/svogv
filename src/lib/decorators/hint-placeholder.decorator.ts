@@ -9,30 +9,27 @@
 export function Placeholder(name: string) {
     // the original decorator
     function placeholderInternal(target: Object, property: string | symbol): void {
-        new placeholderInternalSetup(target, property.toString(), name);
+        placeholderInternalSetup(target, property.toString(), name);
     }
 
     // return the decorator
     return placeholderInternal;
 }
 
-class placeholderInternalSetup {
+export function placeholderInternalSetup(target: any, key: string, name: string) {
 
-    constructor(public target: any, public key: string, public name: string) {
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__watermark__${key}`, {
+        value: name,
+        enumerable: false,
+        configurable: false
+    });
 
-        // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__watermark__${this.key}`, {
-            value: this.name,
-            enumerable: false,
-            configurable: false
-        });
-
-        Object.defineProperty(this.target, `__hasWatermark__${this.key}`, {
-            value: true,
-            enumerable: false,
-            configurable: false
-        });
-
-    }
+    Object.defineProperty(target, `__hasWatermark__${key}`, {
+        value: true,
+        enumerable: false,
+        configurable: false
+    });
 
 }
+

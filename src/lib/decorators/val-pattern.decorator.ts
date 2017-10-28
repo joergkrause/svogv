@@ -8,30 +8,25 @@
 export function Pattern(pattern: RegExp, msg?: string) {
     // the original decorator
     function patternInternal(target: Object, property: string | symbol): void {
-        new patternInternalSetup(target, property.toString(), pattern, msg);
+        patternInternalSetup(target, property.toString(), pattern, msg);
     }
 
     // return the decorator
     return patternInternal;
 }
 
-class patternInternalSetup {
+export function patternInternalSetup(target: any, key: string, reg: RegExp, msg?: string) {
 
-    constructor(public target: any, public key: string, public reg: RegExp, public msg?: string) {
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__hasPattern__${key}`, {
+        value: reg,
+        enumerable: false,
+        configurable: false
+    });
 
-
-        // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__hasPattern__${key}`, {
-            value: this.reg,
-            enumerable: false,
-            configurable: false
-        });
-
-        Object.defineProperty(this.target, `__errPattern__${key}`, {
-            value: this.msg || `The field ${this.key} must fullfill the pattern ${this.reg}`,
-            enumerable: false,
-            configurable: false
-        });
-    }
-
+    Object.defineProperty(target, `__errPattern__${key}`, {
+        value: msg || `The field ${key} must fullfill the pattern ${reg}`,
+        enumerable: false,
+        configurable: false
+    });
 }

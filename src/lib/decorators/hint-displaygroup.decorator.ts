@@ -10,44 +10,40 @@
 export function DisplayGroup(name: string, order: number = 0, description?: string) {
     // the original decorator
     function displayGroupInternal(target: Object, property: string | symbol): void {
-        new displayGroupInternalSetup(target, property.toString(), name, order, description);
+        displayGroupInternalSetup(target, property.toString(), name, order, description);
     }
 
     // return the decorator
     return displayGroupInternal;
 }
 
-class displayGroupInternalSetup {
+export function displayGroupInternalSetup(target: any, key: string, name: string, order: number, description: string) {
 
+    order = parseInt(order.toString());
+    // create a helper property to transport a meta data value
 
-    constructor(public target: any, public key: string, public name: string, public order: number, public description: string) {
+    Object.defineProperty(target, `__isGrouped__${key}`, {
+        value: true,
+        enumerable: false,
+        configurable: false
+    });
 
-        this.order = parseInt(this.order.toString());
-        // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__groupName__${key}`, {
+        value: name,
+        enumerable: false,
+        configurable: false
+    });
 
-        Object.defineProperty(this.target, `__isGrouped__${this.key}`, {
-            value: true,
-            enumerable: false,
-            configurable: false
-        });
+    Object.defineProperty(target, `__groupOrder__${key}`, {
+        value: order,
+        enumerable: false,
+        configurable: false
+    });
 
-        Object.defineProperty(this.target, `__groupName__${this.key}`, {
-            value: this.name,
-            enumerable: false,
-            configurable: false
-        });
-
-        Object.defineProperty(this.target, `__groupOrder__${this.key}`, {
-            value: this.order,
-            enumerable: false,
-            configurable: false
-        });
-
-        Object.defineProperty(this.target, `__groupDesc__${this.key}`, {
-            value: this.description,
-            enumerable: false,
-            configurable: false
-        });
-    }
-
+    Object.defineProperty(target, `__groupDesc__${key}`, {
+        value: description,
+        enumerable: false,
+        configurable: false
+    });
 }
+

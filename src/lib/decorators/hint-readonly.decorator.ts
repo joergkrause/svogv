@@ -9,24 +9,20 @@
 export function Readonly(readonly = true) {
     // the original decorator
     function readonlyInternal(target: Object, property: string | symbol): void {
-        new readonlyInternalSetup(target, property.toString(), readonly);
+        readonlyInternalSetup(target, property.toString(), readonly);
     }
 
     // return the decorator
     return readonlyInternal;
 }
 
-class readonlyInternalSetup {
+export function readonlyInternalSetup(target: any, key: string, readonly: boolean) {
 
-    constructor(public target: any, public key: string, public readonly: boolean) {
-
-        // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__isReadonly__${this.key}`, {
-            value: this.readonly,
-            enumerable: false,
-            configurable: false
-        });
-
-    }
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__isReadonly__${key}`, {
+        value: readonly,
+        enumerable: false,
+        configurable: false
+    });
 
 }

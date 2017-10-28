@@ -12,7 +12,7 @@ import * as cmp from './components/index';
 import routes from './configurations/routes';
 
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
-import { FormValidatorService, WindowRef, SvogvModule } from 'svogv';
+import { FormValidatorService, FormValidatorFromJsonService, WindowRef, SvogvModule } from 'svogv';
 
 @NgModule({
   imports: [
@@ -52,7 +52,7 @@ import { FormValidatorService, WindowRef, SvogvModule } from 'svogv';
       SiteApiService        // just for demo to get some static data
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
     , WindowRef
-    , FormValidatorService  // the forms support, manages the decorators
+    , FormValidatorService, FormValidatorFromJsonService  // the forms support, manages the decorators
     , 
   ]
 })

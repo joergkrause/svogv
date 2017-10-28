@@ -1,114 +1,99 @@
-type displayType = {
+export type displayType = {
   'display': {
-    "name": string;
-    "order"?: number;
-    "description"?: string
+    'name': string;
+    'order'?: number;
+    'description'?: string
   }
 };
 
-type displayGroupType = {
+export type displayGroupType = {
   'displaygroup': {
-    "name": string;
-    "order"?: number;
-    "description"?: string
+    'name': string;
+    'order'?: number;
+    'description'?: string
   }
 };
 
-type formatType = {
-  "format": {
-    "pipeName": any;
-    "pipeParams"?: any[]
+export type formatType = {
+  'format': {
+    'pipeName': any;
+    'pipeParams'?: any[]
   }
 };
 
-type hiddenType = {
-  "hidden": boolean
+export type hiddenType = {
+  'hidden'?: boolean
 };
 
-type placHolderType = {
-  "placeholder": {
+export type placeHolderType = {
+  'placeholder': {
     'name': string;
   }
 }
-type readonlyType = {
-  "readonly": boolean
+export type readonlyType = {
+  'readonly': boolean
 };
-type templateHintType = {
-  "templatehint": {
+export type templateHintType = {
+  'templatehint': {
     hint: string;
   }
 };
-type validatorType = {
-  "msg": string;
-  'active': boolean;
+
+/**
+ * Base type for validators.
+ * 
+ * Give a private error message in @param msg. If omitted a error message will be generated.
+ * Set to active by using @param active. Default is true.
+ * Active i18n by using the @param translate. The translation module must be used separately.
+ */
+export type validatorType = {
+  'msg'?: string;
+  'active'?: boolean;
+  'translate'?: boolean;
 }
-type compareType = {
-  "compare": {
-    "fieldToCompare": string
+export type compareType = {
+  'compare': {
+    'fieldToCompare': string
   } | validatorType;
 };
-type emailType = {
-  "email": validatorType;
+export type emailType = {
+  'email': validatorType;
 };
-type maxlengthType = {
-  "maxlength": {
+export type maxlengthType = {
+  'maxlength': {
     max: number;
   } | validatorType;
 };
-type minlengthType = {
-  "minlength": {
+export type minlengthType = {
+  'minlength': {
     min: number
   } | validatorType;
 };
-type patternType = {
-  "pattern": {
+export type patternType = {
+  'pattern': {
     pattern: string | RegExp;
   } | validatorType;
 };
-type rangeType = {
-  "range": {
+export type rangeType = {
+  'range': {
     'from': number | Date;
     'to': number | Date;
   } | validatorType;
 };
-type requiredType = {
-  "required": validatorType;
+export type requiredType = {
+  'required': validatorType;
 };
-type stringLengthType = {
-  "stringlength": {
+export type stringLengthType = {
+  'stringlength': {
     'min': number;
-    'max'?: number;
+    'max': number;
   } | validatorType;
 };
 
 
 export interface FormValidatorModel {
-  [field: string]: displayType | displayGroupType | formatType | hiddenType | placHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
+  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
 }
 
-let f: FormValidatorModel = {
-  'fieldname': {
-    display: {
-      name: "Hallo"
-    },
-    displaygroup: {
-      name: "Group"
-    }
-  },
-  'id': {
-    hidden: true
-  },
-  'ccc': {
-    compare: {
-      msg: '',
-      fieldToCompare: 'fieldname'
-    }
-  },
-  'test': {
-    required: {
-      active: true,
-      msg: 'message',
-    }
-  }
-}
+
 

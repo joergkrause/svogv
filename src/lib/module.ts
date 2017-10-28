@@ -28,7 +28,7 @@ const SVOGV_COMPONENTS = [
 @NgModule({
   imports: [BrowserModule, RouterModule, ReactiveFormsModule, FormsModule],
   declarations: SVOGV_COMPONENTS,
-  providers: [FormValidatorService],
+  providers: [FormValidatorService, FormValidatorFromJsonService],
   exports: SVOGV_COMPONENTS
 })
 export class SvogvModule {
@@ -36,7 +36,7 @@ export class SvogvModule {
   // store this for access to custom pipes in the model's helper classes, which are not injectable
   static injector: Injector;
 
-  constructor(injector: Injector){
+  constructor(injector: Injector) {
     SvogvModule.injector = injector;
   }
 

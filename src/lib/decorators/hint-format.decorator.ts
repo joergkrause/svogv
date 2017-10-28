@@ -3,7 +3,7 @@
 /**
  * A helper class that allows us to accept Pipe implementations.
  */
-export class PipeTransformType implements PipeTransform{
+export class PipeTransformType implements PipeTransform {
     transform(value: any, ...args: any[]) {
         throw new Error("Do not use this class from user code. This class is only to support the SVOGV infrastructure.");
     }
@@ -21,31 +21,27 @@ export class PipeTransformType implements PipeTransform{
  */
 export function Format(pipeName: any, pipeParams: any[] = null) {
     // the original decorator
-    function readonlyInternal(target: Object, property: string | symbol): void {
-        new readonlyInternalSetup(target, property.toString(), pipeName);
+    function formatInternal(target: Object, property: string | symbol): void {
+        formatInternalSetup(target, property.toString(), pipeName);
     }
 
     // return the decorator
-    return readonlyInternal;
+    return formatInternal;
 }
 
-class readonlyInternalSetup {
+export function formatInternalSetup(target: any, key: string, pipeName: any, pipeParams: any[] = null) {
 
-    constructor(public target: any, public key: string, public pipeName: any, public pipeParams: any[] = null) {
-
-        // create a helper property to transport a meta data value
-        Object.defineProperty(this.target, `__hasPipe__${this.key}`, {
-            value: this.pipeName,
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__hasPipe__${key}`, {
+        value: pipeName,
+        enumerable: false,
+        configurable: false
+    });
+    if (pipeParams && pipeParams.length) {
+        Object.defineProperty(target, `__pipeParams__${key}`, {
+            value: pipeParams,
             enumerable: false,
             configurable: false
         });
-        if (this.pipeParams && this.pipeParams.length) {
-            Object.defineProperty(this.target, `__pipeParams__${this.key}`, {
-                value: this.pipeParams,
-                enumerable: false,
-                configurable: false
-            });
-        }
     }
-
 }
