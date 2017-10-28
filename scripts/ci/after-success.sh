@@ -4,7 +4,7 @@
 # Used to run the travis-after-modes script, which checks if all other modes finished.
 
 # Go to the project root directory
-cd $(dirname $0)/../..
+cd $(dirname $0)/..
 
 # If not running as a PR, wait for all other travis modes to finish.
 if [ "$TRAVIS_PULL_REQUEST" = "false" ] && $(npm bin)/travis-after-modes; then
