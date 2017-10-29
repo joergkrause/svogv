@@ -149,7 +149,7 @@ Even simpler, you can create a complete form with just one tag. Just go like thi
 ~~~
 
 The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is buils upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
-Especially those decorators are helpful:
+Especially those decorators are helpful (just a selection, there are many more):
 
 * **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
 * **@Hidden** Exclude as field from a autoform
@@ -163,6 +163,18 @@ Especially those decorators are helpful:
 | number      | type="number"     | Range                     | Default is numeric field, Range is a slider
 | Date        | type="date"       | Calendar                  | Calender is provided by browser feature
 | enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+
+## Server Support through JSON
+
+As of version 0.3.5 it's possible to use a specially design JSON object to configure the forms. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
+
+~~~
+export interface FormValidatorModel {
+  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
+}
+~~~
+
+The types have the same description as the decorators.
 
 ## The Widgets
 

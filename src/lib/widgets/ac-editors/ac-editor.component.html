@@ -55,6 +55,9 @@
     <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark" 
         [readOnly]='readonly'
         type="text" class="form-control" [id]="name" [formControlName]="name" />
+    <ng-container *ngIf="type == 'template'">
+        <ng-content></ng-content>
+    </ng-container>
     <span class="fa fa-warning text-danger form-control-feedback" 
         [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
     <small class="text-danger" 
