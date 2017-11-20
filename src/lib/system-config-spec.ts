@@ -25,14 +25,11 @@ System.config({
       'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
     '@angular/platform-browser-dynamic/testing':
       'vendor/@angular/platform-browser-dynamic/bundles/platform-browser-dynamic-testing.umd.js',
+    'svogv': 'svogv/bundles/svogv.umd.js'
   },
   packages: {
     // Thirdparty barrels.
     'rxjs': { main: 'index' },
-    'svogv': {
-      format: 'cjs',
-      main: 'svogv.umd.js'
-    },
     // Set the default extension for the root package, because otherwise the demo-app can't
     // be built within the production mode. Due to missing file extensions.
     '.': {

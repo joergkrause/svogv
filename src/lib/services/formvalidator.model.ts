@@ -1,15 +1,4 @@
 /**
- * This element describes the UI elements label, tooltip, and order.
- */
-export type displayType = {
-  'display': {
-    'name': string;
-    'order'?: number;
-    'description'?: string
-  }
-};
-
-/**
  * This elements describes the grouping of elements in fieldset-controls. Each 
  * field that is decorated in an DisplayGroup with the very same name is grouped
  * into that part. The name appears in the fieldsets legend-control. The 
@@ -23,6 +12,18 @@ export type displayGroupType = {
     'description'?: string
   }
 };
+
+/**
+ * This element describes the UI elements label, tooltip, and order.
+ */
+export type displayType = {
+  'display': {
+    'name': string;
+    'order'?: number;
+    'description'?: string
+  }
+};
+
 /**
  * A pipe driven formatting instruction.
  */

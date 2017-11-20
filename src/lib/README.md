@@ -162,6 +162,18 @@ Especially those decorators are helpful:
 | Date        | type="date"       | Calendar                  | Calender is provided by browser feature
 | enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
 
+## Server Support through JSON
+
+As of version 0.3.5 it's possible to use a specially design JSON object to configure the forms. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
+
+~~~
+export interface FormValidatorModel {
+  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
+}
+~~~
+
+The types have the same description as the decorators.
+
 ## The Widgets
 
 The widget complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:

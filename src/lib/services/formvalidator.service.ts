@@ -1,5 +1,4 @@
 ﻿import { Injectable, Inject } from '@angular/core';
-import { FormControlEx } from '../ex/formcontrolex';
 import { Validators, FormBuilder, FormGroup, FormControl } from '@angular/forms';
 
 import { validateRange } from './validators/range.validator';
@@ -96,11 +95,11 @@ export class FormValidatorService {
       (<any>form)['__editorModel__'] = targetInstance;
       // register controls and add messages
       for (let propName in errGroup) {
-        let ctrl = <FormControlEx>form.controls[propName];
+        let ctrl = <any>form.controls[propName];
         if (!ctrl) {
           continue; // control might not be in the form
         }
-        (<FormControlEx>form.controls[propName])['messages'] = (<any>errGroup)[propName];
+        (<any>form.controls[propName])['messages'] = (<any>errGroup)[propName];
       }
     }
     // return FormGroup for immediate usage
