@@ -1,24 +1,55 @@
 # ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widget and Forms Library
 
-[![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
-[![Downloads](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
-[![Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![License](https://img.shields.io/npm/l/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/joergisageek)
 
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
 
+## Available Versions
+
+Currently we support two versions, one for Bootstrap and one for Angular Material. You can use one or the other, but not both at the same time.
+
+> In the repository we have these versions in branches. The main branch (master) contains the former single version, 
+> which is primarily the Bootstrap one. In the branch named **split** the project has been splitted into one single source
+> for two different packages. That makes development easier and usage more convenience. 
+
+**We strongly recommend users of the *svogv* package to update to `@svogv/bootstrap` as soon as as possible.**
+
+We plan to make the **svogv** branch deprecated in 2018, January, 31rd. Feel free to drop a mail or open an issue if you have trouble migrating.
+
+**Why oh why?**
+
+Good question. It's hard to say what's the future of Bootstrap. As Material gets mature and better it has big potential. And it's very close for Angular Devs. Having something built exclusively for Angular it's hard to avoid Material. So we're going both ways. Along with this step the new project structure is going to be able to handle even more CSS frameworks natively. 
+
+### Bootstrap 4
+
+~~~
+npm i @svogv/bootstrap
+~~~
+
+[![Bootstrap Package](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/@svogv/bootstrap)
+[![Bootstrap Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/@svogv/bootstrap)
+
+### Material 2
+
+~~~
+npm i @svogv/material
+~~~
+
+[![Material Package](https://img.shields.io/npm/dm/svogv.svg?style=flat-square)](https://npmjs.com/packages/@svogv/material)
+[![Material Version](https://img.shields.io/npm/v/svogv.svg?style=flat-square)](https://npmjs.com/packages/@svog/material)
+
 ## Introduction
 
-Now that Angular 2 is widely used we have – the very first time in years – such a strong feeling in our guts that’s now the first step from ancient crap into something really professional. It brings the level we all know from Java and C# and the mature backend frameworks to the frontend.
-And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
+The purpose of this project is productivity. It allows developers to create Angular apps faster and more reliable. One of the main pain points of apps are forms. And especially the way we deal with validation and user interaction. While a form in itself is more or less simple, the way we handle changes is not. If the API adds a field the dev must add th markup, the service proxy, the field specific validation and often the whole UI needs some tweaking. If the new data appear at several localtions, the amount of work can be tremendous.
 
-TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
-The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4+ a lot easier.
+**@svogv** is probably a clever solution to handle this. It's a small collection of widgets that can interact with a model. The model can be build by decorators on top of a class (that's, then, a view model) or provided by JSON send from the backend. It makes use of the ReactiveFormsModule from Angular. 
 
-It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
+The components require a lot of CSS and hence do have dependencies to other libs. Therefore there are currently two versions that support either Bootstrap 4 projects or thiose made on top of the Angular Material 2 toolkit and extend the Angular Material CDK.
+
+You use either of these, never both at the same time. The API and bundle names are identical.
 
 ## What is it?
 
@@ -26,13 +57,11 @@ The approach was simply the usage of forms as simple as ever in Angular 2+. It's
 
 It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
-> It's pretty small, too. It's 107 KB as a bundle and roughly 20KB compressed. In demo I'm down to 207 KB __including__ Angular and Rx!
+> It's pretty small, too. It's 117 KB as a bundle and roughly 22KB compressed. In demo I'm down to 207 KB __including__ Angular and Rx! For the CDK based package is roughly 400 KB, but you would need the CDK anywhy in a Material project and the bunlder will finally do not pack it again so it's not a real impact, finally.
 
 ## Issues?
 
-We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.
-
-The SVG stuff (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either.
+The fun controls (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either. 
 
 ## Angular Data Annotations
 
@@ -46,18 +75,18 @@ export class UserViewModel {
   @Hidden()
   id: Number = 0;
 
-  @Display('E-Mail', 'E-Mail address')
+  @Display('E-Mail', 10, 'E-Mail address')
   @Required()
   @MaxLength(100)
   @Email()
   email: string = '';
 
-  @Display('Phone Number', 'The user\'s phone')
+  @Display('Phone Number', 20, 'The user\'s phone')
   @Required()
   @MaxLength(20)
   phoneNumber: string = '';
 
-  @Display('User Name', 'The full name')
+  @Display('User Name', 30, 'The full name')
   @Required()
   @MaxLength(100)
   userName: string = '';
@@ -65,7 +94,11 @@ export class UserViewModel {
 }
 ~~~
 
-As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. 
+As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. The second parameter of `Display()` is the order within the form.
+
+### Usage with Bootstrap
+
+> In case you work with Material 2, just use `@svogv/material` for the package source. Otherwise, both packages behave the same.
 
 The usage is simple; just import like this:
 
@@ -77,13 +110,13 @@ import {
   Email, 
   Display, 
   Hidden 
-} from 'svogv';
+} from '@svogv/bootstrap';
 ~~~
 
 Or alternatively prefix your import:
 
 ~~~
-import * as Validator from 'svogv';
+import * as Validator from '@svogv/bootstrap';
 
 export class UserViewModel {
 
@@ -98,7 +131,7 @@ Now the forms part. The form needs to be aware of the decorators. So we have a s
 In a component this looks like this:
 
 ~~~
-import { FormValidatorService } from 'svogv';
+import { FormValidatorService } from '@svogv/bootstrap';
 
 export class EditUserComponent implements OnInit {
 
@@ -191,10 +224,10 @@ This comes with two fun components just made for learning purposes:
 
 ## Where to get?
 
-It's available from *npm* by using this command:
+It's available from *npm* by using this command (for Bootstrap 4):
 
 ~~~
-npm install svogv --save
+npm install @svogv/bootstrap --save
 ~~~
 
 You get three parts (at least, this list will grow quickly):
@@ -202,6 +235,13 @@ You get three parts (at least, this list will grow quickly):
 * FormValidatorService -- a static class to build reactive forms
 * Editor -- the universal editor component
 * Decorators -- a set of decorators to manage the behavior of properties
+
+It's available from *npm* by using this command (for Angular Material 2):
+
+~~~
+npm install @svogv/material --save
+~~~
+
 
 ### More to read
 
