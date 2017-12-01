@@ -5,6 +5,7 @@
 /tmp
 /deploy
 /documentation
+*.tgz
 
 # dependencies
 /node_modules
