@@ -3,6 +3,7 @@
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
 [![License](https://img.shields.io/npm/l/svogv.svg?style=flat-square)](https://npmjs.com/packages/svogv)
 [![Donate](https://img.shields.io/badge/donate-paypal-blue.svg?style=flat-square)](https://paypal.me/joergisageek)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjoergkrause%2Fsvogv.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjoergkrause%2Fsvogv?ref=badge_shield)
 
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
@@ -280,3 +281,6 @@ The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.
 Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
 ![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fjoergkrause%2Fsvogv.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fjoergkrause%2Fsvogv?ref=badge_large)
