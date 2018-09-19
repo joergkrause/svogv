@@ -30,5 +30,4 @@ export class WidgetDemoComponent {
     this.widgetTabs = new AcTabData(userRoutes);
   }
 
-
 }

@@ -65,7 +65,7 @@ The final file in my project looks like this:
 ~~~
 {
   "name": "svogv",
-  "version": "0.3.5",
+  "version": "0.6.0",
   "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",

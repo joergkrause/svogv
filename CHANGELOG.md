@@ -69,6 +69,12 @@ These to elements are now working and good for production:
 There are many fixes in both, demo and lib.
 
 <a name="0.2.3"></a>
-# [0.2.3](https://github.com/joergkrause/svogv/releases/tag/0.2.1) (2017-09-15)
+# [0.2.3](https://github.com/joergkrause/svogv/releases/tag/0.2.3) (2017-09-15)
 
 A release mostly dedicated to fixes and reorg. Some components sued just to run the demo were actually in the main lib and hence I have removed them and put in the demo. So the code is still there, but nit as part of the main lib. This makes the lib a lot smaller and it clarifies the intention not competing with the other UI libs but put the focus on forms and validation.
+
+
+<a name="0.6.0"></a>
+# [0.6.0](https://github.com/joergkrause/svogv/releases/tag/0.6.0) (2018-09-15)
+
+An update to support Angular 5 and 6. This is also a change in naming the versions. 0.6.* is for Angular 6, 0.7.* will be the one for Angular 7 and so on.

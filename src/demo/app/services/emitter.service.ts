@@ -6,9 +6,9 @@
 @Injectable()
 export class EmitterService {
 
-    private static _emitters: { [ID: string]: EventEmitter<any> } = {};
+    private _emitters: { [ID: string]: EventEmitter<any> } = {};
 
-    public static get<T>(ID: string): EventEmitter<any> {
+    public get<T>(ID: string): EventEmitter<any> {
         console.log(`Emitter for ${ID} called`);
         if (!this._emitters[ID]) {
           console.log(`Emitter for ${ID} added`);
@@ -18,5 +18,4 @@ export class EmitterService {
         }
         return this._emitters[ID] as EventEmitter<T>;
     }
-
 }
