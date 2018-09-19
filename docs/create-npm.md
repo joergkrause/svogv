@@ -66,7 +66,7 @@ The final file in my project looks like this:
 {
   "name": "svogv",
   "version": "0.6.0",
-  "description": "An advanced set of Angular 4 (Angular2) widgets and model driven forms support.",
+  "description": "An advanced library for Angular 6 (Angular in general) for model driven forms and validation support.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
