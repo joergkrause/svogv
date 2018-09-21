@@ -4,7 +4,7 @@
  * The @see `DataGrid` does not show columns for properties tagged with `@Hidden()`.
  * Fields in forms that render automatically
  * using the @see `AcEditor` component will render as <input type="hidden">.
- * 
+ *
  * @param hide          Optional, default is true.
  * @param description   A tooltip that can be used optionally.
  */

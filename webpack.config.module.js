@@ -3,33 +3,29 @@
  */
 
 const path = require('path');
-const webpack = require('webpack');
+const DefinePlugin = require('webpack').DefinePlugin;
+const { AngularCompilerPlugin } = require('@ngtools/webpack');
+const ContextReplacementPlugin = require('webpack').ContextReplacementPlugin;
+const FilterWarningsPlugin = require('webpack-filter-warnings-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const helpers = require('./scripts/release/helpers');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const AotPlugin = require('@ngtools/webpack').AotPlugin;
-
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const ENV = (process.env.NODE_ENV = process.env.ENV = 'production');
 
 module.exports = {
   entry: {
-    lib: './src/lib/module.ts'
+    "svogv": './src/lib/module.ts'
   },
-
+  mode: process.env.NODE_ENV,
   output: {
-    path: helpers.root('dist/lib'),
+    path: path.join(__dirname, 'dist/lib'),
     publicPath: '/',
-    filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js'
+    filename: '[name].bundle.js'
   },
-
   resolve: {
     extensions: ['.js', '.ts']
   },
-
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.ts$/,
         loader: '@ngtools/webpack'
@@ -45,20 +41,32 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['lib']
-    }),
-
-    // AOT Plugin 
-    new AotPlugin({
-      tsConfigPath: './src/lib/tsconfig.json',
-      entryModule: helpers.root('src/lib/module#SvogvModule')
-    }),
-
-    new webpack.DefinePlugin({
+    new DefinePlugin({
       'process.env': {
-        'ENV': JSON.stringify(ENV)
+        ENV: JSON.stringify(ENV)
       }
+    }),
+    new CopyWebpackPlugin([
+      {
+        from : './src/lib/package.json',
+        to: './'
+      },
+      {
+        from : './src/lib/README.md',
+        to: './'
+      }
+    ]),
+  new ContextReplacementPlugin(
+      /@angular(\\|\/)core(\\|\/)esm5/,
+      path.join(__dirname, './client')
+    ),
+    new FilterWarningsPlugin({
+      exclude: /System.import/
+    }),
+    new AngularCompilerPlugin({
+      tsConfigPath: './src/lib/tsconfig.json',
+      entryModule: path.join(__dirname, 'src/lib/module#SvogvModule'),
+      sourceMap: true
     })
   ]
 };

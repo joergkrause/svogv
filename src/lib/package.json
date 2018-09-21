@@ -1,7 +1,7 @@
 {
   "name": "svogv",
   "version": "0.6.0",
-  "description": "A decorator based appreach for model driven forms and some time saving form widgets.",
+  "description": "A decorator based approach for model driven forms and some time saving form widgets.",
   "main": "./bundles/svogv.umd.js",
   "module": "./index.js",
   "typings": "./index.d.ts",
@@ -14,6 +14,7 @@
     "angular2",
     "angular4",
     "angular5",
+    "angular6",
     "Reactive",
     "Forms",
     "Validation",
@@ -27,14 +28,14 @@
   },
   "homepage": "https://github.com/joergkrause/svogv#readme",
   "peerDependencies": {
-    "@angular/common": ">= 2.2.0",
-    "@angular/compiler": ">= 2.2.0",
-    "@angular/core": ">= 2.2.0",
-    "@angular/forms": ">= 2.2.0",
-    "@angular/http": ">= 2.2.0",
-    "@angular/platform-browser": ">= 2.2.0",
-    "@angular/platform-browser-dynamic": ">= 2.2.0",
-    "@angular/router": ">= 3.1.0",
-    "typescript": "^2.3.2"
+    "@angular/common": ">= 6.0.0",
+    "@angular/compiler": ">= 6.0.0",
+    "@angular/core": ">= 6.0.0",
+    "@angular/forms": ">= 6.0.0",
+    "@angular/http": ">= 6.0.0",
+    "@angular/platform-browser": ">= 6.0.0",
+    "@angular/platform-browser-dynamic": ">= 6.0.0",
+    "@angular/router": ">= 6.0.0",
+    "typescript": "^2.7.2"
   }
 }
