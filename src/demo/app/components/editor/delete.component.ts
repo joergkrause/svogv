@@ -1,6 +1,6 @@
 ﻿// public
 import { Component, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormValidatorService } from 'svogv';
 // private
@@ -25,7 +25,7 @@ export class DeleteEditorComponent implements OnInit {
   constructor(private apiService: SiteApiService,
     private route: ActivatedRoute,
     private router: Router,
-    private formService: FormValidatorService) {
+    private emitterService: EmitterService) {
   }
 
   ngOnInit() {
@@ -59,7 +59,7 @@ export class DeleteEditorComponent implements OnInit {
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend
-          EmitterService.get('BROADCAST').emit();
+          this.emitterService.get('BROADCAST').emit();
           this.closeForm();
         });
     }

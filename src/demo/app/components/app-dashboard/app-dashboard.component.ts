@@ -15,9 +15,9 @@ export class DashboardComponent {
 
   users: Array<UserViewModel> = [];
 
-  constructor(private apiService: SiteApiService) {
+  constructor(private apiService: SiteApiService, private emitterService: EmitterService) {
     // raw data for tiles
-    EmitterService.get('BROADCAST_Users').subscribe(data => {
+    this.emitterService.get('BROADCAST_Users').subscribe(data => {
       console.log('Dashboard received BROADCAST_Users event');
       this.users = data;
     });

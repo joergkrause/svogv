@@ -6,6 +6,7 @@ import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService, EmitterService } from '../../services/index';
 import { UserViewModel } from '../../viewmodels/index';
+import { emailType } from '../../../node_modules/svogv/services/formvalidator.model';
 
 @Component({
   moduleId: module.id,
@@ -18,16 +19,16 @@ import { UserViewModel } from '../../viewmodels/index';
 export class NewEditorComponent implements OnInit {
 
   userForm: FormGroup;
-  saveResult: boolean = false;
+  saveResult = false;
 
   constructor(private apiService: SiteApiService,
-              private route: ActivatedRoute,
               private router: Router,
-              private formService: FormValidatorService) {
+              private formService: FormValidatorService,
+              private emitterService: EmitterService) {
   }
 
   ngOnInit() {
-    // get validators and error messages from viewmodel type     
+    // get validators and error messages from viewmodel type
     this.userForm = this.formService.build(UserViewModel);
     // register changes
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -47,7 +48,7 @@ export class NewEditorComponent implements OnInit {
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend
-          EmitterService.get('BROADCAST').emit();
+          this.emitterService.get('BROADCAST').emit();
           this.closeForm();
         });
     }

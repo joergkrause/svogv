@@ -19,7 +19,9 @@ export class SiteRootComponent implements OnInit {
   dynamicMenu: AcMenu;
   currentYear: string;
 
-  constructor(public apiService: SiteApiService, private route: ActivatedRoute) {
+  constructor(public apiService: SiteApiService,
+              private route: ActivatedRoute,
+              private emitterService: EmitterService) {
     // default on boot
     this.currentRoute = {
       'title': 'Dashboard', 'subtitle': 'SVOGV Demo'
@@ -46,7 +48,7 @@ export class SiteRootComponent implements OnInit {
     );
     // get dashboard data on load and distribute to all listening components
     this.apiService.getUsers().subscribe(data => {
-      EmitterService.get('BROADCAST_Users').emit(data);
+      this.emitterService.get('BROADCAST_Users').emit(data);
     });
   }
 

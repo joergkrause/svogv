@@ -1,6 +1,5 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from "@angular/router";
-import "rxjs/add/operator/filter";
+import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
 
 export interface IBreadcrumb {
     label: string;
@@ -37,14 +36,16 @@ export class AcBreadCrumbComponent implements OnInit {
 
     public breadcrumbs: Array<IBreadcrumb>;
 
-    constructor(private activatedRoute: ActivatedRoute, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute,
+               private router: Router) {
         this.home = 'Home';
         this.icon = 'fa-dashboard';
         this.breadcrumbs = new Array<IBreadcrumb>();
     }
 
     ngOnInit() {
-        // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" } in the router config for those items that shall appear in the breadcrumb 
+        // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
+        // in the router config for those items that shall appear in the breadcrumb
         const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
         const ROUTE_DATA_SUBTITLE = 'subtitle';
 
@@ -57,7 +58,7 @@ export class AcBreadCrumbComponent implements OnInit {
             let currentRoute: ActivatedRoute = this.activatedRoute.root;
 
             // set the url to an empty string
-            let url: string = '';
+            let url = '';
 
             // iterate from activated route to children
             while (currentRoute.children.length > 0) {

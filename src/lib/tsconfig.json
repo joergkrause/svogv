@@ -10,22 +10,19 @@
     "noEmitOnError": true,
     "noImplicitAny": false,
     "suppressImplicitAnyIndexErrors": true,
-    "outDir": "../../dist/svogv",
     "rootDir": ".",
     "sourceMap": true,
     "target": "es5",
+    "outDir": "../../dist/lib",
     "inlineSources": true,
     "stripInternal": false,
-    "typeRoots": [
-      "../../node_modules/@types"
-    ],
-    "types": [
-      "jasmine", "node"
-    ]
+    "typeRoots": ["../../node_modules/@types"],
+    "types": ["jasmine", "node"]
   },
-    "files": [
-      "module.ts"
-    ],
+  "include": ["module.ts", "index.ts"],
+  "exclude": [
+    "/node_modules/"
+  ],
   "angularCompilerOptions": {
     "genDir": "../../dist",
     "skipTemplateCodegen": true,

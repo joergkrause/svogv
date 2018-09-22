@@ -11,6 +11,14 @@ If you want to build the demo against the official repo on npm, install SVOGV li
 npm install svogv --save
 ~~~
 
+You can also build against your local build:
+
+~~~
+npm install ../../dist/lib --save
+~~~
+
+This assumes that you already have made successful build of the lib alone -- see instructions there.
+
 ### About
 
 The demo app shows the components in action. It's a simple http server that serves static files. The demo data is in the TypeScript sources.
@@ -31,11 +39,13 @@ npm start
 
 That's it. 
 
-> The build script copies the data to _/../../dist/demo_ folder and executes the 'http-server' on port 3000, then. The default browser opens automatically. Enjoy!  
+> The build script copies the data to _/../../dist/demo_ folder and executes the 'http-server' on port 3000, then. The default browser opens automatically. Enjoy! 
 
 The demo ist part of the complete project as shown on Github. 
 
 ![](/docs/images/DemoInstruction.png)
+
+> If an `ERRADRINUSE` message occurs you may have to change the port to something other than 3000.
 
 #### Explanation
 
@@ -47,10 +57,11 @@ The demo ist part of the complete project as shown on Github.
 
 The project is also a good starter for learning about Angular compression and production optimization. The underlying builder is based on Gulp, Rollup, SystemJS-Builder and several common tools for minification and code reduction.
 
-### Gulp & Rollup
+### WebPack
 
 The final self executing (IIEF) file is 830 KB in size and when compressed with gzip we get 207 KB. That's quite good as it has almost everything we need. It's accompanied by:
 
 * vendor.js (193 KB, 62 KB zipped)
-* site.css (106 KB, 18 KB zipped) -> including all of Bootstrap
+* site.css (106 KB, 18 KB zipped) -> including all of Bootstrap 4
 
+We now use WebPack (was Gulp & Rollup before) and it's plain the typical way WebPack works, nothing special.

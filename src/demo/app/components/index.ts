@@ -1,12 +1,12 @@
 ﻿// root and page management
-export * from './site-root.component';
-export * from './site-nav.component';
+export * from './site-root/site-root.component';
+export * from './site-nav/site-nav.component';
 // standard pages
-export * from './site-about.component';
+export * from './site-about/site-about.component';
 // app pages and common ui components
-export * from './app-dashboard.component';
-export * from './app-editor.component';
-export * from './app-widgets.component';
+export * from './app-dashboard/app-dashboard.component';
+export * from './app-editor/app-editor.component';
+export * from './app-widgets/app-widgets.component';
 export * from './ui/index';
 // app : editor
 export * from './editor/list.component';
