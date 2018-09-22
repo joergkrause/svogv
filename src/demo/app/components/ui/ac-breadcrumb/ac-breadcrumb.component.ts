@@ -1,5 +1,6 @@
 ﻿import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, Params, PRIMARY_OUTLET } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 export interface IBreadcrumb {
     label: string;
@@ -50,7 +51,7 @@ export class AcBreadCrumbComponent implements OnInit {
         const ROUTE_DATA_SUBTITLE = 'subtitle';
 
         // subscribe to the NavigationEnd event
-        this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+        this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
             // reset breadcrumbs
             this.breadcrumbs = new Array<IBreadcrumb>();
 

@@ -1,5 +1,6 @@
 ﻿import { Component, Input, Output } from '@angular/core';
 import { Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 /**
  * Create a single tab for tab views.
@@ -85,7 +86,7 @@ export class AcTabsComponent {
   ngOnInit() {
 
     // subscribe to the NavigationEnd event
-    this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
 
       // get the root route
       let currentRoute: ActivatedRoute = this.activatedRoute.root;

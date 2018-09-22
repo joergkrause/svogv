@@ -53,7 +53,6 @@ import { FormValidatorService, FormValidatorFromJsonService, WindowRef, SvogvMod
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
     , WindowRef
     , FormValidatorService, FormValidatorFromJsonService  // the forms support, manages the decorators
-    , 
   ]
 })
 export class RootModule {
