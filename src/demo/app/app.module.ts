@@ -26,7 +26,7 @@ export class DemoPipe implements PipeTransform {
 
 const injector = Injector.create({providers: [{provide: DemoPipe, deps: []}]});
 
-const svogvModule = SvogvModule.forRoot(injector);
+const svogvModule = SvogvModule; //.forRoot(injector);
 const routerModule = RouterModule.forRoot(routes);
 
 @NgModule({
@@ -36,7 +36,7 @@ const routerModule = RouterModule.forRoot(routes);
     FormsModule,
     ReactiveFormsModule,
     routerModule,
-    svogvModule
+    SvogvModule
   ],
   declarations: [
     // Demo app

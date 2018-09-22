@@ -1,4 +1,3 @@
-
 // see: https://www.ag-grid.com/ag-grid-webpack-ngtools/
 // see: https://angular-2-training-book.rangle.io/handout/aot/aot_config.html
 
@@ -7,7 +6,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { AngularCompilerPlugin } = require('@ngtools/webpack');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const ENV = (process.env.NODE_ENV = process.env.ENV = 'production');
 
 module.exports = {
   entry: {
@@ -54,7 +53,7 @@ module.exports = {
 
     new webpack.DefinePlugin({
       'process.env': {
-        'ENV': JSON.stringify(ENV)
+        ENV: JSON.stringify(ENV)
       }
     })
   ]

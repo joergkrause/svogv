@@ -35,8 +35,7 @@ export class SvogvModule {
 
   // store this for access to custom pipes in the model's helper classes, which are not injectable
   // SvogvModule['injector'] = injector;
-  public static forRoot(injector: Injector): ModuleWithProviders {
-    SvogvModule['injector'] = injector;
+  public static forRoot(injector?: Injector): ModuleWithProviders {
     return {
       ngModule: SvogvModule,
       providers: provider

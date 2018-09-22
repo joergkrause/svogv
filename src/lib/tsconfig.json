@@ -17,7 +17,8 @@
     "inlineSources": true,
     "stripInternal": false,
     "typeRoots": ["../../node_modules/@types"],
-    "types": ["jasmine", "node"]
+    "types": ["jasmine", "node"],
+    "baseUrl": "./"
   },
   "include": ["module.ts", "index.ts"],
   "exclude": [
