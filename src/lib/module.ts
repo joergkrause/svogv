@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders, Injector } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
@@ -17,27 +17,30 @@ const SVOGV_COMPONENTS = [
   wd.AcTreeViewNode,
   wd.AcEditor,
   wd.AcAutoForm,
-  wd.AcLoaderIcon,
-  wd.AcAnalogClock,
   wd.AcFormatDataPipe
 ];
+
+const provider = [FormValidatorService, FormValidatorFromJsonService];
 
 /**
  * The actual SVOGV Module definition using the root module.
  */
 @NgModule({
-  imports: [BrowserModule, RouterModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   declarations: SVOGV_COMPONENTS,
-  providers: [FormValidatorService, FormValidatorFromJsonService],
+  providers: provider,
   exports: SVOGV_COMPONENTS
 })
 export class SvogvModule {
 
   // store this for access to custom pipes in the model's helper classes, which are not injectable
-  static injector: Injector;
-
-  constructor(injector: Injector) {
-    SvogvModule.injector = injector;
+  // SvogvModule['injector'] = injector;
+  public static forRoot(injector: Injector): ModuleWithProviders {
+    SvogvModule['injector'] = injector;
+    return {
+      ngModule: SvogvModule,
+      providers: provider
+    };
   }
 
 }

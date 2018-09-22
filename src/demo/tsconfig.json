@@ -24,5 +24,13 @@
   ],
   "types": [
     "node"
-  ]
+  ],
+  "angularCompilerOptions": {
+    "genDir": "../../dist",
+    "skipTemplateCodegen": false,
+    "strictMetadataEmit": true,
+    "skipMetadataEmit": false,
+    "fullTemplateTypeCheck": false
+  }
+  
 }

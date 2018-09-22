@@ -16,6 +16,4 @@ export * from './editor/edit-autoform.component';
 export * from './editor/new.component';
 // app : widgets
 export * from './widgets/list.component';
-export * from './widgets/analogclock.component';
-export * from './widgets/loadericon.component';
 export * from './widgets/treeview.component';

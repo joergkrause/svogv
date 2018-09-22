@@ -19,8 +19,8 @@ export class AcDataGridItem {
   pipeToken?: any;
 
   public getFormatted(pipeArgs: any[]): any {
-    let pipe = SvogvModule.injector.get(this.pipeToken);
-    return pipe.transform(this.value, ...pipeArgs);
+    let pipe = SvogvModule['injector'] && SvogvModule['injector'].get(this.pipeToken);
+    return pipe && pipe.transform(this.value, ...pipeArgs);
   }
 
 }

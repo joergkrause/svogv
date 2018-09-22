@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Injector, Pipe, PipeTransform } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,14 +14,29 @@ import routes from './configurations/routes';
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
 import { FormValidatorService, FormValidatorFromJsonService, WindowRef, SvogvModule } from 'svogv';
 
+@Pipe({
+  name: 'demo',
+})
+export class DemoPipe implements PipeTransform {
+  transform(value: any, ...args: any[]) {
+    // do nothing, just shows injectibility
+    return value;
+  }
+}
+
+const injector = Injector.create({providers: [{provide: DemoPipe, deps: []}]});
+
+const svogvModule = SvogvModule.forRoot(injector);
+const routerModule = RouterModule.forRoot(routes);
+
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
-    SvogvModule
+    routerModule,
+    svogvModule
   ],
   declarations: [
     // Demo app
@@ -39,13 +54,13 @@ import { FormValidatorService, FormValidatorFromJsonService, WindowRef, SvogvMod
     // Widget Demos
     , cmp.WidgetDemoComponent
     , cmp.ListWidgetsComponent
-    , cmp.AnalogClockComponent
     , cmp.TreeviewComponent
-    , cmp.LoaderIconComponent
     // Custom Widgets just for Demo
     , cmp.AcSideMenuComponent
     , cmp.AcBreadCrumbComponent
     , cmp.AcTabsComponent
+    // Demo Pipe
+    , DemoPipe
   ],
   bootstrap: [cmp.SiteRootComponent],
   providers: [

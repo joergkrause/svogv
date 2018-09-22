@@ -15,14 +15,17 @@ const ENV = (process.env.NODE_ENV = process.env.ENV = 'production');
 
 module.exports = {
   entry: {
-    "svogv": './src/lib/module.ts',
-    "svogv.min": './src/lib/module.ts'
+    svogv: './src/lib/module.ts',
+    'svogv.min': './src/lib/module.ts'
   },
   mode: process.env.NODE_ENV,
+  performance: { hints: false },
   optimization: {
-    minimizer: [new UglifyJsPlugin({
-      include: /(\.)*svogv.min/
-    })]    
+    minimizer: [
+      new UglifyJsPlugin({
+        include: /(\.)*svogv.min/
+      })
+    ]
   },
   output: {
     path: path.join(__dirname, 'dist/lib'),
@@ -43,7 +46,7 @@ module.exports = {
       {
         test: /\.html$/,
         loader: 'html-loader'
-        },
+      },
       {
         test: /\.css$/,
         loader: 'style-loader!css-loader!'
@@ -56,24 +59,21 @@ module.exports = {
         ENV: JSON.stringify(ENV)
       }
     }),
-    // new TypescriptDeclarationPlugin({
-    //   out: 'index.d.ts'
-    // }),
     new CopyWebpackPlugin([
       {
-        from : './src/lib/package.json',
+        from: './src/lib/package.json',
         to: './'
       },
       {
-        from : './src/lib/README.md',
+        from: './src/lib/README.md',
         to: './'
       },
       {
-        from : './LICENSE',
+        from: './LICENSE',
         to: './'
       }
     ]),
-  new ContextReplacementPlugin(
+    new ContextReplacementPlugin(
       /@angular(\\|\/)core(\\|\/)esm5/,
       path.join(__dirname, './client')
     ),
@@ -83,7 +83,7 @@ module.exports = {
     new AngularCompilerPlugin({
       tsConfigPath: './src/lib/tsconfig.json',
       entryModule: path.join(__dirname, 'src/lib/module#SvogvModule'),
-      sourceMap: true      
+      sourceMap: true
     })
   ]
 };

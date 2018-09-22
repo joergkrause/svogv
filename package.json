@@ -8,7 +8,7 @@
     "clean-lib": "rimraf dist/lib",
     "clean-demo": "rimraf dist/demo",
     "build": "npm run clean && npm run build-lib && npm run build-demo",
-    "build-lib": "npm run clean-lib && webpack --config webpack.config.js --progress --profile --bail",
+    "build-lib": "npm run clean-lib && webpack --config webpack.config.js --profile --bail",
     "build-demo": "npm run clean-demo && cd ./src/demo && webpack --config webpack.config.js --progress --profile --bail && cd ../../",
     "start": "npm run build && http-server ./dist/demo --gzip -p 3000 -o",
     "test": "gulp test",
