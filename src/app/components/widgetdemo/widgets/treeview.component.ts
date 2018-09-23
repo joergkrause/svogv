@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { AcTreeNodeOptions, AcTextTreeNode, AcTreeNode } from 'svogv/svogv';
+import { AcTreeNodeOptions, AcTextTreeNode, AcTreeNode } from 'svogv';
 
 @Component({
   selector: 'app-treeview',

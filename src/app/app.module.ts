@@ -12,7 +12,7 @@ import * as cmp from './components';
 import { routes } from './configurations/routes';
 
 // The SVOGV library (in the demo it's a hard link with paths info in tsconfig,
-import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv/svogv';
+import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
 
 @Pipe({
   name: 'demo',
