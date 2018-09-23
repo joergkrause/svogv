@@ -19,10 +19,6 @@ export enum Direction {
  * - paging
  */
 export class AcDataGridModel<T> {
-  searchValue: T = <T>{};
-  currentPageIndex = 1;
-  pageSize: number;
-  private _items: T[];
 
   constructor(items: T[], typeInstance: any, pageSize = 10) {
     this._items = items;
@@ -60,7 +56,7 @@ export class AcDataGridModel<T> {
   }
 
   get maxPageIndex(): number {
-    let index = Math.ceil(this.totalFilteredRows / this.pageSize);
+    const index = Math.ceil(this.totalFilteredRows / this.pageSize);
     return index;
   }
 
@@ -69,14 +65,6 @@ export class AcDataGridModel<T> {
   }
   get items(): T[] {
     return this._items;
-  }
-
-  getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
-    if (sortDirection === Direction.Ascending) {
-      return this.items.sort((a: any, b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
-    } else {
-      return this.items.sort((a: any, b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
-    }
   }
 
   get itemsFiltered(): T[] {
@@ -88,12 +76,35 @@ export class AcDataGridModel<T> {
       this.startRow + this.pageSize);
   }
 
+  public get headers(): Array<AcDataGridHeader> {
+    return this._headers.filter(h => !h.hidden);
+  }
+
+  public get headersNotVisible(): Array<AcDataGridHeader> {
+    return this._headers.filter(h => h.hidden);
+  }
+  searchValue: T = <T>{};
+  currentPageIndex = 1;
+  pageSize: number;
+  private _items: T[];
+
+  private _headers: Array<AcDataGridHeader>;
+
+  getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
+    if (sortDirection === Direction.Ascending) {
+      return this.items.sort((a: any, b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
+    } else {
+      return this.items.sort((a: any, b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
+    }
+  }
+
   // The view can get col by col filtered for valid headers
   public columnsOfItemValues(item: T): Array<any> {
     // we return all if no headers
-    let columns: Array<any> = new Array<any>();
+    const columns: Array<any> = new Array<any>();
     if (!this._headers) {
-      for (var prop in item) {
+      // tslint:disable-next-line:forin
+      for (const prop in item) {
         columns.push((<any>item)[prop]);
       }
     } else {
@@ -105,14 +116,14 @@ export class AcDataGridModel<T> {
 
   public columnsOfItem(item: T): Array<AcDataGridItem> {
     // we return all if no headers
-    let columns: Array<AcDataGridItem> = new Array<AcDataGridItem>();
-    let currentHeaders: AcDataGridHeader[] = this.headers || Object.keys(item).map(h => new AcDataGridHeader(h, null, h, false));
+    const columns: Array<AcDataGridItem> = new Array<AcDataGridItem>();
+    const currentHeaders: AcDataGridHeader[] = this.headers || Object.keys(item).map(h => new AcDataGridHeader(h, null, h, false));
     currentHeaders
       .forEach((h, idx) => {
-        let e = new AcDataGridItem();
+        const e = new AcDataGridItem();
         e.value = (<any>item)[h.prop];
         e.prop = h.prop;
-        let hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
+        const hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
         if (hasPipe) {
           e.pipeToken = hasPipe;
         }
@@ -125,18 +136,8 @@ export class AcDataGridModel<T> {
     this.items.sort((a: any, b: any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
   }
 
-  private _headers: Array<AcDataGridHeader>;
-
-  public get headers(): Array<AcDataGridHeader> {
-    return this._headers.filter(h => !h.hidden);
-  }
-
-  public get headersNotVisible(): Array<AcDataGridHeader> {
-    return this._headers.filter(h => h.hidden);
-  }
-
   public removeColumn(colname: string) {
-    let col = this._headers.find(h => h.prop === colname);
+    const col = this._headers.find(h => h.prop === colname);
     if (col) {
       col.hidden = true;
     }
@@ -154,12 +155,13 @@ export class AcDataGridModel<T> {
     // has at least one row, so we can read the headers
     // first we read the properties
     this._headers = new Array<AcDataGridHeader>();
-    for (let p in type) {
+    // tslint:disable-next-line:forin
+    for (const p in type) {
       // either propname or decorator name
-      let propName = type[`__displayName__${p}`] || p;
-      let propDesc = type[`__displayDesc__${p}`] || p;
+      const propName = type[`__displayName__${p}`] || p;
+      const propDesc = type[`__displayDesc__${p}`] || p;
       // check if hidden, show if no hidden decorator
-      let isHidden = type[`__isHidden__${p}`] || false;
+      const isHidden = type[`__isHidden__${p}`] || false;
       this._headers.push(new AcDataGridHeader(propName, propDesc, p, isHidden));
     }
   }

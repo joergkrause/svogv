@@ -18,8 +18,8 @@ export class FormValidatorService {
   }
 
   public build(target: any): FormGroup {
-    let valGroup: any = {};
-    let errGroup: any = {};
+    const valGroup: any = {};
+    const errGroup: any = {};
     let form: FormGroup;
     let targetInstance: any;
     if (target) {
@@ -31,34 +31,35 @@ export class FormValidatorService {
       }
     }
     if (targetInstance) {
-      for (let propName in targetInstance) {
-        let validators = new Array<any>();
-        let errmsgs = new Object();
-        let isRequired = `__isRequired__${propName}` in target.prototype;
+      // tslint:disable-next-line:forin
+      for (const propName in targetInstance) {
+        const validators = new Array<any>();
+        const errmsgs = new Object();
+        const isRequired = `__isRequired__${propName}` in target.prototype;
         if (isRequired) {
           (<any>errmsgs)['required'] = target.prototype[`__errRequired__${propName}`];
           validators.push(Validators.required);
         }
-        let hasMaxLength = `__hasMaxLength__${propName}` in target.prototype;
+        const hasMaxLength = `__hasMaxLength__${propName}` in target.prototype;
         if (hasMaxLength) {
           (<any>errmsgs)['maxlength'] = target.prototype[`__errMaxLength__${propName}`];
-          let maxLength = parseInt(target.prototype[`__hasMaxLength__${propName}`], 10);
+          const maxLength = parseInt(target.prototype[`__hasMaxLength__${propName}`], 10);
           validators.push(Validators.maxLength(maxLength));
         }
-        let hasMinLength = `__hasMinLength__${propName}` in target.prototype;
+        const hasMinLength = `__hasMinLength__${propName}` in target.prototype;
         if (hasMinLength) {
           (<any>errmsgs)['minlength'] = target.prototype[`__errMinLength__${propName}`];
-          let minLength = parseInt(target.prototype[`__hasMinLength__${propName}`], 10);
+          const minLength = parseInt(target.prototype[`__hasMinLength__${propName}`], 10);
           validators.push(Validators.minLength(minLength));
         }
-        let hasPattern = `__hasPattern__${propName}` in target.prototype;
+        const hasPattern = `__hasPattern__${propName}` in target.prototype;
         if (hasPattern) {
           (<any>errmsgs)['pattern'] = target.prototype[`__errPattern__${propName}`];
-          let pattern = new RegExp(target.prototype[`__hasPattern__${propName}`]);
+          const pattern = new RegExp(target.prototype[`__hasPattern__${propName}`]);
           validators.push(Validators.pattern(pattern));
         }
-        let hasRangeFrom = `__hasRangeFrom__${propName}` in target.prototype;
-        let hasRangeTo = `__hasRangeTo__${propName}` in target.prototype;
+        const hasRangeFrom = `__hasRangeFrom__${propName}` in target.prototype;
+        const hasRangeTo = `__hasRangeTo__${propName}` in target.prototype;
         if (hasRangeFrom || hasRangeTo) {
           (<any>errmsgs)['range'] = target.prototype[`__errRange__${propName}`];
           let f: number | Date = Number(target.prototype[`__hasRangeFrom__${propName}`]);
@@ -70,10 +71,10 @@ export class FormValidatorService {
           }
           validators.push(validateRange(f, t));
         }
-        let hasCompare = `__hasCompareProperty__${propName}` in target.prototype;
+        const hasCompare = `__hasCompareProperty__${propName}` in target.prototype;
         if (hasCompare) {
           (<any>errmsgs)['compare'] = target.prototype[`__errCompareProperty__${propName}`];
-          let compare = target.prototype[`__withCompare__${propName}`];
+          const compare = target.prototype[`__withCompare__${propName}`];
           validators.push(validateCompare(compare));
         }
         if (validators.length === 0) {
@@ -94,8 +95,9 @@ export class FormValidatorService {
       // the cast is just to suppress TS errors and shows it's intentionally
       (<any>form)['__editorModel__'] = targetInstance;
       // register controls and add messages
-      for (let propName in errGroup) {
-        let ctrl = <any>form.controls[propName];
+      // tslint:disable-next-line:forin
+      for (const propName in errGroup) {
+        const ctrl = <any>form.controls[propName];
         if (!ctrl) {
           continue; // control might not be in the form
         }

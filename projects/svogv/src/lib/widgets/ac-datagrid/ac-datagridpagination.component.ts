@@ -51,31 +51,31 @@ import {
                 </a>
             </li>
             <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex">
-                <a href aria-label="Previous" 
+                <a href aria-label="Previous"
                     (click)="setCurrentPage(currentPageNumber - 1, $event)">
                     <span aria-hidden="true">‹</span>
                 </a>
             </li>
-            <li *ngFor="let index of range(pageStartNumber, pageEndNumber)" 
+            <li *ngFor="let index of range(pageStartNumber, pageEndNumber)"
                         [class.active]="currentPageNumber === index">
                 <a href (click)="setCurrentPage(index, $event)">
                     <span aria-hidden="true">{{ index }}</span>
                 </a>
             </li>
-            <li [class.disabled]="currentPageNumber === maxPageIndex 
+            <li [class.disabled]="currentPageNumber === maxPageIndex
                                   || !maxPageIndex">
                 <a href (click)="setCurrentPage(currentPageNumber + 1, $event)" aria-label="Last">
                     <span aria-hidden="true">›</span>
                 </a>
             </li>
-            <li [class.disabled]="currentPageNumber === maxPageIndex 
+            <li [class.disabled]="currentPageNumber === maxPageIndex
                                   || !maxPageIndex">
                 <a href (click)="setCurrentPage(maxPageIndex, $event)" aria-label="Last">
                     <span aria-hidden="true">»</span>
                 </a>
             </li>
         </ul>
-    </div>    
+    </div>
     `
 })
 export class AcDataGridPagination implements OnInit, OnChanges {
@@ -97,11 +97,11 @@ export class AcDataGridPagination implements OnInit, OnChanges {
 
   ngOnChanges(changes: { [propertyName: string]: SimpleChange }) {
     if (changes['maxPageIndex']) {
-      let change = changes['maxPageIndex'];
+      const change = changes['maxPageIndex'];
       if (this.currentPageNumber > change.currentValue) {
         // throws ExpressionChangedAfterItHasBeenCheckedException
         // if there's no setTimeout.
-        // no need to add setTimeout if ngOnChanges 
+        // no need to add setTimeout if ngOnChanges
         // is fired after changes made on root component.
         setTimeout(() => this.setCurrentPage(1), 1);
       }
@@ -122,7 +122,7 @@ export class AcDataGridPagination implements OnInit, OnChanges {
   }
 
   range(min: number, max: number): number[] {
-    let result = new Array<any>();
+    const result = new Array<any>();
     for (let i = min; i <= max; i++) {
       result.push(i);
     }
@@ -130,7 +130,7 @@ export class AcDataGridPagination implements OnInit, OnChanges {
   }
 
   get pageStartNumber(): number {
-    let startNumber = this.currentPageNumber <= 4
+    const startNumber = this.currentPageNumber <= 4
       ? 1
       : this.currentPageNumber >= this.maxPageIndex - 3
         ? this.maxPageIndex - 6
@@ -139,7 +139,7 @@ export class AcDataGridPagination implements OnInit, OnChanges {
   }
 
   get pageEndNumber(): number {
-    let pageEnd = this.pageStartNumber + 6;
+    const pageEnd = this.pageStartNumber + 6;
     return pageEnd > this.maxPageIndex ? this.maxPageIndex : pageEnd;
   }
 }

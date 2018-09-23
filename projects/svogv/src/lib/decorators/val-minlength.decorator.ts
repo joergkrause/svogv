@@ -1,9 +1,9 @@
 ﻿/**
  * The minlength decorator assures that a string field contains at least a number of characters.
- * 
+ *
  * @param len: the required length.
- * @param msg: A custom message. 
- * 
+ * @param msg: A custom message.
+ *
  */
 export function MinLength(len: number, msg?: string) {
     // the original decorator
@@ -17,7 +17,6 @@ export function MinLength(len: number, msg?: string) {
 
 export function minLengthInternalSetup(target: any, key: string, len: number, msg?: string) {
 
-    let _val: any;
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasMinLength__${key}`, {
         value: len,

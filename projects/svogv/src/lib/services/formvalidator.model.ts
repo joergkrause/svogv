@@ -1,7 +1,7 @@
 /**
- * This elements describes the grouping of elements in fieldset-controls. Each 
+ * This elements describes the grouping of elements in fieldset-controls. Each
  * field that is decorated in an DisplayGroup with the very same name is grouped
- * into that part. The name appears in the fieldsets legend-control. The 
+ * into that part. The name appears in the fieldsets legend-control. The
  * description makes a tooltip. If there are more groups the order is controlled
  * by the @see order element.
  */
@@ -35,7 +35,7 @@ export type formatType = {
 };
 /**
  * The field will not appear in autoforms if decorated as hidden. If the parameter
- * is omitted the type returns true due to its pure existence. 
+ * is omitted the type returns true due to its pure existence.
  */
 export type hiddenType = {
   'hidden'?: boolean
@@ -57,20 +57,20 @@ export type readonlyType = {
 };
 /**
  * This controls the actual control type. The default values are (TypeScript type: decorator type: rendered element):
- * 
+ *
  * * string: text: &lt;input type="text"&gt;
  * * date: calendar: &lt;input type="date"&gt;
  * * boolean: boolean: &lt;input type="checkbox"&gt;
  * * number: number: &lt;input type="number"&gt;
- * 
- * This is the formatting that's autoamtically applied. The template hint goes after and can change any of these values. 
+ *
+ * This is the formatting that's autoamtically applied. The template hint goes after and can change any of these values.
  * The allows values are:
- * 
+ *
  * * any: textarea: &lt;textarea&gt;
  * * array: enum:  &lt;select&gt;
  * * array: list: &lt;select&gt;
  * * any: template: The content of the editor element (does not work with &lt;ac-autoform&gt;)
- * 
+ *
  */
 export type templateHintType = {
   'templatehint': {
@@ -80,7 +80,7 @@ export type templateHintType = {
 
 /**
  * Base type for validators.
- * 
+ *
  * Give a private error message in @param msg. If omitted a error message will be generated.
  * Set to active by using @param active. Default is true.
  * Active i18n by using the @param translate. The translation module must be used separately.
@@ -158,7 +158,7 @@ export type stringLengthType = {
  * The form description model. Use this to have a valid JSON object that can be used
  * instead of the decorators. Each type represents a single decorator. The basic
  * structure looks like this:
- * 
+ *
  * @example {
  *            "fieldName": {
  *               "display": {
@@ -166,13 +166,12 @@ export type stringLengthType = {
  *               }
  *            }
  *          }
- * 
+ *
  * See the different type's descriptions for detailled information.
- * 
+ *
  */
 export interface FormValidatorModel {
-  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
+  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType |
+                   compareType | maxlengthType | minlengthType | patternType | stringLengthType |
+                   emailType | requiredType;
 }
-
-
-

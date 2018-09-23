@@ -33,6 +33,13 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models';
   styleUrls: ['./ac-treeview-node.component.css']
 })
 export class AcTreeViewNodeComponent implements OnInit {
+
+  constructor(private el: ElementRef, private renderer: Renderer) {
+    this.nodeClick = new EventEmitter<AcTreeNode>();
+    this.checkChanged = new EventEmitter<AcTreeNode>();
+    this.selectedChanged = new EventEmitter<AcTreeNode>();
+    this.collapseChanged = new EventEmitter<AcTreeNode>();
+  }
   private static pfxIcon = 'fa';
   private static opnIcon = 'fa-plus';
   private static clsIcon = 'fa-minus';
@@ -70,12 +77,7 @@ export class AcTreeViewNodeComponent implements OnInit {
   public backColor: string;
   public isExpanded = false;
 
-  constructor(private el: ElementRef, private renderer: Renderer) {
-    this.nodeClick = new EventEmitter<AcTreeNode>();
-    this.checkChanged = new EventEmitter<AcTreeNode>();
-    this.selectedChanged = new EventEmitter<AcTreeNode>();
-    this.collapseChanged = new EventEmitter<AcTreeNode>();
-  }
+  private preSelectState: boolean;
 
   ngOnInit() {
     // set HTML according to options
@@ -177,8 +179,6 @@ export class AcTreeViewNodeComponent implements OnInit {
       }
     }
   }
-
-  private preSelectState: boolean;
 
   handlePreSelection(state: boolean): void {
     // handle the states according to options

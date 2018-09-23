@@ -5,7 +5,7 @@
  */
 export class PipeTransformType implements PipeTransform {
     transform(value: any, ...args: any[]) {
-        throw new Error("Do not use this class from user code. This class is only to support the SVOGV infrastructure.");
+        throw new Error('Do not use this class from user code. This class is only to support the SVOGV infrastructure.');
     }
 }
 

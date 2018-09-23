@@ -1,6 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { UserViewModel } from '../viewmodels';
@@ -126,7 +126,7 @@ export class SiteApiService {
 
   private handleError(error: Response) {
     console.error(error);
-    return Observable.throw(error.json().error || 'Server error');
+    return throwError(error.json().error || 'Server error');
   }
 
 

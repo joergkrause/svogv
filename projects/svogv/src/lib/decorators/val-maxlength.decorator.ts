@@ -1,9 +1,9 @@
 ﻿/**
  * The maxlength decorator assures that a string field contains not more than a number of characters.
- * 
+ *
  * @param len: the maximum length.
- * @param msg: A custom message. 
- * 
+ * @param msg: A custom message.
+ *
  */
 export function MaxLength(len: number, msg?: string) {
     // the original decorator
@@ -16,8 +16,6 @@ export function MaxLength(len: number, msg?: string) {
 }
 
 export function maxLengthInternalSetup(target: any, key: string, len: number, msg?: string) {
-
-    let _val: any;
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasMaxLength__${key}`, {

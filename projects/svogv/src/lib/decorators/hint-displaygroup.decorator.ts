@@ -19,7 +19,7 @@ export function DisplayGroup(name: string, order: number = 0, description?: stri
 
 export function displayGroupInternalSetup(target: any, key: string, name: string, order: number, description: string) {
 
-    order = parseInt(order.toString());
+    order = parseInt(order.toString(), 10);
     // create a helper property to transport a meta data value
 
     Object.defineProperty(target, `__isGrouped__${key}`, {

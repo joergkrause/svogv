@@ -11,8 +11,8 @@ import { FormGroup } from '@angular/forms';
     'input[type="checkbox"] + label:before { font-family: FontAwesome; }',
     'input[type="checkbox"] + label:before { content: "\\f096"; }',
     'input[type="checkbox"]:checked + label:before { content: "\\f046"; }',
-    `input[type="checkbox"] + label { 
-      display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; 
+    `input[type="checkbox"] + label {
+      display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer;
     }`,
   ],
   templateUrl: './ac-editor.component.html'
@@ -109,7 +109,7 @@ export class AcEditor implements OnInit {
   ngOnInit() {
     this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
     // this is set by FormValidatorService
-    var editorModel = (<any>this.userForm)['__editorModel__'];
+    const editorModel = (<any>this.userForm)['__editorModel__'];
     // get type from form
     if (editorModel) {
       // get elementary types, this might get overwritten later according to decorators found
@@ -163,7 +163,8 @@ export class AcEditor implements OnInit {
   private onValueChanged(data: any) {
     // check validation on change
     this.errors = new Array<string>();
-    for (let error in this.userForm.controls[this.name].errors) {
+    // tslint:disable-next-line:forin
+    for (const error in this.userForm.controls[this.name].errors) {
       this.errors.push(error);
     }
   }

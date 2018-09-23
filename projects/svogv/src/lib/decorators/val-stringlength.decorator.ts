@@ -19,8 +19,6 @@ export function StringLength(min: number, max: number, msg?: string) {
 
 export function stringLengthInternalSetup(target: any, key: string, min: number, max: number, msg?: string) {
 
-    let _val: any;
-
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasMaxLength__${key}`, {
         value: max,

@@ -137,7 +137,7 @@ export class FormValidatorFromJsonService {
               (<any>json)[field][type]['msg']);
             break;
         }
-      })
+      });
     });
     return this.formValidatorService.build(target);
   }
