@@ -1,8 +1,34 @@
 {
   "name": "svogv",
-  "version": "0.6.0-beta.2",
+  "version": "0.6.0-beta.3",
+  "description": "A decorator based approach for model driven forms and some time saving form widgets.",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
     "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  }
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joergkrause/svogv.git"
+  },
+  "keywords": [
+    "Angular",
+    "Reactive",
+    "Forms",
+    "Validation",
+    "Viewmodel",
+    "decorators"
+  ],
+  "author": "Joerg <IsAGeek> Krause",
+  "license": "ISC",
+  "engines": {
+    "node": ">= 8 < 11"
+  },
+  "bugs": {
+    "url": "https://github.com/joergkrause/svogv/issues"
+  },
+  "homepage": "https://github.com/joergkrause/svogv#readme",
+  "private": false
 }

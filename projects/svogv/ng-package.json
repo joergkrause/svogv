@@ -3,5 +3,9 @@
   "dest": "../../dist/svogv",
   "lib": {
     "entryFile": "src/public_api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": [
+    "tslib",
+    "bootstrap"
+  ]
 }
