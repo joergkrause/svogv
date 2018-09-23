@@ -4,15 +4,15 @@ set -ex
 echo "=======  Starting build-and-test.sh  ========================================"
 
 # Go to project dir
-cd $(dirname $0)/../..
+cd $(dirname $0)/../../..
 
 # Include sources.
-source scripts/ci/sources/mode.sh
+source tools/travis/ci/sources/mode.sh
 
 if is_lint; then
-  $(npm bin)/gulp ci:lint
+  $(npm bin)/ng lint
 elif is_demo; then
-  $(npm bin)/gulp ci:demo
+  $(npm bin)/ng build
 else
-  $(npm bin)/gulp ci:build
+  $(npm bin)/ng build svogv
 fi
