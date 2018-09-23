@@ -1,4 +1,4 @@
-﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, Format } from 'svogv';
+﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, Format } from 'svogv/svogv';
 
 import { PercentPipe } from '@angular/common';
 

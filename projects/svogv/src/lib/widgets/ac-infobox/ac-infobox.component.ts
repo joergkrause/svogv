@@ -5,7 +5,7 @@ import { Meaning } from '../../utils/enum-colors';
 
 /**
  * The InfoBox is a rectangle area to show dynamic data. It has icon, text, and additional information.
- * 
+ *
  * @param icon The name of an FontAwesome icon, such as "fa-circle"
  * @param text The text that appears prominently
  * @param number A number that covers the element as the value
@@ -70,7 +70,7 @@ export class AcInfoBox implements OnInit {
 
     getColor(type: string): string {
         if (this.color) {
-            let color: string = (<string>EnumConverter(this.color, Meaning)).toLowerCase();
+            const color: string = (<string>EnumConverter(this.color, Meaning)).toLowerCase();
             return `${type}-${color}`;
         }
     }

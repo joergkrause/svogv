@@ -2,11 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { FormValidatorService } from 'svogv';
+import { FormValidatorService } from 'svogv/svogv';
 // private
 import { SiteApiService, EmitterService } from '../../../services';
 import { UserViewModel } from '../../../viewmodels';
-import { emailType } from 'svogv';
+import { emailType } from 'svogv/svogv';
 
 @Component({
   templateUrl: './new.component.html',
