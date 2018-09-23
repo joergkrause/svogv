@@ -7,7 +7,7 @@ notifications:
     on_failure: never
 
 node_js:
-  - '6.9.1'
+  - '8.9.1'
 
 addons:
   apt:
