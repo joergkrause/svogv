@@ -17,15 +17,15 @@ It's not a replacement of the common documentation for developers using the libr
 The primary part is a almost complete introduction into the world of modern web frontend development. It encapsulates the 
 tool chain, languages, repositories, cloud service and everything else you need to create awesome apps.
 
-The second part is the actual delopment work -- the app's code and frameworks. I decided to use Angular 2 and Bootstrap 4 
+The second part is the actual development work -- the app's code and frameworks. I decided to use Angular 2 and Bootstrap 4 
 as a foundation. Angular 2 introduced as familiar concept in a new way for the web: components. By building a component tree a web app gets better maintainability and clear design, that's closer to the "treeish" nature of HTML. It fits better in the Browser's ecosystem
 than the traditional MVC (model view controller) model.
 
 A big step for web developers was the usage of TypeScript. While other pre-compilers or transpilers are around for years (CoffeeScript for instance),
-TypeScript had the most mature and professional approach. It brings web developement to an entier new level. 
+TypeScript had the most mature and professional approach. It brings web development to an enter a new level. 
 
 However, this comes with a penalty. The learning curve is steep. The setup is huge and confusing. And the effort to get a simple app running
-is enourmous. If you create a huge app, however, it's a trade off. Your code becomes cleaner, easier to maintain, better to read. Your development
+is enormous. If you create a huge app, however, it's a trade off. Your code becomes cleaner, easier to maintain, better to read. Your development
 speed will grow and you can be fast, really fast creating stuff. The setup effort is a one time process and hence it's usually a no-brainer.
 
 ## What's this about
@@ -43,7 +43,7 @@ This document describes the following:
 First, you need to now how to create stuff and how to deploy stuff. You need these things first:
 
 * An editor
-* A command line and some tools to build and deplay your stuff
+* A command line and some tools to build and deploy your stuff
 * A server to host your stuff
 * A browser to view your stuff       
 
