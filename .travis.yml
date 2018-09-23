@@ -43,14 +43,14 @@ install:
   - npm install
 
 before_script:
-  - chmod +x ./scripts/ci/build-and-test.sh
+  - chmod +x ./tools/travis/ci/build-and-test.sh
   - mkdir -p $LOGS_DIR
 
 script:
-  - ./scripts/ci/build-and-test.sh
+  - ./tools/travis/ci/build-and-test.sh
 
 after_success:
-  - ./scripts/ci/after-success.sh
+  - ./tools/travis/ci/after-success.sh
 
 cache:
   directories:

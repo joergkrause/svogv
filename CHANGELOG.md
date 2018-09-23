@@ -73,8 +73,14 @@ There are many fixes in both, demo and lib.
 
 A release mostly dedicated to fixes and reorg. Some components sued just to run the demo were actually in the main lib and hence I have removed them and put in the demo. So the code is still there, but nit as part of the main lib. This makes the lib a lot smaller and it clarifies the intention not competing with the other UI libs but put the focus on forms and validation.
 
+<a name="0.3.5"></a>
+# [0.3.5](https://github.com/joergkrause/svogv/releases/tag/0.3.5) (2018-01-15)
+
+A redesign, mainly removing all experimental parts.
 
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/joergkrause/svogv/releases/tag/0.6.0) (2018-09-15)
 
 An update to support Angular 5 and 6. This is also a change in naming the versions. 0.6.* is for Angular 6, 0.7.* will be the one for Angular 7 and so on.
+
+Also, this is a big change from Gulp/Rollup based build process to using the Angular CLI. After a ton of experiments with WebPack 4 and almost very loader the outcome was more or less fruststrating. With Angular CLI, I must admit, the results are perfect, stable and small packages, and an easy setup procedure.
