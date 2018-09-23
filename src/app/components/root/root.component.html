@@ -1,0 +1,34 @@
+﻿<!-- Main Header -->
+<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+  <button class="navbar-toggler hidden-sm-up pull-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+    ☰
+  </button>
+  <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.png" /></a>
+  <app-nav></app-nav>
+</nav>
+<div class="container-fluid" id="main">
+  <div class="row row-offcanvas row-offcanvas-left">
+    <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+      <!-- The left side menu for application part navigation, menu can be controlled by a service call to manage rights/roles -->
+      <app-sidemenu [menu]="dynamicMenu"></app-sidemenu>
+    </div>
+    <!--/col-->
+    <div class="col-md-9 col-lg-10 main">
+      <h2 class="display-2 hidden-xs-down">
+        {{ currentRoute.title }} <small>{{ currentRoute.subTitle }}</small>
+      </h2>
+      <p class="lead">Welcome to SVOGV &ndash; the 'Simple Validation and Other Great View Components' library</p>
+      <!-- Global navigation path -->
+      <app-breadcrumb></app-breadcrumb>
+      <!-- the global outlet, within the parts the named tab outlet shows sub parts -->
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <!--/main col-->
+  </div>
+</div>
+<!--/.container-->
+<footer class="container-fluid">
+  <p class="text-right small">&copy; 2011 - {{ currentYear }} Joerg &lt;isageek&gt; Krause <i>www.joergkrause.de</i></p>
+</footer>
