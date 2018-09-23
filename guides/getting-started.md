@@ -1,4 +1,4 @@
-This document describes the usage of the SVOGV library for Angular 2+ (currently tested up to Angular 4.4). 
+This document describes the usage of the SVOGV library for Angular 2+ (currently tested up to Angular 6.1). 
 
 ## Install the Lib
  
@@ -73,10 +73,10 @@ Also several validation decorators are supported:
 * Email: Check whether the property contains a valid email
 * Url: Check whether the property contains a valid url
 * Phone: Check whether the property contains a valid phone number (currently supported: USA, Canada, GB, DE, FR, IT, ES)
-* CreditCard: Check whether the property contains a valid creditcard format
+* CreditCard: Check whether the property contains a valid credit card format
 * Isbn:  Check whether the property contains a valid ISBN (international book format number)
 * Compare: Compare this property with another (think of two password fields)
-* Custom: A base class that uses a callback to let you provide your own valdiator
+* Custom: A base class that uses a callback to let you provide your own validator
 
 The usage is simple; just import like this:
 
@@ -91,7 +91,7 @@ In a component this looks like this:
 ~~~
 export class EditUserComponent implements OnInit {
 
-  constructor(private formServie: FormValidatorService) {
+  constructor(private formService: FormValidatorService) {
   }
 
   ngOnInit() {
@@ -101,7 +101,7 @@ export class EditUserComponent implements OnInit {
 }
 ~~~
 
-To get access to the injectable service, you must register it in the *app.ts* file (or whereever you bootstrap your app):
+To get access to the injectable service, you must register it in the *app.ts* file (or wherever you bootstrap your app):
 
 ~~~
 import { FormValidatorService } from 'svogv';
@@ -152,13 +152,14 @@ npm run setup
 
 You can run several scripts:
 
-* "build": "gulp build" --> the global build command, run this and everything else will work
-* "demoall": "gulp build && cd src/demo && npm run exec" --> execute the demo (you MUST run build at least once before)
-* "test": "gulp test" --> unit tests (currently under development)
-* "tslint": "gulp lint" --> TS linter
-* "stylelint": "gulp lint" --> CSS linter
-* "docs": "gulp docs" --> create HTML out of the MD files
+* "build": "ng build" --> the global build command, run this and everything else will work
+* "serve": "ng serve" --> execute the demo and start server at port 4200
+* "test": "ng test" --> unit tests (currently under development)
+* "tslint": "ng lint" --> TS linter
+* "codedoc": "compodoc" --> create code documentation
 
 ## Learn more
 
 Check the demo app, that shows the editor in action. See the [Demo install guide](/src/demo/README).
+
+Check ot the [whole docu](../docs/index.md).
