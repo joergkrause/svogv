@@ -1,6 +1,6 @@
 {
   "name": "svogv",
-  "version": "0.6.0-beta.3",
+  "version": "0.6.1",
   "description": "A decorator based approach for model driven forms and some time saving form widgets.",
   "peerDependencies": {
     "@angular/common": "^6.0.0-rc.0 || ^6.0.0",

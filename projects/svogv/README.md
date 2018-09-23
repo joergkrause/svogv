@@ -1,4 +1,4 @@
-# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widget and Forms Library
+# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widgets and Forms Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
@@ -12,27 +12,23 @@
 
 ## Introduction
 
-Now that Angular 2 is widely used we have – the very first time in years – such a strong feeling in our guts that’s now the first step from ancient crap into something really professional. It brings the level we all know from Java and C# and the mature backend frameworks to the frontend.
-And it goes on. TypeScript is here and know we have something that’s an improvement for front end developers that matters:
+Angular is widely used and we have a strong feeling in our guts that’s now the first step from ancient crap into something really professional for daily project works. It brings the level we all know from Java and C# and their mature backend frameworks to the frontend. And, additionally, TypeScript is here and know we have something that’s an improvement for front end developers that matters. TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
 
-TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
-The last year (yes, we’re in 2017 already) brought a lot experience and some nice projects and the outcome is an advanced peace of software that’s going to make our life with Angular 4+ a lot easier.
-
-It’s a widget library that bring the power of Bootstrap 4 to Angular and adds some very cool stuff to build sophisticated forms – faster than ever.
+However, there is no framework that can't be improved. So I tried to copy a concept from .NET -- the DataAnnotations -- straight to Angular. In this version I'm using Bootstrap 4 for a decorator based forms generator and some nice, small form widgets. 
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular 2+. It's an extension to Angular 2+ that comes as a set of classes and components. 
+The approach was simply the usage of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes and components. 
 
-It's available as source or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
+It's available as source code or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
-> It's pretty small, too. It's 107 KB as a bundle and roughly 20KB compressed. In demo I'm down to 207 KB __including__ Angular and Rx!
+> It's pretty small, too. It's 300 KB as a bundle and roughly 39 KB minified, close to 10 KB zipped. 
 
 ## Issues?
 
-We experiencing an issue with the demo on MS Edge browser (crash). IE 11, Chrome and FF are working fine.
+As of version 0.6 none known issues. Please report issues through Github.
 
-The SVG stuff (Analog Clock and Loader Icons) both do not work in IE 11. The Loader Icons do not work in Edge either.
+Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on).
 
 ## Angular Data Annotations
 
@@ -184,11 +180,6 @@ The widget complement the editor by adding more parts typically used in form app
 * **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
 
-This comes with two fun components just made for learning purposes:
-
-* **AnalogClock**: It is what it says -- based on SVG
-* **LoaderIcon**: A circling icon that is highly customizable
-
 ## Where to get?
 
 It's available from *npm* by using this command:
@@ -217,8 +208,8 @@ To have a running sample in seconds do the following:
 
 1. Clone the repository from Github
 2. Assure you have **node** running and **npm** and Typescript (**tsc**) is in the path
-3. Execute this command: `npm run setup`
-4. Execute this command: `npm run demoall` 
+3. Execute this command: `npm install`
+4. Execute this command: `npm run build` 
 
 A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
 
