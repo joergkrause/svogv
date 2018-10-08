@@ -89,7 +89,7 @@ export class UserViewModel {
 }
 ~~~
 
-> It's important to give the properties a default value. Otherwise the builder strips the decorators when transpiling from TypeScript to JavaScript. 
+> It's important to give the properties a default value. Otherwise the builder strips the decorators when transpiling from TypeScript to JavaScript. An alternative way could be using the compiler options *--strictPropertyInitialization* and *--strictNullChecks* for the TypeScript compiler. Using this may depend on your existing code, so try it carefully.
 
 Now the form part. The form needs to be aware of the decorators. So I have created a service that creates a `FormGroup` instance that has some enhancements. I named it the `FormValidatorService`. 
 
