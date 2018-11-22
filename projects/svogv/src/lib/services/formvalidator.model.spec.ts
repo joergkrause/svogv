@@ -25,6 +25,6 @@ describe('Component: DynamicFormComponent', () => {
       }
     };
     expect(model).toBeDefined();
-    expect(model['anyfield'].displaygroup.name).toEqual('fieldName');
-    })
+    expect(model['anyfield']['displaygroup'].name).toEqual('fieldName');
+    });
 });

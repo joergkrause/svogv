@@ -1,9 +1,9 @@
-<div class="row">
+<div class="row" *ngIf="showSearch">
   <div class="col-md-12">
     <form role="search" class="form-inline col-md-6">
-      <div class="input-group" *ngIf="users">
+      <div class="input-group" *ngIf="model">
         <label for="searchUsers">Search </label>
-        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="users.searchValue.userName"
+        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="model.searchValue.userName"
         />
         <span class="input-group-addon">
           <i class="fa fa-search"></i>
@@ -12,16 +12,16 @@
     </form>
   </div>
 </div>
-<div class="row">
+<div class="row" *ngIf="reArrangeColumns">
   <div class="col-md-12">
     <p>Currently invisible columns. Click to add:
-      <span *ngFor="let col of users.headersNotVisible; let l = last">
-        <button class="btn btn-xs btn-danger" (click)="users.addColumn(col.prop)">Add {{ col.text }}</button>
+      <span *ngFor="let col of model.headersNotVisible; let l = last">
+        <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button>
       </span>&nbsp;
     </p>
   </div>
 </div>
-<div class="row" *ngIf="users">
+<div class="row" *ngIf="model">
   <div class="col-md-12">
     <table class="table table-condensed">
       <colgroup class="colborders">
@@ -33,51 +33,51 @@
       </colgroup>
       <thead>
         <tr>
-          <th *ngFor="let header of users.headers" [title]="header.desc">{{ header.text }}
+          <th *ngFor="let header of model.headers" [title]="header.desc">{{ header.text }}
             <div class="ac-sortsmall">
-              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')">
+              <button class="supersmall" (click)="model.sortColumn(header.prop, 'asc')">
                 <i class="fa fa-sort-asc"></i>
               </button>
-              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')">
+              <button class="supersmall" (click)="model.sortColumn(header.prop, 'desc')">
                 <i class="fa fa-sort-desc"></i>
               </button>
             </div>
-            <button (click)="users.removeColumn(header.prop)" class="btn btn-sm btn-warning">
+            <button (click)="model.removeColumn(header.prop)" class="btn btn-sm btn-warning"  *ngIf="reArrangeColumns">
               <i class="fa fa-remove"></i>
             </button>
           </th>
-          <th>Action
-            <button class="btn btn-sm btn-success float-right" (click)="addUser()">
+          <th *ngIf="showAddButton">Action
+            <button class="btn btn-sm btn-success float-right" (click)="model.addItem()">
               New User
             </button>
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngIf="!users.totalFilteredRows">
+        <tr *ngIf="!model.totalFilteredRows">
           <td colspan="4" class="text-center">
             <div class="alert alert-warning">
-              There are no users available.
+              There are no items available.
             </div>
           </td>
         </tr>
-        <tr *ngFor="let user of users.itemsOnCurrentPage">
-          <td *ngFor="let data of users.columnsOfItemValues(user)">
+        <tr *ngFor="let item of model.itemsOnCurrentPage">
+          <td *ngFor="let data of model.columnsOfItemValues(item)">
             {{ data }}
             </td>
           <td>
-            <button class="btn btn-primary btn-sm" type="button" (click)="editUser(user)">
+            <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">
               Edit (Fields)
             </button>
-            <button class="btn btn-primary btn-sm" type="button" (click)="editUserAutoform(user)">
-              Edit (Auto)
-            </button>
-            <button class="btn btn-danger btn-sm" type="button" (click)="removeUser(user)">
+            <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">
               Delete
             </button>
           </td>
         </tr>
       </tbody>
+      <tfoot>
+        <!-- TODO: Add footer features (sum/avg) -->
+      </tfoot>
     </table>
   </div>
 </div>

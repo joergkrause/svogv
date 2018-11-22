@@ -14,7 +14,7 @@
     the view model's decorators.
   </div>
 </div>
-<ac-datagrid></ac-datagrid>
+<ac-datagrid [model]="users" [showEditButton]="true" [showDeleteButton]="true" (onEdit)="editUser($event)"></ac-datagrid>
 <div class="clearfix">
   <form class="form-inline">
     <div class="form-group" *ngIf="users">

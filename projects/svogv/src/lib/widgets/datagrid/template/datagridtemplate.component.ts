@@ -2,20 +2,17 @@ import {
   Component,
   OnInit,
   Input,
-  ContentChildren,
   ElementRef,
-  QueryList,
-  AfterViewInit,
-  Output
+  AfterViewInit
 } from '@angular/core';
-import { DynamicHTMLRenderer } from '../../../services/dynamichtmlrender.service';
+import { DynamicHtmlRendererService } from '../../../services/dynamichtmlrenderer.service';
 
 @Component({
   selector: 'ac-datagrid-template',
-  templateUrl: './gridtemplate.component.html',
-  styleUrls: ['./gridtemplate.component.css']
+  templateUrl: './datagridtemplate.component.html',
+  styleUrls: ['./datagridtemplate.component.css']
 })
-export class DataGridtemplateComponent implements OnInit, AfterViewInit {
+export class DataGridTemplateComponent implements OnInit, AfterViewInit {
   @Input()
   field: string;
   @Input()
@@ -25,7 +22,7 @@ export class DataGridtemplateComponent implements OnInit, AfterViewInit {
 
   constructor(
     private element: ElementRef,
-    private renderer: DynamicHTMLRenderer
+    private renderer: DynamicHtmlRendererService
   ) {
     console.log('ctor gridtemplate');
   }

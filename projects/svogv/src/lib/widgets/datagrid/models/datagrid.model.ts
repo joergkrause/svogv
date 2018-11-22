@@ -1,4 +1,4 @@
-import { Type } from '@angular/core';
+import { Type, EventEmitter } from '@angular/core';
 
 import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
@@ -21,7 +21,6 @@ export enum Direction {
  * - paging
  */
 export class DataGridModel<T> {
-
   constructor(items: T[], type: Type<T>, pageSize = 10) {
     this._items = items;
     this.pageSize = pageSize;
@@ -37,17 +36,19 @@ export class DataGridModel<T> {
   }
 
   get totalFilteredRows(): number {
-    return (this.itemsFiltered) ? this.itemsFiltered.length : 0;
+    return this.itemsFiltered ? this.itemsFiltered.length : 0;
   }
 
   private get currentRowStart(): number {
     return this.totalRows > this.pageSize
-      ? (this.startRow + 1)
-      : this.totalRows === 0 ? 0 : 1;
+      ? this.startRow + 1
+      : this.totalRows === 0
+      ? 0
+      : 1;
   }
   private get currentRowEnd(): number {
-    return (this.startRow + this.pageSize) < this.totalRows
-      ? (this.startRow + this.pageSize)
+    return this.startRow + this.pageSize < this.totalRows
+      ? this.startRow + this.pageSize
       : this.totalRows;
   }
 
@@ -75,15 +76,17 @@ export class DataGridModel<T> {
   }
 
   get itemsOnCurrentPage(): T[] {
-    return this.itemsFiltered.slice(this.startRow,
-      this.startRow + this.pageSize);
+    return this.itemsFiltered.slice(
+      this.startRow,
+      this.startRow + this.pageSize
+    );
   }
 
-  public get headers(): Array<AcDataGridHeader> {
+  public get headers(): Array<DataGridHeaderModel> {
     return this._headers.filter(h => !h.hidden);
   }
 
-  public get headersNotVisible(): Array<AcDataGridHeader> {
+  public get headersNotVisible(): Array<DataGridHeaderModel> {
     return this._headers.filter(h => h.hidden);
   }
   searchValue: T = <T>{};
@@ -91,13 +94,19 @@ export class DataGridModel<T> {
   pageSize: number;
   private _items: T[];
 
-  private _headers: Array<AcDataGridHeader>;
+  private _headers: Array<DataGridHeaderModel>;
+
+  public onEdit: EventEmitter<T> = new EventEmitter<T>();
 
   getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
     if (sortDirection === Direction.Ascending) {
-      return this.items.sort((a: any, b: any) => a[sortColumn] > b[sortColumn] ? 1 : -1);
+      return this.items.sort((a: any, b: any) =>
+        a[sortColumn] > b[sortColumn] ? 1 : -1
+      );
     } else {
-      return this.items.sort((a: any, b: any) => a[sortColumn] < b[sortColumn] ? 1 : -1);
+      return this.items.sort((a: any, b: any) =>
+        a[sortColumn] < b[sortColumn] ? 1 : -1
+      );
     }
   }
 
@@ -111,32 +120,40 @@ export class DataGridModel<T> {
         columns.push((<any>item)[prop]);
       }
     } else {
-      this.headers
-        .forEach((e, idx) => columns.push((<any>item)[e.prop]));
+      this.headers.forEach((e, idx) => columns.push((<any>item)[e.prop]));
     }
     return columns;
   }
 
-  public columnsOfItem(item: T): Array<AcDataGridItem> {
+  public columnsOfItem(item: T): Array<DataGridItemModel> {
     // we return all if no headers
-    const columns: Array<AcDataGridItem> = new Array<AcDataGridItem>();
-    const currentHeaders: AcDataGridHeader[] = this.headers || Object.keys(item).map(h => new AcDataGridHeader(h, null, h, false));
-    currentHeaders
-      .forEach((h, idx) => {
-        const e = new AcDataGridItem();
-        e.value = (<any>item)[h.prop];
-        e.prop = h.prop;
-        const hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
-        if (hasPipe) {
-          e.pipeToken = hasPipe;
-        }
-        columns.push(e);
-      });
+    const columns: Array<DataGridItemModel> = new Array<DataGridItemModel>();
+    const currentHeaders: DataGridHeaderModel[] =
+      this.headers ||
+      Object.keys(item).map(h => new DataGridHeaderModel(h, null, h, false));
+    currentHeaders.forEach((h, idx) => {
+      const e = new DataGridItemModel();
+      e.value = (<any>item)[h.prop];
+      e.prop = h.prop;
+      const hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
+      if (hasPipe) {
+        e.pipeToken = hasPipe;
+      }
+      columns.push(e);
+    });
     return columns;
   }
 
   public sortColumn(colName: string, dir: string) {
-    this.items.sort((a: any, b: any) => dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : (a[colName] > b[colName] ? -1 : 1));
+    this.items.sort((a: any, b: any) =>
+      dir === 'desc'
+        ? a[colName] > b[colName]
+          ? 1
+          : -1
+        : a[colName] > b[colName]
+        ? -1
+        : 1
+    );
   }
 
   public removeColumn(colname: string) {
@@ -147,17 +164,26 @@ export class DataGridModel<T> {
   }
 
   public addColumn(colname: string) {
-    let col = this._headers.find(h => h.prop === colname);
+    const col = this._headers.find(h => h.prop === colname);
     if (col) {
       col.hidden = false;
     }
+  }
+
+  public addItem() {}
+
+  public deleteItem(item: T) {}
+
+  // called by infrastructure to inform caller of edit wish
+  public editItem(item: T) {
+    this.onEdit.emit(item);
   }
 
   private createHeadersForType(type: any): void {
     // assume simple object structure, iterating an array of viewmodels
     // has at least one row, so we can read the headers
     // first we read the properties
-    this._headers = new Array<AcDataGridHeader>();
+    this._headers = new Array<DataGridHeaderModel>();
     // tslint:disable-next-line:forin
     for (const p in type) {
       // either propname or decorator name
@@ -165,8 +191,9 @@ export class DataGridModel<T> {
       const propDesc = type[`__displayDesc__${p}`] || p;
       // check if hidden, show if no hidden decorator
       const isHidden = type[`__isHidden__${p}`] || false;
-      this._headers.push(new AcDataGridHeader(propName, propDesc, p, isHidden));
+      this._headers.push(
+        new DataGridHeaderModel(propName, propDesc, p, isHidden)
+      );
     }
   }
-
 }

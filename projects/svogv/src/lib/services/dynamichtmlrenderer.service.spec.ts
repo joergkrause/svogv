@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DynamichtmlrenderService } from './dynamichtmlrender.service';
+import { DynamicHtmlRendererService } from './dynamichtmlrenderer.service';
 
 describe('DynamichtmlrenderService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DynamichtmlrenderService = TestBed.get(DynamichtmlrenderService);
+    const service: DynamicHtmlRendererService = TestBed.get(DynamicHtmlRendererService);
     expect(service).toBeTruthy();
   });
 });

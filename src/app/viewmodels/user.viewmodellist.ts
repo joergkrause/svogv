@@ -1,4 +1,4 @@
-﻿import * as Validator from 'svogv/svogv';
+﻿import * as Validator from 'svogv';
 
 import { PercentPipe } from '@angular/common';
 

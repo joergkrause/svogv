@@ -1,0 +1,13 @@
+.colborders col { border-right: 1px solid azure; }
+col.last { border-right: none !important; }
+col.first { background-color: #EEE; }
+th { background: none; }
+.supersmall {
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  padding: 1px;
+  border: 0px;
+  background-color: transparent !important;
+  cursor: hand;
+}

@@ -2,7 +2,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { FormValidatorService } from 'svogv/svogv';
+import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService, EmitterService } from '../../../services';
 import { UserViewModel } from '../../../viewmodels';

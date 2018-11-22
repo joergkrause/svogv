@@ -21,7 +21,7 @@ function isBrowserPlatform() {
 }
 
 @Injectable()
-export class DynamicHTMLRenderer {
+export class DynamicHtmlRendererService {
 
   private componentFactories = new Map<string, ComponentFactory<any>>();
 
