@@ -7,10 +7,10 @@
   ElementRef,
   Renderer
 } from '@angular/core';
-import { TextTreeNode, TreeNode, TreeNodeState } from '../models';
+import { TextTreeNodeModel, TreeNodeModel, TreeNodeState } from '../models';
 
 /**
- * The treenode class represents a single treenode for the treeview. Actually, this renders the real UI.
+ * The TreeNodeModel class represents a single TreeNodeModel for the treeview. Actually, this renders the real UI.
  *
  * The component needs this input value:
  *
@@ -35,10 +35,10 @@ import { TextTreeNode, TreeNode, TreeNodeState } from '../models';
 export class AcTreeViewNodeComponent implements OnInit {
 
   constructor(private el: ElementRef, private renderer: Renderer) {
-    this.nodeClick = new EventEmitter<TreeNode>();
-    this.checkChanged = new EventEmitter<TreeNode>();
-    this.selectedChanged = new EventEmitter<TreeNode>();
-    this.collapseChanged = new EventEmitter<TreeNode>();
+    this.nodeClick = new EventEmitter<TreeNodeModel>();
+    this.checkChanged = new EventEmitter<TreeNodeModel>();
+    this.selectedChanged = new EventEmitter<TreeNodeModel>();
+    this.collapseChanged = new EventEmitter<TreeNodeModel>();
   }
   private static pfxIcon = 'fa';
   private static opnIcon = 'fa-plus';
@@ -53,22 +53,22 @@ export class AcTreeViewNodeComponent implements OnInit {
    * Fired on click and hence fired even if any of the other parts are being fired.
    */
   @Output()
-  nodeClick: EventEmitter<TreeNode>;
+  nodeClick: EventEmitter<TreeNodeModel>;
   /**
    * Fired if a checkable field is being clicked.
    */
   @Output()
-  checkChanged: EventEmitter<TreeNode>;
+  checkChanged: EventEmitter<TreeNodeModel>;
   /**
    * Fired if a selectable field is being clicked.
    */
   @Output()
-  selectedChanged: EventEmitter<TreeNode>;
+  selectedChanged: EventEmitter<TreeNodeModel>;
   /**
    * Fired if a node collapses or expands.
    */
   @Output()
-  collapseChanged: EventEmitter<TreeNode>;
+  collapseChanged: EventEmitter<TreeNodeModel>;
 
   public href: string;
   public collapseClasses: Array<string>;
@@ -133,19 +133,19 @@ export class AcTreeViewNodeComponent implements OnInit {
 
   // forward events in the node tree
 
-  onNodeClick(node: TreeNode) {
+  onNodeClick(node: TreeNodeModel) {
     this.nodeClick.emit(node);
   }
 
-  onCheckChanged(node: TreeNode) {
+  onCheckChanged(node: TreeNodeModel) {
     this.checkChanged.emit(node);
   }
 
-  onSelectedChanged(node: TreeNode) {
+  onSelectedChanged(node: TreeNodeModel) {
     this.selectedChanged.emit(node);
   }
 
-  onCollapseChanged(node: TreeNode) {
+  onCollapseChanged(node: TreeNodeModel) {
     if (this.node.options.collapsable && this.node.hasChildren) {
       this.collapseChanged.emit(node);
     }

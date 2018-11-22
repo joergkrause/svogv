@@ -28,7 +28,8 @@ It's available as source code or as ready to use umd-bundle. The bundle is plane
 
 As of version 0.6 none known issues. Please report issues through Github.
 
-Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on).
+Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. In 0.7 I have again made significant changes towards the 1.0 release.
+I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 8 is out, it will become SVOGV 8.
 
 ## Angular Data Annotations
 

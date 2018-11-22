@@ -3,7 +3,7 @@
 /**
  * The item with data and meta data.
  */
-export class AcDataGridItem {
+export class DataGridItemModel {
   /**
    * The ctor
    * @param value: The value to show.

@@ -1,6 +1,8 @@
+import { Type } from '@angular/core';
+
 import '../../../utils/object-extensions';
-import { AcDataGridHeader } from './ac-datagridheader';
-import { AcDataGridItem } from './ac-datagriditem';
+import { DataGridHeaderModel } from './datagridheader.model';
+import { DataGridItemModel } from './datagriditem.model';
 
 export enum Direction {
   Ascending,
@@ -18,11 +20,12 @@ export enum Direction {
  * - count total rows
  * - paging
  */
-export class AcDataGridModel<T> {
+export class DataGridModel<T> {
 
-  constructor(items: T[], typeInstance: any, pageSize = 10) {
+  constructor(items: T[], type: Type<T>, pageSize = 10) {
     this._items = items;
     this.pageSize = pageSize;
+    const typeInstance = new type();
     if (typeInstance) {
       // make header from decorators, omit if null
       this.createHeadersForType(typeInstance);

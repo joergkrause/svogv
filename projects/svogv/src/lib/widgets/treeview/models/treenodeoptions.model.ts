@@ -1,7 +1,7 @@
 ﻿/**
  * The state of node
  */
-export enum AcTreeNodeState {
+export enum TreeNodeState {
     undefined = 0,
     checked = 1 << 0,
     disabled = 1 << 1,
@@ -12,7 +12,7 @@ export enum AcTreeNodeState {
 /**
  * The view options of node
 */
-export class AcTreeNodeOptions {
+export class TreeNodeOptions {
     /** Show the expand icons */
     collapsable: boolean;
     /** An additional icon, must be a fontawesome class */
@@ -32,7 +32,7 @@ export class AcTreeNodeOptions {
     /** Node can be checked */
     checkable: boolean;
 
-    constructor(options?: AcTreeNodeOptions) {
+    constructor(options?: TreeNodeOptions) {
         if (options) {
             // TODO: make type safe
             // for (let k in options) this[k] = options[k];

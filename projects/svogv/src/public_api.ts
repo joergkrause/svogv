@@ -7,6 +7,5 @@ export * from './lib/services/formvalidator-fromjson.service';
 export * from './lib/services/formvalidator.service';
 export * from './lib/services/formvalidator.model';
 export * from './lib/widgets';
-export * from './lib/widgets/datagrid/models/ac-datagridmodel';
+export * from './lib/widgets/datagrid/models/datagrid.model';
 export * from './lib/svogv.module';
-;

@@ -1,3 +1,83 @@
-<p>
-  grid works!
-</p>
+<div class="row">
+  <div class="col-md-12">
+    <form role="search" class="form-inline col-md-6">
+      <div class="input-group" *ngIf="users">
+        <label for="searchUsers">Search </label>
+        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="users.searchValue.userName"
+        />
+        <span class="input-group-addon">
+          <i class="fa fa-search"></i>
+        </span>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <p>Currently invisible columns. Click to add:
+      <span *ngFor="let col of users.headersNotVisible; let l = last">
+        <button class="btn btn-xs btn-danger" (click)="users.addColumn(col.prop)">Add {{ col.text }}</button>
+      </span>&nbsp;
+    </p>
+  </div>
+</div>
+<div class="row" *ngIf="users">
+  <div class="col-md-12">
+    <table class="table table-condensed">
+      <colgroup class="colborders">
+        <col class="first" />
+        <col class="middle" />
+        <col class="middle" />
+        <col class="middle" />
+        <col class="last" />
+      </colgroup>
+      <thead>
+        <tr>
+          <th *ngFor="let header of users.headers" [title]="header.desc">{{ header.text }}
+            <div class="ac-sortsmall">
+              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'asc')">
+                <i class="fa fa-sort-asc"></i>
+              </button>
+              <button class="ac-supersmall" (click)="users.sortColumn(header.prop, 'desc')">
+                <i class="fa fa-sort-desc"></i>
+              </button>
+            </div>
+            <button (click)="users.removeColumn(header.prop)" class="btn btn-sm btn-warning">
+              <i class="fa fa-remove"></i>
+            </button>
+          </th>
+          <th>Action
+            <button class="btn btn-sm btn-success float-right" (click)="addUser()">
+              New User
+            </button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="!users.totalFilteredRows">
+          <td colspan="4" class="text-center">
+            <div class="alert alert-warning">
+              There are no users available.
+            </div>
+          </td>
+        </tr>
+        <tr *ngFor="let user of users.itemsOnCurrentPage">
+          <td *ngFor="let data of users.columnsOfItemValues(user)">
+            {{ data }}
+            </td>
+          <td>
+            <button class="btn btn-primary btn-sm" type="button" (click)="editUser(user)">
+              Edit (Fields)
+            </button>
+            <button class="btn btn-primary btn-sm" type="button" (click)="editUserAutoform(user)">
+              Edit (Auto)
+            </button>
+            <button class="btn btn-danger btn-sm" type="button" (click)="removeUser(user)">
+              Delete
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
