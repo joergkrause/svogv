@@ -8,9 +8,9 @@ import { FormControl, FormGroup } from '@angular/forms';
  *
  */
 export function validateCompare(p: string) {
-  let changeEventWasAdded: boolean = false;
-  return function (c: FormControl) {
-    let form: FormGroup = c.root as FormGroup;
+  let changeEventWasAdded = false;
+  return function(c: FormControl) {
+    const form: FormGroup = c.root as FormGroup;
     if (form && form.controls && !changeEventWasAdded) {
       form.controls[p].valueChanges.subscribe(() => {
         // trigger validation for particular element
@@ -20,12 +20,13 @@ export function validateCompare(p: string) {
     }
     if (c.value) {
       // compare the current value with the referenced control's value
-      return (!c.value || c.value == (<any>c.root)['controls'][p].value) ? null : {
-        'compare': {
-          valid: false
-        }
-      };
+      return !c.value || c.value === (<any>c.root)['controls'][p].value
+        ? null
+        : {
+            compare: {
+              valid: false
+            }
+          };
     }
-  }
-
+  };
 }

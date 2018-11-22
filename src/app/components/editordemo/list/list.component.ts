@@ -2,7 +2,7 @@
 import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
 import { UserViewModelList } from '../../../viewmodels';
-import { AcDataGridModel } from 'svogv';
+import { AcDataGridModel } from 'svogv/svogv';
 
 @Component({
   templateUrl: './list.component.html',

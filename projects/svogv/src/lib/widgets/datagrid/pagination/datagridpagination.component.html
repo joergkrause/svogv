@@ -1,0 +1,40 @@
+<div>
+  <ul class="pagination float-right">
+    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex">
+      <a href (click)="setCurrentPage(1, $event)" aria-label="Previous">
+        <span aria-hidden="true">«</span>
+      </a>
+    </li>
+    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex">
+      <a
+        href
+        aria-label="Previous"
+        (click)="setCurrentPage(currentPageNumber - 1, $event)"
+      >
+        <span aria-hidden="true">‹</span>
+      </a>
+    </li>
+    <li
+      *ngFor="let index of range(pageStartNumber, pageEndNumber)"
+      [class.active]="currentPageNumber === index"
+    >
+      <a href (click)="setCurrentPage(index, $event)">
+        <span aria-hidden="true">{{ index }}</span>
+      </a>
+    </li>
+    <li [class.disabled]="currentPageNumber === maxPageIndex || !maxPageIndex">
+      <a
+        href
+        (click)="setCurrentPage(currentPageNumber + 1, $event)"
+        aria-label="Last"
+      >
+        <span aria-hidden="true">›</span>
+      </a>
+    </li>
+    <li [class.disabled]="currentPageNumber === maxPageIndex || !maxPageIndex">
+      <a href (click)="setCurrentPage(maxPageIndex, $event)" aria-label="Last">
+        <span aria-hidden="true">»</span>
+      </a>
+    </li>
+  </ul>
+</div>
