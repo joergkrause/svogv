@@ -15,9 +15,9 @@ import { FormGroup } from '@angular/forms';
       display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer;
     }`,
   ],
-  templateUrl: './ac-editor.component.html'
+  templateUrl: './editor.component.html'
 }) //
-export class AcEditor implements OnInit {
+export class EditorComponent implements OnInit {
 
   /**
    * Field name

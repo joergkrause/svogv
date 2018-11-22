@@ -15,7 +15,7 @@ import { DynamicHTMLRenderer } from '../../../services/dynamichtmlrender.service
   templateUrl: './gridtemplate.component.html',
   styleUrls: ['./gridtemplate.component.css']
 })
-export class GridtemplateComponent implements OnInit, AfterViewInit {
+export class DataGridtemplateComponent implements OnInit, AfterViewInit {
   @Input()
   field: string;
   @Input()

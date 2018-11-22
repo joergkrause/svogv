@@ -36,7 +36,7 @@ import { Meaning } from '../../utils/enum-colors';
                   </div>
                 </div>`
 }) //
-export class AcInfoBox implements OnInit {
+export class InfoBoxComponent implements OnInit {
     @Input() icon: string;
     @Input() text: string;
     @Input() number: string;

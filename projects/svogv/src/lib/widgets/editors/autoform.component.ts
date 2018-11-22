@@ -12,9 +12,9 @@ import { FormGroup } from '@angular/forms';
     'fieldset { border-top: 1px silver solid; padding: 10px; }',
     'legend { width: auto; padding-left: 10px; padding-right: 10px; font-size: 1em;}'
   ],
-  templateUrl: './ac-autoform.component.html'
+  templateUrl: './autoform.component.html'
 })
-export class AcAutoForm implements OnInit {
+export class AutoFormComponent implements OnInit {
   /**
    * A reference to the form. Required.
    */

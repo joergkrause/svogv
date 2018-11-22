@@ -7,7 +7,7 @@
   ElementRef,
   Renderer
 } from '@angular/core';
-import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models';
+import { TextTreeNode, TreeNode, TreeNodeState } from '../models';
 
 /**
  * The treenode class represents a single treenode for the treeview. Actually, this renders the real UI.
@@ -29,16 +29,16 @@ import { AcTextTreeNode, AcTreeNode, AcTreeNodeState } from './models';
  */
 @Component({
   selector: 'ac-treenode',
-  templateUrl: './ac-treeview-node.component.html',
-  styleUrls: ['./ac-treeview-node.component.css']
+  templateUrl: './treeview-node.component.html',
+  styleUrls: ['./treeview-node.component.css']
 })
 export class AcTreeViewNodeComponent implements OnInit {
 
   constructor(private el: ElementRef, private renderer: Renderer) {
-    this.nodeClick = new EventEmitter<AcTreeNode>();
-    this.checkChanged = new EventEmitter<AcTreeNode>();
-    this.selectedChanged = new EventEmitter<AcTreeNode>();
-    this.collapseChanged = new EventEmitter<AcTreeNode>();
+    this.nodeClick = new EventEmitter<TreeNode>();
+    this.checkChanged = new EventEmitter<TreeNode>();
+    this.selectedChanged = new EventEmitter<TreeNode>();
+    this.collapseChanged = new EventEmitter<TreeNode>();
   }
   private static pfxIcon = 'fa';
   private static opnIcon = 'fa-plus';
@@ -48,27 +48,27 @@ export class AcTreeViewNodeComponent implements OnInit {
    * The object that controls the node's appearance.
    */
   @Input()
-  node: AcTextTreeNode;
+  node: TextTreeNode;
   /**
    * Fired on click and hence fired even if any of the other parts are being fired.
    */
   @Output()
-  nodeClick: EventEmitter<AcTreeNode>;
+  nodeClick: EventEmitter<TreeNode>;
   /**
    * Fired if a checkable field is being clicked.
    */
   @Output()
-  checkChanged: EventEmitter<AcTreeNode>;
+  checkChanged: EventEmitter<TreeNode>;
   /**
    * Fired if a selectable field is being clicked.
    */
   @Output()
-  selectedChanged: EventEmitter<AcTreeNode>;
+  selectedChanged: EventEmitter<TreeNode>;
   /**
    * Fired if a node collapses or expands.
    */
   @Output()
-  collapseChanged: EventEmitter<AcTreeNode>;
+  collapseChanged: EventEmitter<TreeNode>;
 
   public href: string;
   public collapseClasses: Array<string>;
@@ -105,7 +105,7 @@ export class AcTreeViewNodeComponent implements OnInit {
         this.collapseClasses.push(AcTreeViewNodeComponent.pfxIcon);
         this.collapseClasses.push(AcTreeViewNodeComponent.opnIcon);
         // collapsed by default
-        this.node.state &= ~AcTreeNodeState.checked;
+        this.node.state &= ~TreeNodeState.checked;
       }
       if (this.node.options && this.node.options.color) {
         this.foreColor = this.node.options.color;
@@ -133,19 +133,19 @@ export class AcTreeViewNodeComponent implements OnInit {
 
   // forward events in the node tree
 
-  onNodeClick(node: AcTreeNode) {
+  onNodeClick(node: TreeNode) {
     this.nodeClick.emit(node);
   }
 
-  onCheckChanged(node: AcTreeNode) {
+  onCheckChanged(node: TreeNode) {
     this.checkChanged.emit(node);
   }
 
-  onSelectedChanged(node: AcTreeNode) {
+  onSelectedChanged(node: TreeNode) {
     this.selectedChanged.emit(node);
   }
 
-  onCollapseChanged(node: AcTreeNode) {
+  onCollapseChanged(node: TreeNode) {
     if (this.node.options.collapsable && this.node.hasChildren) {
       this.collapseChanged.emit(node);
     }
@@ -153,10 +153,10 @@ export class AcTreeViewNodeComponent implements OnInit {
 
   handleCheckChange(): void {
     if (this.node.options.checkable && !this.node.stateIsDisabled) {
-      if (this.node.state & AcTreeNodeState.checked) {
-        this.node.state &= ~AcTreeNodeState.checked;
+      if (this.node.state & TreeNodeState.checked) {
+        this.node.state &= ~TreeNodeState.checked;
       } else {
-        this.node.state |= AcTreeNodeState.checked;
+        this.node.state |= TreeNodeState.checked;
       }
       this.checkChanged.emit(this.node);
     }
@@ -172,10 +172,10 @@ export class AcTreeViewNodeComponent implements OnInit {
     // if collapsable handle icons and view state
     if (this.node.options.collapsable) {
       // toggle state
-      if (this.node.state && this.node.state & AcTreeNodeState.expanded) {
-        this.node.state &= ~AcTreeNodeState.expanded;
+      if (this.node.state && this.node.state & TreeNodeState.expanded) {
+        this.node.state &= ~TreeNodeState.expanded;
       } else {
-        this.node.state |= AcTreeNodeState.expanded;
+        this.node.state |= TreeNodeState.expanded;
       }
     }
   }
@@ -217,10 +217,10 @@ export class AcTreeViewNodeComponent implements OnInit {
       !this.node.stateIsDisabled &&
       this.preSelectState === true
     ) {
-      if (this.node.state & AcTreeNodeState.selected) {
-        this.node.state &= ~AcTreeNodeState.selected;
+      if (this.node.state & TreeNodeState.selected) {
+        this.node.state &= ~TreeNodeState.selected;
       } else {
-        this.node.state |= AcTreeNodeState.selected;
+        this.node.state |= TreeNodeState.selected;
       }
       if (this.node.stateIsSelected) {
         if (this.node.options && this.node.options.color) {

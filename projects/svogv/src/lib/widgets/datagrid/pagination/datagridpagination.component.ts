@@ -8,11 +8,11 @@ import {
  * all relevant data must be loaded first.
  */
 @Component({
-  selector: 'ac-datagridpagination',
+  selector: 'ac-datagrid-pagination',
   styleUrls: ['./datagridpagination.component.css' ],
   templateUrl: './datagridpagination.component.html'
 })
-export class DataGridPagination implements OnInit, OnChanges {
+export class DataGridPaginationComponent implements OnInit, OnChanges {
   /**
    * The parent component calculated the pages the component can handle.
    */

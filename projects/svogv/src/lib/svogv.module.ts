@@ -11,13 +11,15 @@ import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.
 export * from './decorators';
 
 const SVOGV_COMPONENTS = [
-  wd.AcInfoBox,
-  wd.AcDataGridPagination,
-  wd.AcTreeViewComponent,
-  wd.AcTreeViewNodeComponent,
-  wd.AcEditor,
-  wd.AcAutoForm,
-  wd.AcFormatDataPipe
+  wd.InfoBoxComponent,
+  wd.DataGridComponent,
+  wd.DataGridTemplateComponent,
+  wd.DataGridPaginationComponent,
+  wd.TreeViewComponent,
+  wd.TreeViewNodeComponent,
+  wd.EditorComponent,
+  wd.AutoFormComponent,
+  wd.FormatDataPipe
 ];
 
 const provider = [FormValidatorService, FormValidatorFromJsonService];

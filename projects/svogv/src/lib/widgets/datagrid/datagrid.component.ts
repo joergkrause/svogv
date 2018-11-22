@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+  selector: 'ac-datagrid',
+  templateUrl: './datagrid.component.html',
+  styleUrls: ['./datagrid.component.css']
 })
-export class GridComponent implements OnInit {
+export class DataGridComponent implements OnInit {
 
   constructor() { }
 
