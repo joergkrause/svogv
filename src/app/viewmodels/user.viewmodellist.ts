@@ -35,7 +35,7 @@ export class UserViewModelList {
   age = 0;
 
   @Validator.Display('Done', 100, 'Work progress')
-  @Validator.Format(PercentPipe)
+  @Validator.FormatPipe(PercentPipe)
   done = 0;
 
 }

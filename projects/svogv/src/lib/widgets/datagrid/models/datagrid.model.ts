@@ -154,7 +154,8 @@ export class DataGridModel<T> {
       const isHidden = type[`__isHidden__${p}`] || false;
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
       header.isSortable = type[`__issortable__${p}`] || true;
-      header.uiHint = type[`__uihint__${p}`] || 'text';
+      header.templateHint = type[`__templatehint__${p}`] || 'text';
+      header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeParams__${p}`];
       this._headers.push(header);

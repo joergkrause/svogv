@@ -30,6 +30,9 @@ export class DataGridComponent implements OnInit {
   @ViewChild('enum') enumFallback: TemplateRef<any>;
   @ContentChild('enum') enum: TemplateRef<any>;
 
+  @ViewChild('num') numFallback: TemplateRef<any>;
+  @ContentChild('num') num: TemplateRef<any>;
+
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
   @Input()

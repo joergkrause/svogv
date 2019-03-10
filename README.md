@@ -20,22 +20,26 @@ However, there is no framework that can't be improved. So I tried to copy a conc
 
 The approach was simply the usage of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes and components. 
 
-It's available as source code or as ready to use umd-bundle. The bundle is plane JavaScript. The package is available via *npm* and the sources from *github*. 
+It's available as source code or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
-> It's pretty small, too. It's 300 KB as a bundle source and roughly 39 KB minified, close to 10 KB zipped. 
+> It's pretty small, too. It's 300 KB as a bundle and roughly 39 KB minified, close to 10 KB zipped. 
 
 ## Issues?
 
-As of version 0.6 there are no known issues. Please report issues through Github.
+As of version 0.6 none known issues. Please report issues through Github.
 
-Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. In 0.7 I have again made significant changes towards the 1.0 release.
+Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. 
+**In 0.7 I have again made significant changes towards the 1.0 release.**
 I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 8 is out, it will become SVOGV 8.
 
 ## Angular Data Annotations
 
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is
+absolutely no dependency at all, though.
+
 ### How does it work?
 
-Annotions work through a model. Let's assume you have a view model like this:
+We did this by using a straight domain model. Let's assume you have a viewmodel like this:
 
 ~~~
 export class UserViewModel {
@@ -62,9 +66,9 @@ export class UserViewModel {
 }
 ~~~
 
-As you see I use several decorators. I have decorators for display hints, such as `Display`, for instance. And I have decorators to manage the validation, such as `MaxLength()`. 
+As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. 
 
-The usage is simple; just import the decorators like this:
+The usage is simple; just import like this:
 
 ~~~
 import { 
@@ -73,11 +77,13 @@ import {
   Range, 
   Email, 
   Display, 
-  Hidden 
+  Hidden,
+  UiHint,
+  Format
 } from 'svogv';
 ~~~
 
-Or alternatively prefix your import with an alias:
+Or alternatively prefix your import:
 
 ~~~
 import * as Validator from 'svogv';
@@ -90,11 +96,9 @@ export class UserViewModel {
 }
 ~~~
 
-> It's important to give the properties a default value. Otherwise the builder strips the decorators when transpiling from TypeScript to JavaScript. An alternative way could be using the compiler options *--strictPropertyInitialization* and *--strictNullChecks* for the TypeScript compiler. Using this may depend on your existing code, so try it carefully.
+Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 
 
-Now the form part. The form needs to be aware of the decorators. So I have created a service that creates a `FormGroup` instance that has some enhancements. I named it the `FormValidatorService`. 
-
-In a component this looks like this (the `build` method is crucial here):
+In a component this looks like this:
 
 ~~~
 import { FormValidatorService } from 'svogv';
@@ -113,7 +117,7 @@ export class EditUserComponent implements OnInit {
 }
 ~~~
 
-Now the form knows all about the model (through the decorators). Now you can make your form:
+Now the form knows all about the model. Now let's build a form.
 
 ~~~
 <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
@@ -129,9 +133,9 @@ Now the form knows all about the model (through the decorators). Now you can mak
 
 The tricky part is the component `<ac-editor>`. This component checks the property type, the decorators, and the form's settings and creates a complete form element in Bootstrap 4 style (the template is, of course, customizable).
 
-And that's it. The form is pretty, has a fully working validation, and is easy to access from your component's code. And yes, there is no additional code necessary to get it running.
+And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
 
-Even simpler, you can create a **complete form** with just one tag. Just use code like this:
+Even simpler, you can create a complete form with just one tag. Just go like this:
 
 ~~~
 <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
@@ -147,25 +151,27 @@ Even simpler, you can create a **complete form** with just one tag. Just use cod
 </form>
 ~~~
 
-The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is being build on top of Bootstrap 4 and can be modified by several helper annotations (decorators). 
-Especially the following decorators are helpful (just a selection, there are many more):
+The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is builds upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
+Especially those decorators are helpful (just a selection, there are many more):
 
 * **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
 * **@Hidden** Exclude as field from a autoform
 * **@Placeholder** A watermark that appears in empty form fields
 * **@TemplateHint** Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.
 
-| Data Type   | Field Type        | Options for @TemplateHint | Remark                                                |
-|-------------|-------------------|---------------------------|-------------------------------------------------------|
-| string      | type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
-| boolean     | type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
-| number      | type="number"     | Range                     | Default is numeric field, Range is a slider
-| Date        | type="date"       | Calendar                  | Calender is provided by browser feature
-| enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+| Data Type | Template Hint   | Field Type        | Options for @TemplateHint | Remark                                                |
+|-----------|-----------------|-------------------|---------------------------|-------------------------------------------------------|
+| string    | text (no params)| type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
+| boolean   | bool (no params)| type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
+| number    | num (no params) | type="number"     | Range                     | Default is numeric field, Range is a slider
+| Date      | date (val,cal)* | type="date"       | Calendar                  | Calender is provided by browser feature
+| enum      | enum (no params)| &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+
+\* With *cal* it shows a calendar, with *val* just the value. Use a pipe and `@Format(DatePipe)` for formatting. Calendar appears in edit mode only.
 
 ## Server Support through JSON
 
-As of version 0.3.5 it's possible to use a specially designed JSON object to configure the form. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
+As of version 0.3.5 it's possible to use a specially design JSON object to configure the forms. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
 
 ~~~
 export interface FormValidatorModel {
@@ -177,11 +183,12 @@ The types have the same description as the decorators.
 
 ## The Widgets
 
-The widgets complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
+The widget complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
 * **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
-* **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+
+> As of version 0.7 the **InfoBox** has been removed and moved to the demo code. The purpose of SVOGV is just extended grid functionality.
 
 ## Where to get?
 
@@ -191,12 +198,11 @@ It's available from *npm* by using this command:
 npm install svogv --save
 ~~~
 
-You get these parts:
+You get three parts (at least, this list will grow quickly):
 
 * FormValidatorService -- a static class to build reactive forms
-* AcEditor, AcAutoform -- the universal editor components
+* Editor -- the universal editor component
 * Decorators -- a set of decorators to manage the behavior of properties
-* Some widgets to make better forms (nice to have, no need to use these)
 
 ### More to read
 
@@ -226,18 +232,12 @@ Select these options in the left hand menu:
 
 ## Does it cost something?
 
-It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commercial users such as enterprises we have support options.
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for his customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
 ## Can I contribute?
 
 Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
 ![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)
-
-## Any Future?
-
-Sure. I'm currently working on a new version, with a better internal structure. This splits the code into the functional part and the render / design part. Hence I can get rid of Bootstrap and use something else. The first implementation is using Material from Angular. So you get two versions, Bootstrap 4 and Material 5, both themeable. A Beta release is planned be end of 2018.
-
-

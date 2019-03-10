@@ -1,4 +1,4 @@
-﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, Format } from 'svogv';
+﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, FormatPipe } from 'svogv';
 
 import { PercentPipe } from '@angular/common';
 
@@ -54,7 +54,6 @@ export class UserViewModel {
   passWordTwo: string = '';
 
   @Display('Done', 100, 'Work progress')
-  @Format(PercentPipe)
   done = 0;
 
 }

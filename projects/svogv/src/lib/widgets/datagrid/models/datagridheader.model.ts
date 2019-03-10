@@ -13,13 +13,18 @@ export class DataGridHeaderModel {
    */
   constructor(public text: string, public desc: string, public prop: string, public hidden: boolean = false) {
     this.isSortable = true;
-    this.uiHint = 'text';
+    this.templateHint = 'text';
   }
 
   /**
    * Hint from view model to select a certain template. Default is *text* (format as string).
    */
-  uiHint: string;
+  templateHint: string;
+
+  /**
+   * Additional parameters some templates may use. Optional.
+   */
+  templateHintParams?: any[];
 
   /**
    * Display the sort buttons and connect to sort functions. Default is `true`.

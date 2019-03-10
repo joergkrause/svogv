@@ -12,13 +12,11 @@ export * from './decorators';
 
 const SVOGV_COMPONENTS = [
   wd.DataGridComponent,
-  wd.DataGridTemplateComponent,
   wd.DataGridPaginationComponent,
   wd.TreeViewComponent,
   wd.TreeViewNodeComponent,
   wd.EditorComponent,
-  wd.AutoFormComponent,
-  wd.FormatDataPipe
+  wd.AutoFormComponent
 ];
 
 const provider = [FormValidatorService, FormValidatorFromJsonService];
@@ -28,9 +26,9 @@ const provider = [FormValidatorService, FormValidatorFromJsonService];
  */
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
-  declarations: SVOGV_COMPONENTS,
+  declarations: [...SVOGV_COMPONENTS, wd.FormatDataPipe],
   providers: provider,
-  exports: [SVOGV_COMPONENTS]
+  exports: [...SVOGV_COMPONENTS]
 })
 export class SvogvModule {
 

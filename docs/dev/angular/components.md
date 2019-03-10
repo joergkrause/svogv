@@ -78,21 +78,16 @@ App -
 Oft sind viele Komponenten in einem Rutsch zu importieren. Wenn Sie zwei oder mehr in einem Ordner haben, fügen Sie immer eine Datei *index.ts* ein:
 
 ~~~
-export * from './TreeView/ac-treeview';
-export * from './TreeView/ac-treeview-node';
-export * from './ac-infobox';
-export * from './ac-breadcrumb';
-export * from './ac-webpart';
-export * from './DataGrid/ac-datagridpagination';
-export * from './ac-tabs';
-export * from './ac-sidemenu';
+export * from './treeView/ac-treeview';
+export * from './treeView/ac-treeview-node';
+export * from './datagrid/ac-datagridpagination';
 ~~~
 
 Beim Import einer oder mehrerer Komponenten sieht es dann folgendermaßen aus:
 
 ~~~
-import * as cmp from './Components/index';
-import * as wd from './Components/Widgets/index';
+import * as cmp from './components/index';
+import * as wd from './components/widgets/index';
 ~~~
 
 Sie können dann mit `cmp.ComponentenName` oder `wd.WidgetName` auf die Komponenten zugreifen, ohne jede Datei einzeln importieren zu müssen. Die Dateierweiterung _*.ts_ wird automatisch benutzt, sodass es reicht *index* zu schreiben.

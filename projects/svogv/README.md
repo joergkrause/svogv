@@ -28,10 +28,14 @@ It's available as source code or as ready to use umd-bundle. The bundle is plane
 
 As of version 0.6 none known issues. Please report issues through Github.
 
-Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. In 0.7 I have again made significant changes towards the 1.0 release.
+Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. 
+**In 0.7 I have again made significant changes towards the 1.0 release.**
 I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 8 is out, it will become SVOGV 8.
 
 ## Angular Data Annotations
+
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is
+absolutely no dependency at all, though.
 
 ### How does it work?
 
@@ -73,7 +77,9 @@ import {
   Range, 
   Email, 
   Display, 
-  Hidden 
+  Hidden,
+  UiHint,
+  Format
 } from 'svogv';
 ~~~
 
@@ -145,7 +151,7 @@ Even simpler, you can create a complete form with just one tag. Just go like thi
 </form>
 ~~~
 
-The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is buils upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
+The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is builds upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
 Especially those decorators are helpful (just a selection, there are many more):
 
 * **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
@@ -153,13 +159,15 @@ Especially those decorators are helpful (just a selection, there are many more):
 * **@Placeholder** A watermark that appears in empty form fields
 * **@TemplateHint** Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.
 
-| Data Type   | Field Type        | Options for @TemplateHint | Remark                                                |
-|-------------|-------------------|---------------------------|-------------------------------------------------------|
-| string      | type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
-| boolean     | type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
-| number      | type="number"     | Range                     | Default is numeric field, Range is a slider
-| Date        | type="date"       | Calendar                  | Calender is provided by browser feature
-| enum        | &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+| Data Type | Template Hint   | Field Type        | Options for @TemplateHint | Remark                                                |
+|-----------|-----------------|-------------------|---------------------------|-------------------------------------------------------|
+| string    | text (no params)| type="text"       | Text, TextArea            | TextArea accepts additional parameters for row and col|
+| boolean   | bool (no params)| type="checkbox"   | Checkbox, Toggle, Radio   | Default is checkbox
+| number    | num (no params) | type="number"     | Range                     | Default is numeric field, Range is a slider
+| Date      | date (val,cal)* | type="date"       | Calendar                  | Calender is provided by browser feature
+| enum      | enum (no params)| &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
+
+\* With *cal* it shows a calendar, with *val* just the value. Use a pipe and `@Format(DatePipe)` for formatting. Calendar appears in edit mode only.
 
 ## Server Support through JSON
 
@@ -178,8 +186,9 @@ The types have the same description as the decorators.
 The widget complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
 * **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
-* **InfoBox**: A simple panel with header and some configuration options, best for creating tile based layouts
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+
+> As of version 0.7 the **InfoBox** has been removed and moved to the demo code. The purpose of SVOGV is just extended grid functionality.
 
 ## Where to get?
 
@@ -223,7 +232,7 @@ Select these options in the left hand menu:
 
 ## Does it cost something?
 
-It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commerical users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commercial users such as enterprises we have support options.
 
 The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 

@@ -34,12 +34,6 @@
               <i class="fa fa-remove"></i>
             </button>
           </th>
-          <th *ngIf="showAddButton">
-            Action
-            <button class="btn btn-sm btn-success float-right" (click)="model.addItem()">
-              New User
-            </button>
-          </th>
         </tr>
       </thead>
       <tbody>
@@ -56,8 +50,8 @@
         <tr *ngFor="let item of model.itemsOnCurrentPage">
           <td *ngFor="let header of model.headers">
             <ng-container
-              [ngTemplateOutlet]="getActiveTemplate(header.uiHint)"
-              [ngTemplateOutletContext]="{ $implicit: data, pipe: header.pipe }"
+              [ngTemplateOutlet]="getActiveTemplate(header.templateHint)"
+              [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"
             ></ng-container>
           </td>
           <td>
@@ -83,12 +77,18 @@
     </table>
   </div>
 </div>
-<ng-template #text let-data let-modelpipe="pipe">
-   {{ data | formatData: modelpipe }}
+<ng-template #text let-data let-modelpipe="pipe" let-params="params">
+  {{ data | formatData: modelpipe: params }}
 </ng-template>
 <ng-template #bool let-data>
   <input type="checkbox" disabled [checked]="data" />
 </ng-template>
 <ng-template #date let-data>
+  {{ data }}
+</ng-template>
+<ng-template #enum let-data>
+  {{ data }}
+</ng-template>
+<ng-template #num let-data>
   {{ data }}
 </ng-template>
