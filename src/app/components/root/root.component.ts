@@ -35,12 +35,13 @@ export class RootComponent implements OnInit {
     // create menu, this might be come from the server to handle rights & roles
     // the menu is forwarded to the sideMenu component through binding
     this.dynamicMenu = new AcMenu(
-      new AcMenuHeaderItem('Tasks'),
+      new AcMenuHeaderItem('Information'),
       new AcMenuLinkItem('Dashboard', ['/dashboard'], 'fa-dashboard'),
-      new AcMenuLinkItem('Forms Demo', ['/editor'], 'fa-user'),
       new AcMenuLinkItem('About', ['/about'], 'fa-database'),
-      new AcMenuHeaderItem('Widgets'),
-      new AcMenuLinkItem('Overview', ['/widgets'], 'fa-clock')
+      new AcMenuHeaderItem('Features'),
+      new AcMenuLinkItem('Editor', ['/editor'], 'fa-user'),
+      new AcMenuLinkItem('Grid', ['/widgets'], 'fa-clock'),
+      new AcMenuLinkItem('Tree', ['/widgets'], 'fa-clock')
     );
     // get dashboard data on load and distribute to all listening components
     this.apiService.getUsers().subscribe(data => {

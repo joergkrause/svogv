@@ -2,7 +2,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { FormValidatorService } from 'svogv';
 // private
 import { SiteApiService, EmitterService } from '../../services';
@@ -17,7 +17,8 @@ import { UserViewModel } from '../../viewmodels';
 })
 export class EditorDemoComponent implements OnInit, OnDestroy {
 
-  userForm: FormGroup;
+  userForm: NgForm;
+  userFormGroup: FormGroup;
   saveResult: boolean;
   userId = 0;
   user: UserViewModel;
@@ -32,9 +33,9 @@ export class EditorDemoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // get validators and error messages from viewmodel type
-    this.userForm = this.formService.build(UserViewModel);
+    this.userFormGroup = this.formService.build(UserViewModel);
     // register changes
-    this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.userFormGroup.valueChanges.subscribe(data => this.onValueChanged(data));
     // receive the param on init
     this.paramsSubscriber = this.route.params.subscribe(params => {
       this.userId = +params['id'];
@@ -57,15 +58,15 @@ export class EditorDemoComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         // patchValue here instead if setValue because the form's
         // viewmodel is more complete than the form
-        this.userForm.patchValue(data, { onlySelf: true, emitEvent: false });
+        this.userFormGroup.patchValue(data, { onlySelf: true, emitEvent: false });
       });
   }
 
   // save an item
   saveUser(): void {
-    if (this.userForm.valid) {
+    if (this.userFormGroup.valid) {
       this.apiService
-        .editUser(this.userId, this.userForm.value)
+        .editUser(this.userId, this.userFormGroup.value)
         .subscribe(result => {
           console.log('Update User successful');
           // refresh UI

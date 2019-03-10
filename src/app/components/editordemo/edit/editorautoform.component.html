@@ -1,8 +1,8 @@
 <div class="container-fluid">
-  <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
+  <form (ngSubmit)="saveUser()" role="form" class="row" autoform #userForm="ngForm">
     <fieldset style="width:100%">
       <legend>Edit current user</legend>
-      <ac-autoform [formGroup]="userForm"></ac-autoform>      
+      <ac-autoform [formGroup]="userForm"></ac-autoform>
       <div class="row">
         <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
           <i class="fa fa-save"></i> Save

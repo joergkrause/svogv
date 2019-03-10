@@ -89,6 +89,6 @@
 <ng-template #enum let-data>
   {{ data }}
 </ng-template>
-<ng-template #num let-data>
-  {{ data }}
+<ng-template #num let-data let-modelpipe="pipe" let-params="params">
+  {{ data | formatData: modelpipe: params }}
 </ng-template>

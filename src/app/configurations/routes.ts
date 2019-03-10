@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'widgets',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Widget Demo', 'subtitle': 'Diverse Components', 'breadcrumb': true },
+    data: { 'title': 'Features', 'subtitle': 'All features of grid and tree', 'breadcrumb': true },
     children: [
       {
         path: '',

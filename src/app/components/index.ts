@@ -1,6 +1,5 @@
 ﻿// root and page management
 export * from './root/root.component';
-export * from './nav/nav.component';
 // standard pages
 export * from './about/about.component';
 // app pages and common ui components

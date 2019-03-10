@@ -1,5 +1,5 @@
 <div class="form-group row"
-     [formGroup]="userForm" *ngIf="type != 'hidden'"
+     *ngIf="type != 'hidden' && userForm"
      [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">
   <label class="col-form-label col-md-3 col-sm-10"
     [attr.for]="name"
@@ -66,6 +66,6 @@
     </small>
   </div>
 </div>
-<div [formGroup]="userForm">
+<div>
   <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
 </div>

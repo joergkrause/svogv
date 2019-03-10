@@ -18,7 +18,7 @@
     <form role="search" class="form-inline col-md-6">
       <div class="input-group" *ngIf="model">
         <label for="searchUsers">Search </label>
-        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="model.searchValue.userName" />
+        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" ngModel #searchItem />
         <span class="input-group-addon">
           <i class="fa fa-search"></i>
         </span>
@@ -26,7 +26,16 @@
     </form>
   </div>
 </div>
-<ac-datagrid [model]="users" [showEditButton]="true" [showDeleteButton]="true" (onEdit)="editUser($event)"></ac-datagrid>
+<ac-datagrid
+  [model]="users"
+  [filter]="searchItem.value"
+  [showEditButton]="true"
+  [showDeleteButton]="true"
+  [textEditButton]="Edit"
+  [textDeleteButton]="Delete"
+  (onEdit)="editUser($event)"
+  (onDelete)="deleteUser($event)"
+></ac-datagrid>
 <div class="clearfix">
   <form class="form-inline">
     <div class="form-group" *ngIf="users">
@@ -38,7 +47,7 @@
       </select>
     </div>
     <div class="pull-right">
-      <ac-pagination *ngIf="users" [maxPageIndex]="users.maxPageIndex" (pageNumberChanged)="users.currentPageIndex = $event"> </ac-pagination>
+      <ac-datagrid-pagination *ngIf="users" [maxPageIndex]="users.maxPageIndex" (pageNumberChanged)="users.currentPageIndex = $event"> </ac-datagrid-pagination>
     </div>
   </form>
 </div>
@@ -61,13 +70,13 @@ ngOnInit() {{ '{' }}<br/>
 }<br/>
 <br/>
 private renderData(data: Array&lt;UserViewModel>) {{ '{' }}<br/>
-  // typeInfo is an artifical instance to get access to the meta data JavaScript cannot provide through type info alone<br/>
+  // typeInfo is an artificial instance to get access to the meta data JavaScript cannot provide through type info alone<br/>
   var t = new UserViewModel();<br/>
   // we get a regular array here, but grid expects GridData for proper rendering<br/>
   this.users = new AcDataGridModel&lt;UserViewModel>(data, t);<br/>
 }<br/>
-</pre></code</code
-    >
+</pre>
+    </code>
     <p>Now, in <code>this.users</code> of type <code>AcDataGridModel</code> is the model we can use to create a grid.</p>
   </div>
 </div>

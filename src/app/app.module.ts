@@ -13,22 +13,18 @@ import { routes } from './configurations/routes';
 
 import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
 
-const svogvModule = SvogvModule.forRoot();
-const routerModule = RouterModule.forRoot(routes);
-
 @NgModule({
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    routerModule,
-    svogvModule
+    RouterModule.forRoot(routes),
+    SvogvModule.forRoot()
   ],
   declarations: [
     // Demo app
-    cmp.NavComponent
-    , cmp.RootComponent
+    cmp.RootComponent
     , cmp.AboutComponent
     , cmp.DashboardComponent
     // Editor, Validation & Grid
@@ -46,6 +42,7 @@ const routerModule = RouterModule.forRoot(routes);
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent
     , cmp.TabsComponent
+    , cmp.InfoBoxComponent
   ],
   bootstrap: [cmp.RootComponent],
   providers: [

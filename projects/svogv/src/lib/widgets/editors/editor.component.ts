@@ -40,7 +40,7 @@ export class EditorComponent implements OnInit {
    */
   @Input() tooltip: string;
   /**
-   * Name of the form's group object.
+   * The form's group object.
    */
   @Input() userForm: FormGroup;
   /**
