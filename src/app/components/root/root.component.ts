@@ -9,6 +9,7 @@ import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from '../ui/sidemenu/models'
   templateUrl: './root.component.html'
 })
 export class RootComponent implements OnInit {
+
   user: string;
   currentRoute: { [key: string]: string };
   dynamicMenu: AcMenu;

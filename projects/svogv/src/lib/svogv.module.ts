@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders, Injector } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -11,7 +11,6 @@ import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.
 export * from './decorators';
 
 const SVOGV_COMPONENTS = [
-  wd.InfoBoxComponent,
   wd.DataGridComponent,
   wd.DataGridTemplateComponent,
   wd.DataGridPaginationComponent,
@@ -35,9 +34,7 @@ const provider = [FormValidatorService, FormValidatorFromJsonService];
 })
 export class SvogvModule {
 
-  // store this for access to custom pipes in the model's helper classes, which are not injectable
-  // SvogvModule['injector'] = injector;
-  public static forRoot(injector?: Injector): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders {
     return {
       ngModule: SvogvModule,
       providers: provider

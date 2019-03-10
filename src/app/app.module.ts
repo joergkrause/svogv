@@ -1,5 +1,5 @@
 import { NgModule, Injector, Pipe, PipeTransform } from '@angular/core';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -13,25 +13,13 @@ import { routes } from './configurations/routes';
 
 import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
 
-@Pipe({
-  name: 'demo',
-})
-export class DemoPipe implements PipeTransform {
-  transform(value: any, ...args: any[]) {
-    // do nothing, just shows injectibility
-    return value;
-  }
-}
-
-const injector = Injector.create({providers: [{provide: DemoPipe, deps: []}]});
-
-const svogvModule = SvogvModule.forRoot(injector);
+const svogvModule = SvogvModule.forRoot();
 const routerModule = RouterModule.forRoot(routes);
 
 @NgModule({
   imports: [
     BrowserModule,
-    HttpModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     routerModule,
@@ -58,8 +46,6 @@ const routerModule = RouterModule.forRoot(routes);
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent
     , cmp.TabsComponent
-    // Demo Pipe
-    , DemoPipe
   ],
   bootstrap: [cmp.RootComponent],
   providers: [

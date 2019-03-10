@@ -1,5 +1,4 @@
-﻿export * from './infobox/infobox.component';
-export * from './datagrid/pagination/datagridpagination.component';
+﻿export * from './datagrid/pagination/datagridpagination.component';
 export * from './datagrid/template/datagridtemplate.component';
 export * from './datagrid/datagrid.component';
 export * from './datagrid/pipe/formatdata.pipe';

@@ -1,23 +1,10 @@
-<div class="row" *ngIf="showSearch">
-  <div class="col-md-12">
-    <form role="search" class="form-inline col-md-6">
-      <div class="input-group" *ngIf="model">
-        <label for="searchUsers">Search </label>
-        <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" [(ngModel)]="model.searchValue.userName"
-        />
-        <span class="input-group-addon">
-          <i class="fa fa-search"></i>
-        </span>
-      </div>
-    </form>
-  </div>
-</div>
 <div class="row" *ngIf="reArrangeColumns">
   <div class="col-md-12">
-    <p>Currently invisible columns. Click to add:
+    <p>
+      Currently invisible columns. Click to add:
       <span *ngFor="let col of model.headersNotVisible; let l = last">
-        <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button>
-      </span>&nbsp;
+        <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button> </span
+      >&nbsp;
     </p>
   </div>
 </div>
@@ -33,7 +20,8 @@
       </colgroup>
       <thead>
         <tr>
-          <th *ngFor="let header of model.headers" [title]="header.desc">{{ header.text }}
+          <th *ngFor="let header of model.headers" [title]="header.desc">
+            {{ header.text }}
             <div class="ac-sortsmall">
               <button class="supersmall" (click)="model.sortColumn(header.prop, 'asc')">
                 <i class="fa fa-sort-asc"></i>
@@ -42,11 +30,12 @@
                 <i class="fa fa-sort-desc"></i>
               </button>
             </div>
-            <button (click)="model.removeColumn(header.prop)" class="btn btn-sm btn-warning"  *ngIf="reArrangeColumns">
+            <button (click)="model.removeColumn(header.prop)" class="btn btn-sm btn-warning" *ngIf="reArrangeColumns">
               <i class="fa fa-remove"></i>
             </button>
           </th>
-          <th *ngIf="showAddButton">Action
+          <th *ngIf="showAddButton">
+            Action
             <button class="btn btn-sm btn-success float-right" (click)="model.addItem()">
               New User
             </button>
@@ -57,27 +46,49 @@
         <tr *ngIf="!model.totalFilteredRows">
           <td colspan="4" class="text-center">
             <div class="alert alert-warning">
-              There are no items available.
+              <span #warningNoItems>
+                <ng-content select="[data-warning-noitems]"></ng-content>
+              </span>
+              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">There are no items to show</ng-container>
             </div>
           </td>
         </tr>
         <tr *ngFor="let item of model.itemsOnCurrentPage">
-          <td *ngFor="let data of model.columnsOfItemValues(item)">
-            {{ data }}
-            </td>
+          <td *ngFor="let header of model.headers">
+            <ng-container
+              [ngTemplateOutlet]="getActiveTemplate(header.uiHint)"
+              [ngTemplateOutletContext]="{ $implicit: data, pipe: header.pipe }"
+            ></ng-container>
+          </td>
           <td>
             <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">
-              Edit (Fields)
+              {{ textEditButton }}
             </button>
             <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">
-              Delete
+              {{ textDeleteButton }}
             </button>
           </td>
         </tr>
       </tbody>
       <tfoot>
-        <!-- TODO: Add footer features (sum/avg) -->
+        <tr>
+          <td [attr.colspan]="model.headers.length">
+            <div #footerRef>
+              <ng-content select="[data-footer]"></ng-content>
+            </div>
+            <ng-container *ngIf="!footerRef.innerHTML.trim()">&copy;</ng-container>
+          </td>
+        </tr>
       </tfoot>
     </table>
   </div>
 </div>
+<ng-template #text let-data let-modelpipe="pipe">
+   {{ data | formatData: modelpipe }}
+</ng-template>
+<ng-template #bool let-data>
+  <input type="checkbox" disabled [checked]="data" />
+</ng-template>
+<ng-template #date let-data>
+  {{ data }}
+</ng-template>

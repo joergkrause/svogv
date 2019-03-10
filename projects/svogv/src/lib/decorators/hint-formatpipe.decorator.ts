@@ -1,13 +1,4 @@
-﻿import { PipeTransform } from '@angular/core';
-
-/**
- * A helper class that allows us to accept Pipe implementations.
- */
-export class PipeTransformType implements PipeTransform {
-    transform(value: any, ...args: any[]) {
-        throw new Error('Do not use this class from user code. This class is only to support the SVOGV infrastructure.');
-    }
-}
+﻿import { Pipe } from '@angular/core';
 
 /**
  * The Format decorator. Provide the name of a Pipe that's being used by the
@@ -19,21 +10,21 @@ export class PipeTransformType implements PipeTransform {
  * @param readonly      Optional, default is true.
  * @param description   A tooltip that can be used optionally.
  */
-export function Format(pipeName: any, pipeParams: any[] = null) {
+export function FormatPipe(pipe: Pipe, pipeParams: any[] = null) {
     // the original decorator
     function formatInternal(target: Object, property: string | symbol): void {
-        formatInternalSetup(target, property.toString(), pipeName);
+        formatInternalSetup(target, property.toString(), pipe, pipeParams);
     }
 
     // return the decorator
     return formatInternal;
 }
 
-export function formatInternalSetup(target: any, key: string, pipeName: any, pipeParams: any[] = null) {
+export function formatInternalSetup(target: any, key: string, pipe: Pipe, pipeParams: any[] = null) {
 
     // create a helper property to transport a meta data value
-    Object.defineProperty(target, `__hasPipe__${key}`, {
-        value: pipeName,
+    Object.defineProperty(target, `__uiPipe__${key}`, {
+        value: pipe,
         enumerable: false,
         configurable: false
     });

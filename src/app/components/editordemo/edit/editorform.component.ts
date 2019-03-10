@@ -10,7 +10,7 @@ import { AcTab, AcTabData } from '../..';
   selector: 'app-editor',
   templateUrl: './editorform.component.html'
 })
-export class EditorFormComponent {
+export class EditorForComponent {
 
   editorTabs: AcTabData;
 

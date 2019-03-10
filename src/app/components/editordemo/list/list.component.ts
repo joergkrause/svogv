@@ -1,4 +1,4 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
 import { UserViewModelList } from '../../../viewmodels';
@@ -23,9 +23,10 @@ import { DataGridModel } from 'svogv';
     'button.ac-supersmall i { font-size: 0.8em; }',
     'div.ac-sortsmall { width: 18px; height: 34px; float: right; line-height: 0px; margin: -5px; }']
 })
-export class EditorListComponent {
+export class EditorListComponent implements OnInit {
 
   public users: DataGridModel<UserViewModelList>;
+  currentUser: UserViewModelList;
 
   constructor(public apiService: SiteApiService, public router: Router) {
     console.log('Users&List ctor');
@@ -60,7 +61,6 @@ export class EditorListComponent {
     this.router.navigate(['/editor/delete', user.id]);
   }
 
-  currentUser: UserViewModelList;
 
   showModal(user) {
     this.currentUser = user;

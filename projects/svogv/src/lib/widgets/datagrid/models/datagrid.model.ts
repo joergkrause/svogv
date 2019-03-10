@@ -40,16 +40,10 @@ export class DataGridModel<T> {
   }
 
   private get currentRowStart(): number {
-    return this.totalRows > this.pageSize
-      ? this.startRow + 1
-      : this.totalRows === 0
-      ? 0
-      : 1;
+    return this.totalRows > this.pageSize ? this.startRow + 1 : this.totalRows === 0 ? 0 : 1;
   }
   private get currentRowEnd(): number {
-    return this.startRow + this.pageSize < this.totalRows
-      ? this.startRow + this.pageSize
-      : this.totalRows;
+    return this.startRow + this.pageSize < this.totalRows ? this.startRow + this.pageSize : this.totalRows;
   }
 
   get startRow(): number {
@@ -76,10 +70,7 @@ export class DataGridModel<T> {
   }
 
   get itemsOnCurrentPage(): T[] {
-    return this.itemsFiltered.slice(
-      this.startRow,
-      this.startRow + this.pageSize
-    );
+    return this.itemsFiltered.slice(this.startRow, this.startRow + this.pageSize);
   }
 
   public get headers(): Array<DataGridHeaderModel> {
@@ -96,64 +87,25 @@ export class DataGridModel<T> {
 
   private _headers: Array<DataGridHeaderModel>;
 
+  /**
+   * Event fired if user clicks Edit button.
+   */
   public onEdit: EventEmitter<T> = new EventEmitter<T>();
+  /**
+   * Event fired if user clicks Delete button.
+   */
+  public onDelete: EventEmitter<T>  = new EventEmitter<T>();
 
   getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
     if (sortDirection === Direction.Ascending) {
-      return this.items.sort((a: any, b: any) =>
-        a[sortColumn] > b[sortColumn] ? 1 : -1
-      );
+      return this.items.sort((a: any, b: any) => (a[sortColumn] > b[sortColumn] ? 1 : -1));
     } else {
-      return this.items.sort((a: any, b: any) =>
-        a[sortColumn] < b[sortColumn] ? 1 : -1
-      );
+      return this.items.sort((a: any, b: any) => (a[sortColumn] < b[sortColumn] ? 1 : -1));
     }
-  }
-
-  // The view can get col by col filtered for valid headers
-  public columnsOfItemValues(item: T): Array<any> {
-    // we return all if no headers
-    const columns: Array<any> = new Array<any>();
-    if (!this._headers) {
-      // tslint:disable-next-line:forin
-      for (const prop in item) {
-        columns.push((<any>item)[prop]);
-      }
-    } else {
-      this.headers.forEach((e, idx) => columns.push((<any>item)[e.prop]));
-    }
-    return columns;
-  }
-
-  public columnsOfItem(item: T): Array<DataGridItemModel> {
-    // we return all if no headers
-    const columns: Array<DataGridItemModel> = new Array<DataGridItemModel>();
-    const currentHeaders: DataGridHeaderModel[] =
-      this.headers ||
-      Object.keys(item).map(h => new DataGridHeaderModel(h, null, h, false));
-    currentHeaders.forEach((h, idx) => {
-      const e = new DataGridItemModel();
-      e.value = (<any>item)[h.prop];
-      e.prop = h.prop;
-      const hasPipe = (<any>e)[`__hasPipe__${h.prop}`];
-      if (hasPipe) {
-        e.pipeToken = hasPipe;
-      }
-      columns.push(e);
-    });
-    return columns;
   }
 
   public sortColumn(colName: string, dir: string) {
-    this.items.sort((a: any, b: any) =>
-      dir === 'desc'
-        ? a[colName] > b[colName]
-          ? 1
-          : -1
-        : a[colName] > b[colName]
-        ? -1
-        : 1
-    );
+    this.items.sort((a: any, b: any) => (dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : a[colName] > b[colName] ? -1 : 1));
   }
 
   public removeColumn(colname: string) {
@@ -170,13 +122,20 @@ export class DataGridModel<T> {
     }
   }
 
-  public addItem() {}
-
-  public deleteItem(item: T) {}
-
-  // called by infrastructure to inform caller of edit wish
+  /**
+   * Called by infrastructure to inform caller of edit wish
+   * @param item The item to edit
+   */
   public editItem(item: T) {
     this.onEdit.emit(item);
+  }
+
+  /**
+   * Called by infrastructure to inform caller of delete wish
+   * @param item The item to delete
+   */
+  public deleteItem(item: T) {
+    this.onDelete.emit(item);
   }
 
   private createHeadersForType(type: any): void {
@@ -184,16 +143,23 @@ export class DataGridModel<T> {
     // has at least one row, so we can read the headers
     // first we read the properties
     this._headers = new Array<DataGridHeaderModel>();
-    // tslint:disable-next-line:forin
     for (const p in type) {
+      if (!type.hasOwnProperty(p)) {
+        continue;
+      }
       // either propname or decorator name
       const propName = type[`__displayName__${p}`] || p;
       const propDesc = type[`__displayDesc__${p}`] || p;
       // check if hidden, show if no hidden decorator
       const isHidden = type[`__isHidden__${p}`] || false;
-      this._headers.push(
-        new DataGridHeaderModel(propName, propDesc, p, isHidden)
-      );
+      const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
+      header.isSortable = type[`__issortable__${p}`] || true;
+      header.uiHint = type[`__uihint__${p}`] || 'text';
+      header.pipe = type[`__uipipe__${p}`];
+      header.pipeParams = type[`__pipeParams__${p}`];
+      this._headers.push(header);
     }
   }
 }
+
+
