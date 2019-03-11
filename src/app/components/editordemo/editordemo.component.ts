@@ -58,7 +58,9 @@ export class EditorDemoComponent implements OnInit, OnDestroy {
       .subscribe(data => {
         // patchValue here instead if setValue because the form's
         // viewmodel is more complete than the form
-        this.userFormGroup.patchValue(data, { onlySelf: true, emitEvent: false });
+        if (data) {
+          this.userFormGroup.patchValue(data, { onlySelf: true, emitEvent: false });
+        }
       });
   }
 
