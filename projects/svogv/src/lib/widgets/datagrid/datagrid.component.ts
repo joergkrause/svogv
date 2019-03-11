@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 import { DataGridModel } from './models/datagrid.model';
+import { increaseElementDepthCount } from '@angular/core/src/render3/state';
 
 /**
  * The datagrid provides basic functions for data tables:
@@ -51,6 +52,9 @@ export class DataGridComponent implements OnInit {
   public textEditButton = 'Edit';
   @Input()
   public textAddButton = 'Add';
+
+  @Input()
+  public textButtonsHeader = 'Actions';
 
   @Input()
   public filter: any;

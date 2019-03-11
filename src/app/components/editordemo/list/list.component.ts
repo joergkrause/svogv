@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
 import { UserViewModelList } from '../../../viewmodels';
@@ -23,7 +23,7 @@ import { DataGridModel } from 'svogv';
     'button.ac-supersmall i { font-size: 0.8em; }',
     'div.ac-sortsmall { width: 18px; height: 34px; float: right; line-height: 0px; margin: -5px; }']
 })
-export class EditorListComponent implements OnInit {
+export class EditorListComponent implements OnInit, OnDestroy {
 
   public users: DataGridModel<UserViewModelList>;
   currentUser: UserViewModelList;
@@ -40,16 +40,24 @@ export class EditorListComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.users.onEdit.unsubscribe();
+    this.users.onDelete.unsubscribe();
+    delete this.users;
+  }
+
   private renderData(data: Array<UserViewModelList>) {
     // we get a regular array here, but grid expects GridData for proper rendering
     this.users = new DataGridModel<UserViewModelList>(data, UserViewModelList);
+    this.users.onEdit.subscribe(user => this.editUser(user));
+    this.users.onDelete.subscribe(user => this.removeUser(user));
   }
 
-  editUser(user) {
+  editUser(user: UserViewModelList): void {
     this.router.navigate(['/editor/edit', user.id]);
   }
 
-  editUserAutoform(user) {
+  editUserAutoform(user: UserViewModelList): void {
     this.router.navigate(['/editor/edit-autoform', user.id]);
   }
 
@@ -57,12 +65,12 @@ export class EditorListComponent implements OnInit {
     this.router.navigate(['/editor/new']);
   }
 
-  removeUser(user) {
+  removeUser(user: UserViewModelList): void {
     this.router.navigate(['/editor/delete', user.id]);
   }
 
 
-  showModal(user) {
+  showModal(user: UserViewModelList): void {
     this.currentUser = user;
   }
 
