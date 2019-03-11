@@ -11,10 +11,10 @@ export interface IBreadcrumb {
 @Component({
     selector: 'app-breadcrumb',
     template: `<ol class="list-inline breadcrumb" >
-                 <li class="list-inline-item"><a routerLink=""><i class="fa " [ngClass]="icon"></i>{{ home }}</a> / </li>
+                 <li class="list-inline-item"><a routerLink=""><i class="fa " [ngClass]="icon"></i>&nbsp;{{ home }}</a> /</li>
                  <li class="list-inline-item" *ngFor="let breadcrumb of breadcrumbs; let lastItem=last">
                     <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
-                    <span *ngIf="!lastItem">&nbsp;/&nbsp;</span>
+                    <span *ngIf="!lastItem">&nbsp;/</span>
                  </li>
                </ol>`,
     styles: [
