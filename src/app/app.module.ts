@@ -29,15 +29,15 @@ import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 
     , cmp.DashboardComponent
     // Editor, Validation & Grid
     , cmp.EditorDemoComponent
-    , cmp.EditorAutoformComponent
-    , cmp.EditorListComponent
     , cmp.EditorNewComponent
-    , cmp.EditorDemoComponent
+    , cmp.EditorAutoformComponent
+    , cmp.EditorFormComponent
+    , cmp.EditorListComponent
     , cmp.EditorDeleteComponent
     // Widget Demos
     , cmp.WidgetDemoComponent
-    , cmp.ListWidgetsComponent
-    , cmp.TreeviewComponent
+    , cmp.GridDemoComponent
+    , cmp.TreeviewDemoComponent
     // Custom Widgets just for Demo
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent

@@ -28,7 +28,7 @@
 </div>
 <ac-datagrid
   [model]="users"
-  [filter]="searchItem.value"
+  [filter]="searchItem && searchItem.value"
   [showEditButton]="true"
   [showDeleteButton]="true"
   [textEditButton]="Edit"

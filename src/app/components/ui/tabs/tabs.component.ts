@@ -65,14 +65,13 @@ export class AcTabData {
 }) //
 export class TabsComponent implements OnInit {
 
-  @Input() tabs: AcTabData;
-  @Input() limitBreadcrumb = false;
-  @Output() currentTab: AcTab;
-
   // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
   // in the router config for those items that shall appear in the breadcrumb
   private static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
-  private static readonly ROUTE_DATA_SUBTITLE = 'subtitle';
+
+  @Input() tabs: AcTabData;
+  @Input() limitBreadcrumb = false;
+  @Output() currentTab: AcTab;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {
   }

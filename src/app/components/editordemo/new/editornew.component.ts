@@ -8,7 +8,7 @@ import { SiteApiService, EmitterService } from '../../../services';
 import { UserViewModel } from '../../../viewmodels';
 
 @Component({
-  templateUrl: './new.component.html',
+  templateUrl: './editornew.component.html',
   styles: [
     'fieldset { margin: 16px; padding: 0px 16px 16px 16px; border: 1px solid silver; border-radius: 2px; }',
     'legend { padding: 0px 16px 0px 16px; width: auto; }'

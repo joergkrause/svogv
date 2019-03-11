@@ -12,7 +12,7 @@ export class AcMenu {
 
   // Get the item and return null if not of expected subtype, or text not unique, or not found.
   getMenuItem<T extends AcMenuItem>(name: string): T {
-    let foundItems = this.children.filter(item => item.text === name);
+    const foundItems = this.children.filter(item => item.text === name);
     if (foundItems.length === 1) {
       return foundItems[0] as T;
     }

@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 // private
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SiteApiService, EmitterService } from '../../services';
-import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from '../ui/sidemenu/models';
+import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem, AcMenuItem } from '../ui/sidemenu/models';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,13 @@ import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem } from '../ui/sidemenu/models'
 })
 export class RootComponent implements OnInit {
 
-  user: string;
   currentRoute: { [key: string]: string };
   dynamicMenu: AcMenu;
   currentYear: string;
 
   constructor(public apiService: SiteApiService,
               private route: ActivatedRoute,
+              private router: Router,
               private emitterService: EmitterService) {
     // default on boot
     this.currentRoute = {
@@ -28,21 +28,23 @@ export class RootComponent implements OnInit {
       this.currentRoute = data;
     });
     this.currentYear = new Date().getFullYear().toString();
-    this.user = 'Fake User';
   }
 
   private loadData(): void {
     // create menu, this might be come from the server to handle rights & roles
     // the menu is forwarded to the sideMenu component through binding
-    this.dynamicMenu = new AcMenu(
-      new AcMenuHeaderItem('Information'),
-      new AcMenuLinkItem('Dashboard', ['/dashboard'], 'fa-dashboard'),
-      new AcMenuLinkItem('About', ['/about'], 'fa-database'),
-      new AcMenuHeaderItem('Features'),
-      new AcMenuLinkItem('Editor', ['/editor'], 'fa-user'),
-      new AcMenuLinkItem('Grid', ['/widgets'], 'fa-clock'),
-      new AcMenuLinkItem('Tree', ['/widgets'], 'fa-clock')
-    );
+    const items: Array<AcMenuItem> = [];
+    items.push(new AcMenuHeaderItem('Features'));
+    this.router.config
+        .filter(r => !r.redirectTo && r.path !== '**')
+        .filter(r => r.data['features'])
+        .forEach(r => items.push(new AcMenuLinkItem(r.data['title'], [r.path], r.data['icon'])));
+    items.push(new AcMenuHeaderItem('Information'));
+    this.router.config
+        .filter(r => !r.redirectTo && r.path !== '**')
+        .filter(r => r.data['info'])
+        .forEach(r => items.push(new AcMenuLinkItem(r.data['title'], [r.path], r.data['icon'])));
+    this.dynamicMenu = new AcMenu(...items);
     // get dashboard data on load and distribute to all listening components
     this.apiService.getUsers().subscribe(data => {
       this.emitterService.get('BROADCAST_Users').emit(data);

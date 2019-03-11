@@ -11,42 +11,49 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: cmp.DashboardComponent,
-    data: { 'title': 'Dashboard', 'subtitle': 'Dashboard' }
+    data: { 'title': 'Dashboard', 'subtitle': 'Dashboard', 'info': true }
   },
   {
     path: 'widgets',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Features', 'subtitle': 'All features of grid and tree', 'breadcrumb': true },
+    data: { 'title': 'Components', 'subtitle': 'All features of grid and tree', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',
-        redirectTo: 'list',
+        redirectTo: 'tree',
         pathMatch: 'full'
       },
       // actual child routes for studies, components will land in the inner <router-outlet> of studies' view
       {
-        path: 'list',
-        component: cmp.ListWidgetsComponent,
-        data: {
-          'title': 'Overview', 'subtitle': 'Show all widgets',
-          'active': true, 'disabled': false, 'breadcrumb': true
-        }
-      },
-      {
         path: 'tree',
-        component: cmp.TreeviewComponent,
+        component: cmp.TreeviewDemoComponent,
         data: {
           'title': 'Tree View', 'subtitle': 'Tree Demo',
           'active': false, 'disabled': false, 'breadcrumb': true
         }
+      },
+      {
+        path: 'grids',
+        component: cmp.GridDemoComponent,
+        data: {
+          'title': 'Grid (simple)', 'subtitle': 'Grid Demo (simple)',
+          'active': true, 'disabled': false, 'breadcrumb': true
+        }
+      },
+      {
+        path: 'grida',
+        component: cmp.GridDemoComponent,
+        data: {
+          'title': 'Grid (advanced)', 'subtitle': 'Grid Demo (advanced)',
+          'active': false, 'disabled': false, 'breadcrumb': true
+        }
       }
     ]
-
   },
   {
     path: 'editor',
     component: cmp.EditorDemoComponent,
-    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid', 'breadcrumb': true },
+    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',
@@ -69,7 +76,7 @@ export const routes: Routes = [
       },
       {
         path: 'edit/:id',
-        component: cmp.EditorDemoComponent,
+        component: cmp.EditorFormComponent,
         data: {
           'title': 'Edit Regular Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true
         }
@@ -100,6 +107,6 @@ export const routes: Routes = [
   {
     path: 'about',
     component: cmp.AboutComponent,
-    data: { 'title': 'About', 'subtitle': 'About this app', 'breadcrumb': true }
+    data: { 'title': 'About', 'subtitle': 'About this app', 'breadcrumb': true, 'info': true }
   }
 ];

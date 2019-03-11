@@ -3,9 +3,9 @@ import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from 'svogv';
 
 @Component({
   selector: 'app-treeview',
-  templateUrl: './treeview.component.html'
+  templateUrl: './treeviewdemo.component.html'
 })
-export class TreeviewComponent {
+export class TreeviewDemoComponent {
   public treeData: TreeNodeModel;
   private eventLog: Array<string> = new Array<string>();
 
