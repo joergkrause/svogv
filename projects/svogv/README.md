@@ -68,7 +68,7 @@ export class UserViewModel {
 
 As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. 
 
-The usage is simple; just import like this:
+The usage is simple; just import like this (selection, there are more options):
 
 ~~~
 import { 
@@ -208,9 +208,13 @@ You get three parts (at least, this list will grow quickly):
 
 For more information read the [Getting started guide](/guides/getting-started.md).
 
+See demo and API docs running on [SVOGV](http://www.svogv.com).
+
 ### Demo App
 
 There is a [demo app](/src/demo/README.md) where you can see the components in action.
+
+See demo and API docs running on [SVOGV](http://www.svogv.com).
 
 ## Quick Start
 

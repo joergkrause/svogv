@@ -86,7 +86,7 @@ An update to support Angular 5 and 6. This is also a change in naming the versio
 Also, this is a big change from Gulp/Rollup based build process to using the Angular CLI. After a ton of experiments with WebPack 4 and almost very loader the outcome was more or less fruststrating. With Angular CLI, I must admit, the results are perfect, stable and small packages, and an easy setup procedure.
 
 <a name="0.7.0"></a>
-# [0.7.0](https://github.com/joergkrause/svogv/releases/tag/0.7.0) (2018-11-22)
+# [0.7.0](https://github.com/joergkrause/svogv/releases/tag/0.7.0) (2019-01-31)
 
 Again a big redesign. Mostly renaming and reorg. It's a need for the way to 1.0. It follows more strictly the Angular guide line for code.
 

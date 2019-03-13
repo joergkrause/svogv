@@ -51,7 +51,7 @@ Object.equals = function (x: any, y: any): boolean {
     // Objects and Arrays must be tested recursively
   }
 
-  for (p in y) {
+  for (const p in y) {
     if (y.hasOwnProperty(p) && !x.hasOwnProperty(p)) { return false; }
     // allows x[ p ] to be set to undefined
   }
