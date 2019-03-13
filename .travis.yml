@@ -31,7 +31,6 @@ env:
   matrix:
     # Order: a slower build first, so that we don't occupy an idle travis worker waiting for others to complete.
     - MODE=build
-    - MODE=demo
     - MODE=lint
 
 matrix:
