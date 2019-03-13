@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
 import { UserViewModelList } from '../../../viewmodels';
 import { DataGridModel } from 'svogv';
+import { AbstractControl } from '@angular/forms';
 
 @Component({
   templateUrl: './list.component.html',
@@ -26,7 +27,8 @@ import { DataGridModel } from 'svogv';
 export class EditorListComponent implements OnInit, OnDestroy {
 
   public users: DataGridModel<UserViewModelList>;
-  currentUser: UserViewModelList;
+  public currentUser: UserViewModelList;
+  public searchItem: AbstractControl;
 
   constructor(public apiService: SiteApiService, public router: Router) {
     console.log('Users&List ctor');

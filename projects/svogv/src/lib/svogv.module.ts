@@ -3,12 +3,10 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import * as wd from './widgets';
+import * as wd from './widgets/index';
 
 import { FormValidatorService } from './services/formvalidator.service';
 import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.service';
-
-export * from './decorators';
 
 const SVOGV_COMPONENTS = [
   wd.DataGridComponent,

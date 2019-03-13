@@ -23,7 +23,7 @@
   <div class="row">
     <div class="col-12">
       <form role="search" class="form-inline col-md-6">
-        <div class="input-group" *ngIf="model">
+        <div class="input-group" *ngIf="users">
           <label for="searchUsers">Search </label>
           <input type="text" id="searchUsers" class="form-control" title="Search" name="searchItem" ngModel #searchItem />
           <span class="input-group-addon">
@@ -44,7 +44,7 @@
         textDeleteButton="Delete"
         textButtonsHeader="Actions"
         (onEdit)="editUser($event)"
-        (onDelete)="deleteUser($event)"
+        (onDelete)="removeUser($event)"
       ></ac-datagrid>
       <div class="clearfix">
         <form class="form-inline">

@@ -7,7 +7,7 @@ import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from 'svogv';
 })
 export class TreeviewDemoComponent {
   public treeData: TreeNodeModel;
-  private eventLog: Array<string> = new Array<string>();
+  public eventLog: Array<string> = new Array<string>();
 
   constructor() {
     // raw data for treeview

@@ -11,8 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "codedoc": "npm run codedoc-dist && npm run codedoc-docs",
-    "codedoc-dist": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./docs/documentation",
-    "codedoc-docs": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./dist/svogv-demo/documentation"
+    "codedoc-docs": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./docs/documentation",
+    "codedoc-dist": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./dist/svogv-demo/documentation"
   },
   "dependencies": {
     "@angular/animations": "^7.2.9",

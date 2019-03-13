@@ -110,8 +110,7 @@ export const routes: Routes = [
       }
     ]
 
-  },
-  // standard component paths
+  }, // standard component paths
   {
     path: 'about',
     component: cmp.AboutComponent,
@@ -120,6 +119,6 @@ export const routes: Routes = [
   {
     path: 'docs',
     component: cmp.DocsComponent,
-    data: { 'title': 'Documentation', 'subtitle': 'The API documentation', 'breadcrumb': true, 'info': true }
+    data: { 'title': 'API Docs', 'subtitle': 'The API documentation', 'breadcrumb': true, 'info': true }
   }
 ];
