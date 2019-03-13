@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        A demo showing how to manipulate the cell's content using templates. Templates work on a per type base.
+        In the demo all cells that render a boolean value are being replaced.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <form>
+      <fieldset>
+        <legend>Grid Features</legend>
+        <div class="form-group"></div>
+      </fieldset>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-primary">
+        <p>The grid below is using this code:</p>
+        <pre>
+&lt;ac-datagrid [model]="model" [showActions]="false">
+  &lt;ng-template #bool let-item>
+    &lt;span *ngIf="item">YES&lt;/span>
+    &lt;span *ngIf="!item">NO&lt;/span>
+  &lt;/ng-template>
+&lt;/ac-datagrid></pre
+        >
+        <p>It shows how to change the styles of the particular parts of the grid.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <ac-datagrid [model]="model" [showActions]="false">
+        <ng-template #bool let-item>
+          <span *ngIf="item">YES</span>
+          <span *ngIf="!item">NO</span>
+        </ng-template>
+      </ac-datagrid>
+    </div>
+  </div>
+</div>

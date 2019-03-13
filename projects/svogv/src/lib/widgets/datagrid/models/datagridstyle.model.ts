@@ -7,6 +7,7 @@ export interface DatagridStyles {
   last?: StyleRules;
   group?: StyleRules;
   header?: StyleRules;
+  headerSortButton?: StyleRules;
   footer?: StyleRules;
   actionCell?: StyleRules;
 }

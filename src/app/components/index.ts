@@ -7,6 +7,7 @@ export * from './dashboard/app-dashboard.component';
 export * from './editordemo/editordemo.component';
 // app : widgets
 export * from './widgetdemo/widgets/griddemosimple.component';
+export * from './widgetdemo/widgets/griddemotemplate.component';
 export * from './widgetdemo/widgets/griddemo.component';
 export * from './widgetdemo/widgets/treeviewdemo.component';
 export * from './widgetdemo/widgetdemo.component';

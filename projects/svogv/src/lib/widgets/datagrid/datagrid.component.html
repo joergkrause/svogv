@@ -12,11 +12,11 @@
         <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
           <th *ngFor="let header of model.headers" [title]="header.desc">
             {{ header.text }}
-            <div class="ac-sortsmall">
-              <button class="supersmall" (click)="model.sortColumn(header.prop, 'asc')">
+            <div class="sort" [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
+              <button (click)="model.sortColumn(header.prop, 'asc')">
                 <i class="fa fa-sort-asc"></i>
               </button>
-              <button class="supersmall" (click)="model.sortColumn(header.prop, 'desc')">
+              <button (click)="model.sortColumn(header.prop, 'desc')">
                 <i class="fa fa-sort-desc"></i>
               </button>
             </div>

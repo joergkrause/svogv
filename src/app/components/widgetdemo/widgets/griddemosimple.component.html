@@ -17,16 +17,18 @@
   <div class="row">
     <div class="col-12">
       <div class="alert alert-primary">
-        The grid below is using this code:
+        <p>The grid below is using this code:</p>
         <pre>
 &lt;ac-datagrid [model]="model"
              [showActions]="false"
              [columnStyle]="{{ '{' }} footer: {{ '{' }} 'background-color': 'silver' },
                               first: {{ '{' }} 'background-color': 'orange' },
-                              header: {{ '{' }} color: 'white', 'background-color': 'black' }
+                              header: {{ '{' }} color: 'white', 'background-color': 'black' },
+                              headerSortButton: {{ '{' }} color: 'yellow' }
                              }" &gt;
 &lt;/ac-datagrid&gt;</pre
         >
+        <p>It shows how to change the styles of the particular parts of the grid.</p>
       </div>
     </div>
   </div>
@@ -38,9 +40,23 @@
         [columnStyle]="{
           footer: { 'background-color': 'silver' },
           first: { 'background-color': 'orange' },
-          header: { color: 'white', 'background-color': 'black' }
+          header: { color: 'white', 'background-color': 'black' },
+          headerSortButton: { color: 'yellow' }
         }"
       ></ac-datagrid>
     </div>
   </div>
+  <div class="row">
+      <div class="col-12">
+        <ac-datagrid
+          [model]="model"
+          [showActions]="false"
+        >
+      <ng-template #bool let-item>
+        <span *ngIf="item">YES</span>
+        <span *ngIf="!item">NO</span>
+      </ng-template>
+      </ac-datagrid>
+      </div>
+    </div>
 </div>
