@@ -1,13 +1,3 @@
-<div class="row" *ngIf="reArrangeColumns">
-  <div class="col-md-12">
-    <p>
-      Currently invisible columns. Click to add:
-      <span *ngFor="let col of model.headersNotVisible; let l = last">
-        <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button> </span
-      >&nbsp;
-    </p>
-  </div>
-</div>
 <div class="row" *ngIf="model">
   <div class="col-md-12">
     <table class="table table-condensed">

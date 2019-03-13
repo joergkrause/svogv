@@ -73,10 +73,16 @@ export class DataGridModel<T> {
     return this.itemsFiltered.slice(this.startRow, this.startRow + this.pageSize);
   }
 
+  /**
+   * Get all headers (column names) and their properties.
+   */
   public get headers(): Array<DataGridHeaderModel> {
     return this._headers.filter(h => !h.hidden);
   }
 
+  /**
+   * Returns the columns currently not shown. @see addColumn and @see removeColumn for more information.
+   */
   public get headersNotVisible(): Array<DataGridHeaderModel> {
     return this._headers.filter(h => h.hidden);
   }
@@ -91,6 +97,7 @@ export class DataGridModel<T> {
    * Event fired if user clicks Edit button.
    */
   public onEdit: EventEmitter<T> = new EventEmitter<T>();
+
   /**
    * Event fired if user clicks Delete button.
    */
@@ -104,10 +111,19 @@ export class DataGridModel<T> {
     }
   }
 
+  /**
+   * Simple sort fucntion that makes a array sort call for the specified column.
+   * @param colName The column which has to be sorted after.
+   * @param dir The order, descended is *desc*, any other string is ascending (default).
+   */
   public sortColumn(colName: string, dir: string) {
     this.items.sort((a: any, b: any) => (dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : a[colName] > b[colName] ? -1 : 1));
   }
 
+  /**
+   * Make a column invisible. This is just changing the render process, the column is still
+   * in the headers collection and can be made visible again by calling @see addColumn later.
+   */
   public removeColumn(colname: string) {
     const col = this._headers.find(h => h.prop === colname);
     if (col) {
@@ -115,6 +131,11 @@ export class DataGridModel<T> {
     }
   }
 
+  /**
+   * Add a column to the current grid, that has been removed recently.
+   * It's just adding columns that already exists in the headers collection.
+   * If the column name provided does not exists, the method does nothing.
+   */
   public addColumn(colname: string) {
     const col = this._headers.find(h => h.prop === colname);
     if (col) {

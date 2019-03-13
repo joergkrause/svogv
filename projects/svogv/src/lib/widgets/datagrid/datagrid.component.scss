@@ -1,0 +1,28 @@
+$smallsize: 16px;
+$padding: 1px;
+
+.colborders col {
+  border-right: $padding solid azure;
+}
+
+col.last {
+  border-right: none !important;
+}
+
+col.first {
+  background-color: #eee;
+}
+
+th {
+  background: none;
+}
+
+.supersmall {
+  width: $smallsize;
+  height: $smallsize;
+  border-radius: 0;
+  padding: $padding;
+  border: 0px;
+  background-color: transparent !important;
+  cursor: pointer;
+}

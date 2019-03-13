@@ -2,12 +2,34 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="alert alert-info">
-        This is the components (widgets) demo page. The widgets here complement the grid.
-        These widgets are not fully blown components
-        but instead show the effort to create highly customized stuff. Some parts require
-        Bootstrap 4 and hence do not work in other environments properly. However, it's not about
-        adding Bootstrap aware Angular stuff, this has been done already by others.
+        This is the components (widgets) demo page. The widgets here complement the grid. These widgets are not fully blown components but instead
+        show the effort to create highly customized stuff. Some parts require Bootstrap 4 and hence do not work in other environments properly.
+        However, it's not about adding Bootstrap aware Angular stuff, this has been done already by others.
       </div>
+    </div>
+  </div>
+  <div class="row">
+    <form>
+      <fieldset>
+        <legend>Grid Features</legend>
+        <div class="form-group">
+          <label>Columns visibility</label>
+          <input type="checkbox" checked="true" #reArrangeColumns />
+        </div>
+
+      </fieldset>
+
+    </form>
+
+  </div>
+  <div class="row" *ngIf="reArrangeColumns.value">
+    <div class="col-md-12">
+      <p>
+        Currently invisible columns. Click to add:
+        <span *ngFor="let col of model.headersNotVisible; let l = last">
+          <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button> </span
+        >&nbsp;
+      </p>
     </div>
   </div>
 </div>

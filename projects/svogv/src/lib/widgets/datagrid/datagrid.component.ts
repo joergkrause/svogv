@@ -18,7 +18,6 @@ import { increaseElementDepthCount } from '@angular/core/src/render3/state';
   styleUrls: ['./datagrid.component.css']
 })
 export class DataGridComponent implements OnInit {
-
   @ViewChild('text') textFallback: TemplateRef<any>;
   @ContentChild('text') text: TemplateRef<any>;
 
@@ -36,34 +35,50 @@ export class DataGridComponent implements OnInit {
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
+  /**
+   * The model that makes up the content. Shall provide properties with decorators to control appearance.
+   */
   @Input()
   public model: DataGridModel<any>;
 
+  /**
+   * Wheather to show a delete button. Clicking it fires the @see DataGridModel.OnDelete event.
+   */
   @Input()
   public showDeleteButton: boolean;
+  /**
+   * Wheather to show an edit button. Clicking it fires the @see DataGridModel.OnEdit event.
+   */
   @Input()
   public showEditButton: boolean;
-  @Input()
-  public showAddButton: boolean;
-
+  /**
+   * The text that appears on the Delete button. Default is 'Delete'.
+   */
   @Input()
   public textDeleteButton = 'Delete';
+  /**
+   * The text that appears on the Edit button. Default is 'Edit'.
+   */
   @Input()
   public textEditButton = 'Edit';
-  @Input()
-  public textAddButton = 'Add';
-
+  /**
+   * The column header of the column that shows the buttons.
+   */
   @Input()
   public textButtonsHeader = 'Actions';
-
+  /**
+   * The filter value to filter the content.
+   */
   @Input()
   public filter: any;
 
+  /**
+   * If `true` the columns can be rearranged by moving around with drag 'n drop.
+   */
   @Input()
   public reArrangeColumns: boolean;
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   /**
    * Controls the template used to display certain data types.
@@ -77,5 +92,4 @@ export class DataGridComponent implements OnInit {
       return this[`${uiHint}Fallback`];
     }
   }
-
 }
