@@ -1,0 +1,1827 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>svogv-demo documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	    <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">svogv-demo documentation</a>
+            <button type="button" class="btn btn-default btn-menu fa fa-bars" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+            <div id="book-search-input" role="search">
+                <input type="text" placeholder="Type to search">
+            </div>
+            <nav>
+            
+                <ul class="list">
+            
+                    <li class="title">
+                        <a href="../index.html">svogv-demo documentation</a>
+                    </li>
+            
+                    <li class="divider"></li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                        <ul class="links">
+                                <li class="link">
+                                    <a 
+                                        
+                                         href="../overview.html" 
+                                         href="../overview.html" 
+                                        >
+                                        <span class="fa fa-th"></span>Overview
+                                    </a>
+                                </li>
+                                <li class="link">
+                                  <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                </li>
+                                <li class="link">
+                                    <a href="./changelog.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CHANGELOG
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./contributing.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>CONTRIBUTING
+                                    </a>
+                                </li>
+                                <li class="link">
+                                    <a href="./license.html"
+                                        >
+                                        <span class="fa fa-file-text-o"></span>LICENSE
+                                    </a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../modules.html" >
+                            <div class="menu-toggler linked" data-toggle="collapse"
+                                    data-target="#xs-modules-links"
+                            >
+                                <span class="fa fa-archive"></span>
+                                <span class="link-name">Modules</span>
+                                <span class="fa fa-angle-down"></span>
+                            </div>
+                        </a>
+                        <ul class="links collapse "
+                                id="xs-modules-links"
+                            >
+                                <li class="link">
+                                    <a href="../modules/SvogvModule.html" >SvogvModule</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-components-links"
+                            >
+                            <span class="fa fa-cogs"></span>
+                            <span>Components</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-components-links"
+                            >
+                                <li class="link">
+                                    <a href="../components/AutoFormComponent.html" >AutoFormComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DataGridComponent.html"  data-type="entity-link" class="active" >DataGridComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/DataGridPaginationComponent.html" >DataGridPaginationComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TreeViewComponent.html" >TreeViewComponent</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../components/TreeViewNodeComponent.html" >TreeViewNodeComponent</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-classes-links"
+                            >
+                            <span class="fa fa-file-code-o"></span>
+                            <span>Classes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-classes-links"
+                            >
+                                <li class="link">
+                                    <a href="../classes/DataGridHeaderModel.html" >DataGridHeaderModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DataGridItemModel.html" >DataGridItemModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DataGridModel.html" >DataGridModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/DynamicHTMLOptions.html" >DynamicHTMLOptions</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/OnMount.html" >OnMount</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/TextTreeNodeModel.html" >TextTreeNodeModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/TreeNodeComponentModel.html" >TreeNodeComponentModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/TreeNodeModel.html" >TreeNodeModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../classes/TreeNodeOptions.html" >TreeNodeOptions</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-injectables-links"
+                            >
+                            <span class="fa fa-long-arrow-down"></span>
+                            <span>Injectables</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-injectables-links"
+                            >
+                                <li class="link">
+                                    <a href="../injectables/DynamicHtmlRendererService.html" >DynamicHtmlRendererService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/FormValidatorFromJsonService.html" >FormValidatorFromJsonService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/FormValidatorService.html" >FormValidatorService</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../injectables/WindowRef.html" >WindowRef</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-interfaces-links"
+                            >
+                            <span class="fa fa-info"></span>
+                            <span>Interfaces</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-interfaces-links"
+                            >
+                                <li class="link">
+                                    <a href="../interfaces/Array.html" >Array</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ComponentWithSelector.html" >ComponentWithSelector</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DatagridStyles.html" >DatagridStyles</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/DynamicHTMLRef.html" >DynamicHTMLRef</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/FormValidatorModel.html" >FormValidatorModel</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/ObjectConstructor.html" >ObjectConstructor</a>
+                                </li>
+                                <li class="link">
+                                    <a href="../interfaces/TreeNodeBaseModel.html" >TreeNodeBaseModel</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-pipes-links"
+                            >
+                            <span class="fa fa-plus"></span>
+                            <span>Pipes</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-pipes-links"
+                            >
+                                <li class="link">
+                                    <a href="../pipes/FormatDataPipe.html" >FormatDataPipe</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+                    <li class="chapter">
+                        <div class="simple menu-toggler" data-toggle="collapse"
+                                data-target="#xs-miscellaneous-links"
+                            >
+                            <span class="fa fa-cubes"></span>
+                            <span>Miscellaneous</span>
+                            <span class="fa fa-angle-down"></span>
+                        </div>
+                        <ul class="links collapse "
+                                id="xs-miscellaneous-links"
+                            >
+                                <li class="link">
+                                  <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                </li>
+                                <li class="link">
+                                  <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                </li>
+                        </ul>
+                    </li>
+            
+            
+                    <li class="chapter">
+                        <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                    </li>
+            
+                    <li class="divider"></li>
+                    <li class="copyright">
+                            Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                        <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                            </a>
+                    </li>
+            
+                </ul>
+            
+            </nav>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <nav>
+                   
+                       <ul class="list">
+                   
+                           <li class="title">
+                               <a href="../index.html">svogv-demo documentation</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                   
+                               <div id="book-search-input" role="search">
+                                   <input type="text" placeholder="Type to search">
+                               </div>
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../index.html"><span class="fa fa-home"></span>Getting started</a>
+                               <ul class="links">
+                                       <li class="link">
+                                           <a 
+                                               
+                                                href="../overview.html" 
+                                                href="../overview.html" 
+                                               >
+                                               <span class="fa fa-th"></span>Overview
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../index.html" ><span class="fa fa-file-text-o"></span>README</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./changelog.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CHANGELOG
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./contributing.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>CONTRIBUTING
+                                           </a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="./license.html"
+                                               >
+                                               <span class="fa fa-file-text-o"></span>LICENSE
+                                           </a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../modules.html" >
+                                   <div class="menu-toggler linked" data-toggle="collapse"
+                                           data-target="#modules-links"
+                                   >
+                                       <span class="fa fa-archive"></span>
+                                       <span class="link-name">Modules</span>
+                                       <span class="fa fa-angle-down"></span>
+                                   </div>
+                               </a>
+                               <ul class="links collapse "
+                                       id="modules-links"
+                   >
+                                       <li class="link">
+                                           <a href="../modules/SvogvModule.html" >SvogvModule</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#components-links"
+                   >
+                                   <span class="fa fa-cogs"></span>
+                                   <span>Components</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="components-links"
+                   >
+                                       <li class="link">
+                                           <a href="../components/AutoFormComponent.html" >AutoFormComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DataGridComponent.html"  data-type="entity-link" class="active" >DataGridComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/DataGridPaginationComponent.html" >DataGridPaginationComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/EditorComponent.html" >EditorComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TreeViewComponent.html" >TreeViewComponent</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../components/TreeViewNodeComponent.html" >TreeViewNodeComponent</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#classes-links"
+                   >
+                                   <span class="fa fa-file-code-o"></span>
+                                   <span>Classes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="classes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../classes/DataGridHeaderModel.html" >DataGridHeaderModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DataGridItemModel.html" >DataGridItemModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DataGridModel.html" >DataGridModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/DynamicHTMLOptions.html" >DynamicHTMLOptions</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/OnMount.html" >OnMount</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/TextTreeNodeModel.html" >TextTreeNodeModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/TreeNodeComponentModel.html" >TreeNodeComponentModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/TreeNodeModel.html" >TreeNodeModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../classes/TreeNodeOptions.html" >TreeNodeOptions</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#injectables-links"
+                   >
+                                   <span class="fa fa-long-arrow-down"></span>
+                                   <span>Injectables</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="injectables-links"
+                   >
+                                       <li class="link">
+                                           <a href="../injectables/DynamicHtmlRendererService.html" >DynamicHtmlRendererService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/FormValidatorFromJsonService.html" >FormValidatorFromJsonService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/FormValidatorService.html" >FormValidatorService</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../injectables/WindowRef.html" >WindowRef</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#interfaces-links"
+                   >
+                                   <span class="fa fa-info"></span>
+                                   <span>Interfaces</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="interfaces-links"
+                   >
+                                       <li class="link">
+                                           <a href="../interfaces/Array.html" >Array</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ComponentWithSelector.html" >ComponentWithSelector</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DatagridStyles.html" >DatagridStyles</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/DynamicHTMLRef.html" >DynamicHTMLRef</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/FormValidatorModel.html" >FormValidatorModel</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/ObjectConstructor.html" >ObjectConstructor</a>
+                                       </li>
+                                       <li class="link">
+                                           <a href="../interfaces/TreeNodeBaseModel.html" >TreeNodeBaseModel</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#pipes-links"
+                   >
+                                   <span class="fa fa-plus"></span>
+                                   <span>Pipes</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="pipes-links"
+                   >
+                                       <li class="link">
+                                           <a href="../pipes/FormatDataPipe.html" >FormatDataPipe</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                           <li class="chapter">
+                               <div class="simple menu-toggler" data-toggle="collapse"
+                                       data-target="#miscellaneous-links"
+                   >
+                                   <span class="fa fa-cubes"></span>
+                                   <span>Miscellaneous</span>
+                                   <span class="fa fa-angle-down"></span>
+                               </div>
+                               <ul class="links collapse "
+                                       id="miscellaneous-links"
+                   >
+                                       <li class="link">
+                                         <a href="../miscellaneous/enumerations.html" data-type="entity-link" >Enums</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/functions.html" data-type="entity-link" >Functions</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/typealiases.html" data-type="entity-link" >Type aliases</a>
+                                       </li>
+                                       <li class="link">
+                                         <a href="../miscellaneous/variables.html" data-type="entity-link" >Variables</a>
+                                       </li>
+                               </ul>
+                           </li>
+                   
+                   
+                           <li class="chapter">
+                               <a data-type="chapter-link" href="../coverage.html" ><span class="fa fa-tasks"></span>Documentation coverage</a>
+                           </li>
+                   
+                           <li class="divider"></li>
+                           <li class="copyright">
+                                   Documentation generated using <a href="https://compodoc.github.io/website/" target="_blank">
+                                               <img src="..//images/compodoc-vectorise.svg" class="img-responsive">
+                                   </a>
+                           </li>
+                   
+                       </ul>
+                   
+                   </nav>
+               </div>
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DataGridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+    <li class="active">
+        <a href="#info" id="info-tab" role="tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+
+    <li>
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+
+    <li>
+        <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+    </li>
+    <li>
+        <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>The datagrid provides basic functions for data tables:</p>
+<ul>
+<li>sorting</li>
+<li>filtering</li>
+<li>pagination</li>
+<li>editing</li>
+</ul>
+<p>Provide an decorator enhanced model and the grid appears driven by model meta data.</p>
+<p>There are many attributes and ways to change the appearance. Also some classes can be controlled by
+the host component:</p>
+<ul>
+<li><code>.col-borders</code></li>
+<li><code>.col-last</code></li>
+<li><code>.col-first</code>
+All these styles are applied to the <col> elements of the underlying table.</li>
+</ul>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ac-datagrid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>datagrid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./datagrid.component.html</code></td>
+            </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+        <h3 id="index">Index</h3>
+        <table class="table table-sm table-bordered index-table">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                 <a href="#boolean">boolean</a>
+                            </li>
+                            <li>
+                                 <a href="#booleanFallback">booleanFallback</a>
+                            </li>
+                            <li>
+                                 <a href="#date">date</a>
+                            </li>
+                            <li>
+                                 <a href="#dateFallback">dateFallback</a>
+                            </li>
+                            <li>
+                                 <a href="#enum">enum</a>
+                            </li>
+                            <li>
+                                 <a href="#enumFallback">enumFallback</a>
+                            </li>
+                            <li>
+                                 <a href="#number">number</a>
+                            </li>
+                            <li>
+                                 <a href="#nummberFallback">nummberFallback</a>
+                            </li>
+                            <li>
+                                 <a href="#string">string</a>
+                            </li>
+                            <li>
+                                 <a href="#stringFallback">stringFallback</a>
+                            </li>
+                            <li>
+                                 <a href="#template">template</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <span class="modifier">Public</span> <a href="#getActiveTemplate">getActiveTemplate</a>
+                            </li>
+                            <li>
+                                 <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#columnStyle">columnStyle</a>
+                            </li>
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#model">model</a>
+                            </li>
+                            <li>
+                                <a href="#reArrangeColumns">reArrangeColumns</a>
+                            </li>
+                            <li>
+                                <a href="#showActions">showActions</a>
+                            </li>
+                            <li>
+                                <a href="#showDeleteButton">showDeleteButton</a>
+                            </li>
+                            <li>
+                                <a href="#showEditButton">showEditButton</a>
+                            </li>
+                            <li>
+                                <a href="#textButtonsHeader">textButtonsHeader</a>
+                            </li>
+                            <li>
+                                <a href="#textDeleteButton">textDeleteButton</a>
+                            </li>
+                            <li>
+                                <a href="#textEditButton">textEditButton</a>
+                            </li>
+                            <li>
+                                <a href="#textNoItems">textNoItems</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+
+    <section>
+        <h3 id="inputs">Inputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="columnStyle"></a>
+                            <code>columnStyle</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Override the internal styles by giving directly CSS rules based on the column tags.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../interfaces/DatagridStyles.html" target="_self" >DatagridStyles</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:49</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="filter"></a>
+                            <code>filter</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The filter value to filter the content.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:104</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="model"></a>
+                            <code>model</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The model that makes up the content. Shall provide properties with decorators to control appearance.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="../classes/DataGridModel.html" target="_self" >DataGridModel&lt;any&gt;</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:55</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="reArrangeColumns"></a>
+                            <code>reArrangeColumns</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>If <code>true</code> the columns can be rearranged by moving around with drag &#39;n drop.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:110</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="showActions"></a>
+                            <code>showActions</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Show the action column at all. Use @see showDeleteButton and  @see showEditButton to switch the buttons
+on or off individually. Default is <code>true</code> (actions visible).</p>
+</div>
+                            <p>
+                              <em>Default value: </em><code>true</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:73</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="showDeleteButton"></a>
+                            <code>showDeleteButton</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Wheather to show a delete button. Clicking it fires the @see DataGridModel.OnDelete event.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:61</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="showEditButton"></a>
+                            <code>showEditButton</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Wheather to show an edit button. Clicking it fires the @see DataGridModel.OnEdit event.</p>
+</div>
+                              <p>
+                                <em>Type:</em>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                              </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:66</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="textButtonsHeader"></a>
+                            <code>textButtonsHeader</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The column header of the column that shows the buttons. Default is &#39;Actions&#39;.</p>
+</div>
+                            <p>
+                              <em>Default value: </em><code>Actions</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="89" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:89</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="textDeleteButton"></a>
+                            <code>textDeleteButton</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The text that appears on the Delete button. Default is &#39;Delete&#39;.</p>
+</div>
+                            <p>
+                              <em>Default value: </em><code>Delete</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:79</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="textEditButton"></a>
+                            <code>textEditButton</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The text that appears on the Edit button. Default is &#39;Edit&#39;.</p>
+</div>
+                            <p>
+                              <em>Default value: </em><code>Edit</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:84</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="textNoItems"></a>
+                            <code>textNoItems</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>The text that appears if there are no items to show. Can also be overwritten by a more complex piece
+of code by adding a template like this:</p>
+</div>
+                            <p>
+                              <em>Default value: </em><code>There are no items to show</code>
+                            </p>
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:99</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
+
+
+
+
+    <section>
+        
+            <h3 id="methods">
+                Methods
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="getActiveTemplate"></a>
+                            <span class="name"><b><span class="modifier">Public</span> getActiveTemplate</b><a href="#getActiveTemplate"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <span class="modifier-icon fa fa-reset"></span>
+                            <code>getActiveTemplate(uiHint: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, prop?: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="119" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:119</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Controls the template used to display certain data types.
+    If the host provides a template it&#39;s being used, otherwise a fallback is provided</p>
+    </div>
+    
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>Type</td>
+                                                    <td>Optional</td>
+                                                    <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                      <td>uiHint</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                      </td>
+                                                      <td><p>Property of </p>
+    </td>
+                                                    </tr>
+                                                    <tr>
+                                                      <td>prop</td>
+                                                      <td>
+                                                              <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                      </td>
+                                                      <td>
+                                                          true
+                                                      </td>
+                                                      <td></td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code>TemplateRef&lt;any&gt;</code>
+    
+                                </div>
+                                    <div class="io-description">
+                                        
+                                    </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnInit"></a>
+                            <span class="name"><b> ngOnInit</b><a href="#ngOnInit"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnInit()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:112</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <section>
+        
+            <h3 id="inputs">
+                Properties
+            </h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="boolean"></a>
+                            <span class="name"><b> boolean</b><a href="#boolean"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>boolean:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:32</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="booleanFallback"></a>
+                            <span class="name"><b> booleanFallback</b><a href="#booleanFallback"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>booleanFallback:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:31</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="date"></a>
+                            <span class="name"><b> date</b><a href="#date"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>date:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:35</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="dateFallback"></a>
+                            <span class="name"><b> dateFallback</b><a href="#dateFallback"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>dateFallback:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:34</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="enum"></a>
+                            <span class="name"><b> enum</b><a href="#enum"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>enum:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:38</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="enumFallback"></a>
+                            <span class="name"><b> enumFallback</b><a href="#enumFallback"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>enumFallback:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:37</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="number"></a>
+                            <span class="name"><b> number</b><a href="#number"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>number:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:41</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="nummberFallback"></a>
+                            <span class="name"><b> nummberFallback</b><a href="#nummberFallback"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>nummberFallback:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:40</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="string"></a>
+                            <span class="name"><b> string</b><a href="#string"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>string:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ContentChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:29</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="stringFallback"></a>
+                            <span class="name"><b> stringFallback</b><a href="#stringFallback"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>stringFallback:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:28</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="template"></a>
+                            <span class="name"><b> template</b><a href="#template"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>template:     <code>TemplateRef&lt;any&gt;</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+    
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Decorators : </i><code>ViewChild</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:43</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+    </section>
+</div>
+
+
+    <div class="tab-pane fade tab-source-code" id="source">
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef } from &#x27;@angular/core&#x27;;
+import { DataGridModel } from &#x27;./models/datagrid.model&#x27;;
+import { increaseElementDepthCount } from &#x27;@angular/core/src/render3/state&#x27;;
+import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
+
+/**
+ * The datagrid provides basic functions for data tables:
+ * * sorting
+ * * filtering
+ * * pagination
+ * * editing
+ *
+ * Provide an decorator enhanced model and the grid appears driven by model meta data.
+ *
+ * There are many attributes and ways to change the appearance. Also some classes can be controlled by
+ * the host component:
+ * * &#x60;.col-borders&#x60;
+ * * &#x60;.col-last&#x60;
+ * * &#x60;.col-first&#x60;
+ * All these styles are applied to the &lt;col&gt; elements of the underlying table.
+ */
+@Component({
+  selector: &#x27;ac-datagrid&#x27;,
+  templateUrl: &#x27;./datagrid.component.html&#x27;,
+  styleUrls: [&#x27;./datagrid.component.scss&#x27;]
+})
+export class DataGridComponent implements OnInit {
+  @ViewChild(&#x27;string&#x27;) stringFallback: TemplateRef&lt;any&gt;;
+  @ContentChild(&#x27;string&#x27;) string: TemplateRef&lt;any&gt;;
+
+  @ViewChild(&#x27;boolean&#x27;) booleanFallback: TemplateRef&lt;any&gt;;
+  @ContentChild(&#x27;boolean&#x27;) boolean: TemplateRef&lt;any&gt;;
+
+  @ViewChild(&#x27;date&#x27;) dateFallback: TemplateRef&lt;any&gt;;
+  @ContentChild(&#x27;date&#x27;) date: TemplateRef&lt;any&gt;;
+
+  @ViewChild(&#x27;enum&#x27;) enumFallback: TemplateRef&lt;any&gt;;
+  @ContentChild(&#x27;enum&#x27;) enum: TemplateRef&lt;any&gt;;
+
+  @ViewChild(&#x27;number&#x27;) nummberFallback: TemplateRef&lt;any&gt;;
+  @ContentChild(&#x27;number&#x27;) number: TemplateRef&lt;any&gt;;
+
+  @ViewChild(TemplateRef) template: TemplateRef&lt;any&gt;;
+
+  /**
+   * Override the internal styles by giving directly CSS rules based on the column tags.
+   */
+  @Input()
+  columnStyle: DatagridStyles;
+
+  /**
+   * The model that makes up the content. Shall provide properties with decorators to control appearance.
+   */
+  @Input()
+  public model: DataGridModel&lt;any&gt;;
+
+  /**
+   * Wheather to show a delete button. Clicking it fires the @see DataGridModel.OnDelete event.
+   */
+  @Input()
+  public showDeleteButton: boolean;
+  /**
+   * Wheather to show an edit button. Clicking it fires the @see DataGridModel.OnEdit event.
+   */
+  @Input()
+  public showEditButton: boolean;
+
+  /**
+   * Show the action column at all. Use @see showDeleteButton and  @see showEditButton to switch the buttons
+   * on or off individually. Default is &#x60;true&#x60; (actions visible).
+   */
+  @Input()
+  public showActions &#x3D; true;
+
+  /**
+   * The text that appears on the Delete button. Default is &#x27;Delete&#x27;.
+   */
+  @Input()
+  public textDeleteButton &#x3D; &#x27;Delete&#x27;;
+  /**
+   * The text that appears on the Edit button. Default is &#x27;Edit&#x27;.
+   */
+  @Input()
+  public textEditButton &#x3D; &#x27;Edit&#x27;;
+  /**
+   * The column header of the column that shows the buttons. Default is &#x27;Actions&#x27;.
+   */
+  @Input()
+  public textButtonsHeader &#x3D; &#x27;Actions&#x27;;
+  /**
+   * The text that appears if there are no items to show. Can also be overwritten by a more complex piece
+   * of code by adding a template like this:
+   * @example
+   * &lt;ng-template #data-warning-noitems&gt;
+   *   &lt;div class&#x3D;&quot;alert alert-danger&quot;&gt;The grid is empty&lt;/div&gt;
+   * &lt;/ng-template&gt;
+   */
+  @Input()
+  public textNoItems &#x3D; &#x27;There are no items to show&#x27;;
+  /**
+   * The filter value to filter the content.
+   */
+  @Input()
+  public filter: any;
+
+  /**
+   * If &#x60;true&#x60; the columns can be rearranged by moving around with drag &#x27;n drop.
+   */
+  @Input()
+  public reArrangeColumns: boolean;
+
+  ngOnInit(): void {}
+
+  /**
+   * Controls the template used to display certain data types.
+   * If the host provides a template it&#x27;s being used, otherwise a fallback is provided
+   * @param uiHint Property of @UiHint decorator
+   */
+  public getActiveTemplate(uiHint: string, prop?: string): TemplateRef&lt;any&gt; {
+    console.log(&#x60;getActiveTemplate: ${uiHint} / ${prop}&#x60;);
+    if (this[uiHint]) {
+      console.log(&#x27;internal&#x27;);
+      // if provided by user via ContentChild
+      return this[uiHint];
+    } else {
+      console.log(&#x27;external&#x27;);
+      // otherwise we take ours from ng-template via ViewChild
+      return this[&#x60;${uiHint}Fallback&#x60;];
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;model&quot;&gt;
+  &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+    &lt;table class&#x3D;&quot;table table-condensed&quot;&gt;
+      &lt;colgroup class&#x3D;&quot;colborders&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.group : null&quot;&gt;
+        &lt;col class&#x3D;&quot;first&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.first : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;last&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.last : null&quot; /&gt;
+      &lt;/colgroup&gt;
+      &lt;thead&gt;
+        &lt;tr [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.header : null&quot; &gt;
+          &lt;th *ngFor&#x3D;&quot;let header of model.headers&quot; [title]&#x3D;&quot;header.desc&quot;&gt;
+            {{ header.text }}
+            &lt;div class&#x3D;&quot;sort&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, &#x27;asc&#x27;)&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-sort-asc&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, &#x27;desc&#x27;)&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-sort-desc&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;button (click)&#x3D;&quot;model.removeColumn(header.prop)&quot; class&#x3D;&quot;btn btn-sm btn-warning&quot; *ngIf&#x3D;&quot;reArrangeColumns&quot;&gt;
+              &lt;i class&#x3D;&quot;fa fa-remove&quot;&gt;&lt;/i&gt;
+            &lt;/button&gt;
+          &lt;/th&gt;
+          &lt;th *ngIf&#x3D;&quot;showActions&quot;&gt;
+            {{ textButtonsHeader }}
+          &lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngIf&#x3D;&quot;!model.totalFilteredRows&quot;&gt;
+          &lt;td colspan&#x3D;&quot;4&quot; class&#x3D;&quot;text-center&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot;&gt;
+              &lt;span #warningNoItems&gt;
+                &lt;ng-content select&#x3D;&quot;[data-warning-noitems]&quot;&gt;&lt;/ng-content&gt;
+              &lt;/span&gt;
+              &lt;ng-container *ngIf&#x3D;&quot;!warningNoItems.innerHTML.trim()&quot;&gt;{{  textNoItems }}&lt;/ng-container&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr *ngFor&#x3D;&quot;let item of model.itemsOnCurrentPage&quot;&gt;
+          &lt;td *ngFor&#x3D;&quot;let header of model.headers&quot;&gt;
+            &lt;ng-container
+              [ngTemplateOutlet]&#x3D;&quot;getActiveTemplate(header.templateHint, header.prop)&quot;
+              [ngTemplateOutletContext]&#x3D;&quot;{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }&quot;
+            &gt;&lt;/ng-container&gt;
+          &lt;/td&gt;
+          &lt;td *ngIf&#x3D;&quot;showActions&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.actionCell : null&quot; &gt;
+            &lt;button class&#x3D;&quot;btn btn-primary btn-sm&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;model.editItem(item)&quot;&gt;
+              {{ textEditButton }}
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn btn-danger btn-sm&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;model.deleteItem(item)&quot;&gt;
+              {{ textDeleteButton }}
+            &lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+      &lt;tfoot&gt;
+        &lt;tr [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.footer : null&quot; &gt;
+          &lt;td [attr.colspan]&#x3D;&quot;model.headers.length + (showActions ? 1 : 0)&quot;&gt;
+            &lt;div #footerRef&gt;
+              &lt;ng-content select&#x3D;&quot;[data-footer]&quot;&gt;&lt;/ng-content&gt;
+            &lt;/div&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!footerRef.innerHTML.trim()&quot;&gt;&amp;copy;&lt;/ng-container&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ng-template #string let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;
+&lt;ng-template #boolean let-data&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; disabled [checked]&#x3D;&quot;data&quot; /&gt;
+&lt;/ng-template&gt;
+&lt;ng-template #date let-data&gt;
+  {{ data }}
+&lt;/ng-template&gt;
+&lt;ng-template #enum let-data&gt;
+  {{ data }}
+&lt;/ng-template&gt;
+&lt;ng-template #number let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade" id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row" *ngIf="model">  <div class="col-md-12">    <table class="table table-condensed">      <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">        <col class="first" [ngStyle]="columnStyle ? columnStyle.first : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="last" [ngStyle]="columnStyle ? columnStyle.last : null" />      </colgroup>      <thead>        <tr [ngStyle]="columnStyle ? columnStyle.header : null" >          <th *ngFor="let header of model.headers" [title]="header.desc">            {{ header.text }}            <div class="sort" [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">              <button (click)="model.sortColumn(header.prop, \'asc\')">                <i class="fa fa-sort-asc"></i>              </button>              <button (click)="model.sortColumn(header.prop, \'desc\')">                <i class="fa fa-sort-desc"></i>              </button>            </div>            <button (click)="model.removeColumn(header.prop)" class="btn btn-sm btn-warning" *ngIf="reArrangeColumns">              <i class="fa fa-remove"></i>            </button>          </th>          <th *ngIf="showActions">            {{ textButtonsHeader }}          </th>        </tr>      </thead>      <tbody>        <tr *ngIf="!model.totalFilteredRows">          <td colspan="4" class="text-center">            <div class="alert alert-warning">              <span #warningNoItems>                <ng-content select="[data-warning-noitems]"></ng-content>              </span>              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">{{  textNoItems }}</ng-container>            </div>          </td>        </tr>        <tr *ngFor="let item of model.itemsOnCurrentPage">          <td *ngFor="let header of model.headers">            <ng-container              [ngTemplateOutlet]="getActiveTemplate(header.templateHint, header.prop)"              [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"            ></ng-container>          </td>          <td *ngIf="showActions" [ngStyle]="columnStyle ? columnStyle.actionCell : null" >            <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">              {{ textEditButton }}            </button>            <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">              {{ textDeleteButton }}            </button>          </td>        </tr>      </tbody>      <tfoot>        <tr [ngStyle]="columnStyle ? columnStyle.footer : null" >          <td [attr.colspan]="model.headers.length + (showActions ? 1 : 0)">            <div #footerRef>              <ng-content select="[data-footer]"></ng-content>            </div>            <ng-container *ngIf="!footerRef.innerHTML.trim()">&copy;</ng-container>          </td>        </tr>      </tfoot>    </table>  </div></div><ng-template #string let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template><ng-template #boolean let-data>  <input type="checkbox" disabled [checked]="data" /></ng-template><ng-template #date let-data>  {{ data }}</ng-template><ng-template #enum let-data>  {{ data }}</ng-template><ng-template #number let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template></div>'
+    var COMPONENTS = [{'name': 'AutoFormComponent', 'selector': 'ac-autoform'},{'name': 'DataGridComponent', 'selector': 'ac-datagrid'},{'name': 'DataGridPaginationComponent', 'selector': 'ac-datagrid-pagination'},{'name': 'EditorComponent', 'selector': 'ac-editor'},{'name': 'TreeViewComponent', 'selector': 'ac-tree'},{'name': 'TreeViewNodeComponent', 'selector': 'ac-treenode'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DataGridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+           </div>
+       </div>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script>var COMPODOC_CURRENT_PAGE_DEPTH = 1;</script>
+
+       <script src="../js/search/search.js"></script>
+       <script src="../js/search/lunr.min.js"></script>
+       <script src="../js/search/search-lunr.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+       <script src="../js/search/search_index.js"></script>
+
+    </body>
+</html>

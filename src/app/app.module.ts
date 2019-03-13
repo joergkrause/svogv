@@ -26,6 +26,7 @@ import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 
     // Demo app
     cmp.RootComponent
     , cmp.AboutComponent
+    , cmp.DocsComponent
     , cmp.DashboardComponent
     // Editor, Validation & Grid
     , cmp.EditorDemoComponent

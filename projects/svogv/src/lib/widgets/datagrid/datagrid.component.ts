@@ -25,11 +25,11 @@ import { DatagridStyles } from './models/datagridstyle.model';
   styleUrls: ['./datagrid.component.scss']
 })
 export class DataGridComponent implements OnInit {
-  @ViewChild('text') textFallback: TemplateRef<any>;
-  @ContentChild('text') text: TemplateRef<any>;
+  @ViewChild('string') stringFallback: TemplateRef<any>;
+  @ContentChild('string') string: TemplateRef<any>;
 
-  @ViewChild('bool') boolFallback: TemplateRef<any>;
-  @ContentChild('bool') bool: TemplateRef<any>;
+  @ViewChild('boolean') booleanFallback: TemplateRef<any>;
+  @ContentChild('boolean') boolean: TemplateRef<any>;
 
   @ViewChild('date') dateFallback: TemplateRef<any>;
   @ContentChild('date') date: TemplateRef<any>;
@@ -37,8 +37,8 @@ export class DataGridComponent implements OnInit {
   @ViewChild('enum') enumFallback: TemplateRef<any>;
   @ContentChild('enum') enum: TemplateRef<any>;
 
-  @ViewChild('num') numFallback: TemplateRef<any>;
-  @ContentChild('num') num: TemplateRef<any>;
+  @ViewChild('number') nummberFallback: TemplateRef<any>;
+  @ContentChild('number') number: TemplateRef<any>;
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
@@ -116,10 +116,15 @@ export class DataGridComponent implements OnInit {
    * If the host provides a template it's being used, otherwise a fallback is provided
    * @param uiHint Property of @UiHint decorator
    */
-  public getActiveTemplate(uiHint: string): TemplateRef<any> {
+  public getActiveTemplate(uiHint: string, prop?: string): TemplateRef<any> {
+    console.log(`getActiveTemplate: ${uiHint} / ${prop}`);
     if (this[uiHint]) {
+      console.log('internal');
+      // if provided by user via ContentChild
       return this[uiHint];
     } else {
+      console.log('external');
+      // otherwise we take ours from ng-template via ViewChild
       return this[`${uiHint}Fallback`];
     }
   }

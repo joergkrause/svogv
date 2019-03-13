@@ -41,6 +41,14 @@ export const routes: Routes = [
         }
       },
       {
+        path: 'gridt',
+        component: cmp.GridDemoTemplateComponent,
+        data: {
+          'title': 'Grid (templates)', 'subtitle': 'Grid Demo with templates for content manipulation',
+          'active': false, 'disabled': false, 'breadcrumb': true
+        }
+      },
+      {
         path: 'grida',
         component: cmp.GridDemoComponent,
         data: {
@@ -108,5 +116,10 @@ export const routes: Routes = [
     path: 'about',
     component: cmp.AboutComponent,
     data: { 'title': 'About', 'subtitle': 'About this app', 'breadcrumb': true, 'info': true }
+  },
+  {
+    path: 'docs',
+    component: cmp.DocsComponent,
+    data: { 'title': 'Documentation', 'subtitle': 'The API documentation', 'breadcrumb': true, 'info': true }
   }
 ];

@@ -54,6 +54,6 @@ export class UserViewModel {
   passWordTwo: string = '';
 
   @Display('Done', 100, 'Work progress')
-  done = 0;
+  done?: number = 0;
 
 }

@@ -175,7 +175,8 @@ export class DataGridModel<T> {
       const isHidden = type[`__isHidden__${p}`] || false;
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
       header.isSortable = type[`__issortable__${p}`] || true;
-      header.templateHint = type[`__templatehint__${p}`] || 'text';
+      // look for template provided by user, if none, we have templates for all ES types
+      header.templateHint = type[`__templatehint__${p}`] || (typeof type[p]);
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeParams__${p}`];

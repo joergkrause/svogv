@@ -32,10 +32,14 @@ export class UserViewModelList {
 
   @Validator.Display('Age', 40, 'From 12 to 88')
   @Validator.Range(12, 88)
+  @Validator.TemplateHint('AgeTemplate')
   age = 0;
 
   @Validator.Display('Done', 100, 'Work progress')
   @Validator.FormatPipe(PercentPipe)
-  done = 0;
+  done?: number = 0;
+
+  @Validator.Display('Active', 200, 'User is active')
+  active ? = false;
 
 }

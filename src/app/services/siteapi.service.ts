@@ -3,7 +3,8 @@ import { Response } from '@angular/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { UserViewModel } from '../viewmodels';
+import { UserViewModel, UserViewModelList } from '../viewmodels';
+import { nextContext } from '@angular/core/src/render3';
 
 /**
  * This service just simulates a user store to keep the demo running without further dependencies.
@@ -12,69 +13,86 @@ import { UserViewModel } from '../viewmodels';
 @Injectable()
 export class SiteApiService {
 
-  private users: Array<UserViewModel>;
+  // array for grids
+  private users: Array<UserViewModelList>;
 
   constructor() {
     const now = new Date().getFullYear();
     // some static demo data
-    const u1 = new UserViewModel();
-    u1.id = 1;
-    u1.email = 'Paul@parker.com';
-    u1.phoneNumber = '030-123456';
-    u1.userName = 'Paul Parker';
-    u1.birthday = new Date(now - 22, 5, 13);
-    u1.age = 22;
-    const u2 = new UserViewModel();
-    u2.id = 2;
-    u2.email = 'wilma@workshop.com';
-    u2.phoneNumber = '055-123456';
-    u2.userName = 'Wilma Workshop';
-    u2.age = 35;
-    u2.birthday = new Date(now - 35, 11, 22);
-    const u3 = new UserViewModel();
-    u3.id = 3;
-    u3.email = 'theodor@trainer.com';
-    u3.phoneNumber = '088-123456';
-    u3.userName = 'Theodor Trainer';
-    u3.age = 41;
-    u3.birthday = new Date(now - 41, 7, 3);
-    const u4 = new UserViewModel();
-    u4.id = 4;
-    u4.email = 'bill@boss.com';
-    u4.phoneNumber = '001-55998877';
-    u4.userName = 'Bill Boss';
-    u4.age = 58;
-    u4.birthday = new Date(now - 58, 2, 15);
-    const u5 = new UserViewModel();
-    u5.id = 5;
-    u5.email = 'the@other.in';
-    u5.phoneNumber = '911-8899552233';
-    u5.userName = 'The Other';
-    u5.age = 56;
-    u5.birthday = new Date(now - 56, 6, 6);
-    const u6 = new UserViewModel();
-    u6.id = 6;
-    u6.email = 'berny@duck.com';
-    u6.phoneNumber = '001-55997788';
-    u6.userName = 'Berny Duck';
-    u6.age = 39;
-    u6.birthday = new Date(now - 39, 2, 15);
-    const u7 = new UserViewModel();
-    u7.id = 7;
-    u7.email = 'lisa@miller.com';
-    u7.phoneNumber = '001-77885566';
-    u7.userName = 'Lisa Miller';
-    u7.age = 53;
-    u7.birthday = new Date(now - 53, 2, 15);
-    const u8 = new UserViewModel();
-    u8.id = 8;
-    u8.email = 'master@blaster.com';
-    u8.phoneNumber = '001-11225544';
-    u8.userName = 'Master Blaster';
-    u8.age = 33;
-    u8.birthday = new Date(now - 33, 2, 15);
+    const u1 = {
+      id: 1,
+      email: 'Paul@parker.com',
+      phoneNumber: '030-123456',
+      userName: 'Paul Parker',
+      age: 22,
+      birthday: new Date(now - 22, 5, 13),
+      active: true
+    };
+    const u2 = {
+      id: 2,
+      email: 'wilma@workshop.com',
+      phoneNumber: '055-123456',
+      userName: 'Wilma Workshop',
+      age: 35,
+      birthday: new Date(now - 35, 11, 22)
+    };
+    const u3 = {
+      id: 3,
+      email: 'theodor@trainer.com',
+      phoneNumber: '088-123456',
+      userName: 'Theodor Trainer',
+      age: 41,
+      birthday: new Date(now - 41, 7, 3),
+      active: true
+    };
+    const u4 = {
+      id: 4,
+      email: 'bill@boss.com',
+      phoneNumber: '001-55998877',
+      userName: 'Bill Boss',
+      age: 58,
+      birthday: new Date(now - 58, 2, 15),
+      done: 50
+    };
+    const u5 = {
+      id: 5,
+      email: 'the@other.in',
+      phoneNumber: '911-8899552233',
+      userName: 'The Other',
+      age: 56,
+      birthday: new Date(now - 56, 6, 6),
+      done: 70,
+      active: true
+    };
+    const u6 = {
+      id: 6,
+      email: 'berny@duck.com',
+      phoneNumber: '001-55997788',
+      userName: 'Berny Duck',
+      age: 39,
+      birthday: new Date(now - 39, 2, 15),
+      done: 100
+    };
+    const u7 = {
+      id: 7,
+      email: 'lisa@miller.com',
+      phoneNumber: '001-77885566',
+      userName: 'Lisa Miller',
+      age: 53,
+      birthday: new Date(now - 53, 2, 15),
+      done: 85,
+      active: true
+    };
+    const u8 = {
+      id: 8,
+      email: 'master@blaster.com',
+      phoneNumber: '001-11225544',
+      userName: 'Master Blaster',
+      age: 33,
+      birthday: new Date(now - 33, 2, 15)
+    };
 
-    this.users = new Array<UserViewModel>();
+    this.users = new Array<UserViewModelList>();
     this.users.push(u1);
     this.users.push(u2);
     this.users.push(u3);
@@ -85,34 +103,51 @@ export class SiteApiService {
     this.users.push(u8);
   }
 
-  /// User
 
   public getUser(id: number): Observable<UserViewModel> {
     const user = this.users.filter(u => u.id === id)[0];
     return Observable.create(o => o.next(user));
   }
 
-
-  public getUsers(): Observable<Array<UserViewModel>> {
-    return Observable.create(o => o.next(this.users));
+  public getUsers(): Observable<Array<UserViewModelList>> {
+    return Observable.create(o => o.next(this.users ));
   }
 
   public newUser(user: UserViewModel): Observable<boolean> {
     // assure new id in simulated data stack
-    const nextId = this.users.sort(function (u1, u2) { return u1.id - u2.id; }).slice(-1).pop().id + 1;
-    // assign
-    user.id = nextId;
+    const nextId =
+      this.users
+        .sort(function(u1, u2) {
+          return u1.id - u2.id;
+        })
+        .slice(-1)
+        .pop().id + 1;
     // save
-    this.users.push(user);
+    const listUser = this.makeUser(user, nextId);
+    this.users.push(listUser);
     // always true
     return Observable.create(o => true);
   }
 
-  public editUser(id: number, userModel: UserViewModel): Observable<boolean> {
+  private makeUser(user: UserViewModel, nextId: number): UserViewModelList {
+    const listUser: UserViewModelList = new UserViewModelList();
+    listUser.userName = user.userName;
+    listUser.age = user.age;
+    listUser.done = user.done;
+    listUser.email = user.email;
+    listUser.id = nextId;
+    listUser.phoneNumber = user.phoneNumber;
+    return listUser;
+  }
+
+  public editUser(id: number, editUser: UserViewModel): Observable<boolean> {
     const user = this.users.filter(u => u.id === id)[0];
-    this.users.splice(this.users.indexOf(user), 1, userModel);
-    // always true
-    return Observable.create(o => true);
+    if (user /* exists */) {
+      const listUser = this.makeUser(editUser, id);
+      this.users.splice(this.users.indexOf(user), 1, listUser);
+      return Observable.create(o => true);
+    }
+    return Observable.create(o => false);
   }
 
   public deleteUser(id: number): Observable<boolean> {
@@ -128,7 +163,4 @@ export class SiteApiService {
     console.error(error);
     return throwError(error.json().error || 'Server error');
   }
-
-
 }
-

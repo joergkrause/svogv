@@ -7,12 +7,14 @@
     </div>
   </div>
   <div class="row">
-    <form>
-      <fieldset>
-        <legend>Grid Features</legend>
-        <div class="form-group"></div>
-      </fieldset>
-    </form>
+    <div class="col-12">
+      <form>
+        <fieldset>
+          <legend>Grid Features</legend>
+          <div class="form-group"></div>
+        </fieldset>
+      </form>
+    </div>
   </div>
   <div class="row">
     <div class="col-12">
@@ -46,17 +48,4 @@
       ></ac-datagrid>
     </div>
   </div>
-  <div class="row">
-      <div class="col-12">
-        <ac-datagrid
-          [model]="model"
-          [showActions]="false"
-        >
-      <ng-template #bool let-item>
-        <span *ngIf="item">YES</span>
-        <span *ngIf="!item">NO</span>
-      </ng-template>
-      </ac-datagrid>
-      </div>
-    </div>
 </div>

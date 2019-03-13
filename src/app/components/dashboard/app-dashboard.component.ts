@@ -1,6 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { SiteApiService, EmitterService } from '../../services';
-import { UserViewModel } from '../../viewmodels';
+import { UserViewModelList } from '../../viewmodels';
 
 /**
  * Dashboard shows global data. The data are retrieved in the root and broadcastet,
@@ -12,7 +12,7 @@ import { UserViewModel } from '../../viewmodels';
 })
 export class DashboardComponent implements OnInit {
 
-  users: Array<UserViewModel> = [];
+  users: Array<UserViewModelList> = [];
 
   constructor(private apiService: SiteApiService, private emitterService: EmitterService) {
     // raw data for tiles

@@ -29,7 +29,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+      <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form">
         <fieldset>
           <legend>Add new User</legend>
           <ac-editor [userForm]="userForm" [name]="'userName'"></ac-editor>
