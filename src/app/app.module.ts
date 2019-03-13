@@ -36,6 +36,7 @@ import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 
     , cmp.EditorDeleteComponent
     // Widget Demos
     , cmp.WidgetDemoComponent
+    , cmp.GridDemoSimpleComponent
     , cmp.GridDemoComponent
     , cmp.TreeviewDemoComponent
     // Custom Widgets just for Demo

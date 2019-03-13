@@ -29,15 +29,15 @@ export const routes: Routes = [
         component: cmp.TreeviewDemoComponent,
         data: {
           'title': 'Tree View', 'subtitle': 'Tree Demo',
-          'active': false, 'disabled': false, 'breadcrumb': true
+          'active': true, 'disabled': false, 'breadcrumb': true
         }
       },
       {
         path: 'grids',
-        component: cmp.GridDemoComponent,
+        component: cmp.GridDemoSimpleComponent,
         data: {
           'title': 'Grid (simple)', 'subtitle': 'Grid Demo (simple)',
-          'active': true, 'disabled': false, 'breadcrumb': true
+          'active': false, 'disabled': false, 'breadcrumb': true
         }
       },
       {

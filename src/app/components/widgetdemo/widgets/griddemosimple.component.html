@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="alert alert-info">
+        A simple demo for the grid showing the basic features. Almost completely controlled by a distinct view model through decorators.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <form>
+      <fieldset>
+        <legend>Grid Features</legend>
+        <div class="form-group">
+        </div>
+
+      </fieldset>
+
+    </form>
+
+  </div>
+  <div class="row" >
+    <div class="col-md-12">
+      <ac-datagrid [model]="model" [showActions]="false" [columnStyle]="{ footer: { 'background-color': 'silver' }, first: { 'background-color': 'orange' }, header: { color: 'white', 'background-color': 'black' } }" ></ac-datagrid>
+    </div>
+  </div>
+</div>

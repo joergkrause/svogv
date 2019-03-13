@@ -2,9 +2,7 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="alert alert-info">
-        This is the components (widgets) demo page. The widgets here complement the grid. These widgets are not fully blown components but instead
-        show the effort to create highly customized stuff. Some parts require Bootstrap 4 and hence do not work in other environments properly.
-        However, it's not about adding Bootstrap aware Angular stuff, this has been done already by others.
+        Advanced features of the grid, such as changing column order, add/remove columns by user actions, callbacks, and more.
       </div>
     </div>
   </div>
@@ -30,6 +28,7 @@
           <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button> </span
         >&nbsp;
       </p>
+      <ac-datagrid [model]="model"></ac-datagrid>
     </div>
   </div>
 </div>

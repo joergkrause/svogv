@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef } from '@angular/core';
 import { DataGridModel } from './models/datagrid.model';
 import { increaseElementDepthCount } from '@angular/core/src/render3/state';
+import { DatagridStyles } from './models/datagridstyle.model';
 
 /**
  * The datagrid provides basic functions for data tables:
@@ -11,6 +12,12 @@ import { increaseElementDepthCount } from '@angular/core/src/render3/state';
  *
  * Provide an decorator enhanced model and the grid appears driven by model meta data.
  *
+ * There are many attributes and ways to change the appearance. Also some classes can be controlled by
+ * the host component:
+ * * `.col-borders`
+ * * `.col-last`
+ * * `.col-first`
+ * All these styles are applied to the <col> elements of the underlying table.
  */
 @Component({
   selector: 'ac-datagrid',
@@ -36,6 +43,12 @@ export class DataGridComponent implements OnInit {
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
   /**
+   * Override the internal styles by giving directly CSS rules based on the column tags.
+   */
+  @Input()
+  columnStyle: DatagridStyles;
+
+  /**
    * The model that makes up the content. Shall provide properties with decorators to control appearance.
    */
   @Input()
@@ -51,6 +64,14 @@ export class DataGridComponent implements OnInit {
    */
   @Input()
   public showEditButton: boolean;
+
+  /**
+   * Show the action column at all. Use @see showDeleteButton and  @see showEditButton to switch the buttons
+   * on or off individually. Default is `true` (actions visible).
+   */
+  @Input()
+  public showActions = true;
+
   /**
    * The text that appears on the Delete button. Default is 'Delete'.
    */

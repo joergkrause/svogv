@@ -45,14 +45,16 @@ export class AcTabData {
   selector: 'app-tabs',
   template: `<ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item" *ngFor="let tab of tabs.tabs" [ngClass]="{ active: tab.active }">
-                    <a class="nav-link " *ngIf="!tab.disabled"
+                    <a class="nav-link " *ngIf="!tab.disabled; else muted"
                        (click)="activateTab(tab)"
                        [ngClass]="{ active: tab.active }"
                        href="#" [routerLink]="tab.link"
                        role="tab" >{{ tab.text }}</a>
-                    <a class="nav-link text-muted" *ngIf="tab.disabled"
-                       href="#" disabled="disabled" onclick="return false;"
-                       role="tab" >{{ tab.text }}</a>
+                       <ng-template #muted>
+                        <a class="nav-link text-muted"
+                           href="#" disabled="disabled" onclick="return false;"
+                           role="tab" >{{ tab.text }}</a>
+                       </ng-template>
                 </li>
             </ul>
             <div class="tab-content">

@@ -1,15 +1,15 @@
 <div class="row" *ngIf="model">
   <div class="col-md-12">
     <table class="table table-condensed">
-      <colgroup class="colborders">
-        <col class="first" />
-        <col class="middle" />
-        <col class="middle" />
-        <col class="middle" />
-        <col class="last" />
+      <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">
+        <col class="first" [ngStyle]="columnStyle ? columnStyle.first : null" />
+        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />
+        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />
+        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />
+        <col class="last" [ngStyle]="columnStyle ? columnStyle.last : null" />
       </colgroup>
       <thead>
-        <tr>
+        <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
           <th *ngFor="let header of model.headers" [title]="header.desc">
             {{ header.text }}
             <div class="ac-sortsmall">
@@ -24,7 +24,7 @@
               <i class="fa fa-remove"></i>
             </button>
           </th>
-          <th>
+          <th *ngIf="showActions">
             {{ textButtonsHeader }}
           </th>
         </tr>
@@ -47,7 +47,7 @@
               [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"
             ></ng-container>
           </td>
-          <td>
+          <td *ngIf="showActions" [ngStyle]="columnStyle ? columnStyle.actionCell : null" >
             <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">
               {{ textEditButton }}
             </button>
@@ -58,8 +58,8 @@
         </tr>
       </tbody>
       <tfoot>
-        <tr>
-          <td [attr.colspan]="model.headers.length">
+        <tr [ngStyle]="columnStyle ? columnStyle.footer : null" >
+          <td [attr.colspan]="model.headers.length + (showActions ? 1 : 0)">
             <div #footerRef>
               <ng-content select="[data-footer]"></ng-content>
             </div>
