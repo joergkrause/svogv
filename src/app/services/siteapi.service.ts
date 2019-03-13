@@ -1,10 +1,11 @@
 ﻿import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { UserViewModel, UserViewModelList } from '../viewmodels';
 import { nextContext } from '@angular/core/src/render3';
+import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 /**
  * This service just simulates a user store to keep the demo running without further dependencies.
@@ -12,7 +13,6 @@ import { nextContext } from '@angular/core/src/render3';
  */
 @Injectable()
 export class SiteApiService {
-
   // array for grids
   private users: Array<UserViewModelList>;
 
@@ -103,14 +103,13 @@ export class SiteApiService {
     this.users.push(u8);
   }
 
-
   public getUser(id: number): Observable<UserViewModel> {
-    const user = this.users.filter(u => u.id === id)[0];
-    return Observable.create(o => o.next(user));
+    const user = this.users.filter(u => u.id === id)[0] as UserViewModel;
+    return new Observable(o => o.next(user));
   }
 
   public getUsers(): Observable<Array<UserViewModelList>> {
-    return Observable.create(o => o.next(this.users ));
+    return new Observable(o => o.next(this.users));
   }
 
   public newUser(user: UserViewModel): Observable<boolean> {
@@ -126,7 +125,7 @@ export class SiteApiService {
     const listUser = this.makeUser(user, nextId);
     this.users.push(listUser);
     // always true
-    return Observable.create(o => true);
+    return of(true);
   }
 
   private makeUser(user: UserViewModel, nextId: number): UserViewModelList {
@@ -145,22 +144,21 @@ export class SiteApiService {
     if (user /* exists */) {
       const listUser = this.makeUser(editUser, id);
       this.users.splice(this.users.indexOf(user), 1, listUser);
-      return Observable.create(o => true);
+      return of(true);
     }
-    return Observable.create(o => false);
+    return of(false);
   }
 
   public deleteUser(id: number): Observable<boolean> {
     const user = this.users.filter(u => u.id === id)[0];
     this.users.splice(this.users.indexOf(user), 1);
     // always true
-    return Observable.create(o => true);
+    return of(true);
   }
 
-  /// Common Functions
-
-  private handleError(error: Response) {
+  /// Common Functions for real HTTP calls (currently not used in demo code)
+  private handleError(error: HttpErrorResponse) {
     console.error(error);
-    return throwError(error.json().error || 'Server error');
+    return throwError(error.error || 'Server error');
   }
 }

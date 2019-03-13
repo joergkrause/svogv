@@ -11,14 +11,20 @@ import { FormGroup } from '@angular/forms';
     'input[type="checkbox"] + label:before { font-family: FontAwesome; }',
     'input[type="checkbox"] + label:before { content: "\\f096"; }',
     'input[type="checkbox"]:checked + label:before { content: "\\f046"; }',
-    `input[type="checkbox"] + label {
-      display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer;
-    }`,
+    `
+      input[type='checkbox'] + label {
+        display: inline-block;
+        width: 15px;
+        height: 20px;
+        margin: -1px 4px 0 0;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+    `
   ],
   templateUrl: './editor.component.html'
 }) //
 export class EditorComponent implements OnInit {
-
   /**
    * Field name
    */
@@ -81,19 +87,19 @@ export class EditorComponent implements OnInit {
   value: any;
 
   // additional values provided by TemplateHint decorator
-  params: { key: string, value: any }[];
+  params: { key: string; value: any }[];
 
   errors: Array<string>;
 
   constructor() {
-    this.params = new Array<{ key: string, value: any }>();
+    this.params = new Array<{ key: string; value: any }>();
   }
 
   getParams(key: string): any {
-    return this.first(this.params.filter((e) => e.key === key), 0);
+    return this.first(this.params.filter(e => e.key === key), 0);
   }
 
-  first(array: Array<{ key: string, value: any }>, n: number): any {
+  first(array: Array<{ key: string; value: any }>, n: number): any {
     if (array == null) {
       return void 0;
     }
@@ -122,7 +128,7 @@ export class EditorComponent implements OnInit {
       if (typeof editorModel[this.name] === 'number') {
         this.type = 'number';
       }
-      if (editorModel[this.name] instanceof Date){
+      if (editorModel[this.name] instanceof Date) {
         this.type = 'calendar';
       }
       // make an instance to read the properties
@@ -145,7 +151,7 @@ export class EditorComponent implements OnInit {
       if (editorModel[`__hasTemplateHint__${this.name}`]) {
         this.type = (<string>editorModel[`__templateHint__${this.name}`]).toLowerCase();
         if (editorModel[`__templateHintParams__${this.name}`]) {
-          this.params = (<{ key: string, value: any }[]>editorModel[`__templateHintParams__${this.name}`]);
+          this.params = <{ key: string; value: any }[]>editorModel[`__templateHintParams__${this.name}`];
         }
       }
 
@@ -168,6 +174,4 @@ export class EditorComponent implements OnInit {
       this.errors.push(error);
     }
   }
-
 }
-

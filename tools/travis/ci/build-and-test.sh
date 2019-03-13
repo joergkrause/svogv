@@ -12,7 +12,7 @@ source tools/travis/ci/sources/mode.sh
 if is_lint; then
   $(npm bin)/ng lint
 elif is_demo; then
-  $(npm bin)/ng build
+  $(npm bin)/ng build --prod
 else
   $(npm bin)/ng build svogv
 fi

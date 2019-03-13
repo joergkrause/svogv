@@ -5,7 +5,7 @@
   EventEmitter,
   OnInit,
   ElementRef,
-  Renderer
+  Renderer2
 } from '@angular/core';
 import { TextTreeNodeModel, TreeNodeModel, TreeNodeState } from '../models';
 
@@ -34,7 +34,7 @@ import { TextTreeNodeModel, TreeNodeModel, TreeNodeState } from '../models';
 })
 export class TreeViewNodeComponent implements OnInit {
 
-  constructor(private el: ElementRef, private renderer: Renderer) {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
     this.nodeClick = new EventEmitter<TreeNodeModel>();
     this.checkChanged = new EventEmitter<TreeNodeModel>();
     this.selectedChanged = new EventEmitter<TreeNodeModel>();

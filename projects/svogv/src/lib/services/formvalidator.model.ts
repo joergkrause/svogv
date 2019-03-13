@@ -6,54 +6,54 @@
  * by the @see order element.
  */
 export type displayGroupType = {
-  'displaygroup': {
-    'name': string;
-    'order'?: number;
-    'description'?: string
-  }
+  displaygroup: {
+    name: string;
+    order?: number;
+    description?: string;
+  };
 };
 
 /**
  * This element describes the UI elements label, tooltip, and order.
  */
 export type displayType = {
-  'display': {
-    'name': string;
-    'order'?: number;
-    'description'?: string
-  }
+  display: {
+    name: string;
+    order?: number;
+    description?: string;
+  };
 };
 
 /**
  * A pipe driven formatting instruction.
  */
 export type formatType = {
-  'format': {
-    'pipeName': any;
-    'pipeParams'?: any[]
-  }
+  format: {
+    pipeName: any;
+    pipeParams?: any[];
+  };
 };
 /**
  * The field will not appear in autoforms if decorated as hidden. If the parameter
  * is omitted the type returns true due to its pure existence.
  */
 export type hiddenType = {
-  'hidden'?: boolean
+  hidden?: boolean;
 };
 /**
  * A watermark can be applied. The @see name property is the value that appears
  * in the field. This may not work for specific controls, such as list boxes.
  */
 export type placeHolderType = {
-  'placeholder': {
-    'name': string;
-  }
-}
+  placeholder: {
+    name: string;
+  };
+};
 /**
  * The field in rendered as readonly, if possible.
  */
 export type readonlyType = {
-  'readonly': boolean
+  readonly: boolean;
 };
 /**
  * This controls the actual control type. The default values are (TypeScript type: decorator type: rendered element):
@@ -73,9 +73,9 @@ export type readonlyType = {
  *
  */
 export type templateHintType = {
-  'templatehint': {
+  templatehint: {
     hint: string;
-  }
+  };
 };
 
 /**
@@ -86,73 +86,84 @@ export type templateHintType = {
  * Active i18n by using the @param translate. The translation module must be used separately.
  */
 export type validatorType = {
-  'msg'?: string;
-  'active'?: boolean;
-  'translate'?: boolean;
-}
+  msg?: string;
+  active?: boolean;
+  translate?: boolean;
+};
 /**
  * Compare to fields.
  */
 export type compareType = {
-  'compare': {
-    'fieldToCompare': string
-  } | validatorType;
+  compare:
+    | {
+        fieldToCompare: string;
+      }
+    | validatorType;
 };
 /**
  * Email
  */
 export type emailType = {
-  'email': validatorType;
+  email: validatorType;
 };
 /**
  * Maximum allowed length (string only)
  */
 export type maxlengthType = {
-  'maxlength': {
-    max: number;
-  } | validatorType;
+  maxlength:
+    | {
+        max: number;
+      }
+    | validatorType;
 };
 /**
  * Minimum allowed length (string only)
  */
 export type minlengthType = {
-  'minlength': {
-    min: number
-  } | validatorType;
+  minlength:
+    | {
+        min: number;
+      }
+    | validatorType;
 };
 /**
  * Any regex pattern
  */
 export type patternType = {
-  'pattern': {
-    pattern: string | RegExp;
-  } | validatorType;
+  pattern:
+    | {
+        pattern: string | RegExp;
+      }
+    | validatorType;
 };
 /**
  * A range for number or Date only.
  */
 export type rangeType = {
-  'range': {
-    'from': number | Date;
-    'to': number | Date;
-  } | validatorType;
+  range:
+    | {
+        from: number | Date;
+        to: number | Date;
+      }
+    | validatorType;
 };
 /**
  * This field is mandatory.
  */
 export type requiredType = {
-  'required': validatorType;
+  required: validatorType;
 };
 /**
  * Maximal and minimal allowed length (string only).
  */
 export type stringLengthType = {
-  'stringlength': {
-    'min': number;
-    'max': number;
-  } | validatorType;
+  stringlength:
+    | {
+        min: number;
+        max: number;
+      }
+    | validatorType;
 };
-
 
 /**
  * The form description model. Use this to have a valid JSON object that can be used
@@ -171,7 +182,17 @@ export type stringLengthType = {
  *
  */
 export interface FormValidatorModel {
-  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType |
-                   compareType | maxlengthType | minlengthType | patternType | stringLengthType |
-                   emailType | requiredType;
+  [field: string]:
+    | displayType
+    | displayGroupType
+    | formatType
+    | hiddenType
+    | placeHolderType
+    | compareType
+    | maxlengthType
+    | minlengthType
+    | patternType
+    | stringLengthType
+    | emailType
+    | requiredType;
 }

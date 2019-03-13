@@ -9,7 +9,7 @@ Object.same = function (source, target): boolean {
   }
   if (!(source instanceof Object) || !(target instanceof Object)) { return false; }
   // if they are not strictly equal, they both need to be Objects
-  for (let prop in source) {
+  for (const prop in source) {
     if (!source.hasOwnProperty(prop)) { continue; }
     if (source[prop] === undefined || source[prop] === null || source[prop] === '') { continue; }
     if (typeof source[prop] === 'object' && Object.same(source[prop], target[prop])) { continue; }
@@ -34,7 +34,7 @@ Object.equals = function (x: any, y: any): boolean {
   // they must have the exact same prototype chain, the closest we can do is
   // test there constructor.
 
-  for (var p in x) {
+  for (const p in x) {
     if (!x.hasOwnProperty(p)) { continue; }
     // other properties were tested using x.constructor === y.constructor
 

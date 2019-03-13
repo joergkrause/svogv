@@ -17,6 +17,6 @@ export class AcMenu {
       return foundItems[0] as T;
     }
     return null;
-  };
+  }
 
 }

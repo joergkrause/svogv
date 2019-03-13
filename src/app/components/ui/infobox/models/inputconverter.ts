@@ -1,6 +1,6 @@
-﻿export const EnumConverter = <T>(value: number, enumerationType: T) : string => {
-    let sanitizedValue = value.toString();
-    let color: T = <T>((<any>enumerationType)[sanitizedValue]);
+﻿export const EnumConverter = <T>(value: number, enumerationType: T): string => {
+    const sanitizedValue = value.toString();
+    const color: T = <T>((<any>enumerationType)[sanitizedValue]);
     return color.toString();
 };
 
@@ -28,7 +28,7 @@ export const NumberConverter = (value: any) => {
 export function InputConverter(converter?: (value: any, enumerationType?: any) => any, enumerationType?: any) {
     return (target: Object, key: string) => {
         if (converter === undefined) {
-            var metadata = (<any>Reflect).getMetadata('design:type', target, key);
+            const metadata = (<any>Reflect).getMetadata('design:type', target, key);
             if (metadata === undefined || metadata === null) {
                 throw new Error('The reflection metadata could not be found.');
             }
@@ -47,7 +47,7 @@ export function InputConverter(converter?: (value: any, enumerationType?: any) =
             }
         }
 
-        let definition = Object.getOwnPropertyDescriptor(target, key);
+        const definition = Object.getOwnPropertyDescriptor(target, key);
         if (definition) {
             Object.defineProperty(target, key, {
                 get: definition.get,
