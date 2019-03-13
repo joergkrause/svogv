@@ -15,7 +15,7 @@ import { increaseElementDepthCount } from '@angular/core/src/render3/state';
 @Component({
   selector: 'ac-datagrid',
   templateUrl: './datagrid.component.html',
-  styleUrls: ['./datagrid.component.css']
+  styleUrls: ['./datagrid.component.scss']
 })
 export class DataGridComponent implements OnInit {
   @ViewChild('text') textFallback: TemplateRef<any>;
@@ -62,10 +62,20 @@ export class DataGridComponent implements OnInit {
   @Input()
   public textEditButton = 'Edit';
   /**
-   * The column header of the column that shows the buttons.
+   * The column header of the column that shows the buttons. Default is 'Actions'.
    */
   @Input()
   public textButtonsHeader = 'Actions';
+  /**
+   * The text that appears if there are no items to show. Can also be overwritten by a more complex piece
+   * of code by adding a template like this:
+   * @example
+   * <ng-template #data-warning-noitems>
+   *   <div class="alert alert-danger">The grid is empty</div>
+   * </ng-template>
+   */
+  @Input()
+  public textNoItems = 'There are no items to show';
   /**
    * The filter value to filter the content.
    */

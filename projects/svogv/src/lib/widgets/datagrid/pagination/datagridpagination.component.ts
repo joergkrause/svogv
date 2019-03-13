@@ -9,7 +9,7 @@ import {
  */
 @Component({
   selector: 'ac-datagrid-pagination',
-  styleUrls: ['./datagridpagination.component.css' ],
+  styleUrls: ['./datagridpagination.component.scss' ],
   templateUrl: './datagridpagination.component.html'
 })
 export class DataGridPaginationComponent implements OnInit, OnChanges {

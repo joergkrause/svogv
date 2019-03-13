@@ -36,7 +36,7 @@
               <span #warningNoItems>
                 <ng-content select="[data-warning-noitems]"></ng-content>
               </span>
-              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">There are no items to show</ng-container>
+              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">{{  textNoItems }}</ng-container>
             </div>
           </td>
         </tr>
