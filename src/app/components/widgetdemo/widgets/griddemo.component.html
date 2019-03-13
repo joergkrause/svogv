@@ -1,27 +1,26 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-12">
       <div class="alert alert-info">
         Advanced features of the grid, such as changing column order, add/remove columns by user actions, callbacks, and more.
       </div>
     </div>
   </div>
   <div class="row">
-    <form>
-      <fieldset>
-        <legend>Grid Features</legend>
-        <div class="form-group">
-          <label>Columns visibility</label>
-          <input type="checkbox" checked="true" #reArrangeColumns />
-        </div>
-
-      </fieldset>
-
-    </form>
-
+    <div class="col-12">
+      <form>
+        <fieldset>
+          <legend>Grid Features</legend>
+          <div class="form-group">
+            <label>Columns visibility</label>
+            <input type="checkbox" checked="true" #reArrangeColumns />
+          </div>
+        </fieldset>
+      </form>
+    </div>
   </div>
   <div class="row" *ngIf="reArrangeColumns.value">
-    <div class="col-md-12">
+    <div class="col-12">
       <p>
         Currently invisible columns. Click to add:
         <span *ngFor="let col of model.headersNotVisible; let l = last">

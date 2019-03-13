@@ -1,18 +1,23 @@
 ﻿@import '~bootstrap/scss/bootstrap';
-$fa-font-path: "../../../node_modules/font-awesome/fonts";
+$fa-font-path: '../../../node_modules/font-awesome/fonts';
 @import '~font-awesome/scss/font-awesome';
 
-body, html {
-  height:100%;
+body,
+html {
+  height: 100%;
 }
 
 /* workaround modal-open padding issue */
 body.modal-open {
-    padding-right:0 !important;
+  padding-right: 0 !important;
 }
 
 #sidebar {
-   padding-left:0;
+  padding-left: 0;
+}
+
+.tab-pane {
+  margin: -15px;
 }
 
 /*
@@ -20,7 +25,6 @@ body.modal-open {
  * --------------------------------------------------
  */
 @media screen and (max-width: 48em) {
-
   .row-offcanvas {
     position: relative;
     -webkit-transition: all 0.25s ease-out;
@@ -28,8 +32,7 @@ body.modal-open {
     transition: all 0.25s ease-out;
   }
 
-  .row-offcanvas-left
-  .sidebar-offcanvas {
+  .row-offcanvas-left .sidebar-offcanvas {
     left: -33%;
   }
 
@@ -50,8 +53,7 @@ body.modal-open {
  * --------------------------------------------------
  */
 @media screen and (max-width: 34em) {
-  .row-offcanvas-left
-  .sidebar-offcanvas {
+  .row-offcanvas-left .sidebar-offcanvas {
     left: -45%;
   }
 
@@ -64,43 +66,57 @@ body.modal-open {
   }
 }
 
-
 /* responsive nav stacked liked 3.x */
-@media(max-width:34em) {
-    .navbar .navbar-brand {
-        float:none;
-        display: block;
-    }
-    .navbar .navbar-nav>.nav-item {
-        float: none;
-        margin-left: .1rem;
-    }
-    .navbar .navbar-nav {
-        float:none !important;
-    }
+@media (max-width: 34em) {
+  .navbar .navbar-brand {
+    float: none;
+    display: block;
+  }
+  .navbar .navbar-nav > .nav-item {
+    float: none;
+    margin-left: 0.1rem;
+  }
+  .navbar .navbar-nav {
+    float: none !important;
+  }
 }
 
 .card {
-    overflow:hidden;
+  overflow: hidden;
 }
 
 .card-body .rotate {
-    z-index: 8;
-    float: right;
-    height: 100%;
+  z-index: 8;
+  float: right;
+  height: 100%;
 }
 
 .card-body .rotate i {
-    color: rgba(20, 20, 20, 0.15);
-    position: absolute;
-    left: 0;
-    left: auto;
-    right: -10px;
-    bottom: 0;
-    display: block;
-    -webkit-transform: rotate(-44deg);
-    -moz-transform: rotate(-44deg);
-    -o-transform: rotate(-44deg);
-    -ms-transform: rotate(-44deg);
-    transform: rotate(-44deg);
+  color: rgba(20, 20, 20, 0.15);
+  position: absolute;
+  left: 0;
+  left: auto;
+  right: -10px;
+  bottom: 0;
+  display: block;
+  -webkit-transform: rotate(-44deg);
+  -moz-transform: rotate(-44deg);
+  -o-transform: rotate(-44deg);
+  -ms-transform: rotate(-44deg);
+  transform: rotate(-44deg);
+}
+
+form {
+  width: 100%;
+  margin: -15px 0px 15px -15px;
+}
+fieldset {
+  margin: 16px;
+  padding: 0px 16px 16px 16px;
+  border: 1px solid silver;
+  border-radius: 2px;
+}
+legend {
+  padding: 0px 16px 0px 16px;
+  width: auto;
 }

@@ -1,26 +1,17 @@
-﻿<div class="col-lg-6 col-md-6">
-	<ac-tree [nodes]="treeData"
-           (nodeClick)="nodeEvent('click', $event)"
-           (checkChanged)="nodeEvent('checked', $event)"
-           (selectedChanged)="nodeEvent('selected', $event)"
-           (collapseChanged)="nodeEvent('collapsed', $event)" >
-  </ac-tree>  
-</div>
-<div class="col-lg-6 col-md-6">
-  <code>
-  <ul class="list-unstyled">
-    <li *ngFor="let log of eventLog">{{log}}</li>
-  </ul>
-  </code>
-</div>
-<div class="col-lg-10 col-md-10">
-	<h3>Tree View</h3>
-	<h4>Markup</h4>
-	<pre>
+﻿<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h3>Tree View</h3>
+      <div class="alert alert-info">
+        The treeview can held any tree of nodes, which can be styles, linked, and bound to events. Click the <b>+</b>sign to
+        open the tree and manipulate the nodes' appearance. Clicking on the items fires various events shown on the right.
+      </div>
+      <pre>
 &lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
-	</pre>
-	<h4>Source</h4>
-	<pre>
+</pre>
+      <div class="alert alert-primary">
+      The code below is used to create the tree shown in the example below.
+      <pre>
 this.treeData = new AcTextTreeNode('Root node', options, [
   new AcTextTreeNode('Child node #1', options),
   new AcTextTreeNode('Child node #2', optionsi),
@@ -35,7 +26,37 @@ this.treeData = new AcTextTreeNode('Root node', options, [
     new AcTextTreeNode('Hola', optionsc),
   ]),
   new AcTextTreeNode('Child node #5', options),
-]);
-</pre>
+]);</pre>
+      <pre>
+&gt;ac-tree
+    [nodes]="treeData"
+    (nodeClick)="nodeEvent('click', $event)"
+    (checkChanged)="nodeEvent('checked', $event)"
+    (selectedChanged)="nodeEvent('selected', $event)"
+    (collapseChanged)="nodeEvent('collapsed', $event)"
+>
+&gt;/ac-tree></pre>
 </div>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-6">
+      <ac-tree
+        [nodes]="treeData"
+        (nodeClick)="nodeEvent('click', $event)"
+        (checkChanged)="nodeEvent('checked', $event)"
+        (selectedChanged)="nodeEvent('selected', $event)"
+        (collapseChanged)="nodeEvent('collapsed', $event)"
+      >
+      </ac-tree>
+    </div>
+    <div class="col-6">
+      <code>
+        <ul class="list-unstyled">
+          <li *ngFor="let log of eventLog">{{ log }}</li>
+        </ul>
+      </code>
+    </div>
+  </div>
+</div>

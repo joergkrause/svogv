@@ -6,7 +6,10 @@ import { AcMenu, AcMenuHeaderItem, AcMenuLinkItem, AcMenuItem } from '../ui/side
 
 @Component({
   selector: 'app-root',
-  templateUrl: './root.component.html'
+  templateUrl: './root.component.html',
+  styles: [
+    'footer { position: fixed; bottom: 15px; }'
+  ]
 })
 export class RootComponent implements OnInit {
 

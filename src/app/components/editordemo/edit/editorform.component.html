@@ -1,56 +1,67 @@
-<div class="container-fluid">
-  <form (ngSubmit)="saveUser()" role="form" class="row" #userForm="ngForm">
-    <fieldset style="width: 100%">
-      <legend>Edit current user</legend>
-      <ac-editor [userForm]="userFormGroup" name="userName"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="email"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="phoneNumber"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="age"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="birthday"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="isAdmin"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="passWord"></ac-editor>
-      <ac-editor [userForm]="userFormGroup" name="passWordTwo"></ac-editor>
-      <div class="row">
-        <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
-          <i class="fa fa-save"></i> Save
-        </button>
-        <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid">
-          <i class="fa fa-close"></i> Save &amp; Close
-        </button>
-        <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
-          <i class="fa fa-remove"></i> Cancel &amp; Return to List
-        </button>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        The form consists of editor fields which have been bound to a view model's properties one by one.
       </div>
-    </fieldset>
-  </form>
-  <div class="card card-block">
-    <div class="card-header card-success">
-      Techniques used
     </div>
-    <div class="card-body">
-      <p>This form makes use of the &lt;ac-editor&gt; component.</p>
-      <code><pre>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="saveUser()" role="form" #userForm="ngForm">
+        <fieldset>
+          <legend>Edit current user</legend>
+          <ac-editor [userForm]="userFormGroup" name="userName"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="email"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="phoneNumber"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="age"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="birthday"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="isAdmin"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="passWord"></ac-editor>
+          <ac-editor [userForm]="userFormGroup" name="passWordTwo"></ac-editor>
+          <div class="form-group">
+            <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+            <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid"><i class="fa fa-close"></i> Save &amp; Close</button>
+            <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+              <i class="fa fa-remove"></i> Cancel &amp; Return to List
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="card card-block">
+        <div class="card-header card-success">
+          Techniques used
+        </div>
+        <div class="card-body">
+          <p>This form makes use of the &lt;ac-editor&gt; component.</p>
+          <code
+            ><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     &lt;fieldset>
       &lt;legend>Edit current user&lt;/legend>
-      &lt;ac-editor [userForm]="userForm" [name]="'userName'" >&lt;/ac-editor>
-      &lt;ac-editor [userForm]="userForm" [name]="'email'" >&lt;/ac-editor>
-      &lt;ac-editor [userForm]="userForm" [name]="'phoneNumber'" >&lt;/ac-editor>
-      &lt;ac-editor [userForm]="userForm" [name]="'age'" >&lt;/ac-editor>
-      &lt;ac-editor [userForm]="userForm" [name]="'passWord'" >&lt;/ac-editor>
-      &lt;ac-editor [userForm]="userForm" [name]="'passWordTwo'" >&lt;/ac-editor>
-</pre></code>
-      <p>
-        The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The
-        [name] property is bound to the properties of the view model. The view model needs the decorators to figure out what
-        editor must be shown. It also pulls the validation information from the model. The model used on this form looks
-        like this:
-      </p>
-      <p>
-        The @Display decorator can order and group elements, too. You can create more than just simple forms with it.
-      </p>
-      <code>
-<pre>
+      &lt;ac-editor [userForm]="userForm" name="userName" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="email" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="phoneNumber" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="age" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="passWord" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="passWordTwo" >&lt;/ac-editor>
+</pre
+            ></code
+          >
+          <p>
+            The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The [name]
+            property is bound to the properties of the view model. The view model needs the decorators to figure out what editor must be shown. It
+            also pulls the validation information from the model. The model used on this form looks like this:
+          </p>
+          <p>
+            The @Display decorator can order and group elements, too. You can create more than just simple forms with it.
+          </p>
+          <code>
+            <pre>
 export class UserViewModel {{ '{' }}
 
   @Hidden()
@@ -86,8 +97,11 @@ export class UserViewModel {{ '{' }}
   passWordTwo: string = '';
 
 {{ '}' }}
-</pre>
-</code>
+</pre
+            >
+          </code>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 ﻿<!-- Main Header -->
 <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-  <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.png" /></a>
+  <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.png"/></a>
 </nav>
 <div class="container-fluid" id="main">
   <div class="row row-offcanvas row-offcanvas-left">
@@ -16,12 +16,10 @@
       <p class="lead">Welcome to SVOGV &ndash; the 'Simple Validation and Other Great View Components' library</p>
       <!-- Global navigation path -->
       <app-breadcrumb></app-breadcrumb>
+      <!--/main col-->
       <!-- the global outlet, within the parts the named tab outlet shows sub parts -->
-      <div class="container">
-        <router-outlet></router-outlet>
-      </div>
+      <router-outlet></router-outlet>
     </div>
-    <!--/main col-->
   </div>
 </div>
 <!--/.container-->

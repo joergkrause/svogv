@@ -1,24 +1,54 @@
-<div class="container-fluid">
-  <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
-    <fieldset style="width:100%">
-      <legend>Add new User</legend>
-      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
-      <div class="row">
-        <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
-          <i class="fa fa-save"></i> Save
-        </button>
-        <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
-          <i class="fa fa-remove"></i> Cancel &amp; Return to List
-        </button>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        The form consists of three editor fields that get appearance, style, and validation from meta-data.
       </div>
-    </fieldset>
-    <div class="alert alert-warning" *ngIf="userForm.touched">
-      Form has been changed. Please save.
+      <div class="alert alert-primary">
+        The code looks like this:
+        <pre>
+&lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+  &lt;fieldset style="width:100%">
+     &lt;legend>Add new User&lt;/legend>
+       &lt;ac-editor [userForm]="userForm" [name]="'userName'">&lt;/ac-editor>
+       &lt;ac-editor [userForm]="userForm" [name]="'email'">&lt;/ac-editor>
+       &lt;ac-editor [userForm]="userForm" [name]="'phoneNumber'">&lt;/ac-editor>
+       &lt;div class="form-group">
+         &lt;button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+            &lt;i class="fa fa-save">&lt;/i> Save&lt;/button>
+         &lt;button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+         &lt;i class="fa fa-remove">&lt;/i> Cancel &amp; Return to List
+         &lt;/button>
+       &lt;/div>
+     &lt;/fieldset>
+     ...
+</pre
+        >
+      </div>
     </div>
-    <div class="alert alert-success" *ngIf="saveResult">
-      Form has been saved.
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+        <fieldset>
+          <legend>Add new User</legend>
+          <ac-editor [userForm]="userForm" [name]="'userName'"></ac-editor>
+          <ac-editor [userForm]="userForm" [name]="'email'"></ac-editor>
+          <ac-editor [userForm]="userForm" [name]="'phoneNumber'"></ac-editor>
+          <div class="form-group">
+            <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+            <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+              <i class="fa fa-remove"></i> Cancel &amp; Return to List
+            </button>
+          </div>
+        </fieldset>
+          <div class="alert alert-warning" *ngIf="userForm.touched">
+            Form has been changed. Please save.
+          </div>
+          <div class="alert alert-success" *ngIf="saveResult">
+            Form has been saved.
+          </div>
+      </form>
     </div>
-  </form>
+  </div>
 </div>
