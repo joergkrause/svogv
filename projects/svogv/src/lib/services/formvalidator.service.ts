@@ -5,8 +5,15 @@ import { validateRange } from './validators/range.validator';
 import { validateCompare } from './validators/compare.validator';
 
 /**
- * The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
+ * The form validator service creates a FormGroup object from a viewmodel. If the viewmodel
  * has been decorated with validation decorators the validators are created accordingly.
+ *
+ * The simplest way is creating a class with properties and add decorators, such as
+ * @see StringLength. The service will than create a @see FormGroup that contains a validator
+ * of type @see StringLength for the property the decorator is written on.
+ *
+ * The decorators provide properties for additional information, such as a custom error message.
+ *
  */
 @Injectable()
 export class FormValidatorService {

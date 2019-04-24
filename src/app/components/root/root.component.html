@@ -11,7 +11,7 @@
     <!--/col-->
     <div class="col-md-9 col-lg-10 main">
       <h2 class="display-2 hidden-xs-down">
-        {{ currentRoute.title }} <small>{{ currentRoute.subTitle }}</small>
+        {{ currentRoute['title'] }} <small>{{ currentRoute['subTitle'] }}</small>
       </h2>
       <p class="lead">Welcome to SVOGV &ndash; the '<b>S</b>imple <b>V</b>alidation and <b>O</b>ther <b>G</b>reat <b>V</b>iew Components' library</p>
       <!-- Global navigation path -->
@@ -24,7 +24,8 @@
 </div>
 <!--/.container-->
 <footer>
-  <p class="text-right small">&copy; 2011 - {{ currentYear }} Joerg &lt;isageek&gt; Krause <br/>
+  <p class="text-right small">&copy; 2011 - {{ currentYear }} <br />
+    Joerg &lt;isageek&gt; Krause <br/>
     <i>www.joergkrause.de</i><br/>
     Made with &#10084; in Berlin / Germany
   </p>

@@ -1,13 +1,15 @@
-﻿import { Component } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from 'svogv';
+import { AcTabData, AcTab } from '../../ui/tabs/tabs.component';
 
 @Component({
   selector: 'app-treeview',
   templateUrl: './treeviewdemo.component.html'
 })
-export class TreeviewDemoComponent {
+export class TreeviewDemoComponent implements OnInit {
   public treeData: TreeNodeModel;
   public eventLog: Array<string> = new Array<string>();
+  public treeDemoTabs: string;
 
   constructor() {
     // raw data for treeview
@@ -52,6 +54,12 @@ export class TreeviewDemoComponent {
   }
 
   public nodeEvent(name: string, eventSource: TreeNodeModel) {
-    this.eventLog.push(`${eventSource.name} said ${name}`);
+    this.eventLog.push(`${eventSource.name} said ${name} (expanded = ${eventSource.stateIsExpandend})`);
   }
+
+  ngOnInit(): void {
+    this.treeDemoTabs = 'info';
+  }
+
+
 }

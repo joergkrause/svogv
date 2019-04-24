@@ -89,6 +89,10 @@ export class TreeNodeModel implements TreeNodeBaseModel {
     }
     set state(value: tree.TreeNodeState) {
         this._state = value;
+        if (!this.hasChildren && (this.state & tree.TreeNodeState.expanded) === tree.TreeNodeState.expanded){
+          // if an expandable event occurs and there a no children, don't fire
+          return;
+        }
         this.stateChange.emit(this._state);
     }
 

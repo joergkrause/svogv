@@ -2,7 +2,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 /**
  * A custom validator to valdiate a range of numbers or dates. This is internally to support the infarstructure
- * and not intendet to being used by custom code.
+ * and not intended to being used by custom code.
  *
  * @param p The field's name
  *

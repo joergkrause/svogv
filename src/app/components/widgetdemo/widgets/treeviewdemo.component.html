@@ -1,17 +1,35 @@
 ﻿<div class="container">
   <div class="row">
     <div class="col-12">
-      <h3>Tree View</h3>
       <div class="alert alert-info">
-        The treeview can held any tree of nodes, which can be styles, linked, and bound to events. Click the <b>+</b>sign to
-        open the tree and manipulate the nodes' appearance. Clicking on the items fires various events shown on the right.
+        The treeview can held any tree of nodes, which can be styles, linked, and bound to events. Click the <b>+</b>sign to open the tree and
+        manipulate the nodes' appearance. Clicking on the items fires various events shown on the right.
       </div>
-      <pre>
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'info' }">
+          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'info'">Info</button>
+        </li>
+        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'code' }">
+          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'code'">Code</button>
+        </li>
+        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'demo' }">
+          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'demo'">Demo</button>
+        </li>
+      </ul>
+      <div *ngIf="treeDemoTabs == 'info'">
+        <p>
+          The treeview is controlled by a view model. The model defines the nodes and their behavior. The treeview fires certain events if nodes are
+          being handled. The basic usage looks like this:
+        </p>
+        <pre>
 &lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
-</pre>
-      <div class="alert alert-primary">
-      The code below is used to create the tree shown in the example below.
-      <pre>
+</pre
+        >
+      </div>
+      <div class="alert alert-primary" *ngIf="treeDemoTabs == 'code'">
+        The code used in this demo looks like this.
+        <h4>*.ts-file</h4>
+        <pre>
 this.treeData = new AcTextTreeNode('Root node', options, [
   new AcTextTreeNode('Child node #1', options),
   new AcTextTreeNode('Child node #2', optionsi),
@@ -26,21 +44,24 @@ this.treeData = new AcTextTreeNode('Root node', options, [
     new AcTextTreeNode('Hola', optionsc),
   ]),
   new AcTextTreeNode('Child node #5', options),
-]);</pre>
-      <pre>
-&gt;ac-tree
+]);</pre
+        >
+        <h4>*.html-file (template)</h4>
+        <pre>
+&lt;ac-tree
     [nodes]="treeData"
     (nodeClick)="nodeEvent('click', $event)"
     (checkChanged)="nodeEvent('checked', $event)"
     (selectedChanged)="nodeEvent('selected', $event)"
     (collapseChanged)="nodeEvent('collapsed', $event)"
 >
-&gt;/ac-tree></pre>
-</div>
+&lt;/ac-tree></pre
+        >
+      </div>
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" *ngIf="treeDemoTabs == 'demo'">
     <div class="col-6">
       <ac-tree
         [nodes]="treeData"

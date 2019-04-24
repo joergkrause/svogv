@@ -4,7 +4,7 @@
   "description": "A decorator based approach for model driven forms and some time saving form widgets.",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4201",
     "build": "ng build svogv && ng build",
     "prod": "ng build svogv && ng build && npm run codedoc-docs",
     "test": "ng test",

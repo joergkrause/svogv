@@ -7,7 +7,6 @@ import { filter } from 'rxjs/operators';
  * The link shall be a regular route array.
  */
 export class AcTab {
-
   /**
    * Ctor to create Tabs definitions
    * @param link: Array of routes or outlet routes
@@ -15,12 +14,7 @@ export class AcTab {
    * @param active: Set class for active tab
    * @param disabled: Optionally set the tab inactive
    */
-  constructor(public link: Array<string | {}>,
-    public text: string,
-    public active: boolean,
-    public disabled?: boolean) {
-  }
-
+  constructor(public link: Array<string | {}>, public text: string, public active: boolean, public disabled?: boolean) {}
 }
 
 /**
@@ -28,13 +22,11 @@ export class AcTab {
  * The tabs' content is pulled from routes / child routes.
  */
 export class AcTabData {
-
   constructor(items: Array<AcTab>) {
     this.tabs = items;
   }
 
   tabs: Array<AcTab>;
-
 }
 
 /**
@@ -43,54 +35,55 @@ export class AcTabData {
  */
 @Component({
   selector: 'app-tabs',
-  template: `<ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item" *ngFor="let tab of tabs.tabs" [ngClass]="{ active: tab.active }">
-                    <a class="nav-link " *ngIf="!tab.disabled; else muted"
-                       (click)="activateTab(tab)"
-                       [ngClass]="{ active: tab.active }"
-                       href="#" [routerLink]="tab.link"
-                       role="tab" >{{ tab.text }}</a>
-                       <ng-template #muted>
-                        <a class="nav-link text-muted"
-                           href="#" disabled="disabled" onclick="return false;"
-                           role="tab" >{{ tab.text }}</a>
-                       </ng-template>
-                </li>
-            </ul>
-            <div class="tab-content">
-              <br />
-              <div role="tabpanel" class="tab-pane active">
-                <router-outlet></router-outlet>
-              </div>
-            </div>
-`
+  template: `
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item" *ngFor="let tab of tabs.tabs" [ngClass]="{ active: tab.active }">
+        <a
+          class="nav-link "
+          *ngIf="!tab.disabled; else muted"
+          (click)="activateTab(tab)"
+          [ngClass]="{ active: tab.active }"
+          href="#"
+          [routerLink]="tab.link"
+          role="tab"
+          >{{ tab.text }}</a
+        >
+        <ng-template #muted>
+          <a class="nav-link text-muted" href="#" disabled="disabled" onclick="return false;" role="tab">{{ tab.text }}</a>
+        </ng-template>
+      </li>
+    </ul>
+    <div class="tab-content">
+      <br />
+      <div role="tabpanel" class="tab-pane active">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  `
 }) //
 export class TabsComponent implements OnInit {
-
   // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
   // in the router config for those items that shall appear in the breadcrumb
   private static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
 
   @Input() tabs: AcTabData;
   @Input() limitBreadcrumb = false;
+  @Input() subRoute: string;
   @Output() currentTab: AcTab;
 
-  constructor(private activatedRoute: ActivatedRoute, private router: Router) {
-  }
+  constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
   activateTab(tab: AcTab) {
     this.currentTab = tab;
-    this.tabs.tabs.forEach(t => t.active = false);
+    this.tabs.tabs.forEach(t => (t.active = false));
     tab.active = true;
   }
 
   ngOnInit() {
-
     // subscribe to the NavigationEnd event
     this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe(event => {
-
-      // get the root route
-      const currentRoute: ActivatedRoute = this.activatedRoute.root;
+      // get the (root) route
+      const currentRoute: ActivatedRoute = this.subRoute ? this.activatedRoute[this.subRoute] : this.activatedRoute.root;
 
       // iterate from activated route to children
       if (currentRoute.children.length > 0) {
@@ -103,7 +96,6 @@ export class TabsComponent implements OnInit {
     const childrenRoutes: ActivatedRoute[] = currentRoute.children;
     // iterate over each children
     childrenRoutes.forEach(route => {
-
       // verify this is the primary route
       if (route.outlet !== PRIMARY_OUTLET) {
         return;
@@ -121,17 +113,15 @@ export class TabsComponent implements OnInit {
       // add router data as current tab
       // in case of subroutes it looks like this: link[0] = /editor, link[1] = /edit/:id
       // regex checks /xxx/:nn/
-      const rx = new RegExp('^((\/.*?)\/\:[^\/]*?\/?)$');
+      const rx = new RegExp('^((/.*?)/:[^/]*?/?)$');
       const lastmatch = (l: any) => l.match(rx) && <any>l.match(rx).filter((m: any) => <any>m === <any>l).length > 0;
       const matchTab = this.tabs.tabs.filter(t => {
-          if (typeof(t.link) === 'string') {
-            return t.link === routeURL || lastmatch(t.link);
-          } else {
-            return ((<any>t.link).length > 0
-                     && t.link.filter(sublink => sublink === routeURL || lastmatch(sublink)).length > 0);
-          }
+        if (typeof t.link === 'string') {
+          return t.link === routeURL || lastmatch(t.link);
+        } else {
+          return (<any>t.link).length > 0 && t.link.filter(sublink => sublink === routeURL || lastmatch(sublink)).length > 0;
         }
-    );
+      });
       if (matchTab && matchTab.length === 1) {
         this.activateTab(matchTab[0]);
         return;
@@ -141,5 +131,4 @@ export class TabsComponent implements OnInit {
       }
     });
   }
-
 }
