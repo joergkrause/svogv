@@ -72,7 +72,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"
+              "src/assets/styles/site.scss"
             ],
             "scripts": [],
             "assets": [
@@ -156,6 +156,20 @@
           }
         }
       }
+    },
+    "svogv-test": {
+      "root": "project/",
+      "projectType": "application",
+      "architect": {
+        "test": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+              "path": "./webpack.test.config.js"
+            }
+        }
+      }
+    }
     }
   },
   "defaultProject": "svogv-demo"

@@ -13,7 +13,7 @@ beforeEach(() => {
   // component = fixture.componentInstance;
 });
 
-describe('Component: DynamicFormComponent', () => {
+describe('Component: FormValidatorModel', () => {
   let model: FormValidatorModel;
 
   it('should have a defined component', () => {
