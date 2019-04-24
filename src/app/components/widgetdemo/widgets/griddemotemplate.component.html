@@ -36,9 +36,12 @@
   <div class="row">
     <div class="col-12">
       <ac-datagrid [model]="model" [showActions]="false">
-        <ng-template #bool let-item>
+        <ng-template #boolean let-item>
           <span *ngIf="item">YES</span>
           <span *ngIf="!item">NO</span>
+        </ng-template>
+        <ng-template #AgeTemplate let-item>
+          Age: {{ item }}
         </ng-template>
       </ac-datagrid>
     </div>

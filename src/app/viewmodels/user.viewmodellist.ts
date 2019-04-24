@@ -1,6 +1,5 @@
 ﻿import * as Validator from 'svogv';
-
-import { PercentPipe } from '@angular/common';
+import { PercentPipe } from './pipe/percent.pipe';
 
 /**
  * View Model for table view.

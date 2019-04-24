@@ -2,7 +2,7 @@ import { Injector, Pipe, PipeTransform, Type } from '@angular/core';
 
 /**
  * This pipe allows the dynamic formatting of data. It is just for internal use.
- * The prupose is the forwarding of an externally defined pipe to the pipe formatter within the grid.
+ * The purpose is the forwarding of an externally defined pipe to the pipe formatter within the grid.
  */
 @Pipe({
   name: 'formatData'

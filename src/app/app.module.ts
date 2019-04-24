@@ -12,6 +12,7 @@ import * as cmp from './components';
 import { routes } from './configurations/routes';
 
 import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
+import { PercentPipe } from './viewmodels/pipe/percent.pipe';
 
 @NgModule({
   imports: [
@@ -45,7 +46,7 @@ import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent
     , cmp.TabsComponent
-    , cmp.InfoBoxComponent
+    , cmp.InfoBoxComponent, PercentPipe
   ],
   bootstrap: [cmp.RootComponent],
   providers: [

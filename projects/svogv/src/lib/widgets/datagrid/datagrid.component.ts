@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList } from '@angular/core';
 import { DataGridModel } from './models/datagrid.model';
 import { increaseElementDepthCount } from '@angular/core/src/render3/state';
 import { DatagridStyles } from './models/datagridstyle.model';
@@ -39,6 +39,8 @@ export class DataGridComponent implements OnInit {
 
   @ViewChild('number') numberFallback: TemplateRef<any>;
   @ContentChild('number') number: TemplateRef<any>;
+
+  @ContentChildren('ng-template') externals: QueryList<any>;
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
@@ -122,10 +124,13 @@ export class DataGridComponent implements OnInit {
       console.log('internal');
       // if provided by user via ContentChild
       return this[uiHint];
-    } else {
-      console.log('external');
-      // otherwise we take ours from ng-template via ViewChild
-      return this[`${uiHint}Fallback`];
     }
+    if (this.externals[uiHint]){
+      console.log('external');
+      return this.externals[uiHint];
+    }
+    console.log('fallback');
+    // otherwise we take ours from ng-template via ViewChild
+    return this[`${uiHint}Fallback`];
   }
 }
