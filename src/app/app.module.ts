@@ -13,6 +13,8 @@ import { routes } from './configurations/routes';
 
 import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
 import { PercentPipe } from './viewmodels/pipe/percent.pipe';
+import { MinitabsComponent } from './components/ui/tabs/minitabs/minitabs.component';
+import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';
 
 @NgModule({
   imports: [
@@ -46,8 +48,11 @@ import { PercentPipe } from './viewmodels/pipe/percent.pipe';
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent
     , cmp.TabsComponent
+    , cmp.MinitabsComponent
     , cmp.InfoBoxComponent,
-    PercentPipe
+    PercentPipe,
+    MinitabsComponent,
+    TabsComponent
   ],
   bootstrap: [cmp.RootComponent],
   providers: [

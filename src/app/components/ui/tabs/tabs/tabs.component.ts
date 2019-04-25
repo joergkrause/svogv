@@ -1,68 +1,15 @@
-﻿import { Component, Input, Output, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { AcTabData, AcTab } from '../..';
+import { ActivatedRoute, Router, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-/**
- * Create a single tab for tab views.
- * The link shall be a regular route array.
- */
-export class AcTab {
-  /**
-   * Ctor to create Tabs definitions
-   * @param link: Array of routes or outlet routes
-   * @param text: Text shown on tab
-   * @param active: Set class for active tab
-   * @param disabled: Optionally set the tab inactive
-   */
-  constructor(public link: Array<string | {}>, public text: string, public active: boolean, public disabled?: boolean) {}
-}
-
-/**
- * A collection of tabs used to create a tabbed view.
- * The tabs' content is pulled from routes / child routes.
- */
-export class AcTabData {
-  constructor(items: Array<AcTab>) {
-    this.tabs = items;
-  }
-
-  tabs: Array<AcTab>;
-}
-
-/**
- * The Tab Component. It looks like a Bootstrap component, but the active part
- * is the Angular router, so no data-toggle is required.
- */
 @Component({
   selector: 'app-tabs',
-  template: `
-    <ul class="nav nav-tabs" role="tablist">
-      <li class="nav-item" *ngFor="let tab of tabs.tabs" [ngClass]="{ active: tab.active }">
-        <a
-          class="nav-link "
-          *ngIf="!tab.disabled; else muted"
-          (click)="activateTab(tab)"
-          [ngClass]="{ active: tab.active }"
-          href="#"
-          [routerLink]="tab.link"
-          role="tab"
-          >{{ tab.text }}</a
-        >
-        <ng-template #muted>
-          <a class="nav-link text-muted" href="#" disabled="disabled" onclick="return false;" role="tab">{{ tab.text }}</a>
-        </ng-template>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <br />
-      <div role="tabpanel" class="tab-pane active">
-        <router-outlet></router-outlet>
-      </div>
-    </div>
-  `
-}) //
+  templateUrl: './tabs.component.html',
+  styleUrls: ['./tabs.component.css']
+})
 export class TabsComponent implements OnInit {
-  // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
+ // put data: { "breadcrumb": true, "subtitle": "Sub Route Name" }
   // in the router config for those items that shall appear in the breadcrumb
   private static readonly ROUTE_DATA_BREADCRUMB = 'breadcrumb';
 

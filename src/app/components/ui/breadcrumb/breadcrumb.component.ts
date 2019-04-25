@@ -10,26 +10,8 @@ export interface IBreadcrumb {
 
 @Component({
     selector: 'app-breadcrumb',
-    template: `<ol class="list-inline breadcrumb" >
-                 <li class="list-inline-item"><a routerLink=""><i class="fa " [ngClass]="icon"></i>&nbsp;{{ home }}</a> /</li>
-                 <li class="list-inline-item" *ngFor="let breadcrumb of breadcrumbs; let lastItem=last">
-                    <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
-                    <span *ngIf="!lastItem">&nbsp;/</span>
-                 </li>
-               </ol>`,
-    styles: [
-        `.breadcrumb {
-            position: relative;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            top: 0;
-            right: 0;
-            float: none;
-            padding: 7px 5px;
-            padding-left: 10px;
-            font-size: 12px;
-            border-radius: 2px;
-         }`]
+    templateUrl: './breadcrumb.component.html',
+    styleUrls: ['./breadcrumb.component.scss']
 }) //
 export class BreadcrumbComponent implements OnInit {
     @Input() icon: string;

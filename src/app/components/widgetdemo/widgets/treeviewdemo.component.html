@@ -5,18 +5,8 @@
         The treeview can held any tree of nodes, which can be styles, linked, and bound to events. Click the <b>+</b>sign to open the tree and
         manipulate the nodes' appearance. Clicking on the items fires various events shown on the right.
       </div>
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'info' }">
-          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'info'">Info</button>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'code' }">
-          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'code'">Code</button>
-        </li>
-        <li class="nav-item" [ngClass]="{ active: treeDemoTabs == 'demo' }">
-          <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="treeDemoTabs = 'demo'">Demo</button>
-        </li>
-      </ul>
-      <div *ngIf="treeDemoTabs == 'info'">
+      <app-minitabs #tabs></app-minitabs>
+      <div *ngIf="tabs.tabSelected == 'info'">
         <p>
           The treeview is controlled by a view model. The model defines the nodes and their behavior. The treeview fires certain events if nodes are
           being handled. The basic usage looks like this:
@@ -26,7 +16,7 @@
 </pre
         >
       </div>
-      <div class="alert alert-primary" *ngIf="treeDemoTabs == 'code'">
+      <div class="alert alert-primary" *ngIf="tabs.tabSelected == 'code'">
         The code used in this demo looks like this.
         <h4>*.ts-file</h4>
         <pre>
@@ -61,7 +51,7 @@ this.treeData = new AcTextTreeNode('Root node', options, [
     </div>
   </div>
 
-  <div class="row" *ngIf="treeDemoTabs == 'demo'">
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
     <div class="col-6">
       <ac-tree
         [nodes]="treeData"
