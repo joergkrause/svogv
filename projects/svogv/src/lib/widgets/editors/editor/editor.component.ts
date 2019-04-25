@@ -149,9 +149,9 @@ export class EditorComponent implements OnInit {
       }
       // templates
       if (editorModel[`__hasTemplateHint__${this.name}`]) {
-        this.type = (<string>editorModel[`__templateHint__${this.name}`]).toLowerCase();
-        if (editorModel[`__templateHintParams__${this.name}`]) {
-          this.params = <{ key: string; value: any }[]>editorModel[`__templateHintParams__${this.name}`];
+        this.type = (<string>editorModel[`__templatehint__${this.name}`]).toLowerCase();
+        if (editorModel[`__templatehintParams__${this.name}`]) {
+          this.params = <{ key: string; value: any }[]>editorModel[`__templatehintParams__${this.name}`];
         }
       }
 

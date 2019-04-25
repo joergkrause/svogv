@@ -41,7 +41,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   @ViewChild('number') numberFallback: TemplateRef<any>;
   @ContentChild('number') number: TemplateRef<any>;
 
-  @ContentChildren(TemplateRef) externals: QueryList<any>;
+  @Input() externals: { [key: string]: any } = {};
 
   // @ViewChild(TemplateRef) template: TemplateRef<any>;
 
@@ -132,7 +132,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       console.log('external'); // if provided by user via ContentChild but completely replaced
       return this.externals[uiHint];
     }
-    console.log('fallback');  // otherwise we take ours from ng-template via ViewChild
+    console.log('fallback'); // otherwise we take ours from ng-template via ViewChild
     return this[`${uiHint}Fallback`];
   }
 }

@@ -11,10 +11,9 @@
   <div class="row" *ngIf="tabs.tabSelected == 'info'">
     <div class="col-12">
       <p>
-        The appearance of cells can be modified in various ways. First, the grid provides default templates for certain data types.
-        Second, the internal behavior can be overwritten by providing a template with the same name , such as '#boolean'. Third,
-        the model can provide a <code>@UiHint('template')</code> decorator, whereas 'template' is the name of a custom template.
-        All three variants can be mixed.
+        The appearance of cells can be modified in various ways. First, the grid provides default templates for certain data types. Second, the
+        internal behavior can be overwritten by providing a template with the same name , such as '#boolean'. Third, the model can provide a
+        <code>@UiHint('template')</code> decorator, whereas 'template' is the name of a custom template. All three variants can be mixed.
       </p>
     </div>
   </div>
@@ -22,14 +21,38 @@
     <div class="col-12">
       <p>The grid in demo is using this code:</p>
       <pre>
-&lt;ac-datagrid [model]="model" [showActions]="false">
+&lt;ac-datagrid [model]="model"
+             [showActions]="false"
+             [externals]="{{ '{' }} 'AgeTemplate': ForAgeTemplate }">
   &lt;ng-template #boolean let-item>
     &lt;span *ngIf="item">YES&lt;/span>
     &lt;span *ngIf="!item">NO&lt;/span>
   &lt;/ng-template>
+  &lt;ng-template #ForAgeTemplate let-item> Age: {{ '{{' }} item }} &lt;/ng-template>
 &lt;/ac-datagrid></pre
       >
-      <p>It shows how to change the styles of the particular parts of the grid.</p>
+      <p>It shows how to change the data appearance of the particular parts of the grid using templates.</p>
+      <p>The following templates are available internally:</p>
+      <ul>
+        <li>string</li>
+        <li>boolean</li>
+        <li>date</li>
+        <li>enum</li>
+        <li>number</li>
+      </ul>
+      <p>
+        By providing a template like this with the same name the template is being overwritten:
+      </p>
+      <pre>&lt;ng-template #boolean let-item></pre>
+      <p>
+        It's possible to control the template indirectly from the model. Use <code>@UiHint('templatename')</code>.
+        Define the connection using the attribute <code>externals</code>:
+      </p>
+      <pre>[externals]="{{ '{' }} 'templatename': templateref }"></pre>
+      <p>
+        With this the name provided by the decorator is matched to some local template. The item is being provided by <code>let-item</code>.
+      </p>
+      <pre>&lt;ng-template #templateref let-item>{{ item }} &lt;/ng-template></pre>
     </div>
   </div>
   <div class="row" *ngIf="tabs.tabSelected == 'demo'">
@@ -40,12 +63,12 @@
           <div class="form-group"></div>
         </fieldset>
       </form>
-      <ac-datagrid [model]="model" [showActions]="false">
+      <ac-datagrid [model]="model" [showActions]="false" [externals]="{ AgeTemplate: ForAgeTemplate }">
         <ng-template #boolean let-item>
           <span *ngIf="item">YES</span>
           <span *ngIf="!item">NO</span>
         </ng-template>
-        <ng-template #AgeTemplate let-item> Age: {{ item }} </ng-template>
+        <ng-template #ForAgeTemplate let-item> Age: {{ item }} </ng-template>
       </ac-datagrid>
     </div>
   </div>
