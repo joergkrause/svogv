@@ -25,6 +25,7 @@ import { DatagridStyles } from './models/datagridstyle.model';
   styleUrls: ['./datagrid.component.scss']
 })
 export class DataGridComponent implements OnInit {
+
   @ViewChild('string') stringFallback: TemplateRef<any>;
   @ContentChild('string') string: TemplateRef<any>;
 
@@ -40,7 +41,7 @@ export class DataGridComponent implements OnInit {
   @ViewChild('number') numberFallback: TemplateRef<any>;
   @ContentChild('number') number: TemplateRef<any>;
 
-  @ContentChildren('ng-template') externals: QueryList<any>;
+  @ContentChildren(TemplateRef) externals: QueryList<any>;
 
   @ViewChild(TemplateRef) template: TemplateRef<any>;
 
@@ -119,7 +120,7 @@ export class DataGridComponent implements OnInit {
    * @param uiHint Property of @UiHint decorator
    */
   public getActiveTemplate(uiHint: string, prop?: string): TemplateRef<any> {
-    console.log(`getActiveTemplate: ${uiHint} / ${prop}`);
+    console.log(`DataGridComponent:getActiveTemplate: ${uiHint} / ${prop}`);
     if (this[uiHint]) {
       console.log('internal');
       // if provided by user via ContentChild

@@ -46,10 +46,12 @@ import { PercentPipe } from './viewmodels/pipe/percent.pipe';
     , cmp.SideMenuComponent
     , cmp.BreadcrumbComponent
     , cmp.TabsComponent
-    , cmp.InfoBoxComponent, PercentPipe
+    , cmp.InfoBoxComponent,
+    PercentPipe
   ],
   bootstrap: [cmp.RootComponent],
   providers: [
+      PercentPipe,
       SiteApiService        // just for demo to get some static data
     , EmitterService        // simple publish/subscribe patterm to distribute data
     , { provide: LocationStrategy, useClass: HashLocationStrategy }

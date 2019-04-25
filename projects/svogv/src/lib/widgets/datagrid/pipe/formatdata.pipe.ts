@@ -12,10 +12,12 @@ export class FormatDataPipe implements PipeTransform {
 
   transform(value: any, pipeToken: Type<PipeTransform>, pipeArgs: any[]): any {
     if (!pipeToken) {
+      console.log('FormatDataPipe:NoPipeToken');
       return value;
     } else {
+      console.log('FormatDataPipe:PipeToken:', pipeToken);
       const pipe = this.injector.get<PipeTransform>(pipeToken);
-      return pipe.transform(value, ...pipeArgs);
+      return pipe.transform(value, ...pipeArgs || []);
     }
   }
 }

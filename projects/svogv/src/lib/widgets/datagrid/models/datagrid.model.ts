@@ -179,7 +179,7 @@ export class DataGridModel<T> {
       header.templateHint = type[`__templatehint__${p}`] || (typeof type[p]);
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
-      header.pipeParams = type[`__pipeParams__${p}`];
+      header.pipeParams = type[`__pipeparams__${p}`];
       this._headers.push(header);
     }
   }
