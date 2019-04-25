@@ -11,6 +11,9 @@ export class GridDemoComponent implements OnInit, OnDestroy {
   model: DataGridModel<UserViewModelList>;
   users: Array<UserViewModelList>;
 
+  showActions: boolean;
+  reArrangeColumns: boolean;
+
   constructor(private apiService: SiteApiService) {
     this.users = new Array<UserViewModelList>();
   }

@@ -1,7 +1,8 @@
 ﻿import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AcTab, AcTabData } from '../ui/tabs/tabs.component';
+import { AcTabData } from '../ui/tabs/tabs/models/actabdata.model';
+import { AcTab } from '../ui/tabs/tabs/models/actab.model';
 
 /**
  * User Manager, defines the tabs that hold the child-outlets.

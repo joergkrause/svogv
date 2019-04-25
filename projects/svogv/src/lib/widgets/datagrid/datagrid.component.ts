@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
 import { DataGridModel } from './models/datagrid.model';
 import { increaseElementDepthCount } from '@angular/core/src/render3/state';
 import { DatagridStyles } from './models/datagridstyle.model';
+import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 /**
  * The datagrid provides basic functions for data tables:
@@ -24,8 +25,7 @@ import { DatagridStyles } from './models/datagridstyle.model';
   templateUrl: './datagrid.component.html',
   styleUrls: ['./datagrid.component.scss']
 })
-export class DataGridComponent implements OnInit {
-
+export class DataGridComponent implements OnInit, AfterViewInit {
   @ViewChild('string') stringFallback: TemplateRef<any>;
   @ContentChild('string') string: TemplateRef<any>;
 
@@ -43,7 +43,7 @@ export class DataGridComponent implements OnInit {
 
   @ContentChildren(TemplateRef) externals: QueryList<any>;
 
-  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  // @ViewChild(TemplateRef) template: TemplateRef<any>;
 
   /**
    * Override the internal styles by giving directly CSS rules based on the column tags.
@@ -113,6 +113,9 @@ export class DataGridComponent implements OnInit {
   public reArrangeColumns: boolean;
 
   ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    console.log('externals', this.externals);
+  }
 
   /**
    * Controls the template used to display certain data types.
@@ -122,16 +125,14 @@ export class DataGridComponent implements OnInit {
   public getActiveTemplate(uiHint: string, prop?: string): TemplateRef<any> {
     console.log(`DataGridComponent:getActiveTemplate: ${uiHint} / ${prop}`);
     if (this[uiHint]) {
-      console.log('internal');
-      // if provided by user via ContentChild
+      console.log('internal'); // if provided by user via ContentChild and overwriting defaults (string == string etc.)
       return this[uiHint];
     }
-    if (this.externals[uiHint]){
-      console.log('external');
+    if (this.externals[uiHint]) {
+      console.log('external'); // if provided by user via ContentChild but completely replaced
       return this.externals[uiHint];
     }
-    console.log('fallback');
-    // otherwise we take ours from ng-template via ViewChild
+    console.log('fallback');  // otherwise we take ours from ng-template via ViewChild
     return this[`${uiHint}Fallback`];
   }
 }

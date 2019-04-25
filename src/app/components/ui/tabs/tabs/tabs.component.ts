@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { AcTabData, AcTab } from '../..';
+import { AcTabData } from '../tabs/models/actabdata.model';
+import { AcTab } from '../tabs/models/actab.model';
 import { ActivatedRoute, Router, NavigationEnd, PRIMARY_OUTLET } from '@angular/router';
 import { filter } from 'rxjs/operators';
 

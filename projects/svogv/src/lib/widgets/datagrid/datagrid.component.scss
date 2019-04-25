@@ -17,12 +17,35 @@ th {
   background: none;
 }
 
-.sort button {
-  width: $smallsize;
-  height: $smallsize;
-  border-radius: 0;
-  padding: $padding;
-  border: 0px;
-  background-color: transparent !important;
-  cursor: pointer;
+.sort {
+  float: right;
+
+  button {
+    width: $smallsize;
+    height: $smallsize;
+    border-radius: 0;
+    padding: $padding;
+    border: 0px;
+    background-color: transparent !important;
+    cursor: pointer;
+    position: relative;
+
+    .up {
+      left: 0px;
+    }
+
+    .down{
+      left: -16px;
+    }
+
+  }
+}
+
+.rearrange {
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  float: right;
+  border: none;
+  background-color: transparent;
 }

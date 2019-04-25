@@ -2,47 +2,50 @@
   <div class="row">
     <div class="col-12">
       <div class="alert alert-info">
-        A demo showing how to manipulate the cell's content using templates. Templates work on a per type base.
-        In the demo all cells that render a boolean value are being replaced.
+        A demo showing how to manipulate the cell's content using templates. Templates work on a per type base. In the demo all cells that render a
+        boolean value are being replaced.
       </div>
     </div>
   </div>
-  <div class="row">
-      <div class="col-12">
-    <form>
-      <fieldset>
-        <legend>Grid Features</legend>
-        <div class="form-group"></div>
-      </fieldset>
-    </form>
-   </div>
-  </div>
-  <div class="row">
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
     <div class="col-12">
-      <div class="alert alert-primary">
-        <p>The grid below is using this code:</p>
-        <pre>
+      <p>
+        The appearance of cells can be modified in various ways. First, the grid provides default templates for certain data types.
+        Second, the internal behavior can be overwritten by providing a template with the same name , such as '#boolean'. Third,
+        the model can provide a <code>@UiHint('template')</code> decorator, whereas 'template' is the name of a custom template.
+        All three variants can be mixed.
+      </p>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <p>The grid in demo is using this code:</p>
+      <pre>
 &lt;ac-datagrid [model]="model" [showActions]="false">
   &lt;ng-template #boolean let-item>
     &lt;span *ngIf="item">YES&lt;/span>
     &lt;span *ngIf="!item">NO&lt;/span>
   &lt;/ng-template>
 &lt;/ac-datagrid></pre
-        >
-        <p>It shows how to change the styles of the particular parts of the grid.</p>
-      </div>
+      >
+      <p>It shows how to change the styles of the particular parts of the grid.</p>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
     <div class="col-12">
+      <form>
+        <fieldset>
+          <legend>Grid Features</legend>
+          <div class="form-group"></div>
+        </fieldset>
+      </form>
       <ac-datagrid [model]="model" [showActions]="false">
         <ng-template #boolean let-item>
           <span *ngIf="item">YES</span>
           <span *ngIf="!item">NO</span>
         </ng-template>
-        <ng-template #AgeTemplate let-item>
-          Age: {{ item }}
-        </ng-template>
+        <ng-template #AgeTemplate let-item> Age: {{ item }} </ng-template>
       </ac-datagrid>
     </div>
   </div>

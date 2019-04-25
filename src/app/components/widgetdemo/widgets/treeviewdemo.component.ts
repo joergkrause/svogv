@@ -1,6 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from 'svogv';
-import { AcTabData, AcTab } from '../../ui/tabs/tabs.component';
 
 @Component({
   selector: 'app-treeview',

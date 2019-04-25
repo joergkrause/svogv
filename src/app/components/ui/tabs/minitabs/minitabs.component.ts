@@ -9,7 +9,7 @@ export class MinitabsComponent implements OnInit {
 
   @Input()
   @Output()
-  tabSelected: string;
+  tabSelected: string = 'info';
 
   constructor() { }
 
