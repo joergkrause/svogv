@@ -16,7 +16,7 @@ export const routes: Routes = [
   {
     path: 'widgets',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Components', 'subtitle': 'All features of grid and tree', 'breadcrumb': true, 'features': true },
+    data: { 'title': 'Tree&Grid', 'subtitle': 'All features of grid and tree', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',
@@ -61,7 +61,7 @@ export const routes: Routes = [
   {
     path: 'editor',
     component: cmp.EditorDemoComponent,
-    data: { 'title': 'Editor Demo', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
+    data: { 'title': 'Grid&Editors', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',

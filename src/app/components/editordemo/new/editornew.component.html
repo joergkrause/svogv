@@ -4,9 +4,35 @@
       <div class="alert alert-info">
         The form consists of three editor fields that get appearance, style, and validation from meta-data.
       </div>
-      <div class="alert alert-primary">
-        The code looks like this:
-        <pre>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          The Model Driven Editor
+        </div>
+        <div class="card-body">
+          <p>
+            The editor is a component that reads the view models decorators and produces the matching input fields. This includes the required and
+            requested validation. One can set error messages and control the UI of the form almost completely through decorators.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Code used in the Demo
+        </div>
+        <div class="card-body">
+          <p>
+            The code looks like this:
+          </p>
+          <pre>
 &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
   &lt;fieldset style="width:100%">
      &lt;legend>Add new User&lt;/legend>
@@ -23,11 +49,12 @@
      &lt;/fieldset>
      ...
 </pre
-        >
+          >
+        </div>
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
     <div class="col-12">
       <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form">
         <fieldset>
@@ -42,12 +69,12 @@
             </button>
           </div>
         </fieldset>
-          <div class="alert alert-warning" *ngIf="userForm.touched">
-            Form has been changed. Please save.
-          </div>
-          <div class="alert alert-success" *ngIf="saveResult">
-            Form has been saved.
-          </div>
+        <div class="alert alert-warning" *ngIf="userForm.touched">
+          Form has been changed. Please save.
+        </div>
+        <div class="alert alert-success" *ngIf="saveResult">
+          Form has been saved.
+        </div>
       </form>
     </div>
   </div>

@@ -6,7 +6,28 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block">
+        <div class="card-header card-success">
+          Information about Autoform
+        </div>
+        <div class="card-body">
+          <p>From a view model decorated with UI decorators one can create a complete form with just one component.
+            This is highly flexible and can be customized using several options.
+          </p>
+          <ul>
+            <li>Label name and tooltip</li>
+            <li>Validation</li>
+            <li>Order of fields</li>
+            <li>Grouping into <code>fieldset</code> elements</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
     <div class="col-12">
       <form (ngSubmit)="saveUser()" role="form" #userForm="ngForm">
         <fieldset>
@@ -30,7 +51,7 @@
       </form>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
     <div class="col-12">
       <div class="card card-block">
         <div class="card-header card-success">

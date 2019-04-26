@@ -23,6 +23,12 @@ export class DataGridPaginationComponent implements OnInit, OnChanges {
    */
   @Output() pageNumberChanged = new EventEmitter();
 
+  /**
+   * The size for pagination, according bootstrap rules. ('sm' == 'pagination-sm', 'lg' = 'pagination-lg').
+   * Default is medium.
+   */
+  @Input() size: string;
+
   currentPageNumber = 1;
 
   ngOnInit() {

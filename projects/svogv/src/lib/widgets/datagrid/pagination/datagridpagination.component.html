@@ -1,29 +1,29 @@
 <div>
-  <ul class="pagination float-right">
-    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex">
-      <a href (click)="setCurrentPage(1, $event)" aria-label="Previous">
+  <ul class="pagination float-right" [ngClass]="{ 'pagination-sm': size == 'sm', 'pagination-lg': size == 'lg' }">
+    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex" class="page-item">
+      <a href (click)="setCurrentPage(1, $event)" aria-label="Previous" class="page-link">
         <span aria-hidden="true">«</span>
       </a>
     </li>
-    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex">
+    <li [class.disabled]="currentPageNumber === 1 || !maxPageIndex" class="page-item">
       <a
         href
         aria-label="Previous"
         (click)="setCurrentPage(currentPageNumber - 1, $event)"
-      >
+        class="page-link">
         <span aria-hidden="true">‹</span>
       </a>
     </li>
     <li
       *ngFor="let index of range(pageStartNumber, pageEndNumber)"
       [class.active]="currentPageNumber === index"
-    >
-      <a href (click)="setCurrentPage(index, $event)">
+      class="page-item">
+      <a href (click)="setCurrentPage(index, $event)" class="page-link">
         <span aria-hidden="true">{{ index }}</span>
       </a>
     </li>
     <li [class.disabled]="currentPageNumber === maxPageIndex || !maxPageIndex">
-      <a
+      <a class="page-link"
         href
         (click)="setCurrentPage(currentPageNumber + 1, $event)"
         aria-label="Last"
@@ -31,8 +31,8 @@
         <span aria-hidden="true">›</span>
       </a>
     </li>
-    <li [class.disabled]="currentPageNumber === maxPageIndex || !maxPageIndex">
-      <a href (click)="setCurrentPage(maxPageIndex, $event)" aria-label="Last">
+    <li [class.disabled]="currentPageNumber === maxPageIndex || !maxPageIndex" class="page-item">
+      <a href (click)="setCurrentPage(maxPageIndex, $event)" aria-label="Last" class="page-link">
         <span aria-hidden="true">»</span>
       </a>
     </li>

@@ -8,27 +8,43 @@
   </div>
   <app-minitabs #tabs></app-minitabs>
   <div class="row" *ngIf="tabs.tabSelected == 'info'">
-    <div class="col-12"></div>
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p></p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="row" *ngIf="tabs.tabSelected == 'code'">
     <div class="col-12">
-      <p>
-        The grid is defined in the form like this:
-      </p>
-      <pre>
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            The grid is defined in the form like this:
+          </p>
+          <pre>
 &lt;ac-datagrid [model]="model"
                 [showActions]="showActions"
                 [reArrangeColumns]="reArrangeColumns">&lt;/ac-datagrid>
     </pre
-      >
-      <p>The values <code>showActions</code> and <code>reArrangeColumns</code> are being set by the checkboxes.</p>
-      <ul>
-        <li>
-          <code>showActions</code>: Show the action button column, the buttons 'Edit' and 'Delete' fire appropriate events. The do actually not change
-          the data, one must manipulate the model accordingly.
-        </li>
-        <li><code>reArrangeColumns</code>: Shows a remove button on the columns and allows adding columns dynamically.</li>
-      </ul>
+          >
+          <p>The values <code>showActions</code> and <code>reArrangeColumns</code> are being set by the checkboxes.</p>
+          <ul>
+            <li>
+              <code>showActions</code>: Show the action button column, the buttons 'Edit' and 'Delete' fire appropriate events. The do actually not
+              change the data, one must manipulate the model accordingly.
+            </li>
+            <li><code>reArrangeColumns</code>: Shows a remove button on the columns and allows adding columns dynamically.</li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row" *ngIf="tabs.tabSelected == 'demo'">

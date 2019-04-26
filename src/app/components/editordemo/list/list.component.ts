@@ -2,7 +2,6 @@
 import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
 import { DataGridModel } from 'svogv';
-import { AbstractControl } from '@angular/forms';
 import { SimpleUserViewModelList } from 'src/app/viewmodels/simpleuser.viewmodellist';
 
 @Component({
@@ -13,7 +12,9 @@ export class EditorListComponent implements OnInit, OnDestroy {
 
   public users: DataGridModel<SimpleUserViewModelList>;
   public currentUser: SimpleUserViewModelList;
-  public searchItem: AbstractControl;
+  public searchItem: any = '';
+  public searchProp: string = '';
+  public btnToggle: boolean;
 
   constructor(public apiService: SiteApiService, public router: Router) {
     console.log('Users&List ctor');
@@ -31,6 +32,10 @@ export class EditorListComponent implements OnInit, OnDestroy {
     this.users.onEdit.unsubscribe();
     this.users.onDelete.unsubscribe();
     delete this.users;
+  }
+
+  public get filter(): { [prop: string]: any } {
+    return { [this.searchProp]: this.searchItem };
   }
 
   private renderData(data: Array<SimpleUserViewModelList>) {

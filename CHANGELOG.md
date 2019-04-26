@@ -91,3 +91,14 @@ Also, this is a big change from Gulp/Rollup based build process to using the Ang
 Again a big redesign. Mostly renaming and reorg. It's a need for the way to 1.0. It follows more strictly the Angular guide line for code.
 
 Also, it's now made for Angular 7 and TypeScript 3.
+
+<a name="0.7.1"></a>
+# [0.7.1](https://github.com/joergkrause/svogv/releases/tag/0.7.1) (2019-04-24)
+
+Some fixes and some function are now working properly that didn't made it into 7.0.0.
+
+* Treeview event behavior
+* Datagrid Pagination styles
+* Datagrid Templates
+* Datagrid Pipe support
+

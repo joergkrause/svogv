@@ -1,6 +1,6 @@
 {
   "name": "svogv",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A decorator based approach for model driven forms, including an advanced Grid and a TreeView component.",
   "peerDependencies": {
     "@angular/common": "^7.0.0",

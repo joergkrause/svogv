@@ -107,10 +107,11 @@ body.modal-open {
 }
 
 fieldset {
-  margin: 16px;
+  margin: 16px 0px;
   padding: 0px 16px 16px 16px;
   border: 1px solid silver;
   border-radius: 2px;
+  width: 100%;
 }
 legend {
   padding: 0px 16px 0px 16px;

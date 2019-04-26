@@ -5,40 +5,60 @@
         The treeview can held any tree of nodes, which can be styles, linked, and bound to events. Clicking on the items fires various events shown on
         the right.
       </div>
-      <app-minitabs #tabs></app-minitabs>
-      <div *ngIf="tabs.tabSelected == 'info'">
-        <p>
-          The treeview is controlled by a view model. The model defines the nodes and their behavior. The treeview fires certain events if nodes are
-          being handled. The basic usage looks like this:
-        </p>
-        <pre>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            The treeview is controlled by a view model. The model defines the nodes and their behavior. The treeview fires certain events if nodes are
+            being handled. The basic usage looks like this:
+          </p>
+          <pre>
 &lt;ac-treeview [nodes]="treeData">&lt;/ac-treeview>
-        </pre>
-        <p>
-          The following events fire:
-        </p>
-        <ul>
-          <li><code>(nodeClick)</code>: The icon or an not selectable node text has been clicked</li>
-          <li><code>(checkChanged)</code>: If the node has a checkbox, the status of the checkbox changed</li>
-          <li><code>(selectedChanged)</code>: If the node is selectable (invert colors), the node has been selected</li>
-          <li><code>(collapseChanged)</code>: If the node is collapsable (has child nodes), it has been opened or closed</li>
-        </ul>
-        <p>
-          The events just provide the information, that something has been changed. After that, one must retrieve the actual state of a node by asking
-          several properties:
-        </p>
-        <ul>
-          <li><code>stateIsExpandend </code>: A collapsable node is expanded (shows children)</li>
-          <li><code>stateIsChecked </code>: A checkable node is checked</li>
-          <li><code>stateIsDisabled </code>: The node is disabled (and may not fire certain events)</li>
-          <li><code>stateIsSelected </code>: A selectable node is currently selected</li>
-          <li><code>state</code>: An numeric expression of all states (internally, an Enum)</li>
-        </ul>
+        </pre
+          >
+          <p>
+            The following events fire:
+          </p>
+          <ul>
+            <li><code>(nodeClick)</code>: The icon or an not selectable node text has been clicked</li>
+            <li><code>(checkChanged)</code>: If the node has a checkbox, the status of the checkbox changed</li>
+            <li><code>(selectedChanged)</code>: If the node is selectable (invert colors), the node has been selected</li>
+            <li><code>(collapseChanged)</code>: If the node is collapsable (has child nodes), it has been opened or closed</li>
+          </ul>
+          <p>
+            The events just provide the information, that something has been changed. After that, one must retrieve the actual state of a node by
+            asking several properties:
+          </p>
+          <ul>
+            <li><code>stateIsExpandend </code>: A collapsable node is expanded (shows children)</li>
+            <li><code>stateIsChecked </code>: A checkable node is checked</li>
+            <li><code>stateIsDisabled </code>: The node is disabled (and may not fire certain events)</li>
+            <li><code>stateIsSelected </code>: A selectable node is currently selected</li>
+            <li><code>state</code>: An numeric expression of all states (internally, an Enum)</li>
+          </ul>
+        </div>
       </div>
-      <div class="alert alert-primary" *ngIf="tabs.tabSelected == 'code'">
-        The code used in this demo looks like this.
-        <h4>*.ts-file</h4>
-        <pre>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            The code used in this demo looks like this.
+          </p>
+          <h4>*.ts-file</h4>
+          <pre>
 this.treeData = new AcTextTreeNode('Root node', options, [
   new AcTextTreeNode('Child node #1', options),
   new AcTextTreeNode('Child node #2', optionsi),
@@ -54,9 +74,9 @@ this.treeData = new AcTextTreeNode('Root node', options, [
   ]),
   new AcTextTreeNode('Child node #5', options),
 ]);</pre
-        >
-        <h4>*.html-file (template)</h4>
-        <pre>
+          >
+          <h4>*.html-file (template)</h4>
+          <pre>
 &lt;ac-tree
     [nodes]="treeData"
     (nodeClick)="nodeEvent('click', $event)"
@@ -65,21 +85,23 @@ this.treeData = new AcTextTreeNode('Root node', options, [
     (collapseChanged)="nodeEvent('collapsed', $event)"
 >
 &lt;/ac-tree></pre
-        >
+          >
+        </div>
       </div>
     </div>
   </div>
-
   <div class="row" *ngIf="tabs.tabSelected == 'demo'">
     <div class="col-6">
-      States of the current node '{{ eventSource.name }}':
-      <ul *ngIf="eventSource">
-        <li><code>stateIsExpandend: </code>{{ eventSource.stateIsExpandend }}</li>
-        <li><code>stateIsChecked:</code> {{ eventSource.stateIsChecked }}</li>
-        <li><code>stateIsDisabled:</code> {{ eventSource.stateIsDisabled }}</li>
-        <li><code>stateIsSelected:</code> {{ eventSource.stateIsSelected }}</li>
-        <li><code>state:</code> {{ eventSource.state }}</li>
-      </ul>
+      <ng-container *ngIf="eventSource">
+        States of the current node '{{ eventSource.name }}':
+        <ul *ngIf="eventSource">
+          <li><code>stateIsExpandend: </code>{{ eventSource.stateIsExpandend }}</li>
+          <li><code>stateIsChecked:</code> {{ eventSource.stateIsChecked }}</li>
+          <li><code>stateIsDisabled:</code> {{ eventSource.stateIsDisabled }}</li>
+          <li><code>stateIsSelected:</code> {{ eventSource.stateIsSelected }}</li>
+          <li><code>state:</code> {{ eventSource.state }}</li>
+        </ul>
+      </ng-container>
       <hr />
       <ac-tree
         [nodes]="treeData"
