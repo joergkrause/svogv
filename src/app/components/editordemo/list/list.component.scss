@@ -1,0 +1,31 @@
+﻿.colborders col {
+  border-right: 1px solid azure;
+}
+col.last {
+  border-right: none !important;
+}
+col.first {
+  background-color: #eee;
+}
+th {
+  background: none;
+}
+button.ac-supersmall {
+  width: 16px;
+  height: 16px;
+  border-radius: 0;
+  padding: 1px;
+  border: 0px;
+  background-color: transparent !important;
+  cursor: hand;
+}
+button.ac-supersmall i {
+  font-size: 0.8em;
+}
+div.ac-sortsmall {
+  width: 18px;
+  height: 34px;
+  float: right;
+  line-height: 0px;
+  margin: -5px;
+}

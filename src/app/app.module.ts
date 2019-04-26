@@ -22,7 +22,7 @@ import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { enableTracing: true }),
     SvogvModule.forRoot()
   ],
   declarations: [

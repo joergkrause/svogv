@@ -9,6 +9,7 @@ export class TreeviewDemoComponent implements OnInit {
   public treeData: TreeNodeModel;
   public eventLog: Array<string> = new Array<string>();
   public treeDemoTabs: string;
+  public eventSource: any;
 
   constructor() {
     // raw data for treeview
@@ -53,7 +54,8 @@ export class TreeviewDemoComponent implements OnInit {
   }
 
   public nodeEvent(name: string, eventSource: TreeNodeModel) {
-    this.eventLog.push(`${eventSource.name} said ${name} (expanded = ${eventSource.stateIsExpandend})`);
+    this.eventLog.push(`'${eventSource.name}' fired '${name}'`);
+    this.eventSource = eventSource;
   }
 
   ngOnInit(): void {

@@ -1,11 +1,11 @@
-<ul class="nav nav-tabs" role="tablist">
-  <li class="nav-item" [ngClass]="{ active: tabSelected == 'info' }">
-    <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="tabSelected = 'info'">Info</button>
+<ul class="nav nav-pills" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link"  [ngClass]="{ active: tabSelected == 'info' }" [routerLink]="" (click)="tabSelected = 'info'">Info</a>
   </li>
-  <li class="nav-item" [ngClass]="{ active: tabSelected == 'code' }">
-    <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="tabSelected = 'code'">Code</button>
+  <li class="nav-item">
+    <a class="nav-link"  [ngClass]="{ active: tabSelected == 'code' }" [routerLink]="" (click)="tabSelected = 'code'">Code</a>
   </li>
-  <li class="nav-item" [ngClass]="{ active: tabSelected == 'demo' }">
-    <button type="button" class="btn btn-link nav nav-pill" href="#" (click)="tabSelected = 'demo'">Demo</button>
+  <li class="nav-item">
+    <a class="nav-link" [ngClass]="{ active: tabSelected == 'demo' }" [routerLink]="" (click)="tabSelected = 'demo'">Demo</a>
   </li>
 </ul>

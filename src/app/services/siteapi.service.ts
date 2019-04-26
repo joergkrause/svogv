@@ -1,11 +1,9 @@
 ﻿import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
 import { Observable, throwError, of } from 'rxjs';
-import { map } from 'rxjs/operators';
 
 import { UserViewModel, UserViewModelList } from '../viewmodels';
-import { nextContext } from '@angular/core/src/render3';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
+import { SimpleUserViewModelList } from '../viewmodels/simpleuser.viewmodellist';
 
 /**
  * This service just simulates a user store to keep the demo running without further dependencies.
@@ -15,6 +13,7 @@ import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 export class SiteApiService {
   // array for grids
   private users: Array<UserViewModelList>;
+  private simpleUsers: Array<SimpleUserViewModelList>;
 
   constructor() {
     const now = new Date().getFullYear();
@@ -101,6 +100,16 @@ export class SiteApiService {
     this.users.push(u6);
     this.users.push(u7);
     this.users.push(u8);
+
+    this.simpleUsers = new Array<SimpleUserViewModelList>();
+    this.simpleUsers.push(u1);
+    this.simpleUsers.push(u2);
+    this.simpleUsers.push(u3);
+    this.simpleUsers.push(u4);
+    this.simpleUsers.push(u5);
+    this.simpleUsers.push(u6);
+    this.simpleUsers.push(u7);
+    this.simpleUsers.push(u8);
   }
 
   public getUser(id: number): Observable<UserViewModel> {
@@ -109,6 +118,10 @@ export class SiteApiService {
   }
 
   public getUsers(): Observable<Array<UserViewModelList>> {
+    return new Observable(o => o.next(this.users));
+  }
+
+  public getSimpleUsers(): Observable<Array<SimpleUserViewModelList>> {
     return new Observable(o => o.next(this.users));
   }
 

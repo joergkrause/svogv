@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
 import { DataGridModel } from './models/datagrid.model';
-import { increaseElementDepthCount } from '@angular/core/src/render3/state';
 import { DatagridStyles } from './models/datagridstyle.model';
-import { CompileShallowModuleMetadata } from '@angular/compiler';
 
 /**
  * The datagrid provides basic functions for data tables:
@@ -101,10 +99,19 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   @Input()
   public textNoItems = 'There are no items to show';
   /**
-   * The filter value to filter the content.
+   * The filter value to filter the content. The data is of type
+   *
+   * @example
+   * { [prop: string]: any }
+   *
+   *
    */
   @Input()
-  public filter: any;
+  public set filter(value: { [prop: string]: any }) {
+    if (this.model) {
+      this.model.searchValue = value;
+    }
+  }
 
   /**
    * If `true` the columns can be rearranged by moving around with drag 'n drop.
@@ -113,9 +120,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   public reArrangeColumns: boolean;
 
   ngOnInit(): void {}
-  ngAfterViewInit(): void {
-    console.log('externals', this.externals);
-  }
+  ngAfterViewInit(): void { }
 
   /**
    * Controls the template used to display certain data types.
@@ -123,17 +128,16 @@ export class DataGridComponent implements OnInit, AfterViewInit {
    * @param uiHint Property of @UiHint decorator
    */
   public getActiveTemplate(uiHint: string, prop?: string): TemplateRef<any> {
-    console.log(`DataGridComponent:getActiveTemplate: ${uiHint} / ${prop}`);
     if (this[uiHint]) {
-      console.log('internal'); // if provided by user via ContentChild and overwriting defaults (string == string etc.)
+      // if provided by user via ContentChild and overwriting defaults (string == string etc.)
       return this[uiHint];
     }
     if (this.externals[uiHint]) {
-      console.log('external'); // if provided by user via ContentChild but completely replaced
+      // if provided by user via ContentChild but completely replaced
       return this.externals[uiHint];
     }
-    if (this[`${uiHint}Fallback`]){
-      console.log('fallback'); // otherwise we take ours from ng-template via ViewChild
+    if (this[`${uiHint}Fallback`]) {
+      // otherwise we take ours from ng-template via ViewChild
       return this[`${uiHint}Fallback`];
     }
     // if we go here the model requested a custom template that didn't exists

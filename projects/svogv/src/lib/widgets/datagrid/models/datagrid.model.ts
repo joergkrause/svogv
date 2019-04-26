@@ -66,7 +66,19 @@ export class DataGridModel<T> {
   }
 
   get itemsFiltered(): T[] {
-    return this.items.filter(item => Object.same(this.searchValue, item));
+    return this.items.filter(item => {
+      if (!this.searchValue) {
+        return true;
+      }
+      // tslint:disable-next-line:forin
+      for (const s in this.searchValue) {
+        const pattern = new RegExp(this.searchValue[s]);
+        if (pattern.test(item[s])) {
+          return true;
+        }
+      }
+      return false;
+    });
   }
 
   get itemsOnCurrentPage(): T[] {
@@ -86,7 +98,11 @@ export class DataGridModel<T> {
   public get headersNotVisible(): Array<DataGridHeaderModel> {
     return this._headers.filter(h => h.hidden);
   }
-  searchValue: T = <T>{};
+  /**
+   * The search value filters the rows. Provide the property name and the filter instruction. Search is pure client.
+   */
+  searchValue: { [prop: string]: any } = {};
+
   currentPageIndex = 1;
   pageSize: number;
   private _items: T[];
@@ -101,7 +117,7 @@ export class DataGridModel<T> {
   /**
    * Event fired if user clicks Delete button.
    */
-  public onDelete: EventEmitter<T>  = new EventEmitter<T>();
+  public onDelete: EventEmitter<T> = new EventEmitter<T>();
 
   getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
     if (sortDirection === Direction.Ascending) {
@@ -176,7 +192,7 @@ export class DataGridModel<T> {
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
       header.isSortable = type[`__issortable__${p}`] || true;
       // look for template provided by user, if none, we have templates for all ES types
-      header.templateHint = type[`__templatehint__${p}`] || (typeof type[p]);
+      header.templateHint = type[`__templatehint__${p}`] || typeof type[p];
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
@@ -184,5 +200,3 @@ export class DataGridModel<T> {
     }
   }
 }
-
-

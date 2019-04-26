@@ -1,6 +1,9 @@
 ﻿<!-- Main Header -->
 <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
-  <a class="navbar-brand" href="/index.html"><img src="/assets/images/logo.png"/> <h1>SVOGV</h1> </a>
+  <a class="navbar-brand" href="/index.html"
+    ><img src="/assets/images/logo.png" />
+    <h1>SVOGV</h1>
+  </a>
 </nav>
 <div class="container-fluid" id="main">
   <div class="row row-offcanvas row-offcanvas-left">
@@ -18,15 +21,16 @@
       <app-breadcrumb></app-breadcrumb>
       <!--/main col-->
       <!-- the global outlet, within the parts the named tab outlet shows sub parts -->
-      <router-outlet></router-outlet>
+      <router-outlet #routerOutlet="outlet"></router-outlet>
     </div>
   </div>
 </div>
 <!--/.container-->
-<footer>
-  <p class="text-right small">&copy; 2011 - {{ currentYear }} <br />
-    Joerg &lt;isageek&gt; Krause <br/>
-    <i>www.joergkrause.de</i><br/>
+<footer class="row">
+  <p class="text-right small col-10">
+    &copy; 2011 - {{ currentYear }} <br />
+    Joerg &lt;isageek&gt; Krause <br />
+    <i>www.joergkrause.de</i><br />
     Made with &#10084; in Berlin / Germany
   </p>
 </footer>
