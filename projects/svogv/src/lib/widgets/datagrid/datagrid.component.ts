@@ -132,7 +132,12 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       console.log('external'); // if provided by user via ContentChild but completely replaced
       return this.externals[uiHint];
     }
-    console.log('fallback'); // otherwise we take ours from ng-template via ViewChild
-    return this[`${uiHint}Fallback`];
+    if (this[`${uiHint}Fallback`]){
+      console.log('fallback'); // otherwise we take ours from ng-template via ViewChild
+      return this[`${uiHint}Fallback`];
+    }
+    // if we go here the model requested a custom template that didn't exists
+    console.warn(`Property ${prop} requested the template ${uiHint}, but it wasn't provided. Falling back to "string".`);
+    return this.stringFallback;
   }
 }

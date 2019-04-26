@@ -101,7 +101,12 @@ export class UserViewModelList {{ '{' }}
           <legend>Grid Features</legend>
           <div class="form-group">
             <label>Color of Footer</label>
-            <input type="color" name="footerColor" value="silver" [(ngModel)]="footerColor" class="form-control col-1" />
+            <input type="color" name="footerColor" list="presetColors" value="#00ff00" [(ngModel)]="footerColor" class="form-control col-1" />
+            <datalist id="presetColors">
+              <option value="#ff0000">Red</option>
+              <option value="#00ff00">Green</option>
+              <option value="#0000ff">Blue</option>
+            </datalist>
           </div>
         </fieldset>
       </form>

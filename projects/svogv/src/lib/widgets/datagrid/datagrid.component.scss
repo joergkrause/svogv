@@ -30,20 +30,20 @@ th {
     cursor: pointer;
     position: relative;
 
-    .up {
+    &.up {
       left: 0px;
     }
 
-    .down{
-      left: -16px;
+    &.down{
+      left: -$smallsize;
     }
 
   }
 }
 
 .rearrange {
-  width: 16px;
-  height: 16px;
+  width: $smallsize;
+  height: $smallsize;
   margin: 2px;
   float: right;
   border: none;
