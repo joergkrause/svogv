@@ -587,11 +587,17 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
+                <p>The form validator service creates a FormGroup object from a viewmodel. If the viewmodel
 has been decorated with validation decorators the validators are created accordingly.</p>
+<p>The simplest way is creating a class with properties and add decorators, such as</p>
 
             </p>
 
+            <p class="comment">
+                <h3>Example</h3>
+            </p>
+            <div class="io-description">
+            </div>
 
             <section>
                 <h3 id="index">Index</h3>
@@ -640,7 +646,7 @@ has been decorated with validation decorators the validators are created accordi
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:20</a></div>
                                         </td>
                                     </tr>
             
@@ -699,7 +705,7 @@ has been decorated with validation decorators the validators are created accordi
             
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:20</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:26</a></div>
                                         </td>
                                     </tr>
             
@@ -772,7 +778,7 @@ has been decorated with validation decorators the validators are created accordi
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:14</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:20</a></div>
                                         </td>
                                     </tr>
             
@@ -791,15 +797,21 @@ import { validateRange } from &#x27;./validators/range.validator&#x27;;
 import { validateCompare } from &#x27;./validators/compare.validator&#x27;;
 
 /**
- * The form validation service creates a FormGroup object from a viewmodel. If the viewmodel
+ * The form validator service creates a FormGroup object from a viewmodel. If the viewmodel
  * has been decorated with validation decorators the validators are created accordingly.
+ *
+ * The simplest way is creating a class with properties and add decorators, such as
+ * @see StringLength. The service will than create a @see FormGroup that contains a validator
+ * of type @see StringLength for the property the decorator is written on.
+ *
+ * The decorators provide properties for additional information, such as a custom error message.
+ *
  */
 @Injectable()
 export class FormValidatorService {
-
   private fb: FormBuilder;
 
-  constructor( @Inject(FormBuilder) fb: FormBuilder) {
+  constructor(@Inject(FormBuilder) fb: FormBuilder) {
     this.fb &#x3D; fb;
   }
 
@@ -893,7 +905,6 @@ export class FormValidatorService {
     // return FormGroup for immediate usage
     return form;
   }
-
 }
 </code></pre>
     </div>

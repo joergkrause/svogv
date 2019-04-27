@@ -590,7 +590,7 @@
             </p>
             <p class="comment">
                 <p>This pipe allows the dynamic formatting of data. It is just for internal use.
-The prupose is the forwarding of an externally defined pipe to the pipe formatter within the grid.</p>
+The purpose is the forwarding of an externally defined pipe to the pipe formatter within the grid.</p>
 
             </p>
 
@@ -603,7 +603,7 @@ The prupose is the forwarding of an externally defined pipe to the pipe formatte
 
 /**
  * This pipe allows the dynamic formatting of data. It is just for internal use.
- * The prupose is the forwarding of an externally defined pipe to the pipe formatter within the grid.
+ * The purpose is the forwarding of an externally defined pipe to the pipe formatter within the grid.
  */
 @Pipe({
   name: &#x27;formatData&#x27;
@@ -613,10 +613,12 @@ export class FormatDataPipe implements PipeTransform {
 
   transform(value: any, pipeToken: Type&lt;PipeTransform&gt;, pipeArgs: any[]): any {
     if (!pipeToken) {
+      console.log(&#x27;FormatDataPipe:NoPipeToken&#x27;);
       return value;
     } else {
+      console.log(&#x27;FormatDataPipe:PipeToken:&#x27;, pipeToken);
       const pipe &#x3D; this.injector.get&lt;PipeTransform&gt;(pipeToken);
-      return pipe.transform(value, ...pipeArgs);
+      return pipe.transform(value, ...pipeArgs || []);
     }
   }
 }

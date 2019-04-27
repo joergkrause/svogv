@@ -776,7 +776,7 @@ Object.same &#x3D; function (source, target): boolean {
   }
   if (!(source instanceof Object) || !(target instanceof Object)) { return false; }
   // if they are not strictly equal, they both need to be Objects
-  for (let prop in source) {
+  for (const prop in source) {
     if (!source.hasOwnProperty(prop)) { continue; }
     if (source[prop] &#x3D;&#x3D;&#x3D; undefined || source[prop] &#x3D;&#x3D;&#x3D; null || source[prop] &#x3D;&#x3D;&#x3D; &#x27;&#x27;) { continue; }
     if (typeof source[prop] &#x3D;&#x3D;&#x3D; &#x27;object&#x27; &amp;&amp; Object.same(source[prop], target[prop])) { continue; }
@@ -801,7 +801,7 @@ Object.equals &#x3D; function (x: any, y: any): boolean {
   // they must have the exact same prototype chain, the closest we can do is
   // test there constructor.
 
-  for (var p in x) {
+  for (const p in x) {
     if (!x.hasOwnProperty(p)) { continue; }
     // other properties were tested using x.constructor &#x3D;&#x3D;&#x3D; y.constructor
 
@@ -818,7 +818,7 @@ Object.equals &#x3D; function (x: any, y: any): boolean {
     // Objects and Arrays must be tested recursively
   }
 
-  for (p in y) {
+  for (const p in y) {
     if (y.hasOwnProperty(p) &amp;&amp; !x.hasOwnProperty(p)) { return false; }
     // allows x[ p ] to be set to undefined
   }

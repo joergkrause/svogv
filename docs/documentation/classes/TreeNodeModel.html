@@ -1266,7 +1266,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:107</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:111</a></div>
                                         </td>
                                     </tr>
             
@@ -1295,7 +1295,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:99</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:103</a></div>
                                         </td>
                                     </tr>
             
@@ -1324,7 +1324,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:95</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:99</a></div>
                                         </td>
                                     </tr>
             
@@ -1353,7 +1353,7 @@
                                 </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:103</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">projects/svogv/src/lib/widgets/treeview/models/treenode.model.ts:107</a></div>
                                         </td>
                                     </tr>
             
@@ -1456,6 +1456,10 @@ export class TreeNodeModel implements TreeNodeBaseModel {
     }
     set state(value: tree.TreeNodeState) {
         this._state &#x3D; value;
+        if (!this.hasChildren &amp;&amp; (this.state &amp; tree.TreeNodeState.expanded) &#x3D;&#x3D;&#x3D; tree.TreeNodeState.expanded){
+          // if an expandable event occurs and there a no children, don&#x27;t fire
+          return;
+        }
         this.stateChange.emit(this._state);
     }
 

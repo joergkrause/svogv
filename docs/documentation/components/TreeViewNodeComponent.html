@@ -787,7 +787,7 @@ AcTextTreeNode class. This includes colors, icons, and other styles.</p>
                 <tbody>
                     <tr>
                         <td class="col-md-4">
-                            <code>constructor(el: <a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank">ElementRef</a>, renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank">Renderer</a>)</code>
+                            <code>constructor(el: <a href="https://angular.io/docs/ts/latest/api/core/index/ElementRef-class.html" target="_blank">ElementRef</a>, renderer: <a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank">Renderer2</a>)</code>
                         </td>
                     </tr>
                             <tr>
@@ -822,7 +822,7 @@ AcTextTreeNode class. This includes colors, icons, and other styles.</p>
                                                     <tr>
                                                       <td>renderer</td>
                                                       <td>
-                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer-class.html" target="_blank" >Renderer</a></code>
+                                                                <code><a href="https://angular.io/docs/ts/latest/api/core/index/Renderer2-class.html" target="_blank" >Renderer2</a></code>
                                                       </td>
                                                       <td>
                                                       </td>
@@ -1787,7 +1787,7 @@ AcTextTreeNode class. This includes colors, icons, and other styles.</p>
   EventEmitter,
   OnInit,
   ElementRef,
-  Renderer
+  Renderer2
 } from &#x27;@angular/core&#x27;;
 import { TextTreeNodeModel, TreeNodeModel, TreeNodeState } from &#x27;../models&#x27;;
 
@@ -1816,7 +1816,7 @@ import { TextTreeNodeModel, TreeNodeModel, TreeNodeState } from &#x27;../models&
 })
 export class TreeViewNodeComponent implements OnInit {
 
-  constructor(private el: ElementRef, private renderer: Renderer) {
+  constructor(private el: ElementRef, private renderer: Renderer2) {
     this.nodeClick &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
     this.checkChanged &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
     this.selectedChanged &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();

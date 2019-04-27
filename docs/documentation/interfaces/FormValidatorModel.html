@@ -611,7 +611,7 @@ structure looks like this:</p>
                             </tr>
                                     <tr>
                                         <td class="col-md-4">
-                                            <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.model.ts:173</a></div>
+                                            <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.model.ts:184</a></div>
                                         </td>
                                     </tr>
                         </tbody>
@@ -623,54 +623,54 @@ structure looks like this:</p>
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">export type displayGroupType &#x3D; {
-  &#x27;displaygroup&#x27;: {
-    &#x27;name&#x27;: string;
-    &#x27;order&#x27;?: number;
-    &#x27;description&#x27;?: string
-  }
+  displaygroup: {
+    name: string;
+    order?: number;
+    description?: string;
+  };
 };
 
 /**
  * This element describes the UI elements label, tooltip, and order.
  */
 export type displayType &#x3D; {
-  &#x27;display&#x27;: {
-    &#x27;name&#x27;: string;
-    &#x27;order&#x27;?: number;
-    &#x27;description&#x27;?: string
-  }
+  display: {
+    name: string;
+    order?: number;
+    description?: string;
+  };
 };
 
 /**
  * A pipe driven formatting instruction.
  */
 export type formatType &#x3D; {
-  &#x27;format&#x27;: {
-    &#x27;pipeName&#x27;: any;
-    &#x27;pipeParams&#x27;?: any[]
-  }
+  format: {
+    pipeName: any;
+    pipeParams?: any[];
+  };
 };
 /**
  * The field will not appear in autoforms if decorated as hidden. If the parameter
  * is omitted the type returns true due to its pure existence.
  */
 export type hiddenType &#x3D; {
-  &#x27;hidden&#x27;?: boolean
+  hidden?: boolean;
 };
 /**
  * A watermark can be applied. The @see name property is the value that appears
  * in the field. This may not work for specific controls, such as list boxes.
  */
 export type placeHolderType &#x3D; {
-  &#x27;placeholder&#x27;: {
-    &#x27;name&#x27;: string;
-  }
-}
+  placeholder: {
+    name: string;
+  };
+};
 /**
  * The field in rendered as readonly, if possible.
  */
 export type readonlyType &#x3D; {
-  &#x27;readonly&#x27;: boolean
+  readonly: boolean;
 };
 /**
  * This controls the actual control type. The default values are (TypeScript type: decorator type: rendered element):
@@ -690,9 +690,9 @@ export type readonlyType &#x3D; {
  *
  */
 export type templateHintType &#x3D; {
-  &#x27;templatehint&#x27;: {
+  templatehint: {
     hint: string;
-  }
+  };
 };
 
 /**
@@ -703,73 +703,84 @@ export type templateHintType &#x3D; {
  * Active i18n by using the @param translate. The translation module must be used separately.
  */
 export type validatorType &#x3D; {
-  &#x27;msg&#x27;?: string;
-  &#x27;active&#x27;?: boolean;
-  &#x27;translate&#x27;?: boolean;
-}
+  msg?: string;
+  active?: boolean;
+  translate?: boolean;
+};
 /**
  * Compare to fields.
  */
 export type compareType &#x3D; {
-  &#x27;compare&#x27;: {
-    &#x27;fieldToCompare&#x27;: string
-  } | validatorType;
+  compare:
+    | {
+        fieldToCompare: string;
+      }
+    | validatorType;
 };
 /**
  * Email
  */
 export type emailType &#x3D; {
-  &#x27;email&#x27;: validatorType;
+  email: validatorType;
 };
 /**
  * Maximum allowed length (string only)
  */
 export type maxlengthType &#x3D; {
-  &#x27;maxlength&#x27;: {
-    max: number;
-  } | validatorType;
+  maxlength:
+    | {
+        max: number;
+      }
+    | validatorType;
 };
 /**
  * Minimum allowed length (string only)
  */
 export type minlengthType &#x3D; {
-  &#x27;minlength&#x27;: {
-    min: number
-  } | validatorType;
+  minlength:
+    | {
+        min: number;
+      }
+    | validatorType;
 };
 /**
  * Any regex pattern
  */
 export type patternType &#x3D; {
-  &#x27;pattern&#x27;: {
-    pattern: string | RegExp;
-  } | validatorType;
+  pattern:
+    | {
+        pattern: string | RegExp;
+      }
+    | validatorType;
 };
 /**
  * A range for number or Date only.
  */
 export type rangeType &#x3D; {
-  &#x27;range&#x27;: {
-    &#x27;from&#x27;: number | Date;
-    &#x27;to&#x27;: number | Date;
-  } | validatorType;
+  range:
+    | {
+        from: number | Date;
+        to: number | Date;
+      }
+    | validatorType;
 };
 /**
  * This field is mandatory.
  */
 export type requiredType &#x3D; {
-  &#x27;required&#x27;: validatorType;
+  required: validatorType;
 };
 /**
  * Maximal and minimal allowed length (string only).
  */
 export type stringLengthType &#x3D; {
-  &#x27;stringlength&#x27;: {
-    &#x27;min&#x27;: number;
-    &#x27;max&#x27;: number;
-  } | validatorType;
+  stringlength:
+    | {
+        min: number;
+        max: number;
+      }
+    | validatorType;
 };
-
 
 /**
  * The form description model. Use this to have a valid JSON object that can be used
@@ -788,9 +799,19 @@ export type stringLengthType &#x3D; {
  *
  */
 export interface FormValidatorModel {
-  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType |
-                   compareType | maxlengthType | minlengthType | patternType | stringLengthType |
-                   emailType | requiredType;
+  [field: string]:
+    | displayType
+    | displayGroupType
+    | formatType
+    | hiddenType
+    | placeHolderType
+    | compareType
+    | maxlengthType
+    | minlengthType
+    | patternType
+    | stringLengthType
+    | emailType
+    | requiredType;
 }
 </code></pre>
     </div>

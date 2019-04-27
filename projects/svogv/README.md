@@ -12,13 +12,17 @@
 
 ## Introduction
 
-Angular is widely used and we have a strong feeling in our guts that’s now the first step from ancient crap into something really professional for daily project works. It brings the level we all know from Java and C# and their mature backend frameworks to the frontend. And, additionally, TypeScript is here and know we have something that’s an improvement for front end developers that matters. TypeScript brings a whole new level to pros like us. And it makes our world easier – at least a bit. And it improves the quality of our product – not just a bit, a whole new step.
+This library is for making forms. Easy and fast. It has these advantages:
 
-However, there is no framework that can't be improved. So I tried to copy a concept from .NET -- the DataAnnotations -- straight to Angular. In this version I'm using Bootstrap 4 for a decorator based forms generator and some nice, small form widgets. 
+* All form parts are being created dynamically by using decorators. These control the UI and validation.
+* All styles are based on Bootstrap 4, can be used together with themes and custom parts can be changed.
+* A grid component makes data tables very easy to use.
+* A tree view is another component.
+* Dynamic editors and an autoform component creates the whole form without code.
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes and components. 
+The approach was simply the usage of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes (injectable services) and components. 
 
 It's available as source code or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
@@ -34,12 +38,11 @@ I'm using Angular CLI for all steps and sync the version with Angular (Angular 6
 
 ## Angular Data Annotations
 
-The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is
-absolutely no dependency at all, though.
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though.
 
 ### How does it work?
 
-We did this by using a straight domain model. Let's assume you have a viewmodel like this:
+Let's assume you have a viewmodel like this:
 
 ~~~
 export class UserViewModel {
@@ -66,7 +69,7 @@ export class UserViewModel {
 }
 ~~~
 
-As you see we use several decorators. We have decorators for display hints, such as `Display`. And we have decorators to manage the validation, such as `MaxLength()`. 
+As you see we use several **decorators**. The lib has decorators for display hints, such as `Display`. And it has decorators to manage the validation, such as `MaxLength()`. 
 
 The usage is simple; just import like this (selection, there are more options):
 
@@ -96,9 +99,9 @@ export class UserViewModel {
 }
 ~~~
 
-Now the forms part. The form needs to be aware of the decorators. So we have a service that creates an advanced `FormGroup` instance. We call it the `FormValidatorService`. 
+Now the forms part. The form needs to be aware of the decorators. Hence there is a service that creates an advanced `FormGroup` instance. It's called `FormValidatorService`. 
 
-In a component this looks like this:
+In a component's code it looks like this:
 
 ~~~
 import { FormValidatorService } from 'svogv';
@@ -181,14 +184,12 @@ export interface FormValidatorModel {
 
 The types have the same description as the decorators.
 
-## The Widgets
+## The Components
 
-The widget complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
+The components complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
 * **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
 * **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
-
-> As of version 0.7 the **InfoBox** has been removed and moved to the demo code. The purpose of SVOGV is just extended grid functionality.
 
 ## Where to get?
 
@@ -238,10 +239,14 @@ Select these options in the left hand menu:
 
 It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commercial users such as enterprises we have support options.
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, www.joergkrause.de, Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
+The SVOGV Widget Library was written by Joerg <isageek> Krause, [www.joergkrause.de](https://www.joergkrause.de), Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
 ## Can I contribute?
 
 Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
 ![](https://github.com/joergkrause/svogv/blob/master/guides/logo_big.png?raw=true)
+
+## Looking for an Angular Dev?
+
+Yes, I'm available for all kind of remote jobs. If you need a really good full-stack dev, than drop me an email (joerg@krause.de) or write through my homepage's [contact form](https://www.joergkrause.de/contact).

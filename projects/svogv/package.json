@@ -24,7 +24,7 @@
   "author": "Joerg <IsAGeek> Krause",
   "license": "ISC",
   "engines": {
-    "node": ">= 8 < 11"
+    "node": ">= 8 < 12"
   },
   "bugs": {
     "url": "https://github.com/joergkrause/svogv/issues"

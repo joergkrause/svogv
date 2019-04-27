@@ -6,7 +6,7 @@
     "ng": "ng",
     "start": "ng serve --port 4200",
     "build": "ng build svogv && ng build",
-    "prod": "ng build svogv && ng build && npm run codedoc-docs",
+    "prod": "ng build svogv && ng build --prod && npm run codedoc-docs",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",

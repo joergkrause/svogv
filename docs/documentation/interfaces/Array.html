@@ -684,26 +684,29 @@
 
     <div class="tab-pane fade tab-source-code" id="source">
         <pre class="line-numbers"><code class="language-typescript">declare interface Array&lt;T&gt; {
-   remove(o: any): Array&lt;any&gt;;
+  remove(o: any): Array&lt;any&gt;;
 }
 
 Array.prototype.remove &#x3D; function(valueOrPredicate: any): any[] {
-    let predicate &#x3D; typeof valueOrPredicate &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
-                      ? valueOrPredicate
-                      : function (value: any) { return value &#x3D;&#x3D;&#x3D; valueOrPredicate; };
-      let removedValues &#x3D; new Array&lt;any&gt;();
-      console.log(valueOrPredicate, this);
-      for (let i &#x3D; 0; i &lt; this.length; i++) {
-          let value &#x3D; this[i];
-          if (predicate(value)) {
-              removedValues.push(value);
-              this.splice(i, 1);
-              i--;
-          }
-      }
+  const predicate &#x3D;
+    typeof valueOrPredicate &#x3D;&#x3D;&#x3D; &#x27;function&#x27;
+      ? valueOrPredicate
+      : function(value: any) {
+          return value &#x3D;&#x3D;&#x3D; valueOrPredicate;
+        };
+  const removedValues &#x3D; new Array&lt;any&gt;();
+  console.log(valueOrPredicate, this);
+  for (let i &#x3D; 0; i &lt; this.length; i++) {
+    const value &#x3D; this[i];
+    if (predicate(value)) {
+      removedValues.push(value);
+      this.splice(i, 1);
+      i--;
+    }
+  }
 
-      return removedValues;
-}
+  return removedValues;
+};
 </code></pre>
     </div>
 </div>
