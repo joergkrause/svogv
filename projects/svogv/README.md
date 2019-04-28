@@ -1,4 +1,4 @@
-# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Widgets and Forms Library
+# ![](https://github.com/joergkrause/svogv/blob/master/guides/logo.png?raw=true) SVOGV Grid and Forms Library
 
 [![Build](https://img.shields.io/travis/joergkrause/svogv/master.svg?style=flat-square)](https://travis-ci.org/joergkrause/svogv)
 [![Coverage Status](https://img.shields.io/coveralls/joergkrause/svogv/master.svg?style=flat-square)](https://coveralls.io/github/joergkrause/svogv?branch=master)
@@ -9,6 +9,14 @@
 
 [![Dependencies](https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv)
 [![Dev Dependencies](https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square)](https://david-dm.org/joergkrause/svogv#info=devDependencies)
+
+## Target Audience
+
+This library is for Angular Version 2 or newer. The current release is for Angular 7 and matches the current Angular version usually.
+
+The design / UI stuff is made using Bootstrap 4, and even here the current version is used.
+
+It's for developers who create standard forms and want to automate the development process. 
 
 ## Introduction
 
@@ -22,7 +30,7 @@ This library is for making forms. Easy and fast. It has these advantages:
 
 ## What is it?
 
-The approach was simply the usage of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes (injectable services) and components. 
+The approach was simply to improve the creation of forms as simple as ever in Angular. It's an extension to Angular that comes as a set of classes (injectable services) and components. 
 
 It's available as source code or as ready to use umd-bundle. The bundle is plane JavaScript. The sources are available via *npm* and from *github*. 
 
@@ -38,7 +46,9 @@ I'm using Angular CLI for all steps and sync the version with Angular (Angular 6
 
 ## Angular Data Annotations
 
-The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though.
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though. You can find more [here](https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations?view=netframework-4.8).
+
+The basic idea is that we usually use view models anyway. So, why not using them to provide all information necessary to create a form that way?
 
 ### How does it work?
 
@@ -69,7 +79,7 @@ export class UserViewModel {
 }
 ~~~
 
-As you see we use several **decorators**. The lib has decorators for display hints, such as `Display`. And it has decorators to manage the validation, such as `MaxLength()`. 
+As you see there are several **decorators**. SVOGV has decorators for display hints, such as `@Display`. And it has decorators to manage the validation, such as `@MaxLength()`. 
 
 The usage is simple; just import like this (selection, there are more options):
 
@@ -99,7 +109,9 @@ export class UserViewModel {
 }
 ~~~
 
-Now the forms part. The form needs to be aware of the decorators. Hence there is a service that creates an advanced `FormGroup` instance. It's called `FormValidatorService`. 
+### Using in Forms
+
+The form needs to be aware of the decorators. Hence, there is a service that creates an advanced `FormGroup` instance. It's called `FormValidatorService`. Internally it's using Angular's *ReactiveFormsModule*, so this is a dependency.
 
 In a component's code it looks like this:
 
@@ -108,45 +120,49 @@ import { FormValidatorService } from 'svogv';
 
 export class EditUserComponent implements OnInit {
 
-  userForm: FormGroup;
+  myForm: FormGroup;
 
   constructor(private fv: FormValidatorService) {
   }
 
   ngOnInit() {
     // get validators and error messages from viewmodel type     
-    this.userForm = this.fv.build(UserViewModel);
+    this.myForm = this.fv.build(UserViewModel);
   }
 }
 ~~~
 
-Now the form knows all about the model. Now let's build a form.
+In this example `UserViewModel` is the decorated view model. It's just the type that the service requires, not an actual instance. However, the service will create an instance, and hence the model must be a `class`, not an `interface`. Also, all properties must be set, usually by setting defaults, because internally the properties are read by a `for of` loop. 
+
+Now the form knows all about the view model. Let's build a form on top on this:
 
 ~~~
-<form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+<form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row">
   <fieldset>
     <legend>Edit current user</legend>
-      <ac-editor [userForm]="userForm" [name]="'userName'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'email'" ></ac-editor>
-      <ac-editor [userForm]="userForm" [name]="'phoneNumber'" ></ac-editor>
+      <ac-editor [formGroup]="myForm" [name]="'userName'" ></ac-editor>
+      <ac-editor [formGroup]="myForm" [name]="'email'" ></ac-editor>
+      <ac-editor [formGroup]="myForm" [name]="'phoneNumber'" ></ac-editor>
       <button type="submit">Save</button>
   </fieldset>
 </form> 
 ~~~
 
-The tricky part is the component `<ac-editor>`. This component checks the property type, the decorators, and the form's settings and creates a complete form element in Bootstrap 4 style (the template is, of course, customizable).
+The important part is the component `<ac-editor>`. This component checks the property type, the decorators, and the form's settings and creates a complete form element in Bootstrap 4 style (the template is, of course, customizable). The connection between the service's outcome -- the `FormGroup` -- and the components is being made through setting the form group's instance (here `myForm`) using the input property `formGroup`. 
 
-And that's it. The form is pretty, has a fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
+And that's it. The form is pretty, has fully working validation, and is easy to access from your component. And yes, there is no additional code necessary to get it running.
 
-Even simpler, you can create a complete form with just one tag. Just go like this:
+### Auto Forms
+
+Even simpler, you can create a complete form with **just one tag**. Just go like this:
 
 ~~~
-<form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row" autoform>
+<form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row" autoform>
   <fieldset>
     <legend>Edit current user</legend>
-    <ac-autoform [formGroup]="userForm"></ac-autoform> 
+    <ac-autoform [formGroup]="myForm"></ac-autoform> 
     <div class="row">
-      <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+      <button class="btn btn-sm btn-success" type="submit" [disabled]="!myForm.valid">
         <i class="fa fa-save"></i> Save
       </button>
     </div>
@@ -155,12 +171,34 @@ Even simpler, you can create a complete form with just one tag. Just go like thi
 ~~~
 
 The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is builds upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
-Especially those decorators are helpful (just a selection, there are many more):
 
-* **@Display** Determine the label's name and a tooltip (optionally), You can also provide the fields' order.
-* **@Hidden** Exclude as field from a autoform
-* **@Placeholder** A watermark that appears in empty form fields
-* **@TemplateHint** Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.
+#### Validation Decorators
+
+| Decorator | Usage |
+|-----------|-------|
+|**@StringLength**| Set the strings minimum (optional) and maximum length. It's a summary of `@MinLength` and `@MaxLength`. |
+|**@MaxLength**| The maximum length of a text input. |
+|**@MinLength**| The minimum length of a text input. |
+|**@Pattern**| A regular expression that is used to test the text or number input.|
+|**@Range**| A range (from-to) for either numerical values or dates. |
+|**@Required**| Makes the field mandatory. |
+|**@EMail**| Checks input against a (very good) regular expression to test for valid e-mail pattern.|
+|**@Compare**| Compares with another field, usually für password comparision.|
+
+#### UI Decorators
+
+| Decorator | Usage | Applies to Grid | Applies to Editor | Applies to Auto Form |
+|-----------|-------|-----------------|-------------------|----------------------|
+|**@Display**| Determine the label's name and a tooltip ( optionally), You can also provide the fields' order.| Yes, Header row | Yes, label text | Yes, label text |
+|**@DisplayGroup**| Groups components in `<fieldset>` elements. Can be ordered inside the form. | No | No | Yes, fieldset |
+|**@Hidden**| Exclude as field from a autoform. | Yes, excludes column | Yes, makes hidden field | Yes |
+|**@Placeholder**| A watermark that appears in empty form fields| No | Yes | Yes |
+|**@TemplateHint**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, replaces cell content with template | No | No |
+|**@ReadOnly**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| No | Yes | Yes |
+|**@FormatPipe**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, applies pipe to cell's content | No | No |
+
+
+The editor component is able to determine the appearance dependent on the type:
 
 | Data Type | Template Hint   | Field Type        | Options for @TemplateHint | Remark                                                |
 |-----------|-----------------|-------------------|---------------------------|-------------------------------------------------------|
@@ -170,7 +208,7 @@ Especially those decorators are helpful (just a selection, there are many more):
 | Date      | date (val,cal)* | type="date"       | Calendar                  | Calender is provided by browser feature
 | enum      | enum (no params)| &lt;select&gt;-Box| -                         | Renders an Enum as Dropdown list
 
-\* With *cal* it shows a calendar, with *val* just the value. Use a pipe and `@Format(DatePipe)` for formatting. Calendar appears in edit mode only.
+\* With *cal* it shows a calendar, with *val* just the value. Use a pipe and `@FormatPipe(DatePipe)` for formatting. Calendar appears in edit mode only.
 
 ## Server Support through JSON
 
@@ -178,7 +216,19 @@ As of version 0.3.5 it's possible to use a specially design JSON object to confi
 
 ~~~
 export interface FormValidatorModel {
-  [field: string]: displayType | displayGroupType | formatType | hiddenType | placeHolderType | compareType | maxlengthType | minlengthType | patternType | stringLengthType | emailType | requiredType;
+  [field: string]: 
+      displayType | 
+      displayGroupType | 
+      formatType | 
+      hiddenType | 
+      placeHolderType | 
+      compareType | 
+      maxlengthType | 
+      minlengthType | 
+      patternType | 
+      stringLengthType | 
+      emailType | 
+      requiredType;
 }
 ~~~
 
@@ -188,8 +238,14 @@ The types have the same description as the decorators.
 
 The components complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
-* **TreeView**: An advanced treeview with icon support and many options such as selections and checkboxes. Uses `EventEmitter` for actions.
-* **DataGrid**: A different approach for a grid, it provides a model to handle paging, filtering, and sorting, but no HTML. So the hard part is in the grid and the easy part is up to you. 
+* **TreeView**: An advanced tree view with icon support and many options such as selections and checkboxes. Uses `EventEmitter` to fire several tree node events.
+* **DataGrid**: A classic data grid. It provides a model to handle:
+  * paging
+  * filtering
+  * sorting  
+  * dynamic columns
+
+The grid is controlled by decorators (see table above), so the view model actually creates the grid's appearance. 
 
 ## Where to get?
 
@@ -199,11 +255,15 @@ It's available from *npm* by using this command:
 npm install svogv --save
 ~~~
 
-You get three parts (at least, this list will grow quickly):
+You get these parts:
 
 * FormValidatorService -- a static class to build reactive forms
-* Editor -- the universal editor component
-* Decorators -- a set of decorators to manage the behavior of properties
+* FormValidatorFromJsonService -- a static class to build reactive forms from server data
+* Editor -- the universal editor component for one field
+* AutoForm -- the universal editor component for complete multi field forms
+* DataGrid -- an advanced grid component, model driven
+* TreeView -- a tree with some nice features
+* Decorators -- a set of decorators to manage the behavior of grid and forms
 
 ### More to read
 
@@ -235,13 +295,15 @@ Select these options in the left hand menu:
 
 > The demo app is independent and has it's own package.json and node_modules folder and hence needs it's own setup. The first command (setup) takes care of this all.
 
-## Does it cost something?
+## Licensing?
 
-It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commercial users such as enterprises we have support options.
+It's ISC licensed and it's free. I deeply believe in Open Source and will support the ecosystem by open sourcing all parts of the project. For commercial users such as enterprises I have support options.
+
+### About the Author
 
 The SVOGV Widget Library was written by Joerg <isageek> Krause, [www.joergkrause.de](https://www.joergkrause.de), Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components. 
 
-## Can I contribute?
+## Can one contribute?
 
 Yes, drop me an email with some "about me" stuff. Even simple feedback is appreciated.
 
@@ -250,3 +312,10 @@ Yes, drop me an email with some "about me" stuff. Even simple feedback is apprec
 ## Looking for an Angular Dev?
 
 Yes, I'm available for all kind of remote jobs. If you need a really good full-stack dev, than drop me an email (joerg@krause.de) or write through my homepage's [contact form](https://www.joergkrause.de/contact).
+
+I write sophisticated stuff quickly and in very high quality in these technologies:
+
+* Frontend: Angular, React
+* Backend: Node, ASP.NET Core, Entity Framework Core
+* Cloud: Azure Comsos Db, Azure Functions, Azrue Event Hub, Azure IoT, AWS S3, AWS Lambda
+* Other: Alexa Skills

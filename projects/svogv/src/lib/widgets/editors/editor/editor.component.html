@@ -1,7 +1,7 @@
 <div class="form-group row"
-    [formGroup]="userForm"
-     *ngIf="type != 'hidden' && userForm"
-     [ngClass]="{ 'has-danger': !userForm.controls[name].valid && userForm.controls[name].touched }">
+    [formGroup]="formGroup"
+     *ngIf="type != 'hidden' && formGroup"
+     [ngClass]="{ 'has-danger': !formGroup.controls[name].valid && formGroup.controls[name].touched }">
   <label class="col-form-label col-md-3 col-sm-10"
     [attr.for]="name"
     [attr.title]="tooltip" >{{ label }}{{ labelDivider }} </label>
@@ -60,10 +60,10 @@
         <ng-content></ng-content>
     </ng-container>
     <span class="fa fa-warning text-danger form-control-feedback"
-        [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine"></span>
+        [hidden]="formGroup.controls[name].valid || formGroup.controls[name].pristine"></span>
     <small class="text-danger"
-        [hidden]="userForm.controls[name].valid || userForm.controls[name].pristine">
-    <span *ngFor="let error of errors">{{ userForm.controls[name]['messages'][error] }}</span>
+        [hidden]="formGroup.controls[name].valid || formGroup.controls[name].pristine">
+    <span *ngFor="let error of errors">{{ formGroup.controls[name]['messages'][error] }}</span>
     </small>
   </div>
 </div>

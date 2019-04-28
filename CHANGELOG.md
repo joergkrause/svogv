@@ -102,3 +102,8 @@ Some fixes and some function are now working properly that didn't made it into 7
 * Datagrid Templates
 * Datagrid Pipe support
 
+<a name="0.7.2"></a>
+# [0.7.2](https://github.com/joergkrause/svogv/releases/tag/0.7.1) (2019-04-30)
+
+Renamed property *userForm* to *formGroup* for editor component. Equals the autoform now and is less irritating. **Unfortunately, this is a breaking change.**
+

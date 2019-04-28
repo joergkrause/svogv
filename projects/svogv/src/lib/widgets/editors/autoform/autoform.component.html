@@ -1,13 +1,13 @@
 <ng-content></ng-content>
 <ng-container *ngIf="!ungroupedAfter">
-  <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
+  <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [formGroup]="formGroup"></ac-editor>
 </ng-container>
 <ng-container *ngIf="grouped()">
   <fieldset *ngFor="let group of groups">
     <legend [attr.title]="group.desc" *ngIf="group.name">{{ group.name }}</legend>
-    <ac-editor *ngFor="let editor of group.editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
+    <ac-editor *ngFor="let editor of group.editors" [name]="editor.editor" [formGroup]="formGroup"></ac-editor>
   </fieldset>
 </ng-container>
 <ng-container *ngIf="ungroupedAfter">
-  <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [userForm]="formGroup"></ac-editor>
+  <ac-editor *ngFor="let editor of editors" [name]="editor.editor" [formGroup]="formGroup"></ac-editor>
 </ng-container>

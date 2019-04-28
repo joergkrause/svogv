@@ -48,7 +48,7 @@ export class EditorComponent implements OnInit {
   /**
    * The form's group object.
    */
-  @Input() userForm: FormGroup;
+  @Input() formGroup: FormGroup;
   /**
    * If set to true the label and the field appears in one row.
    * Otherwise the label is above the field. Default is `true`.
@@ -113,9 +113,9 @@ export class EditorComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+    this.formGroup.valueChanges.subscribe(data => this.onValueChanged(data));
     // this is set by FormValidatorService
-    const editorModel = (<any>this.userForm)['__editorModel__'];
+    const editorModel = (<any>this.formGroup)['__editorModel__'];
     // get type from form
     if (editorModel) {
       // get elementary types, this might get overwritten later according to decorators found
@@ -170,7 +170,7 @@ export class EditorComponent implements OnInit {
     // check validation on change
     this.errors = new Array<string>();
     // tslint:disable-next-line:forin
-    for (const error in this.userForm.controls[this.name].errors) {
+    for (const error in this.formGroup.controls[this.name].errors) {
       this.errors.push(error);
     }
   }

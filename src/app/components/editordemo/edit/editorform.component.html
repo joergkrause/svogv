@@ -32,14 +32,14 @@
       <form (ngSubmit)="saveUser()" role="form" #userForm="ngForm">
         <fieldset>
           <legend>Edit current user</legend>
-          <ac-editor [userForm]="userFormGroup" name="userName"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="email"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="phoneNumber"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="age"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="birthday"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="isAdmin"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="passWord"></ac-editor>
-          <ac-editor [userForm]="userFormGroup" name="passWordTwo"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="userName"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="email"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="phoneNumber"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="age"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="birthday"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="isAdmin"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="passWord"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="passWordTwo"></ac-editor>
           <div class="form-group">
             <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
             <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid"><i class="fa fa-close"></i> Save &amp; Close</button>
