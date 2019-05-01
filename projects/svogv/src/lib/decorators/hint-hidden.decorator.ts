@@ -6,7 +6,6 @@
  * using the @see `AcEditor` component will render as <input type="hidden">.
  *
  * @param hide          Optional, default is true.
- * @param description   A tooltip that can be used optionally.
  */
 export function Hidden(hide = true) {
     // the original decorator
