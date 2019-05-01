@@ -1,6 +1,6 @@
 {
   "name": "svogv-demo",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "A decorator based approach for model driven forms and some time saving form widgets.",
   "scripts": {
     "ng": "ng",
