@@ -10,13 +10,19 @@
       </colgroup>
       <thead>
         <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
-          <th *ngFor="let header of model.headers" [title]="header.desc">
+          <th *ngFor="let header of model.headers" [title]="header.desc" (click)="model.sortColumn(header.prop)">
             {{ header.text }}
             <div class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null">
-              <button (click)="model.sortColumn(header.prop, 'asc')" class="up"  [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
+              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending)"
+                      class="up"
+                      disabled="sortColumn === directionEnumHelper.Ascending"
+                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-asc"></i>
               </button>
-              <button (click)="model.sortColumn(header.prop, 'desc')" class="down"  [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
+              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending)"
+                      class="down"
+                      disabled="sortColumn === directionEnumHelper.Descending"
+                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-desc"></i>
               </button>
             </div>

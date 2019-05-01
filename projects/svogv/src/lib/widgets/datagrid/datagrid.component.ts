@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
-import { DataGridModel } from './models/datagrid.model';
+import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
 
 /**
@@ -24,6 +24,9 @@ import { DatagridStyles } from './models/datagridstyle.model';
   styleUrls: ['./datagrid.component.scss']
 })
 export class DataGridComponent implements OnInit, AfterViewInit {
+
+  directionEnumHelper = Direction;
+
   @ViewChild('string') stringFallback: TemplateRef<any>;
   @ContentChild('string') string: TemplateRef<any>;
 

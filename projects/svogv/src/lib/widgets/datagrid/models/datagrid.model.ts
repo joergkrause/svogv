@@ -1,8 +1,7 @@
-import { Type, EventEmitter } from '@angular/core';
+import { Type, EventEmitter, Directive } from '@angular/core';
 
 import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
-import { DataGridItemModel } from './datagriditem.model';
 
 export enum Direction {
   Ascending,
@@ -120,21 +119,31 @@ export class DataGridModel<T> {
    */
   public onDelete: EventEmitter<T> = new EventEmitter<T>();
 
-  getItemSorted(sortColumn: string, sortDirection: Direction): T[] {
-    if (sortDirection === Direction.Ascending) {
-      return this.items.sort((a: any, b: any) => (a[sortColumn] > b[sortColumn] ? 1 : -1));
-    } else {
-      return this.items.sort((a: any, b: any) => (a[sortColumn] < b[sortColumn] ? 1 : -1));
-    }
-  }
+  /**
+   * Current sort direction per column.
+   */
+  public sortDirection: { [column: string]: Direction } = {};
 
   /**
    * Simple sort fucntion that makes a array sort call for the specified column.
    * @param colName The column which has to be sorted after.
-   * @param dir The order, descended is *desc*, any other string is ascending (default).
+   // tslint:disable-next-line:max-line-length
+   * @param dir The order, descended is *desc*, any other string is ascending. If nothing is provided, the direction toggles. Initital value is *ascending*.
    */
-  public sortColumn(colName: string, dir: string) {
-    this.items.sort((a: any, b: any) => (dir === 'desc' ? (a[colName] > b[colName] ? 1 : -1) : a[colName] > b[colName] ? -1 : 1));
+  public sortColumn(colName: string, dir: Direction = null) {
+    if (!dir) {
+      // if nothing is provided, toggle current
+      dir = this.sortDirection[colName] === Direction.Ascending ? Direction.Descending : Direction.Ascending;
+    }
+    // remember last and update UI
+    this.sortDirection[colName] = dir;
+    this.items.sort((a: any, b: any) => {
+      if (dir === Direction.Descending) {
+        return a[colName] > b[colName] ? 1 : -1;
+      } else {
+        return a[colName] > b[colName] ? -1 : 1;
+      }
+    });
   }
 
   /**
