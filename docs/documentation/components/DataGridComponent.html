@@ -136,16 +136,7 @@
                                     <a href="../classes/DataGridHeaderModel.html" >DataGridHeaderModel</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../classes/DataGridItemModel.html" >DataGridItemModel</a>
-                                </li>
-                                <li class="link">
                                     <a href="../classes/DataGridModel.html" >DataGridModel</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/DynamicHTMLOptions.html" >DynamicHTMLOptions</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../classes/OnMount.html" >OnMount</a>
                                 </li>
                                 <li class="link">
                                     <a href="../classes/TextTreeNodeModel.html" >TextTreeNodeModel</a>
@@ -174,9 +165,6 @@
                                 id="xs-injectables-links"
                             >
                                 <li class="link">
-                                    <a href="../injectables/DynamicHtmlRendererService.html" >DynamicHtmlRendererService</a>
-                                </li>
-                                <li class="link">
                                     <a href="../injectables/FormValidatorFromJsonService.html" >FormValidatorFromJsonService</a>
                                 </li>
                                 <li class="link">
@@ -203,13 +191,7 @@
                                     <a href="../interfaces/Array.html" >Array</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../interfaces/ComponentWithSelector.html" >ComponentWithSelector</a>
-                                </li>
-                                <li class="link">
                                     <a href="../interfaces/DatagridStyles.html" >DatagridStyles</a>
-                                </li>
-                                <li class="link">
-                                    <a href="../interfaces/DynamicHTMLRef.html" >DynamicHTMLRef</a>
                                 </li>
                                 <li class="link">
                                     <a href="../interfaces/FormValidatorModel.html" >FormValidatorModel</a>
@@ -404,16 +386,7 @@
                                            <a href="../classes/DataGridHeaderModel.html" >DataGridHeaderModel</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../classes/DataGridItemModel.html" >DataGridItemModel</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../classes/DataGridModel.html" >DataGridModel</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/DynamicHTMLOptions.html" >DynamicHTMLOptions</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../classes/OnMount.html" >OnMount</a>
                                        </li>
                                        <li class="link">
                                            <a href="../classes/TextTreeNodeModel.html" >TextTreeNodeModel</a>
@@ -442,9 +415,6 @@
                                        id="injectables-links"
                    >
                                        <li class="link">
-                                           <a href="../injectables/DynamicHtmlRendererService.html" >DynamicHtmlRendererService</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../injectables/FormValidatorFromJsonService.html" >FormValidatorFromJsonService</a>
                                        </li>
                                        <li class="link">
@@ -471,13 +441,7 @@
                                            <a href="../interfaces/Array.html" >Array</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../interfaces/ComponentWithSelector.html" >ComponentWithSelector</a>
-                                       </li>
-                                       <li class="link">
                                            <a href="../interfaces/DatagridStyles.html" >DatagridStyles</a>
-                                       </li>
-                                       <li class="link">
-                                           <a href="../interfaces/DynamicHTMLRef.html" >DynamicHTMLRef</a>
                                        </li>
                                        <li class="link">
                                            <a href="../interfaces/FormValidatorModel.html" >FormValidatorModel</a>
@@ -616,6 +580,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
     <p class="comment">
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnInit-interface.html" target="_blank" >OnInit</a></code>
                 <code><a href="https://angular.io/docs/ts/latest/api/core/index/AfterViewInit-interface.html" target="_blank" >AfterViewInit</a></code>
+                <code><a href="https://angular.io/docs/ts/latest/api/core/index/OnDestroy-interface.html" target="_blank" >OnDestroy</a></code>
     </p>
 
 
@@ -682,6 +647,9 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                                  <a href="#dateFallback">dateFallback</a>
                             </li>
                             <li>
+                                 <a href="#directionEnumHelper">directionEnumHelper</a>
+                            </li>
+                            <li>
                                  <a href="#enum">enum</a>
                             </li>
                             <li>
@@ -699,6 +667,9 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                             <li>
                                  <a href="#stringFallback">stringFallback</a>
                             </li>
+                            <li>
+                                <span class="modifier">Private</span> <a href="#warnProp">warnProp</a>
+                            </li>
                         </ul>
                     </td>
                 </tr>
@@ -715,6 +686,9 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                             </li>
                             <li>
                                  <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                 <a href="#ngOnDestroy">ngOnDestroy</a>
                             </li>
                             <li>
                                  <a href="#ngOnInit">ngOnInit</a>
@@ -769,6 +743,23 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                         </ul>
                     </td>
                 </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteItem">deleteItem</a>
+                            </li>
+                            <li>
+                                <a href="#editItem">editItem</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </section>
@@ -794,7 +785,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:50</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:52</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -815,7 +806,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:44</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -834,7 +825,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:110</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:112</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -857,7 +848,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:56</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:58</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -880,7 +871,7 @@ All these styles are applied to the <col> elements of the underlying table.</li>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:120</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:122</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -903,7 +894,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:74</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:76</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -926,7 +917,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:64</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -949,7 +940,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:69</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -971,7 +962,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:90</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="92" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:92</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -993,7 +984,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:80</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:82</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1015,7 +1006,7 @@ on or off individually. Default is <code>true</code> (actions visible).</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:87</a></div>
                                 </td>
                             </tr>
                 </tbody>
@@ -1038,13 +1029,60 @@ of code by adding a template like this:</p>
                     </tr>
                             <tr>
                                 <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:102</a></div>
                                 </td>
                             </tr>
                 </tbody>
             </table>
     </section>
 
+    <section>
+        <h3 id="outputs">Outputs</h3>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="deleteItem"></a>
+                            <code>deleteItem</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Event forwarded from model class and being fired after the model class&#39;s onDelete event.
+The event is invoked by the appropriate internal button via click.</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:136</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-2">
+                            <a name="editItem"></a>
+                            <code>editItem</code>
+                        </td>
+                        <td class="col-md-10">
+                            <div><p>Event forwarded from model class and being fired after the model class&#39;s onEdit event.
+The event is invoked by the appropriate internal button via click.</p>
+</div>
+                            <em><code>$event</code> type:</em>    <code>EventEmitter&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                            <tr>
+                                <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:129</a></div>
+                                </td>
+                            </tr>
+                </tbody>
+            </table>
+    </section>
 
 
 
@@ -1071,7 +1109,7 @@ of code by adding a template like this:</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:130</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="161" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:161</a></div>
                                 </td>
                             </tr>
     
@@ -1146,7 +1184,39 @@ of code by adding a template like this:</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="123" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:123</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="139" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:139</a></div>
+                                </td>
+                            </tr>
+    
+                    <tr>
+                        <td class="col-md-4">
+    
+                                <div class="io-description">
+                                    <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+    
+                                </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="ngOnDestroy"></a>
+                            <span class="name"><b> ngOnDestroy</b><a href="#ngOnDestroy"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+    <code>ngOnDestroy()</code>
+                        </td>
+                    </tr>
+    
+    
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:146</a></div>
                                 </td>
                             </tr>
     
@@ -1178,7 +1248,7 @@ of code by adding a template like this:</p>
     
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:122</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="138" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:138</a></div>
                                 </td>
                             </tr>
     
@@ -1227,7 +1297,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:33</a></div>
                                 </td>
                             </tr>
     
@@ -1261,7 +1331,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:32</a></div>
                                 </td>
                             </tr>
     
@@ -1295,7 +1365,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:36</a></div>
                                 </td>
                             </tr>
     
@@ -1329,7 +1399,35 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:35</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="directionEnumHelper"></a>
+                            <span class="name"><b> directionEnumHelper</b><a href="#directionEnumHelper"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <code>directionEnumHelper:     <code></code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Default value : </i><code>Direction</code>
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:27</a></div>
                                 </td>
                             </tr>
     
@@ -1363,7 +1461,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:39</a></div>
                                 </td>
                             </tr>
     
@@ -1397,7 +1495,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:36</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:38</a></div>
                                 </td>
                             </tr>
     
@@ -1431,7 +1529,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:42</a></div>
                                 </td>
                             </tr>
     
@@ -1465,7 +1563,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:41</a></div>
                                 </td>
                             </tr>
     
@@ -1499,7 +1597,7 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:30</a></div>
                                 </td>
                             </tr>
     
@@ -1533,7 +1631,36 @@ of code by adding a template like this:</p>
                         </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:29</a></div>
+                                </td>
+                            </tr>
+    
+    
+                </tbody>
+            </table>
+            <table class="table table-sm table-bordered">
+                <tbody>
+                    <tr>
+                        <td class="col-md-4">
+                            <a name="warnProp"></a>
+                            <span class="name"><b><span class="modifier">Private</span> warnProp</b><a href="#warnProp"><span class="fa fa-link"></span></a></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <span class="modifier-icon fa fa-lock"></span><code>warnProp:     <code>literal type</code>
+    </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <i>Type : </i>    <code>literal type</code>
+    
+                            </td>
+                        </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="154" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:154</a></div>
                                 </td>
                             </tr>
     
@@ -1545,8 +1672,8 @@ of code by adding a template like this:</p>
 
 
     <div class="tab-pane fade tab-source-code" id="source">
-        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from &#x27;@angular/core&#x27;;
-import { DataGridModel } from &#x27;./models/datagrid.model&#x27;;
+        <pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from &#x27;@angular/core&#x27;;
+import { DataGridModel, Direction } from &#x27;./models/datagrid.model&#x27;;
 import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
 
 /**
@@ -1570,7 +1697,9 @@ import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
   templateUrl: &#x27;./datagrid.component.html&#x27;,
   styleUrls: [&#x27;./datagrid.component.scss&#x27;]
 })
-export class DataGridComponent implements OnInit, AfterViewInit {
+export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
+  directionEnumHelper &#x3D; Direction;
+
   @ViewChild(&#x27;string&#x27;) stringFallback: TemplateRef&lt;any&gt;;
   @ContentChild(&#x27;string&#x27;) string: TemplateRef&lt;any&gt;;
 
@@ -1666,8 +1795,37 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   @Input()
   public reArrangeColumns: boolean;
 
+  /**
+   * Event forwarded from model class and being fired after the model class&#x27;s onEdit event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public editItem: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   * Event forwarded from model class and being fired after the model class&#x27;s onDelete event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public deleteItem: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
   ngOnInit(): void {}
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    if (this.model) {
+      this.model.onEdit.subscribe(item &#x3D;&gt; this.editItem.emit(item));
+      this.model.onDelete.subscribe(item &#x3D;&gt; this.deleteItem.emit(item));
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.model) {
+      this.model.onEdit.unsubscribe();
+      this.model.onDelete.unsubscribe();
+    }
+  }
+
+  // tslint:disable-next-line:member-ordering
+  private warnProp: { [prop: string]: string } &#x3D; {};
 
   /**
    * Controls the template used to display certain data types.
@@ -1688,7 +1846,10 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       return this[&#x60;${uiHint}Fallback&#x60;];
     }
     // if we go here the model requested a custom template that didn&#x27;t exists
-    console.warn(&#x60;Property ${prop} requested the template ${uiHint}, but it wasn&#x27;t provided. Falling back to &quot;string&quot;.&#x60;);
+    if (this.warnProp[prop] !&#x3D;&#x3D; uiHint) {
+      console.warn(&#x60;Property ${prop} requested the template ${uiHint}, but it wasn&#x27;t provided. Falling back to &quot;string&quot;.&#x60;);
+      this.warnProp[prop] &#x3D; uiHint;
+    }
     return this.stringFallback;
   }
 }
@@ -1708,16 +1869,26 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       &lt;/colgroup&gt;
       &lt;thead&gt;
         &lt;tr [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.header : null&quot; &gt;
-          &lt;th *ngFor&#x3D;&quot;let header of model.headers&quot; [title]&#x3D;&quot;header.desc&quot;&gt;
-            {{ header.text }}
-            &lt;div class&#x3D;&quot;sort&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerButton : null&quot;&gt;
-              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, &#x27;asc&#x27;)&quot; class&#x3D;&quot;up&quot;  [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
+          &lt;th *ngFor&#x3D;&quot;let header of model.headers&quot;
+              [ngClass]&#x3D;&quot;{ &#x27;sortableHeader&#x27;: header.isSortable }&quot;
+              [ngStyle]&#x3D;&quot;header.uiHint&quot;
+              [title]&#x3D;&quot;header.desc&quot;
+              (click)&#x3D;&quot;header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null&quot;&gt;
+            &lt;span class&#x3D;&quot;headerText&quot;&gt;{{ header.text }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;sort&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerButton : null&quot; *ngIf&#x3D;&quot;header.isSortable&quot;&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)&quot;
+                      class&#x3D;&quot;up&quot;
+                      [hidden]&#x3D;&quot;model.sortColumn[header.prop] &#x3D;&#x3D;&#x3D; directionEnumHelper.Ascending&quot;
+                      [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
                 &lt;i class&#x3D;&quot;fa fa-sort-asc&quot;&gt;&lt;/i&gt;
               &lt;/button&gt;
-              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, &#x27;desc&#x27;)&quot; class&#x3D;&quot;down&quot;  [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)&quot;
+                      class&#x3D;&quot;down&quot;
+                      [hidden]&#x3D;&quot;model.sortColumn[header.prop] &#x3D;&#x3D;&#x3D; directionEnumHelper.Descending&quot;
+                      [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
                 &lt;i class&#x3D;&quot;fa fa-sort-desc&quot;&gt;&lt;/i&gt;
               &lt;/button&gt;
-            &lt;/div&gt;
+            &lt;/span&gt;
             &lt;button (click)&#x3D;&quot;model.removeColumn(header.prop)&quot;
                     class&#x3D;&quot;rearrange&quot;
                     [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerRemoveButton : null&quot;
@@ -1732,7 +1903,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       &lt;/thead&gt;
       &lt;tbody&gt;
         &lt;tr *ngIf&#x3D;&quot;!model.totalFilteredRows&quot;&gt;
-          &lt;td colspan&#x3D;&quot;4&quot; class&#x3D;&quot;text-center&quot;&gt;
+          &lt;td [attr.colspan]&#x3D;&quot;model.headers.length&quot; class&#x3D;&quot;text-center&quot;&gt;
             &lt;div class&#x3D;&quot;alert alert-warning&quot;&gt;
               &lt;span #warningNoItems&gt;
                 &lt;ng-content select&#x3D;&quot;[data-warning-noitems]&quot;&gt;&lt;/ng-content&gt;
@@ -1812,7 +1983,7 @@ export class DataGridComponent implements OnInit, AfterViewInit {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="row" *ngIf="model">  <div class="col-md-12">    <table class="table table-condensed">      <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">        <col class="first" [ngStyle]="columnStyle ? columnStyle.first : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="last" [ngStyle]="columnStyle ? columnStyle.last : null" />      </colgroup>      <thead>        <tr [ngStyle]="columnStyle ? columnStyle.header : null" >          <th *ngFor="let header of model.headers" [title]="header.desc">            {{ header.text }}            <div class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null">              <button (click)="model.sortColumn(header.prop, \'asc\')" class="up"  [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-asc"></i>              </button>              <button (click)="model.sortColumn(header.prop, \'desc\')" class="down"  [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-desc"></i>              </button>            </div>            <button (click)="model.removeColumn(header.prop)"                    class="rearrange"                    [ngStyle]="columnStyle ? columnStyle.headerRemoveButton : null"                    *ngIf="reArrangeColumns">              <i class="fa fa-remove"></i>            </button>          </th>          <th *ngIf="showActions">            {{ textButtonsHeader }}          </th>        </tr>      </thead>      <tbody>        <tr *ngIf="!model.totalFilteredRows">          <td colspan="4" class="text-center">            <div class="alert alert-warning">              <span #warningNoItems>                <ng-content select="[data-warning-noitems]"></ng-content>              </span>              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">{{  textNoItems }}</ng-container>            </div>          </td>        </tr>        <tr *ngFor="let item of model.itemsOnCurrentPage">          <td *ngFor="let header of model.headers">            <ng-container              [ngTemplateOutlet]="getActiveTemplate(header.templateHint, header.prop)"              [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"            ></ng-container>          </td>          <td *ngIf="showActions" [ngStyle]="columnStyle ? columnStyle.actionCell : null" >            <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">              {{ textEditButton }}            </button>            <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">              {{ textDeleteButton }}            </button>          </td>        </tr>      </tbody>      <tfoot>        <tr [ngStyle]="columnStyle ? columnStyle.footer : null" >          <td [attr.colspan]="model.headers.length + (showActions ? 1 : 0)">            <div #footerRef>              <ng-content select="[data-footer]"></ng-content>            </div>            <ng-container *ngIf="!footerRef.innerHTML.trim()">&copy;</ng-container>          </td>        </tr>      </tfoot>    </table>  </div></div><ng-template #string let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template><ng-template #boolean let-data>  <input type="checkbox" disabled [checked]="data" /></ng-template><ng-template #date let-data>  {{ data }}</ng-template><ng-template #enum let-data>  {{ data }}</ng-template><ng-template #number let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="row" *ngIf="model">  <div class="col-md-12">    <table class="table table-condensed">      <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">        <col class="first" [ngStyle]="columnStyle ? columnStyle.first : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="last" [ngStyle]="columnStyle ? columnStyle.last : null" />      </colgroup>      <thead>        <tr [ngStyle]="columnStyle ? columnStyle.header : null" >          <th *ngFor="let header of model.headers"              [ngClass]="{ \'sortableHeader\': header.isSortable }"              [ngStyle]="header.uiHint"              [title]="header.desc"              (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">            <span class="headerText">{{ header.text }}</span>            <span class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null" *ngIf="header.isSortable">              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)"                      class="up"                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Ascending"                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-asc"></i>              </button>              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)"                      class="down"                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Descending"                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-desc"></i>              </button>            </span>            <button (click)="model.removeColumn(header.prop)"                    class="rearrange"                    [ngStyle]="columnStyle ? columnStyle.headerRemoveButton : null"                    *ngIf="reArrangeColumns">              <i class="fa fa-remove"></i>            </button>          </th>          <th *ngIf="showActions">            {{ textButtonsHeader }}          </th>        </tr>      </thead>      <tbody>        <tr *ngIf="!model.totalFilteredRows">          <td [attr.colspan]="model.headers.length" class="text-center">            <div class="alert alert-warning">              <span #warningNoItems>                <ng-content select="[data-warning-noitems]"></ng-content>              </span>              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">{{  textNoItems }}</ng-container>            </div>          </td>        </tr>        <tr *ngFor="let item of model.itemsOnCurrentPage">          <td *ngFor="let header of model.headers">            <ng-container              [ngTemplateOutlet]="getActiveTemplate(header.templateHint, header.prop)"              [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"            ></ng-container>          </td>          <td *ngIf="showActions" [ngStyle]="columnStyle ? columnStyle.actionCell : null" >            <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">              {{ textEditButton }}            </button>            <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">              {{ textDeleteButton }}            </button>          </td>        </tr>      </tbody>      <tfoot>        <tr [ngStyle]="columnStyle ? columnStyle.footer : null" >          <td [attr.colspan]="model.headers.length + (showActions ? 1 : 0)">            <div #footerRef>              <ng-content select="[data-footer]"></ng-content>            </div>            <ng-container *ngIf="!footerRef.innerHTML.trim()">&copy;</ng-container>          </td>        </tr>      </tfoot>    </table>  </div></div><ng-template #string let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template><ng-template #boolean let-data>  <input type="checkbox" disabled [checked]="data" /></ng-template><ng-template #date let-data>  {{ data }}</ng-template><ng-template #enum let-data>  {{ data }}</ng-template><ng-template #number let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template></div>'
     var COMPONENTS = [{'name': 'AutoFormComponent', 'selector': 'ac-autoform'},{'name': 'DataGridComponent', 'selector': 'ac-datagrid'},{'name': 'DataGridPaginationComponent', 'selector': 'ac-datagrid-pagination'},{'name': 'EditorComponent', 'selector': 'ac-editor'},{'name': 'TreeViewComponent', 'selector': 'ac-tree'},{'name': 'TreeViewNodeComponent', 'selector': 'ac-treenode'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DataGridComponent'};
