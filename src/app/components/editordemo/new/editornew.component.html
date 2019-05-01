@@ -59,9 +59,9 @@
       <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form">
         <fieldset>
           <legend>Add new User</legend>
-          <ac-editor [userForm]="userForm" [name]="'userName'"></ac-editor>
-          <ac-editor [userForm]="userForm" [name]="'email'"></ac-editor>
-          <ac-editor [userForm]="userForm" [name]="'phoneNumber'"></ac-editor>
+          <ac-editor [formGroup]="userForm" [name]="'userName'"></ac-editor>
+          <ac-editor [formGroup]="userForm" [name]="'email'"></ac-editor>
+          <ac-editor [formGroup]="userForm" [name]="'phoneNumber'"></ac-editor>
           <div class="form-group">
             <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
             <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">

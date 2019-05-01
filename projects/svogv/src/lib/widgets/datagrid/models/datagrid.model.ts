@@ -66,10 +66,11 @@ export class DataGridModel<T> {
   }
 
   get itemsFiltered(): T[] {
+    // not actually a filter present
+    if (!this.searchValue || (Object.keys(this.searchValue).length === 0 && this.searchValue.constructor === Object)) {
+      return this.items;
+    }
     return this.items.filter(item => {
-      if (!this.searchValue) {
-        return true;
-      }
       // tslint:disable-next-line:forin
       for (const s in this.searchValue) {
         const pattern = new RegExp(this.searchValue[s]);

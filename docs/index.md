@@ -1,11 +1,6 @@
 This documentation describes the background and internal functionality of the SVOGV project. It's primarily for learning purposes.
 It's not a replacement of the common documentation for developers using the library.
 
-**Table of Contents** _generated with [DocToc](http://doctoc.herokuapp.com/)_
-
-- [Making Of -- How I wrote a NPM package](#)
-- [Angular 2 Components](#) - [What's this about](#) - [The foundation](#) - [1. Load an Editor](#) - [2. Setup your project](#)
-
 # Making Of -- How I wrote a NPM package
 
 > This is work in progress. Come back often to get recent updates. Currently it's version 0.7.1, published April 24th, 2019. The current version embraces Angular 7.x. It's working with Angular 2.x onwards.
@@ -127,10 +122,9 @@ Next, Git is required. Check first if it is already present on your system:
 $ git --version
 ```
 
-If not, install according your operating system. And [here is how to setup Git](./setup/setup-git).
+If not, install according your operating system. 
 
-Then, an account on Github is required. Finally, the package will be hostet on Github and partially distributed to NPM. While there are alternative ways,
-such as Bitbucket, I recommend Github for beginners because the sheer amount of literature, support, websites, and answers on [Stack Overflow](https://stackoverflow.com/)
+Then, an account on Github is required. Finally, the package will be hostet on Github and partially distributed to NPM. While there are alternative ways, such as Bitbucket, I recommend Github for beginners because the sheer amount of literature, support, websites, and answers on [Stack Overflow](https://stackoverflow.com/)
 is overwhelming. And it is, last but not least, easy enough to get the point in short time.
 
 So, go to [GitHub](https://github.com/), and set up an account.
@@ -141,4 +135,3 @@ interest in Angular 2 stuff. So apart from talking about the package structure I
 You can continue reading here:
 
 - [Create an NPM package](./create-npm)
-- [Develop Advanced Angular Components](./angular-intro)

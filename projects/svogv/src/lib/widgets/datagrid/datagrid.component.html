@@ -34,7 +34,7 @@
       </thead>
       <tbody>
         <tr *ngIf="!model.totalFilteredRows">
-          <td colspan="4" class="text-center">
+          <td [attr.colspan]="model.headers.length" class="text-center">
             <div class="alert alert-warning">
               <span #warningNoItems>
                 <ng-content select="[data-warning-noitems]"></ng-content>

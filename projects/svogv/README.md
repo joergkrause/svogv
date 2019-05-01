@@ -18,6 +18,8 @@ The design / UI stuff is made using Bootstrap 4, and even here the current versi
 
 It's for developers who create standard forms and want to automate the development process. 
 
+> Demo and project are made using Angular CLI. Current version is made using **@angular/cli 7.3.5**.
+
 ## Introduction
 
 This library is for making forms. Easy and fast. It has these advantages:
@@ -183,11 +185,11 @@ The only component here is `<ac-autoform>` that connects to the form using the a
 |**@Range**| A range (from-to) for either numerical values or dates. |
 |**@Required**| Makes the field mandatory. |
 |**@EMail**| Checks input against a (very good) regular expression to test for valid e-mail pattern.|
-|**@Compare**| Compares with another field, usually für password comparision.|
+|**@Compare**| Compares with another field, usually for password comparision.|
 
 #### UI Decorators
 
-| Decorator | Usage | Applies to Grid | Applies to Editor | Applies to Auto Form |
+| Decorator | Usage | ...Grid | ...Editor | ...Auto Form |
 |-----------|-------|-----------------|-------------------|----------------------|
 |**@Display**| Determine the label's name and a tooltip ( optionally), You can also provide the fields' order.| Yes, Header row | Yes, label text | Yes, label text |
 |**@DisplayGroup**| Groups components in `<fieldset>` elements. Can be ordered inside the form. | No | No | Yes, fieldset |
@@ -286,7 +288,13 @@ To have a running sample in seconds do the following:
 3. Execute this command: `npm install`
 4. Execute this command: `npm run build` 
 
-A browser window shall open automatically and shows a dashboard from where you can navigate the various components. 
+If everything goes fine start the demo:
+
+~~~
+npm start
+~~~
+
+A browser window shall open automatically (if not, open *http://locahost:4200*) and shows a dashboard from where you can navigate the various components. 
 
 Select these options in the left hand menu:
 
