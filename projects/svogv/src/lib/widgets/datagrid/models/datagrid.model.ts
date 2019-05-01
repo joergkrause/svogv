@@ -130,20 +130,24 @@ export class DataGridModel<T> {
    // tslint:disable-next-line:max-line-length
    * @param dir The order, descended is *desc*, any other string is ascending. If nothing is provided, the direction toggles. Initital value is *ascending*.
    */
-  public sortColumn(colName: string, dir: Direction = null) {
+  public sortColumn(colName: string, dir: Direction, sortCallback?: (a, b) => 1 | -1 | 0) {
     if (!dir) {
       // if nothing is provided, toggle current
       dir = this.sortDirection[colName] === Direction.Ascending ? Direction.Descending : Direction.Ascending;
     }
     // remember last and update UI
     this.sortDirection[colName] = dir;
-    this.items.sort((a: any, b: any) => {
-      if (dir === Direction.Descending) {
-        return a[colName] > b[colName] ? 1 : -1;
-      } else {
-        return a[colName] > b[colName] ? -1 : 1;
-      }
-    });
+    if (sortCallback) {
+      this.items.sort(sortCallback);
+    } else {
+      this.items.sort((a: any, b: any) => {
+        if (dir === Direction.Descending) {
+          return a[colName] > b[colName] ? 1 : -1;
+        } else {
+          return a[colName] > b[colName] ? -1 : 1;
+        }
+      });
+    }
   }
 
   /**
@@ -200,8 +204,10 @@ export class DataGridModel<T> {
       // check if hidden, show if no hidden decorator
       const isHidden = type[`__isHidden__${p}`] || false;
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
-      header.isSortable = type[`__issortable__${p}`] || true;
-      // look for template provided by user, if none, we have templates for all ES types
+      // sorting
+      header.isSortable = type[`__isSortable__${p}`] || true;
+      header.sortCallback = type[`__sortCallback__${p}`] || undefined;
+      // look for templates and pipes provided by user, if none, we have templates for all ES types
       header.templateHint = type[`__templatehint__${p}`] || typeof type[p];
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];

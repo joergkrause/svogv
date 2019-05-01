@@ -10,22 +10,22 @@
       </colgroup>
       <thead>
         <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
-          <th *ngFor="let header of model.headers" [title]="header.desc" (click)="model.sortColumn(header.prop)">
-            {{ header.text }}
-            <div class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null">
-              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending)"
+          <th *ngFor="let header of model.headers" [title]="header.desc" (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">
+            <span class="headerText">{{ header.text }}</span>
+            <span class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null" *ngIf="header.isSortable">
+              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)"
                       class="up"
-                      disabled="sortColumn === directionEnumHelper.Ascending"
+                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Ascending"
                       [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-asc"></i>
               </button>
-              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending)"
+              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)"
                       class="down"
-                      disabled="sortColumn === directionEnumHelper.Descending"
+                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Descending"
                       [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-desc"></i>
               </button>
-            </div>
+            </span>
             <button (click)="model.removeColumn(header.prop)"
                     class="rearrange"
                     [ngStyle]="columnStyle ? columnStyle.headerRemoveButton : null"

@@ -32,6 +32,11 @@ export class DataGridHeaderModel {
   isSortable: boolean;
 
   /**
+   * An optional sort callback function that replaces the default `Array.prototype.sort`.
+  */
+  sortCallback?: (a, b) => 1 | -1 | 0;
+
+  /**
    * Provides a pipe for all data of this column. Default is no pipe (`undefined`).
    */
   pipe: Pipe;

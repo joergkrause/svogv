@@ -8,7 +8,7 @@
  * @param canSort       Suppress or allow sorting.
  * @param sortCallback  An optional callback that provides a sort instruction. If omitted, `Array.prototype.sort` is being used.
  */
-export function Sortable(canSort: boolean, sortCallback?: Function) {
+export function Sortable(canSort: boolean, sortCallback?: (a, b) => 1 | -1 | 0) {
     // the original decorator
     function sortableInternal(target: Object, property: string | symbol): void {
         sortableInternalSetup(target, property.toString(), canSort, sortCallback);

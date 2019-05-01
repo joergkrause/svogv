@@ -1,4 +1,4 @@
-$smallsize: 16px;
+$smallSize: 16px;
 $padding: 1px;
 
 .colborders col {
@@ -17,12 +17,21 @@ th {
   background: none;
 }
 
+.headerText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 90%;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
 .sort {
   float: right;
 
   button {
-    width: $smallsize;
-    height: $smallsize;
+    width: $smallSize;
+    height: $smallSize;
     border-radius: 0;
     padding: $padding;
     border: 0px;
@@ -35,15 +44,15 @@ th {
     }
 
     &.down{
-      left: -$smallsize;
+      left: -$smallSize;
     }
 
   }
 }
 
 .rearrange {
-  width: $smallsize;
-  height: $smallsize;
+  width: $smallSize;
+  height: $smallSize;
   margin: 2px;
   float: right;
   border: none;
