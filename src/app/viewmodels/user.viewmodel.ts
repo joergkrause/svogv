@@ -1,7 +1,5 @@
 ﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, FormatPipe } from 'svogv';
 
-import { PercentPipe } from '@angular/common';
-
 /**
  * View Model for form view.
  *
@@ -39,8 +37,8 @@ export class UserViewModel {
   @DisplayGroup('Personal')
   birthday: Date = new Date();
 
-  @Display('Is Admin', 60)
-  isAdmin: boolean = true;
+  @Display('Is Active', 60)
+  active: boolean = true;
 
   @Display('Password', 70)
   @DisplayGroup('Password')

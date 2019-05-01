@@ -15,7 +15,7 @@
               [ngStyle]="header.uiHint"
               [title]="header.desc"
               (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">
-            <span class="headerText">{{ header.text }} {{ model.sortColumn | json }} </span>
+            <span class="headerText">{{ header.text }}</span>
             <span class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null" *ngIf="header.isSortable">
               <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)"
                       class="up"

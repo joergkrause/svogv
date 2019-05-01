@@ -14,9 +14,9 @@ export const routes: Routes = [
     data: { 'title': 'Dashboard', 'subtitle': 'Dashboard', 'info': true }
   },
   {
-    path: 'widgets',
+    path: 'widget/tree',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Tree&Grid', 'subtitle': 'All features of grid and tree', 'breadcrumb': true, 'features': true },
+    data: { 'title': 'Tree View', 'subtitle': 'All features of tree', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',
@@ -31,9 +31,16 @@ export const routes: Routes = [
           'title': 'Tree View', 'subtitle': 'Tree Demo',
           'active': true, 'disabled': false, 'breadcrumb': true
         }
-      },
+      }
+    ]
+  },
+  {
+    path: 'widget/grid',
+    component: cmp.WidgetDemoComponent,
+    data: { 'title': 'Data Grid', 'subtitle': 'All features of grid', 'breadcrumb': true, 'features': true },
+    children: [
       {
-        path: 'grids',
+        path: 'simple',
         component: cmp.GridDemoSimpleComponent,
         data: {
           'title': 'Grid (simple)', 'subtitle': 'Grid Demo (simple)',
@@ -41,7 +48,7 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'gridt',
+        path: 'template',
         component: cmp.GridDemoTemplateComponent,
         data: {
           'title': 'Grid (templates)', 'subtitle': 'Grid Demo with templates for content manipulation',
@@ -49,11 +56,25 @@ export const routes: Routes = [
         }
       },
       {
-        path: 'grida',
+        path: 'advanced',
         component: cmp.GridDemoComponent,
         data: {
           'title': 'Grid (advanced)', 'subtitle': 'Grid Demo (advanced)',
           'active': false, 'disabled': false, 'breadcrumb': true
+        }
+      },
+      {
+        path: 'filter',
+        component: cmp.EditorListComponent,
+        data: {
+          'title': 'Filter', 'subtitle': 'Filter', 'active': true, 'disabled': false, 'breadcrumb': true
+        }
+      },
+      {
+        path: 'pagination',
+        component: cmp.EditorListComponent,
+        data: {
+          'title': 'Pagination', 'subtitle': 'Pagination', 'active': true, 'disabled': false, 'breadcrumb': true
         }
       }
     ]
@@ -61,7 +82,7 @@ export const routes: Routes = [
   {
     path: 'editor',
     component: cmp.EditorDemoComponent,
-    data: { 'title': 'Grid&Editors', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
+    data: { 'title': 'Editors', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
     children: [
       {
         path: '',
@@ -72,14 +93,14 @@ export const routes: Routes = [
         path: 'list',
         component: cmp.EditorListComponent,
         data: {
-          'title': 'List Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true
+          'title': 'Form Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true
         }
       },
       {
         path: 'new',
         component: cmp.EditorNewComponent,
         data: {
-          'title': 'Create Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true
+          'title': 'Simple Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true
         }
       },
       {

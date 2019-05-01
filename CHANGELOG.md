@@ -110,9 +110,9 @@ Renamed property *userForm* to *formGroup* for editor component. Equals the auto
 <a name="0.7.3"></a>
 # [0.7.3](https://github.com/joergkrause/svogv/releases/tag/0.7.3) (2019-05-02)
 
-Added the decorator `Sortable` to suppress sorting (default is on for all columns) or provide a custom sort function.
+Added the decorator `Sortable` to suppress sorting (default is on for all columns) or provide a custom sort function. Made the sorting available for the whole header element (additionally to the sort buttons) and hence it's now toggling. This is a more intuitive behavior. The button currently showing the sort direction by being in disabled state.
 
-Made the sorting available for the whole header element (additionally to the sort buttons) and hence it's now toggling. This is a more intuitive behavior. The button currently showing the sort direction by being in disabled state.
+Added the decorator `UiHint` to add custom styles to grid's header or, in case of an editor element, to the input element.
 
 Removed some not used classes to save code space.
 

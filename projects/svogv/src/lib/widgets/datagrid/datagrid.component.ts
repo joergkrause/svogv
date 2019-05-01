@@ -174,7 +174,6 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
     // if we go here the model requested a custom template that didn't exists
     if (this.warnProp[prop] !== uiHint) {
       console.warn(`Property ${prop} requested the template ${uiHint}, but it wasn't provided. Falling back to "string".`);
-    } else {
       this.warnProp[prop] = uiHint;
     }
     return this.stringFallback;

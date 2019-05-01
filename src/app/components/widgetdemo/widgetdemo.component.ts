@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AcTabData } from '../ui/tabs/tabs/models/actabdata.model';
 import { AcTab } from '../ui/tabs/tabs/models/actab.model';
@@ -12,22 +12,23 @@ import { AcTab } from '../ui/tabs/tabs/models/actab.model';
   templateUrl: './widgetdemo.component.html'
 })
 export class WidgetDemoComponent {
-
   widgetTabs: AcTabData;
+  title: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
     // we use the router as a global configuration point here
-    const userRoutes: Array<AcTab> = new Array<AcTab>();
-    router.config
-      .filter((route, idx) => route.path === 'widgets')
-      .shift()
-      .children
-      .filter((route, idx) => !route.redirectTo)
-      .forEach(subroute => userRoutes.push(new AcTab(['/widgets', subroute.path],
-                                                     subroute.data['title'],
-                                                    !!subroute.data['active'],
-                                                    !!subroute.data['disabled'])));
-    this.widgetTabs = new AcTabData(userRoutes);
+    this.activatedRoute.data.subscribe(data => this.title = data['title']);
+    this.activatedRoute.url.subscribe(url => {
+      const userRoutes: Array<AcTab> = new Array<AcTab>();
+      const current = url[url.length - 1].path;
+      router.config
+        .filter((route, idx) => route.path.startsWith('widget') && route.path.endsWith(current))
+        .shift()
+        .children.filter((route, idx) => !route.redirectTo)
+        .forEach(subroute =>
+          userRoutes.push(new AcTab(['/widget', current, subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled']))
+        );
+      this.widgetTabs = new AcTabData(userRoutes);
+    });
   }
-
 }
