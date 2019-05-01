@@ -1,4 +1,5 @@
 ﻿import { Pipe } from '@angular/core';
+import { StyleRules } from './datagridstyle.model';
 
 /**
  * Describe a header field with name, tooltip and other properties.
@@ -20,6 +21,11 @@ export class DataGridHeaderModel {
    * Hint from view model to select a certain template. Default is *text* (format as string).
    */
   templateHint: string;
+
+  /**
+   * Custom styles directly applied to the grid's header on a per model base.
+   */
+  uiHint: StyleRules;
 
   /**
    * Additional parameters some templates may use. Optional.

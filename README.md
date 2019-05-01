@@ -194,11 +194,14 @@ The only component here is `<ac-autoform>` that connects to the form using the a
 |**@Display**| Determine the label's name and a tooltip ( optionally), You can also provide the fields' order.| Yes, Header row | Yes, label text | Yes, label text |
 |**@DisplayGroup**| Groups components in `<fieldset>` elements. Can be ordered inside the form. | No | No | Yes, fieldset |
 |**@Hidden**| Exclude as field from a autoform. | Yes, excludes column | Yes, makes hidden field | Yes |
+|**@Sortable**| Makes a column sortable. Default is `true`. | Yes | No | No |
 |**@Placeholder**| A watermark that appears in empty form fields| No | Yes | Yes |
 |**@TemplateHint**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, replaces cell content with template | No | No |
 |**@ReadOnly**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| No | Yes | Yes |
 |**@FormatPipe**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, applies pipe to cell's content | No | No |
+|**@UiHint**| Additional custom styles\*. | Yes | Yes | Yes |
 
+\* This is available from 0.7.4 onwards. Style apply to columns' header and cells as well as to form elements in editor. The object required is a style object in the form `{ 'style': 'rule' }`.
 
 The editor component is able to determine the appearance dependent on the type:
 

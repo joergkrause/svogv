@@ -1,6 +1,6 @@
 ﻿import * as Validator from 'svogv';
+import * as UI from 'svogv';
 import { PercentPipe } from './pipe/percent.pipe';
-import { Sortable } from 'projects/svogv/src/lib/decorators/hint-sortable.decorator';
 
 /**
  * View Model for table view.
@@ -11,38 +11,39 @@ import { Sortable } from 'projects/svogv/src/lib/decorators/hint-sortable.decora
  */
 export class UserViewModelList {
 
-  @Validator.Hidden()
+  @UI.Hidden()
   id = 0;
 
-  @Validator.Display('E-Mail', 20, 'E-Mail address')
+  @UI.Display('E-Mail', 20, 'E-Mail address')
   @Validator.Required()
   @Validator.MaxLength(100)
   @Validator.Email()
   email = '';
 
-  @Validator.Display('Phone Number', 30, 'The user\'s phone')
+  @UI.Display('Phone Number', 30, 'The user\'s phone')
   @Validator.Required()
   @Validator.MaxLength(20)
   phoneNumber = '';
 
-  @Validator.Display('User Name', 10, 'The full name')
+  @UI.Display('User Name', 10, 'The full name')
   @Validator.Required()
   @Validator.MaxLength(100)
+  @UI.UiHint({ 'width': '200px' })
   userName = '';
 
-  @Validator.Display('Age', 40, 'From 12 to 88')
+  @UI.Display('Age', 40, 'From 12 to 88')
   @Validator.Range(12, 88)
   @Validator.TemplateHint('AgeTemplate')
-  @Validator.Sortable(true, (a, b) => a > b ? -1 : 1)
+  @UI.Sortable(true, (a, b) => a > b ? -1 : 1)
   age = 0;
 
-  @Validator.Display('Done', 100, 'Work progress')
-  @Validator.FormatPipe(PercentPipe)
-  @Validator.Sortable(false)
+  @UI.Display('Done', 100, 'Work progress')
+  @UI.FormatPipe(PercentPipe)
+  @UI.Sortable(false)
   done?: number = 0;
 
-  @Validator.Display('Active', 200, 'User is active')
-  @Validator.Sortable(false)
+  @UI.Display('Active', 200, 'User is active')
+  @UI.Sortable(false)
   active ? = false;
 
 }

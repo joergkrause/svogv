@@ -212,6 +212,7 @@ export class DataGridModel<T> {
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
+      header.uiHint = type[`__uiHint__${p}`];
       console.log('h', header);
       this._headers.push(header);
     }

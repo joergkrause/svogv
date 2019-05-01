@@ -7,6 +7,7 @@ export * from './val-email.decorator';
 export * from './val-range.decorator';
 export * from './val-compare.decorator';
 export * from './hint-display.decorator';
+export * from './hint-uihint.decorator';
 export * from './hint-displaygroup.decorator';
 export * from './hint-placeholder.decorator';
 export * from './hint-templatehint.decorator';

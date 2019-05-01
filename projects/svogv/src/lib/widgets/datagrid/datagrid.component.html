@@ -12,6 +12,7 @@
         <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
           <th *ngFor="let header of model.headers"
               [ngClass]="{ 'sortableHeader': header.isSortable }"
+              [ngStyle]="header.uiHint"
               [title]="header.desc"
               (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">
             <span class="headerText">{{ header.text }} {{ model.sortColumn | json }} </span>
