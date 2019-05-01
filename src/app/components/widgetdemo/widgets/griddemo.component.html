@@ -14,7 +14,14 @@
           Common Features of Grid Component
         </div>
         <div class="card-body">
-          <p></p>
+          <p>
+            This demo shows:
+          </p>
+          <ul>
+            <li>Display action buttons. Currently the buttons 'Edit' and 'Delete' can be shown. They fire events that need to be handled to change the model accordingly.</li>
+            <li>Rearrange columns: Remove columns and add columns dynamically. Internally, it's just the hidden attribute that get set or removed. No change of the model at all.</li>
+            <li>Buttons and "Action" column's header can be named dynamically.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -32,7 +39,13 @@
           <pre>
 &lt;ac-datagrid [model]="model"
                 [showActions]="showActions"
-                [reArrangeColumns]="reArrangeColumns">&lt;/ac-datagrid>
+                [reArrangeColumns]="reArrangeColumns"
+                [textButtonsHeader]="actionHeader"
+                [textDeleteButton]="textDeleteButton"
+                [textEditButton]="textEditButton"
+                (editItem)="gridEvents.push('Edit ' + ($event).userName)"
+                (deleteItem)="gridEvents.push('Delete ' + ($event).userName)"
+                >&lt;/ac-datagrid>
     </pre
           >
           <p>The values <code>showActions</code> and <code>reArrangeColumns</code> are being set by the checkboxes.</p>
@@ -43,6 +56,10 @@
             </li>
             <li><code>reArrangeColumns</code>: Shows a remove button on the columns and allows adding columns dynamically.</li>
           </ul>
+          <p>
+            The events are simply forwarded to an array to show how they work. There is no change of data. For more event examples see the editor demo
+            (Grid&Editors) in the menu on the left.
+          </p>
         </div>
       </div>
     </div>
@@ -52,23 +69,56 @@
       <fieldset>
         <legend>Grid Features</legend>
         <form #f="ngForm" novalidate>
-          <div class="form-group">
-            <input class="form-check-input" type="checkbox" [(ngModel)]="showActions" checked="true" #show name="show" />
-            <label class="form-check-label">Show Actions</label>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="showActions" checked="true" name="show" />
+              Show Action Column
+            </label>
           </div>
-          <div class="form-group">
-            <input class="form-check-input" type="checkbox" [(ngModel)]="reArrangeColumns" checked="true" #reArrange name="reArrange" />
-            <label class="form-check-label">Add/Remove Columns</label>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="checkbox" [(ngModel)]="reArrangeColumns" checked="true" name="reArrange" />
+              Show Add/Remove Columns Button
+            </label>
           </div>
+          <div class="form-group-sm" *ngIf="showActions">
+            <label for="actionHeader">Action Column's Header</label>
+            <input type="text" class="form-control form-control-sm" id="actionHeader" name="actionHeader" [(ngModel)]="actionHeader" >
+          </div>
+          <div class="form-group-sm" *ngIf="showActions">
+              <label for="textDeleteButton">Text of Delete Button</label>
+              <input type="text" class="form-control form-control-sm" id="textDeleteButton" name="textDeleteButton" [(ngModel)]="textDeleteButton" >
+            </div>
+            <div class="form-group-sm" *ngIf="showActions">
+              <label for="textEditButton">Text of Edit Button</label>
+              <input type="text" class="form-control form-control-sm" id="textEditButton" name="textEditButton" [(ngModel)]="textEditButton" >
+            </div>
         </form>
       </fieldset>
-      <p>
-        Currently invisible columns. Click to add:
-        <span *ngFor="let col of model.headersNotVisible; let l = last">
-          <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add {{ col.text }}</button> </span
-        >&nbsp;
-      </p>
-      <ac-datagrid [model]="model" [showActions]="showActions" [reArrangeColumns]="reArrangeColumns"></ac-datagrid>
+      <fieldset>
+        <legend>Events fired</legend>
+        <button type="button" (click)="gridEvents = []" class="btn btn-outline-secondary btn-xs" style="float:right">Clear List</button>
+        <div *ngFor="let ev of gridEvents">{{ ev }}</div>
+      </fieldset>
+      <fieldset>
+        <legend>Currently invisible columns</legend>
+        <div>
+          Click to add:
+          <span *ngFor="let col of model.headersNotVisible; let l = last">
+            <button class="btn btn-xs btn-danger" (click)="model.addColumn(col.prop)">Add '{{ col.text }}'</button> </span
+          >&nbsp;
+        </div>
+      </fieldset>
+      <ac-datagrid
+        [model]="model"
+        [showActions]="showActions"
+        [reArrangeColumns]="reArrangeColumns"
+        [textButtonsHeader]="actionHeader"
+        [textDeleteButton]="textDeleteButton"
+        [textEditButton]="textEditButton"
+        (editItem)="gridEvents.push('Edit ' + $event.userName)"
+        (deleteItem)="gridEvents.push('Delete ' + $event.userName)"
+      ></ac-datagrid>
     </div>
   </div>
 </div>

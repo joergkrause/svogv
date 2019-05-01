@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, ContentChildren, QueryList, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from '@angular/core';
 import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
 
@@ -23,8 +23,7 @@ import { DatagridStyles } from './models/datagridstyle.model';
   templateUrl: './datagrid.component.html',
   styleUrls: ['./datagrid.component.scss']
 })
-export class DataGridComponent implements OnInit, AfterViewInit {
-
+export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   directionEnumHelper = Direction;
 
   @ViewChild('string') stringFallback: TemplateRef<any>;
@@ -122,8 +121,37 @@ export class DataGridComponent implements OnInit, AfterViewInit {
   @Input()
   public reArrangeColumns: boolean;
 
+  /**
+   * Event forwarded from model class and being fired after the model class's onEdit event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public editItem: EventEmitter<any> = new EventEmitter<any>();
+
+  /**
+   * Event forwarded from model class and being fired after the model class's onDelete event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public deleteItem: EventEmitter<any> = new EventEmitter<any>();
+
   ngOnInit(): void {}
-  ngAfterViewInit(): void { }
+  ngAfterViewInit(): void {
+    if (this.model) {
+      this.model.onEdit.subscribe(item => this.editItem.emit(item));
+      this.model.onDelete.subscribe(item => this.deleteItem.emit(item));
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.model) {
+      this.model.onEdit.unsubscribe();
+      this.model.onDelete.unsubscribe();
+    }
+  }
+
+  // tslint:disable-next-line:member-ordering
+  private warnProp: { [prop: string]: string } = {};
 
   /**
    * Controls the template used to display certain data types.
@@ -144,7 +172,11 @@ export class DataGridComponent implements OnInit, AfterViewInit {
       return this[`${uiHint}Fallback`];
     }
     // if we go here the model requested a custom template that didn't exists
-    console.warn(`Property ${prop} requested the template ${uiHint}, but it wasn't provided. Falling back to "string".`);
+    if (this.warnProp[prop] !== uiHint) {
+      console.warn(`Property ${prop} requested the template ${uiHint}, but it wasn't provided. Falling back to "string".`);
+    } else {
+      this.warnProp[prop] = uiHint;
+    }
     return this.stringFallback;
   }
 }

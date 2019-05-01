@@ -126,6 +126,42 @@ export class UserViewModelList {{ '{' }}
               <option value="#0000ff">Blue</option>
             </datalist>
           </div>
+          <div class="form-group">
+            <label>Color of First Column</label>
+            <input type="color" name="firstColor" list="presetColors" value="#aaaaaa" [(ngModel)]="firstColor" class="form-control col-1" />
+            <datalist id="presetColors">
+              <option value="#ff0000">Red</option>
+              <option value="#00ff00">Green</option>
+              <option value="#0000ff">Blue</option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Color of Header Foreground</label>
+            <input type="color" name="headerForeColor" list="presetColors" value="#aaaaaa" [(ngModel)]="headerForeColor" class="form-control col-1" />
+            <datalist id="presetColors">
+              <option value="#ff0000">Red</option>
+              <option value="#00ff00">Green</option>
+              <option value="#0000ff">Blue</option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Color of Header Background</label>
+            <input type="color" name="headerBackColor" list="presetColors" value="#aaaaaa" [(ngModel)]="headerBackColor" class="form-control col-1" />
+            <datalist id="presetColors">
+              <option value="#ff0000">Red</option>
+              <option value="#00ff00">Green</option>
+              <option value="#0000ff">Blue</option>
+            </datalist>
+          </div>
+          <div class="form-group">
+            <label>Color of Sort Icons</label>
+            <input type="color" name="sortIconColor" list="presetColors" value="#aaaaaa" [(ngModel)]="sortIconColor" class="form-control col-1" />
+            <datalist id="presetColors">
+              <option value="#ff0000">Red</option>
+              <option value="#00ff00">Green</option>
+              <option value="#0000ff">Blue</option>
+            </datalist>
+          </div>
         </fieldset>
       </form>
       <ac-datagrid
@@ -133,9 +169,9 @@ export class UserViewModelList {{ '{' }}
         [showActions]="false"
         [columnStyle]="{
           footer: { 'background-color': footerColor },
-          first: { 'background-color': 'orange' },
-          header: { color: 'white', 'background-color': 'black' },
-          headerSortButton: { color: 'yellow' }
+          first: { 'background-color': firstColor },
+          header: { color: headerForeColor, 'background-color': headerBackColor },
+          headerSortButton: { color: sortIconColor }
         }"
       ></ac-datagrid>
     </div>

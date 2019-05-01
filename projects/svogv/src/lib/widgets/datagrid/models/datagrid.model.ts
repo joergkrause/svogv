@@ -205,13 +205,14 @@ export class DataGridModel<T> {
       const isHidden = type[`__isHidden__${p}`] || false;
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
       // sorting
-      header.isSortable = type[`__isSortable__${p}`] || true;
+      header.isSortable = type[`__isSortable__${p}`] === undefined ? true : !!type[`__isSortable__${p}`];
       header.sortCallback = type[`__sortCallback__${p}`] || undefined;
       // look for templates and pipes provided by user, if none, we have templates for all ES types
       header.templateHint = type[`__templatehint__${p}`] || typeof type[p];
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
+      console.log('h', header);
       this._headers.push(header);
     }
   }

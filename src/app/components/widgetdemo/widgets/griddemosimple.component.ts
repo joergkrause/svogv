@@ -12,6 +12,10 @@ export class GridDemoSimpleComponent implements OnInit, OnDestroy {
   users: Array<UserViewModelList>;
 
   footerColor: any;
+  headerForeColor: any;
+  headerBackColor: any;
+  firstColor: any;
+  sortIconColor: any;
 
   constructor(private apiService: SiteApiService) {
     this.users = new Array<UserViewModelList>();

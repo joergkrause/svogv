@@ -10,9 +10,13 @@ export class GridDemoComponent implements OnInit, OnDestroy {
 
   model: DataGridModel<UserViewModelList>;
   users: Array<UserViewModelList>;
+  gridEvents: Array<string> = [];
 
   showActions: boolean;
   reArrangeColumns: boolean;
+  actionHeader: string = 'Some Actions';
+  textDeleteButton: string = 'Remove';
+  textEditButton: string = 'Edit User';
 
   constructor(private apiService: SiteApiService) {
     this.users = new Array<UserViewModelList>();

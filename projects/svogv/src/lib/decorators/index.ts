@@ -11,5 +11,6 @@ export * from './hint-displaygroup.decorator';
 export * from './hint-placeholder.decorator';
 export * from './hint-templatehint.decorator';
 export * from './hint-hidden.decorator';
+export * from './hint-sortable.decorator';
 export * from './hint-readonly.decorator';
 export * from './hint-formatpipe.decorator';
