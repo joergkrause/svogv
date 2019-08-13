@@ -1,7 +1,7 @@
 import { FormControl, FormGroup } from '@angular/forms';
 
 /**
- * A custom validator to compare two fields. This is internally to support the infarstructure
+ * A custom validator to compare two fields. This is internally to support the infrastructure
  * and not intended to being used by custom code.
  *
  * @param p The field's name

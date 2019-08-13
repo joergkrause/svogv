@@ -12,13 +12,13 @@
 
 ## Target Audience
 
-This library is for Angular Version 2 or newer. The current release is for Angular 7 and matches the current Angular version usually.
+This library is for Angular Version 2 or newer. The current release is for Angular 8 and matches the current Angular version usually.
 
 The design / UI stuff is made using Bootstrap 4, and even here the current version is used.
 
 It's for developers who create standard forms and want to automate the development process. 
 
-> Demo and project are made using Angular CLI. Current version is made using **@angular/cli 7.3.5**.
+> Demo and project are made using Angular CLI. Current version is made using **@angular/cli 8.2.1**.
 
 ## Introduction
 
@@ -42,9 +42,9 @@ It's available as source code or as ready to use umd-bundle. The bundle is plane
 
 As of version 0.6 none known issues. Please report issues through Github.
 
-Have you worked with the version 0.3 before. 0.6 has breaking changes because of a new build process. 
+Have you worked with the version 0.3 before? 0.6 has breaking changes because of a new build process. 
 **In 0.7 I have again made significant changes towards the 1.0 release.**
-I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 8 is out, it will become SVOGV 8.
+I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 9 is out, it will become SVOGV 9.
 
 ## Angular Data Annotations
 
@@ -101,11 +101,11 @@ import {
 Or alternatively prefix your import:
 
 ~~~
-import * as Validator from 'svogv';
+import * as FormHints from 'svogv';
 
 export class UserViewModel {
 
-  @Validator.Display('E-Mail')
+  @FormHints.Display('E-Mail')
   eMail: string = '';
 
 }
@@ -172,7 +172,7 @@ Even simpler, you can create a complete form with **just one tag**. Just go like
 </form>
 ~~~
 
-The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is builds upon Bootstrap 4 and can be modified by several helper annotations (decorators). 
+The only component here is `<ac-autoform>` that connects to the form using the attribute `formGroup`. Use binding syntax here as this is an object. The form is build upon Bootstrap 4 again and can be modified by several helper decorators. 
 
 #### Validation Decorators
 
@@ -189,19 +189,20 @@ The only component here is `<ac-autoform>` that connects to the form using the a
 
 #### UI Decorators
 
-| Decorator | Usage | ...Grid | ...Editor | ...Auto Form |
-|-----------|-------|-----------------|-------------------|----------------------|
-|**@Display**| Determine the label's name and a tooltip ( optionally), You can also provide the fields' order.| Yes, Header row | Yes, label text | Yes, label text |
-|**@DisplayGroup**| Groups components in `<fieldset>` elements. Can be ordered inside the form. | No | No | Yes, fieldset |
-|**@Hidden**| Exclude as field from a autoform. | Yes, excludes column | Yes, makes hidden field | Yes |
-|**@Sortable**| Makes a column sortable. Default is `true`. | Yes | No | No |
-|**@Placeholder**| A watermark that appears in empty form fields| No | Yes | Yes |
-|**@TemplateHint**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, replaces cell content with template | No | No |
-|**@ReadOnly**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| No | Yes | Yes |
-|**@FormatPipe**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, applies pipe to cell's content | No | No |
-|**@UiHint**| Additional custom styles\*. | Yes | Yes | Yes |
+| Decorator | Usage | ...Grid | ...Editor | ...Auto Form | ...Tree\*\* |
+|-----------|-------|-----------------|-------------------|----------------------|--|
+|**@Display**| Determine the label's name and a tooltip ( optionally), You can also provide the fields' order.| Yes, Header row | Yes, label text | Yes, label text | No |
+|**@DisplayGroup**| Groups components in `<fieldset>` elements. Can be ordered inside the form. | No | No | Yes, fieldset | No |
+|**@Hidden**| Exclude as field from an autoform. | Yes, excludes column | Yes, makes hidden field | Yes | Yes |
+|**@Sortable**| Makes a column sortable. Default is `true`. | Yes | No | No | No |
+|**@Placeholder**| A watermark that appears in empty form fields| No | Yes | Yes | No |
+|**@TemplateHint**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, replaces cell content with template | No | No | Planned |
+|**@ReadOnly**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| No | Yes | Yes | Yes |
+|**@FormatPipe**| Forces a particular render type. Usually you get fields a shown in the table below. With a hint you can force other types.| Yes, applies pipe to cell's content | No | No | No |
+|**@UiHint**| Additional custom styles\*. | Yes | Yes | Yes | Yes |
 
 \* This is available from 0.7.4 onwards. Style apply to columns' header and cells as well as to form elements in editor. The object required is a style object in the form `{ 'style': 'rule' }`.
+\*\* This is available from 0.7.5 onwards.
 
 The editor component is able to determine the appearance dependent on the type:
 
@@ -217,7 +218,7 @@ The editor component is able to determine the appearance dependent on the type:
 
 ## Server Support through JSON
 
-As of version 0.3.5 it's possible to use a specially design JSON object to configure the forms. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
+As of version 0.3.5 it's possible to use a specially designed JSON object to configure the forms. It's an exact pendant to the decorators. The difference is that you don't need to write any viewmodels in TypeScript. Just deliver an appropriate formatted document from your API and you're set. Here is the definition for the JSON structure:
 
 ~~~
 export interface FormValidatorModel {
@@ -241,7 +242,7 @@ The types have the same description as the decorators.
 
 ## The Components
 
-The components complement the editor by adding more parts typically used in form apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
+The components complement the editor by adding more parts typically used in forms apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
 * **TreeView**: An advanced tree view with icon support and many options such as selections and checkboxes. Uses `EventEmitter` to fire several tree node events.
 * **DataGrid**: A classic data grid. It provides a model to handle:
@@ -262,13 +263,13 @@ npm install svogv --save
 
 You get these parts:
 
-* FormValidatorService -- a static class to build reactive forms
-* FormValidatorFromJsonService -- a static class to build reactive forms from server data
-* Editor -- the universal editor component for one field
-* AutoForm -- the universal editor component for complete multi field forms
-* DataGrid -- an advanced grid component, model driven
-* TreeView -- a tree with some nice features
-* Decorators -- a set of decorators to manage the behavior of grid and forms
+* **FormValidatorService** -- am injectable class to build reactive forms
+* **FormValidatorFromJsonService** -- am injectable class to build reactive forms from server data
+* **Editor** -- the universal editor component for one field
+* **AutoForm** -- the universal editor component for complete multi field forms
+* **DataGrid** -- an advanced grid component, model driven
+* **TreeView** -- a tree with some nice features
+* **Decorators** -- a set of decorators to manage the behavior and appearance of grid, tree and forms
 
 ### More to read
 
@@ -328,5 +329,5 @@ I write sophisticated stuff quickly and in very high quality in these technologi
 
 * Frontend: Angular, React
 * Backend: Node, ASP.NET Core, Entity Framework Core
-* Cloud: Azure Comsos Db, Azure Functions, Azrue Event Hub, Azure IoT, AWS S3, AWS Lambda
+* Cloud: Azure CosmosDb, Azure Functions, Azure Event Hub, Azure IoT, AWS S3, AWS Lambda
 * Other: Alexa Skills

@@ -116,5 +116,10 @@ Added the decorator `UiHint` to add custom styles to grid's header or, in case o
 
 Removed some not used classes to save code space.
 
+<a name="0.8.0"></a>
+# [0.8.0](https://github.com/joergkrause/svogv/releases/tag/0.8.0) (2019-08-13)
+
+Update references and dependencies to reflect Angular 8.
+
 
 

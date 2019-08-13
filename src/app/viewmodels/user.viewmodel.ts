@@ -23,7 +23,7 @@ export class UserViewModel {
   @MaxLength(20)
   phoneNumber: string = '';
 
-  @Display('User Name', 10, 'The full name')
+  @Display('User Name', 33, 'The full name')
   @Required('User Name is required')
   @MaxLength(100)
   userName: string = '';

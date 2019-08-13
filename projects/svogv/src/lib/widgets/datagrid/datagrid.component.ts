@@ -26,20 +26,20 @@ import { DatagridStyles } from './models/datagridstyle.model';
 export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   directionEnumHelper = Direction;
 
-  @ViewChild('string') stringFallback: TemplateRef<any>;
-  @ContentChild('string') string: TemplateRef<any>;
+  @ViewChild('string', { static: true }) stringFallback: TemplateRef<any>;
+  @ContentChild('string', { static: true }) string: TemplateRef<any>;
 
-  @ViewChild('boolean') booleanFallback: TemplateRef<any>;
-  @ContentChild('boolean') boolean: TemplateRef<any>;
+  @ViewChild('boolean', { static: true }) booleanFallback: TemplateRef<any>;
+  @ContentChild('boolean', { static: true }) boolean: TemplateRef<any>;
 
-  @ViewChild('date') dateFallback: TemplateRef<any>;
-  @ContentChild('date') date: TemplateRef<any>;
+  @ViewChild('date', { static: true }) dateFallback: TemplateRef<any>;
+  @ContentChild('date', { static: true }) date: TemplateRef<any>;
 
-  @ViewChild('enum') enumFallback: TemplateRef<any>;
-  @ContentChild('enum') enum: TemplateRef<any>;
+  @ViewChild('enum', { static: true }) enumFallback: TemplateRef<any>;
+  @ContentChild('enum', { static: true }) enum: TemplateRef<any>;
 
-  @ViewChild('number') numberFallback: TemplateRef<any>;
-  @ContentChild('number') number: TemplateRef<any>;
+  @ViewChild('number', { static: true }) numberFallback: TemplateRef<any>;
+  @ContentChild('number', { static: true }) number: TemplateRef<any>;
 
   @Input() externals: { [key: string]: any } = {};
 

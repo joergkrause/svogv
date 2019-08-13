@@ -3,6 +3,9 @@ import { Type, EventEmitter, Directive } from '@angular/core';
 import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
 
+/**
+ * Sort direction, controlled by simple string comparision or a callback.
+ */
 export enum Direction {
   Ascending,
   Descending
@@ -30,6 +33,9 @@ export class DataGridModel<T> {
     }
   }
 
+  /**
+   * Returns the number of rows regardless the actual filter (the total).
+   */
   get totalRows(): number {
     return this._items.length;
   }
