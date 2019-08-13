@@ -134,7 +134,8 @@ export class DataGridModel<T> {
    * Simple sort fucntion that makes a array sort call for the specified column.
    * @param colName The column which has to be sorted after.
    // tslint:disable-next-line:max-line-length
-   * @param dir The order, descended is *desc*, any other string is ascending. If nothing is provided, the direction toggles. Initital value is *ascending*.
+   * @param dir The order, descended is *desc*, any other string is ascending.
+                If nothing is provided, the direction toggles. Initital value is *ascending*.
    */
   public sortColumn(colName: string, dir: Direction, sortCallback?: (a, b) => 1 | -1 | 0) {
     if (!dir) {

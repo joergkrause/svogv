@@ -8,4 +8,4 @@ if (FILTER) {
 }
 module.exports = {
   plugins: [new webpack.DefinePlugin({KARMA_SPEC_FILTER})]
-}
+};

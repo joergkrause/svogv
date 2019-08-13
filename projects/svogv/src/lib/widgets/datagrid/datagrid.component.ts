@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewChild, ContentChild, TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ContentChild,
+         TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from '@angular/core';
 import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
 

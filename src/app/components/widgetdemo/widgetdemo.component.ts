@@ -22,10 +22,11 @@ export class WidgetDemoComponent {
       const userRoutes: Array<AcTab> = new Array<AcTab>();
       const current = url[url.length - 1].path;
       router.config
-        .filter((route, idx) => route.path.startsWith('widget') && route.path.endsWith(current))
+        .filter((route) => route.path.startsWith('widget') && route.path.endsWith(current))
         .shift()
-        .children.filter((route, idx) => !route.redirectTo)
+        .children.filter((route) => !route.redirectTo)
         .forEach(subroute =>
+          // tslint:disable-next-line:max-line-length
           userRoutes.push(new AcTab(['/widget', current, subroute.path], subroute.data['title'], !!subroute.data['active'], !!subroute.data['disabled']))
         );
       this.widgetTabs = new AcTabData(userRoutes);
