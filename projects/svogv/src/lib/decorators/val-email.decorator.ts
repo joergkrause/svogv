@@ -7,30 +7,31 @@
  *
  */
 export function Email(msg?: string) {
+
+  function emailInternalSetup(target: any, key: string) {
+
+    // tslint:disable-next-line:max-line-length
+    const pattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    // create a helper property to transport a meta data value
+    Object.defineProperty(target, `__hasPattern__${key}`, {
+      value: pattern,
+      enumerable: false,
+      configurable: false
+    });
+
+    Object.defineProperty(target, `__errPattern__${key}`, {
+      value: msg || `The field ${key} must contain a valid e-mail address.`,
+      enumerable: false,
+      configurable: false
+    });
+  }
   // the original decorator
-  function emailInternal(target: Object, property: string | symbol): void {
-    emailInternalSetup(target, property.toString(), msg);
+  function emailInternal(target: object, property: string | symbol): void {
+    emailInternalSetup(target, property.toString());
   }
 
   // return the decorator
   return emailInternal;
 }
 
-export function emailInternalSetup(target: any, key: string, msg?: string) {
-
-  // tslint:disable-next-line:max-line-length
-  const pattern: RegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  // create a helper property to transport a meta data value
-  Object.defineProperty(target, `__hasPattern__${key}`, {
-    value: pattern,
-    enumerable: false,
-    configurable: false
-  });
-
-  Object.defineProperty(target, `__errPattern__${key}`, {
-    value: msg || `The field ${key} must contain a valid e-mail address.`,
-    enumerable: false,
-    configurable: false
-  });
-}

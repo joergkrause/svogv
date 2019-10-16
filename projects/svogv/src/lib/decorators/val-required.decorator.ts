@@ -6,25 +6,25 @@
  *
  */
 export function Required(msg?: string) {
-    // the original decorator
-    function requiredInternal(target: Object, property: string | symbol): void {
-        requiredInternalSetup(target, property.toString(), msg);
-    }
-
-    // return the decorator
-    return requiredInternal;
-}
-
-export function requiredInternalSetup(target: any, key: string, msg?: string) {
+  function requiredInternalSetup(target: any, key: string) {
     Object.defineProperty(target, `__isRequired__${key}`, {
-        get: function () { return true; },
-        enumerable: false,
-        configurable: false
+      get() { return true; },
+      enumerable: false,
+      configurable: false
     });
 
     Object.defineProperty(target, `__errRequired__${key}`, {
-        value: msg || `The field ${key} is required`,
-        enumerable: false,
-        configurable: false
+      value: msg || `The field ${key} is required`,
+      enumerable: false,
+      configurable: false
     });
+  }
+  // the original decorator
+  function requiredInternal(target: object, property: string | symbol): void {
+    requiredInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return requiredInternal;
 }
+

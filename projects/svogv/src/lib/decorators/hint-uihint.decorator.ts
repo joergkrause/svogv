@@ -1,28 +1,31 @@
 ﻿import { StyleRules } from '../widgets/datagrid/models/datagridstyle.model';
 
+const uiHint = 'uiHint';
 /**
  * The UiHint decorator.
  *
  *
  * @param hide  The style definition.
  */
-export function UiHint(uiHint: StyleRules) {
-    // the original decorator
-    function uiHintInternal(target: Object, property: string | symbol): void {
-      uiHintInternalSetup(target, property.toString(), uiHint);
-    }
+export function UiHint(uiHintRule: StyleRules) {
 
-    // return the decorator
-    return uiHintInternal;
-}
-
-export function uiHintInternalSetup(target: any, key: string, uiHint: StyleRules) {
+  function uiHintInternalSetup(target: any, key: string) {
 
     // create a helper property to transport a meta data value
-    Object.defineProperty(target, `__uiHint__${key}`, {
-        value: uiHint,
-        enumerable: false,
-        configurable: false
+    Object.defineProperty(target, `__${uiHint}__${key}`, {
+      value: uiHintRule,
+      enumerable: false,
+      configurable: false
     });
 
+  }
+  // the original decorator
+  function uiHintInternal(target: object, property: string | symbol): void {
+    uiHintInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return uiHintInternal;
 }
+
+UiHint.HintRule = (target: object, key: string, def?: string) => target[`__${uiHint}__${key}`] || def;

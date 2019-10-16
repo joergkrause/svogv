@@ -8,41 +8,40 @@
  *
  */
 export function StringLength(min: number, max: number, msg?: string) {
-    // the original decorator
-    function stringLengthInternal(target: Object, property: string | symbol): void {
-        stringLengthInternalSetup(target, property.toString(), min, max, msg);
-    }
-
-    // return the decorator
-    return stringLengthInternal;
-}
-
-export function stringLengthInternalSetup(target: any, key: string, min: number, max: number, msg?: string) {
+  function stringLengthInternalSetup(target: any, key: string) {
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasMaxLength__${key}`, {
-        value: max,
-        enumerable: false,
-        configurable: false
+      value: max,
+      enumerable: false,
+      configurable: false
     });
 
     Object.defineProperty(target, `__errMaxLength__${key}`, {
-        value: msg || `The field ${key} has max length of ${max} characters`,
-        enumerable: false,
-        configurable: false
+      value: msg || `The field ${key} has max length of ${max} characters`,
+      enumerable: false,
+      configurable: false
     });
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasMinLength__${key}`, {
-        value: min,
-        enumerable: false,
-        configurable: false
+      value: min,
+      enumerable: false,
+      configurable: false
     });
 
     Object.defineProperty(target, `__errMinLength__${key}`, {
-        value: msg || `The field ${key} needs at least ${min} characters`,
-        enumerable: false,
-        configurable: false
+      value: msg || `The field ${key} needs at least ${min} characters`,
+      enumerable: false,
+      configurable: false
     });
 
+  }
+  // the original decorator
+  function stringLengthInternal(target: object, property: string | symbol): void {
+    stringLengthInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return stringLengthInternal;
 }

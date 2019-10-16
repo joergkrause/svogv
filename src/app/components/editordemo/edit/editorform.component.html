@@ -59,8 +59,7 @@
         </div>
         <div class="card-body">
           <p>This form makes use of the &lt;ac-editor&gt; component.</p>
-          <code
-            ><pre>
+          <code><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
     &lt;fieldset>
       &lt;legend>Edit current user&lt;/legend>
@@ -70,16 +69,14 @@
       &lt;ac-editor [userForm]="userForm" name="age" >&lt;/ac-editor>
       &lt;ac-editor [userForm]="userForm" name="passWord" >&lt;/ac-editor>
       &lt;ac-editor [userForm]="userForm" name="passWordTwo" >&lt;/ac-editor>
-</pre
-            ></code
-          >
+</pre></code>
           <p>
             The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The [name]
             property is bound to the properties of the view model. The view model needs the decorators to figure out what editor must be shown. It
             also pulls the validation information from the model. The model used on this form looks like this:
           </p>
           <p>
-            The @Display decorator can order and group elements, too. You can create more than just simple forms with it.
+            The form tag itself, buttons and other form related stuff is not part of the control. The values are two-way bound to a model, that will change automatically.
           </p>
           <code>
             <pre>

@@ -1,4 +1,5 @@
-﻿/**
+﻿const isHidden = 'isHidden';
+/**
  * The Hidden decorator.
  *
  * The @see `DataGrid` does not show columns for properties tagged with `@Hidden()`.
@@ -8,22 +9,24 @@
  * @param hide          Optional, default is true.
  */
 export function Hidden(hide = true) {
-    // the original decorator
-    function hiddenInternal(target: Object, property: string | symbol): void {
-        hiddenInternalSetup(target, property.toString(), hide);
-    }
 
-    // return the decorator
-    return hiddenInternal;
-}
-
-export function hiddenInternalSetup(target: any, key: string, hide: boolean) {
+  function hiddenInternalSetup(target: any, key: string, hide: boolean) {
 
     // create a helper property to transport a meta data value
-    Object.defineProperty(target, `__isHidden__${key}`, {
-        value: hide,
-        enumerable: false,
-        configurable: false
+    Object.defineProperty(target, `__${isHidden}__${key}`, {
+      value: hide,
+      enumerable: false,
+      configurable: false
     });
 
+  }
+  // the original decorator
+  function hiddenInternal(target: object, property: string | symbol): void {
+    hiddenInternalSetup(target, property.toString(), hide);
+  }
+
+  // return the decorator
+  return hiddenInternal;
 }
+
+Hidden.IsHidden = (target: object, key: string, def = false) => target[`__${isHidden}__${key}`] || def;

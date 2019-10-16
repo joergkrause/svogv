@@ -1,4 +1,6 @@
-﻿/**
+﻿const isSortable = 'isSortable';
+const hasSortCallback = 'sortCallback';
+/**
  * The Sortable decorator.
  *
  * The @see `DataGrid` does not sort columns for properties tagged with `@Sortable(false)`.
@@ -9,28 +11,31 @@
  * @param sortCallback  An optional callback that provides a sort instruction. If omitted, `Array.prototype.sort` is being used.
  */
 export function Sortable(canSort: boolean, sortCallback?: (a, b) => 1 | -1 | 0) {
-    // the original decorator
-    function sortableInternal(target: Object, property: string | symbol): void {
-        sortableInternalSetup(target, property.toString(), canSort, sortCallback);
-    }
 
-    // return the decorator
-    return sortableInternal;
-}
-
-export function sortableInternalSetup(target: any, key: string, canSort: boolean, sortCallback: Function) {
+  function sortableInternalSetup(target: any, key: string) {
 
     // create a helper property to transport a meta data value
-    Object.defineProperty(target, `__isSortable__${key}`, {
-        value: canSort,
-        enumerable: false,
-        configurable: false
+    Object.defineProperty(target, `__${isSortable}__${key}`, {
+      value: canSort,
+      enumerable: false,
+      configurable: false
     });
 
-    Object.defineProperty(target, `__sortCallback__${key}`, {
+    Object.defineProperty(target, `__${hasSortCallback}__${key}`, {
       value: sortCallback,
       enumerable: false,
       configurable: false
-  });
+    });
 
+  }
+  // the original decorator
+  function sortableInternal(target: object, property: string | symbol): void {
+    sortableInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return sortableInternal;
 }
+
+Sortable.IsSortable = (target: object, key: string, def?: string) => target[`__${isSortable}__${key}`] || def;
+Sortable.SortCallback = (target: object, key: string, def?: string) => target[`__${hasSortCallback}__${key}`] || def;

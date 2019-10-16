@@ -7,22 +7,21 @@
  * @param description   A tooltip that can be used optionally.
  */
 export function Readonly(readonly = true) {
-    // the original decorator
-    function readonlyInternal(target: Object, property: string | symbol): void {
-        readonlyInternalSetup(target, property.toString(), readonly);
-    }
-
-    // return the decorator
-    return readonlyInternal;
-}
-
-export function readonlyInternalSetup(target: any, key: string, readonly: boolean) {
+  function readonlyInternalSetup(target: any, key: string) {
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__isReadonly__${key}`, {
-        value: readonly,
-        enumerable: false,
-        configurable: false
+      value: readonly,
+      enumerable: false,
+      configurable: false
     });
 
+  }
+  // the original decorator
+  function readonlyInternal(target: object, property: string | symbol): void {
+    readonlyInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return readonlyInternal;
 }

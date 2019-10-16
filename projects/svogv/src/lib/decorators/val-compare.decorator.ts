@@ -8,34 +8,35 @@
  *
  */
 export function Compare(withProperty: string, msg?: string) {
-    // the original decorator
-    function compareInternal(target: Object, property: string | symbol): void {
-        compareInternalSetup(target, property.toString(), withProperty, msg);
-    }
 
-    // return the decorator
-    return compareInternal;
-}
-
-export function compareInternalSetup(target: any, key: string, withProperty: string, msg?: string) {
+  function compareInternalSetup(target: any, key: string) {
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__hasCompareProperty__${key}`, {
-        value: true,
-        enumerable: false,
-        configurable: false
+      value: true,
+      enumerable: false,
+      configurable: false
     });
 
     Object.defineProperty(target, `__withCompare__${key}`, {
-        value: withProperty,
-        enumerable: false,
-        configurable: false
+      value: withProperty,
+      enumerable: false,
+      configurable: false
     });
 
     Object.defineProperty(target, `__errCompareProperty__${key}`, {
-        value: msg
+      value: msg
         || `The field ${key} must have the same value as field ${withProperty}`,
-        enumerable: false,
-        configurable: false
+      enumerable: false,
+      configurable: false
     });
+  }
+
+  // the original decorator
+  function compareInternal(target: object, property: string | symbol): void {
+    compareInternalSetup(target, property.toString());
+  }
+
+  // return the decorator
+  return compareInternal;
 }

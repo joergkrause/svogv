@@ -2,6 +2,7 @@ import { Type, EventEmitter, Directive } from '@angular/core';
 
 import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
+import { Display, Hidden } from '../../../decorators';
 
 /**
  * Sort direction, controlled by simple string comparision or a callback.
@@ -75,7 +76,7 @@ export class DataGridModel<T> {
     if (!this.searchValue || (Object.keys(this.searchValue).length === 0 && this.searchValue.constructor === Object)) {
       return this.items;
     }
-    return this.items.filter(item => {
+    return this.items.filter((item) => {
       // tslint:disable-next-line:forin
       for (const s in this.searchValue) {
         const pattern = new RegExp(this.searchValue[s]);
@@ -205,11 +206,10 @@ export class DataGridModel<T> {
       if (!type.hasOwnProperty(p)) {
         continue;
       }
-      // either propname or decorator name
-      const propName = type[`__displayName__${p}`] || p;
-      const propDesc = type[`__displayDesc__${p}`] || p;
+      const propName = Display.Name(type, p, p);
+      const propDesc = Display.Desc(type, p, p);
       // check if hidden, show if no hidden decorator
-      const isHidden = type[`__isHidden__${p}`] || false;
+      const isHidden = Hidden.IsHidden(type, p, false);
       const header = new DataGridHeaderModel(propName, propDesc, p, isHidden);
       // sorting
       header.isSortable = type[`__isSortable__${p}`] === undefined ? true : !!type[`__isSortable__${p}`];
@@ -220,7 +220,6 @@ export class DataGridModel<T> {
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
       header.uiHint = type[`__uiHint__${p}`];
-      console.log('h', header);
       this._headers.push(header);
     }
   }

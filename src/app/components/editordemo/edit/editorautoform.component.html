@@ -4,15 +4,9 @@
       <legend>Edit current user</legend>
       <ac-autoform [formGroup]="userForm"></ac-autoform>
       <div class="row">
-        <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
-          <i class="fa fa-save"></i> Save
-        </button>
-        <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid">
-          <i class="fa fa-close"></i> Save &amp; Close
-        </button>
-        <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
-          <i class="fa fa-remove"></i> Cancel &amp; Return to List
-        </button>
+        <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+        <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid"><i class="fa fa-close"></i> Save &amp; Close</button>
+        <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()"><i class="fa fa-remove"></i> Cancel &amp; Return to List</button>
       </div>
     </fieldset>
   </form>
@@ -21,19 +15,36 @@
       Techniques used
     </div>
     <div class="card-body">
-      <p>This form makes use of the &lt;ac-editor&gt; component.</p>
+      <p>
+        This form makes use of the &lt;ac-autoform&gt; component. An object with several properties, decorated with UI instructions, created a whole
+        form.
+      </p>
       <code><pre>
  &lt;form (ngSubmit)="saveUser()" [formGroup]="myForm" role="form" class="row"><br/>
     &lt;fieldset><br/>
       &lt;legend>Edit current user&lt;/legend><br/>
       &lt;ac-autoform [userForm]="myForm">&lt;/ac-editor><br/>
 </pre></code>
+      >
       <p>
-        The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the
-        fields including validation, label, and data type specific information.
+        The form needs a name, here we used 'myForm'. The component AcAutoForm reads the associated view model and creates all the fields including
+        validation, label, and data type specific information.
       </p>
       <code>
-<pre>
+        <p>
+          The decorators can be used to achieve the following features:
+        </p>
+        <ul>
+          <li>Hide fields (exclude) from being shown (for IDs, primary keys etc)</li>
+          <li>Accept order instructions to show in particular order</li>
+          <li>Group fields into fieldsets and order the sets as well as the fields within a group</li>
+          <li>Change all labels</li>
+          <li>Control all kind of validations, including the error messages shown</li>
+        </ul>
+        <p>
+          The form tag itself, buttons and other form related stuff is not part of the control. The values are two-way bound to a model, that will change automatically.
+        </p>
+        <pre>
 export class UserViewModel {{ '{' }}<br/>
 <br/>
   @Hidden()<br/>
@@ -70,7 +81,7 @@ export class UserViewModel {{ '{' }}<br/>
   <br/>
 {{ '}' }}
 </pre>
-</code>
+      </code>
     </div>
   </div>
 </div>
