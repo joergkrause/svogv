@@ -30,7 +30,7 @@ const provider = [FormValidatorService] //, FormValidatorFromJsonService];
 })
 export class SvogvModule {
 
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<SvogvModule> {
     return {
       ngModule: SvogvModule,
       providers: provider
