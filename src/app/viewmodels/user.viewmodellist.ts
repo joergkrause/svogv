@@ -44,6 +44,6 @@ export class UserViewModelList {
 
   @UI.Display('Active', 200, 'User is active')
   @UI.Sortable(false)
-  active ? = false;
+  active?= false;
 
 }

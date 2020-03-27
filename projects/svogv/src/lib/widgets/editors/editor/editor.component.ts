@@ -28,78 +28,78 @@ export class EditorComponent implements OnInit {
   /**
    * Field name
    */
-  @Input() name: string;
+  @Input() public name: string;
   /**
    * Editor type. Default is 'text';
    */
-  @Input() type = 'text';
+  @Input() public type = 'text';
   /**
    * A character after the fields label. Default is ': ' (colon plus space);
    */
-  @Input() labelDivider = ': ';
+  @Input() public labelDivider = ': ';
   /**
    * The label's name.
    */
-  @Input() label: string;
+  @Input() public label: string;
   /**
    * A tooltip
    */
-  @Input() tooltip: string;
+  @Input() public tooltip: string;
   /**
    * The form's group object.
    */
-  @Input() formGroup: FormGroup;
+  @Input() public formGroup: FormGroup;
   /**
    * If set to true the label and the field appears in one row.
    * Otherwise the label is above the field. Default is `true`.
    */
-  @Input() inline = true;
+  @Input() public inline = true;
   /**
    * The values of the select field provided by an enum. For other fieldtypes it's being ignored.
    */
-  @Input() enumValues: any;
+  @Input() public enumValues: any;
   /**
    * The values of the select field provided by a list. For other fieldtypes it's being ignored.
    * The value shall be an Array that a `*ngFor` directive can execute.
    */
-  @Input() listValues: Array<any>;
+  @Input() public listValues: any[];
   /**
    * The start value for a range field. Other field types ignore this value.
    */
-  @Input() fromValue = 0;
+  @Input() public fromValue = 0;
   /**
    * The end value for a range field. Other field types ignore this value.
    */
-  @Input() toValue = 100;
+  @Input() public toValue = 100;
   /**
    * An optional placeholder for empty field. The default is empty (no watermark).
    */
-  @Input() waterMark = '';
+  @Input() public waterMark = '';
   /**
    * Renders the field as read only.
    */
-  @Input() readonly = false;
+  @Input() public readonly = false;
   /**
    * The value set to and read from the field.
    */
   @Output()
   @Input()
-  value: any;
+  public value: any;
 
   // additional values provided by TemplateHint decorator
-  params: { key: string; value: any }[];
+  public params: Array<{ key: string; value: any }>;
 
-  errors: Array<string>;
+  public errors: string[];
 
   constructor() {
     this.params = new Array<{ key: string; value: any }>();
   }
 
-  getParams(key: string): any {
-    return this.first(this.params.filter(e => e.key === key), 0);
+  public getParams(key: string): any {
+    return this.first(this.params.filter((e) => e.key === key), 0);
   }
 
-  first(array: Array<{ key: string; value: any }>, n: number): any {
+  public first(array: Array<{ key: string; value: any }>, n: number): any {
     if (array == null) {
       return void 0;
     }
@@ -112,10 +112,10 @@ export class EditorComponent implements OnInit {
     return array.slice(0, n);
   }
 
-  ngOnInit() {
-    this.formGroup.valueChanges.subscribe(data => this.onValueChanged(data));
+  public ngOnInit() {
+    this.formGroup.valueChanges.subscribe((data) => this.onValueChanged(data));
     // this is set by FormValidatorService
-    const editorModel = (<any>this.formGroup)['__editorModel__'];
+    const editorModel = (this.formGroup as any).__editorModel__;
     // get type from form
     if (editorModel) {
       // get elementary types, this might get overwritten later according to decorators found
@@ -136,11 +136,11 @@ export class EditorComponent implements OnInit {
       this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip || this.name;
       // render as range id there is a range definition
       if (editorModel[`__hasRangeFrom__${this.name}`] && Number(editorModel[`__hasRangeFrom__${this.name}`])) {
-        this.fromValue = <number>editorModel[`__hasRangeFrom__${this.name}`];
+        this.fromValue = editorModel[`__hasRangeFrom__${this.name}`] as number;
         this.type = 'range';
       }
       if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
-        this.toValue = <number>editorModel[`__hasRangeTo__${this.name}`];
+        this.toValue = editorModel[`__hasRangeTo__${this.name}`] as number;
         this.type = 'range';
       }
       // placeholder
@@ -149,9 +149,9 @@ export class EditorComponent implements OnInit {
       }
       // templates
       if (editorModel[`__hasTemplateHint__${this.name}`]) {
-        this.type = (<string>editorModel[`__templatehint__${this.name}`]).toLowerCase();
+        this.type = (editorModel[`__templatehint__${this.name}`] as string).toLowerCase();
         if (editorModel[`__templatehintParams__${this.name}`]) {
-          this.params = <{ key: string; value: any }[]>editorModel[`__templatehintParams__${this.name}`];
+          this.params = editorModel[`__templatehintParams__${this.name}`] as Array<{ key: string; value: any }>;
         }
       }
 

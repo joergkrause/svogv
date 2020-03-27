@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import * as wd from './widgets/index';
 
 import { FormValidatorService } from './services/formvalidator.service';
-import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.service';
+// import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.service';
 
 const SVOGV_COMPONENTS = [
   wd.DataGridComponent,
@@ -17,7 +17,7 @@ const SVOGV_COMPONENTS = [
   wd.AutoFormComponent
 ];
 
-const provider = [FormValidatorService, FormValidatorFromJsonService];
+const provider = [FormValidatorService] //, FormValidatorFromJsonService];
 
 /**
  * The actual SVOGV Module definition using the root module.

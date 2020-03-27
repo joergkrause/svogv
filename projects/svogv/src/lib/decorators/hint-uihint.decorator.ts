@@ -3,7 +3,8 @@
 const uiHint = 'uiHint';
 /**
  * The UiHint decorator.
- *
+ * Currently it can contain any set of style rules that apply to the &lt;th&gt; element that forms the grid's table header cells.
+ * The application makes use of the [ngStyle] directive. The object's structure must be made in a way [ngStyle] can handle it.
  *
  * @param hide  The style definition.
  */
@@ -28,4 +29,4 @@ export function UiHint(uiHintRule: StyleRules) {
   return uiHintInternal;
 }
 
-UiHint.HintRule = (target: object, key: string, def?: string) => target[`__${uiHint}__${key}`] || def;
+UiHint.HintRule = (target: object, key: string, def?: {}) => target[`__${uiHint}__${key}`] || def;

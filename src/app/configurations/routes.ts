@@ -11,12 +11,12 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: cmp.DashboardComponent,
-    data: { 'title': 'Dashboard', 'subtitle': 'Dashboard', 'info': true }
+    data: { title: 'Dashboard', subtitle: 'Dashboard', info: true }
   },
   {
     path: 'widget/tree',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Tree View', 'subtitle': 'All features of tree', 'breadcrumb': true, 'features': true },
+    data: { title: 'Tree View', subtitle: 'All features of tree', breadcrumb: true, features: true },
     children: [
       {
         path: '',
@@ -28,8 +28,8 @@ export const routes: Routes = [
         path: 'tree',
         component: cmp.TreeviewDemoComponent,
         data: {
-          'title': 'Tree View', 'subtitle': 'Tree Demo',
-          'active': true, 'disabled': false, 'breadcrumb': true
+          title: 'Tree View', subtitle: 'Tree Demo',
+          active: true, disabled: false, breadcrumb: true
         }
       }
     ]
@@ -37,44 +37,44 @@ export const routes: Routes = [
   {
     path: 'widget/grid',
     component: cmp.WidgetDemoComponent,
-    data: { 'title': 'Data Grid', 'subtitle': 'All features of grid', 'breadcrumb': true, 'features': true },
+    data: { title: 'Data Grid', subtitle: 'All features of grid', breadcrumb: true, features: true },
     children: [
       {
         path: 'simple',
         component: cmp.GridDemoSimpleComponent,
         data: {
-          'title': 'Grid (simple)', 'subtitle': 'Grid Demo (simple)',
-          'active': false, 'disabled': false, 'breadcrumb': true
+          title: 'Grid (simple)', subtitle: 'Grid Demo (simple)',
+          active: false, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'template',
         component: cmp.GridDemoTemplateComponent,
         data: {
-          'title': 'Grid (templates)', 'subtitle': 'Grid Demo with templates for content manipulation',
-          'active': false, 'disabled': false, 'breadcrumb': true
+          title: 'Grid (templates)', subtitle: 'Grid Demo with templates for content manipulation',
+          active: false, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'advanced',
         component: cmp.GridDemoComponent,
         data: {
-          'title': 'Grid (advanced)', 'subtitle': 'Grid Demo (advanced)',
-          'active': false, 'disabled': false, 'breadcrumb': true
+          title: 'Grid (advanced)', subtitle: 'Grid Demo (advanced)',
+          active: false, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'filter',
         component: cmp.EditorListComponent,
         data: {
-          'title': 'Filter', 'subtitle': 'Filter', 'active': true, 'disabled': false, 'breadcrumb': true
+          title: 'Filter', subtitle: 'Filter', active: true, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'pagination',
         component: cmp.EditorListComponent,
         data: {
-          'title': 'Pagination', 'subtitle': 'Pagination', 'active': true, 'disabled': false, 'breadcrumb': true
+          title: 'Pagination', subtitle: 'Pagination', active: true, disabled: false, breadcrumb: true
         }
       }
     ]
@@ -82,7 +82,7 @@ export const routes: Routes = [
   {
     path: 'editor',
     component: cmp.EditorDemoComponent,
-    data: { 'title': 'Editors', 'subtitle': 'Editor and Grid', 'breadcrumb': true, 'features': true },
+    data: { title: 'Editors', subtitle: 'Editor and Grid', breadcrumb: true, features: true },
     children: [
       {
         path: '',
@@ -93,36 +93,36 @@ export const routes: Routes = [
         path: 'list',
         component: cmp.EditorListComponent,
         data: {
-          'title': 'Form Elements', 'subtitle': 'Editor Demo', 'active': true, 'disabled': false, 'breadcrumb': true
+          title: 'Form Elements', subtitle: 'Editor Demo', active: true, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'new',
         component: cmp.EditorNewComponent,
         data: {
-          'title': 'Simple Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': false, 'breadcrumb': true
+          title: 'Simple Form', subtitle: 'Editor Demo', active: false, disabled: false, breadcrumb: true
         }
       },
       {
         path: 'edit/:id',
         component: cmp.EditorFormComponent,
         data: {
-          'title': 'Edit Regular Form', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true
+          title: 'Edit Regular Form', subtitle: 'Editor Demo', active: false, disabled: true, private: true
         }
       },
       {
         path: 'edit-autoform/:id',
         component: cmp.EditorAutoformComponent,
         data: {
-          'title': 'Edit Autoform',
-          'subtitle': 'Editor Autoform Demo', 'active': false, 'disabled': true, 'private': true
+          title: 'Edit Autoform',
+          subtitle: 'Editor Autoform Demo', active: false, disabled: true, private: true
         }
       },
       {
         path: 'delete/:id',
         component: cmp.EditorDeleteComponent,
         data: {
-          'title': 'Delete Element', 'subtitle': 'Editor Demo', 'active': false, 'disabled': true, 'private': true
+          title: 'Delete Element', subtitle: 'Editor Demo', active: false, disabled: true, private: true
         }
       },
       {
@@ -135,11 +135,11 @@ export const routes: Routes = [
   {
     path: 'about',
     component: cmp.AboutComponent,
-    data: { 'title': 'About', 'subtitle': 'About this app', 'breadcrumb': true, 'info': true }
+    data: { title: 'About', subtitle: 'About this app', breadcrumb: true, info: true }
   },
   {
     path: 'docs',
     component: cmp.DocsComponent,
-    data: { 'title': 'API Docs', 'subtitle': 'The API documentation', 'breadcrumb': true, 'info': true }
+    data: { title: 'API Docs', subtitle: 'The API documentation', breadcrumb: true, info: true }
   }
 ];

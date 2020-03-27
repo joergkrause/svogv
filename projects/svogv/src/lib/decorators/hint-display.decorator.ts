@@ -58,3 +58,5 @@ Display.Order = (target: object, key: string, def?: string) => target[`__${displ
  * Internal access to the provided meta data value for the description property.
  */
 Display.Desc = (target: object, key: string, def?: string) => target[`__${displayDesc}__${key}`] || def;
+
+Display.internalSetup = Display.internalSetup;

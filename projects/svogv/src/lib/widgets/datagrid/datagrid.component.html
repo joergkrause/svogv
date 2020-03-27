@@ -1,4 +1,4 @@
-<div class="row" *ngIf="model">
+<div class="row" *ngIf="model && model.headers">
   <div class="col-md-12">
     <table class="table table-condensed">
       <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">
@@ -12,30 +12,24 @@
         <tr [ngStyle]="columnStyle ? columnStyle.header : null" >
           <th *ngFor="let header of model.headers"
               [ngClass]="{ 'sortableHeader': header.isSortable }"
-              [ngStyle]="header.uiHint"
+              [ngStyle]="header.uiHint || {}"
               [title]="header.desc"
               (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">
             <span class="headerText">{{ header.text }}</span>
             <span class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null" *ngIf="header.isSortable">
               <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)"
                       class="up"
-                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Ascending"
+                      [hidden]="model.sortDirection[header.prop] === directionEnumHelper.Descending"
                       [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-asc"></i>
               </button>
               <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)"
                       class="down"
-                      [hidden]="model.sortColumn[header.prop] === directionEnumHelper.Descending"
+                      [hidden]="model.sortDirection[header.prop] === directionEnumHelper.Ascending"
                       [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">
                 <i class="fa fa-sort-desc"></i>
               </button>
             </span>
-            <button (click)="model.removeColumn(header.prop)"
-                    class="rearrange"
-                    [ngStyle]="columnStyle ? columnStyle.headerRemoveButton : null"
-                    *ngIf="reArrangeColumns">
-              <i class="fa fa-remove"></i>
-            </button>
           </th>
           <th *ngIf="showActions">
             {{ textButtonsHeader }}

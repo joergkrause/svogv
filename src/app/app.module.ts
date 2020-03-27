@@ -11,10 +11,11 @@ import * as cmp from './components';
 // routes' configuration
 import { routes } from './configurations/routes';
 
-import { FormValidatorService, FormValidatorFromJsonService, SvogvModule } from 'svogv';
+import { FormValidatorService, SvogvModule } from 'svogv'; // FormValidatorFromJsonService
 import { PercentPipe } from './viewmodels/pipe/percent.pipe';
 import { MinitabsComponent } from './components/ui/tabs/minitabs/minitabs.component';
 import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';
+import { DropdownDirective } from './directives/dropdown.directive';
 
 @NgModule({
   imports: [
@@ -52,7 +53,8 @@ import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';
     , cmp.InfoBoxComponent,
     PercentPipe,
     MinitabsComponent,
-    TabsComponent
+    TabsComponent,
+    DropdownDirective
   ],
   bootstrap: [cmp.RootComponent],
   providers: [
@@ -60,7 +62,7 @@ import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';
       SiteApiService        // just for demo to get some static data
     , EmitterService        // simple publish/subscribe patterm to distribute data
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
-    , FormValidatorService, FormValidatorFromJsonService  // the forms support, manages the decorators
+    , FormValidatorService  // the forms support, manages the decorators FormValidatorFromJsonService
   ]
 })
 export class AppModule {

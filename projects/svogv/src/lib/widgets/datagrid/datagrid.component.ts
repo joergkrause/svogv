@@ -25,24 +25,24 @@ import { DatagridStyles } from './models/datagridstyle.model';
   styleUrls: ['./datagrid.component.scss']
 })
 export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
-  directionEnumHelper = Direction;
+  public directionEnumHelper = Direction;
 
-  @ViewChild('string', { static: true }) stringFallback: TemplateRef<any>;
-  @ContentChild('string', { static: true }) string: TemplateRef<any>;
+  @ViewChild('string', { static: true }) public stringFallback: TemplateRef<any>;
+  @ContentChild('string', { static: true }) public string: TemplateRef<any>;
 
-  @ViewChild('boolean', { static: true }) booleanFallback: TemplateRef<any>;
-  @ContentChild('boolean', { static: true }) boolean: TemplateRef<any>;
+  @ViewChild('boolean', { static: true }) public booleanFallback: TemplateRef<any>;
+  @ContentChild('boolean', { static: true }) public boolean: TemplateRef<any>;
 
-  @ViewChild('date', { static: true }) dateFallback: TemplateRef<any>;
-  @ContentChild('date', { static: true }) date: TemplateRef<any>;
+  @ViewChild('date', { static: true }) public dateFallback: TemplateRef<any>;
+  @ContentChild('date', { static: true }) public date: TemplateRef<any>;
 
-  @ViewChild('enum', { static: true }) enumFallback: TemplateRef<any>;
-  @ContentChild('enum', { static: true }) enum: TemplateRef<any>;
+  @ViewChild('enum', { static: true }) public enumFallback: TemplateRef<any>;
+  @ContentChild('enum', { static: true }) public enum: TemplateRef<any>;
 
-  @ViewChild('number', { static: true }) numberFallback: TemplateRef<any>;
-  @ContentChild('number', { static: true }) number: TemplateRef<any>;
+  @ViewChild('number', { static: true }) public numberFallback: TemplateRef<any>;
+  @ContentChild('number', { static: true }) public number: TemplateRef<any>;
 
-  @Input() externals: { [key: string]: any } = {};
+  @Input() public externals: { [key: string]: any } = {};
 
   // @ViewChild(TemplateRef) template: TemplateRef<any>;
 
@@ -50,7 +50,7 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
    * Override the internal styles by giving directly CSS rules based on the column tags.
    */
   @Input()
-  columnStyle: DatagridStyles;
+  public columnStyle: DatagridStyles;
 
   /**
    * The model that makes up the content. Shall provide properties with decorators to control appearance.
@@ -136,15 +136,17 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output()
   public deleteItem: EventEmitter<any> = new EventEmitter<any>();
 
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {
+  public ngOnInit(): void {
+    console.log('Model', this.model);
+  }
+  public ngAfterViewInit(): void {
     if (this.model) {
       this.model.onEdit.subscribe(item => this.editItem.emit(item));
       this.model.onDelete.subscribe(item => this.deleteItem.emit(item));
     }
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     if (this.model) {
       this.model.onEdit.unsubscribe();
       this.model.onDelete.unsubscribe();

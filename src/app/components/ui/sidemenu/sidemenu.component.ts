@@ -1,4 +1,4 @@
-﻿import { Component, Input, OnInit } from '@angular/core';
+﻿import { Component, Input } from '@angular/core';
 import { AcMenu } from './models/ac-menu';
 
 @Component({
@@ -23,25 +23,16 @@ import { AcMenu } from './models/ac-menu';
               </ng-container>
             </nav>`
 })
-export class SideMenuComponent implements OnInit {
+export class SideMenuComponent {
 
   /**
    * The menu's data.
    */
-  @Input() menu: AcMenu;
+  @Input() public menu: AcMenu;
   /**
    * Format links so they use [routerlink] syntax. Default is true.
    */
-  @Input() useRouterLinks = true;
-
-  constructor() {
-    console.log('AcSideMenu ctor');
-    // create Menu dynamically
-  }
-
-  ngOnInit() {
-    console.log('AcSideMenu onInit');
-  }
+  @Input() public useRouterLinks = true;
 
   // tslint:disable-next-line:no-unused-variable
   private itemType(item: any): string {
@@ -51,6 +42,5 @@ export class SideMenuComponent implements OnInit {
     const itemType: string = item['__name__'];
     return itemType;
   }
-
 
 }

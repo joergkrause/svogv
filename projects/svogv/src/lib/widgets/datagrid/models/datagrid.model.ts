@@ -2,7 +2,7 @@ import { Type, EventEmitter, Directive } from '@angular/core';
 
 import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
-import { Display, Hidden } from '../../../decorators';
+import { Display, Hidden, UiHint } from '../../../decorators';
 
 /**
  * Sort direction, controlled by simple string comparision or a callback.
@@ -24,15 +24,6 @@ export enum Direction {
  * - paging
  */
 export class DataGridModel<T> {
-  constructor(items: T[], type: Type<T>, pageSize = 10) {
-    this._items = items;
-    this.pageSize = pageSize;
-    const typeInstance = new type();
-    if (typeInstance) {
-      // make header from decorators, omit if null
-      this.createHeadersForType(typeInstance);
-    }
-  }
 
   /**
    * Returns the number of rows regardless the actual filter (the total).
@@ -95,26 +86,23 @@ export class DataGridModel<T> {
   /**
    * Get all headers (column names) and their properties.
    */
-  public get headers(): Array<DataGridHeaderModel> {
-    return this._headers.filter(h => !h.hidden);
+  public get headers(): DataGridHeaderModel[] {
+    return this._headers.filter((h) => !h.hidden);
   }
 
   /**
    * Returns the columns currently not shown. @see addColumn and @see removeColumn for more information.
    */
-  public get headersNotVisible(): Array<DataGridHeaderModel> {
-    return this._headers.filter(h => h.hidden);
+  public get headersNotVisible(): DataGridHeaderModel[] {
+    return this._headers.filter((h) => h.hidden);
   }
   /**
    * The search value filters the rows. Provide the property name and the filter instruction. Search is pure client.
    */
-  searchValue: { [prop: string]: any } = {};
+  public searchValue: { [prop: string]: any } = {};
 
-  currentPageIndex = 1;
-  pageSize: number;
-  private _items: T[];
-
-  private _headers: Array<DataGridHeaderModel>;
+  public currentPageIndex = 1;
+  public pageSize: number;
 
   /**
    * Event fired if user clicks Edit button.
@@ -130,13 +118,25 @@ export class DataGridModel<T> {
    * Current sort direction per column.
    */
   public sortDirection: { [column: string]: Direction } = {};
+  private _items: T[];
+
+  private _headers: DataGridHeaderModel[];
+  constructor(items: T[], type: Type<T>, pageSize = 10) {
+    this._items = items;
+    this.pageSize = pageSize;
+    const typeInstance = new type();
+    if (typeInstance) {
+      // make header from decorators, omit if null
+      this.createHeadersForType(typeInstance);
+    }
+  }
 
   /**
    * Simple sort fucntion that makes a array sort call for the specified column.
    * @param colName The column which has to be sorted after.
-   // tslint:disable-next-line:max-line-length
+   * // tslint:disable-next-line:max-line-length
    * @param dir The order, descended is *desc*, any other string is ascending.
-                If nothing is provided, the direction toggles. Initital value is *ascending*.
+   *            If nothing is provided, the direction toggles. Initital value is *ascending*.
    */
   public sortColumn(colName: string, dir: Direction, sortCallback?: (a, b) => 1 | -1 | 0) {
     if (!dir) {
@@ -163,7 +163,7 @@ export class DataGridModel<T> {
    * in the headers collection and can be made visible again by calling @see addColumn later.
    */
   public removeColumn(colname: string) {
-    const col = this._headers.find(h => h.prop === colname);
+    const col = this._headers.find((h) => h.prop === colname);
     if (col) {
       col.hidden = true;
     }
@@ -175,7 +175,7 @@ export class DataGridModel<T> {
    * If the column name provided does not exists, the method does nothing.
    */
   public addColumn(colname: string) {
-    const col = this._headers.find(h => h.prop === colname);
+    const col = this._headers.find((h) => h.prop === colname);
     if (col) {
       col.hidden = false;
     }
@@ -219,7 +219,8 @@ export class DataGridModel<T> {
       header.templateHintParams = type[`__templatehintParams__${p}`];
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
-      header.uiHint = type[`__uiHint__${p}`];
+      header.uiHint = UiHint.HintRule(type, p, {});
+      console.log('Header', header);
       this._headers.push(header);
     }
   }

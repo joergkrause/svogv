@@ -18,7 +18,7 @@ import { validateCompare } from './validators/compare.validator';
 @Injectable()
 export class FormValidatorService {
   private fb: FormBuilder;
-
+  
   constructor(@Inject(FormBuilder) fb: FormBuilder) {
     this.fb = fb;
   }

@@ -2,7 +2,8 @@
   <div class="row">
     <div class="col-12">
       <div class="alert alert-info">
-        A simple demo for the grid showing the basic features. Almost completely controlled by a distinct view model through decorators.
+        A simple demo for the grid showing the basic features. Almost completely
+        controlled by a distinct view model through decorators.
       </div>
     </div>
   </div>
@@ -15,7 +16,8 @@
         </div>
         <div class="card-body">
           <p>
-            This example shows simple styling of the grid using colors. One can style the various parts:
+            This example shows simple styling of the grid using colors. One can
+            style the various parts:
           </p>
           <ul>
             <li><code>first</code>: The first column</li>
@@ -23,15 +25,24 @@
             <li><code>last</code>: The last column</li>
             <li><code>group</code>:</li>
             <li><code>header</code>: The header row</li>
-            <li><code>headerButton</code>: The container for all header cell buttons</li>
-            <li><code>headerSortButton</code>: The two sort buttons (up/down)</li>
+            <li>
+              <code>headerButton</code>: The container for all header cell
+              buttons
+            </li>
+            <li>
+              <code>headerSortButton</code>: The two sort buttons (up/down)
+            </li>
             <li><code>headerRemoveButton</code>: The column remove button</li>
             <li><code>footer</code>: the footer area</li>
             <li><code>actionCell</code>: The cell with the action buttons</li>
           </ul>
-          <p>One can apply any regular styles, such as <code>'background-color'</code>.</p>
           <p>
-            The data handling is controlled by the model itself, using decorators.
+            One can apply any regular styles, such as
+            <code>'background-color'</code>.
+          </p>
+          <p>
+            The data handling is controlled by the model itself, using
+            decorators.
           </p>
         </div>
       </div>
@@ -48,20 +59,27 @@
           <pre>
 &lt;ac-datagrid [model]="model"
              [showActions]="false"
-             [columnStyle]="{{ '{' }} footer: {{ '{' }} 'background-color': 'silver' },
-                              first: {{ '{' }} 'background-color': 'orange' },
-                              header: {{ '{' }} color: 'white', 'background-color': 'black' },
-                              headerSortButton: {{ '{' }} color: 'yellow' }
+             [columnStyle]="{{ "{" }} footer: {{
+              "{"
+            }} 'background-color': 'silver' },
+                              first: {{ "{" }} 'background-color': 'orange' },
+                              header: {{
+              "{"
+            }} color: 'white', 'background-color': 'black' },
+                              headerSortButton: {{ "{" }} color: 'yellow' }
                              }" &gt;
 &lt;/ac-datagrid&gt;</pre
           >
-          <p>It shows how to change the styles of the particular parts of the grid.</p>
+          <p>
+            It shows how to change the styles of the particular parts of the
+            grid.
+          </p>
           <p>The data are coming from the following model:</p>
           <pre>
 import * as Validator from 'svogv';
-import {{ '{' }} PercentPipe } from './pipe/percent.pipe';
+import {{ "{" }} PercentPipe } from './pipe/percent.pipe';
 
-export class UserViewModelList {{ '{' }}
+export class UserViewModelList {{ "{" }}
 
   @Validator.Hidden()
   id = 0;
@@ -100,13 +118,25 @@ export class UserViewModelList {{ '{' }}
 }</pre
           >
           <p>
-            Not all decorators are relevant for tables, some support the integrated editors. Especially useful for tables are:
+            Not all decorators are relevant for tables, some support the
+            integrated editors. Especially useful for tables are:
           </p>
           <ul>
-            <li><code>Display</code>: The name of the title (header cell) and tooltip</li>
-            <li><code>FormatPipe</code>: A pipe applied to all values before showing</li>
-            <li><code>Hidden</code>: The property does not render in the table</li>
-            <li><code>Sortable</code>: Suppress sorting or provide a custom sort function</li>
+            <li>
+              <code>Display</code>: The name of the title (header cell) and
+              tooltip
+            </li>
+            <li>
+              <code>FormatPipe</code>: A pipe applied to all values before
+              showing
+            </li>
+            <li>
+              <code>Hidden</code>: The property does not render in the table
+            </li>
+            <li>
+              <code>Sortable</code>: Suppress sorting or provide a custom sort
+              function
+            </li>
           </ul>
         </div>
       </div>
@@ -117,50 +147,89 @@ export class UserViewModelList {{ '{' }}
       <form>
         <fieldset>
           <legend>Grid Features</legend>
-          <div class="form-group">
-            <label>Color of Footer</label>
-            <input type="color" name="footerColor" list="presetColors" value="#00ff00" [(ngModel)]="footerColor" class="form-control col-1" />
-            <datalist id="presetColors">
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </datalist>
+          <div class="row">
+            <div class="form-group col-3">
+              <label>Color of Footer</label>
+              <input
+                type="color"
+                name="footerColor"
+                list="presetColors"
+                value="#00ff00"
+                [(ngModel)]="footerColor"
+                class="form-control col-5"
+              />
+              <datalist id="presetColors">
+                <option value="#ff0000">Red</option>
+                <option value="#00ff00">Green</option>
+                <option value="#0000ff">Blue</option>
+              </datalist>
+            </div>
+            <div class="form-group col-3">
+              <label>Color of First Column</label>
+              <input
+                type="color"
+                name="firstColor"
+                list="presetColors"
+                value="#aaaaaa"
+                [(ngModel)]="firstColor"
+                class="form-control col-5"
+              />
+              <datalist id="presetColors">
+                <option value="#ff0000">Red</option>
+                <option value="#00ff00">Green</option>
+                <option value="#0000ff">Blue</option>
+              </datalist>
+            </div>
+            <div class="form-group col-3">
+              <label>Color of Sort Icons</label>
+              <input
+                type="color"
+                name="sortIconColor"
+                list="presetColors"
+                value="#aaaaaa"
+                [(ngModel)]="sortIconColor"
+                class="form-control col-5"
+              />
+              <datalist id="presetColors">
+                <option value="#ff0000">Red</option>
+                <option value="#00ff00">Green</option>
+                <option value="#0000ff">Blue</option>
+              </datalist>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Color of First Column</label>
-            <input type="color" name="firstColor" list="presetColors" value="#aaaaaa" [(ngModel)]="firstColor" class="form-control col-1" />
-            <datalist id="presetColors">
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label>Color of Header Foreground</label>
-            <input type="color" name="headerForeColor" list="presetColors" value="#aaaaaa" [(ngModel)]="headerForeColor" class="form-control col-1" />
-            <datalist id="presetColors">
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label>Color of Header Background</label>
-            <input type="color" name="headerBackColor" list="presetColors" value="#aaaaaa" [(ngModel)]="headerBackColor" class="form-control col-1" />
-            <datalist id="presetColors">
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </datalist>
-          </div>
-          <div class="form-group">
-            <label>Color of Sort Icons</label>
-            <input type="color" name="sortIconColor" list="presetColors" value="#aaaaaa" [(ngModel)]="sortIconColor" class="form-control col-1" />
-            <datalist id="presetColors">
-              <option value="#ff0000">Red</option>
-              <option value="#00ff00">Green</option>
-              <option value="#0000ff">Blue</option>
-            </datalist>
+          <div class="row">
+            <div class="form-group col-5">
+              <label>Color of Header Foreground</label>
+              <input
+                type="color"
+                name="headerForeColor"
+                list="presetColors"
+                value="#aaaaaa"
+                [(ngModel)]="headerForeColor"
+                class="form-control col-5"
+              />
+              <datalist id="presetColors">
+                <option value="#ff0000">Red</option>
+                <option value="#00ff00">Green</option>
+                <option value="#0000ff">Blue</option>
+              </datalist>
+            </div>
+            <div class="form-group col-5">
+              <label>Color of Header Background</label>
+              <input
+                type="color"
+                name="headerBackColor"
+                list="presetColors"
+                value="#aaaaaa"
+                [(ngModel)]="headerBackColor"
+                class="form-control col-5"
+              />
+              <datalist id="presetColors">
+                <option value="#ff0000">Red</option>
+                <option value="#00ff00">Green</option>
+                <option value="#0000ff">Blue</option>
+              </datalist>
+            </div>
           </div>
         </fieldset>
       </form>
@@ -170,7 +239,10 @@ export class UserViewModelList {{ '{' }}
         [columnStyle]="{
           footer: { 'background-color': footerColor },
           first: { 'background-color': firstColor },
-          header: { color: headerForeColor, 'background-color': headerBackColor },
+          header: {
+            color: headerForeColor,
+            'background-color': headerBackColor
+          },
           headerSortButton: { color: sortIconColor }
         }"
       ></ac-datagrid>

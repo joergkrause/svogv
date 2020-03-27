@@ -8,7 +8,7 @@ import { FormControl, FormGroup } from '@angular/forms';
  *
  */
 export function validateRange(f: number | Date, t: number | Date) {
-  return function(c: FormControl) {
+  return function (c: FormControl) {
     if ((Number(f) || Number(t)) && Number(c.value)) {
       const fr = Number(f);
       const to = Number(t);
@@ -16,10 +16,10 @@ export function validateRange(f: number | Date, t: number | Date) {
       return (!fr || v >= fr) && (!to || v <= to)
         ? null
         : {
-            range: {
-              valid: false
-            }
-          };
+          range: {
+            valid: false
+          }
+        };
     }
     if ((Date.parse(f.toString()) || Date.parse(t.toString())) && Date.parse(c.value)) {
       const fr = Date.parse(f.toString());
@@ -28,10 +28,10 @@ export function validateRange(f: number | Date, t: number | Date) {
       return (!fr || v >= fr) && (!to || v <= to)
         ? null
         : {
-            range: {
-              valid: false
-            }
-          };
+          range: {
+            valid: false
+          }
+        };
     }
   };
 }
