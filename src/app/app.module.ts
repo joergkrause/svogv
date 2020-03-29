@@ -29,7 +29,6 @@ import { DropdownDirective } from './directives/dropdown.directive';
   declarations: [
     // Demo app
     cmp.RootComponent
-    , cmp.DashboardComponent
     // Editor, Validation & Grid
     , cmp.EditorDemoComponent
     , cmp.EditorNewComponent
@@ -44,11 +43,8 @@ import { DropdownDirective } from './directives/dropdown.directive';
     , cmp.GridDemoComponent
     , cmp.TreeviewDemoComponent
     // Custom Widgets just for Demo
-    , cmp.SideMenuComponent
-    , cmp.BreadcrumbComponent
     , cmp.TabsComponent
-    , cmp.MinitabsComponent
-    , cmp.InfoBoxComponent,
+    , cmp.MinitabsComponent,
     PercentPipe,
     MinitabsComponent,
     TabsComponent,

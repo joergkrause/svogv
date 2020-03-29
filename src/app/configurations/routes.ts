@@ -4,14 +4,8 @@ import * as cmp from '../components';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'editor',
     pathMatch: 'full'
-  },
-  // app paths
-  {
-    path: 'dashboard',
-    component: cmp.DashboardComponent,
-    data: { title: 'Dashboard', subtitle: 'Dashboard', info: true }
   },
   {
     path: 'widget/tree',

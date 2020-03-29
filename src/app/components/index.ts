@@ -1,7 +1,6 @@
 ﻿// root and page management
 export * from './root/root.component';
 // app pages and common ui components
-export * from './dashboard/app-dashboard.component';
 export * from './editordemo/editordemo.component';
 // app : widgets
 export * from './widgetdemo/widgets/griddemosimple.component';
