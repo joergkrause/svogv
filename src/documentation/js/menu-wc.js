@@ -99,13 +99,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/SvogvModule.html" data-type="entity-link">SvogvModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' : 'data-target="#xs-injectables-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' }>
+                                        'data-target="#injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' : 'data-target="#xs-injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' :
-                                        'id="xs-injectables-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' :
+                                        'id="xs-injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
                                         <li class="link">
                                             <a href="injectables/FormValidatorService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>FormValidatorService</a>
@@ -114,13 +114,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' : 'data-target="#xs-pipes-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' }>
+                                            'data-target="#pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' : 'data-target="#xs-pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' :
-                                            'id="xs-pipes-links-module-SvogvModule-6d9fc3e0c406522ae072e5fe8dcb4830"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' :
+                                            'id="xs-pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
                                             <li class="link">
                                                 <a href="pipes/FormatDataPipe.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">FormatDataPipe</a>

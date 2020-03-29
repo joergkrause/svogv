@@ -95,10 +95,10 @@ export type validatorType = {
  */
 export type compareType = {
   compare:
-    | {
-        fieldToCompare: string;
-      }
-    | validatorType;
+  | {
+    fieldToCompare: string;
+  }
+  | validatorType;
 };
 /**
  * Email
@@ -111,41 +111,41 @@ export type emailType = {
  */
 export type maxlengthType = {
   maxlength:
-    | {
-        max: number;
-      }
-    | validatorType;
+  | {
+    max: number;
+  }
+  | validatorType;
 };
 /**
  * Minimum allowed length (string only)
  */
 export type minlengthType = {
   minlength:
-    | {
-        min: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+  }
+  | validatorType;
 };
 /**
  * Any regex pattern
  */
 export type patternType = {
   pattern:
-    | {
-        pattern: string | RegExp;
-      }
-    | validatorType;
+  | {
+    pattern: string | RegExp;
+  }
+  | validatorType;
 };
 /**
  * A range for number or Date only.
  */
 export type rangeType = {
   range:
-    | {
-        from: number | Date;
-        to: number | Date;
-      }
-    | validatorType;
+  | {
+    from: number | Date;
+    to: number | Date;
+  }
+  | validatorType;
 };
 /**
  * This field is mandatory.
@@ -158,11 +158,11 @@ export type requiredType = {
  */
 export type stringLengthType = {
   stringlength:
-    | {
-        min: number;
-        max: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+    max: number;
+  }
+  | validatorType;
 };
 
 /**
@@ -184,16 +184,16 @@ export type stringLengthType = {
  */
 export interface FormValidatorModel {
   [field: string]:
-    | displayType
-    | displayGroupType
-    | formatType
-    | hiddenType
-    | placeHolderType
-    | compareType
-    | maxlengthType
-    | minlengthType
-    | patternType
-    | stringLengthType
-    | emailType
-    | requiredType;
+  | displayType
+  | displayGroupType
+  | formatType
+  | hiddenType
+  | placeHolderType
+  | compareType
+  | maxlengthType
+  | minlengthType
+  | patternType
+  | stringLengthType
+  | emailType
+  | requiredType;
 }

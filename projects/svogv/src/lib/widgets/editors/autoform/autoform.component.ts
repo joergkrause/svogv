@@ -30,13 +30,13 @@ export class AutoFormComponent implements OnInit {
   @Input()
   public ungroupedAfter = true;
 
-  public editors: Array<{ key: number; editor: string }>;
-  public groups: Array<{
+  public editors: { key: number; editor: string }[];
+  public groups: {
     key: number;
     name: string;
     desc: string;
-    editors: Array<{ key: number; editor: string }>;
-  }>;
+    editors: { key: number; editor: string }[];
+  }[];
 
   constructor() {
     this.editors = new Array<{ key: number; editor: string }>();
@@ -44,7 +44,7 @@ export class AutoFormComponent implements OnInit {
       key: number;
       name: string;
       desc: string;
-      editors: Array<{ key: number; editor: string }>;
+      editors: { key: number; editor: string }[];
     }>();
   }
 

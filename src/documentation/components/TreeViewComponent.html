@@ -635,36 +635,36 @@ import { TreeNodeModel } from &#x27;./models&#x27;;
  * &lt;example-url&gt;/#/widget/tree&lt;/example-url&gt;
  */
 @Component({
-    selector: &#x27;ac-tree&#x27;,
-    templateUrl: &#x27;./treeview.component.html&#x27;,
-    styles: [&#x27;.treeview { list-style: none; margin-left: -25px; }&#x27;]
+  selector: &#x27;ac-tree&#x27;,
+  templateUrl: &#x27;./treeview.component.html&#x27;,
+  styles: [&#x27;.treeview { list-style: none; margin-left: -25px; }&#x27;]
 }) //
 export class TreeViewComponent {
-    @Input() nodes: TreeNodeModel;
-    @Output() nodeClick: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
-    @Output() checkChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
-    @Output() selectedChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
-    @Output() collapseChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
+  @Input() nodes: TreeNodeModel;
+  @Output() nodeClick: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
+  @Output() checkChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
+  @Output() selectedChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
+  @Output() collapseChanged: EventEmitter&lt;TreeNodeModel&gt; &#x3D; new EventEmitter&lt;TreeNodeModel&gt;();
 
-    constructor() {
+  constructor() {
 
-    }
+  }
 
-    onNodeClick(node: TreeNodeModel) {
-        this.nodeClick.emit(node);
-    }
+  onNodeClick(node: TreeNodeModel) {
+    this.nodeClick.emit(node);
+  }
 
-    onCheckChanged(node: TreeNodeModel) {
-        this.checkChanged.emit(node);
-    }
+  onCheckChanged(node: TreeNodeModel) {
+    this.checkChanged.emit(node);
+  }
 
-    onSelectedChanged(node: TreeNodeModel) {
-        this.selectedChanged.emit(node);
-    }
+  onSelectedChanged(node: TreeNodeModel) {
+    this.selectedChanged.emit(node);
+  }
 
-    onCollapseChanged(node: TreeNodeModel) {
-        this.collapseChanged.emit(node);
-    }
+  onCollapseChanged(node: TreeNodeModel) {
+    this.collapseChanged.emit(node);
+  }
 
 }
 </code></pre>

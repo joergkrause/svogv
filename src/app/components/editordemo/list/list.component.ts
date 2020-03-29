@@ -17,7 +17,6 @@ export class EditorListComponent implements OnInit, OnDestroy {
   public btnToggle: boolean;
 
   constructor(public apiService: SiteApiService, public router: Router) {
-    console.log('Users&List ctor');
   }
 
   ngOnInit() {
@@ -38,7 +37,7 @@ export class EditorListComponent implements OnInit, OnDestroy {
     return { [this.searchProp]: this.searchItem };
   }
 
-  private renderData(data: Array<SimpleUserViewModelList>) {
+  private renderData(data: SimpleUserViewModelList[]) {
     // we get a regular array here, but grid expects GridData for proper rendering
     this.users = new DataGridModel<SimpleUserViewModelList>(data, SimpleUserViewModelList);
     this.users.onEdit.subscribe(user => this.editUser(user));

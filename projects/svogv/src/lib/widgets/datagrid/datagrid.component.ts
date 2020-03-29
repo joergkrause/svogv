@@ -34,7 +34,7 @@ import { DatagridStyles } from './models/datagridstyle.model';
  *
  * ~~~typescript
  * const data: UserViewModel[] = this.dataSource; // provide a simple array here
-   this.model = new DataGridModel<UserViewModel>(data, UserViewModel);
+ *  this.model = new DataGridModel<UserViewModel>(data, UserViewModel);
  * ~~~
  *
  * The class {@link DataGridModel} controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
@@ -54,11 +54,11 @@ import { DatagridStyles } from './models/datagridstyle.model';
  * <example-url>/#/widget/grid</example-url>
  *
  * @example
-   <ac-datagrid
-       [model]="model"
-       [showActions]="false"
-       [columnStyle]=""
-     ></ac-datagrid>
+ *  <ac-datagrid
+ *      [model]="model"
+ *      [showActions]="false"
+ *      [columnStyle]=""
+ *  ></ac-datagrid>
  */
 @Component({
   selector: 'ac-datagrid',

@@ -7,10 +7,10 @@ import { StyleRules } from './datagridstyle.model';
 export class DataGridHeaderModel {
   /**
    * The ctor
-   * @param text: The text to display.
-   * @param desc: A tooltip that is shown on mouseover (using the `title` attribute).
-   * @param prop: The propertie's internal name.
-   * @param hidden: optionally set a field as hidden and hence do not show in the grid.
+   * @param text The text to display.
+   * @param desc A tooltip that is shown on mouseover (using the `title` attribute).
+   * @param prop The propertie's internal name.
+   * @param hidden optionally set a field as hidden and hence do not show in the grid.
    */
   constructor(public text: string, public desc: string, public prop: string, public hidden: boolean = false) {
     this.isSortable = true;
@@ -39,7 +39,7 @@ export class DataGridHeaderModel {
 
   /**
    * An optional sort callback function that replaces the default `Array.prototype.sort`.
-  */
+   */
   sortCallback?: (a, b) => 1 | -1 | 0;
 
   /**

@@ -33,7 +33,8 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
-linter-warnings.txt
+
+linter-warnings*
 
 # System Files
 .DS_Store

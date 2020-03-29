@@ -87,7 +87,7 @@ export class EditorComponent implements OnInit {
   public value: any;
 
   // additional values provided by TemplateHint decorator
-  public params: Array<{ key: string; value: any }>;
+  public params: { key: string; value: any }[];
 
   public errors: string[];
 
@@ -99,7 +99,7 @@ export class EditorComponent implements OnInit {
     return this.first(this.params.filter((e) => e.key === key), 0);
   }
 
-  public first(array: Array<{ key: string; value: any }>, n: number): any {
+  public first(array: { key: string; value: any }[], n: number): any {
     if (array == null) {
       return void 0;
     }
@@ -151,7 +151,7 @@ export class EditorComponent implements OnInit {
       if (editorModel[`__hasTemplateHint__${this.name}`]) {
         this.type = (editorModel[`__templatehint__${this.name}`] as string).toLowerCase();
         if (editorModel[`__templatehintParams__${this.name}`]) {
-          this.params = editorModel[`__templatehintParams__${this.name}`] as Array<{ key: string; value: any }>;
+          this.params = editorModel[`__templatehintParams__${this.name}`] as { key: string; value: any }[];
         }
       }
 

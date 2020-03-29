@@ -220,7 +220,6 @@ export class DataGridModel<T> {
       header.pipe = type[`__uipipe__${p}`];
       header.pipeParams = type[`__pipeparams__${p}`];
       header.uiHint = UiHint.HintRule(type, p, {});
-      console.log('Header', header);
       this._headers.push(header);
     }
   }

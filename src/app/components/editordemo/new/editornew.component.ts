@@ -16,9 +16,9 @@ export class EditorNewComponent implements OnInit {
   saveResult = false;
 
   constructor(private apiService: SiteApiService,
-              private router: Router,
-              private formService: FormValidatorService,
-              private emitterService: EmitterService) {
+    private router: Router,
+    private formService: FormValidatorService,
+    private emitterService: EmitterService) {
   }
 
   ngOnInit() {
@@ -38,7 +38,6 @@ export class EditorNewComponent implements OnInit {
       this.apiService
         .newUser(this.userForm.value)
         .subscribe(result => {
-          console.log('Update User successful');
           // refresh UI
           this.saveResult = result;
           // broadcast that a change has been happend

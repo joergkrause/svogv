@@ -939,19 +939,19 @@ export class TreeNodeModel implements TreeNodeBaseModel {
   constructor(options?: tree.TreeNodeOptions, nodes?: TreeNodeModel | TreeNodeModel[]) {
     this.options &#x3D; options || new tree.TreeNodeOptions();
     if (nodes &amp;&amp; nodes instanceof Array) {
-      this.children &#x3D; &lt;TreeNodeModel[]&gt;nodes;
+      this.children &#x3D; nodes as TreeNodeModel[];
     } else {
       if (nodes) {
-        this.children &#x3D; [&lt;TreeNodeModel&gt;nodes];
+        this.children &#x3D; [nodes as TreeNodeModel];
       }
     }
     this.stateChange &#x3D; new EventEmitter&lt;tree.TreeNodeState&gt;();
     this.state &#x3D; tree.TreeNodeState.undefined;
   }
 
-  get path(): Array&lt;TreeNodeModel&gt; {
+  get path(): TreeNodeModel[] {
     // walk up tree and return path with names
-    const p: Array&lt;TreeNodeModel&gt; &#x3D; new Array&lt;TreeNodeModel&gt;();
+    const p: TreeNodeModel[] &#x3D; new Array&lt;TreeNodeModel&gt;();
     p.push(this);
     let n: TreeNodeModel &#x3D; this;
     while (this.parent) {
@@ -971,9 +971,9 @@ export class TreeNodeModel implements TreeNodeBaseModel {
 
   add(nodes: TreeNodeModel | TreeNodeModel[]): void {
     if (nodes &amp;&amp; nodes instanceof Array) {
-      this.children.push(...(&lt;TreeNodeModel[]&gt;nodes));
+      this.children.push(...(nodes as TreeNodeModel[]));
     } else {
-      this.children.push(&lt;TreeNodeModel&gt;nodes);
+      this.children.push(nodes as TreeNodeModel);
     }
   }
 

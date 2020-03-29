@@ -8,7 +8,7 @@
     "build": "cp README.md projects/svogv/README.md && npm run codedoc && ng build svogv && ng build",
     "prod": "npm run codedoc-docs && ng build svogv && ng build --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint > linter-warnings.txt",
     "e2e": "ng e2e",
     "codedoc": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./src/documentation"
   },

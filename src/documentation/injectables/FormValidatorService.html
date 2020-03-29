@@ -64,11 +64,11 @@
                 <h3>Description</h3>
             </p>
             <p class="comment">
-                <p>The form validator service creates a FormGroup object from a viewmodel. If the viewmodel
+                <p>The form validator service creates a <a href="FormGroup">FormGroup</a> object from a viewmodel. If the viewmodel
 has been decorated with validation decorators the validators are created accordingly.</p>
 <p>The simplest way is creating a class with properties and add decorators, such as
-<a href="StringLength.">The service will than create a @see FormGroup that contains a</a>validator
-of type <a href="../miscellaneous/functions.html#StringLength">for the property the decorator is written</a>on.</p>
+<a href="../miscellaneous/functions.html#StringLength">StringLength</a>. The service will than create a <a href="FormGroup">FormGroup</a> that contains a}validator
+of type <a href="../miscellaneous/functions.html#StringLength">StringLength</a> for the property the decorator is written}on.</p>
 <p>The decorators provide properties for additional information, such as a custom error message.</p>
 
             </p>
@@ -197,14 +197,16 @@ of type <a href="../miscellaneous/functions.html#StringLength">for the property 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="26"
-                            class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:26</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="32"
+                            class="link-to-prism">projects/svogv/src/lib/services/formvalidator.service.ts:32</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Call this method to actually create the FormGroup object. Provide a valid model type.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -214,6 +216,7 @@ of type <a href="../miscellaneous/functions.html#StringLength">for the property 
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -228,6 +231,10 @@ of type <a href="../miscellaneous/functions.html#StringLength">for the property 
                                     </td>
 
 
+                                    <td>
+                                        <p>A valid model type.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -239,7 +246,8 @@ of type <a href="../miscellaneous/functions.html#StringLength">for the property 
 
                     </div>
                     <div class="io-description">
-                        
+                        <p>A FormGroup with validators</p>
+
                     </div>
                 </td>
             </tr>
@@ -286,18 +294,18 @@ of type <a href="../miscellaneous/functions.html#StringLength">for the property 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Inject } from &#x27;@angular/core&#x27;;
-import { Validators, FormBuilder, FormGroup, FormControl } from &#x27;@angular/forms&#x27;;
+import { Validators, FormBuilder, FormGroup } from &#x27;@angular/forms&#x27;;
 
 import { validateRange } from &#x27;./validators/range.validator&#x27;;
 import { validateCompare } from &#x27;./validators/compare.validator&#x27;;
 
 /**
- * The form validator service creates a FormGroup object from a viewmodel. If the viewmodel
+ * The form validator service creates a {@link FormGroup} object from a viewmodel. If the viewmodel
  * has been decorated with validation decorators the validators are created accordingly.
  *
  * The simplest way is creating a class with properties and add decorators, such as
- * {@link StringLength. The service will than create a @see FormGroup that contains a}validator
- * of type {@link StringLength for the property the decorator is written}on.
+ * {@link StringLength}. The service will than create a {@link FormGroup} that contains a}validator
+ * of type {@link StringLength} for the property the decorator is written}on.
  *
  * The decorators provide properties for additional information, such as a custom error message.
  *
@@ -310,6 +318,12 @@ export class FormValidatorService {
     this.fb &#x3D; fb;
   }
 
+  /**
+   * Call this method to actually create the FormGroup object. Provide a valid model type.
+   *
+   * @param target A valid model type.
+   * @returns A FormGroup with validators
+   */
   public build(target: any): FormGroup {
     const valGroup: any &#x3D; {};
     const errGroup: any &#x3D; {};
@@ -330,31 +344,31 @@ export class FormValidatorService {
         const errmsgs &#x3D; new Object();
         const isRequired &#x3D; &#x60;__isRequired__${propName}&#x60; in target.prototype;
         if (isRequired) {
-          (&lt;any&gt;errmsgs)[&#x27;required&#x27;] &#x3D; target.prototype[&#x60;__errRequired__${propName}&#x60;];
+          (errmsgs)[&#x27;required&#x27;] &#x3D; target.prototype[&#x60;__errRequired__${propName}&#x60;];
           validators.push(Validators.required);
         }
         const hasMaxLength &#x3D; &#x60;__hasMaxLength__${propName}&#x60; in target.prototype;
         if (hasMaxLength) {
-          (&lt;any&gt;errmsgs)[&#x27;maxlength&#x27;] &#x3D; target.prototype[&#x60;__errMaxLength__${propName}&#x60;];
+          (errmsgs)[&#x27;maxlength&#x27;] &#x3D; target.prototype[&#x60;__errMaxLength__${propName}&#x60;];
           const maxLength &#x3D; parseInt(target.prototype[&#x60;__hasMaxLength__${propName}&#x60;], 10);
           validators.push(Validators.maxLength(maxLength));
         }
         const hasMinLength &#x3D; &#x60;__hasMinLength__${propName}&#x60; in target.prototype;
         if (hasMinLength) {
-          (&lt;any&gt;errmsgs)[&#x27;minlength&#x27;] &#x3D; target.prototype[&#x60;__errMinLength__${propName}&#x60;];
+          (errmsgs)[&#x27;minlength&#x27;] &#x3D; target.prototype[&#x60;__errMinLength__${propName}&#x60;];
           const minLength &#x3D; parseInt(target.prototype[&#x60;__hasMinLength__${propName}&#x60;], 10);
           validators.push(Validators.minLength(minLength));
         }
         const hasPattern &#x3D; &#x60;__hasPattern__${propName}&#x60; in target.prototype;
         if (hasPattern) {
-          (&lt;any&gt;errmsgs)[&#x27;pattern&#x27;] &#x3D; target.prototype[&#x60;__errPattern__${propName}&#x60;];
+          (errmsgs)[&#x27;pattern&#x27;] &#x3D; target.prototype[&#x60;__errPattern__${propName}&#x60;];
           const pattern &#x3D; new RegExp(target.prototype[&#x60;__hasPattern__${propName}&#x60;]);
           validators.push(Validators.pattern(pattern));
         }
         const hasRangeFrom &#x3D; &#x60;__hasRangeFrom__${propName}&#x60; in target.prototype;
         const hasRangeTo &#x3D; &#x60;__hasRangeTo__${propName}&#x60; in target.prototype;
         if (hasRangeFrom || hasRangeTo) {
-          (&lt;any&gt;errmsgs)[&#x27;range&#x27;] &#x3D; target.prototype[&#x60;__errRange__${propName}&#x60;];
+          (errmsgs)[&#x27;range&#x27;] &#x3D; target.prototype[&#x60;__errRange__${propName}&#x60;];
           let f: number | Date &#x3D; Number(target.prototype[&#x60;__hasRangeFrom__${propName}&#x60;]);
           let t: number | Date &#x3D; Number(target.prototype[&#x60;__hasRangeTo__${propName}&#x60;]);
           if (!f &amp;&amp; !t) {
@@ -366,35 +380,35 @@ export class FormValidatorService {
         }
         const hasCompare &#x3D; &#x60;__hasCompareProperty__${propName}&#x60; in target.prototype;
         if (hasCompare) {
-          (&lt;any&gt;errmsgs)[&#x27;compare&#x27;] &#x3D; target.prototype[&#x60;__errCompareProperty__${propName}&#x60;];
+          (errmsgs)[&#x27;compare&#x27;] &#x3D; target.prototype[&#x60;__errCompareProperty__${propName}&#x60;];
           const compare &#x3D; target.prototype[&#x60;__withCompare__${propName}&#x60;];
           validators.push(validateCompare(compare));
         }
         if (validators.length &#x3D;&#x3D;&#x3D; 0) {
           // even if there is no validator we need to add the property to the group
-          (&lt;any&gt;valGroup)[propName] &#x3D; [target[propName]];
+          (valGroup)[propName] &#x3D; [target[propName]];
         }
         if (validators.length &#x3D;&#x3D;&#x3D; 1) {
-          (&lt;any&gt;valGroup)[propName] &#x3D; [target[propName] || &#x27;&#x27;, validators[0]];
+          (valGroup)[propName] &#x3D; [target[propName] || &#x27;&#x27;, validators[0]];
         }
         if (validators.length &gt;&#x3D; 1) {
-          (&lt;any&gt;valGroup)[propName] &#x3D; [target[propName] || &#x27;&#x27;, Validators.compose(validators)];
+          (valGroup)[propName] &#x3D; [target[propName] || &#x27;&#x27;, Validators.compose(validators)];
         }
-        (&lt;any&gt;errGroup)[propName] &#x3D; errmsgs;
+        (errGroup)[propName] &#x3D; errmsgs;
       }
       // create form group
       form &#x3D; this.fb.group(valGroup);
       // forward the model to the editors for easy access to other decorators
       // the cast is just to suppress TS errors and shows it&#x27;s intentionally
-      (&lt;any&gt;form)[&#x27;__editorModel__&#x27;] &#x3D; targetInstance;
+      (form)[&#x27;__editorModel__&#x27;] &#x3D; targetInstance;
       // register controls and add messages
       // tslint:disable-next-line:forin
       for (const propName in errGroup) {
-        const ctrl &#x3D; &lt;any&gt;form.controls[propName];
+        const ctrl &#x3D; form.controls[propName];
         if (!ctrl) {
           continue; // control might not be in the form
         }
-        (&lt;any&gt;form.controls[propName])[&#x27;messages&#x27;] &#x3D; (&lt;any&gt;errGroup)[propName];
+        (form.controls[propName])[&#x27;messages&#x27;] &#x3D; (errGroup)[propName];
       }
     }
     // return FormGroup for immediate usage

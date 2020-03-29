@@ -11,22 +11,22 @@
  * @param pipeParams   The custom pipe's parameters. This is optional and can be omitted.
  *
  * @example
-   @FormatPipe(SomePipe)
-   public string formattedProperty = '';
+ *  @FormatPipe(SomePipe)
+ * public string formattedProperty = '';
  */
 export function FormatPipe(pipe: Pipe, pipeParams: any[] = null) {
 
-  function formatInternalSetup(target: any, key: string, pipe: Pipe, pipeParams: any[] = null) {
+  function formatInternalSetup(target: any, key: string, innerPipe: Pipe, innerPipeParams: any[] = null) {
 
     // create a helper property to transport a meta data value
     Object.defineProperty(target, `__uipipe__${key}`, {
-      value: pipe,
+      value: innerPipe,
       enumerable: false,
       configurable: false
     });
-    if (pipeParams && pipeParams.length) {
+    if (innerPipeParams && innerPipeParams.length) {
       Object.defineProperty(target, `__pipeparams__${key}`, {
-        value: pipeParams,
+        value: innerPipeParams,
         enumerable: false,
         configurable: false
       });
@@ -40,4 +40,3 @@ export function FormatPipe(pipe: Pipe, pipeParams: any[] = null) {
   // return the decorator
   return formatInternal;
 }
-

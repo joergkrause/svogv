@@ -1629,7 +1629,6 @@ export class DataGridModel&lt;T&gt; {
       header.pipe &#x3D; type[&#x60;__uipipe__${p}&#x60;];
       header.pipeParams &#x3D; type[&#x60;__pipeparams__${p}&#x60;];
       header.uiHint &#x3D; UiHint.HintRule(type, p, {});
-      console.log(&#x27;Header&#x27;, header);
       this._headers.push(header);
     }
   }

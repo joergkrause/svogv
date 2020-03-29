@@ -192,10 +192,10 @@ export type validatorType &#x3D; {
  */
 export type compareType &#x3D; {
   compare:
-    | {
-        fieldToCompare: string;
-      }
-    | validatorType;
+  | {
+    fieldToCompare: string;
+  }
+  | validatorType;
 };
 /**
  * Email
@@ -208,41 +208,41 @@ export type emailType &#x3D; {
  */
 export type maxlengthType &#x3D; {
   maxlength:
-    | {
-        max: number;
-      }
-    | validatorType;
+  | {
+    max: number;
+  }
+  | validatorType;
 };
 /**
  * Minimum allowed length (string only)
  */
 export type minlengthType &#x3D; {
   minlength:
-    | {
-        min: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+  }
+  | validatorType;
 };
 /**
  * Any regex pattern
  */
 export type patternType &#x3D; {
   pattern:
-    | {
-        pattern: string | RegExp;
-      }
-    | validatorType;
+  | {
+    pattern: string | RegExp;
+  }
+  | validatorType;
 };
 /**
  * A range for number or Date only.
  */
 export type rangeType &#x3D; {
   range:
-    | {
-        from: number | Date;
-        to: number | Date;
-      }
-    | validatorType;
+  | {
+    from: number | Date;
+    to: number | Date;
+  }
+  | validatorType;
 };
 /**
  * This field is mandatory.
@@ -255,11 +255,11 @@ export type requiredType &#x3D; {
  */
 export type stringLengthType &#x3D; {
   stringlength:
-    | {
-        min: number;
-        max: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+    max: number;
+  }
+  | validatorType;
 };
 
 /**
@@ -281,18 +281,18 @@ export type stringLengthType &#x3D; {
  */
 export interface FormValidatorModel {
   [field: string]:
-    | displayType
-    | displayGroupType
-    | formatType
-    | hiddenType
-    | placeHolderType
-    | compareType
-    | maxlengthType
-    | minlengthType
-    | patternType
-    | stringLengthType
-    | emailType
-    | requiredType;
+  | displayType
+  | displayGroupType
+  | formatType
+  | hiddenType
+  | placeHolderType
+  | compareType
+  | maxlengthType
+  | minlengthType
+  | patternType
+  | stringLengthType
+  | emailType
+  | requiredType;
 }
 </code></pre>
     </div>

@@ -97,7 +97,7 @@ the host component:</p>
 <p>The model used in the example is an array of objects, where the properties are decorated with
 various decorators used to control the grid&#39;s render behavior.</p>
 <div><pre class="line-numbers"><code class="language-typescript">const data: UserViewModel[] = this.dataSource; // provide a simple array here
-this.model = new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);</code></pre></div><p>The class <a href="../classes/DataGridModel.html">DataGridModel</a> controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
+  this.model = new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);</code></pre></div><p>The class <a href="../classes/DataGridModel.html">DataGridModel</a> controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
 so assure you provide a class and set all properties to a default to force creation of properties.</p>
 <div><pre class="line-numbers"><code class="language-typescript">export class UserViewModel {
   email: string = &#39;&#39;; // the = &#39;&#39; is necessary!
@@ -1486,7 +1486,7 @@ import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
  *
  * ~~~typescript
  * const data: UserViewModel[] &#x3D; this.dataSource; // provide a simple array here
-   this.model &#x3D; new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);
+ *  this.model &#x3D; new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);
  * ~~~
  *
  * The class {@link DataGridModel} controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
@@ -1506,11 +1506,11 @@ import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
  * &lt;example-url&gt;/#/widget/grid&lt;/example-url&gt;
  *
  * @example
-   &lt;ac-datagrid
-       [model]&#x3D;&quot;model&quot;
-       [showActions]&#x3D;&quot;false&quot;
-       [columnStyle]&#x3D;&quot;&quot;
-     &gt;&lt;/ac-datagrid&gt;
+ *  &lt;ac-datagrid
+ *      [model]&#x3D;&quot;model&quot;
+ *      [showActions]&#x3D;&quot;false&quot;
+ *      [columnStyle]&#x3D;&quot;&quot;
+ *  &gt;&lt;/ac-datagrid&gt;
  */
 @Component({
   selector: &#x27;ac-datagrid&#x27;,

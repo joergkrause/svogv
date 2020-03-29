@@ -491,42 +491,42 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export enum TreeNodeState {
-    undefined &#x3D; 0,
-    checked &#x3D; 1 &lt;&lt; 0,
-    disabled &#x3D; 1 &lt;&lt; 1,
-    expanded &#x3D; 1 &lt;&lt; 2,
-    selected &#x3D; 1 &lt;&lt; 3
+  undefined &#x3D; 0,
+  checked &#x3D; 1 &lt;&lt; 0,
+  disabled &#x3D; 1 &lt;&lt; 1,
+  expanded &#x3D; 1 &lt;&lt; 2,
+  selected &#x3D; 1 &lt;&lt; 3
 }
 
 /**
  * The view options of node
-*/
+ */
 export class TreeNodeOptions {
-    /** Show the expand icons */
-    collapsable: boolean;
-    /** An additional icon, must be a fontawesome class */
-    icon: string;
-    /** An additional icon&#x27;s primary color */
-    iconColor: string;
-    /** An additional icon on select */
-    selectedIcon: string;
-    /** Text color */
-    color: string;
-    /** backColor */
-    backColor: string;
-    /** A hyperlink */
-    href: string;
-    /** Node can be selected */
-    selectable: boolean;
-    /** Node can be checked */
-    checkable: boolean;
+  /** Show the expand icons */
+  collapsable: boolean;
+  /** An additional icon, must be a fontawesome class */
+  icon: string;
+  /** An additional icon&#x27;s primary color */
+  iconColor: string;
+  /** An additional icon on select */
+  selectedIcon: string;
+  /** Text color */
+  color: string;
+  /** backColor */
+  backColor: string;
+  /** A hyperlink */
+  href: string;
+  /** Node can be selected */
+  selectable: boolean;
+  /** Node can be checked */
+  checkable: boolean;
 
-    constructor(options?: TreeNodeOptions) {
-        if (options) {
-            // TODO: make type safe
-            // for (let k in options) this[k] &#x3D; options[k];
-        }
+  constructor(options?: TreeNodeOptions) {
+    if (options) {
+      // TODO: make type safe
+      // for (let k in options) this[k] &#x3D; options[k];
     }
+  }
 }
 </code></pre>
     </div>

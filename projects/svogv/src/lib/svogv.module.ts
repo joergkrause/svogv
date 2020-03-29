@@ -20,7 +20,7 @@ const SVOGV_COMPONENTS = [
 const provider = [FormValidatorService]; // , FormValidatorFromJsonService];
 
 /**
- * The actual SVOGV Module definition using the root module.
+ * The actual SVOGV Module definition.
  */
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],

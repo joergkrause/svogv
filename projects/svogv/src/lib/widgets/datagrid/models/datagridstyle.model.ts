@@ -1,6 +1,9 @@
 
 export type StyleRules = { [name: string]: string };
 
+/**
+ * All styleable parts of the grid.
+ */
 export interface DatagridStyles {
   first?: StyleRules;
   middle?: StyleRules;

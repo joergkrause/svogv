@@ -12,18 +12,16 @@ import { UserViewModelList } from '../../viewmodels';
 })
 export class DashboardComponent implements OnInit {
 
-  users: Array<UserViewModelList> = [];
+  users: UserViewModelList[] = [];
 
   constructor(private apiService: SiteApiService, private emitterService: EmitterService) {
     // raw data for tiles
     this.emitterService.get('BROADCAST_Users').subscribe(data => {
-      console.log('Dashboard received BROADCAST_Users event');
       this.users = data;
     });
   }
 
   ngOnInit() {
-    console.log('Dashboard initializing');
     // retrieve fresh data on init, independently of the broadcast
     this.apiService.getUsers().subscribe(data => {
       this.users = data;

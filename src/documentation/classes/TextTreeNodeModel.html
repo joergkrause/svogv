@@ -783,13 +783,13 @@ import { TreeNodeModel } from &#x27;./treenode.model&#x27;;
  * A text node
  */
 export class TextTreeNodeModel extends TreeNodeModel {
-    text: string;
+  text: string;
 
-    constructor(text: string, options?: TreeNodeOptions, nodes?: TreeNodeModel | TreeNodeModel[]) {
-        super(options, nodes);
-        this.text &#x3D; text;
-        this.name &#x3D; text; // default, must be set explicitly
-    }
+  constructor(text: string, options?: TreeNodeOptions, nodes?: TreeNodeModel | TreeNodeModel[]) {
+    super(options, nodes);
+    this.text &#x3D; text;
+    this.name &#x3D; text; // default, must be set explicitly
+  }
 }
 
 </code></pre>

@@ -183,7 +183,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>: The text to display.</p>
+                                                                <code><p>The text to display.</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -199,7 +199,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>: A tooltip that is shown on mouseover (using the <code>title</code> attribute).</p>
+                                                                <code><p>A tooltip that is shown on mouseover (using the <code>title</code> attribute).</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -215,7 +215,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>: The propertie&#39;s internal name.</p>
+                                                                <code><p>The propertie&#39;s internal name.</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -231,7 +231,7 @@
                                                     </td>
                                                     
                                                         <td>
-                                                                <code><p>: optionally set a field as hidden and hence do not show in the grid.</p>
+                                                                <code><p>optionally set a field as hidden and hence do not show in the grid.</p>
 </code>
                                                         </td>
                                                 </tr>
@@ -276,7 +276,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description">: A tooltip that is shown on mouseover (using the `title` attribute).</div>
+                        <div class="io-description">A tooltip that is shown on mouseover (using the `title` attribute).</div>
                     </td>
                 </tr>
 
@@ -314,7 +314,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description">: optionally set a field as hidden and hence do not show in the grid.</div>
+                        <div class="io-description">optionally set a field as hidden and hence do not show in the grid.</div>
                     </td>
                 </tr>
 
@@ -447,7 +447,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description">: The propertie's internal name.</div>
+                        <div class="io-description">The propertie's internal name.</div>
                     </td>
                 </tr>
 
@@ -581,7 +581,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description">: The text to display.</div>
+                        <div class="io-description">The text to display.</div>
                     </td>
                 </tr>
 
@@ -641,10 +641,10 @@ import { StyleRules } from &#x27;./datagridstyle.model&#x27;;
 export class DataGridHeaderModel {
   /**
    * The ctor
-   * @param text: The text to display.
-   * @param desc: A tooltip that is shown on mouseover (using the &#x60;title&#x60; attribute).
-   * @param prop: The propertie&#x27;s internal name.
-   * @param hidden: optionally set a field as hidden and hence do not show in the grid.
+   * @param text The text to display.
+   * @param desc A tooltip that is shown on mouseover (using the &#x60;title&#x60; attribute).
+   * @param prop The propertie&#x27;s internal name.
+   * @param hidden optionally set a field as hidden and hence do not show in the grid.
    */
   constructor(public text: string, public desc: string, public prop: string, public hidden: boolean &#x3D; false) {
     this.isSortable &#x3D; true;
@@ -673,7 +673,7 @@ export class DataGridHeaderModel {
 
   /**
    * An optional sort callback function that replaces the default &#x60;Array.prototype.sort&#x60;.
-  */
+   */
   sortCallback?: (a, b) &#x3D;&gt; 1 | -1 | 0;
 
   /**
