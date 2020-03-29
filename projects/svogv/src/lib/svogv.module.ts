@@ -17,20 +17,20 @@ const SVOGV_COMPONENTS = [
   wd.AutoFormComponent
 ];
 
-const provider = [FormValidatorService] //, FormValidatorFromJsonService];
+const provider = [FormValidatorService]; // , FormValidatorFromJsonService];
 
 /**
- * The actual SVOGV Module definition using the root module.
+ * The actual SVOGV Module definition.
  */
 @NgModule({
   imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
   declarations: [...SVOGV_COMPONENTS, wd.FormatDataPipe],
   providers: provider,
-  exports: [...SVOGV_COMPONENTS]
+  exports: SVOGV_COMPONENTS
 })
 export class SvogvModule {
 
-  public static forRoot(): ModuleWithProviders {
+  public static forRoot(): ModuleWithProviders<SvogvModule> {
     return {
       ngModule: SvogvModule,
       providers: provider
@@ -38,4 +38,3 @@ export class SvogvModule {
   }
 
 }
-

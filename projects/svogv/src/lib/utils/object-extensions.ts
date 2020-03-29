@@ -1,8 +1,14 @@
+/**
+ * @ignore
+ */
 declare interface ObjectConstructor {
   equals(x: any, y: any): boolean;
   same(x: any, y: any): boolean;
 }
 
+/**
+ * @ignore
+ */
 Object.same = function (source, target): boolean {
   if (source === target) {
     return true;
@@ -23,6 +29,9 @@ Object.same = function (source, target): boolean {
   return true;
 };
 
+/**
+ * @ignore
+ */
 Object.equals = function (x: any, y: any): boolean {
   if (x === y) { return true; }
   // if both x and y are null or undefined and exactly the same

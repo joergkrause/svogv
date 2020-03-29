@@ -36,19 +36,19 @@ export class TreeNodeModel implements TreeNodeBaseModel {
   constructor(options?: tree.TreeNodeOptions, nodes?: TreeNodeModel | TreeNodeModel[]) {
     this.options = options || new tree.TreeNodeOptions();
     if (nodes && nodes instanceof Array) {
-      this.children = <TreeNodeModel[]>nodes;
+      this.children = nodes as TreeNodeModel[];
     } else {
       if (nodes) {
-        this.children = [<TreeNodeModel>nodes];
+        this.children = [nodes as TreeNodeModel];
       }
     }
     this.stateChange = new EventEmitter<tree.TreeNodeState>();
     this.state = tree.TreeNodeState.undefined;
   }
 
-  get path(): Array<TreeNodeModel> {
+  get path(): TreeNodeModel[] {
     // walk up tree and return path with names
-    const p: Array<TreeNodeModel> = new Array<TreeNodeModel>();
+    const p: TreeNodeModel[] = new Array<TreeNodeModel>();
     p.push(this);
     let n: TreeNodeModel = this;
     while (this.parent) {
@@ -68,9 +68,9 @@ export class TreeNodeModel implements TreeNodeBaseModel {
 
   add(nodes: TreeNodeModel | TreeNodeModel[]): void {
     if (nodes && nodes instanceof Array) {
-      this.children.push(...(<TreeNodeModel[]>nodes));
+      this.children.push(...(nodes as TreeNodeModel[]));
     } else {
-      this.children.push(<TreeNodeModel>nodes);
+      this.children.push(nodes as TreeNodeModel);
     }
   }
 

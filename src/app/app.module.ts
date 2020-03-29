@@ -29,9 +29,6 @@ import { DropdownDirective } from './directives/dropdown.directive';
   declarations: [
     // Demo app
     cmp.RootComponent
-    , cmp.AboutComponent
-    , cmp.DocsComponent
-    , cmp.DashboardComponent
     // Editor, Validation & Grid
     , cmp.EditorDemoComponent
     , cmp.EditorNewComponent
@@ -46,11 +43,8 @@ import { DropdownDirective } from './directives/dropdown.directive';
     , cmp.GridDemoComponent
     , cmp.TreeviewDemoComponent
     // Custom Widgets just for Demo
-    , cmp.SideMenuComponent
-    , cmp.BreadcrumbComponent
     , cmp.TabsComponent
-    , cmp.MinitabsComponent
-    , cmp.InfoBoxComponent,
+    , cmp.MinitabsComponent,
     PercentPipe,
     MinitabsComponent,
     TabsComponent,
@@ -60,7 +54,7 @@ import { DropdownDirective } from './directives/dropdown.directive';
   providers: [
       PercentPipe,
       SiteApiService        // just for demo to get some static data
-    , EmitterService        // simple publish/subscribe patterm to distribute data
+    , EmitterService        // simple publish/subscribe pattern to distribute data
     , { provide: LocationStrategy, useClass: HashLocationStrategy }
     , FormValidatorService  // the forms support, manages the decorators FormValidatorFromJsonService
   ]

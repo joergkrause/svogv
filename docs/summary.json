@@ -1,0 +1,16 @@
+[
+  {
+      "title": "Package Construction",
+      "file": "index.md",
+      "children": [
+          {
+              "title": "Create an NPM package",
+              "file": "create-npm.md"
+          }
+      ]
+  },
+  {
+      "title": "About",
+      "file": "about.md"
+  }
+]

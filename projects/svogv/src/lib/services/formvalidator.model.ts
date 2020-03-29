@@ -1,9 +1,9 @@
 /**
- * This elements describes the grouping of elements in fieldset-controls. Each
+ * This element describes the grouping of elements in fieldset-controls. Each
  * field that is decorated in an DisplayGroup with the very same name is grouped
  * into that part. The name appears in the fieldsets legend-control. The
  * description makes a tooltip. If there are more groups the order is controlled
- * by the @see order element.
+ * by the {@link order}element.
  */
 export type displayGroupType = {
   displaygroup: {
@@ -41,7 +41,7 @@ export type hiddenType = {
   hidden?: boolean;
 };
 /**
- * A watermark can be applied. The @see name property is the value that appears
+ * A watermark can be applied. The {@link name property is the value that}appears
  * in the field. This may not work for specific controls, such as list boxes.
  */
 export type placeHolderType = {
@@ -95,10 +95,10 @@ export type validatorType = {
  */
 export type compareType = {
   compare:
-    | {
-        fieldToCompare: string;
-      }
-    | validatorType;
+  | {
+    fieldToCompare: string;
+  }
+  | validatorType;
 };
 /**
  * Email
@@ -111,41 +111,41 @@ export type emailType = {
  */
 export type maxlengthType = {
   maxlength:
-    | {
-        max: number;
-      }
-    | validatorType;
+  | {
+    max: number;
+  }
+  | validatorType;
 };
 /**
  * Minimum allowed length (string only)
  */
 export type minlengthType = {
   minlength:
-    | {
-        min: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+  }
+  | validatorType;
 };
 /**
  * Any regex pattern
  */
 export type patternType = {
   pattern:
-    | {
-        pattern: string | RegExp;
-      }
-    | validatorType;
+  | {
+    pattern: string | RegExp;
+  }
+  | validatorType;
 };
 /**
  * A range for number or Date only.
  */
 export type rangeType = {
   range:
-    | {
-        from: number | Date;
-        to: number | Date;
-      }
-    | validatorType;
+  | {
+    from: number | Date;
+    to: number | Date;
+  }
+  | validatorType;
 };
 /**
  * This field is mandatory.
@@ -158,41 +158,42 @@ export type requiredType = {
  */
 export type stringLengthType = {
   stringlength:
-    | {
-        min: number;
-        max: number;
-      }
-    | validatorType;
+  | {
+    min: number;
+    max: number;
+  }
+  | validatorType;
 };
 
 /**
  * The form description model. Use this to have a valid JSON object that can be used
  * instead of the decorators. Each type represents a single decorator. The basic
- * structure looks like this:
- *
- * @example {
- *            "fieldName": {
- *               "display": {
- *                  "name": "The field's human readible name"
- *               }
- *            }
- *          }
+ * structure looks like this shown in the example.
  *
  * See the different type's descriptions for detailled information.
+ *
+ * @example
+  {
+     "fieldName": {
+        "display": {
+           "name": "The field's human readible name"
+        }
+     }
+   }
  *
  */
 export interface FormValidatorModel {
   [field: string]:
-    | displayType
-    | displayGroupType
-    | formatType
-    | hiddenType
-    | placeHolderType
-    | compareType
-    | maxlengthType
-    | minlengthType
-    | patternType
-    | stringLengthType
-    | emailType
-    | requiredType;
+  | displayType
+  | displayGroupType
+  | formatType
+  | hiddenType
+  | placeHolderType
+  | compareType
+  | maxlengthType
+  | minlengthType
+  | patternType
+  | stringLengthType
+  | emailType
+  | requiredType;
 }

@@ -6,6 +6,14 @@ import {
  * The pagination component creates a few buttons to navigate a grid. The underlaying model
  * is going to handle the date on the client. The pagination does not support a server backend,
  * all relevant data must be loaded first.
+ *
+ * Example of usage:
+ * @example
+ * ```html
+ * <ac-pagination></ac-pagination>
+ * ```
+ *
+ * <example-url>/#/widget/grid</example-url>
  */
 @Component({
   selector: 'ac-datagrid-pagination',

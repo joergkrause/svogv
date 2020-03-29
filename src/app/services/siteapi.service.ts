@@ -12,8 +12,8 @@ import { SimpleUserViewModelList } from '../viewmodels/simpleuser.viewmodellist'
 @Injectable()
 export class SiteApiService {
   // array for grids
-  private users: Array<UserViewModelList>;
-  private simpleUsers: Array<SimpleUserViewModelList>;
+  private users: UserViewModelList[];
+  private simpleUsers: SimpleUserViewModelList[];
 
   constructor() {
     const now = new Date().getFullYear();
@@ -113,23 +113,23 @@ export class SiteApiService {
   }
 
   public getUser(id: number): Observable<UserViewModel> {
-    const user = this.users.filter(u => u.id === id)[0] as UserViewModel;
-    return new Observable(o => o.next(user));
+    const user = this.users.filter((u) => u.id === id)[0] as UserViewModel;
+    return new Observable((o) => o.next(user));
   }
 
-  public getUsers(): Observable<Array<UserViewModelList>> {
-    return new Observable(o => o.next(this.users));
+  public getUsers(): Observable<UserViewModelList[]> {
+    return new Observable((o) => o.next(this.users));
   }
 
-  public getSimpleUsers(): Observable<Array<SimpleUserViewModelList>> {
-    return new Observable(o => o.next(this.users));
+  public getSimpleUsers(): Observable<SimpleUserViewModelList[]> {
+    return new Observable((o) => o.next(this.users));
   }
 
   public newUser(user: UserViewModel): Observable<boolean> {
     // assure new id in simulated data stack
     const nextId =
       this.users
-        .sort(function(u1, u2) {
+        .sort((u1, u2) => {
           return u1.id - u2.id;
         })
         .slice(-1)
@@ -137,6 +137,23 @@ export class SiteApiService {
     // save
     const listUser = this.makeUser(user, nextId);
     this.users.push(listUser);
+    // always true
+    return of(true);
+  }
+
+  public editUser(id: number, editUser: UserViewModel): Observable<boolean> {
+    const user = this.users.filter((u) => u.id === id)[0];
+    if (user /* exists */) {
+      const listUser = this.makeUser(editUser, id);
+      this.users.splice(this.users.indexOf(user), 1, listUser);
+      return of(true);
+    }
+    return of(false);
+  }
+
+  public deleteUser(id: number): Observable<boolean> {
+    const user = this.users.filter((u) => u.id === id)[0];
+    this.users.splice(this.users.indexOf(user), 1);
     // always true
     return of(true);
   }
@@ -150,23 +167,6 @@ export class SiteApiService {
     listUser.id = nextId;
     listUser.phoneNumber = user.phoneNumber;
     return listUser;
-  }
-
-  public editUser(id: number, editUser: UserViewModel): Observable<boolean> {
-    const user = this.users.filter(u => u.id === id)[0];
-    if (user /* exists */) {
-      const listUser = this.makeUser(editUser, id);
-      this.users.splice(this.users.indexOf(user), 1, listUser);
-      return of(true);
-    }
-    return of(false);
-  }
-
-  public deleteUser(id: number): Observable<boolean> {
-    const user = this.users.filter(u => u.id === id)[0];
-    this.users.splice(this.users.indexOf(user), 1);
-    // always true
-    return of(true);
   }
 
   /// Common Functions for real HTTP calls (currently not used in demo code)

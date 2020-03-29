@@ -8,32 +8,32 @@ import { SiteApiService } from 'src/app/services';
 })
 export class GridDemoSimpleComponent implements OnInit, OnDestroy {
 
-  model: DataGridModel<UserViewModelList>;
-  users: Array<UserViewModelList>;
+  public model: DataGridModel<UserViewModelList>;
+  public users: UserViewModelList[];
 
-  footerColor: any;
-  headerForeColor: any;
-  headerBackColor: any;
-  firstColor: any;
-  sortIconColor: any;
+  public footerColor: any;
+  public headerForeColor: any;
+  public headerBackColor: any;
+  public firstColor: any;
+  public sortIconColor: any;
 
   constructor(private apiService: SiteApiService) {
     this.users = new Array<UserViewModelList>();
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     // we need to manage this because the component may load at any time, even after the broadcast has been gone
     // get dashboard data on load and distribute to all listening components
-    this.apiService.getUsers().subscribe(data => {
+    this.apiService.getUsers().subscribe((data) => {
       this.renderData(data);
     });
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     delete this.users;
   }
 
-  private renderData(data: Array<UserViewModelList>) {
+  private renderData(data: UserViewModelList[]) {
     // we get a regular array here, but grid expects GridData for proper rendering
     this.model = new DataGridModel<UserViewModelList>(data, UserViewModelList);
   }

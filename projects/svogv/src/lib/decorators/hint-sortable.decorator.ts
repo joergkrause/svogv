@@ -3,7 +3,7 @@ const hasSortCallback = 'sortCallback';
 /**
  * The Sortable decorator.
  *
- * The @see `DataGrid` does not sort columns for properties tagged with `@Sortable(false)`.
+ * The {@link `DataGrid` does not sort columns for properties tagged with}`@Sortable(false)`.
  * The default is that all columsn are sortable. Either avoid this decorator or use `@Sortable(true)`.
  * Additionally, if the decorator is provided, you can add a sort function callback as second parameter.
  *

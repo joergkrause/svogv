@@ -1,0 +1,229 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SVOGV 0.9 Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+<p>This documentation describes the background and internal functionality of the SVOGV project. It&#39;s primarily for learning purposes.
+It&#39;s not a replacement of the common documentation for developers using the library.</p>
+<h1 id="making-of----how-i-wrote-a-npm-package">Making Of -- How I wrote a NPM package</h1>
+<blockquote>
+<p>This is work in progress. Come back often to get recent updates. Currently it&#39;s version 0.7.3, published May 1st, 2019. The current version embraces Angular 7.x. It&#39;s working with Angular 2.x onwards.</p>
+</blockquote>
+<p>The primary part is a almost complete introduction into the world of modern web frontend development. It encapsulates the
+tool chain, languages, repositories, cloud service and everything else you need to create awesome apps.</p>
+<p>The second part is the actual development work -- the app&#39;s code and frameworks. I decided to use Angular 2 and Bootstrap 4
+as a foundation. Angular 2 introduced as familiar concept in a new way for the web: components. By building a component tree a web app gets better maintainability and clear design, that&#39;s closer to the &quot;treeish&quot; nature of HTML. It fits better in the Browser&#39;s ecosystem
+than the traditional MVC (model view controller) model.</p>
+<p>A big step for web developers was the usage of TypeScript. While other pre-compilers or transpilers are around for years (CoffeeScript for instance),
+TypeScript had the most mature and professional approach. It brings web development to an enter a new level.</p>
+<p>However, this comes with a penalty. The learning curve is steep. The setup is huge and confusing. And the effort to get a simple app running
+is enormous. If you create a huge app, however, it&#39;s a trade off. Your code becomes cleaner, easier to maintain, better to read. Your development
+speed will grow and you can be fast, really fast creating stuff. The setup effort is a one time process and hence it&#39;s usually a no-brainer.</p>
+<h2 id="whats-this-about">What&#39;s this about</h2>
+<p>This document describes the following:</p>
+<ul>
+<li>The foundation of the TS/JS-ecosystem</li>
+<li>Using Gulp as a build tool</li>
+<li>Using Travis for CI (continues integration)</li>
+<li>Setup of a professional NPM package</li>
+<li>Rules to develop a concise library</li>
+</ul>
+<h2 id="the-foundation">The foundation</h2>
+<p>First, you need to now how to create stuff and how to deploy stuff. You need these things first:</p>
+<ul>
+<li>An editor</li>
+<li>A command line and some tools to build and deploy your stuff</li>
+<li>A server to host your stuff</li>
+<li>A browser to view your stuff</li>
+</ul>
+<p>So, that&#39;s it.</p>
+<p>Missing the Operating System? No problem. Choose what you like. Everything shown here will run on Linux, Windows, and even a Mac.
+Simply don&#39;t care. Welcome to the brave new world.</p>
+<p>Need something to buy? No, not at all. Everything is open source and free. At least as long as you build OS stuff by yourself. For enterprises
+are some more options, such as private repositories. That&#39;s the way some companies make some money. But even so, it&#39;s really cheap. So no
+worries again.</p>
+<p>Some of the tools run in the cloud. I strongly recommend considering to use these tools. It saves you tons of time and money. Unless you work
+for a secret service you don&#39;t get any benefits from doing everything locally. The amount of data you need to transfer is small. Even a bad
+connection is usually sufficient.</p>
+<p>To setup a project like this you start right now that way:</p>
+<h3 id="1-load-an-editor">1. Load an Editor</h3>
+<p>I use <a href="https://code.visualstudio.com/">Visual Studio Code</a>, but you may try some others to achieve your code tasks. Some alternatives are:</p>
+<ul>
+<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+<li><a href="https://www.liveedu.tv/godlyperfection/">VIM</a></li>
+<li><a href="https://atom.io/">Atom</a></li>
+</ul>
+<blockquote>
+<p>A good description of all of these can be <a href="http://blog.liveedu.tv/10-best-text-editors-programming-2016/">found here</a>.</p>
+</blockquote>
+<h3 id="2-setup-your-project">2. Setup your project</h3>
+<p>Modern web development is file based. No hidden stuff, no secret folders, nothing but plain text files. Any drawback? Yes, there are many
+different files needed. A lot of them, really. While writing this I made a quick count of SVOGV project, locally:</p>
+<p>46.822 files, 6.323 folders</p>
+<p>You say: you&#39;re kidding, dude? I say: No, bro, that&#39;s the way it is. But I have good news to you. The majority is from references, dependencies
+I have to get my stuff running. Most of the libraries we use are from NPM (node package manager). That&#39;s the repository for node moduls. We take a look
+into this shortly. The folder where all the stuff is has the name <em>node_modules</em>. What&#39;s in it:</p>
+<p>30.107 files, 4.233 folders</p>
+<p>So we&#39;re pretty much down by 60%, but it&#39;s still way to many. So let&#39;s exclude more:</p>
+<ul>
+<li>a folder <em>/dist</em> where my project gets published to. That generated from a script and hence I don&#39;t care (1.987 files, 170 folders).</li>
+<li>again a folder named <em>node_modules</em> and another one called <em>bower_components</em> in the Demo app, counting for 13.596 files and 1.607 folders.</li>
+</ul>
+<p>So what we get:</p>
+<table class="table table-bordered compodoc-table">
+<thead>
+<tr>
+<th>Part</th>
+<th>Files</th>
+<th>Folder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Node Rep</td>
+<td>30107</td>
+<td>4233</td>
+</tr>
+<tr>
+<td>Dist</td>
+<td>1987</td>
+<td>170</td>
+</tr>
+<tr>
+<td>Demo Reps.</td>
+<td>13569</td>
+<td>1607</td>
+</tr>
+<tr>
+<td>-----------</td>
+<td>-------</td>
+<td>--------</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>45690</td>
+<td>6010</td>
+</tr>
+</tbody>
+</table>
+<p>So, finally, my own stuff is 1.132 files in 313 folders. That&#39;s still a lot, but not a much as I don&#39;t can&#39;t handle it.</p>
+<p>So, start creating a folder where all the files go. Let&#39;s call it like the project: &#39;svogv&#39; (you choose another name for your project, of course).</p>
+<p>Somewhere on my disc I type:</p>
+<div><pre class="line-numbers"><code class="language-none">$ mkdir svogv</code></pre></div><blockquote>
+<p>The prompt I use here is $ like most *nix systems have. I remove the concrete path and you can do same on Windows as well. I recommend to choose a short start point, such as C:\App&gt;, too.</p>
+</blockquote>
+<p>Then go into this:</p>
+<div><pre class="line-numbers"><code class="language-none">$ cd svogv</code></pre></div><p>Once you&#39;re here it&#39;s boring empty. So we need some tools to get stuff in here. The first set of tools is part of the JavaScript ecosystem:</p>
+<ul>
+<li>Git - host your repository and manage versions</li>
+<li>Node - The engine that does the hard work</li>
+</ul>
+<p>And <a href="./setup/setup-node">here is how to setup node</a>.</p>
+<p>Next, Git is required. Check first if it is already present on your system:</p>
+<div><pre class="line-numbers"><code class="language-none">$ git --version</code></pre></div><p>If not, install according your operating system. </p>
+<p>Then, an account on Github is required. Finally, the package will be hostet on Github and partially distributed to NPM. While there are alternative ways, such as Bitbucket, I recommend Github for beginners because the sheer amount of literature, support, websites, and answers on <a href="https://stackoverflow.com/">Stack Overflow</a>
+is overwhelming. And it is, last but not least, easy enough to get the point in short time.</p>
+<p>So, go to <a href="https://github.com/">GitHub</a>, and set up an account.</p>
+<p>Now, we&#39;re set and the journey into the package creation can begin. The package is about Angular 2 components and I assume that you have at least a basic
+interest in Angular 2 stuff. So apart from talking about the package structure I&#39;m going to explain all the component stuff as well.</p>
+<p>You can continue reading here:</p>
+<ul>
+<li><a href="./create-npm">Create an NPM package</a></li>
+</ul>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'package-construction.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

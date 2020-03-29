@@ -1,7 +1,13 @@
+/**
+ * @ignore
+ */
 declare interface Array<T> {
   remove(o: any): Array<any>;
 }
 
+/**
+ * @ignore
+ */
 Array.prototype.remove = function(valueOrPredicate: any): any[] {
   const predicate =
     typeof valueOrPredicate === 'function'

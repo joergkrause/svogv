@@ -4,7 +4,15 @@ import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
 
 /**
+ * A classic data grid. You provide a model to handle all features. The model is build from a
+ * simple array of objects with decorators.
+ *
+ * > See 'Documentation and Examples' tab for a complete documentation.
+ *
+ * ### Summary
+ *
  * The datagrid provides basic functions for data tables:
+ *
  * * sorting
  * * filtering
  * * pagination
@@ -14,32 +22,150 @@ import { DatagridStyles } from './models/datagridstyle.model';
  *
  * There are many attributes and ways to change the appearance. Also some classes can be controlled by
  * the host component:
+ *
  * * `.col-borders`
  * * `.col-last`
  * * `.col-first`
+ *
  * All these styles are applied to the <col> elements of the underlying table.
+ *
+ * The model used in the example is an array of objects, where the properties are decorated with
+ * various decorators used to control the grid's render behavior.
+ *
+ * ~~~typescript
+ * const data: UserViewModel[] = this.dataSource; // provide a simple array here
+ *  this.model = new DataGridModel<UserViewModel>(data, UserViewModel);
+ * ~~~
+ *
+ * The class {@link DataGridModel} controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
+ * so assure you provide a class and set all properties to a default to force creation of properties.
+ *
+ * ~~~typescript
+ * export class UserViewModel {
+ *  email: string = ''; // the = '' is necessary!
+ *  // more omitted for brevity
+ * }
+ * ~~~
+ *
+ * The grid can be extended with the {@link DataGridPaginationComponent} to page through huge data sets. The model
+ * handles the pagination, the additional {@link DataGridPaginationComponent} is only a predefined renderer that
+ * supports the used theme.
+ *
+ * <example-url>/#/widget/grid</example-url>
+ *
+ * @example
+ *  <ac-datagrid
+ *      [model]="model"
+ *      [showActions]="false"
+ *      [columnStyle]=""
+ *  ></ac-datagrid>
  */
 @Component({
   selector: 'ac-datagrid',
   templateUrl: './datagrid.component.html',
   styleUrls: ['./datagrid.component.scss']
 })
-export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
+export class DataGridComponent implements AfterViewInit, OnDestroy {
+
+  /**
+   * @ignore
+   */
   public directionEnumHelper = Direction;
 
+  /**
+   * Access to the string renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data "as is", but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel's properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * <ng-template #string let-data let-modelpipe="pipe" let-params="params">
+   *  {{ data | formatData: modelpipe: params }}
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('string', { static: true }) public stringFallback: TemplateRef<any>;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field's data completely on your own.
+   */
   @ContentChild('string', { static: true }) public string: TemplateRef<any>;
 
+  /**
+   * Access to the boolean renderer fallback template. The template used internally looks like shown in the example.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * <ng-template #boolean let-data>
+   *   <input type="checkbox" disabled [checked]="data" />
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('boolean', { static: true }) public booleanFallback: TemplateRef<any>;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field's data completely on your own.
+   */
   @ContentChild('boolean', { static: true }) public boolean: TemplateRef<any>;
 
+  /**
+   * Access to the date renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data "as is", but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel's properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * <ng-template #date let-data let-modelpipe="pipe" let-params="params">
+   *  {{ data | formatData: modelpipe: params }}
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('date', { static: true }) public dateFallback: TemplateRef<any>;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field's data completely on your own.
+   */
   @ContentChild('date', { static: true }) public date: TemplateRef<any>;
 
+  /**
+   * Access to the enum renderer fallback template. The template used internally looks like shown in the example
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * <ng-template #enum let-data>
+   *  {{ data }}
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('enum', { static: true }) public enumFallback: TemplateRef<any>;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field's data completely on your own.
+   */
   @ContentChild('enum', { static: true }) public enum: TemplateRef<any>;
 
+  /**
+   * Access to the number renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data "as is", but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel's properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * <ng-template #number let-data let-modelpipe="pipe" let-params="params">
+   *  {{ data | formatData: modelpipe: params }}
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('number', { static: true }) public numberFallback: TemplateRef<any>;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field's data completely on your own.
+   */
   @ContentChild('number', { static: true }) public number: TemplateRef<any>;
 
   @Input() public externals: { [key: string]: any } = {};
@@ -59,18 +185,18 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   public model: DataGridModel<any>;
 
   /**
-   * Wheather to show a delete button. Clicking it fires the @see DataGridModel.OnDelete event.
+   * Wheather to show a delete button. Clicking it fires the {@link DataGridModel.OnDelete}event.
    */
   @Input()
   public showDeleteButton: boolean;
   /**
-   * Wheather to show an edit button. Clicking it fires the @see DataGridModel.OnEdit event.
+   * Wheather to show an edit button. Clicking it fires the {@link DataGridModel.OnEdit}event.
    */
   @Input()
   public showEditButton: boolean;
 
   /**
-   * Show the action column at all. Use @see showDeleteButton and  @see showEditButton to switch the buttons
+   * Show the action column at all. Use {@link showDeleteButton and  @see showEditButton to switch the}buttons
    * on or off individually. Default is `true` (actions visible).
    */
   @Input()
@@ -91,9 +217,11 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   @Input()
   public textButtonsHeader = 'Actions';
+
   /**
    * The text that appears if there are no items to show. Can also be overwritten by a more complex piece
    * of code by adding a template like this:
+   *
    * @example
    * <ng-template #data-warning-noitems>
    *   <div class="alert alert-danger">The grid is empty</div>
@@ -101,12 +229,17 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
    */
   @Input()
   public textNoItems = 'There are no items to show';
+
   /**
-   * The filter value to filter the content. The data is of type
+   * The filter value to filter the content. The data is of type `{ [prop: string]: any }`.
+   *
+   * @param value A dictionary with filter instructions as shown below. The filter logic applies one after another, like an __AND__ conjunction.
    *
    * @example
-   * { [prop: string]: any }
-   *
+   * {
+   *    "email": "paul@sample.com"
+   *    "name": "Paul"
+   * }
    *
    */
   @Input()
@@ -136,9 +269,6 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   @Output()
   public deleteItem: EventEmitter<any> = new EventEmitter<any>();
 
-  public ngOnInit(): void {
-    console.log('Model', this.model);
-  }
   public ngAfterViewInit(): void {
     if (this.model) {
       this.model.onEdit.subscribe(item => this.editItem.emit(item));
@@ -154,12 +284,16 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   // tslint:disable-next-line:member-ordering
+  /**
+   * @ignore
+   */
   private warnProp: { [prop: string]: string } = {};
 
   /**
+   * @ignore
    * Controls the template used to display certain data types.
    * If the host provides a template it's being used, otherwise a fallback is provided
-   * @param uiHint Property of @UiHint decorator
+   * @param uiHint Property of {@link UiHint} decorator
    */
   public getActiveTemplate(uiHint: string, prop?: string): TemplateRef<any> {
     if (this[uiHint]) {

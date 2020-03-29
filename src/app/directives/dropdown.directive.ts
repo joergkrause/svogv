@@ -10,7 +10,7 @@ export class DropdownDirective {
 
   }
 
-  @HostListener('click') public openDropdown(eventData: Event) {
+  @HostListener('click') public openDropdown() {
     (this.elementRef.nativeElement as HTMLElement)
       .ownerDocument
       .querySelectorAll('.dropdown-menu')

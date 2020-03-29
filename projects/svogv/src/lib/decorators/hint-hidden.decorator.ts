@@ -2,11 +2,11 @@
 /**
  * The Hidden decorator.
  *
- * The @see `DataGrid` does not show columns for properties tagged with `@Hidden()`.
+ * The {@link DataGrid} does not show columns for properties tagged with {@link `Hidden`} decorator.
  * Fields in forms that render automatically
- * using the @see `AcEditor` component will render as <input type="hidden">.
+ * using the {@link `EditorComponent`} will render as `<input type="hidden">`.
  *
- * @param hide          Optional, default is true.
+ * @param hide  Optional, default is `true`.
  */
 export function Hidden(hide = true) {
 

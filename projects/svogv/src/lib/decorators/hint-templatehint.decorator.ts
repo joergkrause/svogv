@@ -1,5 +1,5 @@
 ﻿/**
- * The Template decorator.
+ * The TemplateHint decorator.
  *
  * One can define the way a property gets rendered.
  * Currently supported:
@@ -9,7 +9,7 @@
  *  - Number
  *  - Text
  *
- * The Calendar creates Date-fielsd. However, in casde of a datatype Date the date field will be created anyway.
+ * The Calendar creates Date-field. However, in casde of a datatype Date the date field will be created anyway.
  *
  * @param template        The Name that appears in form fields as a watermark.
  * @param params          Depending of template some additional values as a dictionary.

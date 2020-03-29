@@ -26,5 +26,5 @@ describe('Component: FormValidatorModel', () => {
     };
     expect(model).toBeDefined();
     expect(model['anyfield']['displaygroup'].name).toEqual('fieldName');
-    });
+  });
 });

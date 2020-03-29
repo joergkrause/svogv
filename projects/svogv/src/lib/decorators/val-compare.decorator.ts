@@ -3,8 +3,8 @@
  * shows an error message on the decorated field. The other field (compared to) does
  * not has a decorator nor receives a message.
  *
- * @param withProperty: A string that represents the compared field's name.
- * @param msg: A custom message.
+ * @param withProperty A string that represents the compared field's name.
+ * @param msg A custom message.
  *
  */
 export function Compare(withProperty: string, msg?: string) {

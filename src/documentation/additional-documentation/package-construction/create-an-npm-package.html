@@ -1,0 +1,392 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SVOGV 0.9 Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../../images/favicon.ico">
+	      <link rel="stylesheet" href="../../styles/style.css">
+        <link rel="stylesheet" href="../../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../../" class="navbar-brand">SVOGV 0.9 Documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content additional-page">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+<h2 id="create-an-npm-package">Create an NPM package</h2>
+<p>While we host the whole development project on Github the NPM package shall contain just that part a potential user will use.
+Hence, we have to create a folder structure that supports this. A good structure would look like this:</p>
+<div><pre class="line-numbers"><code class="language-none">\src  
+\test
+\dist
+\docs
+\guides
+
+\node_modules\
+\scripts
+\tools</code></pre></div><p>The first block is the working part, here is where you write your project&#39;s code. The second block is the supporting infrastructure and
+depends on what you really need and want. Usually the code in here is either from an external repository (<em>node_modules</em>) or is being
+created one time and than just invokes tasks once needed.</p>
+<p>The working part consists has two special folders: <em>\docs</em> and <em>\guides</em>. As you may know is a good documentation the foundation of your
+whole project. Without the docs everything has less value. The documentation shall support two parts. Those who want to learn about the 
+project before making a decision to give it a try. And those who actively work with the code. In my project I have splittet the two parts
+accordingly. The reason is not necessarily the ability to split the documentation. It&#39;s because Github has a distinct support for such
+texts and I want to make use of it. The first folder we&#39;re looking into is <em>\docs</em>. This is where this very text resides.</p>
+<p>Read about <a href="./documentation/documentation">Github Pages and Markdown</a> to get a head start.</p>
+<h3 id="setup-the-sources">Setup the Sources</h3>
+<p>You probably want to start with a &quot;real&quot; project and take care about the supporting stuff later. That&#39;s fine. So let&#39;s first setup what we need
+at least to get things into NPM. For my project it&#39;s sort of a library. So I create a folder <em>\lib</em>:</p>
+<div><pre class="line-numbers"><code class="language-none">\src\lib</code></pre></div><p>Because a library needs a lot of testing I am lazy writing plain text a demo app is a good choice. That resides in another folder:</p>
+<div><pre class="line-numbers"><code class="language-none">\src\demo</code></pre></div><p>The pure package is in <em>\src\lib</em>. This is what you get when pulling the package from NPM. Everything else is on Github and the user who wants
+more must go there. That&#39;s why we need the README files. It&#39;s all about pointing quickly to the right folders.</p>
+<h4 id="initialize-the-package">Initialize the Package</h4>
+<p>Now once you in the <em>\lib</em> folder you can start creating your project. Open a command prompt and enter this:</p>
+<div><pre class="line-numbers"><code class="language-none">npm init</code></pre></div><p>It&#39;s an interactive quest:</p>
+<p><img src="./images/npm-init.png" alt="Figure: Create an NPM project" class="img-responsive"></p>
+<p>There are few things you need to think about before you start:</p>
+<ul>
+<li>Name of the project (in lower case only -- NPM does not allow upper case characters)</li>
+<li>License (such as ISC, MIT, or Apache)</li>
+<li>Description (this will appear very prominently on NPM)</li>
+<li>Keywords (in case you care about new users)</li>
+</ul>
+<p>This will create a new file <em>package.json</em>. It&#39;s more or less the center of your app. It&#39;s where all commands you can start come from. </p>
+<p>The final file in my project looks like this:</p>
+<div><pre class="line-numbers"><code class="language-none">{
+  &quot;name&quot;: &quot;svogv&quot;,
+  &quot;version&quot;: &quot;0.6.0&quot;,
+  &quot;description&quot;: &quot;An advanced library for Angular 6 (Angular in general) for model driven forms and validation support.&quot;,
+  &quot;main&quot;: &quot;./bundles/svogv.umd.js&quot;,
+  &quot;module&quot;: &quot;./index.js&quot;,
+  &quot;typings&quot;: &quot;./index.d.ts&quot;,
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;https://github.com/joergkrause/svogv.git&quot;
+  },
+  &quot;keywords&quot;: [
+    &quot;angular&quot;,
+    &quot;angular2&quot;,
+    &quot;angular4&quot;,
+    &quot;Reactive&quot;,
+    &quot;Forms&quot;,
+    &quot;Validation&quot;,
+    &quot;Viewmodel&quot;,
+    &quot;decorators&quot;,
+    &quot;components&quot;
+  ],
+  &quot;license&quot;: &quot;ICS&quot;,
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/joergkrause/svogv/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/joergkrause/svogv#readme&quot;,
+  &quot;peerDependencies&quot;: {
+    &quot;&#64;angular/common&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/compiler&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/core&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/forms&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/http&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/platform-browser&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/platform-browser-dynamic&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/router&quot;: &quot;^3.1.0&quot;,
+    &quot;core-js&quot;: &quot;^2.4.1&quot;,
+    &quot;rxjs&quot;: &quot;^5.4.2&quot;,
+    &quot;systemjs&quot;: &quot;^0.19.38&quot;,
+    &quot;zone.js&quot;: &quot;^0.8.16&quot;
+  }
+}</code></pre></div><p>If you now compare this with yours you find that some parts are missing. Let&#39;s dive into <em>package.json</em> first to get what&#39;s important. There are few 
+options that simply help others to navigate in your project. These parts are:</p>
+<p>  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;<a href="https://github.com/joergkrause/svogv/issues&quot;">https://github.com/joergkrause/svogv/issues&quot;</a>
+  },
+  &quot;homepage&quot;: &quot;<a href="https://github.com/joergkrause/svogv#readme&quot;">https://github.com/joergkrause/svogv#readme&quot;</a>,</p>
+<p>They are just pointers to the repository. NPM will extract the values and use this to create links:</p>
+<p><img src="./images/npm-git-pointer.png" alt="Figure: The &quot;bugs&quot;:&quot;url&quot; field is used here" class="img-responsive"></p>
+<p>Fortunatly, if your repository already exists, the paths are right where they shall be. </p>
+<p>Another part is not yet missing: the dependencies. This part we develop while creating the project. So leave it empty right now. </p>
+<h4 id="the-projects-core-files">The Project&#39;s Core files</h4>
+<p>The project we create is an Angular 2 library, created with TypeScript. So we need to setup this properly. The files we need are:</p>
+<ul>
+<li><p>README.md: </p>
+<p>  The documentation&#39;s entry point. This file is shown on NPM (not on GitHub). It&#39;s sort of your homepage. Remember that we&#39;re currently in the <em>\src\lib\</em> folder and create just the library. The Github&#39;s readme will come later.  </p>
+</li>
+<li><p>tsconfig.json:</p>
+<p>  The configuration for the TypeScript transpiler. That&#39;s covered in the chapter about <a href="./typescript/intro">TypeScript</a>.</p>
+</li>
+<li><p>typedoc.json:</p>
+<p>  The configuration for the API documentation generator. That&#39;s covered in the chapter about <a href="./documentation/api-doc">API Documentation</a>.</p>
+</li>
+<li><p>Two files are just for testing. That&#39;s covered in the chapter about unit testing:</p>
+<ul>
+<li>system-config-spec.ts</li>
+<li>tsconfig-srcs.json</li>
+</ul>
+</li>
+</ul>
+<p>Before you can proceed we need to setup a basic build tool chain. The build process is not part of the library nor the demo we write. It&#39;s our personal
+effort to assure things go well for our users. That happens in the main (root) folder of the project.</p>
+<p>You remember the folder structure we started with? </p>
+<p>  \root
+    \src
+      \lib
+      \demo
+    \node_modules
+    \scripts
+    \test
+    \tools</p>
+<p>The part in <em>\src\lib</em> is almost done. Now we go to the root folder and setup the build tool chain. We use these tools here:</p>
+<ul>
+<li>Gulp: An script runner to automate tasks</li>
+<li>TypeScript: The transpiler from TS in JS</li>
+<li>Sass: Transpiler for SCSS files into CSS</li>
+<li>Travis: A continuees integration tool to monitor the builds</li>
+<li>Karma: Unit Tests for JavaScript</li>
+</ul>
+<h3 id="setup-the-core">Setup the Core</h3>
+<p>There are two ways to setup a project. You can use <em>npm</em> and the command line to execute all parts one by one. Or you can create a file named <em>package.json</em> and
+let the <em>npm</em> tool request all dependencies. Because of the sheer amount of tools we usually need the second way is now way better. So, start by putting this file
+in your root folder:</p>
+<div><pre class="line-numbers"><code class="language-none">{
+  &quot;name&quot;: &quot;your-project&quot;,
+  &quot;version&quot;: &quot;0.0.1&quot;,
+  &quot;description&quot;: &quot;Some good description.&quot;,
+  &quot;main&quot;: &quot;index.js&quot;,
+  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;gulp build&quot;,
+    &quot;demoall&quot;: &quot;gulp build &amp;&amp; cd src/demo &amp;&amp; npm run exec&quot;,
+    &quot;execdemo&quot;: &quot;cd src/demo &amp;&amp; npm run exec&quot;,
+    &quot;test&quot;: &quot;gulp test&quot;,
+    &quot;tslint&quot;: &quot;gulp lint&quot;,
+    &quot;stylelint&quot;: &quot;gulp lint&quot;,
+    &quot;deploy&quot;: &quot;firebase deploy&quot;,
+    &quot;docs&quot;: &quot;gulp docs&quot;
+  },
+  &quot;repository&quot;: {
+    &quot;type&quot;: &quot;git&quot;,
+    &quot;url&quot;: &quot;git+https://github.com/your-git-name/your-project.git&quot;
+  },
+  &quot;keywords&quot;: [
+    &quot;Angular&quot;,
+    &quot;Reactive&quot;,
+    &quot;Forms&quot;,
+    &quot;Forms&quot;,
+    &quot;Validation&quot;,
+    &quot;Viewmodel&quot;,
+    &quot;decorators&quot;
+  ],
+  &quot;author&quot;: &quot;Your Public Name&quot;,
+  &quot;license&quot;: &quot;ISC&quot;,
+  &quot;engines&quot;: {
+    &quot;node&quot;: &quot;&gt;= 5.4.1 &lt; 7&quot;
+  },
+  &quot;bugs&quot;: {
+    &quot;url&quot;: &quot;https://github.com/your-git-name/your-project/issues&quot;
+  },
+  &quot;homepage&quot;: &quot;https://github.com/your-git-name/your-project#readme&quot;,
+  &quot;dependencies&quot;: {
+    &quot;&#64;angular/common&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/compiler&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/core&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/forms&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/http&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/platform-browser&quot;: &quot;^2.2.0&quot;,
+    &quot;core-js&quot;: &quot;^2.4.1&quot;,
+    &quot;rxjs&quot;: &quot;^5.0.1&quot;,
+    &quot;systemjs&quot;: &quot;0.19.38&quot;,
+    &quot;zone.js&quot;: &quot;^0.7.2&quot;
+  },
+  &quot;devDependencies&quot;: {
+    &quot;&#64;angular/compiler-cli&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/platform-browser-dynamic&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/platform-server&quot;: &quot;^2.2.0&quot;,
+    &quot;&#64;angular/router&quot;: &quot;^3.2.0&quot;,
+    &quot;&#64;types/glob&quot;: &quot;^5.0.29&quot;,
+    &quot;&#64;types/gulp&quot;: &quot;^3.8.29&quot;,
+    &quot;&#64;types/hammerjs&quot;: &quot;^2.0.30&quot;,
+    &quot;&#64;types/jasmine&quot;: &quot;^2.2.31&quot;,
+    &quot;&#64;types/merge2&quot;: &quot;0.0.28&quot;,
+    &quot;&#64;types/minimist&quot;: &quot;^1.1.28&quot;,
+    &quot;&#64;types/node&quot;: &quot;^6.0.34&quot;,
+    &quot;&#64;types/protractor&quot;: &quot;^4.0.0&quot;,
+    &quot;&#64;types/run-sequence&quot;: &quot;0.0.27&quot;,
+    &quot;&#64;types/rx&quot;: &quot;^4.1.1&quot;,
+    &quot;&#64;types/selenium-webdriver&quot;: &quot;2.53.36&quot;,
+    &quot;axe-core&quot;: &quot;^2.0.7&quot;,
+    &quot;axe-webdriverjs&quot;: &quot;^0.5.0&quot;,
+    &quot;conventional-changelog&quot;: &quot;^1.1.0&quot;,
+    &quot;dgeni&quot;: &quot;^0.4.2&quot;,
+    &quot;dgeni-packages&quot;: &quot;^0.16.2&quot;,
+    &quot;express&quot;: &quot;^4.14.0&quot;,
+    &quot;firebase-tools&quot;: &quot;^3.2.1&quot;,
+    &quot;fs-extra&quot;: &quot;^1.0.0&quot;,
+    &quot;glob&quot;: &quot;^7.1.1&quot;,
+    &quot;gulp&quot;: &quot;^3.9.1&quot;,
+    &quot;gulp-autoprefixer&quot;: &quot;^3.1.1&quot;,
+    &quot;gulp-better-rollup&quot;: &quot;^1.0.2&quot;,
+    &quot;gulp-clean&quot;: &quot;^0.3.2&quot;,
+    &quot;gulp-clean-css&quot;: &quot;^2.3.0&quot;,
+    &quot;gulp-cli&quot;: &quot;^1.2.2&quot;,
+    &quot;gulp-connect&quot;: &quot;^5.0.0&quot;,
+    &quot;gulp-htmlmin&quot;: &quot;^3.0.0&quot;,
+    &quot;gulp-if&quot;: &quot;^2.0.2&quot;,
+    &quot;gulp-markdown&quot;: &quot;^1.2.0&quot;,
+    &quot;gulp-sass&quot;: &quot;^3.1.0&quot;,
+    &quot;gulp-shell&quot;: &quot;^0.5.2&quot;,
+    &quot;gulp-sourcemaps&quot;: &quot;^2.2.3&quot;,
+    &quot;gulp-transform&quot;: &quot;^1.1.0&quot;,
+    &quot;gulp-typescript&quot;: &quot;^3.1.4&quot;,
+    &quot;highlight.js&quot;: &quot;^9.9.0&quot;,
+    &quot;jasmine-core&quot;: &quot;^2.4.1&quot;,
+    &quot;karma&quot;: &quot;^1.1.1&quot;,
+    &quot;karma-browserstack-launcher&quot;: &quot;^1.0.1&quot;,
+    &quot;karma-chrome-launcher&quot;: &quot;^2.0.0&quot;,
+    &quot;karma-firefox-launcher&quot;: &quot;^1.0.0&quot;,
+    &quot;karma-jasmine&quot;: &quot;^1.0.2&quot;,
+    &quot;karma-sauce-launcher&quot;: &quot;^1.0.0&quot;,
+    &quot;madge&quot;: &quot;^0.6.0&quot;,
+    &quot;merge2&quot;: &quot;^1.0.2&quot;,
+    &quot;minimist&quot;: &quot;^1.2.0&quot;,
+    &quot;node-sass&quot;: &quot;^4.2.0&quot;,
+    &quot;protractor&quot;: &quot;^4.0.8&quot;,
+    &quot;resolve-bin&quot;: &quot;^0.4.0&quot;,
+    &quot;run-sequence&quot;: &quot;^1.2.2&quot;,
+    &quot;sass&quot;: &quot;^0.5.0&quot;,
+    &quot;selenium-webdriver&quot;: &quot;^3.0.0&quot;,
+    &quot;strip-ansi&quot;: &quot;^3.0.0&quot;,
+    &quot;stylelint&quot;: &quot;^7.7.0&quot;,
+    &quot;symlink-or-copy&quot;: &quot;^1.0.1&quot;,
+    &quot;travis-after-modes&quot;: &quot;0.0.6-2&quot;,
+    &quot;ts-node&quot;: &quot;^2.0.0&quot;,
+    &quot;tslint&quot;: &quot;^4.3.1&quot;,
+    &quot;typedoc&quot;: &quot;^0.5.1&quot;,
+    &quot;typescript&quot;: &quot;~2.1.4&quot;,
+    &quot;which&quot;: &quot;^1.2.4&quot;
+  }
+}</code></pre></div><p>Remember changing the descriptive parts:</p>
+<p><img src="./images/setup-npm-root.png" alt="Figure: Your Information in the Package" class="img-responsive"></p>
+<p>Save this as <em>package.json</em> into the root. Open a command prompt and excute this command:</p>
+<div><pre class="line-numbers"><code class="language-none">npm update</code></pre></div><p>You will have a new folder right now: <em>node_modules</em>. There is no need to touch this folder, ever. <em>npm</em> will do this for you. First check if Gulp is now
+present by typing </p>
+<div><pre class="line-numbers"><code class="language-none">gulp -v</code></pre></div><p>It should respond like this:</p>
+<p><img src="./images/gulp-version.png" alt="Figure: Gulp Version" class="img-responsive"></p>
+<blockquote>
+<p>If you see nothing or just an error that gulp is not yet present <a href="./setup/setup-gulp">setup Gulp</a> first.</p>
+</blockquote>
+<p>The first part of the setup refers to Gulp. Gulp requires a file called <em>gulpfile.js</em> 
+to run so called tasks. Because I want use TypeScript my gulpfile is somewhat special:</p>
+<div><pre class="line-numbers"><code class="language-none">&#39;use strict&#39;;
+/**
+ * Load the TypeScript compiler, then load the TypeScript gulpfile which simply loads all
+ * the tasks. The tasks are really inside tools/gulp/tasks.
+ */
+
+const path = require(&#39;path&#39;);
+
+// Register TS compilation.
+require(&#39;ts-node&#39;).register({
+  project: path.join(__dirname, &#39;tools/gulp&#39;)
+});
+
+require(&#39;./tools/gulp/gulpfile&#39;);</code></pre></div><p>The <code>ts-node</code> is a <a href="https://www.npmjs.com/package/ts-node">TypeScript execution environment</a> and REPL (Read Execute Print Loop) for node. It&#39;s hence sort of an on-the-fly transpiler for TypeScript.
+Using this we can write the Gulp stuff in TypeScript and Gulp will still execute plain JavaScript.</p>
+<h3 id="build-tasks">Build tasks</h3>
+<p>You can build and start everything like this:</p>
+<ul>
+<li>Go to root of the project<ul>
+<li>run <code>npm run build</code>: build the library </li>
+<li>run <code>npm run demoall</code>: build libary, demo, and run the demo using local HTTP server on port 3000</li>
+<li>run <code>npm run execdemo</code>: build and run demo using local HTTP server, but keep library as is</li>
+<li>run <code>npm run tslint</code>: run the linter for the library</li>
+</ul>
+</li>
+<li>You can run more tasks specific to the demo from there<ul>
+<li><code>cd src/demo</code> and then the particular task </li>
+</ul>
+</li>
+</ul>
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 2;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'additional-page';
+            var COMPODOC_CURRENT_PAGE_URL = 'create-an-npm-package.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../../js/libs/custom-elements.min.js"></script>
+       <script src="../../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../../js/menu-wc.js" defer></script>
+
+       <script src="../../js/libs/bootstrap-native.js"></script>
+
+       <script src="../../js/libs/es6-shim.min.js"></script>
+       <script src="../../js/libs/EventDispatcher.js"></script>
+       <script src="../../js/libs/promise.min.js"></script>
+       <script src="../../js/libs/zepto.min.js"></script>
+
+       <script src="../../js/compodoc.js"></script>
+
+       <script src="../../js/tabs.js"></script>
+       <script src="../../js/menu.js"></script>
+       <script src="../../js/libs/clipboard.min.js"></script>
+       <script src="../../js/libs/prism.js"></script>
+       <script src="../../js/sourceCode.js"></script>
+          <script src="../../js/search/search.js"></script>
+          <script src="../../js/search/lunr.min.js"></script>
+          <script src="../../js/search/search-lunr.js"></script>
+          <script src="../../js/search/search_index.js"></script>
+       <script src="../../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

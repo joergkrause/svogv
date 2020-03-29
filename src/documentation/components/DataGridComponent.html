@@ -1,0 +1,1973 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>SVOGV 0.9 Documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>DataGridComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">API</a>
+        </li>
+        <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">Documentation and Examples</a>
+        </li>
+        <li >
+            <a href="#example" role="tab" id="example-tab" data-toggle="tab" data-link="example">Live Demo</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Source: Template</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source: Code</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts</code>
+</p>
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>A classic data grid. You provide a model to handle all features. The model is build from a
+simple array of objects with decorators.</p>
+<blockquote>
+<p>See &#39;Documentation and Examples&#39; tab for a complete documentation.</p>
+</blockquote>
+<h3 id="summary">Summary</h3>
+<p>The datagrid provides basic functions for data tables:</p>
+<ul>
+<li>sorting</li>
+<li>filtering</li>
+<li>pagination</li>
+<li>editing</li>
+</ul>
+<p>Provide an decorator enhanced model and the grid appears driven by model meta data.</p>
+<p>There are many attributes and ways to change the appearance. Also some classes can be controlled by
+the host component:</p>
+<ul>
+<li><code>.col-borders</code></li>
+<li><code>.col-last</code></li>
+<li><code>.col-first</code></li>
+</ul>
+<p>All these styles are applied to the <col> elements of the underlying table.</p>
+<p>The model used in the example is an array of objects, where the properties are decorated with
+various decorators used to control the grid&#39;s render behavior.</p>
+<div><pre class="line-numbers"><code class="language-typescript">const data: UserViewModel[] = this.dataSource; // provide a simple array here
+  this.model = new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);</code></pre></div><p>The class <a href="../classes/DataGridModel.html">DataGridModel</a> controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
+so assure you provide a class and set all properties to a default to force creation of properties.</p>
+<div><pre class="line-numbers"><code class="language-typescript">export class UserViewModel {
+  email: string = &#39;&#39;; // the = &#39;&#39; is necessary!
+  // more omitted for brevity
+}</code></pre></div><p>The grid can be extended with the <a href="../components/DataGridPaginationComponent.html">DataGridPaginationComponent</a> to page through huge data sets. The model
+handles the pagination, the additional <a href="../components/DataGridPaginationComponent.html">DataGridPaginationComponent</a> is only a predefined renderer that
+supports the used theme.</p>
+<p><example-url>/#/widget/grid</example-url></p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/AfterViewInit" target="_blank" >AfterViewInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+    <p class="comment">
+        <h3>Example</h3>
+    </p>
+    <div class="io-description">
+                <div>
+                    <pre class="line-numbers"><code class="language-html">&lt;ac-datagrid
+[model]=&quot;model&quot;
+[showActions]=&quot;false&quot;
+[columnStyle]=&quot;&quot;
+&gt;&lt;/ac-datagrid&gt;</code></pre>
+                </div>
+    </div>
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>ac-datagrid</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./datagrid.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./datagrid.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#boolean">boolean</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#booleanFallback">booleanFallback</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#date">date</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dateFallback">dateFallback</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#enum">enum</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#enumFallback">enumFallback</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#number">number</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#numberFallback">numberFallback</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#string">string</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#stringFallback">stringFallback</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngAfterViewInit">ngAfterViewInit</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Inputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#columnStyle">columnStyle</a>
+                            </li>
+                            <li>
+                                <a href="#externals">externals</a>
+                            </li>
+                            <li>
+                                <a href="#filter">filter</a>
+                            </li>
+                            <li>
+                                <a href="#model">model</a>
+                            </li>
+                            <li>
+                                <a href="#reArrangeColumns">reArrangeColumns</a>
+                            </li>
+                            <li>
+                                <a href="#showActions">showActions</a>
+                            </li>
+                            <li>
+                                <a href="#showDeleteButton">showDeleteButton</a>
+                            </li>
+                            <li>
+                                <a href="#showEditButton">showEditButton</a>
+                            </li>
+                            <li>
+                                <a href="#textButtonsHeader">textButtonsHeader</a>
+                            </li>
+                            <li>
+                                <a href="#textDeleteButton">textDeleteButton</a>
+                            </li>
+                            <li>
+                                <a href="#textEditButton">textEditButton</a>
+                            </li>
+                            <li>
+                                <a href="#textNoItems">textNoItems</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteItem">deleteItem</a>
+                            </li>
+                            <li>
+                                <a href="#editItem">editItem</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#filter">filter</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+
+    <section>
+    <h3 id="inputs">Inputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="columnStyle"></a>
+                        <b>columnStyle</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/DatagridStyles.html" target="_self" >DatagridStyles</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:179</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Override the internal styles by giving directly CSS rules based on the column tags.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="externals"></a>
+                        <b>externals</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:171</a></div>
+                            </td>
+                        </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filter"></a>
+                        <b>filter</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:246</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The filter value to filter the content. The data is of type <code>{ [prop: string]: any }</code>.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="model"></a>
+                        <b>model</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../classes/DataGridModel.html" target="_self" >DataGridModel&lt;any&gt;</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:185</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The model that makes up the content. Shall provide properties with decorators to control appearance.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="reArrangeColumns"></a>
+                        <b>reArrangeColumns</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="256" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:256</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>If <code>true</code> the columns can be rearranged by moving around with drag &#39;n drop.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showActions"></a>
+                        <b>showActions</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="203" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:203</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Show the action column at all. Use <a href="showDeleteButton">and  @see showEditButton to switch the</a>buttons
+on or off individually. Default is <code>true</code> (actions visible).</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showDeleteButton"></a>
+                        <b>showDeleteButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="191" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:191</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Wheather to show a delete button. Clicking it fires the <a href="DataGridModel.OnDelete">DataGridModel.OnDelete</a>event.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showEditButton"></a>
+                        <b>showEditButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="196" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:196</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Wheather to show an edit button. Clicking it fires the <a href="DataGridModel.OnEdit">DataGridModel.OnEdit</a>event.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="textButtonsHeader"></a>
+                        <b>textButtonsHeader</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Actions&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="219" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:219</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The column header of the column that shows the buttons. Default is &#39;Actions&#39;.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="textDeleteButton"></a>
+                        <b>textDeleteButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Delete&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="209" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:209</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The text that appears on the Delete button. Default is &#39;Delete&#39;.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="textEditButton"></a>
+                        <b>textEditButton</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;Edit&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="214" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:214</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The text that appears on the Edit button. Default is &#39;Edit&#39;.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="textNoItems"></a>
+                        <b>textNoItems</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;There are no items to show&#x27;</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="231" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:231</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The text that appears if there are no items to show. Can also be overwritten by a more complex piece
+of code by adding a template like this:</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+    <section>
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="deleteItem"></a>
+                        <b>deleteItem</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="270" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:270</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event forwarded from model class and being fired after the model class&#39;s onDelete event.
+The event is invoked by the appropriate internal button via click.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="editItem"></a>
+                        <b>editItem</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;any&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="263" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:263</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Event forwarded from model class and being fired after the model class&#39;s onEdit event.
+The event is invoked by the appropriate internal button via click.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngAfterViewInit"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            ngAfterViewInit
+                        </b>
+                        <a href="#ngAfterViewInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngAfterViewInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="272"
+                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:272</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Public</span>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="279"
+                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:279</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="boolean"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            boolean</b>
+                            <a href="#boolean"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(&#x27;boolean&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:111</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>You can provide a custom template to override the fallback and render a field&#39;s data completely on your own.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="booleanFallback"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            booleanFallback</b>
+                            <a href="#booleanFallback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;boolean&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:106</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Access to the boolean renderer fallback template. The template used internally looks like shown in the example.</p>
+<p><strong>Template code:</strong></p>
+<div><pre class="line-numbers"><code class="language-none">&lt;ng-template #boolean let-data&gt;
+   &lt;input type=&quot;checkbox&quot; disabled [checked]=&quot;data&quot; /&gt;
+&lt;/ng-template&gt;</code></pre></div></div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="date"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            date</b>
+                            <a href="#date"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(&#x27;date&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="131" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:131</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>You can provide a custom template to override the fallback and render a field&#39;s data completely on your own.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="dateFallback"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            dateFallback</b>
+                            <a href="#dateFallback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;date&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="126" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:126</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Access to the date renderer fallback template. The template used internally looks like shown in the example
+That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+a pipe, your viewmodel&#39;s properties must be decorated with the <a href="../miscellaneous/functions.html#FormatPipe">FormatPipe</a> decorator.</p>
+<p><strong>Template code:</strong></p>
+<div><pre class="line-numbers"><code class="language-none">&lt;ng-template #date let-data let-modelpipe=&quot;pipe&quot; let-params=&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;</code></pre></div></div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enum"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            enum</b>
+                            <a href="#enum"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(&#x27;enum&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="149" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:149</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>You can provide a custom template to override the fallback and render a field&#39;s data completely on your own.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="enumFallback"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            enumFallback</b>
+                            <a href="#enumFallback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;enum&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="144" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:144</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Access to the enum renderer fallback template. The template used internally looks like shown in the example</p>
+<p><strong>Template code:</strong></p>
+<div><pre class="line-numbers"><code class="language-none">&lt;ng-template #enum let-data&gt;
+  {{ data }}
+&lt;/ng-template&gt;</code></pre></div></div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="number"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            number</b>
+                            <a href="#number"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(&#x27;number&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="169" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:169</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>You can provide a custom template to override the fallback and render a field&#39;s data completely on your own.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="numberFallback"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            numberFallback</b>
+                            <a href="#numberFallback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;number&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="164" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:164</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Access to the number renderer fallback template. The template used internally looks like shown in the example
+That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+a pipe, your viewmodel&#39;s properties must be decorated with the <a href="../miscellaneous/functions.html#FormatPipe">FormatPipe</a> decorator.</p>
+<p><strong>Template code:</strong></p>
+<div><pre class="line-numbers"><code class="language-none">&lt;ng-template #number let-data let-modelpipe=&quot;pipe&quot; let-params=&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;</code></pre></div></div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="string"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            string</b>
+                            <a href="#string"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(&#x27;string&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="93" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:93</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>You can provide a custom template to override the fallback and render a field&#39;s data completely on your own.</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="stringFallback"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            stringFallback</b>
+                            <a href="#stringFallback"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>TemplateRef&lt;any&gt;</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;string&#x27;, {static: true})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="88" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:88</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Access to the string renderer fallback template. The template used internally looks like shown in the example
+That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+a pipe, your viewmodel&#39;s properties must be decorated with the <a href="../miscellaneous/functions.html#FormatPipe">FormatPipe</a> decorator.</p>
+<p><strong>Template code:</strong></p>
+<div><pre class="line-numbers"><code class="language-none">&lt;ng-template #string let-data let-modelpipe=&quot;pipe&quot; let-params=&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;</code></pre></div></div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filter"></a>
+                        <span class="name"><b>filter</b><a href="#filter"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>set</b><code>filter(value: literal type)</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="246" class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/datagrid.component.ts:246</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>The filter value to filter the content. The data is of type <code>{ [prop: string]: any }</code>.</p>
+</div>
+
+                                <div class="io-description">
+                                        <b>Parameters :</b>
+                                        <table class="params">
+                                            <thead>
+                                                <tr>
+                                                    <td>Name</td>
+                                                        <td>Type</td>
+                                                    <td>Optional</td>
+                                                        <td>Description</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    <tr>
+                                                            <td>value</td>
+                                                    
+                                                            <td>
+                                                                        <code>literal type</code>
+                                                            </td>
+                                                    
+                                                        <td>
+                                                                No
+                                                        </td>
+                                                        
+                                                            <td>
+                                                                    <code><p>A dictionary with filter instructions as shown below. The filter logic applies one after another, like an <strong>AND</strong> conjunction.</p>
+</code>
+                                                            </td>
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                </div>
+                                <div>
+                                        <b>Example :</b>
+                                            <div>
+                                                <pre class="line-numbers"><code class="language-html">{
+&amp;quot;email&amp;quot;: &amp;quot;paul</code></pre>
+                                            </div>
+                                </div>
+                                <div class="io-description">
+                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                                </div>
+                        </td>
+                    </tr>
+            </tbody>
+        </table>
+</section>
+</div>
+
+    <div class="tab-pane fade " id="c-readme">
+        <p><h1 id="complete-documentation-of-the-datagrid-component">Complete Documentation of the DataGrid Component</h1>
+<p>The datagrid provides basic functions for data tables:</p>
+<ul>
+<li>sorting</li>
+<li>filtering</li>
+<li>pagination</li>
+<li>editing</li>
+</ul>
+<p>The grid provides a decorator enhanced model and the grid appears driven by model meta data.</p>
+<h2 id="basic-features">Basic Features</h2>
+<p>To use the grid, you must first define a view model for a single item. This can look like this:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import * as UI from &#39;svogv&#39;;
+import { PercentPipe } from &#39;./pipe/percent.pipe&#39;;
+
+export class UserViewModelList {
+
+  &#64;UI.Hidden()
+  id = 0;
+
+  &#64;UI.Display(&#39;E-Mail&#39;, 20, &#39;E-Mail address&#39;)
+  email = &#39;&#39;;
+
+  &#64;UI.Display(&#39;Phone Number&#39;, 30, &#39;The user\&#39;s phone&#39;)
+  phoneNumber = &#39;&#39;;
+
+  &#64;UI.Display(&#39;User Name&#39;, 10, &#39;The full name&#39;)
+  &#64;UI.UiHint({ &#39;width&#39;: &#39;200px&#39; })
+  userName = &#39;&#39;;
+
+  &#64;UI.Display(&#39;Age&#39;, 40, &#39;From 12 to 88&#39;)
+  age = 0;
+
+  &#64;UI.Display(&#39;Done&#39;, 100, &#39;Work progress&#39;)
+  &#64;UI.FormatPipe(PercentPipe)
+  &#64;UI.Sortable(false)
+  done?: number = 0;
+
+  &#64;UI.Display(&#39;Active&#39;, 200, &#39;User is active&#39;)
+  &#64;UI.Sortable(false)
+  active?= false;
+}</code></pre></div><p>In your component&#39;s code you must create a valid model, using the class {@link DataGridModel}. You must provide a type and the model must have properties that are set at runtime. You can enforce runtime values by adding default value to all properties. This is mandatory.</p>
+<div><pre class="line-numbers"><code class="language-typescript">const data: UserViewModel[] = this.dataSource; // provide a simple array here
+this.model = new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);</code></pre></div><blockquote>
+<p>If you get TSLINT warnings here, adjust your settings by allowing default values along with the types. If that is not possible, remove the types, but not the defaults.</p>
+</blockquote>
+<h3 id="the-ui-decorators">The UI Decorators</h3>
+<p>The decorators control the appearance of the grid:</p>
+<ul>
+<li><code>@Hidden()</code>: The column will not be shown by default. But you can add the column later dynamically anyway. See advanced examples below.</li>
+<li><code>@Display()</code>: The text of the header, the order and a tooltip that appears on the header element.</li>
+<li><code>@UiHint()</code>: An additional style that applies to the cell.</li>
+<li><code>@FormatPipe()</code>: A pipe that renders the data value for <code>string</code>, <code>number</code> and <code>date</code>. Other types ignore this.
+Be aware, that if you provide a custom template for a cell you must provide pipe instruction to render this properly.</li>
+<li><code>@Sortable()</code>: Suppresses the sort buttons if set to <code>false</code>. Default is with standard sorting (JS array <code>sort</code>).
+You can provide a custom sort expression to sort other than ECMAScript default. The expression is handled as callback.</li>
+<li><code>@TemplateHint()</code>: Replace the template with a custom one regardless the type. See below for details.</li>
+</ul>
+<blockquote>
+<p>Note, the validators such as <code>@Required</code> have no function in the grid. They might be useful if the same model is
+being used for forms or inline editing.</p>
+</blockquote>
+<h2 id="templates">Templates</h2>
+<p>The appearance of cells can be modified in various ways. First, the grid provides default templates for certain data types. Second, the
+internal behavior can be overwritten by providing a template with the same name , such as &#39;#boolean&#39;. Third, the model can provide a
+<code>@TemplateHint(&#39;template&#39;)</code> decorator, whereas &#39;template&#39; is the name of a custom template. All three variants can be mixed.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ac-datagrid [model]=&quot;model&quot; [showActions]=&quot;false&quot; [externals]=&quot;{ AgeTemplate: ForAgeTemplate }&quot;&gt;
+  &lt;ng-template #boolean let-item&gt;
+    &lt;span *ngIf=&quot;item&quot;&gt;YES&lt;/span&gt;
+    &lt;span *ngIf=&quot;!item&quot;&gt;NO&lt;/span&gt;
+  &lt;/ng-template&gt;
+  &lt;ng-template #ForAgeTemplate let-item&gt; Age: {{ item }} &lt;/ng-template&gt;
+&lt;/ac-datagrid&gt;</code></pre></div><p>Here, the templates named <em>boolean</em> overwrites the internal fallback template <em>booleanFallback</em> (see {@link DatagridComponent.booleanFallback}). The data are delivered as default parameter and you can name it as you like. Pipes are delivered as <em>pipe</em> and <em>params</em>, respectively. If there is a local pipe, you can omit the <code>@FormatPipe</code> decorator and apply the pipe directly. The decorator is just a convenience function to create more sophisticated model types.</p>
+<div><pre class="line-numbers"><code class="language-typescript">let-modelpipe=&quot;pipe&quot; let-params=&quot;params&quot;</code></pre></div><p>The second example shows a custom template, <em>ForAgeTemplate</em>. That&#39;s something you can address with the <code>@TemplateHint</code> decorator like this:</p>
+<div><pre class="line-numbers"><code class="language-typescript">&#64;TemplateHint(&#39;ForAgeTemplate&#39;)</code></pre></div><p>The field decorated like this will pull the custom template and you have total control about the render process, even by-passing the fallbacks.</p>
+<h2 id="advanced-features">Advanced Features</h2>
+<p>The grid supports several parameters to handle all the various features.</p>
+<h3 id="styles">Styles</h3>
+<p>The grid has properties for several parts that accept a style in the same way <code>[ngStyle]</code> works.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ac-datagrid
+  [model]=&quot;model&quot;
+  [showActions]=&quot;false&quot;
+  [columnStyle]=&quot;{
+    footer: { &#39;background-color&#39;: footerColor },
+    first: { &#39;background-color&#39;: firstColor },
+    header: {
+      color: headerForeColor,
+      &#39;background-color&#39;: headerBackColor
+    },
+    headerSortButton: { color: sortIconColor }
+  }&quot;
+&gt;&lt;/ac-datagrid&gt;</code></pre></div><h3 id="button-and-text">Button and Text</h3>
+<p>All buttons and text portions can be customized or localized. Just provide an alternate text. All such elements have a fallback in plain English.</p>
+<div><pre class="line-numbers"><code class="language-html">&lt;ac-datagrid [model]=&quot;model&quot;
+            [showActions]=&quot;true&quot;
+            [reArrangeColumns]=&quot;true&quot;
+            textButtonsHeader=&quot;Some Actions&quot;
+            textDeleteButton=&quot;Delete Item&quot;
+            textEditButton=&quot;Edit Me&quot;
+            (editItem)=&quot;edit($event)&quot;
+            (deleteItem)=&quot;delete($event)&quot;&gt;
+&lt;/ac-datagrid&gt;</code></pre></div></p>
+    </div>
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, Input, ViewChild, ContentChild,
+         TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from &#x27;@angular/core&#x27;;
+import { DataGridModel, Direction } from &#x27;./models/datagrid.model&#x27;;
+import { DatagridStyles } from &#x27;./models/datagridstyle.model&#x27;;
+
+/**
+ * A classic data grid. You provide a model to handle all features. The model is build from a
+ * simple array of objects with decorators.
+ *
+ * &gt; See &#x27;Documentation and Examples&#x27; tab for a complete documentation.
+ *
+ * ### Summary
+ *
+ * The datagrid provides basic functions for data tables:
+ *
+ * * sorting
+ * * filtering
+ * * pagination
+ * * editing
+ *
+ * Provide an decorator enhanced model and the grid appears driven by model meta data.
+ *
+ * There are many attributes and ways to change the appearance. Also some classes can be controlled by
+ * the host component:
+ *
+ * * &#x60;.col-borders&#x60;
+ * * &#x60;.col-last&#x60;
+ * * &#x60;.col-first&#x60;
+ *
+ * All these styles are applied to the &lt;col&gt; elements of the underlying table.
+ *
+ * The model used in the example is an array of objects, where the properties are decorated with
+ * various decorators used to control the grid&#x27;s render behavior.
+ *
+ * ~~~typescript
+ * const data: UserViewModel[] &#x3D; this.dataSource; // provide a simple array here
+ *  this.model &#x3D; new DataGridModel&lt;UserViewModel&gt;(data, UserViewModel);
+ * ~~~
+ *
+ * The class {@link DataGridModel} controls the grid. You must provide a viewmodel, this is mandatory. The viewmodel is being examined at runtime,
+ * so assure you provide a class and set all properties to a default to force creation of properties.
+ *
+ * ~~~typescript
+ * export class UserViewModel {
+ *  email: string &#x3D; &#x27;&#x27;; // the &#x3D; &#x27;&#x27; is necessary!
+ *  // more omitted for brevity
+ * }
+ * ~~~
+ *
+ * The grid can be extended with the {@link DataGridPaginationComponent} to page through huge data sets. The model
+ * handles the pagination, the additional {@link DataGridPaginationComponent} is only a predefined renderer that
+ * supports the used theme.
+ *
+ * &lt;example-url&gt;/#/widget/grid&lt;/example-url&gt;
+ *
+ * @example
+ *  &lt;ac-datagrid
+ *      [model]&#x3D;&quot;model&quot;
+ *      [showActions]&#x3D;&quot;false&quot;
+ *      [columnStyle]&#x3D;&quot;&quot;
+ *  &gt;&lt;/ac-datagrid&gt;
+ */
+@Component({
+  selector: &#x27;ac-datagrid&#x27;,
+  templateUrl: &#x27;./datagrid.component.html&#x27;,
+  styleUrls: [&#x27;./datagrid.component.scss&#x27;]
+})
+export class DataGridComponent implements AfterViewInit, OnDestroy {
+
+  /**
+   * @ignore
+   */
+  public directionEnumHelper &#x3D; Direction;
+
+  /**
+   * Access to the string renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel&#x27;s properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * &lt;ng-template #string let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+   *  {{ data | formatData: modelpipe: params }}
+   * &lt;/ng-template&gt;
+   * ~~~~~~~~
+   *
+   */
+  @ViewChild(&#x27;string&#x27;, { static: true }) public stringFallback: TemplateRef&lt;any&gt;;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field&#x27;s data completely on your own.
+   */
+  @ContentChild(&#x27;string&#x27;, { static: true }) public string: TemplateRef&lt;any&gt;;
+
+  /**
+   * Access to the boolean renderer fallback template. The template used internally looks like shown in the example.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * &lt;ng-template #boolean let-data&gt;
+   *   &lt;input type&#x3D;&quot;checkbox&quot; disabled [checked]&#x3D;&quot;data&quot; /&gt;
+   * &lt;/ng-template&gt;
+   * ~~~~~~~~
+   *
+   */
+  @ViewChild(&#x27;boolean&#x27;, { static: true }) public booleanFallback: TemplateRef&lt;any&gt;;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field&#x27;s data completely on your own.
+   */
+  @ContentChild(&#x27;boolean&#x27;, { static: true }) public boolean: TemplateRef&lt;any&gt;;
+
+  /**
+   * Access to the date renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel&#x27;s properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * &lt;ng-template #date let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+   *  {{ data | formatData: modelpipe: params }}
+   * &lt;/ng-template&gt;
+   * ~~~~~~~~
+   *
+   */
+  @ViewChild(&#x27;date&#x27;, { static: true }) public dateFallback: TemplateRef&lt;any&gt;;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field&#x27;s data completely on your own.
+   */
+  @ContentChild(&#x27;date&#x27;, { static: true }) public date: TemplateRef&lt;any&gt;;
+
+  /**
+   * Access to the enum renderer fallback template. The template used internally looks like shown in the example
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * &lt;ng-template #enum let-data&gt;
+   *  {{ data }}
+   * &lt;/ng-template&gt;
+   * ~~~~~~~~
+   *
+   */
+  @ViewChild(&#x27;enum&#x27;, { static: true }) public enumFallback: TemplateRef&lt;any&gt;;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field&#x27;s data completely on your own.
+   */
+  @ContentChild(&#x27;enum&#x27;, { static: true }) public enum: TemplateRef&lt;any&gt;;
+
+  /**
+   * Access to the number renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data &quot;as is&quot;, but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel&#x27;s properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Template code:__
+   * ~~~~~~~~
+   * &lt;ng-template #number let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+   *  {{ data | formatData: modelpipe: params }}
+   * &lt;/ng-template&gt;
+   * ~~~~~~~~
+   *
+   */
+  @ViewChild(&#x27;number&#x27;, { static: true }) public numberFallback: TemplateRef&lt;any&gt;;
+
+  /**
+   * You can provide a custom template to override the fallback and render a field&#x27;s data completely on your own.
+   */
+  @ContentChild(&#x27;number&#x27;, { static: true }) public number: TemplateRef&lt;any&gt;;
+
+  @Input() public externals: { [key: string]: any } &#x3D; {};
+
+  // @ViewChild(TemplateRef) template: TemplateRef&lt;any&gt;;
+
+  /**
+   * Override the internal styles by giving directly CSS rules based on the column tags.
+   */
+  @Input()
+  public columnStyle: DatagridStyles;
+
+  /**
+   * The model that makes up the content. Shall provide properties with decorators to control appearance.
+   */
+  @Input()
+  public model: DataGridModel&lt;any&gt;;
+
+  /**
+   * Wheather to show a delete button. Clicking it fires the {@link DataGridModel.OnDelete}event.
+   */
+  @Input()
+  public showDeleteButton: boolean;
+  /**
+   * Wheather to show an edit button. Clicking it fires the {@link DataGridModel.OnEdit}event.
+   */
+  @Input()
+  public showEditButton: boolean;
+
+  /**
+   * Show the action column at all. Use {@link showDeleteButton and  @see showEditButton to switch the}buttons
+   * on or off individually. Default is &#x60;true&#x60; (actions visible).
+   */
+  @Input()
+  public showActions &#x3D; true;
+
+  /**
+   * The text that appears on the Delete button. Default is &#x27;Delete&#x27;.
+   */
+  @Input()
+  public textDeleteButton &#x3D; &#x27;Delete&#x27;;
+  /**
+   * The text that appears on the Edit button. Default is &#x27;Edit&#x27;.
+   */
+  @Input()
+  public textEditButton &#x3D; &#x27;Edit&#x27;;
+  /**
+   * The column header of the column that shows the buttons. Default is &#x27;Actions&#x27;.
+   */
+  @Input()
+  public textButtonsHeader &#x3D; &#x27;Actions&#x27;;
+
+  /**
+   * The text that appears if there are no items to show. Can also be overwritten by a more complex piece
+   * of code by adding a template like this:
+   *
+   * @example
+   * &lt;ng-template #data-warning-noitems&gt;
+   *   &lt;div class&#x3D;&quot;alert alert-danger&quot;&gt;The grid is empty&lt;/div&gt;
+   * &lt;/ng-template&gt;
+   */
+  @Input()
+  public textNoItems &#x3D; &#x27;There are no items to show&#x27;;
+
+  /**
+   * The filter value to filter the content. The data is of type &#x60;{ [prop: string]: any }&#x60;.
+   *
+   * @param value A dictionary with filter instructions as shown below. The filter logic applies one after another, like an __AND__ conjunction.
+   *
+   * @example
+   * {
+   *    &quot;email&quot;: &quot;paul@sample.com&quot;
+   *    &quot;name&quot;: &quot;Paul&quot;
+   * }
+   *
+   */
+  @Input()
+  public set filter(value: { [prop: string]: any }) {
+    if (this.model) {
+      this.model.searchValue &#x3D; value;
+    }
+  }
+
+  /**
+   * If &#x60;true&#x60; the columns can be rearranged by moving around with drag &#x27;n drop.
+   */
+  @Input()
+  public reArrangeColumns: boolean;
+
+  /**
+   * Event forwarded from model class and being fired after the model class&#x27;s onEdit event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public editItem: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  /**
+   * Event forwarded from model class and being fired after the model class&#x27;s onDelete event.
+   * The event is invoked by the appropriate internal button via click.
+   */
+  @Output()
+  public deleteItem: EventEmitter&lt;any&gt; &#x3D; new EventEmitter&lt;any&gt;();
+
+  public ngAfterViewInit(): void {
+    if (this.model) {
+      this.model.onEdit.subscribe(item &#x3D;&gt; this.editItem.emit(item));
+      this.model.onDelete.subscribe(item &#x3D;&gt; this.deleteItem.emit(item));
+    }
+  }
+
+  public ngOnDestroy(): void {
+    if (this.model) {
+      this.model.onEdit.unsubscribe();
+      this.model.onDelete.unsubscribe();
+    }
+  }
+
+  // tslint:disable-next-line:member-ordering
+  /**
+   * @ignore
+   */
+  private warnProp: { [prop: string]: string } &#x3D; {};
+
+  /**
+   * @ignore
+   * Controls the template used to display certain data types.
+   * If the host provides a template it&#x27;s being used, otherwise a fallback is provided
+   * @param uiHint Property of {@link UiHint} decorator
+   */
+  public getActiveTemplate(uiHint: string, prop?: string): TemplateRef&lt;any&gt; {
+    if (this[uiHint]) {
+      // if provided by user via ContentChild and overwriting defaults (string &#x3D;&#x3D; string etc.)
+      return this[uiHint];
+    }
+    if (this.externals[uiHint]) {
+      // if provided by user via ContentChild but completely replaced
+      return this.externals[uiHint];
+    }
+    if (this[&#x60;${uiHint}Fallback&#x60;]) {
+      // otherwise we take ours from ng-template via ViewChild
+      return this[&#x60;${uiHint}Fallback&#x60;];
+    }
+    // if we go here the model requested a custom template that didn&#x27;t exists
+    if (this.warnProp[prop] !&#x3D;&#x3D; uiHint) {
+      console.warn(&#x60;Property ${prop} requested the template ${uiHint}, but it wasn&#x27;t provided. Falling back to &quot;string&quot;.&#x60;);
+      this.warnProp[prop] &#x3D; uiHint;
+    }
+    return this.stringFallback;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;model &amp;&amp; model.headers&quot;&gt;
+  &lt;div class&#x3D;&quot;col-md-12&quot;&gt;
+    &lt;table class&#x3D;&quot;table table-condensed&quot;&gt;
+      &lt;colgroup class&#x3D;&quot;colborders&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.group : null&quot;&gt;
+        &lt;col class&#x3D;&quot;first&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.first : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;middle&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.middle : null&quot; /&gt;
+        &lt;col class&#x3D;&quot;last&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.last : null&quot; /&gt;
+      &lt;/colgroup&gt;
+      &lt;thead&gt;
+        &lt;tr [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.header : null&quot; &gt;
+          &lt;th *ngFor&#x3D;&quot;let header of model.headers&quot;
+              [ngClass]&#x3D;&quot;{ &#x27;sortableHeader&#x27;: header.isSortable }&quot;
+              [ngStyle]&#x3D;&quot;header.uiHint || {}&quot;
+              [title]&#x3D;&quot;header.desc&quot;
+              (click)&#x3D;&quot;header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null&quot;&gt;
+            &lt;span class&#x3D;&quot;headerText&quot;&gt;{{ header.text }}&lt;/span&gt;
+            &lt;span class&#x3D;&quot;sort&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerButton : null&quot; *ngIf&#x3D;&quot;header.isSortable&quot;&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)&quot;
+                      class&#x3D;&quot;up&quot;
+                      [hidden]&#x3D;&quot;model.sortDirection[header.prop] &#x3D;&#x3D;&#x3D; directionEnumHelper.Descending&quot;
+                      [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-sort-asc&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+              &lt;button (click)&#x3D;&quot;model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)&quot;
+                      class&#x3D;&quot;down&quot;
+                      [hidden]&#x3D;&quot;model.sortDirection[header.prop] &#x3D;&#x3D;&#x3D; directionEnumHelper.Ascending&quot;
+                      [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.headerSortButton : null&quot;&gt;
+                &lt;i class&#x3D;&quot;fa fa-sort-desc&quot;&gt;&lt;/i&gt;
+              &lt;/button&gt;
+            &lt;/span&gt;
+          &lt;/th&gt;
+          &lt;th *ngIf&#x3D;&quot;showActions&quot;&gt;
+            {{ textButtonsHeader }}
+          &lt;/th&gt;
+        &lt;/tr&gt;
+      &lt;/thead&gt;
+      &lt;tbody&gt;
+        &lt;tr *ngIf&#x3D;&quot;!model.totalFilteredRows&quot;&gt;
+          &lt;td [attr.colspan]&#x3D;&quot;model.headers.length&quot; class&#x3D;&quot;text-center&quot;&gt;
+            &lt;div class&#x3D;&quot;alert alert-warning&quot;&gt;
+              &lt;span #warningNoItems&gt;
+                &lt;ng-content select&#x3D;&quot;[data-warning-noitems]&quot;&gt;&lt;/ng-content&gt;
+              &lt;/span&gt;
+              &lt;ng-container *ngIf&#x3D;&quot;!warningNoItems.innerHTML.trim()&quot;&gt;{{  textNoItems }}&lt;/ng-container&gt;
+            &lt;/div&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr *ngFor&#x3D;&quot;let item of model.itemsOnCurrentPage&quot;&gt;
+          &lt;td *ngFor&#x3D;&quot;let header of model.headers&quot;&gt;
+            &lt;ng-container
+              [ngTemplateOutlet]&#x3D;&quot;getActiveTemplate(header.templateHint, header.prop)&quot;
+              [ngTemplateOutletContext]&#x3D;&quot;{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }&quot;
+            &gt;&lt;/ng-container&gt;
+          &lt;/td&gt;
+          &lt;td *ngIf&#x3D;&quot;showActions&quot; [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.actionCell : null&quot; &gt;
+            &lt;button class&#x3D;&quot;btn btn-primary btn-sm&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;model.editItem(item)&quot;&gt;
+              {{ textEditButton }}
+            &lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn btn-danger btn-sm&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;model.deleteItem(item)&quot;&gt;
+              {{ textDeleteButton }}
+            &lt;/button&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+      &lt;tfoot&gt;
+        &lt;tr [ngStyle]&#x3D;&quot;columnStyle ? columnStyle.footer : null&quot; &gt;
+          &lt;td [attr.colspan]&#x3D;&quot;model.headers.length + (showActions ? 1 : 0)&quot;&gt;
+            &lt;div #footerRef&gt;
+              &lt;ng-content select&#x3D;&quot;[data-footer]&quot;&gt;&lt;/ng-content&gt;
+            &lt;/div&gt;
+            &lt;ng-container *ngIf&#x3D;&quot;!footerRef.innerHTML.trim()&quot;&gt;&amp;copy;&lt;/ng-container&gt;
+          &lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tfoot&gt;
+    &lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;ng-template #string let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;
+&lt;ng-template #boolean let-data&gt;
+  &lt;input type&#x3D;&quot;checkbox&quot; disabled [checked]&#x3D;&quot;data&quot; /&gt;
+&lt;/ng-template&gt;
+&lt;ng-template #date let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;
+&lt;ng-template #enum let-data&gt;
+  {{ data }}
+&lt;/ng-template&gt;
+&lt;ng-template #number let-data let-modelpipe&#x3D;&quot;pipe&quot; let-params&#x3D;&quot;params&quot;&gt;
+  {{ data | formatData: modelpipe: params }}
+&lt;/ng-template&gt;
+</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-pane fade " id="c-example">
+            <iframe class="exampleContainer" src="/#/widget/grid">
+                <p>no-iframes</p>
+            </iframe>
+    </div>
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row" *ngIf="model && model.headers">  <div class="col-md-12">    <table class="table table-condensed">      <colgroup class="colborders" [ngStyle]="columnStyle ? columnStyle.group : null">        <col class="first" [ngStyle]="columnStyle ? columnStyle.first : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="middle" [ngStyle]="columnStyle ? columnStyle.middle : null" />        <col class="last" [ngStyle]="columnStyle ? columnStyle.last : null" />      </colgroup>      <thead>        <tr [ngStyle]="columnStyle ? columnStyle.header : null" >          <th *ngFor="let header of model.headers"              [ngClass]="{ \'sortableHeader\': header.isSortable }"              [ngStyle]="header.uiHint || {}"              [title]="header.desc"              (click)="header.isSortable ? model.sortColumn(header.prop, null, header.sortCallback) : null">            <span class="headerText">{{ header.text }}</span>            <span class="sort" [ngStyle]="columnStyle ? columnStyle.headerButton : null" *ngIf="header.isSortable">              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Ascending, header.sortCallback)"                      class="up"                      [hidden]="model.sortDirection[header.prop] === directionEnumHelper.Descending"                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-asc"></i>              </button>              <button (click)="model.sortColumn(header.prop, directionEnumHelper.Descending, header.sortCallback)"                      class="down"                      [hidden]="model.sortDirection[header.prop] === directionEnumHelper.Ascending"                      [ngStyle]="columnStyle ? columnStyle.headerSortButton : null">                <i class="fa fa-sort-desc"></i>              </button>            </span>          </th>          <th *ngIf="showActions">            {{ textButtonsHeader }}          </th>        </tr>      </thead>      <tbody>        <tr *ngIf="!model.totalFilteredRows">          <td [attr.colspan]="model.headers.length" class="text-center">            <div class="alert alert-warning">              <span #warningNoItems>                <ng-content select="[data-warning-noitems]"></ng-content>              </span>              <ng-container *ngIf="!warningNoItems.innerHTML.trim()">{{  textNoItems }}</ng-container>            </div>          </td>        </tr>        <tr *ngFor="let item of model.itemsOnCurrentPage">          <td *ngFor="let header of model.headers">            <ng-container              [ngTemplateOutlet]="getActiveTemplate(header.templateHint, header.prop)"              [ngTemplateOutletContext]="{ $implicit: item[header.prop], pipe: header.pipe, params: header.pipeParams }"            ></ng-container>          </td>          <td *ngIf="showActions" [ngStyle]="columnStyle ? columnStyle.actionCell : null" >            <button class="btn btn-primary btn-sm" type="button" (click)="model.editItem(item)">              {{ textEditButton }}            </button>            <button class="btn btn-danger btn-sm" type="button" (click)="model.deleteItem(item)">              {{ textDeleteButton }}            </button>          </td>        </tr>      </tbody>      <tfoot>        <tr [ngStyle]="columnStyle ? columnStyle.footer : null" >          <td [attr.colspan]="model.headers.length + (showActions ? 1 : 0)">            <div #footerRef>              <ng-content select="[data-footer]"></ng-content>            </div>            <ng-container *ngIf="!footerRef.innerHTML.trim()">&copy;</ng-container>          </td>        </tr>      </tfoot>    </table>  </div></div><ng-template #string let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template><ng-template #boolean let-data>  <input type="checkbox" disabled [checked]="data" /></ng-template><ng-template #date let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template><ng-template #enum let-data>  {{ data }}</ng-template><ng-template #number let-data let-modelpipe="pipe" let-params="params">  {{ data | formatData: modelpipe: params }}</ng-template></div>'
+    var COMPONENTS = [{'name': 'AutoFormComponent', 'selector': 'ac-autoform'},{'name': 'DataGridComponent', 'selector': 'ac-datagrid'},{'name': 'DataGridPaginationComponent', 'selector': 'ac-datagrid-pagination'},{'name': 'EditorComponent', 'selector': 'ac-editor'},{'name': 'TreeViewComponent', 'selector': 'ac-tree'},{'name': 'TreeViewNodeComponent', 'selector': 'ac-treenode'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'DataGridComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'DataGridComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
