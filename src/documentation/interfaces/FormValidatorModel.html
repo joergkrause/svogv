@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>svogv-demo documentation</title>
+        <title>SVOGV 0.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">svogv-demo documentation</a>
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -71,7 +71,8 @@
             <p class="comment">
                 <p>The form description model. Use this to have a valid JSON object that can be used
 instead of the decorators. Each type represents a single decorator. The basic
-structure looks like this:</p>
+structure looks like this shown in the example.</p>
+<p>See the different type&#39;s descriptions for detailled information.</p>
 
             </p>
 
@@ -90,7 +91,7 @@ structure looks like this:</p>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="184" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.model.ts:184</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="185" class="link-to-prism">projects/svogv/src/lib/services/formvalidator.model.ts:185</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -264,17 +265,18 @@ export type stringLengthType &#x3D; {
 /**
  * The form description model. Use this to have a valid JSON object that can be used
  * instead of the decorators. Each type represents a single decorator. The basic
- * structure looks like this:
- *
- * @example {
- *            &quot;fieldName&quot;: {
- *               &quot;display&quot;: {
- *                  &quot;name&quot;: &quot;The field&#x27;s human readible name&quot;
- *               }
- *            }
- *          }
+ * structure looks like this shown in the example.
  *
  * See the different type&#x27;s descriptions for detailled information.
+ *
+ * @example
+  {
+     &quot;fieldName&quot;: {
+        &quot;display&quot;: {
+           &quot;name&quot;: &quot;The field&#x27;s human readible name&quot;
+        }
+     }
+   }
  *
  */
 export interface FormValidatorModel {

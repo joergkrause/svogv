@@ -83,8 +83,8 @@
 <ng-template #boolean let-data>
   <input type="checkbox" disabled [checked]="data" />
 </ng-template>
-<ng-template #date let-data>
-  {{ data }}
+<ng-template #date let-data let-modelpipe="pipe" let-params="params">
+  {{ data | formatData: modelpipe: params }}
 </ng-template>
 <ng-template #enum let-data>
   {{ data }}

@@ -1,5 +1,5 @@
 /**
- * This elements describes the grouping of elements in fieldset-controls. Each
+ * This element describes the grouping of elements in fieldset-controls. Each
  * field that is decorated in an DisplayGroup with the very same name is grouped
  * into that part. The name appears in the fieldsets legend-control. The
  * description makes a tooltip. If there are more groups the order is controlled
@@ -168,17 +168,18 @@ export type stringLengthType = {
 /**
  * The form description model. Use this to have a valid JSON object that can be used
  * instead of the decorators. Each type represents a single decorator. The basic
- * structure looks like this:
- *
- * @example {
- *            "fieldName": {
- *               "display": {
- *                  "name": "The field's human readible name"
- *               }
- *            }
- *          }
+ * structure looks like this shown in the example.
  *
  * See the different type's descriptions for detailled information.
+ *
+ * @example
+  {
+     "fieldName": {
+        "display": {
+           "name": "The field's human readible name"
+        }
+     }
+   }
  *
  */
 export interface FormValidatorModel {

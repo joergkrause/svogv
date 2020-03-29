@@ -7,8 +7,8 @@
  * actual Pipes somewhere. This applies especially if you create a table and loop
  * through properties.
  *
- * @param readonly      Optional, default is true.
- * @param description   A tooltip that can be used optionally.
+ * @param pipe      The name of the pipe's type.
+ * @param pipeParams   The custom pipe's parameters. This is optional and can be omitted.
  *
  * @example
    @FormatPipe(SomePipe)

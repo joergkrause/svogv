@@ -1,4 +1,5 @@
 {
+    "name": "SVOGV 0.9 Documentation",
     "navTabConfig": [
         {
             "id": "info",
@@ -33,5 +34,7 @@
     "disableCoverage": true,
     "theme": "readthedocs",
     "hideGenerator": true,
-    "includes": "./docs"
+    "includes": "./docs",
+    "disableStyleTab": true,
+    "customLogo": "src/assets/images/logo.png"
 }

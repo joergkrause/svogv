@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>svogv-demo documentation</title>
+        <title>SVOGV 0.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">svogv-demo documentation</a>
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -44,6 +44,9 @@
             <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">API</a>
         </li>
         <li >
+            <a href="#readme" role="tab" id="readme-tab" data-toggle="tab" data-link="readme">Documentation and Examples</a>
+        </li>
+        <li >
             <a href="#example" role="tab" id="example-tab" data-toggle="tab" data-link="example">Live Demo</a>
         </li>
         <li >
@@ -51,9 +54,6 @@
         </li>
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source: Code</a>
-        </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Source: Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -388,7 +388,7 @@ If there are no groups this will be ignored. Optional.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Array.html" target="_self" >Array&lt;literal type&gt;</a></code>
+                            <i>Type : </i>    <code>Array&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -416,7 +416,7 @@ If there are no groups this will be ignored. Optional.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Array.html" target="_self" >Array&lt;literal type&gt;</a></code>
+                            <i>Type : </i>    <code>Array&lt;literal type&gt;</code>
 
                         </td>
                     </tr>
@@ -433,6 +433,91 @@ If there are no groups this will be ignored. Optional.</p>
 
 </div>
 
+    <div class="tab-pane fade " id="c-readme">
+        <p><h1 id="complete-documentation-of-the-autoformcomponent">Complete Documentation of the AutoFormComponent</h1>
+<p>A form can make use of the <code>AutoFormComponent</code>, named <code>&lt;ac-autoform&gt;</code>. An object with several properties, decorated with UI instructions, created a whole form.</p>
+<h2 id="example">Example</h2>
+<p>The simplest form of usage looks like this:</p>
+<div><pre class="line-numbers"><code class="language-html"> &lt;form (ngSubmit)=&quot;saveUser()&quot; [formGroup]=&quot;myForm&quot; role=&quot;form&quot; class=&quot;row&quot;&gt;
+    &lt;fieldset&gt;
+      &lt;legend&gt;Edit current user&lt;/legend&gt;
+      &lt;ac-autoform [userForm]=&quot;myForm&quot;&gt;&lt;/ac-editor&gt;</code></pre></div><p>You must have a form and provide the groups name. Internally, the <code>ReactiveFormsModule</code> is being used. The logic expects several decorators, that are being examined and based on the findings a <code>FormGroup</code> object is being created. That&#39;s handled by a service the <em>SvogvModule</em> provides. The component&#39;s code looks like this:</p>
+<div><pre class="line-numbers"><code class="language-typescript">import { Component, OnInit, OnDestroy } from &#39;&#64;angular/core&#39;;
+import { FormGroup } from &#39;&#64;angular/forms&#39;;
+import { FormValidatorService } from &#39;svogv&#39;;
+import { UserViewModel } from &#39;../../../viewmodels&#39;;
+
+&#64;Component({
+  templateUrl: &#39;./editorautoform.component.html&#39;
+})
+export class EditorAutoformComponent implements OnInit, OnDestroy {
+
+  userForm: FormGroup;
+  user: UserViewModel;
+
+  constructor(private formService: FormValidatorService) {
+  }
+
+  ngOnInit() {
+    this.userForm = this.formService.build(UserViewModel);
+  }
+
+}</code></pre></div><p>The first magic is the call of the <em>build</em> method. The second magic is the usage of decorators. A typical view model (in the example <em>UserViewModel</em>) would look like this:</p>
+<div><pre class="line-numbers"><code class="language-typescript">export class UserViewModel {
+
+  &#64;Hidden()
+  id: number = 0;
+
+  &#64;Display(&#39;E-Mail&#39;, 20, &#39;E-Mail address&#39;)
+  &#64;Required()
+  &#64;MaxLength(100)
+  &#64;Email()
+  email: string = &#39;&#39;;
+
+  &#64;Display(&#39;Phone Number&#39;, 30, &#39;The user\&#39;s phone&#39;)
+  &#64;Required()
+  &#64;MaxLength(20)
+  phoneNumber: string = &#39;&#39;;
+
+  &#64;Display(&#39;User Name&#39;, 33, &#39;The full name&#39;)
+  &#64;Required(&#39;User Name is required&#39;)
+  &#64;MaxLength(100)
+  userName: string = &#39;&#39;;
+
+  &#64;Display(&#39;Age&#39;, 40, &#39;From 12 to 88&#39;)
+  &#64;DisplayGroup(&#39;Personal&#39;)
+  &#64;Range(12, 88)
+  age: number = 24;
+
+  &#64;Display(&#39;Birthday&#39;, 50)
+  &#64;DisplayGroup(&#39;Personal&#39;)
+  birthday: Date = new Date();
+
+  &#64;Display(&#39;Is Active&#39;, 60)
+  active: boolean = true;
+
+  &#64;Display(&#39;Password&#39;, 70)
+  &#64;DisplayGroup(&#39;Password&#39;)
+  &#64;Required()
+  &#64;Compare(&#39;passWordTwo&#39;)
+  passWord: string = &#39;&#39;;
+
+  &#64;Display(&#39;Password&#39;, 80)
+  &#64;DisplayGroup(&#39;Password&#39;)
+  &#64;Required()
+  passWordTwo: string = &#39;&#39;;
+
+  &#64;Display(&#39;Done&#39;, 100, &#39;Work progress&#39;)
+  done?: number = 0;
+
+}</code></pre></div><p>Note, that the default values for initialization are mandatory. The decorators comes in two flavors:</p>
+<ol>
+<li>UI decorators control the appearance (such as <code>@Display</code>)</li>
+<li>Validators control the validation</li>
+</ol>
+<p>SVOGV is using the <code>ReactiveFormsModule</code> and handles everything in a straight Angular way.</p>
+</p>
+    </div>
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Input, OnInit } from &#x27;@angular/core&#x27;;
@@ -574,11 +659,6 @@ export class AutoFormComponent implements OnInit {
 </code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-            <pre class="line-numbers"><code class="language-scss">fieldset { border-top: 1px silver solid; padding: 10px; }
-legend { width: auto; padding-left: 10px; padding-right: 10px; font-size: 1em;}
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>

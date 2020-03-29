@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>svogv-demo documentation</title>
+        <title>SVOGV 0.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">svogv-demo documentation</a>
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -58,9 +58,6 @@
             <tr>
                 <td class="col-md-4">
                     <ul class="index-list">
-                        <li>
-                            <a href="#_window" title="projects/svogv/src/lib/utils/windowref.ts"><b>_window</b>&nbsp;&nbsp;&nbsp;(projects/.../windowref.ts)</a>
-                        </li>
                         <li>
                             <a href="#Compare" title="projects/svogv/src/lib/decorators/val-compare.decorator.ts"><b>Compare</b>&nbsp;&nbsp;&nbsp;(projects/.../val-compare.decorator.ts)</a>
                         </li>
@@ -125,42 +122,7 @@
     </table>
 </section>
 
-    <h3>projects/svogv/src/lib/utils/windowref.ts</h3>
-    <section>
-    <h3></h3>    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="_window"></a>
-                    <span class="name">
-                        <b>
-                            _window
-                        </b>
-                        <a href="#_window"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>_window()</code>
-                </td>
-            </tr>
-
-
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>    <h3>projects/svogv/src/lib/decorators/val-compare.decorator.ts</h3>
+    <h3>projects/svogv/src/lib/decorators/val-compare.decorator.ts</h3>
     <section>
     <h3></h3>    <table class="table table-sm table-bordered">
         <tbody>
@@ -211,7 +173,7 @@ not has a decorator nor receives a message.</p>
 
 
                                     <td>
-                                        <p>: A string that represents the compared field&#39;s name.</p>
+                                        <p>A string that represents the compared field&#39;s name.</p>
 
                                     </td>
                                 </tr>
@@ -224,7 +186,7 @@ not has a decorator nor receives a message.</p>
 
 
                                     <td>
-                                        <p>: A custom message.</p>
+                                        <p>A custom message.</p>
 
                                     </td>
                                 </tr>
@@ -301,7 +263,7 @@ headers in the <a href="../components/DataGridComponent.html">DataGridComponent<
 
 
                                     <td>
-                                        <p>If one uses {</p>
+                                        <p>If one uses <code>AutoFormComponent</code> to create a whole form from a model, this controls the element&#39;s order.</p>
 
                                     </td>
                                 </tr>
@@ -444,7 +406,7 @@ put the very same name on all members of the group.</p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>Validates a field against an email pattern.
-Based on &quot;pattern&quot;, so in form one must use hasError(&#39;pattern&#39;) to get validation results.</p>
+Based on &quot;pattern&quot;, so in form one must use <code>hasError(&#39;pattern&#39;)</code> to get validation results.</p>
 </div>
 
                     <div class="io-description">
@@ -467,8 +429,8 @@ Based on &quot;pattern&quot;, so in form one must use hasError(&#39;pattern&#39;
 
 
                                     <td>
-                                        <p>: A custom message. If not provided &quot;The field ffff must contain a valid e-mail address.&quot;
-   will be generated, while ffff is the property name.</p>
+                                        <p>A custom message. If not provided &quot;The field ffff must contain a valid e-mail address.&quot;
+  will be generated, while ffff is the property name.</p>
 
                                     </td>
                                 </tr>
@@ -521,6 +483,7 @@ through properties.</p>
                                 <tr>
                                     <td>Name</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -532,6 +495,10 @@ through properties.</p>
                                     </td>
 
 
+                                    <td>
+                                        <p>The name of the pipe&#39;s type.</p>
+
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>pipeParams</td>
@@ -541,6 +508,10 @@ through properties.</p>
                                     </td>
 
 
+                                    <td>
+                                        <p>The custom pipe&#39;s parameters. This is optional and can be omitted.</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -578,9 +549,9 @@ through properties.</p>
             <tr>
                 <td class="col-md-4">
                     <div class="io-description"><p>The Hidden decorator.</p>
-<p>The <a href="<code>DataGrid</code>">does not show columns for properties tagged with</a><code>@Hidden()</code>.
+<p>The <a href="DataGrid">DataGrid</a> does not show columns for properties tagged with <a href="<code>Hidden</code>"><code>Hidden</code></a> decorator.
 Fields in forms that render automatically
-using the <a href="<code>AcEditor</code>">component will render as &lt;input</a>type=&quot;hidden&quot;&gt;.</p>
+using the <a href="<code>EditorComponent</code>"><code>EditorComponent</code></a> will render as <code>&lt;input type=&quot;hidden&quot;&gt;</code>.</p>
 </div>
 
                     <div class="io-description">
@@ -603,7 +574,7 @@ using the <a href="<code>AcEditor</code>">component will render as &lt;input</a>
 
 
                                     <td>
-                                        <p>Optional, default is true.</p>
+                                        <p>Optional, default is <code>true</code>.</p>
 
                                     </td>
                                 </tr>
@@ -869,7 +840,7 @@ using the <a href="<code>AcEditor</code>">component will render as &lt;input</a>
                 <td class="col-md-4">
                     <div class="io-description"><p>The Placeholder decorator.</p>
 <p>The placeholder adds the given text as a watermark to any input fields.
-There is no function in DataGrid.</p>
+There is no function in the <a href="../components/DataGridComponent.html">DataGridComponent</a>.</p>
 </div>
 
                     <div class="io-description">
@@ -1320,7 +1291,7 @@ The default message is &#39;The field {fieldname} needs at least {minlength} cha
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>The Template decorator.</p>
+                    <div class="io-description"><p>The TemplateHint decorator.</p>
 <p>One can define the way a property gets rendered.
 Currently supported:</p>
 <ul>
@@ -1330,7 +1301,7 @@ Currently supported:</p>
 <li>Number</li>
 <li>Text</li>
 </ul>
-<p>The Calendar creates Date-fielsd. However, in casde of a datatype Date the date field will be created anyway.</p>
+<p>The Calendar creates Date-field. However, in casde of a datatype Date the date field will be created anyway.</p>
 </div>
 
                     <div class="io-description">

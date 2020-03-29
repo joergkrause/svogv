@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>svogv-demo documentation</title>
+        <title>SVOGV 0.9 Documentation</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -14,7 +14,7 @@
     <body>
 
         <div class="navbar navbar-default navbar-fixed-top visible-xs">
-            <a href="../" class="navbar-brand">svogv-demo documentation</a>
+            <a href="../" class="navbar-brand">SVOGV 0.9 Documentation</a>
             <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
         </div>
 
@@ -48,9 +48,6 @@
         </li>
         <li >
             <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source: Code</a>
-        </li>
-        <li >
-            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Source: Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -1183,7 +1180,7 @@ AcTextTreeNode class. This includes colors, icons, and other styles.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Array.html" target="_self" >Array&lt;string&gt;</a></code>
+                            <i>Type : </i>    <code>Array&lt;string&gt;</code>
 
                         </td>
                     </tr>
@@ -1267,7 +1264,7 @@ AcTextTreeNode class. This includes colors, icons, and other styles.</p>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../interfaces/Array.html" target="_self" >Array&lt;string&gt;</a></code>
+                            <i>Type : </i>    <code>Array&lt;string&gt;</code>
 
                         </td>
                     </tr>
@@ -1696,23 +1693,6 @@ export class TreeViewNodeComponent implements OnInit {
 &lt;/li&gt;</code></pre>
     </div>
 
-    <div class="tab-pane fade " id="c-styleData">
-                <p class="comment">
-                    <code>./treeviewnode.component.css</code>
-                </p>
-                <pre class="line-numbers"><code class="language-scss">﻿ul.treeview { list-style: none; margin-left: -2em; }
-li.treeview  { margin-left: 10px; margin-bottom: 3px; box-sizing: border-box; }
-li.treeview a.ac-container { border-radius: 2px; display: inline-block; padding: 3px; text-decoration: none; }
-li.treeview input[type&#x3D;&quot;checkbox&quot;] { display: none; }
-li.treeview input[type&#x3D;&quot;checkbox&quot;] + label:before { font-family: FontAwesome; }
-li.treeview input[type&#x3D;&quot;checkbox&quot;] + label:before { content: &quot;\f096&quot;; }
-li.treeview input[type&#x3D;&quot;checkbox&quot;]:checked + label:before { content: &quot;\f046&quot;; }
-li.treeview input[type&#x3D;&quot;checkbox&quot;] + label { display:inline-block; width:15px; height: 20px; margin: -1px 4px 0 0; vertical-align:middle; cursor: pointer; }
-li.treeview i.ac-collapse { width: 15px; cursor: pointer; display: inline-block; margin-left: -1.7em; }
-li.treeview i.ac-icon { width: 15px; cursor: pointer; display: inline-block }
-li.treeview .ac-node-disabled { color: silver; cursor: not-allowed; }
-</code></pre>
-    </div>
 
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>

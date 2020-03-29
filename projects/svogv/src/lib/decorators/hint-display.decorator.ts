@@ -9,7 +9,7 @@ const displayDesc = 'displayDesc';
  * headers in the {@link DataGridComponent}. Additional parameters are provided to refine forms further.
  *
  * @param name          The Name or Label that appears in forms or as header in grids.
- * @param order         If one uses {@link AutoFormComponent} to create a whole form from a model, this controls the element's order.
+ * @param order         If one uses `AutoFormComponent` to create a whole form from a model, this controls the element's order.
  * @param description   A tooltip, which can be used optionally.
  */
 export function Display(name: string, order: number = 0, description?: string) {

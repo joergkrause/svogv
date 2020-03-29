@@ -16,7 +16,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
         <nav>
             <ul class="list">
                 <li class="title">
-                    <a href="index.html" data-type="index-link">svogv-demo documentation</a>
+                    <a href="index.html" data-type="index-link">
+                        <img alt="" class="img-responsive" data-type="compodoc-logo" data-src=images/logo.png> 
+                    </a>
                 </li>
 
                 <li class="divider"></li>
@@ -195,9 +197,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <li class="link">
                                     <a href="injectables/FormValidatorService.html" data-type="entity-link">FormValidatorService</a>
                                 </li>
-                                <li class="link">
-                                    <a href="injectables/WindowRef.html" data-type="entity-link">WindowRef</a>
-                                </li>
                             </ul>
                         </li>
                     <li class="chapter">
@@ -209,16 +208,10 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
                             <li class="link">
-                                <a href="interfaces/Array.html" data-type="entity-link">Array</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/DatagridStyles.html" data-type="entity-link">DatagridStyles</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/FormValidatorModel.html" data-type="entity-link">FormValidatorModel</a>
-                            </li>
-                            <li class="link">
-                                <a href="interfaces/ObjectConstructor.html" data-type="entity-link">ObjectConstructor</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/TreeNodeBaseModel.html" data-type="entity-link">TreeNodeBaseModel</a>
