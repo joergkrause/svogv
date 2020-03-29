@@ -19,7 +19,7 @@ Also several validation decorators are supported:
 
 As the alpha process continues, these components will continue to evolve. There *will* be
 breaking changes between alpha releases; the alpha releases are here for people that want an
-early look or who like to live on the edge and are very tolerant of breaking API and behavior 
+early look or who like to live on the edge and are very tolerant of breaking API and behavior
 changes.
 
 <a name="0.0.23"></a>
@@ -52,7 +52,7 @@ Still under construction, because of SMIL we use for SVG and that we still need 
 * AnalogClock
 * LoaderIcon
 
-The demo does now use WebPack 2 to create the bundles. SystemJS loader is still working for debugging. 
+The demo does now use WebPack 2 to create the bundles. SystemJS loader is still working for debugging.
 
 <a name="0.2.1"></a>
 # [0.2.1](https://github.com/joergkrause/svogv/releases/tag/0.2.1) (2017-09-14)
@@ -121,5 +121,11 @@ Removed some not used classes to save code space.
 
 Update references and dependencies to reflect Angular 8.
 
+<a name="0.9.0"></a>
+# [0.9.0](https://github.com/joergkrause/svogv/releases/tag/0.9.0) (2020-03-31)
 
+Update references and dependencies to reflect Angular 9. Several bug fixes and refinements for the grid.
 
+Clean up code, improve documentation and follow current linter rules.
+
+This is the last release before we convert to new project structure in the @svogv realm. Stay tuned!

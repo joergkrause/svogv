@@ -12,6 +12,11 @@
     "src/**/*.d.ts"
   ],
   "angularCompilerOptions": {
+    "skipTemplateCodegen": true,
+    "strictMetadataEmit": true,
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true,
+    "enableResourceInlining": false,
     "enableIvy": false
   }
 }

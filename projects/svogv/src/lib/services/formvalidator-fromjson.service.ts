@@ -52,7 +52,7 @@
 //  * ]
 //  * ```
 //  *
-//  * The properties are the same as the decorators. @see FormValidatorModel for the describing type.
+//  * The properties are the same as the decorators. {@link FormValidatorModel for the describing}type.
 //  *
 //  */
 // @Injectable()

@@ -91,7 +91,7 @@ export class DataGridModel<T> {
   }
 
   /**
-   * Returns the columns currently not shown. @see addColumn and @see removeColumn for more information.
+   * Returns the columns currently not shown. {@link addColumn and @see removeColumn for more}information.
    */
   public get headersNotVisible(): DataGridHeaderModel[] {
     return this._headers.filter((h) => h.hidden);
@@ -160,7 +160,7 @@ export class DataGridModel<T> {
 
   /**
    * Make a column invisible. This is just changing the render process, the column is still
-   * in the headers collection and can be made visible again by calling @see addColumn later.
+   * in the headers collection and can be made visible again by calling {@link addColumn}later.
    */
   public removeColumn(colname: string) {
     const col = this._headers.find((h) => h.prop === colname);

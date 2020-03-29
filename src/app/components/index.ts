@@ -1,8 +1,5 @@
 ﻿// root and page management
 export * from './root/root.component';
-// standard pages
-export * from './about/about.component';
-export * from './docs/docs.component';
 // app pages and common ui components
 export * from './dashboard/app-dashboard.component';
 export * from './editordemo/editordemo.component';

@@ -19,13 +19,10 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
+            "assets": ["src/favicon.ico", "src/assets"
+              ,{ "glob": "**/*.*", "input": "src/documentation/", "output": "/documentation/" }
             ],
-            "styles": [
-              "./src/assets/styles/site.scss"
-            ],
+            "styles": ["./src/assets/styles/site.scss"],
             "scripts": []
           },
           "configurations": {
@@ -78,26 +75,16 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/assets/styles/site.scss"
-            ],
+            "styles": ["src/assets/styles/site.scss"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ]
+            "assets": ["src/favicon.ico", "src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -122,9 +109,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -140,13 +125,13 @@
           "options": {
             "tsConfig": "projects/svogv/tsconfig.lib.json",
             "project": "projects/svogv/ng-package.json"
-          }
-        ,          "configurations": {
+          },
+          "configurations": {
             "production": {
               "tsConfig": "projects/svogv/tsconfig.lib.prod.json"
             }
           }
-},
+        },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
@@ -162,9 +147,7 @@
               "projects/svogv/tsconfig.lib.json",
               "projects/svogv/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -179,9 +162,9 @@
             "customWebpackConfig": {
               "path": "./webpack.test.config.js"
             }
+          }
         }
       }
-    }
     }
   },
   "defaultProject": "svogv-demo"

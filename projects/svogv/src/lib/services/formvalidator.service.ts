@@ -9,8 +9,8 @@ import { validateCompare } from './validators/compare.validator';
  * has been decorated with validation decorators the validators are created accordingly.
  *
  * The simplest way is creating a class with properties and add decorators, such as
- * @see StringLength. The service will than create a @see FormGroup that contains a validator
- * of type @see StringLength for the property the decorator is written on.
+ * {@link StringLength. The service will than create a @see FormGroup that contains a}validator
+ * of type {@link StringLength for the property the decorator is written}on.
  *
  * The decorators provide properties for additional information, such as a custom error message.
  *
@@ -18,7 +18,7 @@ import { validateCompare } from './validators/compare.validator';
 @Injectable()
 export class FormValidatorService {
   private fb: FormBuilder;
-  
+
   constructor(@Inject(FormBuilder) fb: FormBuilder) {
     this.fb = fb;
   }

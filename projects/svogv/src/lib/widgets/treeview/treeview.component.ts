@@ -2,8 +2,14 @@
 import { TreeNodeModel } from './models';
 
 /**
- * A treeview that can handle @see TreeNodeModel objects that create text, checkboxes, or highlights.
+ * The treeview can held any tree of nodes, which can be styles, linked, and bound to events.
+ * Clicking on the items fires various events.
+ *
+ * The component creates a treeview that can handle {@link TreeNodeModel objects that create text, checkboxes, or}highlights.
  * A node can have an icon. The icons are based on FontAwesome's css classes.
+ *
+ * Example of usage:
+ * <example-url>/#/widget/tree</example-url>
  */
 @Component({
     selector: 'ac-tree',

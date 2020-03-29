@@ -131,15 +131,5 @@ export const routes: Routes = [
       }
     ]
 
-  }, // standard component paths
-  {
-    path: 'about',
-    component: cmp.AboutComponent,
-    data: { title: 'About', subtitle: 'About this app', breadcrumb: true, info: true }
-  },
-  {
-    path: 'docs',
-    component: cmp.DocsComponent,
-    data: { title: 'API Docs', subtitle: 'The API documentation', breadcrumb: true, info: true }
   }
 ];

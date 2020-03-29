@@ -3,7 +3,7 @@
  * field that is decorated in an DisplayGroup with the very same name is grouped
  * into that part. The name appears in the fieldsets legend-control. The
  * description makes a tooltip. If there are more groups the order is controlled
- * by the @see order element.
+ * by the {@link order}element.
  */
 export type displayGroupType = {
   displaygroup: {
@@ -41,7 +41,7 @@ export type hiddenType = {
   hidden?: boolean;
 };
 /**
- * A watermark can be applied. The @see name property is the value that appears
+ * A watermark can be applied. The {@link name property is the value that}appears
  * in the field. This may not work for specific controls, such as list boxes.
  */
 export type placeHolderType = {

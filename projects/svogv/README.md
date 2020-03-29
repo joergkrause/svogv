@@ -18,7 +18,7 @@ The design / UI stuff is made using Bootstrap 4, and even here the current versi
 
 It's for developers who create standard forms and want to automate the development process.
 
-> Demo and project are made using Angular CLI. Current version is made using **@angular/cli 8.2.1**.
+> Demo and project are made using Angular CLI. Current version is made using **@angular/cli**.
 
 ## Introduction
 

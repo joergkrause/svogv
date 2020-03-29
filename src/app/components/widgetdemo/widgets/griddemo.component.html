@@ -163,7 +163,6 @@
           <button  appDropdown
             class="btn btn-secondary dropdown-toggle"
             type="button"
-            (click)="addMenu"
             id="dropdownAdd"
             data-toggle="dropdown"
             aria-haspopup="true"
@@ -196,7 +195,6 @@
               *ngFor="let header of model.headers"
               (click)="model.removeColumn(header.prop)"
               class="dropdown-item"
-              [ngStyle]="columnStyle ? columnStyle.headerRemoveButton : null"
             >
               {{ header.text }}
             </a>

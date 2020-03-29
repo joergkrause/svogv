@@ -1,5 +1,5 @@
 ﻿<!-- Main Header -->
-<nav class="navbar navbar-fixed-top navbar-dark bg-primary">
+<!-- <nav class="navbar navbar-fixed-top navbar-dark bg-primary">
   <a class="navbar-brand" href="/index.html"
     ><img src="/assets/images/logo.png" />
     <h1 class="pull-right">SVOGV</h1>
@@ -7,25 +7,25 @@
 </nav>
 <div class="container-fluid" id="main">
   <div class="row row-offcanvas row-offcanvas-left">
-    <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+    <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation"> -->
       <!-- The left side menu for application part navigation, menu can be controlled by a service call to manage rights/roles -->
-      <app-sidemenu [menu]="dynamicMenu"></app-sidemenu>
-    </div>
+      <!-- <app-sidemenu [menu]="dynamicMenu"></app-sidemenu>
+    </div> -->
     <!--/col-->
-    <div class="col-md-9 col-lg-10 main">
+    <!-- <div class="col-md-9 col-lg-10 main">
       <h2 class="display-2 hidden-xs-down">
         {{ currentRoute['title'] }} <small>{{ currentRoute['subTitle'] }}</small>
       </h2>
-      <p class="lead">Welcome to SVOGV &ndash; the '<b>S</b>imple <b>V</b>alidation and <b>O</b>ther <b>G</b>reat <b>V</b>iew Components' library</p>
+      <p class="lead">Welcome to SVOGV &ndash; the '<b>S</b>imple <b>V</b>alidation and <b>O</b>ther <b>G</b>reat <b>V</b>iew Components' library</p> -->
       <!-- Global navigation path -->
-      <app-breadcrumb></app-breadcrumb>
+      <!-- <app-breadcrumb></app-breadcrumb> -->
       <!--/main col-->
       <!-- the global outlet, within the parts the named tab outlet shows sub parts -->
-      <router-outlet #routerOutlet="outlet"></router-outlet>
-    </div>
+    <!-- </div>
   </div>
-</div>
-<!--/.container-->
+</div> -->
+<router-outlet #routerOutlet="outlet"></router-outlet>
+<!--/.container
 <footer class="row">
   <p class="text-right small col-10">
     &copy; 2011 - {{ currentYear }} <br />
@@ -34,3 +34,4 @@
     Made with &#10084; in Berlin / Germany
   </p>
 </footer>
+-->

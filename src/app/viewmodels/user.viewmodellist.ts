@@ -2,6 +2,8 @@
 import * as UI from 'svogv';
 import { PercentPipe } from './pipe/percent.pipe';
 
+const customSorter = (a, b) => a > b ? -1 : 1;
+
 /**
  * View Model for table view.
  *
@@ -9,6 +11,7 @@ import { PercentPipe } from './pipe/percent.pipe';
  * This is required use for-in loops on the element.
  *
  */
+// @dynamic
 export class UserViewModelList {
 
   @UI.Hidden()
@@ -31,10 +34,11 @@ export class UserViewModelList {
   @UI.UiHint({ 'width': '200px' })
   userName = '';
 
+  // @dynamic
   @UI.Display('Age', 40, 'From 12 to 88')
   @Validator.Range(12, 88)
   @Validator.TemplateHint('AgeTemplate')
-  @UI.Sortable(true, (a, b) => a > b ? -1 : 1)
+  // @UI.Sortable(true, customSorter)
   age = 0;
 
   @UI.Display('Done', 100, 'Work progress')

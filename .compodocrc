@@ -1,0 +1,37 @@
+{
+    "navTabConfig": [
+        {
+            "id": "info",
+            "label": "API"
+        },
+        {
+            "id": "readme",
+            "label": "Documentation and Examples"
+        },
+        {
+            "id": "example",
+            "label": "Live Demo"
+        },
+        {
+            "id": "templateData",
+            "label": "Source: Template"
+        },
+        {
+            "id": "source",
+            "label": "Source: Code"
+        },
+        {
+            "id": "styleData",
+            "label": "Source: Styles"
+        },
+        {
+            "id": "tree",
+            "label": "DOM Tree"
+        }
+    ],
+    "tsconfig": "./src/tsconfig.json",
+    "disableCoverage": true,
+    "theme": "readthedocs",
+    "hideGenerator": true,
+    "includes": "./docs"
+}

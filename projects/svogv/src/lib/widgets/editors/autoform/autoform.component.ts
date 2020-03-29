@@ -2,9 +2,12 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 /**
- * This component creates a complete editor out of a viewmodel.
- * It creates one field for each property not decorated with @Hidden.
+ * This component creates a complete editor from a viewmodel. The viewmodel should have
+ * decorators to control the form's behavior. The form can be styled an supports validation.
+ * It creates one field for each property not decorated with {@link Hidden}decorator.
  *
+ * Example of usage:
+ * <example-url>/#/editor</example-url>
  */
 @Component({
   selector: 'ac-autoform',
@@ -19,16 +22,16 @@ export class AutoFormComponent implements OnInit {
    * A reference to the form. Required.
    */
   @Input()
-  formGroup: FormGroup;
+  public formGroup: FormGroup;
   /**
    * Ungrouped element will appear at the end, after all groupes.
    * If there are no groups this will be ignored. Optional.
    */
   @Input()
-  ungroupedAfter = true;
+  public ungroupedAfter = true;
 
-  editors: Array<{ key: number; editor: string }>;
-  groups: Array<{
+  public editors: Array<{ key: number; editor: string }>;
+  public groups: Array<{
     key: number;
     name: string;
     desc: string;
@@ -45,9 +48,9 @@ export class AutoFormComponent implements OnInit {
     }>();
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     // take all controls as is
-    const hasDecorators: boolean = (<any>this.formGroup)['__editorModel__'];
+    const hasDecorators: boolean = (this.formGroup as any).__editorModel__;
     // loop through all fields
     for (const controlName in this.formGroup.controls) {
       if (!this.formGroup.controls.hasOwnProperty(controlName)) {
@@ -59,20 +62,20 @@ export class AutoFormComponent implements OnInit {
       let groupDesc: string;
       let isInGroup = false;
       if (hasDecorators) {
-        displayOrder = (<any>this.formGroup)['__editorModel__'][
+        displayOrder = ( this.formGroup as any).__editorModel__[
           `__displayOrder__${controlName}`
         ];
-        isInGroup = !!(<any>this.formGroup)['__editorModel__'][
+        isInGroup = !!( this.formGroup as any).__editorModel__[
           `__isGrouped__${controlName}`
         ];
         if (isInGroup) {
-          groupName = (<any>this.formGroup)['__editorModel__'][
+          groupName = ( this.formGroup as any).__editorModel__[
             `__groupName__${controlName}`
           ];
-          groupOrder = (<any>this.formGroup)['__editorModel__'][
+          groupOrder = ( this.formGroup as any).__editorModel__[
             `__groupOrder__${controlName}`
           ];
-          groupDesc = (<any>this.formGroup)['__editorModel__'][
+          groupDesc = ( this.formGroup as any).__editorModel__[
             `__groupDesc__${controlName}`
           ];
         }
@@ -85,7 +88,7 @@ export class AutoFormComponent implements OnInit {
         });
       } else {
         // check if group already exists
-        const existingGroupArray = this.groups.filter(g => g.name === groupName);
+        const existingGroupArray = this.groups.filter((g) => g.name === groupName);
         const groupExists = existingGroupArray.length === 1;
         if (!groupExists) {
           this.groups.push({
@@ -96,7 +99,7 @@ export class AutoFormComponent implements OnInit {
           });
         }
         // add field to existing group (assume that here the group always exists)
-        const existingGroup = this.groups.filter(g => g.name === groupName)[0];
+        const existingGroup = this.groups.filter((g) => g.name === groupName)[0];
         // and store
         existingGroup.editors.push({
           key: displayOrder,

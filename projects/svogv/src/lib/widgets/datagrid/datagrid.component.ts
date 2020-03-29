@@ -4,6 +4,10 @@ import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
 
 /**
+ * > See README for a complete documentation.
+ *
+ * ### Summary
+ *
  * The datagrid provides basic functions for data tables:
  * * sorting
  * * filtering
@@ -18,6 +22,20 @@ import { DatagridStyles } from './models/datagridstyle.model';
  * * `.col-last`
  * * `.col-first`
  * All these styles are applied to the <col> elements of the underlying table.
+ *
+ * The model used in the example is an array of objects, where the properties are decorated with
+ * various decorators used to control the grid's render behavior.
+ *
+ * @example
+ * ```
+  <ac-datagrid
+       [model]="model"
+       [showActions]="false"
+       [columnStyle]=""
+     ></ac-datagrid>
+   ```
+ *
+ * <example-url>/#/widget/grid</example-url>
  */
 @Component({
   selector: 'ac-datagrid',
@@ -27,6 +45,19 @@ import { DatagridStyles } from './models/datagridstyle.model';
 export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   public directionEnumHelper = Direction;
 
+  /**
+   * Access to the string renderer fallback template. The template used internally looks like shown in the example
+   * That means, it renders data "as is", but can be modified by handling a custom pipe. To apply such
+   * a pipe, your viewmodel's properties must be decorated with the {@link FormatPipe} decorator.
+   *
+   * __Example:__
+   * ~~~~~~~~
+   * <ng-template #string let-data let-modelpipe="pipe" let-params="params">
+   *  {{ data | formatData: modelpipe: params }}
+   * </ng-template>
+   * ~~~~~~~~
+   *
+   */
   @ViewChild('string', { static: true }) public stringFallback: TemplateRef<any>;
   @ContentChild('string', { static: true }) public string: TemplateRef<any>;
 
@@ -59,18 +90,18 @@ export class DataGridComponent implements OnInit, AfterViewInit, OnDestroy {
   public model: DataGridModel<any>;
 
   /**
-   * Wheather to show a delete button. Clicking it fires the @see DataGridModel.OnDelete event.
+   * Wheather to show a delete button. Clicking it fires the {@link DataGridModel.OnDelete}event.
    */
   @Input()
   public showDeleteButton: boolean;
   /**
-   * Wheather to show an edit button. Clicking it fires the @see DataGridModel.OnEdit event.
+   * Wheather to show an edit button. Clicking it fires the {@link DataGridModel.OnEdit}event.
    */
   @Input()
   public showEditButton: boolean;
 
   /**
-   * Show the action column at all. Use @see showDeleteButton and  @see showEditButton to switch the buttons
+   * Show the action column at all. Use {@link showDeleteButton and  @see showEditButton to switch the}buttons
    * on or off individually. Default is `true` (actions visible).
    */
   @Input()

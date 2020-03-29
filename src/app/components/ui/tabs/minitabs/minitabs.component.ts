@@ -1,19 +1,16 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
+
+export type tabsSelectable = 'info' | 'code' | 'demo';
 
 @Component({
   selector: 'app-minitabs',
   templateUrl: './minitabs.component.html',
   styleUrls: ['./minitabs.component.css']
 })
-export class MinitabsComponent implements OnInit {
+export class MinitabsComponent {
 
   @Input()
   @Output()
-  tabSelected: string = 'info';
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  public tabSelected: tabsSelectable = 'info';
 
 }
