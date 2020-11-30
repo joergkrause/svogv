@@ -1,13 +1,13 @@
 {
   "name": "svogv",
-  "version": "0.9.0",
+  "version": "0.11.0",
   "description": "A decorator based approach for model driven forms, including an advanced DataGrid and a TreeView component.",
   "peerDependencies": {
-    "@angular/common": "^9.1.0",
-    "@angular/core": "^9.1.0"
+    "@angular/common": "^11.0.2",
+    "@angular/core": "^11.0.2"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1"
+    "bootstrap": "^4.5.3"
   },
   "repository": {
     "type": "git",

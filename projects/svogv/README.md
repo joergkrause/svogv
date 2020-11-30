@@ -44,7 +44,7 @@ As of version 0.6 none known issues. Please report issues through Github.
 
 Have you worked with the version 0.3 before? 0.6 has breaking changes because of a new build process.
 **In 0.7 I have again made significant changes towards the 1.0 release.**
-I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and if I could move to 1.0 and at that time Angular 9 is out, it will become SVOGV 9.
+I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and so on. Currently supporting Angular 11.
 
 ## Angular Data Annotations
 
@@ -313,7 +313,7 @@ It's ISC licensed and it's free. I deeply believe in Open Source and will suppor
 
 ### About the Author
 
-The SVOGV Widget Library was written by Joerg <isageek> Krause, [www.joergkrause.de](https://www.joergkrause.de), Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and Durandal. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components.
+The SVOGV Widget Library was written by Joerg <isageek> Krause, [www.joergkrause.de](https://www.joergkrause.de), Berlin / Germany. He has many years of experience with Web-Frameworks. He were in the business in the early JavaScript days, know every single bit in jQuery and learnt a lot about Knockout, Angular, and React. But time goes on. So he moved almost all projects to either AngularJS or Angular 2+. He thinks that knowing one Framework really well is more for our customers than knowing a lot just good. So he decided to do more and start contributing to the Angular ecosystem by creating awesome libraries and components.
 
 ## Can one contribute?
 

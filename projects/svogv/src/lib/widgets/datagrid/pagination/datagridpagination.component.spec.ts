@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DatagridpaginationComponent } from './datagridpagination.component';
+import { DataGridPaginationComponent } from './datagridpagination.component';
 
 describe('DatagridpaginationComponent', () => {
-  let component: DatagridpaginationComponent;
-  let fixture: ComponentFixture<DatagridpaginationComponent>;
+  let component: DataGridPaginationComponent;
+  let fixture: ComponentFixture<DataGridPaginationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DatagridpaginationComponent ]
+      declarations: [ DataGridPaginationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DatagridpaginationComponent);
+    fixture = TestBed.createComponent(DataGridPaginationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

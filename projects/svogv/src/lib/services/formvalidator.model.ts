@@ -63,7 +63,7 @@ export type readonlyType = {
  * * boolean: boolean: &lt;input type="checkbox"&gt;
  * * number: number: &lt;input type="number"&gt;
  *
- * This is the formatting that's autoamtically applied. The template hint goes after and can change any of these values.
+ * This is the formatting that's automatically applied. The template hint goes after and can change any of these values.
  * The allows values are:
  *
  * * any: textarea: &lt;textarea&gt;
