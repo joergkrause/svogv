@@ -1,5 +1,7 @@
-﻿import { Component, Input, Output, OnInit } from '@angular/core';
+﻿import { InvokeFunctionExpr } from '@angular/compiler';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { EditorModel } from './models/editor.model';
 
 /**
  * The Editor Widget. Creates a field with all required validators using decorators and forms service.
@@ -25,60 +27,11 @@ import { FormGroup } from '@angular/forms';
   templateUrl: './editor.component.html'
 }) //
 export class EditorComponent implements OnInit {
-  /**
-   * Field name
-   */
-  @Input() public name: string;
-  /**
-   * Editor type. Default is 'text';
-   */
-  @Input() public type = 'text';
-  /**
-   * A character after the fields label. Default is ': ' (colon plus space);
-   */
-  @Input() public labelDivider = ': ';
-  /**
-   * The label's name.
-   */
-  @Input() public label: string;
-  /**
-   * A tooltip
-   */
-  @Input() public tooltip: string;
-  /**
-   * The form's group object.
-   */
-  @Input() public formGroup: FormGroup;
-  /**
-   * If set to true the label and the field appears in one row.
-   * Otherwise the label is above the field. Default is `true`.
-   */
-  @Input() public inline = true;
-  /**
-   * The values of the select field provided by an enum. For other fieldtypes it's being ignored.
-   */
-  @Input() public enumValues: any;
-  /**
-   * The values of the select field provided by a list. For other fieldtypes it's being ignored.
-   * The value shall be an Array that a `*ngFor` directive can execute.
-   */
-  @Input() public listValues: any[];
-  /**
-   * The start value for a range field. Other field types ignore this value.
-   */
-  @Input() public fromValue = 0;
-  /**
-   * The end value for a range field. Other field types ignore this value.
-   */
-  @Input() public toValue = 100;
-  /**
-   * An optional placeholder for empty field. The default is empty (no watermark).
-   */
-  @Input() public waterMark = '';
-  /**
-   * Renders the field as read only.
-   */
-  @Input() public readonly = false;
+
+  @Input() model: EditorModel;
+
+  @Input() name: string;
+
   /**
    * The value set to and read from the field.
    */
@@ -113,55 +66,55 @@ export class EditorComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.formGroup.valueChanges.subscribe((data) => this.onValueChanged(data));
+    this.model.formGroup.valueChanges.subscribe((data) => this.onValueChanged(data));
     // this is set by FormValidatorService
-    const editorModel = (this.formGroup as any).__editorModel__;
+    const editorModel = (this.model.formGroup as any).__editorModel__;
     // get type from form
     if (editorModel) {
       // get elementary types, this might get overwritten later according to decorators found
-      if (typeof editorModel[this.name] === 'string') {
-        this.type = 'text';
+      if (typeof editorModel[this.model.name] === 'string') {
+        this.model.type = 'text';
       }
-      if (typeof editorModel[this.name] === 'boolean') {
-        this.type = 'boolean';
+      if (typeof editorModel[this.model.name] === 'boolean') {
+        this.model.type = 'boolean';
       }
-      if (typeof editorModel[this.name] === 'number') {
-        this.type = 'number';
+      if (typeof editorModel[this.model.name] === 'number') {
+        this.model.type = 'number';
       }
-      if (editorModel[this.name] instanceof Date) {
-        this.type = 'calendar';
+      if (editorModel[this.model.name] instanceof Date) {
+        this.model.type = 'calendar';
       }
       // make an instance to read the properties
-      this.label = editorModel[`__displayName__${this.name}`] || this.label || this.name;
-      this.tooltip = editorModel[`__displayDesc__${this.name}`] || this.tooltip || this.name;
+      this.model.label = editorModel[`__displayName__${this.model.name}`] || this.model.label || this.model.name;
+      this.model.tooltip = editorModel[`__displayDesc__${this.model.name}`] || this.model.tooltip || this.model.name;
       // render as range id there is a range definition
-      if (editorModel[`__hasRangeFrom__${this.name}`] && Number(editorModel[`__hasRangeFrom__${this.name}`])) {
-        this.fromValue = editorModel[`__hasRangeFrom__${this.name}`] as number;
-        this.type = 'range';
+      if (editorModel[`__hasRangeFrom__${this.model.name}`] && Number(editorModel[`__hasRangeFrom__${this.model.name}`])) {
+        this.model.fromValue = editorModel[`__hasRangeFrom__${this.model.name}`] as number;
+        this.model.type = 'range';
       }
-      if (editorModel[`__hasRangeTo__${this.name}`] && Number(editorModel[`__hasRangeTo__${this.name}`])) {
-        this.toValue = editorModel[`__hasRangeTo__${this.name}`] as number;
-        this.type = 'range';
+      if (editorModel[`__hasRangeTo__${this.model.name}`] && Number(editorModel[`__hasRangeTo__${this.model.name}`])) {
+        this.model.toValue = editorModel[`__hasRangeTo__${this.model.name}`] as number;
+        this.model.type = 'range';
       }
       // placeholder
-      if (editorModel[`__hasWatermark__${this.name}`]) {
-        this.waterMark = editorModel[`__watermark__${this.name}`];
+      if (editorModel[`__hasWatermark__${this.model.name}`]) {
+        this.model.waterMark = editorModel[`__watermark__${this.model.name}`];
       }
       // templates
-      if (editorModel[`__hasTemplateHint__${this.name}`]) {
-        this.type = (editorModel[`__templatehint__${this.name}`] as string).toLowerCase();
-        if (editorModel[`__templatehintParams__${this.name}`]) {
-          this.params = editorModel[`__templatehintParams__${this.name}`] as { key: string; value: any }[];
+      if (editorModel[`__hasTemplateHint__${this.model.name}`]) {
+        this.model.type = (editorModel[`__templatehint__${this.model.name}`] as string).toLowerCase();
+        if (editorModel[`__templatehintParams__${this.model.name}`]) {
+          this.params = editorModel[`__templatehintParams__${this.model.name}`] as { key: string; value: any }[];
         }
       }
 
       // render hidden fields as hidden even in forms
-      if (editorModel[`__isHidden__${this.name}`]) {
-        this.type = 'hidden';
+      if (editorModel[`__isHidden__${this.model.name}`]) {
+        this.model.type = 'hidden';
       }
       // check readonly
-      if (editorModel[`__isReadonly__${this.name}`]) {
-        this.readonly = !!editorModel[`__isReadonly__${this.name}`];
+      if (editorModel[`__isReadonly__${this.model.name}`]) {
+        this.model.readonly = !!editorModel[`__isReadonly__${this.model.name}`];
       }
     }
   }
@@ -170,7 +123,7 @@ export class EditorComponent implements OnInit {
     // check validation on change
     this.errors = new Array<string>();
     // tslint:disable-next-line:forin
-    for (const error in this.formGroup.controls[this.name].errors) {
+    for (const error in this.model.formGroup.controls[this.model.name].errors) {
       this.errors.push(error);
     }
   }

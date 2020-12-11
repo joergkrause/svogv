@@ -1,4 +1,4 @@
-# Complete Documentation of the Editoromponent
+# Complete Documentation of the EditorComponent
 
 A form can make use of the `EditorComponent`, named `<ac-editor>`. An object with several properties, decorated with UI instructions, created a whole form.
 
@@ -10,14 +10,14 @@ The simplest form of usage looks like this:
 <form (ngSubmit)="saveUser()" role="form" #userForm="ngForm">
   <fieldset>
     <legend>Edit current user</legend>
-    <ac-editor [formGroup]="userFormGroup" name="userName"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="email"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="phoneNumber"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="age"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="birthday"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="isActive"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="passWord"></ac-editor>
-    <ac-editor [formGroup]="userFormGroup" name="passWordTwo"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="userName"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="email"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="phoneNumber"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="age"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="birthday"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="isActive"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="passWord"></ac-editor>
+    <ac-editor [model]="userEditorModel" name="passWordTwo"></ac-editor>
     <div class="form-group">
       <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
       <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid"><i class="fa fa-close"></i> Save &amp; Close</button>
@@ -29,7 +29,7 @@ The simplest form of usage looks like this:
 </form>
 ~~~
 
-The styling is baded on Bootstrap 4.
+The styling is based on Bootstrap 4.
 
 You must have a form and provide the groups name. Internally, the `ReactiveFormsModule` is being used. The logic expects several decorators, that are being examined and based on the findings a `FormGroup` object is being created. That's handled by a service the *SvogvModule* provides. The component's code looks like this:
 

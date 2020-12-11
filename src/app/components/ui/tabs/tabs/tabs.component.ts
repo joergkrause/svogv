@@ -20,7 +20,7 @@ export class TabsComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-
+    this.router.config
   }
 
 }
