@@ -1,7 +1,7 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { SiteApiService } from '../../../services';
-import { DataGridModel } from 'svogv';
+import { DataGridModel } from '@svogv/core';
 import { SimpleUserViewModelList } from 'src/app/viewmodels/simpleuser.viewmodellist';
 
 @Component({

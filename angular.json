@@ -23,7 +23,8 @@
               ,{ "glob": "**/*.*", "input": "src/documentation/", "output": "/documentation/" }
             ],
             "styles": ["./src/assets/styles/site.scss"],
-            "scripts": []
+            "scripts": [
+            ]
           },
           "configurations": {
             "production": {
@@ -114,7 +115,7 @@
         }
       }
     },
-    "svogv": {
+    "@svogv/core": {
       "root": "projects/svogv",
       "sourceRoot": "projects/svogv/src",
       "projectType": "library",
@@ -162,6 +163,86 @@
             "customWebpackConfig": {
               "path": "./webpack.test.config.js"
             }
+          }
+        }
+      }
+    },
+    "@svogv/bootstrap": {
+      "projectType": "library",
+      "root": "projects/bootstrap-ui",
+      "sourceRoot": "projects/bootstrap-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/bootstrap-ui/tsconfig.lib.json",
+            "project": "projects/bootstrap-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bootstrap-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bootstrap-ui/src/test.ts",
+            "tsConfig": "projects/bootstrap-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/bootstrap-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bootstrap-ui/tsconfig.lib.json",
+              "projects/bootstrap-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@svogv/material": {
+      "projectType": "library",
+      "root": "projects/material-ui",
+      "sourceRoot": "projects/material-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/material-ui/tsconfig.lib.json",
+            "project": "projects/material-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/material-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/material-ui/src/test.ts",
+            "tsConfig": "projects/material-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/material-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/material-ui/tsconfig.lib.json",
+              "projects/material-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

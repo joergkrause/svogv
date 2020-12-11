@@ -14,7 +14,7 @@
 
 This library is for Angular Version 2 or newer. The current release is for Angular 8 and matches the current Angular version usually.
 
-The design / UI stuff is made using Bootstrap 4, and even here the current version is used.
+The design / UI stuff is made using Bootstrap or Angular Material, whatever you prefer.
 
 It's for developers who create standard forms and want to automate the development process.
 
@@ -25,7 +25,7 @@ It's for developers who create standard forms and want to automate the developme
 This library is for making forms. Easy and fast. It has these advantages:
 
 * All form parts are being created dynamically by using decorators. These control the UI and validation.
-* All styles are based on Bootstrap 4, can be used together with themes and custom parts can be changed.
+* All styles are based on Bootstrap or Material, can be used together with themes and custom parts can be changed.
 * A grid component makes data tables very easy to use.
 * A tree view is another component.
 * Dynamic editors and an autoform component creates the whole form without code.
@@ -40,15 +40,11 @@ It's available as source code or as ready to use umd-bundle. The bundle is plane
 
 ## Issues?
 
-As of version 0.6 none known issues. Please report issues through Github.
-
-Have you worked with the version 0.3 before? 0.6 has breaking changes because of a new build process.
-**In 0.7 I have again made significant changes towards the 1.0 release.**
-I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and so on. Currently supporting Angular 11.
+As of version 1.0 none known issues. Please report issues through Github.
 
 ## Angular Data Annotations
 
-The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though. You can find more [here](https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations?view=netframework-4.8).
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though. You can find more [here](https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations).
 
 The basic idea is that we usually use view models anyway. So, why not using them to provide all information necessary to create a form that way?
 

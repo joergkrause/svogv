@@ -8,20 +8,19 @@
 // import { FormValidatorModel } from './formvalidator.model';
 
 // import {
-//   displayInternalSetup,
-//   displayGroupInternalSetup,
-//   hiddenInternalSetup,
-//   formatInternalSetup,
-//   placeholderInternalSetup,
-//   compareInternalSetup,
-//   maxLengthInternalSetup,
-//   minLengthInternalSetup,
-//   patternInternalSetup,
-//   stringLengthInternalSetup,
-//   emailInternalSetup,
-//   rangeInternalSetup,
-//   readonlyInternalSetup,
-//   requiredInternalSetup,
+//   DisplayGroup,
+//   Hidden,
+//   FormatPipe,
+//   Placeholder,
+//   Compare,
+//   MaxLength,
+//   MinLength,
+//   Pattern,
+//   StringLength,
+//   Email,
+//   Range,
+//   Readonly,
+//   Required,
 //   Display
 // } from '../decorators';
 
@@ -75,18 +74,18 @@
 //               (<any>json)[field][type]['description']);
 //             break;
 //           case 'displayGroup':
-//             displayGroupInternalSetup(target, field,
+//             DisplayGroup.InternalSetup(target, field,
 //               (<any>json)[field][type]['name'],
 //               (<any>json)[field][type]['order'] ? +(<any>field)[type]['order'] : 0,
 //               (<any>json)[field][type]['description']);
 //             break;
 //           case 'format':
-//             formatInternalSetup(target, field,
+//             FormatPipe.InternalSetup(target, field,
 //               (<any>json)[field][type]['pipeName'],
 //               (<any>json)[field][type]['pipeParams']);
 //             break;
 //           case 'hidden':
-//             hiddenInternalSetup(target, field,
+//             Hidden.InternalSetup(target, field,
 //               (<any>json)[field][type]['hidden'] || !!(<any>field)[type]['hidden']);
 //             break;
 //           case 'readonly':

@@ -18,11 +18,19 @@
       "dom"
     ],
     "paths": {
-      "svogv": [
-        "dist/svogv"
+      "@svogv/core": [
+        "projects/svogv/src/public_api"
       ],
-      "svogv/*": [
-        "dist/svogv/*"
+      "@svogv/*": [
+        "projects/*"
+      ],
+      "@svogv/bootstrap": [
+        "projects/bootstrap-ui/src",
+        "projects/bootstrap-ui/src/lib/public_api"
+      ],
+      "@svogv/material": [
+        "projects/material-ui/src",
+        "projects/material-uisrc/lib/public_api"
       ]
     }
   }

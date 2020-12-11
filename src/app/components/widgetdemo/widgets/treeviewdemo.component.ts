@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from 'svogv';
+import { TreeNodeOptions, TextTreeNodeModel, TreeNodeModel } from '@svogv/core';
 
 @Component({
   selector: 'app-treeview',

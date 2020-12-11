@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { DataGridModel } from 'projects/svogv/src/public_api';
+import { DataGridModel } from '@svogv/core';
 import { UserViewModelList } from 'src/app/viewmodels';
 import { SiteApiService } from 'src/app/services';
 

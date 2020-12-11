@@ -1,5 +1,4 @@
 ﻿import { Component } from '@angular/core';
-import { SiteApiService, EmitterService } from '../../services';
 
 @Component({
   selector: 'app-root',

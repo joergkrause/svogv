@@ -1,5 +1,5 @@
 /*
- * Public API Surface of svogv lib
+ * Public API Surface of @svogv/core lib
  */
 
 export * from './lib/decorators/index';

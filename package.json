@@ -1,7 +1,7 @@
 {
-  "name": "svogv-demo",
-  "version": "0.11.0",
-  "description": "A decorator based approach for model driven forms and some time saving form widgets.",
+  "name": "svogv",
+  "version": "1.0.11",
+  "description": "A decorator based approach for model driven forms and some time saving form widgets. Demo and test app.",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4200",
@@ -13,10 +13,13 @@
     "codedoc": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./src/documentation"
   },
   "dependencies": {
+    "@angular/animations": "^11.0.2",
+    "@angular/cdk": "~11.0.1-sha-5e645f926",
     "@angular/common": "^11.0.2",
     "@angular/compiler": "^11.0.2",
     "@angular/core": "^11.0.2",
     "@angular/forms": "^11.0.2",
+    "@angular/material": "~11.0.1-sha-5e645f926",
     "@angular/platform-browser": "^11.0.2",
     "@angular/platform-browser-dynamic": "^11.0.2",
     "@angular/router": "^11.0.2",
