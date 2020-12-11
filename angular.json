@@ -124,12 +124,12 @@
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/svogv/tsconfig.lib.json",
+            "tsConfig": "projects/svogv/tsconfig.json",
             "project": "projects/svogv/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/svogv/tsconfig.lib.prod.json"
+              "tsConfig": "projects/svogv/tsconfig.prod.json"
             }
           }
         },
@@ -145,8 +145,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/svogv/tsconfig.lib.json",
-              "projects/svogv/tsconfig.spec.json"
+              "projects/svogv/tsconfig.json",
+              "projects/svogv/tsconfig.json"
             ],
             "exclude": ["**/node_modules/**"]
           }
@@ -171,17 +171,17 @@
       "projectType": "library",
       "root": "projects/bootstrap-ui",
       "sourceRoot": "projects/bootstrap-ui/src",
-      "prefix": "lib",
+      "prefix": "ac",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/bootstrap-ui/tsconfig.lib.json",
+            "tsConfig": "projects/bootstrap-ui/tsconfig.json",
             "project": "projects/bootstrap-ui/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/bootstrap-ui/tsconfig.lib.prod.json"
+              "tsConfig": "projects/bootstrap-ui/tsconfig.prod.json"
             }
           }
         },
@@ -197,7 +197,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/bootstrap-ui/tsconfig.lib.json",
+              "projects/bootstrap-ui/tsconfig.json",
               "projects/bootstrap-ui/tsconfig.spec.json"
             ],
             "exclude": [

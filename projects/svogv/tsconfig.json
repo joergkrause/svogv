@@ -11,24 +11,17 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "types": [],
+    "baseUrl": "./lib",
     "lib": [
       "dom",
       "es2015"
     ],
     "paths": {
       "@svogv/core": [
-        "dist/svogv"
+        "./src"
       ],
       "@svogv/*": [
-        "dist/svogv/*"
-      ],
-      "@svogv/bootstrap": [
-        "dist/bootstrap-ui/bootstrap-ui",
-        "dist/bootstrap-ui"
-      ],
-      "@svogv/material": [
-        "dist/material-ui/material-ui",
-        "dist/material-ui"
+        "../*"
       ]
     }
   },

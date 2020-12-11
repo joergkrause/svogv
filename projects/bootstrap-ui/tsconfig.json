@@ -1,25 +1,30 @@
 /* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
+    "outDir": "../../out-tsc/lib/bootstrap-ui",
     "target": "es2015",
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "sourceMap": true,
+    "baseUrl": "./lib",
     "types": [],
     "lib": [
       "dom",
       "es2018"
     ],
     "paths": {
-      "@svogv/core": ["../svogv/src"]
+      "@svogv/core": [
+        "../svogv/src",
+        "../svogv/"
+      ]
     }
   },
   "angularCompilerOptions": {
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
-    "enableResourceInlining": true
+    "enableResourceInlining": true,
+    "enableIvy": false,
   },
   "exclude": [
     "src/test.ts",

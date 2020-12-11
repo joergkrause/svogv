@@ -1,11 +1,10 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 
 import * as wd from './widgets/index';
 
-import { SvogvCoreModule } from 'projects/svogv/src/public_api';
+import { SvogvCoreModule } from '@svogv/core';
 // import { FormValidatorFromJsonService } from './services/formvalidator-fromjson.service';
 
 const SVOGV_COMPONENTS = [
@@ -23,7 +22,7 @@ const provider = [SvogvCoreModule];
  * The actual SVOGV Module definition.
  */
 @NgModule({
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule],
   declarations: [...SVOGV_COMPONENTS, wd.FormatDataPipe],
   providers: provider,
   exports: SVOGV_COMPONENTS

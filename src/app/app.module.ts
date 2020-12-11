@@ -11,7 +11,7 @@ import * as cmp from './components';
 // routes' configuration
 import { routes } from './configurations/routes';
 
-import { SvogvBootstrapModule } from '@svogv/bootstrap'; // FormValidatorFromJsonService
+import { SvogvBootstrapModule } from '../../projects/bootstrap-ui/src/public-api'; // FormValidatorFromJsonService
 import { PercentPipe } from './viewmodels/pipe/percent.pipe';
 import { MinitabsComponent } from './components/ui/tabs/minitabs/minitabs.component';
 import { TabsComponent } from './components/ui/tabs/tabs/tabs.component';

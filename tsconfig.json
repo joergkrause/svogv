@@ -26,12 +26,17 @@
       ],
       "@svogv/bootstrap": [
         "projects/bootstrap-ui/src",
-        "projects/bootstrap-ui/src/lib/public_api"
+        "projects/bootstrap-ui/src/lib",
+        "projects/bootstrap-ui/src/public_api"
       ],
       "@svogv/material": [
         "projects/material-ui/src",
-        "projects/material-uisrc/lib/public_api"
+        "projects/material-ui/src/lib",
+        "projects/material-ui/src/public_api"
       ]
+    },
+    "angularCompilerOptions": {
+      "enableIvy": true
     }
   }
 }
