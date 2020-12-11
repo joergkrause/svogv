@@ -1,6 +1,6 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import * as wd from './widgets/index';
 
@@ -22,7 +22,7 @@ const provider = [SvogvCoreModule];
  * The actual SVOGV Module definition.
  */
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   declarations: [...SVOGV_COMPONENTS, wd.FormatDataPipe],
   providers: provider,
   exports: SVOGV_COMPONENTS
