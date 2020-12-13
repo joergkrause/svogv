@@ -9,20 +9,30 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ],
     "paths": {
-      "svogv": [
-        "dist/svogv"
+      "@svogv/core": [
+        "projects/svogv/src/public_api"
       ],
-      "svogv/*": [
-        "dist/svogv/*"
+      "@svogv/*": [
+        "projects/*"
+      ],
+      "@svogv/bootstrap": [
+        "projects/bootstrap-ui/src",
+        "projects/bootstrap-ui/src/lib",
+        "projects/bootstrap-ui/src/public_api"
+      ],
+      "@svogv/material": [
+        "projects/material-ui/src",
+        "projects/material-ui/src/lib",
+        "projects/material-ui/src/public_api"
       ]
     }
   }

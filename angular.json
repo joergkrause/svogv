@@ -14,23 +14,38 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/svogv-demo",
+            "outputPath": "dist/demo",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"
-              ,{ "glob": "**/*.*", "input": "src/documentation/", "output": "/documentation/" }
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*.*",
+                "input": "src/documentation/",
+                "output": "/documentation/"
+              }
             ],
-            "styles": ["./src/assets/styles/site.scss"],
+            "styles": [
+              "./src/assets/styles/site.scss",
+              "node_modules/highlight.js/styles/github.css"
+            ],
             "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
                 }
               ],
               "fileReplacements": [
@@ -75,79 +90,26 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": ["src/assets/styles/site.scss"],
+            "styles": [
+              "src/assets/styles/site.scss"
+            ],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets"]
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "svogv-demo-e2e": {
-      "root": "e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "svogv-demo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "svogv-demo:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
-          }
-        }
-      }
-    },
-    "svogv": {
-      "root": "projects/svogv",
-      "sourceRoot": "projects/svogv/src",
-      "projectType": "library",
-      "prefix": "ac",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/svogv/tsconfig.lib.json",
-            "project": "projects/svogv/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/svogv/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/svogv/src/test.ts",
-            "tsConfig": "projects/svogv/tsconfig.spec.json",
-            "karmaConfig": "projects/svogv/karma.conf.js"
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/svogv/tsconfig.lib.json",
-              "projects/svogv/tsconfig.spec.json"
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
@@ -162,6 +124,86 @@
             "customWebpackConfig": {
               "path": "./webpack.test.config.js"
             }
+          }
+        }
+      }
+    },
+    "@svogv/bootstrap": {
+      "projectType": "library",
+      "root": "projects/bootstrap-ui",
+      "sourceRoot": "projects/bootstrap-ui/src",
+      "prefix": "svb",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/bootstrap-ui/tsconfig.json",
+            "project": "projects/bootstrap-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bootstrap-ui/tsconfig.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bootstrap-ui/src/test.ts",
+            "tsConfig": "projects/bootstrap-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/bootstrap-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bootstrap-ui/tsconfig.json",
+              "projects/bootstrap-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@svogv/material": {
+      "projectType": "library",
+      "root": "projects/material-ui",
+      "sourceRoot": "projects/material-ui/src",
+      "prefix": "svm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/material-ui/tsconfig.lib.json",
+            "project": "projects/material-ui/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/material-ui/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/material-ui/src/test.ts",
+            "tsConfig": "projects/material-ui/tsconfig.spec.json",
+            "karmaConfig": "projects/material-ui/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/material-ui/tsconfig.lib.json",
+              "projects/material-ui/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

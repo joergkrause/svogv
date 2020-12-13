@@ -1,0 +1,72 @@
+<div class="form-group row"
+    [formGroup]="model.formGroup"
+     *ngIf="model.type != 'hidden' && model.formGroup"
+     [ngClass]="{ 'has-danger': !model.formGroup.controls[name].valid && model.formGroup.controls[name].touched }">
+  <label class="col-form-label col-md-3 col-sm-10"
+    [attr.for]="name"
+    [attr.title]="model.tooltip" >{{ model.label }}{{ model.labelDivider }} </label>
+  <div [ngClass]="{ 'col-md-7 col-sm-10': model.inline }">
+    <textarea *ngIf="model.type == 'textarea'"
+            class="form-control"
+            [id]="name"
+            [readOnly]='model.readonly'
+            [formControlName]="name"
+            [attr.rows]="getParams('rows')"
+            [attr.cols]="getParams('cols')">
+    </textarea>
+    <select *ngIf="model.type == 'enum' && model.enumValues" class="form-control" [id]="name"
+          [formControlName]="name" [disabled]='model.readonly'>
+      <option *ngFor="let option of model.enumValues" [value]="option.key">{{option.val}}</option>
+    </select>
+    <select *ngIf="model.type == 'list' && model.listValues" class="form-control" [id]="name"
+          [formControlName]="name" [disabled]='model.readonly'>
+      <option *ngFor="let option of model.listValues" [value]="option.key">{{option.val}}</option>
+    </select>
+    <input *ngIf="model.type == 'range'" type="range"
+        class="form-control"
+        [placeholder]="model.waterMark"
+        [attr.minvalue]="model.fromValue"
+        [attr.maxvalue]="model.toValue"
+        [attr.min]="model.fromValue"
+        [attr.max]="model.toValue"
+        [id]="name"
+        [formControlName]="name"
+        [title]="model.tooltip" />
+    <input *ngIf="model.type == 'calendar'" type="date"
+        class="form-control"
+        [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
+        [id]="name"
+        [formControlName]="name"
+        [title]="model.tooltip" />
+    <input *ngIf="model.type == 'number'" type="number"
+        class="form-control"
+        [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
+        [id]="name"
+        [formControlName]="name"
+        [title]="model.tooltip" />
+    <input *ngIf="model.type == 'boolean'" type="checkbox"
+        class="form-control"
+        [readOnly]='model.readonly'
+        [id]="name"
+        [formControlName]="name"
+        [title]="model.tooltip" />
+    <label *ngIf="model.type == 'boolean'" [attr.for]="name"></label>
+    <input *ngIf="model.type == 'text' || model.type == ''" [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
+        type="text" class="form-control" [id]="name" [formControlName]="name" />
+    <ng-container *ngIf="model.type == 'template'">
+        <ng-content></ng-content>
+    </ng-container>
+    <span class="fa fa-warning text-danger form-control-feedback"
+        [hidden]="model.formGroup.controls[name].valid || model.formGroup.controls[name].pristine"></span>
+    <small class="text-danger"
+        [hidden]="model.formGroup.controls[name].valid || model.formGroup.controls[name].pristine">
+    <span *ngFor="let error of errors">{{ model.formGroup.controls[name]['messages'][error] }}</span>
+    </small>
+  </div>
+</div>
+<div>
+  <input *ngIf="model.type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
+</div>

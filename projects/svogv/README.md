@@ -12,9 +12,9 @@
 
 ## Target Audience
 
-This library is for Angular Version 2 or newer. The current release is for Angular 8 and matches the current Angular version usually.
+This library is for Angular Version 2 or newer. The current release is for Angular 11 and matches the current Angular version usually.
 
-The design / UI stuff is made using Bootstrap 4, and even here the current version is used.
+The design / UI stuff is made using Bootstrap 4 (@svogv/bootstrap) or Material (following the used Angular version).
 
 It's for developers who create standard forms and want to automate the development process.
 
@@ -22,10 +22,10 @@ It's for developers who create standard forms and want to automate the developme
 
 ## Introduction
 
-This library is for making forms. Easy and fast. It has these advantages:
+This library is for making forms and grids. Easy and fast. It has these advantages:
 
 * All form parts are being created dynamically by using decorators. These control the UI and validation.
-* All styles are based on Bootstrap 4, can be used together with themes and custom parts can be changed.
+* All styles are based on the specified environment, can be used together with themes and custom parts can be changed.
 * A grid component makes data tables very easy to use.
 * A tree view is another component.
 * Dynamic editors and an autoform component creates the whole form without code.
@@ -38,17 +38,9 @@ It's available as source code or as ready to use umd-bundle. The bundle is plane
 
 > It's pretty small, too. It's 300 KB as a bundle and roughly 39 KB minified, close to 10 KB zipped.
 
-## Issues?
-
-As of version 0.6 none known issues. Please report issues through Github.
-
-Have you worked with the version 0.3 before? 0.6 has breaking changes because of a new build process.
-**In 0.7 I have again made significant changes towards the 1.0 release.**
-I'm using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and so on. Currently supporting Angular 11.
-
 ## Angular Data Annotations
 
-The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though. You can find more [here](https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations?view=netframework-4.8).
+The idea of data annotations is somehow heavily inspired by the namespace `System.ComponentModel.DataAnnotations` of .NET Core. There is absolutely no dependency at all, though. You can find more [here](https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations).
 
 The basic idea is that we usually use view models anyway. So, why not using them to provide all information necessary to create a form that way?
 
@@ -118,7 +110,7 @@ The form needs to be aware of the decorators. Hence, there is a service that cre
 In a component's code it looks like this:
 
 ~~~
-import { FormValidatorService } from 'svogv';
+import { FormValidatorService } from '@svogv/core';
 
 export class EditUserComponent implements OnInit {
 
@@ -185,7 +177,7 @@ The only component here is `<ac-autoform>` that connects to the form using the a
 |**@Range**| A range (from-to) for either numerical values or dates. |
 |**@Required**| Makes the field mandatory. |
 |**@EMail**| Checks input against a (very good) regular expression to test for valid e-mail pattern.|
-|**@Compare**| Compares with another field, usually for password comparision.|
+|**@Compare**| Compares with another field, usually for password comparisons.|
 
 #### UI Decorators
 
@@ -242,14 +234,18 @@ The types have the same description as the decorators.
 
 ## The Components
 
+The goal is, finally, making the ultimate grid. All form parts are part of the grid experience.
+
 The components complement the editor by adding more parts typically used in forms apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:
 
-* **TreeView**: An advanced tree view with icon support and many options such as selections and checkboxes. Uses `EventEmitter` to fire several tree node events.
 * **DataGrid**: A classic data grid. It provides a model to handle:
   * paging
   * filtering
   * sorting
   * dynamic columns
+* **TreeView**: An advanced tree view with icon support and many options such as selections and checkboxes. Uses `EventEmitter` to fire several tree node events.
+* **Editor**: For inline editing
+* **AutoForm**: For editing complex forms
 
 The grid is controlled by decorators (see table above), so the view model actually creates the grid's appearance.
 
@@ -258,7 +254,7 @@ The grid is controlled by decorators (see table above), so the view model actual
 It's available from *npm* by using this command:
 
 ~~~
-npm install svogv --save
+npm install @svogv/bootstrap @svogv/core --save
 ~~~
 
 You get these parts:

@@ -1,4 +1,4 @@
-﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, FormatPipe } from 'svogv';
+﻿import { Required, MaxLength, Range, Email, Compare, Display, DisplayGroup, Hidden, FormatPipe } from '@svogv/core';
 
 /**
  * View Model for form view.

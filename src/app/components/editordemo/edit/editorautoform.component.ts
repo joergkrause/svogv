@@ -2,7 +2,7 @@
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
-import { FormValidatorService } from 'svogv';
+import { FormValidatorService } from '@svogv/core';
 // private
 import { SiteApiService, EmitterService } from '../../../services';
 import { UserViewModel } from '../../../viewmodels';

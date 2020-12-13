@@ -4,7 +4,7 @@ import * as cmp from '../components';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'editor',
+    redirectTo: 'home',
     pathMatch: 'full'
   },
   {
@@ -34,10 +34,15 @@ export const routes: Routes = [
     data: { title: 'Data Grid', subtitle: 'All features of grid', breadcrumb: true, features: true },
     children: [
       {
+        path: '',
+        redirectTo: 'simple',
+        pathMatch: 'full'
+      },
+      {
         path: 'simple',
         component: cmp.GridDemoSimpleComponent,
         data: {
-          title: 'Grid (simple)', subtitle: 'Grid Demo (simple)',
+          title: 'Simple Grid', subtitle: 'Grid Demo (simple)',
           active: false, disabled: false, breadcrumb: true
         }
       },
@@ -45,7 +50,7 @@ export const routes: Routes = [
         path: 'template',
         component: cmp.GridDemoTemplateComponent,
         data: {
-          title: 'Grid (templates)', subtitle: 'Grid Demo with templates for content manipulation',
+          title: 'Grid Templates', subtitle: 'Grid Demo with templates for content manipulation',
           active: false, disabled: false, breadcrumb: true
         }
       },
@@ -53,7 +58,7 @@ export const routes: Routes = [
         path: 'advanced',
         component: cmp.GridDemoComponent,
         data: {
-          title: 'Grid (advanced)', subtitle: 'Grid Demo (advanced)',
+          title: 'Adavanced Grid', subtitle: 'Grid Demo (advanced)',
           active: false, disabled: false, breadcrumb: true
         }
       },
@@ -74,8 +79,8 @@ export const routes: Routes = [
     ]
   },
   {
-    path: 'editor',
-    component: cmp.EditorDemoComponent,
+    path: 'widget/editor',
+    component: cmp.WidgetDemoComponent,
     data: { title: 'Editors', subtitle: 'Editor and Grid', breadcrumb: true, features: true },
     children: [
       {
@@ -125,5 +130,13 @@ export const routes: Routes = [
       }
     ]
 
+  },
+  {
+    path: 'about',
+    component: cmp.AboutComponent
+  }  ,
+  {
+    path: 'home',
+    component: cmp.HomeComponent
   }
 ];

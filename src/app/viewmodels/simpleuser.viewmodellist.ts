@@ -1,4 +1,4 @@
-﻿import * as Validator from 'svogv';
+﻿import * as Validator from '@svogv/core';
 
 /**
  * View Model for table view.

@@ -1,0 +1,20 @@
+<h2>Welcome</h2>
+<p>
+  SVOGV is a widget library for Angular.
+</p>
+<p>
+  The main idea is controlling the form with view models enhanced by decorators.
+</p>
+  <pre>
+    export class UserModel {{ '{' }}
+
+      @Hidden()
+      id: string = '';
+
+      @Display('Name')
+      @Required()
+      name: string = '';
+
+    {{ '}' }}
+  </pre>
+

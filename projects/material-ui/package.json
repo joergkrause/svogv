@@ -1,0 +1,13 @@
+{
+  "name": "@svogv/material",
+  "version": "1.0.11",
+  "peerDependencies": {
+    "@angular/common": "^11.0.1",
+    "@angular/core": "^11.0.1"
+  },
+  "dependencies": {
+    "@angular/material": "^11.0.2",
+    "tslib": "^2.0.0",
+    "@svogv/core": "1.0.11"
+  }
+}

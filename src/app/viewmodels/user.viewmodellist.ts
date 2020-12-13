@@ -1,5 +1,5 @@
-﻿import * as Validator from 'svogv';
-import * as UI from 'svogv';
+﻿import * as Validator from '@svogv/core';
+import * as UI from '@svogv/core';
 import { PercentPipe } from './pipe/percent.pipe';
 
 const customSorter = (a, b) => a > b ? -1 : 1;
