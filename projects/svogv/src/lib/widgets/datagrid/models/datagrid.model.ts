@@ -179,6 +179,7 @@ export class DataGridModel<T> {
     if (col) {
       col.hidden = false;
     }
+    return false;
   }
 
   /**

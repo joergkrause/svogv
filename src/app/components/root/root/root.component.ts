@@ -2,10 +2,7 @@
 
 @Component({
   selector: 'app-root',
-  templateUrl: './root.component.html',
-  styles: [
-    'footer { position: fixed; bottom: 15px; }'
-  ]
+  templateUrl: './root.component.html'
 })
 export class RootComponent {
 

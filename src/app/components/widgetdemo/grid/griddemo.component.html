@@ -1,0 +1,207 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        Advanced features of the grid, such as changing column order, add/remove
+        columns by user actions, callbacks, and more.
+      </div>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            This demo shows:
+          </p>
+          <ul>
+            <li>
+              Display action buttons. Currently the buttons 'Edit' and 'Delete'
+              can be shown. They fire events that need to be handled to change
+              the model accordingly.
+            </li>
+            <li>
+              Rearrange columns: Remove columns and add columns dynamically.
+              Internally, it's just the hidden attribute that get set or
+              removed. No change of the model at all.
+            </li>
+            <li>
+              Buttons and "Action" column's header can be named dynamically.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            The grid is defined in the form like this:
+          </p>
+          <pre>
+            <code [highlight]="code"></code>
+          </pre>
+          <p>
+            The values <code>showActions</code> and
+            <code>reArrangeColumns</code> are being set by the checkboxes.
+          </p>
+          <ul>
+            <li>
+              <code>showActions</code>: Show the action button column, the
+              buttons 'Edit' and 'Delete' fire appropriate events. The do
+              actually not change the data, one must manipulate the model
+              accordingly.
+            </li>
+            <li>
+              <code>reArrangeColumns</code>: Shows a remove button on the
+              columns and allows adding columns dynamically.
+            </li>
+          </ul>
+          <p>
+            The events are simply forwarded to an array to show how they work.
+            There is no change of data. For more event examples see the editor
+            demo (Grid&Editors) in the menu on the left.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
+    <div class="col-12">
+      <fieldset>
+        <legend>Grid Features</legend>
+        <form #f="ngForm" novalidate>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [(ngModel)]="showActions"
+                checked="true"
+                name="show"
+              />
+              Show Action Column
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                [(ngModel)]="reArrangeColumns"
+                checked="true"
+                name="reArrange"
+              />
+              Show Add/Remove Columns Button
+            </label>
+          </div>
+          <div class="form-group-sm" *ngIf="showActions">
+            <label for="actionHeader">Action Column's Header</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="actionHeader"
+              name="actionHeader"
+              [(ngModel)]="actionHeader"
+            />
+          </div>
+          <div class="form-group-sm" *ngIf="showActions">
+            <label for="textDeleteButton">Text of Delete Button</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="textDeleteButton"
+              name="textDeleteButton"
+              [(ngModel)]="textDeleteButton"
+            />
+          </div>
+          <div class="form-group-sm" *ngIf="showActions">
+            <label for="textEditButton">Text of Edit Button</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              id="textEditButton"
+              name="textEditButton"
+              [(ngModel)]="textEditButton"
+            />
+          </div>
+        </form>
+      </fieldset>
+      <fieldset>
+        <legend>Events fired</legend>
+        <button
+          type="button"
+          (click)="gridEvents = []"
+          class="btn btn-outline-secondary btn-xs"
+          style="float:right"
+        >
+          Clear List
+        </button>
+        <div *ngFor="let ev of gridEvents">{{ ev }}</div>
+      </fieldset>
+      <fieldset *ngIf="reArrangeColumns">
+        <legend>Currently invisible columns</legend>
+        <div class="btn-group">
+          <button  appDropdown
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownAdd"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Add a column
+          </button>
+          <div class="dropdown-menu" >
+            <a
+              *ngFor="let col of model.headersNotVisible; let l = last"
+              (click)="model.addColumn(col.prop)"
+              class="dropdown-item"
+              href="#"
+            >
+              Add '{{ col.text }}'
+            </a>
+          </div>
+          <button appDropdown
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownRemove"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Remove a column
+          </button>
+          <div class="dropdown-menu">
+            <a
+              *ngFor="let header of model.headers"
+              (click)="model.removeColumn(header.prop)"
+              class="dropdown-item"
+            >
+              {{ header.text }}
+            </a>
+          </div>
+        </div>
+      </fieldset>
+      <ac-datagrid
+        [model]="model"
+        [showActions]="showActions"
+        [reArrangeColumns]="reArrangeColumns"
+        [textButtonsHeader]="actionHeader"
+        [textDeleteButton]="textDeleteButton"
+        [textEditButton]="textEditButton"
+        (editItem)="gridEvents.push('Edit ' + $event.userName)"
+        (deleteItem)="gridEvents.push('Delete ' + $event.userName)"
+      ></ac-datagrid>
+    </div>
+  </div>
+</div>

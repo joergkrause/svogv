@@ -15,7 +15,6 @@ export class TabsComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.router.config
   }
 
 }

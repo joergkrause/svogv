@@ -14,7 +14,7 @@
 
 This library is for Angular Version 2 or newer. The current release is for Angular 11 and matches the current Angular version usually.
 
-The design / UI stuff is made using Bootstrap 4 (@svgov/bootstrap) or Material (tbd).
+The design / UI stuff is made using Bootstrap 4 (@svogv/bootstrap) or Material (following the used Angular version).
 
 It's for developers who create standard forms and want to automate the development process.
 

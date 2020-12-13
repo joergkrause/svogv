@@ -4,13 +4,13 @@ import { UserViewModelList } from 'src/app/viewmodels';
 import { SiteApiService } from 'src/app/services';
 
 @Component({
-  templateUrl: './griddemo.component.html'
+  templateUrl: './gridfilter.component.html'
 })
-export class GridDemoComponent implements OnInit, OnDestroy {
+export class GridFilterComponent implements OnInit, OnDestroy {
 
   model: DataGridModel<UserViewModelList>;
-  users: Array<UserViewModelList>;
-  gridEvents: Array<string> = [];
+  users: UserViewModelList[];
+  gridEvents: string[] = [];
 
   showActions: boolean;
   reArrangeColumns: boolean;
@@ -34,7 +34,7 @@ export class GridDemoComponent implements OnInit, OnDestroy {
     delete this.users;
   }
 
-  private renderData(data: Array<UserViewModelList>) {
+  private renderData(data: UserViewModelList[]) {
     // we get a regular array here, but grid expects GridData for proper rendering
     this.model = new DataGridModel<UserViewModelList>(data, UserViewModelList);
   }

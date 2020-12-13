@@ -1,19 +1,19 @@
 ﻿// root and page management
-export * from './root/root.component';
-// app pages and common ui components
-export * from './editordemo/editordemo.component';
+export * from './root/root/root.component';
+export * from './root/home/home.component';
+export * from './root/about/about.component';
 // app : widgets
-export * from './widgetdemo/widgets/griddemosimple.component';
-export * from './widgetdemo/widgets/griddemotemplate.component';
-export * from './widgetdemo/widgets/griddemo.component';
-export * from './widgetdemo/widgets/treeviewdemo.component';
+export * from './widgetdemo/grid/griddemosimple.component';
+export * from './widgetdemo/grid/griddemotemplate.component';
+export * from './widgetdemo/grid/griddemo.component';
+export * from './widgetdemo/grid/gridfilter.component';
+export * from './widgetdemo/tree/treeviewdemo.component';
 export * from './widgetdemo/widgetdemo.component';
-// app : ui helper
-export * from './ui';
 // app : editor
 export * from './editordemo/edit/editorform.component';
 export * from './editordemo/list/list.component';
 export * from './editordemo/delete/delete.component';
 export * from './editordemo/edit/editorautoform.component';
-export * from './editordemo/editordemo.component';
 export * from './editordemo/new/editornew.component';
+// app : ui helper
+export * from './ui';

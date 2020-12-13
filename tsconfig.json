@@ -9,12 +9,12 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es5",
+    "target": "es2015",
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom"
     ],
     "paths": {
@@ -34,9 +34,6 @@
         "projects/material-ui/src/lib",
         "projects/material-ui/src/public_api"
       ]
-    },
-    "angularCompilerOptions": {
-      "enableIvy": true
     }
   }
 }
