@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint > linter-warnings.txt",
     "e2e": "ng e2e",
-    "codedoc": "compodoc -p ./projects/svogv/tsconfig.lib.json --output ./src/documentation"
+    "codedoc": "compodoc -p ./projects/svogv/tsconfig.json --output ./src/documentation"
   },
   "dependencies": {
     "@angular/animations": "^11.0.2",

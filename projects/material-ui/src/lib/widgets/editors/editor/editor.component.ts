@@ -1,6 +1,6 @@
-﻿import { InvokeFunctionExpr } from '@angular/compiler';
-import { Component, Input, Output, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+﻿import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { Component, Input, Output, OnInit, ViewChild, NgZone } from '@angular/core';
+import {take} from 'rxjs/operators';
 import { EditorModel } from './models/editor.model';
 
 /**
@@ -8,27 +8,15 @@ import { EditorModel } from './models/editor.model';
  */
 @Component({
   selector: 'ac-editor',
-  styles: [
-    'input[type="checkbox"] { display: none; }',
-    'input[type="checkbox"] + label:before { font-family: FontAwesome; }',
-    'input[type="checkbox"] + label:before { content: "\\f096"; }',
-    'input[type="checkbox"]:checked + label:before { content: "\\f046"; }',
-    `
-      input[type='checkbox'] + label {
-        display: inline-block;
-        width: 15px;
-        height: 20px;
-        margin: -1px 4px 0 0;
-        vertical-align: middle;
-        cursor: pointer;
-      }
-    `
-  ],
+  styleUrls: ['./editor.component.scss'],
   templateUrl: './editor.component.html'
 }) //
 export class EditorComponent implements OnInit {
 
   @Input() model: EditorModel;
+
+  @ViewChild('autosize') autosize: CdkTextareaAutosize;
+
 
   @Input() name: string;
 
@@ -44,8 +32,14 @@ export class EditorComponent implements OnInit {
 
   public errors: string[];
 
-  constructor() {
+  constructor(private _ngZone: NgZone) {
     this.params = new Array<{ key: string; value: any }>();
+  }
+
+  triggerResize() {
+    // Wait for changes to be applied, then trigger textarea resize.
+    this._ngZone.onStable.pipe(take(1))
+        .subscribe(() => this.autosize.resizeToFitContent(true));
   }
 
   public getParams(key: string): any {

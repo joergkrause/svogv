@@ -1,0 +1,162 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        A simple demo for the grid showing the basic features. Almost completely
+        controlled by a distinct view model through decorators.
+      </div>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>
+            This example shows simple styling of the grid using colors. One can
+            style the various parts:
+          </p>
+          <ul>
+            <li><code>first</code>: The first column</li>
+            <li><code>middle</code>: All except first and last</li>
+            <li><code>last</code>: The last column</li>
+            <li><code>group</code>:</li>
+            <li><code>header</code>: The header row</li>
+            <li>
+              <code>headerButton</code>: The container for all header cell
+              buttons
+            </li>
+            <li>
+              <code>headerSortButton</code>: The two sort buttons (up/down)
+            </li>
+            <li><code>headerRemoveButton</code>: The column remove button</li>
+            <li><code>footer</code>: the footer area</li>
+            <li><code>actionCell</code>: The cell with the action buttons</li>
+          </ul>
+          <p>
+            One can apply any regular styles, such as
+            <code>'background-color'</code>.
+          </p>
+          <p>
+            The data handling is controlled by the model itself, using
+            decorators.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Common Features of Grid Component
+        </div>
+        <div class="card-body">
+          <p>The grid in demo is using this code:</p>
+          <pre>
+&lt;ac-datagrid [model]="model"
+             [showActions]="false"
+             [columnStyle]="{{ "{" }} footer: {{
+              "{"
+            }} 'background-color': 'silver' },
+                              first: {{ "{" }} 'background-color': 'orange' },
+                              header: {{
+              "{"
+            }} color: 'white', 'background-color': 'black' },
+                              headerSortButton: {{ "{" }} color: 'yellow' }
+                             }" &gt;
+&lt;/ac-datagrid&gt;</pre
+          >
+          <p>
+            It shows how to change the styles of the particular parts of the
+            grid.
+          </p>
+          <p>The data are coming from the following model:</p>
+          <pre>
+import * as Validator from 'svogv';
+import {{ "{" }} PercentPipe } from './pipe/percent.pipe';
+
+export class UserViewModelList {{ "{" }}
+
+  @Validator.Hidden()
+  id = 0;
+
+  @Validator.Display('E-Mail', 20, 'E-Mail address')
+  @Validator.Required()
+  @Validator.MaxLength(100)
+  @Validator.Email()
+  email = '';
+
+  @Validator.Display('Phone Number', 30, 'The user\'s phone')
+  @Validator.Required()
+  @Validator.MaxLength(20)
+  phoneNumber = '';
+
+  @Validator.Display('User Name', 10, 'The full name')
+  @Validator.Required()
+  @Validator.MaxLength(100)
+  userName = '';
+
+  @Validator.Display('Age', 40, 'From 12 to 88')
+  @Validator.Range(12, 88)
+  @Validator.TemplateHint('AgeTemplate')
+  @Validator.Sortable(true, (a,b) => -1 : 1)
+  age = 0;
+
+  @Validator.Display('Done', 100, 'Work progress')
+  @Validator.FormatPipe(PercentPipe)
+  @Validator.Sortable(false)
+  done?: number = 0;
+
+  @Validator.Display('Active', 200, 'User is active')
+  @Validator.Sortable(false)
+  active ? = false;
+
+}</pre
+          >
+          <p>
+            Not all decorators are relevant for tables, some support the
+            integrated editors. Especially useful for tables are:
+          </p>
+          <ul>
+            <li>
+              <code>Display</code>: The name of the title (header cell) and
+              tooltip
+            </li>
+            <li>
+              <code>FormatPipe</code>: A pipe applied to all values before
+              showing
+            </li>
+            <li>
+              <code>Hidden</code>: The property does not render in the table
+            </li>
+            <li>
+              <code>Sortable</code>: Suppress sorting or provide a custom sort
+              function
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
+    <div class="col-12">
+      <ac-datagrid
+        [model]="model"
+        [showActions]="false"
+        [columnStyle]="{
+          footer: { 'background-color': footerColor },
+          first: { 'background-color': firstColor },
+          header: {
+            color: headerForeColor,
+            'background-color': headerBackColor
+          },
+          headerSortButton: { color: sortIconColor }
+        }"
+      ></ac-datagrid>
+    </div>
+  </div>
+</div>

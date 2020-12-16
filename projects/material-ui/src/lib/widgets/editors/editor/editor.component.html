@@ -1,72 +1,68 @@
-<div class="form-group row"
-    [formGroup]="formGroup"
-     *ngIf="type != 'hidden' && formGroup"
-     [ngClass]="{ 'has-danger': !formGroup.controls[name].valid && formGroup.controls[name].touched }">
-  <label class="col-form-label col-md-3 col-sm-10"
-    [attr.for]="name"
-    [attr.title]="tooltip" >{{ label }}{{ labelDivider }} </label>
-  <div [ngClass]="{ 'col-md-7 col-sm-10': inline }">
-    <textarea *ngIf="type == 'textarea'"
-            class="form-control"
+<mat-form-field
+    [formGroup]="model.formGroup"
+     *ngIf="model.type != 'hidden' && model.formGroup"
+     [ngClass]="{ 'has-danger': !model.formGroup.controls[name].valid && model.formGroup.controls[name].touched }">
+    <mat-label [attr.title]="model.tooltip" >{{ model.label }}{{ model.labelDivider }} </mat-label>
+  <!-- TODO: inline prop -->
+    <textarea *ngIf="model.type == 'textarea'"
+            matInput
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
             [id]="name"
-            [readOnly]='readonly'
+            [readOnly]='model.readonly'
             [formControlName]="name"
-            [attr.rows]="getParams('rows')"
-            [attr.cols]="getParams('cols')">
+            [cdkAutosizeMinRows]="getParams('rows')">
     </textarea>
-    <select *ngIf="type == 'enum' && enumValues" class="form-control" [id]="name"
-          [formControlName]="name" [disabled]='readonly'>
-      <option *ngFor="let option of enumValues" [value]="option.key">{{option.val}}</option>
-    </select>
-    <select *ngIf="type == 'list' && listValues" class="form-control" [id]="name"
-          [formControlName]="name" [disabled]='readonly'>
-      <option *ngFor="let option of listValues" [value]="option.key">{{option.val}}</option>
-    </select>
-    <input *ngIf="type == 'range'" type="range"
-        class="form-control"
-        [placeholder]="waterMark"
-        [attr.minvalue]="fromValue"
-        [attr.maxvalue]="toValue"
-        [attr.min]="fromValue"
-        [attr.max]="toValue"
+    <mat-selection-list *ngIf="model.type == 'enum' && model.enumValues" [id]="name"
+          [formControlName]="name" [disabled]='model.readonly'>
+      <mat-list-option *ngFor="let option of model.enumValues" [value]="option.key">{{option.val}}</mat-list-option>
+    </mat-selection-list>
+    <mat-select *ngIf="model.type == 'list' && model.listValues" class="form-control" [id]="name"
+          [formControlName]="name" [disabled]='model.readonly'>
+      <mat-option *ngFor="let option of model.listValues" [value]="option.key">{{option.val}}</mat-option>
+    </mat-select>
+    <input *ngIf="model.type == 'range'" type="range"
+        matInput
+        [placeholder]="model.waterMark"
+        [attr.minvalue]="model.fromValue"
+        [attr.maxvalue]="model.toValue"
+        [attr.min]="model.fromValue"
+        [attr.max]="model.toValue"
         [id]="name"
         [formControlName]="name"
-        [title]="tooltip" />
-    <input *ngIf="type == 'calendar'" type="date"
-        class="form-control"
-        [placeholder]="waterMark"
-        [readOnly]='readonly'
+        [title]="model.tooltip" />
+    <input *ngIf="model.type == 'calendar'" type="date"
+        matInput
+        [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
         [id]="name"
         [formControlName]="name"
-        [title]="tooltip" />
-    <input *ngIf="type == 'number'" type="number"
-        class="form-control"
-        [placeholder]="waterMark"
-        [readOnly]='readonly'
+        [title]="model.tooltip" />
+    <input *ngIf="model.type == 'number'" type="number"
+        matInput
+        [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
         [id]="name"
         [formControlName]="name"
-        [title]="tooltip" />
-    <input *ngIf="type == 'boolean'" type="checkbox"
-        class="form-control"
-        [readOnly]='readonly'
+        [title]="model.tooltip" />
+    <mat-checkbox *ngIf="model.type == 'boolean'"
+        [disabled]='model.readonly'
         [id]="name"
         [formControlName]="name"
-        [title]="tooltip" />
-    <label *ngIf="type == 'boolean'" [attr.for]="name"></label>
-    <input *ngIf="type == 'text' || type == ''" [placeholder]="waterMark"
-        [readOnly]='readonly'
+        [title]="model.tooltip" ></mat-checkbox>
+    <input *ngIf="model.type == 'text' || model.type == ''"
+        matInput
+        [placeholder]="model.waterMark"
+        [readOnly]='model.readonly'
         type="text" class="form-control" [id]="name" [formControlName]="name" />
-    <ng-container *ngIf="type == 'template'">
+    <ng-container *ngIf="model.type == 'template'">
         <ng-content></ng-content>
     </ng-container>
-    <span class="fa fa-warning text-danger form-control-feedback"
-        [hidden]="formGroup.controls[name].valid || formGroup.controls[name].pristine"></span>
-    <small class="text-danger"
-        [hidden]="formGroup.controls[name].valid || formGroup.controls[name].pristine">
-    <span *ngFor="let error of errors">{{ formGroup.controls[name]['messages'][error] }}</span>
-    </small>
-  </div>
-</div>
+    <mat-error *ngFor="let error of errors"
+        [hidden]="model.formGroup.controls[name].valid || model.formGroup.controls[name].pristine">
+        {{ model.formGroup.controls[name]['messages'][error] }}
+    </mat-error>
+</mat-form-field>
 <div>
-  <input *ngIf="type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
+  <input *ngIf="model.type == 'hidden'" [id]="name" [formControlName]="name" type="hidden" />
 </div>

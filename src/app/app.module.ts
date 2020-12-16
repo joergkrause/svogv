@@ -6,16 +6,14 @@ import { RouterModule } from '@angular/router';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 // third party
 import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-// access to WebAPI (Demo Data)
-import { SiteApiService, EmitterService } from './services';
-// custom components
-import * as cmp from './components';
 // routes' configuration
 import { routes } from './configurations/routes';
 
-import { SvogvBootstrapModule } from '../../projects/bootstrap-ui/src/public-api';
-import { PercentPipe } from './viewmodels/pipe/percent.pipe';
-import { DropdownDirective } from './directives/dropdown.directive';
+import { DemoBootstrapModule } from './modules/demo-bootstrap/demo-bootstrap.module';
+import { DemoMaterialModule } from './modules/demo-material/demo-material.module';
+import { RootComponent } from './components/root/root.component';
+import { AboutComponent } from './components/about/about.component';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   imports: [
@@ -24,41 +22,18 @@ import { DropdownDirective } from './directives/dropdown.directive';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    SvogvBootstrapModule.forRoot(),
+    DemoBootstrapModule, DemoMaterialModule,
     HighlightModule
   ],
   declarations: [
     // Demo app
-    cmp.RootComponent
-    // Editor, Validation & Grid
-    , cmp.EditorNewComponent
-    , cmp.EditorAutoformComponent
-    , cmp.EditorFormComponent
-    , cmp.EditorListComponent
-    , cmp.EditorDeleteComponent
-    // Widget Demos
-    , cmp.WidgetDemoComponent
-    , cmp.GridDemoSimpleComponent
-    , cmp.GridDemoTemplateComponent
-    , cmp.GridDemoComponent
-    , cmp.GridFilterComponent
-    , cmp.TreeviewDemoComponent
-    // Custom Widgets just for Demo
-    , cmp.TabsComponent
-    , cmp.MinitabsComponent,
-    cmp.MinitabsComponent,
-    cmp.TabsComponent,
-    cmp.AboutComponent,
-    cmp.HomeComponent,
-    DropdownDirective,
-    PercentPipe
+    RootComponent,
+    AboutComponent,
+    HomeComponent
   ],
-  bootstrap: [cmp.RootComponent],
+  bootstrap: [RootComponent],
   providers: [
-      PercentPipe,
-      SiteApiService        // just for demo to get some static data
-    , EmitterService        // simple publish/subscribe pattern to distribute data
-    , { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {

@@ -644,7 +644,7 @@ If the column name provided does not exists, the method does nothing.</p>
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                     </div>
                     <div class="io-description">
@@ -678,8 +678,8 @@ If the column name provided does not exists, the method does nothing.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="200"
-                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:200</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="201"
+                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:201</a></div>
                 </td>
             </tr>
 
@@ -750,8 +750,8 @@ If the column name provided does not exists, the method does nothing.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="196"
-                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:196</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:197</a></div>
                 </td>
             </tr>
 
@@ -829,8 +829,8 @@ If the column name provided does not exists, the method does nothing.</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="188"
-                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:188</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="189"
+                            class="link-to-prism">projects/svogv/src/lib/widgets/datagrid/models/datagrid.model.ts:189</a></div>
                 </td>
             </tr>
 
@@ -1588,6 +1588,7 @@ export class DataGridModel&lt;T&gt; {
     if (col) {
       col.hidden &#x3D; false;
     }
+    return false;
   }
 
   /**

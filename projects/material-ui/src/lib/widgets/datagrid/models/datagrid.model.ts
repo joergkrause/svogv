@@ -1,8 +1,7 @@
 import { Type, EventEmitter, Directive } from '@angular/core';
 
-import '../../../utils/object-extensions';
 import { DataGridHeaderModel } from './datagridheader.model';
-import { Display, Hidden, UiHint } from '../../../decorators';
+import { Display, Hidden, UiHint } from '@svogv/core';
 
 /**
  * Sort direction, controlled by simple string comparision or a callback.

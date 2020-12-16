@@ -1,7 +1,11 @@
 import { Component, OnInit, Input, ViewChild, ContentChild,
          TemplateRef, EventEmitter, AfterViewInit, Output, OnDestroy } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { DataGridModel, Direction } from './models/datagrid.model';
 import { DatagridStyles } from './models/datagridstyle.model';
+import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 
 /**
  * A classic data grid. You provide a model to handle all features. The model is build from a
@@ -71,6 +75,10 @@ export class DataGridComponent implements AfterViewInit, OnDestroy {
    * @ignore
    */
   public directionEnumHelper = Direction;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  @ViewChild(MatSort) sort: MatSort;
 
   /**
    * Access to the string renderer fallback template. The template used internally looks like shown in the example
@@ -185,6 +193,17 @@ export class DataGridComponent implements AfterViewInit, OnDestroy {
   public model: DataGridModel<any>;
 
   /**
+   * Internally used mat datasource
+   */
+  public get materialModel(): MatTableDataSource<any> {
+    return new MatTableDataSource(this.model.itemsFiltered);
+  }
+
+  public get displayedColumns(): string[] {
+    return this.model.headers.map(h => h.prop);
+  }
+
+  /**
    * Wheather to show a delete button. Clicking it fires the {@link DataGridModel.OnDelete}event.
    */
   @Input()
@@ -269,12 +288,17 @@ export class DataGridComponent implements AfterViewInit, OnDestroy {
   @Output()
   public deleteItem: EventEmitter<any> = new EventEmitter<any>();
 
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.model.headers, event.previousIndex, event.currentIndex);
+  }
+
   public ngAfterViewInit(): void {
     if (this.model) {
       this.model.onEdit.subscribe(item => this.editItem.emit(item));
       this.model.onDelete.subscribe(item => this.deleteItem.emit(item));
     }
-  }
+    this.materialModel.paginator = this.paginator;
+    this.materialModel.sort = this.sort;  }
 
   public ngOnDestroy(): void {
     if (this.model) {

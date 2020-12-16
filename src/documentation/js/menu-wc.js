@@ -96,16 +96,16 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/SvogvModule.html" data-type="entity-link">SvogvModule</a>
+                                <a href="modules/SvogvCoreModule.html" data-type="entity-link">SvogvCoreModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' : 'data-target="#xs-injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
+                                        'data-target="#injectables-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' : 'data-target="#xs-injectables-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' :
-                                        'id="xs-injectables-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' :
+                                        'id="xs-injectables-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' }>
                                         <li class="link">
                                             <a href="injectables/FormValidatorService.html"
                                                 data-type="entity-link" data-context="sub-entity" data-context-id="modules" }>FormValidatorService</a>
@@ -114,13 +114,13 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 </li>
                                     <li class="chapter inner">
                                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                            'data-target="#pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' : 'data-target="#xs-pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
+                                            'data-target="#pipes-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' : 'data-target="#xs-pipes-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' }>
                                             <span class="icon ion-md-add"></span>
                                             <span>Pipes</span>
                                             <span class="icon ion-ios-arrow-down"></span>
                                         </div>
-                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' :
-                                            'id="xs-pipes-links-module-SvogvModule-dac89ccb2869a02801216c932682d977"' }>
+                                        <ul class="links collapse" ${ isNormalMode ? 'id="pipes-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' :
+                                            'id="xs-pipes-links-module-SvogvCoreModule-bc170003ba5ceecaa071d2fe6bd7e8c5"' }>
                                             <li class="link">
                                                 <a href="pipes/FormatDataPipe.html"
                                                     data-type="entity-link" data-context="sub-entity" data-context-id="modules">FormatDataPipe</a>
@@ -130,34 +130,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                 </ul>
                 </li>
-                    <li class="chapter">
-                        <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#components-links"' :
-                            'data-target="#xs-components-links"' }>
-                            <span class="icon ion-md-cog"></span>
-                            <span>Components</span>
-                            <span class="icon ion-ios-arrow-down"></span>
-                        </div>
-                        <ul class="links collapse " ${ isNormalMode ? 'id="components-links"' : 'id="xs-components-links"' }>
-                            <li class="link">
-                                <a href="components/AutoFormComponent.html" data-type="entity-link">AutoFormComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/DataGridComponent.html" data-type="entity-link">DataGridComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/DataGridPaginationComponent.html" data-type="entity-link">DataGridPaginationComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/EditorComponent.html" data-type="entity-link">EditorComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/TreeViewComponent.html" data-type="entity-link">TreeViewComponent</a>
-                            </li>
-                            <li class="link">
-                                <a href="components/TreeViewNodeComponent.html" data-type="entity-link">TreeViewNodeComponent</a>
-                            </li>
-                        </ul>
-                    </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#classes-links"' :
                             'data-target="#xs-classes-links"' }>
@@ -171,6 +143,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="classes/DataGridModel.html" data-type="entity-link">DataGridModel</a>
+                            </li>
+                            <li class="link">
+                                <a href="classes/EditorModel.html" data-type="entity-link">EditorModel</a>
                             </li>
                             <li class="link">
                                 <a href="classes/TextTreeNodeModel.html" data-type="entity-link">TextTreeNodeModel</a>

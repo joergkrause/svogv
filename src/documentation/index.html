@@ -41,20 +41,23 @@
 <p><a href="https://david-dm.org/joergkrause/svogv"><img src="https://img.shields.io/david/joergkrause/svogv.svg?style=flat-square" alt="Dependencies" class="img-responsive"></a>
 <a href="https://david-dm.org/joergkrause/svogv#info=devDependencies"><img src="https://img.shields.io/david/dev/joergkrause/svogv.svg?style=flat-square" alt="Dev Dependencies" class="img-responsive"></a></p>
 <h2 id="target-audience">Target Audience</h2>
-<p>This library is for Angular Version 2 or newer. The current release is for Angular 8 and matches the current Angular version usually.</p>
-<p>The design / UI stuff is made using Bootstrap 4, and even here the current version is used.</p>
+<p>This library is for Angular Version 2 or newer. The current release is for Angular 11 and matches the current Angular version usually.</p>
+<p>The design / UI stuff is made using Bootstrap 4 (@svgov/bootstrap) or Material (@svogv/material).</p>
 <p>It&#39;s for developers who create standard forms and want to automate the development process.</p>
 <blockquote>
 <p>Demo and project are made using Angular CLI. Current version is made using <strong>@angular/cli</strong>.</p>
 </blockquote>
 <h2 id="introduction">Introduction</h2>
-<p>This library is for making forms. Easy and fast. It has these advantages:</p>
+<p>This library is for making forms and grids. Easy and fast. It has these advantages:</p>
 <ul>
-<li>All form parts are being created dynamically by using decorators. These control the UI and validation.</li>
-<li>All styles are based on Bootstrap 4, can be used together with themes and custom parts can be changed.</li>
-<li>A grid component makes data tables very easy to use.</li>
-<li>A tree view is another component.</li>
-<li>Dynamic editors and an autoform component creates the whole form without code.</li>
+<li>All form parts are being created dynamically by using viewmodels with decorators. These control the UI and validation.</li>
+<li>All styles are based on the specified environment, can be used together with themes and custom parts can be changed.</li>
+<li>The main part i a very advanced data table component (aka Grid)<ul>
+<li>The grid component makes data tables and is very easy to use.</li>
+<li>A tree view is another component that fits in. It can be used stand alone or to organize the grid.</li>
+<li>Dynamic editors and an autoform components create a whole form without code. This provides the editing capability of the data table.</li>
+</ul>
+</li>
 </ul>
 <h2 id="what-is-it">What is it?</h2>
 <p>The approach was simply to improve the creation of forms as simple as ever in Angular. It&#39;s an extension to Angular that comes as a set of classes (injectable services) and components.</p>
@@ -62,13 +65,8 @@
 <blockquote>
 <p>It&#39;s pretty small, too. It&#39;s 300 KB as a bundle and roughly 39 KB minified, close to 10 KB zipped.</p>
 </blockquote>
-<h2 id="issues">Issues?</h2>
-<p>As of version 0.6 none known issues. Please report issues through Github.</p>
-<p>Have you worked with the version 0.3 before? 0.6 has breaking changes because of a new build process.
-<strong>In 0.7 I have again made significant changes towards the 1.0 release.</strong>
-I&#39;m using Angular CLI for all steps and sync the version with Angular (Angular 6 is SVGOV 0.6, Angular 7 is SVGOV 0.7, and so on). After the first final is being release I plan to jump the version to match the Angular major release. Hence, 0.6 is 6, 0.7 is 7 and so on. Currently supporting Angular 11.</p>
 <h2 id="angular-data-annotations">Angular Data Annotations</h2>
-<p>The idea of data annotations is somehow heavily inspired by the namespace <code>System.ComponentModel.DataAnnotations</code> of .NET Core. There is absolutely no dependency at all, though. You can find more <a href="https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations?view=netframework-4.8">here</a>.</p>
+<p>The idea of data annotations is somehow heavily inspired by the namespace <code>System.ComponentModel.DataAnnotations</code> of .NET Core. There is absolutely no dependency at all, though. You can find more <a href="https://docs.microsoft.com/de-de/dotnet/api/system.componentmodel.dataannotations">here</a>.</p>
 <p>The basic idea is that we usually use view models anyway. So, why not using them to provide all information necessary to create a form that way?</p>
 <h3 id="how-does-it-work">How does it work?</h3>
 <p>Let&#39;s assume you have a viewmodel like this:</p>
@@ -115,7 +113,7 @@ export class UserViewModel {
 }</code></pre></div><h3 id="using-in-forms">Using in Forms</h3>
 <p>The form needs to be aware of the decorators. Hence, there is a service that creates an advanced <code>FormGroup</code> instance. It&#39;s called <code>FormValidatorService</code>. Internally it&#39;s using Angular&#39;s <em>ReactiveFormsModule</em>, so this is a dependency.</p>
 <p>In a component&#39;s code it looks like this:</p>
-<div><pre class="line-numbers"><code class="language-none">import { FormValidatorService } from &#39;svogv&#39;;
+<div><pre class="line-numbers"><code class="language-none">import { FormValidatorService } from &#39;&#64;svogv/core&#39;;
 
 export class EditUserComponent implements OnInit {
 
@@ -192,7 +190,7 @@ export class EditUserComponent implements OnInit {
 </tr>
 <tr>
 <td><strong>@Compare</strong></td>
-<td>Compares with another field, usually for password comparision.</td>
+<td>Compares with another field, usually for password comparisons.</td>
 </tr>
 </tbody>
 </table>
@@ -353,9 +351,9 @@ export class EditUserComponent implements OnInit {
       requiredType;
 }</code></pre></div><p>The types have the same description as the decorators.</p>
 <h2 id="the-components">The Components</h2>
+<p>The goal is, finally, making the ultimate grid. All form parts are part of the grid experience.</p>
 <p>The components complement the editor by adding more parts typically used in forms apps. There are many such components available, but sometimes there are pieces that we need quite often but nothing is really handy. So I created a small set of such components:</p>
 <ul>
-<li><strong>TreeView</strong>: An advanced tree view with icon support and many options such as selections and checkboxes. Uses <code>EventEmitter</code> to fire several tree node events.</li>
 <li><strong>DataGrid</strong>: A classic data grid. It provides a model to handle:<ul>
 <li>paging</li>
 <li>filtering</li>
@@ -363,11 +361,14 @@ export class EditUserComponent implements OnInit {
 <li>dynamic columns</li>
 </ul>
 </li>
+<li><strong>TreeView</strong>: An advanced tree view with icon support and many options such as selections and checkboxes. Uses <code>EventEmitter</code> to fire several tree node events.</li>
+<li><strong>Editor</strong>: For inline editing</li>
+<li><strong>AutoForm</strong>: For editing complex forms</li>
 </ul>
 <p>The grid is controlled by decorators (see table above), so the view model actually creates the grid&#39;s appearance.</p>
 <h2 id="where-to-get">Where to get?</h2>
 <p>It&#39;s available from <em>npm</em> by using this command:</p>
-<div><pre class="line-numbers"><code class="language-none">npm install svogv --save</code></pre></div><p>You get these parts:</p>
+<div><pre class="line-numbers"><code class="language-none">npm install &#64;svogv/bootstrap &#64;svogv/core --save</code></pre></div><p>You get these parts:</p>
 <ul>
 <li><strong>FormValidatorService</strong> -- am injectable class to build reactive forms</li>
 <li><strong>FormValidatorFromJsonService</strong> -- am injectable class to build reactive forms from server data</li>

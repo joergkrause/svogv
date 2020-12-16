@@ -14,7 +14,7 @@
 
 This library is for Angular Version 2 or newer. The current release is for Angular 11 and matches the current Angular version usually.
 
-The design / UI stuff is made using Bootstrap 4 (@svgov/bootstrap) or Material (tbd).
+The design / UI stuff is made using Bootstrap 4 (@svgov/bootstrap) or Material (@svogv/material).
 
 It's for developers who create standard forms and want to automate the development process.
 
@@ -24,11 +24,12 @@ It's for developers who create standard forms and want to automate the developme
 
 This library is for making forms and grids. Easy and fast. It has these advantages:
 
-* All form parts are being created dynamically by using decorators. These control the UI and validation.
+* All form parts are being created dynamically by using viewmodels with decorators. These control the UI and validation.
 * All styles are based on the specified environment, can be used together with themes and custom parts can be changed.
-* A grid component makes data tables very easy to use.
-* A tree view is another component.
-* Dynamic editors and an autoform component creates the whole form without code.
+* The main part i a very advanced data table component (aka Grid)
+  * The grid component makes data tables and is very easy to use.
+  * A tree view is another component that fits in. It can be used stand alone or to organize the grid.
+  * Dynamic editors and an autoform components create a whole form without code. This provides the editing capability of the data table.
 
 ## What is it?
 

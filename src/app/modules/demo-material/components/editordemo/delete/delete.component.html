@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        This is a simple demo form that shows a delete dialog. It's not part of the library. Dialogs handling data must be provided by the host
+        application. Hit F5 to repopulate the list after deleting users.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-warning">Confirm deleting the user {{ user.userName }}.</div>
+      <h3>Delete User</h3>
+      <button class="btn btn-sm btn-success" type="button" (click)="deleteItem()"><i class="fa fa-save"></i> Delete</button>
+      <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()"><i class="fa fa-remove"></i> Cancel &amp; Return to List</button>
+    </div>
+  </div>
+</div>

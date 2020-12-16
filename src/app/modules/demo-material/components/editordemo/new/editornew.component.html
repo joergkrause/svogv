@@ -1,0 +1,145 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        The form consists of three editor fields that get appearance, style, and validation from meta-data.
+      </div>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          The Model Driven Editor
+        </div>
+        <div class="card-body">
+          <p>
+            The editor is a component that reads the view models decorators and produces the matching input fields. This includes the required and
+            requested validation. One can set error messages and control the UI of the form almost completely through decorators.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block clearfix">
+        <div class="card-header card-info">
+          Code used in the Demo
+        </div>
+        <div class="card-body">
+          <p>
+            The code looks like this:
+          </p>
+          <pre>
+&lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+  &lt;fieldset style="width:100%">
+     &lt;legend>Add new User&lt;/legend>
+       &lt;ac-editor [userForm]="userForm" [name]="'userName'">&lt;/ac-editor>
+       &lt;ac-editor [userForm]="userForm" [name]="'email'">&lt;/ac-editor>
+       &lt;ac-editor [userForm]="userForm" [name]="'phoneNumber'">&lt;/ac-editor>
+       &lt;div class="form-group">
+         &lt;button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid">
+            &lt;i class="fa fa-save">&lt;/i> Save&lt;/button>
+         &lt;button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+         &lt;i class="fa fa-remove">&lt;/i> Cancel &amp; Return to List
+         &lt;/button>
+       &lt;/div>
+     &lt;/fieldset>
+     ...
+</pre
+          >
+          <p>
+            The component defines the form like this:
+          </p>
+          <pre>
+ngOnInit() {{ '{' }}
+  <span style="color: green">// get validators and error messages from viewmodel type</span>
+  this.userForm = this.formService.build(UserViewModel);
+  <span style="color: green">// register changes</span>
+  this.userForm.valueChanges.subscribe(data => this.onValueChanged(data));
+{{ '}' }}
+          </pre>
+          <p>
+            The model, that drives the form, is defined like this:
+          </p>
+          <pre>
+export class UserViewModel {{ '{' }}
+
+<span style="color: orange">@Hidden()</span>
+  id: number = 0;
+
+  <span style="color: orange">@Display(</span>'E-Mail', 20, 'E-Mail address'<span style="color: orange">)</span>
+  <span style="color: orange">@Required()</span>
+  <span style="color: orange">@MaxLength(</span>100<span style="color: orange">)</span>
+  <span style="color: orange">@Email()</span>
+  email: string = '';
+
+  <span style="color: orange">@Display(</span>'Phone Number', 30, 'The user\'s phone'<span style="color: orange">)</span>
+  <span style="color: orange">@Required()</span>
+  <span style="color: orange">@MaxLength(</span>20<span style="color: orange">)</span>
+  phoneNumber: string = '';
+
+  <span style="color: orange">@Display(</span>'User Name', 10, 'The full name'<span style="color: orange">)</span>
+  <span style="color: orange">@Required(</span>'User Name is required'<span style="color: orange">)</span>
+  <span style="color: orange">@MaxLength(</span>100<span style="color: orange">)</span>
+  userName: string = '';
+
+  <span style="color: orange">@Display(</span>'Age', 40, 'From 12 to 88'<span style="color: orange">)</span>
+  <span style="color: orange">@DisplayGroup(</span>'Personal'<span style="color: orange">)</span>
+  <span style="color: orange">@Range(</span>12, 88<span style="color: orange">)</span>
+  age: number = 24;
+
+  <span style="color: orange">@Display(</span>'Birthday', 50<span style="color: orange">)</span>
+  <span style="color: orange">@DisplayGroup(</span>'Personal'<span style="color: orange">)</span>
+  birthday: Date = new Date();
+
+  <span style="color: orange">@Display(</span>'Is Admin', 60<span style="color: orange">)</span>
+  isAdmin: boolean = true;
+
+  <span style="color: orange">@Display(</span>'Password', 70<span style="color: orange">)</span>
+  <span style="color: orange">@DisplayGroup(</span>'Password'<span style="color: orange">)</span>
+  <span style="color: orange">@Required()</span>
+  <span style="color: orange">@Compare(</span>'passWordTwo'<span style="color: orange">)</span>
+  passWord: string = '';
+
+  <span style="color: orange">@Display(</span>'Password', 80<span style="color: orange">)</span>
+  <span style="color: orange">@DisplayGroup(</span>'Password'<span style="color: orange">)</span>
+  <span style="color: orange">@Required()</span>
+  passWordTwo: string = '';
+
+  <span style="color: orange">@Display(</span>'Done', 100, 'Work progress'<span style="color: orange">)</span>
+  done?: number = 0;
+
+{{ '}' }}
+          </pre>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
+    <div class="col-12">
+      <form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form">
+        <fieldset>
+          <legend>Add new User</legend>
+          <ac-editor [formGroup]="userForm" [name]="'userName'"></ac-editor>
+          <ac-editor [formGroup]="userForm" [name]="'email'"></ac-editor>
+          <ac-editor [formGroup]="userForm" [name]="'phoneNumber'"></ac-editor>
+          <div class="form-group">
+            <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+            <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+              <i class="fa fa-remove"></i> Cancel &amp; Return to List
+            </button>
+          </div>
+        </fieldset>
+        <div class="alert alert-warning" *ngIf="userForm.touched">
+          Form has been changed. Please save.
+        </div>
+        <div class="alert alert-success" *ngIf="saveResult">
+          Form has been saved.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

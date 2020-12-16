@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="alert alert-info">
+        The form consists of editor fields which have been bound to a view model's properties one by one.
+      </div>
+    </div>
+  </div>
+  <app-minitabs #tabs></app-minitabs>
+  <div class="row" *ngIf="tabs.tabSelected == 'info'">
+    <div class="col-12">
+      <div class="card card-block">
+        <div class="card-header card-success">
+          Information about Autoform
+        </div>
+        <div class="card-body">
+          <p>From a view model decorated with UI decorators one can create a complete form with just one component.
+            This is highly flexible and can be customized using several options.
+          </p>
+          <ul>
+            <li>Label name and tooltip</li>
+            <li>Validation</li>
+            <li>Order of fields</li>
+            <li>Grouping into <code>fieldset</code> elements</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'demo'">
+    <div class="col-12">
+      <form (ngSubmit)="saveUser()" role="form" #userForm="ngForm">
+        <fieldset>
+          <legend>Edit current user</legend>
+          <ac-editor [formGroup]="userFormGroup" name="userName"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="email"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="phoneNumber"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="age"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="birthday"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="isActive"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="passWord"></ac-editor>
+          <ac-editor [formGroup]="userFormGroup" name="passWordTwo"></ac-editor>
+          <div class="form-group">
+            <button class="btn btn-sm btn-success" type="submit" [disabled]="!userForm.valid"><i class="fa fa-save"></i> Save</button>
+            <button class="btn btn-sm btn-secondary" type="submit" [disabled]="!userForm.valid"><i class="fa fa-close"></i> Save &amp; Close</button>
+            <button class="btn btn-sm btn-warning" type="button" (click)="closeForm()">
+              <i class="fa fa-remove"></i> Cancel &amp; Return to List
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+  <div class="row" *ngIf="tabs.tabSelected == 'code'">
+    <div class="col-12">
+      <div class="card card-block">
+        <div class="card-header card-success">
+          Techniques used
+        </div>
+        <div class="card-body">
+          <p>This form makes use of the &lt;ac-editor&gt; component.</p>
+          <code><pre>
+ &lt;form (ngSubmit)="saveUser()" [formGroup]="userForm" role="form" class="row">
+    &lt;fieldset>
+      &lt;legend>Edit current user&lt;/legend>
+      &lt;ac-editor [userForm]="userForm" name="userName" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="email" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="phoneNumber" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="age" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="passWord" >&lt;/ac-editor>
+      &lt;ac-editor [userForm]="userForm" name="passWordTwo" >&lt;/ac-editor>
+</pre></code>
+          <p>
+            The form needs a name, here we used 'userForm'. The editor gets a reference to that name using the property [userForm]. The [name]
+            property is bound to the properties of the view model. The view model needs the decorators to figure out what editor must be shown. It
+            also pulls the validation information from the model. The model used on this form looks like this:
+          </p>
+          <p>
+            The form tag itself, buttons and other form related stuff is not part of the control. The values are two-way bound to a model, that will change automatically.
+          </p>
+          <code>
+            <pre>
+export class UserViewModel {{ '{' }}
+
+  @Hidden()
+  id: number = 0;
+
+  @Display('E-Mail', 'E-Mail address')
+  @Required()
+  @MaxLength(100)
+  @Email()
+  email: string = '';
+
+  @Display('Phone Number', 'The user\'s phone')
+  @Required()
+  @MaxLength(20)
+  phoneNumber: string = '';
+
+  @Display('User Name', 'The full name')
+  @Required()
+  @MaxLength(100)
+  userName: string = '';
+
+  @Display('Age', 'From 12 to 88')
+  @Range(12, 88)
+  age = 14;
+
+  @Display('Password')
+  @Required()
+  @Compare('passWordTwo')
+  passWord: string = '';
+
+  @Display('Password')
+  @Required()
+  passWordTwo: string = '';
+
+{{ '}' }}
+</pre
+            >
+          </code>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
